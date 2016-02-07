@@ -1,4 +1,4 @@
-package com.thomsonreuters.urls.step_definitions;
+package com.thomsonreuters.searchopenweb.step_defintion;
 
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.ExcelFileReader;
@@ -34,8 +34,8 @@ import java.util.List;
 import static com.thomsonreuters.pageobjects.utils.CobaltUser.isUserFirstUser;
 
 /**
-* Login and Navigation Steps.
-*/
+ * Login and Navigation Steps.
+ */
 public class CommonLoginNaviagtionSteps extends BaseStepDef {
 
     public static final String ROUTING = "routing";
