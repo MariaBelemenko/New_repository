@@ -1,0 +1,48 @@
+Feature: As a PL+ User I want to see Where Reported and Where Reported list in right hand side menu
+  As a PL+ User I do not want to see End of Document
+  As a PL+ User I want to see Resource Type and Count
+
+  Background:
+    Given PL+ user is logged in with following details
+      | userName | Asset_page_one |
+
+  Scenario Outline: The case documents contain Where Reported list
+    When the user opens document with <GUID> guid
+    Then the user click on View Document button
+    Then the document opens correctly
+    And the user see the case metadata in the right hand side of the central column
+    And the user see citations it has been reported "Where Reported"
+    And the user see Where Reported list
+  Examples:
+    | GUID                              |
+    | I984f1e2b6cf011e498db8b09b4f043e0 |
+    | I984f1e376cf011e498db8b09b4f043e0 |
+    | I984ef7626cf011e498db8b09b4f043e0 |
+    | I984f1d556cf011e498db8b09b4f043e0 |
+
+  Scenario Outline: The case documents does not contain End of Document
+    When the user opens document with <GUID> guid
+    Then the user click on View Document button
+    Then the document opens correctly
+    Then the document contain class with case-asset-doc
+    Then the document contain content body
+    And the content body contain end of document
+    And the end of document does not contain text
+  Examples:
+    | GUID                              |
+    | I984f1de46cf011e498db8b09b4f043e0 |
+    | I984f1d8d6cf011e498db8b09b4f043e0 |
+    | I984ef7766cf011e498db8b09b4f043e0 |
+    | I984f1d556cf011e498db8b09b4f043e0 |
+
+  Scenario Outline: The case documents contain Resource Type and Count
+    When the user opens document with <GUID> guid
+    Then the user click on View Document button
+    Then the document opens correctly
+    Then the document contain "Resource Type " Resource Type
+    And the document contain "Court" Court
+  Examples:
+    | GUID                              |
+    | I984f1de46cf011e498db8b09b4f043e0 |
+    | I984ef7766cf011e498db8b09b4f043e0 |
+    | I984f1d556cf011e498db8b09b4f043e0 |
