@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber-htmlreport/UrlTopicReport", "junit:target/junit_cucumber.xml", "json:target/cucumber.json"},
         features = "src/test/resources/com/thomsonreuters/urls/features/topic",
+		tags = {"~@wip", "~@manual"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
 
