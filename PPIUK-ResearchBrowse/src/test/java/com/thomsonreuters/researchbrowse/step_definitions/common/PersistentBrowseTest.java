@@ -8,15 +8,9 @@ import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.GlossaryPage;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePage;
 import com.thomsonreuters.pageobjects.pages.search.SearchHomePage;
 import com.thomsonreuters.researchbrowse.step_definitions.BaseStepDef;
-import cucumber.api.Transpose;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import org.assertj.core.api.SoftAssertions;
-import org.openqa.selenium.WebElement;
 
-import java.util.ArrayList;
-import java.util.List;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.When;
 
 public class PersistentBrowseTest extends BaseStepDef {
 
@@ -47,7 +41,7 @@ public class PersistentBrowseTest extends BaseStepDef {
         comMethods.waitElementByLinkText(subMenuLink).click();
     }
 
-    @Then("^the following links should be present on the section$")
+   /** @Then("^the following links should be present on the section$")
     public void sectionLinksIsPresent(@Transpose List<String> linkNames) {
         List<WebElement> sectionLinks = header.getActiveSectionLinks();
         List<String> actualLinkNames = new ArrayList<>();
@@ -93,7 +87,7 @@ public class PersistentBrowseTest extends BaseStepDef {
             userClicksOnDropdown("Browse Menu");
         }
         softAssertions.assertAll();
-    }
+    } */
 
     @Given("^user navigates directly to document with guid \"(.*?)\"$")
     public void userNavigatesDirectlyToDocumentWithGuid(String guid) throws Throwable {
