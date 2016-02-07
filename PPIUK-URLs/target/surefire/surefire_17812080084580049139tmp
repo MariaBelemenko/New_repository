@@ -1,0 +1,12 @@
+#surefire_1
+#Sun Feb 07 00:46:41 GMT 2016
+newSession=false
+username=None
+routing=false
+user.dir=C\:\\Projects\\PPIUK-POC\\PPIUK-URLs
+localRepository=C\:\\Users\\UC172487\\.m2\\repository
+base.url=demo
+basedir=C\:\\Projects\\PPIUK-POC\\PPIUK-URLs
+driverType=seleniumGrid
+jenkinsStyleReports=true
+cobalt.users.xls.path=src/test/resources/CobaltUsers.xlsx
