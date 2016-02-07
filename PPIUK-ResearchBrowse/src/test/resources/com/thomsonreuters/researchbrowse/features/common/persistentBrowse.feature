@@ -1,4 +1,4 @@
-@e2e @prod
+@e2e @prod @wip
 Feature: Persistent Browse
 
   Background:
