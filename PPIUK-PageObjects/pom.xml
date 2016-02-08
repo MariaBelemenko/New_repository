@@ -7,7 +7,7 @@
     <artifactId>ppiuk-pageobjects</artifactId>
     <groupId>com.thomsonreuters.pageobjects</groupId>
     <packaging>jar</packaging>
-    <version>3.5</version>
+    <version>3.6</version>
     <description>PPI UK Page Objects and Utility Methods</description>
 
     <build>
@@ -33,13 +33,13 @@
         <dependency>
             <groupId>com.thomsonreuters.framework</groupId>
             <artifactId>TR-Test-Automation-Framework</artifactId>
-            <version>1.3</version>
+            <version>1.4</version>
         </dependency>
 
         <dependency>
             <groupId>com.thomsonreuters.driver</groupId>
             <artifactId>TR-Test-Automation-Driver</artifactId>
-            <version>2.3</version>
+            <version>2.4</version>
         </dependency>
     </dependencies>
 
