@@ -8,7 +8,6 @@ import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.GlossaryPage;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePage;
 import com.thomsonreuters.pageobjects.pages.search.SearchHomePage;
 import com.thomsonreuters.researchbrowse.step_definitions.BaseStepDef;
-
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 
@@ -41,53 +40,53 @@ public class PersistentBrowseTest extends BaseStepDef {
         comMethods.waitElementByLinkText(subMenuLink).click();
     }
 
-   /** @Then("^the following links should be present on the section$")
-    public void sectionLinksIsPresent(@Transpose List<String> linkNames) {
-        List<WebElement> sectionLinks = header.getActiveSectionLinks();
-        List<String> actualLinkNames = new ArrayList<>();
-        for (WebElement tabLink : sectionLinks) {
-            actualLinkNames.add(tabLink.getText());
-        }
-        SoftAssertions softAssertions = new SoftAssertions();
-        for (String linkName : linkNames) {
-            softAssertions.assertThat(actualLinkNames)
-                    .withFailMessage("Link '" + linkName + "' is not present")
-                    .contains(linkName);
-        }
-        softAssertions.assertAll();
-    }
-
-    @Then("the following links should be present on the section and every link opens page with selected resource")
-    public void sectionLinksIsPresentAndOpensProperly(@Transpose List<String> linkNames) throws Throwable {
-        sectionLinksIsPresent(linkNames);
-        SoftAssertions softAssertions = new SoftAssertions();
-        /** Where we will check presence of expected page name */
-        String placeToCheck;
-        for (String linkName : linkNames) {
-            userClicksOnSubMenuAndSeeTheRespectiveLinks(currentSection, linkName);
-            header.waitForPageToLoad();
-            header.waitForPageToLoadAndJQueryProcessing();
-            /** On "Glossary" link open non-standard PA page */
-            if (linkName.contains("Glossary")) {
-                placeToCheck = glossaryPage.glossaryHeading().getText();
-                /** On "Book" link open Global PL page */
-            } else if (linkName.contains("book")) {
-                /** IMPORTANT! linkName redefined here */
-                linkName = "Book";
-                placeToCheck = plcLegacyBooksPage.getPageHead().getText();
-                /** In all other cases regular page with selected PA section is opened */
-            } else {
-                placeToCheck = header.pageHeaderLabel().getText();
-            }
-            webDriverDiscovery.goBack();
-            softAssertions.assertThat(placeToCheck)
-                    .withFailMessage("Page '" + linkName + "' is not opened")
-                    .contains(linkName);
-            header.waitForPageToLoad();
-            userClicksOnDropdown("Browse Menu");
-        }
-        softAssertions.assertAll();
-    } */
+//   @Then("^the following links should be present on the section$")
+//    public void sectionLinksIsPresent(@Transpose List<String> linkNames) {
+//        List<WebElement> sectionLinks = header.getActiveSectionLinks();
+//        List<String> actualLinkNames = new ArrayList<>();
+//        for (WebElement tabLink : sectionLinks) {
+//            actualLinkNames.add(tabLink.getText());
+//        }
+//        SoftAssertions softAssertions = new SoftAssertions();
+//        for (String linkName : linkNames) {
+//            softAssertions.assertThat(actualLinkNames)
+//                    .withFailMessage("Link '" + linkName + "' is not present")
+//                    .contains(linkName);
+//        }
+//        softAssertions.assertAll();
+//    }
+//
+//    @Then("the following links should be present on the section and every link opens page with selected resource")
+//    public void sectionLinksIsPresentAndOpensProperly(@Transpose List<String> linkNames) throws Throwable {
+//        sectionLinksIsPresent(linkNames);
+//        SoftAssertions softAssertions = new SoftAssertions();
+//        /** Where we will check presence of expected page name */
+//        String placeToCheck;
+//        for (String linkName : linkNames) {
+//            userClicksOnSubMenuAndSeeTheRespectiveLinks(currentSection, linkName);
+//            header.waitForPageToLoad();
+//            header.waitForPageToLoadAndJQueryProcessing();
+//            /** On "Glossary" link open non-standard PA page */
+//            if (linkName.contains("Glossary")) {
+//                placeToCheck = glossaryPage.glossaryHeading().getText();
+//                /** On "Book" link open Global PL page */
+//            } else if (linkName.contains("book")) {
+//                /** IMPORTANT! linkName redefined here */
+//                linkName = "Book";
+//                placeToCheck = plcLegacyBooksPage.getPageHead().getText();
+//                /** In all other cases regular page with selected PA section is opened */
+//            } else {
+//                placeToCheck = header.pageHeaderLabel().getText();
+//            }
+//            webDriverDiscovery.goBack();
+//            softAssertions.assertThat(placeToCheck)
+//                    .withFailMessage("Page '" + linkName + "' is not opened")
+//                    .contains(linkName);
+//            header.waitForPageToLoad();
+//            userClicksOnDropdown("Browse Menu");
+//        }
+//        softAssertions.assertAll();
+//    }
 
     @Given("^user navigates directly to document with guid \"(.*?)\"$")
     public void userNavigatesDirectlyToDocumentWithGuid(String guid) throws Throwable {
