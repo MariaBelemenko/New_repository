@@ -77,6 +77,12 @@ public class WhatsMarketComparisonReportPage extends AbstractPage {
     public WebElement selectAllCheckbox() {
         return waitForExpectedElement(By.id("selectAll"));
     }
+    /**
+     * Uses the text label to select the checkbox for WM profile options
+     */
+    public WebElement whatsMarketCheckboxByName(String name) {
+        return waitForExpectedElement(By.xpath("//div[@id='co_leftColumn'][@class='is-active']//label[text()='" + name + "']//preceding-sibling::input"));
+    }
 
     /**
      * object representing the individual checkboxes for selection e.g. Company name
