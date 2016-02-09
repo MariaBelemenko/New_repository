@@ -1,12 +1,16 @@
 package com.thomsonreuters.urls.step_definitions.knowHow;
 
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
+import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.StandardDocumentPage;
 import com.thomsonreuters.pageobjects.pages.urls.plcuk.KHDocumentPage;
 import com.thomsonreuters.pageobjects.pages.urls.plcuk.PLCUKPage;
 import com.thomsonreuters.urls.step_definitions.BaseStepDef;
+
 import cucumber.api.java.en.Then;
 
 import java.util.Set;
+
+import org.assertj.core.api.SoftAssertions;
 
 import static org.junit.Assert.assertTrue;
 import static com.thomsonreuters.pageobjects.utils.urls.URLsUtils.getDocumentPlcRef;
@@ -18,6 +22,7 @@ public class rendoringKHDocumentByURL extends BaseStepDef {
     private NavigationCobalt navigation = new NavigationCobalt();
     private PLCUKPage plcukPage = new PLCUKPage();
     private KHDocumentPage khDocumentPage = new KHDocumentPage();
+    private StandardDocumentPage standardDocumentPage = new StandardDocumentPage();
 
     @Then("^all links to KH Documents with PLC Ref on the page takes user to correct page$")
     public void allLinksToKHDocumentsOnThePageTakesUserToCorrectPage() throws Throwable {
@@ -36,12 +41,16 @@ public class rendoringKHDocumentByURL extends BaseStepDef {
 
     @Then("^all links to KH Documents with PLC Ref on the page takes user to page with PLCRef$")
     public void allLinksToKHDocumentsOnThePageTakesUserToPageWithPLCRef() throws Throwable {
+    	SoftAssertions softly = new SoftAssertions();
         Set<String> urlsSet = plcukPage.getAllLinksMatches(REGEX_KH_DOC_URL);
         for (String url : urlsSet) {
             navigation.navigate(url);
             navigation.waitForPageToLoad();
-            assertTrue("Document doesnt contain PLC ref: " + url, khDocumentPage.isURLmatches(REGEX_KH_DOC_URL));
+            String resourceType = standardDocumentPage.resourceType().getText();
+            
+    		softly.assertThat(khDocumentPage.isURLmatches(REGEX_KH_DOC_URL) && (resourceType.contains("Primary Source") || resourceType.contains("Case Page"))).overridingErrorMessage("URL is not correct: <%s>, actual address: <%s> , Resource type is: <%s>", url, khDocumentPage.getCurrentUrl(), resourceType).isTrue();
         }
+        softly.assertAll();
     }
 
     @Then("^current url contain PLC Ref$")
