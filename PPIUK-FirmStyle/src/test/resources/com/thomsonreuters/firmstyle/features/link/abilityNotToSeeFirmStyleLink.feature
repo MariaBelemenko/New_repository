@@ -14,7 +14,7 @@ Feature: As a User I want to view the download in FirmStyle option So that I kno
     Then the user does not see the Firm Style link
   Examples:
     | practiceArea | document                                          | ref        |
-    | IP&IT        | Single licensee escrow agreement (NCC Group form) | 0-100-9636 |
+    | IP & IT      | Single licensee escrow agreement (NCC Group form) | 0-100-9636 |
     | Finance      | Irrevocable documentary credit application form   | 0-100-9622 |
     | Construction | Adjudication Agreement, 2011 Edition (Adj 2011)   | 0-572-8397 |
 
