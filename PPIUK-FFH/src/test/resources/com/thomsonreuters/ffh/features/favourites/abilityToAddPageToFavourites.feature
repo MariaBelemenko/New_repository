@@ -35,8 +35,6 @@ Feature: As a PPI User I want to be able to add a page to Favourites so I can ac
     And the user clicks 'Commercial' link on Favourites page
     Then page 'Commercial' opens
 
-  # 830047 [REGRESSION] HomePage is broken
-  @bug
   Scenario Outline: Start Page
     When the user opens '<parent>' link
     And the user opens '<page>' link
