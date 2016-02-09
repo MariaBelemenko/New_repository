@@ -60,8 +60,8 @@ Feature: Annotations FAC
     And user has shared the annotations with another contact "librarian3"
     And user logs out
 
-  @bug @AnnotationsSmokeTests @e2e
-  Scenario:(Bug 852662)Reviewer should be able to see the shared annotations
+  @AnnotationsSmokeTests @e2e
+  Scenario:Reviewer should be able to see the shared annotations
     Given PL+ user is logged in with following details
       | userName   | librarian3 |
       | newSession | TRUE       |
@@ -103,8 +103,7 @@ Feature: Annotations FAC
     And user has shared the annotations with another contact "librarian3"
     And user logs out
 
-  @bug
-  Scenario:(Bug 852662) Reviewer should be able to see the annotations with the links
+  Scenario:Reviewer should be able to see the annotations with the links
     Given PL+ user is logged in with following details
       | userName   | librarian3 |
       | newSession | TRUE       |
@@ -122,8 +121,7 @@ Feature: Annotations FAC
     And verify that user sharing icon is displayed before the createdby
     And user logs out
 
-  @bug
-  Scenario:(Bug 852662)Reviewer should be able to see the annotations shared icon
+  Scenario:Reviewer should be able to see the annotations shared icon
     Given PL+ user is logged in with following details
       | userName   | librarian3 |
       | newSession | TRUE       |
