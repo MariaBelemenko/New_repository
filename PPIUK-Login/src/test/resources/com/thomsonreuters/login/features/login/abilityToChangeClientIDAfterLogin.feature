@@ -1,5 +1,6 @@
 Feature: As a PPI user I want to change the Client ID after log in
 
+  #852540:REGRESSION: Changed Client ID is not displayed
   @bug
   Scenario: As a PPI user I want to change the Client ID after log in
     Given PL+ user is logged in with following details
