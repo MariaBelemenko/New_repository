@@ -1,6 +1,6 @@
-package com.thomsonreuters.ipusers.ipusers.step_definitions.common;
+package com.thomsonreuters.ipusers.step_definitions.common;
 
-import com.thomsonreuters.ipusers.ipusers.step_definitions.BaseStepDef;
+import com.thomsonreuters.ipusers.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.widgets.CategoryPage;
 import cucumber.api.java.en.Then;

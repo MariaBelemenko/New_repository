@@ -1,4 +1,4 @@
-package com.thomsonreuters.ipusers.ipusers.step_definitions;
+package com.thomsonreuters.ipusers.step_definitions;
 
 import com.thomsonreuters.pageobjects.utils.CobaltUser;
 import com.thomsonreuters.pageobjects.utils.User;

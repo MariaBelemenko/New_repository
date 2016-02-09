@@ -145,7 +145,12 @@
         <dependency>
             <groupId>com.thomsonreuters.pageobjects</groupId>
             <artifactId>ppiuk-pageobjects</artifactId>
-            <version>3.6</version>
+            <version>3.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server-standalone</artifactId>
+            <version>2.47.0</version>
         </dependency>
     </dependencies>
 

@@ -1,6 +1,6 @@
-package com.thomsonreuters.ipusers.ipusers.step_definitions.fastDraft;
+package com.thomsonreuters.ipusers.step_definitions.fastDraft;
 
-import com.thomsonreuters.ipusers.ipusers.step_definitions.BaseStepDef;
+import com.thomsonreuters.ipusers.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.pages.fastDraft.ChangesInUploadedPDF;
 import com.thomsonreuters.pageobjects.pages.fastDraft.FormEPage;
 import com.thomsonreuters.pageobjects.pages.widgets.CategoryPage;

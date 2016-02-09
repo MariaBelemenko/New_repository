@@ -1,6 +1,6 @@
-package com.thomsonreuters.ipusers.ipusers.step_definitions.firmStyle;
+package com.thomsonreuters.ipusers.step_definitions.firmStyle;
 
-import com.thomsonreuters.ipusers.ipusers.step_definitions.BaseStepDef;
+import com.thomsonreuters.ipusers.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.common.FileActions;
 import com.thomsonreuters.pageobjects.common.WindowHandler;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.PracticalLawToolsPage;

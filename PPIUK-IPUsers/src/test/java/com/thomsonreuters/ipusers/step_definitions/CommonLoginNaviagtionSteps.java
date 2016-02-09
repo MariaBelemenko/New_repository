@@ -1,4 +1,4 @@
-package com.thomsonreuters.ipusers.ipusers.step_definitions;
+package com.thomsonreuters.ipusers.step_definitions;
 
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.ExcelFileReader;

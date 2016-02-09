@@ -1,6 +1,6 @@
-package com.thomsonreuters.ipusers.ipusers.step_definitions.fastDraft;
+package com.thomsonreuters.ipusers.step_definitions.fastDraft;
 
-import com.thomsonreuters.ipusers.ipusers.step_definitions.BaseStepDef;
+import com.thomsonreuters.ipusers.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.pages.fastDraft.*;
 import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.PracticalLawToolsPage;
