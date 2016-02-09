@@ -6,7 +6,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,14 +16,14 @@ public class WhatsMarketComparisonReportPage extends AbstractPage {
      * this is the Deal Comparison Report heading
      */
     public WebElement dealComparisonReportHeader() {
-        return waitForExpectedElement(By.xpath("//div[@id='co_docHeaderContainer']//div[contains(text(),'Deal Comparison Report')]"),30);
+        return waitForExpectedElement(By.xpath("//div[@id='co_docHeaderContainer']//div[contains(text(),'Deal Comparison Report')]"), 30);
     }
 
     /**
      * this is the menu toggle option to the top left hand side of the page
      */
     public WebElement menuToggleButton() {
-        return waitForExpectedElement(By.xpath("//div[@id='kh_tocContainer']//a[@class='menu-toggle']"),10);
+        return waitForExpectedElement(By.xpath("//div[@id='kh_tocContainer']//a[@class='menu-toggle']"), 10);
     }
 
     /**
@@ -84,7 +83,6 @@ public class WhatsMarketComparisonReportPage extends AbstractPage {
      */
     public WebElement whatsMarketCheckbox(String name) {
         return waitForExpectedElement(By.xpath("//ul[@id='fieldGroup_0']//input[@id='" + name + "']"));
-
     }
 
     /**
@@ -92,7 +90,7 @@ public class WhatsMarketComparisonReportPage extends AbstractPage {
      */
     public Boolean leftHandPaneToggleButtonActive() {
         Boolean isActive = false;
-        WebElement leftHandToggle = waitForExpectedElement(By.xpath("//div[@id='co_leftColumn']"),10);
+        WebElement leftHandToggle = waitForExpectedElement(By.xpath("//div[@id='co_leftColumn']"), 10);
         String classValue = leftHandToggle.getAttribute("class");
         if (classValue.equals("is-active")) {
             isActive = true;
@@ -316,25 +314,20 @@ public class WhatsMarketComparisonReportPage extends AbstractPage {
     /**
      * object representing the heading "Download Report" or "Email Report" on the download/email report popup
      */
-
     public WebElement downloadEmailReportPopUpHeader(String header) {
-
         return waitForExpectedElement(By.xpath("//div[@id='co_deliveryLightbox']//h3[text()='" + header + "']"));
     }
 
     /**
      * object representing the different Comparison Terms options
      */
-
     public WebElement comparisonTermsOptions(String option) {
-
         option = option.replaceAll("’", "'");
         String text = "'" + option + "'";
         if (option.contains("'")) {
             option = "\"" + option + "\"";
             text = option;
         }
-
         return waitForExpectedElement(By.xpath("//div[@id='fieldGroupsContainer']//label[contains(text()," + text + ")]/parent::li"));
     }
 
@@ -342,50 +335,57 @@ public class WhatsMarketComparisonReportPage extends AbstractPage {
      * object representing the Comparison Terms header which is displayed when the menu option to the left of the page
      * is expanded
      */
-
-
     public WebElement comparisonTermsHeader() {
-
-        return waitForExpectedElement(By.xpath("//div[@id='kh_tocContainer']//span[contains(text(),'Comparison Terms')]"),20);
+        return waitForExpectedElement(By.xpath("//div[@id='kh_tocContainer']//span[contains(text(),'Comparison Terms')]"), 20);
     }
 
     public WebElement leftHandColumnSelect() {
-
-        return waitForExpectedElement(By.xpath("//div[@class='kh_toc-content']"),35);
+        return waitForExpectedElement(By.xpath("//div[@class='kh_toc-content']"), 35);
     }
 
+    public WebElement returnToSearchLink() {
+        return waitForExpectedElement(By.xpath("//span[@class='kh_icon icon-reply-arrow']"), 10);
+    }
 
     /**
      * object representing the menu icon on the comparison report page - this can be expanded to show the comparison
      * Comparison Terms header and all the comparison options
      */
-
-
     public WebElement menuIcon() {
-
         return waitForExpectedElement(By.xpath("//div[@id='kh_tocContainer']//span[@class='kh_icon icon-menu']"));
     }
 
     /**
      * object representing the download icon on the comparison report page
      */
-
     public WebElement downloadIcon() {
-
         return waitForExpectedElement(By.xpath("//a[@id='deliveryLinkRowDownload']"));
     }
 
     /**
      * object representing the email icon on the comparison report page
      */
-
     public WebElement emailIcon() {
-
         return waitForExpectedElement(By.xpath("//a[@id='deliveryLinkRowEmail']"));
     }
 
+    /**
+     * generic element to return a report header column
+     */
+    public String headerColumns(Integer columnNumber) {
+        String columnName;
+        /** Return columns that are not hidden */
+        List<WebElement> columnNames = waitForExpectedElements(By.xpath("//div[@id='reportBodyContainer']//tr/th[not(contains(@class,'co_hideState'))]//span[@class='co_dcrTable_Header']"), 10);
+        columnName = columnNames.get(columnNumber - 1).getText();
+        return columnName;
+    }
 
+    public WebElement organizeColumnsLightBox() {
+        return waitForExpectedElement(By.id("columnReorderLightbox"));
+    }
 
-
+    public WebElement homeNode() {
+        return waitForExpectedElement(By.xpath("//a[@id='logo']"));
+    }
 
 }
