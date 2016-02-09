@@ -27,7 +27,7 @@ Feature: As a User
       | <facet> |
     Then the user verifies that the know how following facet is selected and their count is equal to total count
       | <facet> |
-    And the user can open the first know how search result "<number>"
+    And the user can open the first know how search result "<number>" and get document guid
     Then the document opens correctly
     And the document belongs to "<topic>" topic
   Examples:

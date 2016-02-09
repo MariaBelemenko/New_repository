@@ -101,5 +101,4 @@ Feature: As a PL+ User, I am able to search for an individual country instead , 
     Then the document opens correctly
   Examples:
     | country  |
-    | Austria  |
-    | Bulgaria |
+    | Canada   |

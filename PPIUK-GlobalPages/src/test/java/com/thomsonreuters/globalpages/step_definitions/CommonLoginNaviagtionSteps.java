@@ -1,5 +1,22 @@
 package com.thomsonreuters.globalpages.step_definitions;
 
+import static com.thomsonreuters.pageobjects.utils.CobaltUser.isUserFirstUser;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.springframework.util.StringUtils;
+
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.ExcelFileReader;
 import com.thomsonreuters.pageobjects.common.PageActions;
@@ -15,23 +32,19 @@ import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePag
 import com.thomsonreuters.pageobjects.pages.plcLegacy.PLCLegacyHeader;
 import com.thomsonreuters.pageobjects.pages.plcLegacy.PLCLegacyLoginScreen;
 import com.thomsonreuters.pageobjects.pages.search.SearchHomePage;
-import com.thomsonreuters.pageobjects.utils.*;
+import com.thomsonreuters.pageobjects.rest.service.impl.RestServiceFFHImpl;
+import com.thomsonreuters.pageobjects.utils.CobaltUser;
+import com.thomsonreuters.pageobjects.utils.OnepassLoginUtils;
+import com.thomsonreuters.pageobjects.utils.Product;
+import com.thomsonreuters.pageobjects.utils.Routing;
+import com.thomsonreuters.pageobjects.utils.RoutingPage;
+import com.thomsonreuters.pageobjects.utils.User;
 import com.thomsonreuters.pageobjects.utils.folders.FoldersUtils;
+
 import cucumber.api.Transpose;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.Select;
-import org.springframework.util.StringUtils;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-
-import static com.thomsonreuters.pageobjects.utils.CobaltUser.isUserFirstUser;
 
 /**
  * Login and Navigation Steps.
@@ -57,6 +70,7 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
     private FoldersUtils foldersUtils;
     private SearchHomePage searchHomePage;
     private KHResourcePage resourcePage;
+    private RestServiceFFHImpl restServiceFFHImpl = new RestServiceFFHImpl();
 
     public CommonLoginNaviagtionSteps() {
         routingPage = new RoutingPage();
@@ -656,6 +670,8 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         }
         plcHomePage.waitForPageToLoad();
         plcHomePage.closeCookieConsentMessage();
+        String logText = "<br><b>Session ID:</b> " + restServiceFFHImpl.getCurrentSession() + "";
+        LOG.info("user has logged in with following session id: " + logText);
     }
 
     String baseUrl = System.getProperty("base.url");

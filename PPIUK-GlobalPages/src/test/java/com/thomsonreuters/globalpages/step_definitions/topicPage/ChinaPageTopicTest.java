@@ -1,5 +1,20 @@
 package com.thomsonreuters.globalpages.step_definitions.topicPage;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertTrue;
+
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.util.List;
+
+import org.assertj.core.api.SoftAssertions;
+import org.hamcrest.core.Is;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
 import com.thomsonreuters.globalpages.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.PageActions;
@@ -10,21 +25,9 @@ import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.ListOfItemsDe
 import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.pageobjects.utils.globalPage.GlobalPageUtils;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.assertj.core.api.SoftAssertions;
-import org.hamcrest.core.Is;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
-import java.util.List;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 public class ChinaPageTopicTest extends BaseStepDef {
 
@@ -39,6 +42,8 @@ public class ChinaPageTopicTest extends BaseStepDef {
     private ListOfItemsDeliveryOptionsPage listOfItemsDeliveryOptionsPage = new ListOfItemsDeliveryOptionsPage();
 
     private static final String XML_TAG = "plc.facet.practice.area";
+
+	private static String guid;
 
 	@Then("^the list of resource types is displayed$")
 	public void theListOfResourceTypesIsDisplayed() throws Throwable {
@@ -83,10 +88,17 @@ public class ChinaPageTopicTest extends BaseStepDef {
 		softly.assertAll();
 	}
 
+	@Then("^the user can open the first know how search result \"(.*?)\" and get document guid$")
+	public void theUserCanOpenTheFirstKnowHowSearchResultAndGetDocumentGuid(String number) throws Throwable {
+		WebElement document = searchResultsPage.searchResultPosition(number);
+		guid = document.getAttribute("docguid");
+		theUserCanOpenTheFirstKnowHowSearchResult(number);
+	}
+	
 	@Then("^the document belongs to \"(.*?)\" topic$")
 	public void theDocumentBelongsToTopic(String facet) throws Throwable {
 		assertTrue("The document doesn't belong to " + facet + " topic",
-                globalPageUtils.getValuesOfTagFromXMLOfTheDocument(XML_TAG).contains(facet));
+                globalPageUtils.getValuesOfTagFromXMLOfTheDocument(XML_TAG, guid).contains(facet));
 	}
 
     @When("^the user runs a free text search for the query \"(.*)\"$")

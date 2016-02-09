@@ -125,16 +125,15 @@ public class GlobalPageUtils {
         return globalCategoryPage.findElement(By.xpath(".//*[@title='" + icon + "']"));
     }
 
-    public List<WebElement> getWebElementsOfDocumentFromXMLByTag(String guid, String tag) {
+    public List<WebElement> getWebElementsOfDocumentFromXMLByTag(String tag, String guid) {
         chinaCategoryPage.navigate(DOCUMENT_XML + guid);
         return chinaCategoryPage.findElements(By.tagName(tag));
     }
 
-    public List<String> getValuesOfTagFromXMLOfTheDocument(String tag) {
-        globalCategoryPage.waitForPageToLoad();
-        List<WebElement> topics = getWebElementsOfDocumentFromXMLByTag(standardDocumentPage.documentMetaInfo()
-                .getAttribute("id").split("_")[3], tag);
-        return getLinkNamesFromWebElementList(topics);
+    public List<String> getValuesOfTagFromXMLOfTheDocument(String tag, String guid) {
+    	globalCategoryPage.waitForPageToLoad();
+		List<WebElement> topics = getWebElementsOfDocumentFromXMLByTag(tag, guid);
+		return getLinkNamesFromWebElementList(topics);
     }
 
     public void clickOnContinueButton() {

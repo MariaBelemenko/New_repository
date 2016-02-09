@@ -43,21 +43,23 @@ public class GlPageTabTest extends BaseStepDef {
         softly.assertAll();
     }
 
-    @When("^the list of links is present below the \"(.*?)\" header$")
-    public void theListOfLinksIsPresentBelowTheHeader(String header) throws Throwable {
-        SoftAssertions softly = new SoftAssertions();
-        for (WebElement element : chinaCategoryPage.linksUnderTheHeadersInTheResourcesTab(header)) {
-            softly.assertThat(element.isDisplayed()).overridingErrorMessage("link is not distplayed").isTrue();
-        }
-        softly.assertAll();
-    }
+	@When("^the list of links is present below the \"(.*?)\" header$")
+	public void theListOfLinksIsPresentBelowTheHeader(String header) throws Throwable {
+		SoftAssertions softly = new SoftAssertions();
+		softly.assertThat(chinaCategoryPage.linksUnderTheHeadersInTheResourcesTab(header).size()!=0).overridingErrorMessage("There ara no links below the %s header", header).isTrue();
+		for (WebElement element : chinaCategoryPage.linksUnderTheHeadersInTheResourcesTab(header)) {
+			softly.assertThat(element.isDisplayed()).overridingErrorMessage("link is not distplayed").isTrue();
+		}
+		softly.assertAll();
+	}
 
     @When("^all \"(.*?)\" links opens correctly$")
     public void allLinksOpensCorrectly(String header) throws Throwable {
-        List<String> featuredContentLinks = globalPageUtils.getLinkNamesFromWebElementList(chinaCategoryPage
-                .linksUnderTheHeadersInTheResourcesTab(header));
+    	List<String> featuredContentLinks = globalPageUtils.getLinkNamesFromWebElementList(chinaCategoryPage
+				.linksUnderTheHeadersInTheResourcesTab(header));
+		assertTrue("There ara no links below the " + header, featuredContentLinks.size()!=0);
         for (int i = 0; i < featuredContentLinks.size(); i++) {
-            if (!featuredContentLinks.get(i).equals("View all PL standard documents and clauses")) {
+        	if(!featuredContentLinks.isEmpty()) {
                 globalCategoryPage.waitForPageToLoad();
                 globalCategoryPage.waitForPageToLoadAndJQueryProcessing();
                 LOG.info("link: " + featuredContentLinks.get(i));

@@ -8,9 +8,9 @@ import java.util.List;
 
 public class ChinaCategoryPage extends AbstractPage {
 
-    public List<WebElement> linksUnderTheHeadersInTheResourcesTab(String header) {
-        return findElements(By.xpath("//h3[contains(., '" + header + "')]/following-sibling::*//a"));
-    }
+	public List<WebElement> linksUnderTheHeadersInTheResourcesTab(String header) {
+		return retryingFindElements(By.xpath("//h3[contains(., '" + header + "')]/following-sibling::*//a"));
+	}
 
     public List<WebElement> resourceTypesInTopicPage() {
         return findElements(By.cssSelector("#ukplc_topic_facet_links li a"));
