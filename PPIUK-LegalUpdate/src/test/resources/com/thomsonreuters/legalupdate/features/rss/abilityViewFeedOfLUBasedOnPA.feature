@@ -26,6 +26,6 @@ Feature: The ability to view a feed of legal updates based on Practice Area
     | Private Client               | Private Client             |
     | Property                     | Property                   |
     | Public Law                   | Public Law                 |
-    | Restructuring and Insolvency | Restructuring & Insolvency |
+    | Restructuring & Insolvency   | Restructuring & Insolvency |
     | Share Schemes & Incentives   | Share Schemes & Incentives |
     | Tax                          | Tax                        |
