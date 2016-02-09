@@ -79,20 +79,20 @@ public class GlPageSearchContentTest extends BaseStepDef {
     @Then("^the jurisdiction section contains the following countries$")
     public void theJurisdictionSectionContainsTheFollowingCountries(List<String> facets) throws Throwable {
         SoftAssertions softly = new SoftAssertions();
-//        softly.assertThat(globalCategoryPage.jurisdictionsInTheLeftHandSide().size() == facets.size())
-//                .overridingErrorMessage("Size of list of countries is not right").isTrue();
-//        for (int i = 0; i < globalCategoryPage.jurisdictionsInTheLeftHandSide().size(); i++) {
-//            softly.assertThat(
-//                    globalCategoryPage.jurisdictionsInTheLeftHandSide().get(i).getText().equals(facets.get(i)))
-//                    .overridingErrorMessage(
-//                            globalCategoryPage.jurisdictionsInTheLeftHandSide().get(i).getText() + " not equals to "
-//                                    + facets.get(i)
-//                    ).isTrue();
-//            softly.assertThat(globalCategoryPage.jurisdictionsInTheLeftHandSide().get(i).isDisplayed())
-//                    .overridingErrorMessage(
-//                            globalCategoryPage.jurisdictionsInTheLeftHandSide().get(i) + " is not displayed");
-//        }
-//        softly.assertAll();
+        softly.assertThat(globalCategoryPage.jurisdictionsInTheLeftHandSide().size() == facets.size())
+                .overridingErrorMessage("Size of list of countries is not right").isTrue();
+        for (int i = 0; i < globalCategoryPage.jurisdictionsInTheLeftHandSide().size(); i++) {
+            softly.assertThat(
+                    globalCategoryPage.jurisdictionsInTheLeftHandSide().get(i).getText().equals(facets.get(i)))
+                    .overridingErrorMessage(
+                            globalCategoryPage.jurisdictionsInTheLeftHandSide().get(i).getText() + " not equals to "
+                                    + facets.get(i)
+                    ).isTrue();
+            softly.assertThat(globalCategoryPage.jurisdictionsInTheLeftHandSide().get(i).isDisplayed())
+                    .overridingErrorMessage(
+                            globalCategoryPage.jurisdictionsInTheLeftHandSide().get(i) + " is not displayed");
+        }
+        softly.assertAll();
     }
 
     @When("^the user verifies that the following facet is selected$")
@@ -110,15 +110,15 @@ public class GlPageSearchContentTest extends BaseStepDef {
 
     @Then("^the jurisdiction and resource type facets are displayed$")
     public void theJurisdictionAndResourceTypeFacetsAreDisplayed(List<String> facets) throws Throwable {
-//        SoftAssertions softly = new SoftAssertions();
-//        for (int i = 0; i < whatsMarketSearchResultsPage.getFacetGroupNames().size(); i++) {
-//            softly.assertThat(whatsMarketSearchResultsPage.getFacetGroupNames().get(i).equals(facets.get(i)))
-//                    .overridingErrorMessage(
-//                            whatsMarketSearchResultsPage.getFacetGroupNames().get(i) + " is not equals to "
-//                                    + facets.get(i)
-//                    ).isTrue();
-//        }
-//        softly.assertAll();
+        SoftAssertions softly = new SoftAssertions();
+        for (int i = 0; i < whatsMarketSearchResultsPage.getFacetGroupNames().size(); i++) {
+            softly.assertThat(whatsMarketSearchResultsPage.getFacetGroupNames().get(i).equals(facets.get(i)))
+                    .overridingErrorMessage(
+                            whatsMarketSearchResultsPage.getFacetGroupNames().get(i) + " is not equals to "
+                                    + facets.get(i)
+                    ).isTrue();
+        }
+        softly.assertAll();
     }
 
     @When("^the user selects the \"(.*?)\" facet \"(.*?)\"$")
@@ -133,31 +133,31 @@ public class GlPageSearchContentTest extends BaseStepDef {
 
     @Then("^the results is refined to only include that \"(.*?)\" jurisdiction$")
     public void theResultsIsRefinedToOnlyIncludeThatJurisdiction(String jurisdiction) throws Throwable {
-//        SoftAssertions softly = new SoftAssertions();
-//        for (int i = 0; i < globalCategoryPage.jurisdictionsInTheReturnedSearchResults().size(); i++) {
-//            softly.assertThat(
-//                    globalCategoryPage.jurisdictionsInTheReturnedSearchResults().get(i).getText()
-//                            .contains(jurisdiction)
-//            )
-//                    .overridingErrorMessage(
-//                            globalCategoryPage.jurisdictionsInTheReturnedSearchResults().get(i).getText()
-//                                    + " does not contain " + jurisdiction
-//                    ).isTrue();
-//        }
-//
-//        softly.assertAll();
+        SoftAssertions softly = new SoftAssertions();
+        for (int i = 0; i < globalCategoryPage.jurisdictionsInTheReturnedSearchResults().size(); i++) {
+            softly.assertThat(
+                    globalCategoryPage.jurisdictionsInTheReturnedSearchResults().get(i).getText()
+                            .contains(jurisdiction)
+            )
+                    .overridingErrorMessage(
+                            globalCategoryPage.jurisdictionsInTheReturnedSearchResults().get(i).getText()
+                                    + " does not contain " + jurisdiction
+                    ).isTrue();
+        }
+
+        softly.assertAll();
     }
 
     @Then("^the results is refined to only include that \"(.*?)\" resource type$")
     public void theResultsIsRefinedToOnlyIncludeThatResourceType(String resourceType) throws Throwable {
-//        SoftAssertions softly = new SoftAssertions();
-//        for (int i = 0; i < globalCategoryPage.resourceTypes().size(); i++) {
-//            softly.assertThat(globalCategoryPage.resourceTypes().get(i).getText().contains(resourceType))
-//                    .overridingErrorMessage(
-//                            globalCategoryPage.resourceTypes().get(i).getText() + " does not contain " + resourceType)
-//                    .isTrue();
-//        }
-//        softly.assertAll();
+        SoftAssertions softly = new SoftAssertions();
+        for (int i = 0; i < globalCategoryPage.resourceTypes().size(); i++) {
+            softly.assertThat(globalCategoryPage.resourceTypes().get(i).getText().contains(resourceType))
+                    .overridingErrorMessage(
+                            globalCategoryPage.resourceTypes().get(i).getText() + " does not contain " + resourceType)
+                    .isTrue();
+        }
+        softly.assertAll();
     }
 
     @When("^the user enter \"(.*?)\" on the search field$")
@@ -175,12 +175,12 @@ public class GlPageSearchContentTest extends BaseStepDef {
         globalCategoryPage.waitForPageToLoad();
         globalCategoryPage.waitForPageToLoadAndJQueryProcessing();
         theUserSelectsThePerPagefromPerPageDropdown("20");
-//        SoftAssertions softly = new SoftAssertions();
-//        for (WebElement returnedResult : globalCategoryPage.returnedSearchResults()) {
-//            softly.assertThat(returnedResult.getText().toLowerCase().contains(term))
-//                    .overridingErrorMessage(returnedResult + " does not contain " + term).isTrue();
-//        }
-//        softly.assertAll();
+        SoftAssertions softly = new SoftAssertions();
+        for (WebElement returnedResult : globalCategoryPage.returnedSearchResults()) {
+            softly.assertThat(returnedResult.getText().toLowerCase().contains(term))
+                    .overridingErrorMessage(returnedResult + " does not contain " + term).isTrue();
+        }
+        softly.assertAll();
     }
 
     @Then("^the following list of jurisdictions is displayed$")
@@ -207,15 +207,15 @@ public class GlPageSearchContentTest extends BaseStepDef {
     @Then("^the Category Page opens correctly$")
     public void theCategoryPageOpensCorrectly() throws Throwable {
         globalCategoryPage.waitForPageToLoad();
-//        SoftAssertions softly = new SoftAssertions();
-//        softly.assertThat(!globalCategoryPage.header().isEmpty()).overridingErrorMessage("Header is empty").isTrue();
-//        softly.assertThat(!globalCategoryPage.globalPageHeader().isEmpty())
-//                .overridingErrorMessage("Page header is empty").isTrue();
-//        softly.assertThat(!globalCategoryPage.globalPageBody().isEmpty()).overridingErrorMessage("Page body is empty")
-//                .isTrue();
-//        softly.assertThat(!globalCategoryPage.globalPageFooter().isEmpty()).overridingErrorMessage("Footer is empty")
-//                .isTrue();
-//        softly.assertAll();
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(!globalCategoryPage.header().isEmpty()).overridingErrorMessage("Header is empty").isTrue();
+        softly.assertThat(!globalCategoryPage.globalPageHeader().isEmpty())
+                .overridingErrorMessage("Page header is empty").isTrue();
+        softly.assertThat(!globalCategoryPage.globalPageBody().isEmpty()).overridingErrorMessage("Page body is empty")
+                .isTrue();
+        softly.assertThat(!globalCategoryPage.globalPageFooter().isEmpty()).overridingErrorMessage("Footer is empty")
+                .isTrue();
+        softly.assertAll();
     }
 
     @Then("^the text on widget \"(.*)\" is \"(.*)\"$")

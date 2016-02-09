@@ -1,5 +1,13 @@
 package com.thomsonreuters.globalpages.step_definitions.common;
 
+import static org.junit.Assert.assertTrue;
+
+import java.util.List;
+
+import org.assertj.core.api.SoftAssertions;
+import org.junit.Assert;
+import org.slf4j.LoggerFactory;
+
 import com.thomsonreuters.globalpages.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.ExcelFileReader;
@@ -13,15 +21,10 @@ import com.thomsonreuters.pageobjects.pages.urls.plcuk.KHDocumentPage;
 import com.thomsonreuters.pageobjects.utils.CobaltUser;
 import com.thomsonreuters.pageobjects.utils.OnepassLoginUtils;
 import com.thomsonreuters.pageobjects.utils.globalPage.GlobalPageUtils;
+
 import cucumber.api.Transpose;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.junit.Assert;
-import org.slf4j.LoggerFactory;
-
-import java.util.List;
-
-import static org.junit.Assert.assertTrue;
 
 public class GlobalPageLinksTest extends BaseStepDef {
 
@@ -75,26 +78,26 @@ public class GlobalPageLinksTest extends BaseStepDef {
 
     @Then("^the user is taken to the \"(.*?)\" with the \"(.*?)\" title in the same window and tab$")
     public void theUserIsTakenToTheWithTheTitleInTheSameWindowAndTab(String webSite, String title) throws Throwable {
-//        globalCategoryPage.waitForPageToLoad();
-//        SoftAssertions softly = new SoftAssertions();
-//        softly.assertThat(globalCategoryPage.getCurrentUrl().contains(webSite))
-//                .overridingErrorMessage("The user is taken to the %s web site", globalCategoryPage.getCurrentUrl())
-//                .isTrue();
-//        softly.assertThat(globalCategoryPage.getPageTitle().contains(title))
-//                .overridingErrorMessage("The current page title is %s", globalCategoryPage.getPageTitle()).isTrue();
-//        softly.assertAll();
+        globalCategoryPage.waitForPageToLoad();
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(globalCategoryPage.getCurrentUrl().contains(webSite))
+                .overridingErrorMessage("The user is taken to the %s web site", globalCategoryPage.getCurrentUrl())
+                .isTrue();
+        softly.assertThat(globalCategoryPage.getPageTitle().contains(title))
+                .overridingErrorMessage("The current page title is %s", globalCategoryPage.getPageTitle()).isTrue();
+        softly.assertAll();
     }
 
     @Then("^the user is taken to the \"(.*?)\" web site in the same window and tab$")
     public void theUserIsTakenToTheWebSiteInTheSameWindowAndTab(String webSite) throws Throwable {
         globalCategoryPage.waitForPageToLoad();
-//        SoftAssertions softly = new SoftAssertions();
-//        String url = globalCategoryPage.getCurrentUrl();
-//        LOG.info("Current Url" + globalCategoryPage.getCurrentUrl());
-//        softly.assertThat(globalCategoryPage.getCurrentUrl().contains(webSite))
-//                .overridingErrorMessage("The user is taken to the %s web site", globalCategoryPage.getCurrentUrl())
-//                .isTrue();
-//        softly.assertAll();
+        SoftAssertions softly = new SoftAssertions();
+        String url = globalCategoryPage.getCurrentUrl();
+        LOG.info("Current Url" + globalCategoryPage.getCurrentUrl());
+        softly.assertThat(globalCategoryPage.getCurrentUrl().contains(webSite))
+                .overridingErrorMessage("The user is taken to the %s web site", globalCategoryPage.getCurrentUrl())
+                .isTrue();
+        softly.assertAll();
     }
 
     @When("^the \"(.*?)\" settings icon is displayed$")

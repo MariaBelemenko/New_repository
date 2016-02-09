@@ -1,12 +1,15 @@
 package com.thomsonreuters.globalpages.step_definitions.search;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.assertj.core.api.SoftAssertions;
+
 import com.thomsonreuters.globalpages.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.pages.globalPage.ChinaCategoryPage;
 import com.thomsonreuters.pageobjects.pages.landingPage.SearchScopeControl;
-import cucumber.api.java.en.Then;
 
-import java.util.ArrayList;
-import java.util.List;
+import cucumber.api.java.en.Then;
 
 public class ChinaPageScopedSearchDropdownTest extends BaseStepDef {
 
@@ -19,17 +22,17 @@ public class ChinaPageScopedSearchDropdownTest extends BaseStepDef {
         List<String> initialListOfPracticeAreas = new ArrayList<String>();
         initialListOfPracticeAreas.addAll(items);
         theUserCanDisplayTheScopedSearchDropdownMenuOptions("display");
-//        SoftAssertions softly = new SoftAssertions();
-//        softly.assertThat(searchScopeControl.scopedSearchDropdownOptionsList().size() == items.size())
-//                .overridingErrorMessage("Size of list of practice areas is not right").isTrue();
-//        for (int i = 0; i < searchScopeControl.scopedSearchDropdownOptionsList().size(); i++) {
-//            softly.assertThat(searchScopeControl.scopedSearchDropdownOptionsList().get(i).equals(items.get(i)))
-//                    .overridingErrorMessage(
-//                            searchScopeControl.scopedSearchDropdownOptionsList().get(i) + " not equals to "
-//                                    + items.get(i)
-//                    ).isTrue();
-//        }
-//        softly.assertAll();
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(searchScopeControl.scopedSearchDropdownOptionsList().size() == items.size())
+                .overridingErrorMessage("Size of list of practice areas is not right").isTrue();
+        for (int i = 0; i < searchScopeControl.scopedSearchDropdownOptionsList().size(); i++) {
+            softly.assertThat(searchScopeControl.scopedSearchDropdownOptionsList().get(i).equals(items.get(i)))
+                    .overridingErrorMessage(
+                            searchScopeControl.scopedSearchDropdownOptionsList().get(i) + " not equals to "
+                                    + items.get(i)
+                    ).isTrue();
+        }
+        softly.assertAll();
     }
 
     private void theUserCanDisplayTheScopedSearchDropdownMenuOptions(String arg1) throws Throwable {

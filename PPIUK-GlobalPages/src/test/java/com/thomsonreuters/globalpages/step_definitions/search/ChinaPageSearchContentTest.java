@@ -1,9 +1,12 @@
 package com.thomsonreuters.globalpages.step_definitions.search;
 
+import org.assertj.core.api.SoftAssertions;
+
 import com.thomsonreuters.globalpages.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.globalPage.GlobalCategoryPage;
 import com.thomsonreuters.pageobjects.pages.pageCreation.HomePage;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -32,15 +35,15 @@ public class ChinaPageSearchContentTest extends BaseStepDef {
 
     private void theCategoryPageOpensCorrectly() throws Throwable {
         globalCategoryPage.waitForPageToLoad();
-//        SoftAssertions softly = new SoftAssertions();
-//        softly.assertThat(!globalCategoryPage.header().isEmpty()).overridingErrorMessage("Header is empty").isTrue();
-//        softly.assertThat(!globalCategoryPage.globalPageHeader().isEmpty())
-//                .overridingErrorMessage("Page header is empty").isTrue();
-//        softly.assertThat(!globalCategoryPage.globalPageBody().isEmpty()).overridingErrorMessage("Page body is empty")
-//                .isTrue();
-//        softly.assertThat(!globalCategoryPage.globalPageFooter().isEmpty()).overridingErrorMessage("Footer is empty")
-//                .isTrue();
-//        softly.assertAll();
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(!globalCategoryPage.header().isEmpty()).overridingErrorMessage("Header is empty").isTrue();
+        softly.assertThat(!globalCategoryPage.globalPageHeader().isEmpty())
+                .overridingErrorMessage("Page header is empty").isTrue();
+        softly.assertThat(!globalCategoryPage.globalPageBody().isEmpty()).overridingErrorMessage("Page body is empty")
+                .isTrue();
+        softly.assertThat(!globalCategoryPage.globalPageFooter().isEmpty()).overridingErrorMessage("Footer is empty")
+                .isTrue();
+        softly.assertAll();
     }
 
 }

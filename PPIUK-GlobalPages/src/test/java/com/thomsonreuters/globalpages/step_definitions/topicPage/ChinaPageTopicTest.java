@@ -43,25 +43,25 @@ public class ChinaPageTopicTest extends BaseStepDef {
 	@Then("^the list of resource types is displayed$")
 	public void theListOfResourceTypesIsDisplayed() throws Throwable {
 		SoftAssertions softly = new SoftAssertions();
-//		softly.assertThat(chinaCategoryPage.resourceTypesInTopicPage().size() != 0)
-//				.overridingErrorMessage("List of resource types is empty").isTrue();
-//		for (int i = 0; i < chinaCategoryPage.resourceTypesInTopicPage().size(); i++) {
-//			softly.assertThat(chinaCategoryPage.resourceTypesInTopicPage().get(i).isDisplayed())
-//					.overridingErrorMessage(chinaCategoryPage.resourceTypesInTopicPage().get(i) + " is not displayed")
-//					.isTrue();
-//		}
-//		softly.assertAll();
+		softly.assertThat(chinaCategoryPage.resourceTypesInTopicPage().size() != 0)
+				.overridingErrorMessage("List of resource types is empty").isTrue();
+		for (int i = 0; i < chinaCategoryPage.resourceTypesInTopicPage().size(); i++) {
+			softly.assertThat(chinaCategoryPage.resourceTypesInTopicPage().get(i).isDisplayed())
+					.overridingErrorMessage(chinaCategoryPage.resourceTypesInTopicPage().get(i) + " is not displayed")
+					.isTrue();
+		}
+		softly.assertAll();
 	}
 
 	@Then("^the list of jurisdictions is not displayed$")
 	public void theListOfJurisdictionsIsNotDisplayed() throws Throwable {
-//		SoftAssertions softly = new SoftAssertions();
-//		for (int i = 0; i < chinaCategoryPage.jurisdictionsTopicPage().size(); i++) {
-//			softly.assertThat(chinaCategoryPage.jurisdictionsTopicPage().get(i).isDisplayed())
-//					.overridingErrorMessage(chinaCategoryPage.jurisdictionsTopicPage().get(i) + " is displayed")
-//					.isFalse();
-//		}
-//		softly.assertAll();
+		SoftAssertions softly = new SoftAssertions();
+		for (int i = 0; i < chinaCategoryPage.jurisdictionsTopicPage().size(); i++) {
+			softly.assertThat(chinaCategoryPage.jurisdictionsTopicPage().get(i).isDisplayed())
+					.overridingErrorMessage(chinaCategoryPage.jurisdictionsTopicPage().get(i) + " is displayed")
+					.isFalse();
+		}
+		softly.assertAll();
 	}
 
 	@Then("^the resources sections are displayed on the topic page$")
@@ -75,12 +75,12 @@ public class ChinaPageTopicTest extends BaseStepDef {
 	@Then("^the \"(.*?)\" section includes only \"(.*?)\" topics$")
 	public void theSectionIncludesOnlyTopics(String section, String country, List<String> topics) throws Throwable {
 		chinaCategoryPage.waitForPageToLoad();
-//		SoftAssertions softly = new SoftAssertions();
-//		for (WebElement topic : chinaCategoryPage.chinaTopicsInThePracticeArea(section, country)) {
-//			softly.assertThat(topics.contains(topic.getText()))
-//					.overridingErrorMessage("China topics don't contain %s topic", topic.getText()).isTrue();
-//		}
-//		softly.assertAll();
+		SoftAssertions softly = new SoftAssertions();
+		for (WebElement topic : chinaCategoryPage.chinaTopicsInThePracticeArea(section, country)) {
+			softly.assertThat(topics.contains(topic.getText()))
+					.overridingErrorMessage("China topics don't contain %s topic", topic.getText()).isTrue();
+		}
+		softly.assertAll();
 	}
 
 	@Then("^the document belongs to \"(.*?)\" topic$")

@@ -1,5 +1,13 @@
 package com.thomsonreuters.globalpages.step_definitions.search;
 
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.assertj.core.api.SoftAssertions;
+import org.junit.Assert;
+
 import com.thomsonreuters.globalpages.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.pages.globalPage.GlobalCategoryPage;
@@ -7,14 +15,9 @@ import com.thomsonreuters.pageobjects.pages.landingPage.SearchScopeControl;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.TopicPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.pageobjects.utils.globalPage.GlobalPageUtils;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.junit.Assert;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.assertTrue;
 
 public class GlobalPageScopedSearchDropdownTest extends BaseStepDef {
 
@@ -32,21 +35,21 @@ public class GlobalPageScopedSearchDropdownTest extends BaseStepDef {
         initialListOfCountries = new ArrayList<String>();
         initialListOfCountries.addAll(countries);
         theUserCanDisplayTheScopedSearchDropdownMenuOptions("display");
-//        SoftAssertions softly = new SoftAssertions();
-//        softly.assertThat(globalCategoryPage.fullListOfContriesInTheSSDD().size() == countries.size())
-//                .overridingErrorMessage("Size of list of countries is not right").isTrue();
-//        for (int i = 0; i < globalCategoryPage.fullListOfContriesInTheSSDD().size(); i++) {
-//            softly.assertThat(
-//                    globalCategoryPage.fullListOfContriesInTheSSDD().get(i).getText().equals(countries.get(i)))
-//                    .overridingErrorMessage(
-//                            globalCategoryPage.fullListOfContriesInTheSSDD().get(i).getText() + " not equals to "
-//                                    + countries.get(i)
-//                    ).isTrue();
-//            softly.assertThat(globalCategoryPage.fullListOfContriesInTheSSDD().get(i).isDisplayed())
-//                    .overridingErrorMessage(
-//                            globalCategoryPage.fullListOfContriesInTheSSDD().get(i) + " is not displayed");
-//        }
-//        softly.assertAll();
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(globalCategoryPage.fullListOfContriesInTheSSDD().size() == countries.size())
+                .overridingErrorMessage("Size of list of countries is not right").isTrue();
+        for (int i = 0; i < globalCategoryPage.fullListOfContriesInTheSSDD().size(); i++) {
+            softly.assertThat(
+                    globalCategoryPage.fullListOfContriesInTheSSDD().get(i).getText().equals(countries.get(i)))
+                    .overridingErrorMessage(
+                            globalCategoryPage.fullListOfContriesInTheSSDD().get(i).getText() + " not equals to "
+                                    + countries.get(i)
+                    ).isTrue();
+            softly.assertThat(globalCategoryPage.fullListOfContriesInTheSSDD().get(i).isDisplayed())
+                    .overridingErrorMessage(
+                            globalCategoryPage.fullListOfContriesInTheSSDD().get(i) + " is not displayed");
+        }
+        softly.assertAll();
     }
 
     @Then("^the countries are sorted in alphabetical order$")
