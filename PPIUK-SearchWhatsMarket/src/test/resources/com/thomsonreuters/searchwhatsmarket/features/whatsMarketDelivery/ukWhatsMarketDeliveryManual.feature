@@ -1,4 +1,5 @@
-  Feature: [718904][747925][747924] ukWhatsMarketDelivery.feature
+  Feature: ukWhatsMarketDeliveryManual.feature
+    [718904][747925][747924]
   Delivery of know how search results in list and full text format via print, save and email
 
 

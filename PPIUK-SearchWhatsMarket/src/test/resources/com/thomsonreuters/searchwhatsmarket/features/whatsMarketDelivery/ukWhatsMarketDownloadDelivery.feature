@@ -1,4 +1,5 @@
-Feature: [718904][747925][747924] ukWhatsMarketDelivery.feature
+Feature: ukWhatsMarketDownloadDelivery.feature
+  [718904][747925][747924]
   Delivery of know how search results in list and full text format via save
 
     Background: Log on to test site

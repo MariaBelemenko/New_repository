@@ -1,4 +1,5 @@
-Feature: [815685][815692][815714][815248][815245][815246][815247][815705][811160][811159] Whats Market Comparison Tool Functionality
+Feature: ukWhatsMarketComparisonTool.feature
+  [815685][815692][815714][815248][815245][815246][815247][815705][811160][811159]
 
   Background: Log on to test site
     Given PL+ user is logged in with following details
@@ -111,20 +112,6 @@ Feature: [815685][815692][815714][815248][815245][815246][815247][815705][811160
     And the user selects the profile option to display "Company number"
     And the user verifies the absence of a column entitled "Company number"
 
-  @manual
-  Scenario: [815714] verify user can scroll through the list of comparison terms
-    Given the 'Comparison Terms' selector is open
-    And the user is presented with the list of comparison terms
-    When the user clicks on the scrollbar
-    Then the user should have the ability to scroll through the comparison terms
-
-  @manual
-  Scenario: [815714] - verify user can use scrolling wheel to scroll through list of comparison terms
-    Given the 'Comparison Terms' selector is open
-    And the user is presented with the list of comparison terms
-    When the user hovers their cursor over the comparison terms selector
-    Then the user should have the ability to scroll through the comparison terms using their scrolling wheel on their mouse.
-
   Scenario: [815248] verify column sorting functionality
     When the user runs a free text search for the query "law"
     And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
@@ -141,14 +128,6 @@ Feature: [815685][815692][815714][815248][815245][815246][815247][815705][811160
     Then the user verifies the deals are sorted alphabetically by "Deal"
     When the user clicks on the column entitled "Date administrators appointed"
     Then the user verifies the deals are sorted by 'Date administrators appointed'
-
-  @manual
-  Scenario: [815245] verify user can change the order of the items in the report using drag and drop in the the organise columns tool
-    Given the user is on the WM comparison page
-    And the user is presented with the deal comparison report
-    When the user clicks on 'Organise Columns' button
-    Then the user should be presented with a dialogue box with the list of columns
-    And the user should be able to change the order of the columns using drag and drop with their mouse
 
   Scenario: [815245] verify user can change the order of the items in the report using the controls in the the organise columns tool
     When the user runs a free text search for the query "law"
@@ -234,13 +213,6 @@ Feature: [815685][815692][815714][815248][815245][815246][815247][815705][811160
     And the user verifies the Organize Columns popup is closed
     Then the user verifies heading "Administrators: firm name" is in column "4" on the Deal Comparison Report
 
-  @manual
-  Scenario: [815246] verify user can drag and drop rows in the comparison report
-    Given the user is on the WM comparison page,
-    And the user is presented with the deal comparison report
-    When the user clicks on a row in the table
-    Then the user should be to drag and drop the row above or below the other rows in the table
-
   Scenario: [815246] verify user can move from left to right and back using arrows in the report so as to view all the columns
     When the user runs a free text search for the query "law"
     And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
@@ -325,124 +297,6 @@ Feature: [815685][815692][815714][815248][815245][815246][815247][815705][811160
     And the user verifies all Comparison Terms checkboxes are unchecked
     And the user verifies the absence of a column entitled "Company number"
 
-  Scenario: [815247] Add WM comparison report to folder
-    When the user runs a free text search for the query "law"
-    And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
-    And the user verifies the presence of the whats market facet "Administrations"
-    And the user selects the whats market facet "Administrations"
-    And the user selects the option to apply filters
-    And the user selects the checkbox associated with whats market result "1"
-    And the user selects the checkbox associated with whats market result "2"
-    And the user selects the checkbox associated with whats market result "3"
-    And the user selects the compare button
-    And the user verifies the presence of the heading Deal Comparison Report
-    And the user ensures that the left hand column select is displayed
-    And the user adds whats market deal comparison report to new "WMDeals" folder with parent folder "root"
-    And the user clicks on 'Folders' link on the header
-    Then the folder "WMDeals" appears in the "root" folder
-    And the user verifies the whats market deal comparison report is present in the "WMDeals" folder
-    And the user deletes the folder "WMDeals"
-
-  @bug
-  Scenario Outline: [815247] Download whats market comparison report
-    #850563 logged 26/01/15
-    When the user runs a free text search for the query "law"
-    And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
-    And the user verifies the presence of the whats market facet "Administrations"
-    And the user selects the whats market facet "Administrations"
-    And the user selects the option to apply filters
-    And the user selects the checkbox associated with whats market result "1"
-    And the user selects the checkbox associated with whats market result "2"
-    And the user selects the checkbox associated with whats market result "3"
-    And the user selects the compare button
-    And the user verifies the presence of the heading Deal Comparison Report
-    And the user ensures that the left hand column select is displayed
-    And the user selects the download icon on the comparison report page
-    # Bug 850563 can prevent the title showing.
-    And the user verifies the presence of a pop up entitled 'Download Report'
-    And the user verifies the presence of a dropdown entitled Format
-    And the user selects the format option entitled "<option>"
-    And the user click on download button
-    Then the user verifies that 'Preparing For Download' is displayed on the overlay
-    And the user verifies that 'Ready For Download' is displayed on the overlay
-    And the user verifies 'Download' button is displayed on Ready For Download overlay
-  Examples:
-    | option                |
-    | Microsoft Excel (CSV) |
-    | Microsoft Word        |
-    | Microsoft Excel (XLS) |
-
-  @manual
-  Scenario: [815247] Download whats market comparison report and verify format
-    When the user runs a free text search for the query "law"
-    And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
-    And the user verifies the presence of the whats market facet "Administrations"
-    And the user selects the whats market facet "Administrations"
-    And the user selects the option to apply filters
-    And the user selects the checkbox associated with whats market result "1"
-    And the user selects the checkbox associated with whats market result "2"
-    And the user selects the checkbox associated with whats market result "3"
-    And the user selects the compare button
-    And the user verifies the presence of the heading Deal Comparison Report
-    And the user selects the download icon on the comparison report page
-    # Bug 850563 can prevent the title showing.
-    And the user verifies the presence of a pop up entitled 'Download Report'
-    And the user verifies the presence of a dropdown entitled Format
-    And the user selects the format option entitled "<option>"
-    And the user selects the download icon on the comparison report page
-    Then the user verifies that 'Preparing For Download' is displayed on the overlay
-    And the user verifies that 'Ready For Download' is displayed on the overlay
-    And the user clicks download on ready to download overlay
-    And the user downloads the file and verifies that it is correctly formatted
-
-  @bug
-  Scenario Outline: [815247] Email whats market comparison report
-    #850563 logged 26/01/15
-    When the user runs a free text search for the query "law"
-    And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
-    And the user verifies the presence of the whats market facet "Administrations"
-    And the user selects the whats market facet "Administrations"
-    And the user selects the option to apply filters
-    And the user pauses for "3" seconds
-    And the user selects the checkbox associated with whats market result "1"
-    And the user selects the checkbox associated with whats market result "2"
-    And the user selects the checkbox associated with whats market result "3"
-    And the user selects the compare button
-    And the user verifies the presence of the heading Deal Comparison Report
-    And the user ensures that the left hand column select is displayed
-    And the user selects the Email icon on the comparison report page
-  # Bug 850563 can prevent the title showing.
-    And the user verifies the presence of a pop up entitled 'Email Report'
-    And the user verifies the presence of a dropdown entitled Format
-    And the user selects the format option entitled "<option>"
-    And the user selects the Email option
-    And the user verifies that 'Ready For Email' is displayed on the overlay
-  Examples:
-    | option                |
-    | Microsoft Excel (CSV) |
-    | Microsoft Word        |
-    | Microsoft Excel (XLS) |
-
-  @manual
-  Scenario: [815247] Email whats market comparison report and verify format
-    When the user runs a free text search for the query "law"
-    And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
-    And the user verifies the presence of the whats market facet "Administrations"
-    And the user selects the whats market facet "Administrations"
-    And the user selects the option to apply filters
-    And the user selects the checkbox associated with whats market result "1"
-    And the user selects the checkbox associated with whats market result "2"
-    And the user selects the checkbox associated with whats market result "3"
-    And the user selects the compare button
-    And the user verifies the presence of the heading Deal Comparison Report
-    And the user selects the Email icon on the comparison report page
-    # Bug 850563 can prevent the title showing.
-    And the user verifies the presence of a pop up entitled 'Email Report'
-    And the user verifies the presence of a dropdown entitled Format
-    And the user selects the format option entitled "<option>"
-    And the user selects the Email option
-    And the user verifies that 'Ready For Email' is displayed on the overlay
-    And the user emails the file and verifies that it is correctly formatted
 
   Scenario: [811160] verify comparison options for sample deal types
     And has selected the link to the deal type "Public M & A"
