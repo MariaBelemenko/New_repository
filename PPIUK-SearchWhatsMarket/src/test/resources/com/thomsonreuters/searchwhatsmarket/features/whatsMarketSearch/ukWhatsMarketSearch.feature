@@ -57,13 +57,10 @@ Feature: ukWhatsMarketSearch.feature - [702213][702225][731586][702218][702219]
       | 1 | Joint ventures |
       | 2 | Joint ventures |
       | 3 | Joint ventures |
-      | 4 | Joint ventures |
-      | 5 | Joint ventures |
     When the user runs a free text search for the query "mining"
     And the user pauses for "3" seconds
     Then the user verifies that the result at position in the result list has the deal type
       | 1 | Joint ventures |
       | 2 | Joint ventures |
       | 3 | Joint ventures |
-      | 4 | Joint ventures |
-      | 5 | Joint ventures |
+
