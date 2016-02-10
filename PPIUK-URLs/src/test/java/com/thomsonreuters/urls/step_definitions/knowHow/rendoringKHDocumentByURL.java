@@ -47,8 +47,10 @@ public class rendoringKHDocumentByURL extends BaseStepDef {
             navigation.navigate(url);
             navigation.waitForPageToLoad();
             String resourceType = standardDocumentPage.resourceType().getText();
-            
-    		softly.assertThat(khDocumentPage.isURLmatches(REGEX_KH_DOC_URL) && (resourceType.contains("Primary Source") || resourceType.contains("Case Page"))).overridingErrorMessage("URL is not correct: <%s>, actual address: <%s> , Resource type is: <%s>", url, khDocumentPage.getCurrentUrl(), resourceType).isTrue();
+            if(resourceType.contains("Primary Source") || resourceType.contains("Case Page")) {
+            	LOG.info(String.format("Document resource type is: <%s> ; primary source URL is: <%s> ; actual url is: <%s> ; This document should not contain PLCRef", resourceType, url, khDocumentPage.getCurrentUrl()));
+            }
+    		softly.assertThat(khDocumentPage.isURLmatches(REGEX_KH_DOC_URL)).overridingErrorMessage("URL does not contain PLCRef. actual address: <%s> , origianl url: <%s> , Resource type is: <%s>", khDocumentPage.getCurrentUrl(), url, resourceType).isTrue();
         }
         softly.assertAll();
     }
