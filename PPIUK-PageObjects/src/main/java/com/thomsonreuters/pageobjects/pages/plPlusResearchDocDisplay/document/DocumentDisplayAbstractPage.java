@@ -241,7 +241,7 @@ public abstract class DocumentDisplayAbstractPage extends AbstractPage {
     }
 
     public WebElement resourceType() {
-        return retryingFindElement(RESOURCE_TYPE);
+        return waitForExpectedElement(RESOURCE_TYPE);
     }
 
     public WebElement documentStatus() {
