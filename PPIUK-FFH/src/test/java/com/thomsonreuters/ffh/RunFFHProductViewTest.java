@@ -7,10 +7,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-htmlreport/FFHCommonReport", "junit:target/junit_cucumber.xml", "json:target/cucumber.json"},
-        features = "src/test/resources/com/thomsonreuters/ffh/features/common",
+        plugin = {"pretty", "html:target/cucumber-htmlreport/FFHProductViewReport", "junit:target/junit_cucumber.xml", "json:target/cucumber.json"},
+        features = "src/test/resources/com/thomsonreuters/ffh/features/productView",
         tags = {"~@wip", "~@manual"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
-public class RunFFHCommonTest {
+public class RunFFHProductViewTest {
 }
