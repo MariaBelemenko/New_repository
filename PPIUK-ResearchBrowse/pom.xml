@@ -139,13 +139,13 @@
         <dependency>
             <groupId>com.thomsonreuters.driver</groupId>
             <artifactId>TR-Test-Automation-Driver</artifactId>
-            <version>2.4</version>
+            <version>2.5</version>
         </dependency>
 
         <dependency>
             <groupId>com.thomsonreuters.pageobjects</groupId>
             <artifactId>ppiuk-pageobjects</artifactId>
-            <version>3.7</version>
+            <version>1a-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
