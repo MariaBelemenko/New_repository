@@ -794,6 +794,7 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         signOff(user);
         onepassLogin.deleteAllCookies();
         ExcelFileReader.unlockUser(currentUser.getUserName());
+        resetCurrentUser();
         LOG.info("New Session Created");
     }
 
