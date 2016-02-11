@@ -55,6 +55,8 @@ public class GlPageTabTest extends BaseStepDef {
 
     @When("^all \"(.*?)\" links opens correctly$")
     public void allLinksOpensCorrectly(String header) throws Throwable {
+    	globalCategoryPage.waitForPageToLoad();
+		globalCategoryPage.waitForPageToLoadAndJQueryProcessing();
     	List<String> featuredContentLinks = globalPageUtils.getLinkNamesFromWebElementList(chinaCategoryPage
 				.linksUnderTheHeadersInTheResourcesTab(header));
 		assertTrue("There ara no links below the " + header, featuredContentLinks.size()!=0);

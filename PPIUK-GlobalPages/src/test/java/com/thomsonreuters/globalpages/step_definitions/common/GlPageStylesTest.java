@@ -21,9 +21,9 @@ public class GlPageStylesTest extends BaseStepDef {
         assertEquals("The " + header + " header has incorrect font size", globalPageUtils.getTextFontSize(header, tag), fontSize);
     }
 
-    @Then("^the value of paddong-bottom style of links is \"(.*?)\"$")
-    public void theValueOfPaddongBottomStyleOfLinksIs(String value) throws Throwable {
-        assertEquals("The value of padding bottom style of links is not correct", globalPageUtils.getPaddongBottomStyle(), value);
-    }
+    @Then("^the value of line-height style of links is \"(.*?)\"$")
+	public void theValueOfLineHeightStyleOfLinksIs(String value) throws Throwable {
+		assertEquals("The value of line-height style of links is not correct", globalPageUtils.getLineHeightStyle(), value);
+	}
 
 }

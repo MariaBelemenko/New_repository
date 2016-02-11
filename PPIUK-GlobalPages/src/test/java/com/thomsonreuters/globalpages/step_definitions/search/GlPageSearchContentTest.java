@@ -128,6 +128,8 @@ public class GlPageSearchContentTest extends BaseStepDef {
 
     @When("^the user apply filters$")
     public void theUserApplyFilters() throws Throwable {
+    	globalCategoryPage.waitForPageToLoadAndJQueryProcessing();
+		knowHowSearchResultsPage.clickOnSelectMultipleFilters();
         theUserSelectsTheKnowHowOptionToApplyFilters();
     }
 
@@ -176,10 +178,11 @@ public class GlPageSearchContentTest extends BaseStepDef {
         globalCategoryPage.waitForPageToLoadAndJQueryProcessing();
         theUserSelectsThePerPagefromPerPageDropdown("20");
         SoftAssertions softly = new SoftAssertions();
-        for (WebElement returnedResult : globalCategoryPage.returnedSearchResults()) {
-            softly.assertThat(returnedResult.getText().toLowerCase().contains(term))
-                    .overridingErrorMessage(returnedResult + " does not contain " + term).isTrue();
-        }
+        List<String>searchResults = globalPageUtils.getLinkNamesFromWebElementList(globalCategoryPage.returnedSearchResults());
+		for (String result : searchResults) {
+			softly.assertThat(result.toLowerCase().contains(term))
+					.overridingErrorMessage("%s does not contain tax ", result).isTrue();
+		}
         softly.assertAll();
     }
 
@@ -240,7 +243,7 @@ public class GlPageSearchContentTest extends BaseStepDef {
     }
 
     private void theUserSelectsTheKnowHowOptionToApplyFilters() throws Throwable {
-        ((JavascriptExecutor) navigation).executeScript("scroll(250,0);");
+    	globalCategoryPage.executeScript("scroll(250,0);");
         knowHowSearchResultsPage.applyFiltersButton().click();
         knowHowSearchResultsPage.waitForSearchResults();
     }

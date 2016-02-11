@@ -69,30 +69,28 @@ public class GlobalPageUtils {
 
     public String getLineStyle(int number) {
         globalCategoryPage.waitForPageToLoad();
-        JavascriptExecutor e = (JavascriptExecutor) globalCategoryPage.getDriver;
-        String linesStyle = (String) e
+        String linesStyle = (String) globalCategoryPage
                 .executeScript("return getComputedStyle($('#coid_website_browseMainColumn .co_column .co_featureBox, #coid_website_browseMainColumn .co_genericBox')["
-                        + number + "]).borderBottomStyle");
+                        + number + "]).borderBottomStyle;");
         LOG.info("Line style: ", linesStyle);
         return linesStyle;
     }
 
     public String getTextFontSize(String header, String tag) {
         globalCategoryPage.waitForPageToLoad();
-        JavascriptExecutor e = (JavascriptExecutor) globalCategoryPage.getDriver;
-        String fontSize = (String) e.executeScript("return getComputedStyle($(\"" + tag + ":contains(" + "'" + header
-                + "'" + ")\")[0]).fontSize");
+        String fontSize = (String) globalCategoryPage.executeScript("return getComputedStyle($(\"" + tag + ":contains(" + "'" + header
+                + "'" + ")\")[0]).fontSize;");
         LOG.info("Font size: ", fontSize);
         return fontSize;
     }
 
-    public String getPaddongBottomStyle() {
-        globalCategoryPage.waitForPageToLoad();
-        JavascriptExecutor e = (JavascriptExecutor) globalCategoryPage.getDriver;
-        String paddongBottom = (String) e
-                .executeScript("return getComputedStyle($('#coid_website_browseMainColumn .co_genericBox.co_dataFeedWidget .co_genericBoxContent li')[0]).paddingBottom");
-        return paddongBottom;
-    }
+    public String getLineHeightStyle() {
+		globalCategoryPage.waitForPageToLoad();
+		globalCategoryPage.waitForPageToLoadAndJQueryProcessing();
+		String lineHeight = (String) globalCategoryPage
+				.executeScript("return getComputedStyle($('#coid_website_browseMainColumn .co_scrollWrapper .co_dataFeedWidget .co_artifactContent h3')[0]).lineHeight;");
+		return lineHeight;
+	}
 
     public void clickMoreOptionOnKnowHowGlobalJurisdiction() {
         try {

@@ -1,6 +1,6 @@
 Feature: As a PL+ User, I am able to search for an individual country instead , rather than all content
 
-  Background:
+  Background: 
     Given PL+ user is logged in with following details
       | userName | GlPage_UK1 |
     When the user navigates to the main PLCUK page
@@ -99,6 +99,7 @@ Feature: As a PL+ User, I am able to search for an individual country instead , 
     Then the scoped search drop down contains the initial list of countries
     And the user can open the first know how search result "1"
     Then the document opens correctly
-  Examples:
-    | country  |
-    | Canada   |
+
+    Examples: 
+      | country        |
+      | United Kingdom |
