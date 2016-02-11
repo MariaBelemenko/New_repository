@@ -37,6 +37,11 @@ public class CommonMethods extends AbstractPage {
         return alertText;
     }
 
+    public void acceptAlertDialogMsg() {
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+    }
+
     public void acceptDialogIfAppears() {
         try {
             Alert alert = null;

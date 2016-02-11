@@ -11,12 +11,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by u0171568 on 20/02/2015.
- */
-
 public class TopicPage extends AbstractPage {
-
 
     public Map<String, String> getEditorPicksAsMap() {
         findElement(By.cssSelector("#coid_website_browseTopColumn"));
@@ -134,10 +129,6 @@ public class TopicPage extends AbstractPage {
         return waitForExpectedElement(By.id("cobalt_search_knowHowTopicPlc_" + resourceType));
     }
 
-    //public WebElement getTopicPageClickTopicLinkOnPAPage(String resourceLink) {
-       // return waitForExpectedElement(By.linkText(resourceLink));
-    //}
-
 	public WebElement getChoosePracticeAreaPageTitle() {
 		return waitForExpectedElement(By.xpath(".//div[@id='coid_topic_practice_areas']/h3"));
 	}
@@ -156,6 +147,10 @@ public class TopicPage extends AbstractPage {
     }
 
     public By resourceDocByTitleList() {
+        return By.xpath("//a[contains(@id,'cobalt_result_knowhow_title')]");
+    }
+
+    public By resourceDocByTitle() {
         return By.xpath("//a[contains(@id,'cobalt_result_knowhow_title')]");
     }
 
