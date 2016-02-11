@@ -684,7 +684,16 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
                 LOG.info("PROD B is being tested.");
                 break;
             default:
-                wlnHeader.signInLink().click();
+                // Don't click the sign in link if already signed in
+                boolean alreadyLoggedIn = false;
+                try {
+                    wlnHeader.userAvatarIcon().isDisplayed();
+                    alreadyLoggedIn = true;
+                } catch (Exception e) {
+                }
+                if (!alreadyLoggedIn) {
+                    wlnHeader.signInLink().click();
+                }
                 break;
         }
         /**
@@ -791,7 +800,15 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
      * 3. Delete Cookies
      */
     private void newSession(CobaltUser user) throws IOException, InterruptedException {
-        signOff(user);
+        boolean alreadyLoggedIn = false;
+        try {
+            wlnHeader.userAvatarIcon().isDisplayed();
+            alreadyLoggedIn = true;
+        } catch (Exception e) {
+        }
+        if (alreadyLoggedIn) {
+            signOff(user);
+        }
         onepassLogin.deleteAllCookies();
         ExcelFileReader.unlockUser(currentUser.getUserName());
         resetCurrentUser();

@@ -40,4 +40,3 @@ Feature: [744574] [748210] [748211] [756795] [756801] verify the anonymous login
       | userName | plcuknosubs |
     When user navigates directly to document with plcref "3-518-1249"
     Then the user is provided with an option to Upgrade or register for free access
-
