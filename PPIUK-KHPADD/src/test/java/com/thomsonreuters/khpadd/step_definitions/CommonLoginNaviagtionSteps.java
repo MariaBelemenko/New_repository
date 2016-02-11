@@ -128,9 +128,17 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
     @Given("^PL\\+ user is not logged in$")
     public void plUserIsNotLoggedIn() throws Throwable {
         if (!isUserFirstUser(currentUser)) {
-            newSession(currentUser);
-            navigationCobalt.navigateToPLUKPlus();
-            plcHomePage.closeCookieConsentMessage();
+            boolean alreadyLoggedIn = false;
+            try {
+                wlnHeader.userAvatarIcon().isDisplayed();
+                alreadyLoggedIn = true;
+            } catch (Exception e) {
+            }
+            if (alreadyLoggedIn) {
+                newSession(currentUser);
+                navigationCobalt.navigateToPLUKPlus();
+                plcHomePage.closeCookieConsentMessage();
+            }
         } else {
             LOG.info("No need to create new session. Current user: " + currentUser + " is the first user");
         }
@@ -749,11 +757,10 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         try {
             switch (user.getProduct()) {
                 case WLN:
-                    element = onepassLogin.findElement(By.linkText("Sign Off"));
+                    element = getDriver().findElement(By.linkText("Sign Off"));
                     break;
                 case PLC:
-                    wlnHeader.expandUserAvatarDropDown();
-                    element = wlnHeader.signOutLink();
+                    element = wlnHeader.userPreferencesDropdown("Sign out");
                     break;
                 case ANZ:
                     wlnHeader.expandUserAvatarDropDown();
@@ -761,12 +768,14 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
                     break;
                 case PLC_lEGACY:
                     navigationCobalt.navigateToPLCLegacy();
-                    element = onepassLogin.findElement(By.linkText("Log out"));
+                    element = getDriver().findElement(By.linkText("Log out"));
                     break;
                 default:
                     break;
             }
-            element.click();
+            if (element != null) {
+                element.click();
+            }
         } catch (NoSuchElementException | ElementNotVisibleException | TimeoutException nse) {
             LOG.error("Sign-Off link not found");
         }
