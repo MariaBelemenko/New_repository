@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>PLPlusUK</artifactId>
+    <groupId>PLPlusUK</groupId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <description>PPI UK Smoke Tests</description>
+
+    <modules>
+        <module>PPIUK-Annotations</module>
+        <module>PPIUK-URLs</module>
+        <module>PPIUK-Adestra</module>
+        <module>PPIUK-Ask</module>
+        <module>PPIUK-AssetPages</module>
+        <module>PPIUK-FastDraft</module>
+        <module>PPIUK-FFH</module>
+        <module>PPIUK-FirmStyle</module>
+        <module>PPIUK-FrontEnd</module>
+        <!--<module>PPIUK-GlobalPages</module>-->
+        <module>PPIUK-IPUsers</module>
+        <module>PPIUK-LegalUpdate</module>
+        <module>PPIUK-Linking</module>
+        <module>PPIUK-Login</module>
+        <module>PPIUK-PageCreation</module>
+        <module>PPIUK-ResearchBrowse</module>
+        <module>PPIUK-ResearchDocDisplay</module>
+        <module>PPIUK-SearchOpenWeb</module>
+    </modules>
+
+    <properties>
+        <surefire.fork.count>5</surefire.fork.count>
+        <driverType>firefox</driverType>
+        <newSession>false</newSession>
+        <jenkinsStyleReports>true</jenkinsStyleReports>
+        <routing>false</routing>
+    </properties>
+
+    <build>
+
+        <sourceDirectory>src</sourceDirectory>
+        <outputDirectory>target</outputDirectory>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>2.5</version>
+                <executions>
+                    <execution>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>install</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>main.java.com.thomsonreuters.tests.ReportAccumulator</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.thomsonreuters.pageobjects</groupId>
+            <artifactId>ppiuk-pageobjects</artifactId>
+            <version>3.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-core</artifactId>
+            <version>3.0.3</version>
+        </dependency>
+    </dependencies>
+
+</project>
