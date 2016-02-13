@@ -5,6 +5,8 @@ Feature: As a PL+ User I want to select Content referring to this case link and 
     Given PL+ user is logged in with following details
       | userName | Asset_page_one |
 
+#855200[REGRESSION] Case asset page does not 'content referring to this case' section      
+@bug
   Scenario Outline: The case documents contain jump links in the left hand side navigation panel
     When the user opens document with <GUID> guid
     Then the user click on View Document button
