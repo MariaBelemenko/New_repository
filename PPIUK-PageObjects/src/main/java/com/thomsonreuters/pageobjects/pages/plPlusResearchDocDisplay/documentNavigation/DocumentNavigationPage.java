@@ -576,4 +576,8 @@ public class DocumentNavigationPage extends DocumentDisplayAbstractPage {
         }
     }
 
+    public WebElement linkInAlsoFoundInSection(){
+        return waitForExpectedElement(By.xpath("//div[@class='co_topics']//a"));
+    }
+
 }
