@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>PLPlusUK</artifactId>
+    <artifactId>com.thomsonreuters.plplusuk</artifactId>
     <groupId>PLPlusUK</groupId>
     <packaging>pom</packaging>
     <version>1.0</version>
-    <description>PPI UK Smoke Tests</description>
+    <description>PPI UK Tests</description>
 
     <modules>
         <module>PPIUK-Annotations</module>
