@@ -138,8 +138,15 @@ public final class ReportAccumulator {
                 String curImageName = image.getName();
                 String uniqueImageName = UUID.randomUUID().toString() + "." + pngImageExtension;
 
-                image.renameTo(new File(reportDirectory, uniqueImageName));
-                fileAsString = fileAsString.replace(curImageName, uniqueImageName);
+                image.setWritable(true);
+                //image.renameTo(new File(reportDirectory, uniqueImageName));
+                if(image.renameTo(new File(reportDirectory, uniqueImageName))){
+                    LOG.info("Image File renamed to avoid the file overriding issues.");
+                    fileAsString = fileAsString.replace(curImageName, uniqueImageName);
+                }else{
+                    LOG.warn("Sorry! the image file can't be renamed" + image.getName());
+                }
+                Thread.sleep(2000);
             }
             FileUtils.writeStringToFile(reportFile, fileAsString);
         } catch (Exception e) {
