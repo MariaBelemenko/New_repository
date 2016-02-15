@@ -13,6 +13,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class CookieConsentTest extends BaseStepDef {
@@ -27,10 +28,15 @@ public class CookieConsentTest extends BaseStepDef {
     @When("^the user '(is|is not)' presented with the cookie consent message$")
     public void theUserIsPresentedWithTheCookieConsentMessage(String arg1) throws Throwable {
         if (arg1.equalsIgnoreCase("is")) {
-            assertTrue(plcHomePage.cookieConsentMessage().isDisplayed());
+            plcHomePage.cookieConsentMessage().isDisplayed();
         } else if (arg1.equalsIgnoreCase("is not")) {
-            List<WebElement> cookieMessage = getDriver().findElements(By.id("CookieConsentMessage"));
-            assertTrue(cookieMessage.isEmpty());
+            boolean cookieMessageDisplayed = true;
+            try {
+                plcHomePage.cookieConsentMessage().isDisplayed();
+            } catch (Exception e) {
+                cookieMessageDisplayed = false;
+            }
+            assertFalse(cookieMessageDisplayed);
         }
     }
 
