@@ -81,11 +81,11 @@ public class ResearchOrganizerPage extends AbstractPage {
     }
 
     public WebElement rootFolderLinkLeftFrame() {
-        return waitForExpectedElement(By.xpath("//a[contains(text(),'s Research') and @class='co_tree_selectable co_tree_name co_tree_position--0--']"));
+        return waitForExpectedElement(By.xpath("//a[contains(text(),'s Research') and @class='co_tree_selectable co_tree_name co_tree_position--0--']"),10);
     }
 
     public WebElement folderLinkLeftFrame(String folderName) {
-        return waitForExpectedElement(By.xpath("//*[@id='co_researchFolderTree']//a[text()='" + folderName + "']"));
+        return waitForExpectedElement(By.xpath("//*[@id='co_researchFolderTree']//a[text()='" + folderName + "']"),10);
     }
 
     public WebElement linkToDocumentInTrash(String title) {

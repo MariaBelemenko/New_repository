@@ -27,10 +27,8 @@ public class FoldersUtils {
     private ShareFolderPopup shareFolderPopup = new ShareFolderPopup();
 
     public void openFolder(String folder) {
-        researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
         researchOrganizerPage.rootFolderLinkLeftFrame().click();
         if (!folder.equals("root")) {
-            researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
             researchOrganizerPage.folderLinkLeftFrame(folder).click();
         }
         researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();

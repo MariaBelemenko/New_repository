@@ -32,7 +32,7 @@ public class WhatsMarketDeliveryTest extends BaseStepDef {
     private HomePageUtils homePageUtils = new HomePageUtils();
 
     @When("^the user clicks the TR Practical Law logo$")
-    public void theUserClicksTheTRPracticalLawLogo() throws Throwable {
+    public void the_user_clicks_the_tr_practical_law_logo() throws Throwable {
         homePageUtils.clickThePracticalLawHomepageLogo();
     }
 

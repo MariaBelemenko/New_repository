@@ -1,7 +1,6 @@
 package com.thomsonreuters.pageobjects.utils.homepage;
 
 import com.thomsonreuters.pageobjects.common.CommonMethods;
-import com.thomsonreuters.pageobjects.pages.globalPage.GlobalCategoryPage;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawHomepage;
 import org.slf4j.LoggerFactory;
 

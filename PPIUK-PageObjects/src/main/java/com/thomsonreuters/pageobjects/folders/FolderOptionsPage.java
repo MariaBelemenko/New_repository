@@ -31,4 +31,12 @@ public class FolderOptionsPage extends AbstractPage {
         return waitForExpectedElement(By.xpath("//a[@id='co_deliveryCancelButton']/strong[contains(text(),'Cancel')]"));
     }
 
+    /**
+     * This is a folder document link
+     */
+    public WebElement folderDocumentLink(String documentLinkText) {
+        return waitForExpectedElement(By.linkText(documentLinkText),10);
+    }
+
+
 }

@@ -2,6 +2,7 @@ package com.thomsonreuters.searchwhatsmarket.step_definitions.whatsMarketSearchR
 
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.SortOptions;
+import com.thomsonreuters.pageobjects.folders.FolderOptionsPage;
 import com.thomsonreuters.pageobjects.pages.ask.AskResourcePage;
 import com.thomsonreuters.pageobjects.pages.folders.DeleteFolderPopup;
 import com.thomsonreuters.pageobjects.pages.folders.NewFolderPopup;
@@ -45,6 +46,7 @@ public class WhatsMarketComparisonToolTest extends BaseStepDef {
     private DeleteFolderPopup deleteFolderPopup = new DeleteFolderPopup();
     private AssetDocumentPage assetDocumentPage = new AssetDocumentPage();
     private AskResourcePage askResourcePage = new AskResourcePage();
+    private FolderOptionsPage folderOptionsPage = new FolderOptionsPage();
 
     @When("^the user ensures that the left hand column select is displayed$")
     public void theUserEnsuresThatTheTheLeftHandColumnIsDisplayed() throws Throwable {
@@ -325,8 +327,7 @@ public class WhatsMarketComparisonToolTest extends BaseStepDef {
     @Then("^the user verifies the whats market deal comparison report is present in the \"(.*?)\" folder$")
     public void theUserVerifiesTheWhatsMarketDealComparisonReportIsPresentInTheFolder(String folder) throws Throwable {
         foldersUtils.openFolder(folder);
-        researchOrganizerPage.waitForPageToLoad();
-        assertTrue(getDriver().findElement(By.linkText("Deal Comparison Report | Administrations | 3 Records")).isDisplayed());
+        folderOptionsPage.folderDocumentLink("Deal Comparison Report | Administrations | 3 Records").isDisplayed();
     }
 
     @When("^the user deletes the folder \"([^\"]*)\"$")

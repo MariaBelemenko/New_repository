@@ -108,7 +108,7 @@ public class PracticalLawHomepage extends AbstractPage {
 
     public WebElement practicalLawTRLogo() {
 
-        return waitForExpectedElement(By.xpath("//a[@id='logo'][title='Practical Law Home']"),5);
+        return waitForExpectedElement(By.xpath("//a[@id='logo'][@title='Practical Law Home']"),5);
     }
 
 
