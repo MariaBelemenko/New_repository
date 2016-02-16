@@ -71,7 +71,7 @@ public class CasesSearchResultsPage extends AbstractPage {
      * This method is an object representing the Apply Filters button
      */
     public WebElement applyFiltersButton() {
-        return waitForExpectedElement(By.linkText("Apply filters"));
+        return waitForExpectedElement(By.linkText("Apply filters"),10);
     }
 
     /**
