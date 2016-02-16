@@ -5,6 +5,7 @@ import com.thomsonreuters.pageobjects.common.PageActions;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawUKCategoryPage;
 import com.thomsonreuters.pageobjects.pages.pageCreation.HomePage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
+import com.thomsonreuters.pageobjects.utils.homepage.HomePageUtils;
 import com.thomsonreuters.searchwhatsmarket.step_definitions.BaseStepDef;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Then;
@@ -28,6 +29,12 @@ public class WhatsMarketDeliveryTest extends BaseStepDef {
     private PageActions pageActions = new PageActions();
     private SearchResultsPage searchResultsPage = new SearchResultsPage();
     private CommonMethods commonMethods = new CommonMethods();
+    private HomePageUtils homePageUtils = new HomePageUtils();
+
+    @When("^the user clicks the TR Practical Law logo$")
+    public void theUserClicksTheTRPracticalLawLogo() throws Throwable {
+        homePageUtils.clickThePracticalLawHomepageLogo();
+    }
 
     @When("^the user selects the link entitled Whats Market UK Home$")
     public void theUserSelectsTheLinkEntitledWhatsMarketUkHome() throws Throwable {
