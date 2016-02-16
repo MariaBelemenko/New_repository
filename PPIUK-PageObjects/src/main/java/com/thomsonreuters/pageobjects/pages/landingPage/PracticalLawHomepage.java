@@ -106,6 +106,10 @@ public class PracticalLawHomepage extends AbstractPage {
         return waitForExpectedElement(By.xpath("//div[@id='CookieConsentMessage']//a[text()='" + link + "']"));
     }
 
+    public WebElement practicalLawTRLogo() {
+
+        return waitForExpectedElement(By.xpath("//a[@id='logo'][title='Practical Law Home']"),5);
+    }
 
 
 

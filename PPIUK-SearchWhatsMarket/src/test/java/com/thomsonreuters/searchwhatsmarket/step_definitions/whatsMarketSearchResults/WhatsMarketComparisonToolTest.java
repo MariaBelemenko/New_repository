@@ -341,6 +341,24 @@ public class WhatsMarketComparisonToolTest extends BaseStepDef {
         deleteFolderPopup.waitForPageToLoad();
     }
 
+    @When("^the user deletes the folder \"([^\"]*)\" if it exists$")
+    public void userDeleteFolderIfExists(String folderName) throws Throwable {
+        if (foldersUtils.doesFolderExist(folderName)) {
+            foldersUtils.openFolder(folderName);
+            researchOrganizerPage.optionsButton().click();
+            researchOrganizerPage.deleteOptionButton().click();
+            researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
+            researchOrganizerPage.waitForPageToLoad();
+            deleteFolderPopup.clickOK().click();
+            deleteFolderPopup.waitForPageToLoad();
+            String actualMessage = deleteFolderPopup.getDeletedMessage().getText();
+            String expectedMessage = "The contents of '" + folderName + "' were moved to Trash.";
+            assertEquals("Message is incorrect", actualMessage, expectedMessage);
+            deleteFolderPopup.clickOK().click();
+            deleteFolderPopup.waitForPageToLoad();
+        }
+    }
+
     @When("^the user selects the download icon on the comparison report page$")
     public void theUserSelectsTheDownloadIconOnTheComparisonReportPage() throws Throwable {
         whatsMarketComparisonReportPage.downloadIcon().click();
