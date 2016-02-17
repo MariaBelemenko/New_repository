@@ -26,32 +26,6 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>deploy-file</id>
-                        <phase>deploy</phase>
-                        <goals>
-                            <goal>deploy-file</goal>
-                        </goals>
-                        <configuration>
-                            <repositoryId>central</repositoryId>
-                            <groupId>com.thomsonreuters.pageobjects</groupId>
-                            <artifactId>ppiuk-pageobjects</artifactId>
-                            <version>${project.version}</version>
-                            <packaging>jar</packaging>
-                            <generatePom>true</generatePom>
-                            <updateReleaseInfo>true</updateReleaseInfo>
-                            <url>http://10.194.240.152:8081/artifactory/libs-release</url>
-                            <file>target/ppiuk-pageobjects-1a.0.0.jar</file>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
         </plugins>
     </build>
 
