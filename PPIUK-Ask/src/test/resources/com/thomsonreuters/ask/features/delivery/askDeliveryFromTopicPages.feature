@@ -16,8 +16,8 @@ Feature: Ask Topic Links per Practice Area in ask Landing Page
     And the user verifies that all ask queries on the topic Page  date sorted by descending order
     And the user verifies that all ask queries on the topic Page have at least 1 reply/replies'
 
-  # QED only: 822609 REGRESSION - Ask documents inaccessible
-  # QED only: 841527:REGRESSION - Ask documents inaccessible in QED due to network issue
+  # DEMO only: 854196:[REGRESSION] Ask documents inaccessible
+  # DEMO only: 858332:Practical Law: "We were unable to complete your request" error when downloading a report
   @bug
   Scenario: Download ask Query From Topic page
     When the user is in page 'Browse Menu>Resources>Ask' with page Title 'Ask'
@@ -33,6 +33,9 @@ Feature: Ask Topic Links per Practice Area in ask Landing Page
     And the user clicks download on ready to download overlay
     Then user clicks Ok button in dialog box
 
+  # DEMO only: 854196:[REGRESSION] Ask documents inaccessible
+  # DEMO only: 858332:Practical Law: "We were unable to complete your request" error when downloading a report
+  @bug
   Scenario: Email ask Query From Topic page
     When the user is in page 'Browse Menu>Resources>Ask' with page Title 'Ask'
     And the user clicks link 'Construction' on 'the Ask Landing' page
@@ -45,6 +48,9 @@ Feature: Ask Topic Links per Practice Area in ask Landing Page
     Then the user verifies that 'Preparing For Email' is displayed on the overlay
     And the user verifies that 'Ready For Email' is displayed on the overlay
 
+  # DEMO only: 854196:[REGRESSION] Ask documents inaccessible
+  # DEMO only: 858332:Practical Law: "We were unable to complete your request" error when downloading a report
+  @bug
   Scenario: Print ask Query From Topic page
     When the user is in page 'Browse Menu>Resources>Ask' with page Title 'Ask'
     And the user clicks link 'Construction' on 'the Ask Landing' page
@@ -57,9 +63,6 @@ Feature: Ask Topic Links per Practice Area in ask Landing Page
     Then the user verifies that 'Preparing For Print' is displayed on the overlay
     And user clicks ok button in dialog box
 
-  # QED only: 822609 REGRESSION - Ask documents inaccessible
-  # QED only: 841527:REGRESSION - Ask documents inaccessible in QED due to network issue
-  @bug
   Scenario: Search ask queries  From Topic page
     Given the user is in page 'Browse Menu>Resources>Ask' with page Title 'Ask'
     And the user clicks link 'Construction' on 'the Ask Landing' page
@@ -72,10 +75,9 @@ Feature: Ask Topic Links per Practice Area in ask Landing Page
     And document title is displayed as "Do you have standard wording for creating a guaranteed maximum price (GMP) in a building contract?"
     And resource type is displayed as "Ask" on right hand panel
 
-  # QED only: 822609 REGRESSION - Ask documents inaccessible
-  # QED only: 841527:REGRESSION - Ask documents inaccessible in QED due to network issue
+  # DEMO only: 854196:[REGRESSION] Ask documents inaccessible
   @bug
-  Scenario: Search ask queries  From Practice Area page
+  Scenario: Search ask queries From Practice Area page
     Given the user is in page 'Browse Menu>Resources>Ask' with page Title 'Ask'
     And the user clicks link 'Construction' on 'the Ask Landing' page
     And the user verifies that the current PageTitle contains 'Ask: Construction'
@@ -86,9 +88,6 @@ Feature: Ask Topic Links per Practice Area in ask Landing Page
     And document title is displayed as "Do you have standard wording for creating a guaranteed maximum price (GMP) in a building contract?"
     And resource type is displayed as "Ask" on right hand panel
 
-  # QED only: 822609 REGRESSION - Ask documents inaccessible
-  # QED only: 841527:REGRESSION - Ask documents inaccessible in QED due to network issue
-  @bug
   Scenario: Search ask queries  From Ask Landing page (Bug# 795822)
     Given the user is in page 'Browse Menu>Resources>Ask' with page Title 'Ask'
     When the user runs a free text search for the query "GMP"

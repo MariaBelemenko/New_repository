@@ -11,17 +11,25 @@ import org.openqa.selenium.support.ui.Select;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.net.URLEncoder;
 import java.util.List;
 
 
 public class AskSharePointPage extends AbstractPage {
 
     public void navigateToSharePointSite() {
-        String userName =System.getProperty("winusername");
-        String password =System.getProperty("winpassword");
-        (new Thread(new LoginWindow(userName,password))).start();
-        getDriver.get("http://apps-uat.practicallaw.com/Ask/SitePages/Home.aspx");
-        waitForPageToLoad();
+        try {
+            String userName = URLEncoder.encode(System.getProperty("winusername"), "UTF-8");
+            String password = URLEncoder.encode(System.getProperty("winpassword"), "UTF-8");
+            String url = String.format("http://%1$s:%2$s@apps-uat.practicallaw.com/Ask/SitePages/Home.aspx", userName, password);
+            getDriver.get(url);
+            waitForPageToLoad();
+        } catch (UnsupportedEncodingException e) {
+            LOG.info("Error occurred at SharePoint URL building. Check the -Dwinusername and -Dwinpassword variables. ", e);
+            throw new RuntimeException("Error occurred at SharePoint URL building");
+        }
     }
 
     public WebElement feedbackTeamLink(String feedbackTeam) {

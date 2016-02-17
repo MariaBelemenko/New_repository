@@ -30,6 +30,10 @@ public class CommonMethods extends AbstractPage {
         this.driver = getDriver;
     }
 
+    public RemoteWebDriver getDriver() {
+        return driver;
+    }
+
     public String getAlertDialogMsg() {
         Alert alert = driver.switchTo().alert();
         String alertText = alert.getText();

@@ -15,7 +15,8 @@ Feature: Ask Practice Area Widget
     Then ask disclaimer is displayed on the document
     And document title is displayed as "How do I prevent a contractor abusing its position as both main contractor and enabling works contractor?"
 
-  @manual
+  # (Deleted) 839916:ASK - discrepancy between ask question listing for the number of replies and the actual link to the response /// (but fine for prod. See issue details)
+  @manual @pendingAutomation @bug
   Scenario: Verify Ask document has apropriate numbers of replies
     When the user is in Page '/Browse/Home/Resources/AskConstruction'
     And the user open one ask document and remember the numbers of replies

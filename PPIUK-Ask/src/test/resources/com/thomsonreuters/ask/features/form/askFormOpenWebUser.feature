@@ -86,7 +86,8 @@ Feature: Non-Subscriber Form Submission
     | 12@ab. |
     | 12.ab  |
 
-  @manual
+  # (Should) 857971:Ask form: there is no error message when user tries to submit form without passed captcha
+  @manual @bug
   Scenario Outline: CAPTCHA validation
     When I open the ASK form to ask a question from anywhere on website
     And I enter the following values on ASK form

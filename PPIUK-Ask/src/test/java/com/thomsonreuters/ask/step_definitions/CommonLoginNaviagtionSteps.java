@@ -825,6 +825,7 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         onepassLogin.passwordTextField().clear();
         onepassLogin.passwordTextField().sendKeys(password);
         onepassLogin.signOnButton().click();
+        currentUser = getCobaltUserForUserName(userName);
     }
 
     private void setAnnotationUsers() {

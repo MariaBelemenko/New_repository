@@ -8,7 +8,8 @@ Feature: View comment, report this post, reply/add comment to a ask resource
     When user navigates directly to document with guid "Ie30b7a17ce4611e498db8b09b4f043e0"
     Then answer and comment are displayed with correct details
 
-  @manual
+  # (Should) 857960:[REGRESSION] Ask: jump-link from "Report this post" message does not work properly
+  @manual @bug
   Scenario: Report this post
     When user navigates directly to document with guid "Ie30b7a17ce4611e498db8b09b4f043e0"
     And user clicks on 'Report this Post' link

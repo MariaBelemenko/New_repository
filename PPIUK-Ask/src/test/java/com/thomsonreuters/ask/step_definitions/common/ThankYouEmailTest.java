@@ -1,6 +1,7 @@
 package com.thomsonreuters.ask.step_definitions.common;
 
 import com.thomsonreuters.ask.step_definitions.BaseStepDef;
+import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.ExcelFileReader;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.ask.AskFormPage;
@@ -9,7 +10,6 @@ import com.thomsonreuters.pageobjects.utils.ask.AskFormField;
 import com.thomsonreuters.pageobjects.utils.email.MailinatorMethods;
 import com.thomsonreuters.pageobjects.utils.form.FormUtils;
 import cucumber.api.DataTable;
-import cucumber.api.java.After;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -24,16 +24,8 @@ public class ThankYouEmailTest extends BaseStepDef {
     private FormUtils formUtils = new FormUtils();
     private NavigationCobalt navigationCobalt = new NavigationCobalt();
     private MailinatorMethods mailinatorMethods = new MailinatorMethods();
+    private CommonMethods commonMethods = new CommonMethods();
 
-    private String mainWindowHandle;
-    private String askWindowHandle;
-
-    @When("^the user clicks on 'Ask a question' link to ask a question$")
-    public void theUserClicksASKILinkToAskAQuestion() throws Throwable {
-        mainWindowHandle = resourcePage.getWindowHandle();
-        resourcePage.askAQuestion().click();
-        resourcePage.waitForPageToLoad();
-    }
 
     @When("^the user accepts ASK disclaimer terms$")
     public void acceptsDisclaimerTerms() throws Throwable {
@@ -59,22 +51,6 @@ public class ThankYouEmailTest extends BaseStepDef {
         if(!askFormPage.getPageSource().contains("Thank you for submitting a question or comment to Ask.")) {
             throw new RuntimeException("Thank you page is absent!");
         }
-    }
-
-    @Then("^user closes the ASK window$")
-    public void userClosesASKWindow() throws Throwable {
-        closesASKWindow();
-    }
-
-    @After(order = 100000, value = "@CloseAskWindow")
-    public void closesASKWindow() throws Throwable {
-        if (null != askWindowHandle) {
-            askFormPage.switchToWindow(askWindowHandle);
-            askFormPage.close();
-            askFormPage.switchToWindow(mainWindowHandle);
-            askWindowHandle = null;
-        }
-        navigationCobalt.navigateToPLUKPlus();
     }
 
     @Then("^'(.+)' should receive Thanks You email from '(.+)' in specified email inbox$")

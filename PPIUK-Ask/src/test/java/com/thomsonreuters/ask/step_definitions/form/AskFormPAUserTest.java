@@ -1,20 +1,22 @@
 package com.thomsonreuters.ask.step_definitions.form;
 
 import com.thomsonreuters.ask.step_definitions.BaseStepDef;
+import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.ask.AskFormPage;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePage;
 import com.thomsonreuters.pageobjects.utils.ask.AskFormField;
 import com.thomsonreuters.pageobjects.utils.form.FormUtils;
+import cucumber.api.java.After;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.hamcrest.core.Is;
+import org.openqa.selenium.NoSuchWindowException;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.text.IsEmptyString.isEmptyString;
 
@@ -24,6 +26,7 @@ public class AskFormPAUserTest extends BaseStepDef {
     private AskFormPage askFormPage = new AskFormPage();
     private FormUtils formUtils = new FormUtils();
     private KHResourcePage resourcePage = new KHResourcePage();
+    private CommonMethods commonMethods = new CommonMethods();
 
     private String mainWindowHandle;
     private String askWindowHandle;
@@ -45,23 +48,36 @@ public class AskFormPAUserTest extends BaseStepDef {
 
     @Then("^ASK form is displayed in new window$")
     public void askFormIsDisplayedInNewWindow() throws Throwable {
-        resourcePage.waitForPageToLoad();
-        int windowsCount;
-        int counter = 10;
-        do {
-            windowsCount = resourcePage.getWindowHandles().size();
-            counter--;
-            Thread.sleep(1000);
-        }
-        while (windowsCount < 2 && counter > 0);
-        assertThat("The no of popupWindows opened is less than 2", navigationCobalt.getWindowHandles().size(), greaterThanOrEqualTo(2));
-        for (String windowHandle : navigationCobalt.getWindowHandles()) {
-            if (!windowHandle.equalsIgnoreCase(mainWindowHandle)) {
-                askWindowHandle = windowHandle;
-                navigationCobalt.switchToWindow(askWindowHandle);
-                assertThat("Ask form is not displayed", askFormPage.askFormPageTitle().isDisplayed(), Is.is(true));
+        commonMethods.switchToOpenedWindow();
+        assertThat("Ask form is not displayed", askFormPage.askFormPageTitle().isDisplayed(), Is.is(true));
+        askWindowHandle = commonMethods.getDriver().getWindowHandle();
+    }
+
+
+    @Then("^user closes the ASK window$")
+    public void userClosesASKWindow() throws Throwable {
+        closesASKWindow();
+    }
+
+    @After(order = 100000, value = "@CloseAskWindow")
+    public void closesASKWindow() throws Throwable {
+        try {
+            if (askWindowHandle != null) {
+                askFormPage.close();
+                commonMethods.switchToMainWindow();
+                askWindowHandle = null;
             }
+        } catch (NoSuchWindowException e) {
+            LOG.info("Error occurred at switch window process", e);
         }
+        navigationCobalt.navigateToPLUKPlus();
+    }
+
+    @When("^the user clicks on 'Ask a question' link to ask a question$")
+    public void theUserClicksASKILinkToAskAQuestion() throws Throwable {
+        mainWindowHandle = resourcePage.getWindowHandle();
+        resourcePage.askAQuestion().click();
+        resourcePage.waitForPageToLoad();
     }
 
     @When("^the user clicks on ASK icon to ask a question$")
