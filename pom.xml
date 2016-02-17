@@ -10,6 +10,15 @@
     <version>1.0</version>
     <description>PPI UK Tests</description>
 
+    <properties>
+        <surefire.fork.count>5</surefire.fork.count>
+        <driverType>firefox</driverType>
+        <newSession>false</newSession>
+        <jenkinsStyleReports>true</jenkinsStyleReports>
+        <routing>false</routing>
+        <mergingAllModulesReports>true</mergingAllModulesReports>
+    </properties>
+
     <modules>
         <module>PPIUK-Annotations</module>
         <module>PPIUK-URLs</module>
@@ -20,7 +29,7 @@
         <module>PPIUK-FFH</module>
         <module>PPIUK-FirmStyle</module>
         <module>PPIUK-FrontEnd</module>
-        <!--<module>PPIUK-GlobalPages</module>-->
+        <module>PPIUK-GlobalPages</module>
         <module>PPIUK-IPUsers</module>
         <module>PPIUK-LegalUpdate</module>
         <module>PPIUK-Linking</module>
@@ -30,14 +39,6 @@
         <module>PPIUK-ResearchDocDisplay</module>
         <module>PPIUK-SearchOpenWeb</module>
     </modules>
-
-    <properties>
-        <surefire.fork.count>5</surefire.fork.count>
-        <driverType>firefox</driverType>
-        <newSession>false</newSession>
-        <jenkinsStyleReports>true</jenkinsStyleReports>
-        <routing>false</routing>
-    </properties>
 
     <build>
 

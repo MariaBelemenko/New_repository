@@ -38,21 +38,26 @@ public final class ReportAccumulator {
 
         while (modulesList.hasNext()) {
             try {
-                String module =  modulesList.next();
-                String moduleName = plPlusUKFolder + "\\" +module;
+                String module = modulesList.next();
+                String moduleName = plPlusUKFolder + "\\" + module;
                 File moduleReportsFolder = new File(moduleName + "\\target\\cucumber-htmlreport\\");
                 if (!moduleReportsFolder.isDirectory()) {
                     return;
                 }
 
                 for (File file : moduleReportsFolder.listFiles()) {
-                    if (file.isDirectory()) {
-                        if (new File(file, "index.html").exists()) {
-                            LOG.info("Module -> "+module+" ::report location ::" + moduleReportsFolder + "\\" + file.getName());
-                            mergeReports(new File(moduleReportsFolder + "\\" + file.getName()));
+                    try{
+                        if (file.isDirectory()) {
+                            if (new File(file, "index.html").exists()) {
+                                LOG.info("Module -> " + module + " ::report location ::" + moduleReportsFolder + "\\" + file.getName());
+                                mergeReports(new File(moduleReportsFolder + "\\" + file.getName()));
+                            }
                         }
+                    } catch (Exception e) {
+                        LOG.warn("Issue in accessing maven module sub folder details:"+e);
                     }
                 }
+
             } catch (Exception e) {
                 LOG.warn(e.getMessage());
             }
@@ -66,27 +71,31 @@ public final class ReportAccumulator {
      * @throws Exception
      */
     private void mergeReports(File reportDirectory) throws Throwable {
-        LOG.info("1");
         boolean isEmpty = false;
+
         Collection<File> existingReports = FileUtils.listFiles(reportDirectory, new String[]{"js"}, true);
 
         if (plplusukReportsFolder.listFiles().length == 0) {
-            existingReports = Arrays.asList(reportDirectory.listFiles());
             isEmpty = true;
         }
 
+        Collection<File> images = FileUtils.listFiles(reportDirectory, new String[]{"png"}, true);
+        if(images.size()>0){
+            renameEmbededImages(new File(reportDirectory+"\\report.js"));
+        }
+
+        existingReports = FileUtils.listFiles(reportDirectory, new String[]{"js"}, true);
         for (File report : existingReports) {
             //only address report files
             if (isEmpty || report.getName().equals(reportJS)) {
-
-                //rename all the image files (to give unique names) in report directory and update report
-                renameEmbededImages(report);
-
-                //if we are on the first pass, copy the directory of the file to use as basis for merge
                 if (isEmpty) {
-                    copyFileUsingStream(report);
-                    if(report.getName().equals(reportJS)){
+                    if(!report.getName().endsWith(pngImageExtension)){
+                        copyFileUsingStream(report);
+                    }
+                    if (report.getName().equals(reportJS)) {
                         mergedReport = report;
+                        copyFileUsingStream(new File(reportDirectory+"\\index.html"));
+                        copyFileUsingStream(new File(reportDirectory+"\\style.css"));
                     }
                     //otherwise merge this report into existing master report
                 } else {
@@ -94,8 +103,6 @@ public final class ReportAccumulator {
                 }
             }
         }
-        LOG.info("10");
-
     }
 
     /**
@@ -105,18 +112,10 @@ public final class ReportAccumulator {
      * @param source
      */
     private void mergeFiles(File target, File source) throws Throwable {
-        //copy embeded images
-        Collection<File> embeddedImages = FileUtils.listFiles(source.getParentFile(), new String[]{pngImageExtension}, true);
-        try {
-            for (File image : embeddedImages) {
-                FileUtils.copyFileToDirectory(image, target.getParentFile());
-            }
-        } catch (Exception e) {
-            LOG.warn("Issue in copying images. :" + e.getMessage());
-        }
         //merge report files
         String targetReport = FileUtils.readFileToString(target);
         String sourceReport = FileUtils.readFileToString(source);
+        target.setWritable(true);
         FileUtils.writeStringToFile(target, targetReport + sourceReport);
         copyFileUsingStream(target);
     }
@@ -133,24 +132,28 @@ public final class ReportAccumulator {
             Collection<File> embeddedImages = FileUtils.listFiles(reportDirectory, new String[]{pngImageExtension}, true);
 
             String fileAsString = FileUtils.readFileToString(reportFile);
-
-            for (File image : embeddedImages) {
-                String curImageName = image.getName();
-                String uniqueImageName = UUID.randomUUID().toString() + "." + pngImageExtension;
-
-                image.setWritable(true);
-                //image.renameTo(new File(reportDirectory, uniqueImageName));
-                if(image.renameTo(new File(reportDirectory, uniqueImageName))){
-                    LOG.info("Image File renamed to avoid the file overriding issues.");
-                    fileAsString = fileAsString.replace(curImageName, uniqueImageName);
-                }else{
-                    LOG.warn("Sorry! the image file can't be renamed" + image.getName());
+            Iterator<File> iterator = embeddedImages.iterator();
+            while(iterator.hasNext()){
+                try{
+                    File image = iterator.next();
+                    String curImageName = image.getName();
+                    String uniqueImageName = UUID.randomUUID().toString() + "." + pngImageExtension;
+                    File newNamedImageFile = new File(plplusukReportsFolder.getPath()+"\\"+ uniqueImageName);
+                    image.setWritable(true);
+                    if (image.renameTo(newNamedImageFile)) {
+                        LOG.info("Image File renamed to avoid the file overriding issues.");
+                        fileAsString = fileAsString.replace(curImageName, uniqueImageName);
+                    } else {
+                        LOG.warn("Sorry! the image file can't be renamed" + image.getName());
+                    }
+                    Thread.sleep(2000);
+                }catch(Exception e){
+                    LOG.warn("Renaming image file is having difficulty.");
                 }
-                Thread.sleep(2000);
             }
             FileUtils.writeStringToFile(reportFile, fileAsString);
         } catch (Exception e) {
-            LOG.warn("Issue in renameEnbeddedImages() :" + e.getMessage());
+            LOG.warn("Issue in renameEnbeddedImages()");
         }
     }
 
@@ -158,7 +161,7 @@ public final class ReportAccumulator {
         MavenXpp3Reader reader = new MavenXpp3Reader();
         Model model = null;
         try {
-            model = reader.read(new FileReader(plPlusUKFolder+"\\pom.xml"));
+            model = reader.read(new FileReader(plPlusUKFolder + "\\pom.xml"));
         } catch (IOException e) {
         } catch (XmlPullParserException e) {
         }
