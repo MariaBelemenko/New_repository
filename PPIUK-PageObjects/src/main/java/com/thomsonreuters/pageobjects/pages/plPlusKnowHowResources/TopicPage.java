@@ -121,6 +121,14 @@ public class TopicPage extends AbstractPage {
         return false;
     }
 
+    public boolean noMetadataDisplayed(){
+        return isElementPresent(By.id("co_searchResults_citation_1"));
+    }
+
+    public boolean noSummaryDisplayed(){
+        return isElementPresent(By.id("co_searchResults_summary_1"));
+    }
+
     public WebElement facetNameLink(String facet) {
         return retryingFindElement(By.xpath(".//ul[@id='ukplc_topic_facet_links']//a[text()='" + facet + "']"));
     }
