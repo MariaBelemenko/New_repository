@@ -75,7 +75,6 @@ public class DocumentDeliveryPage extends DocumentNavigationPage {
      * This method does the selecting the Add To Folder link
      */
     public void clickOnAddToFolderLink() {
-        waitForPageToLoadAndJQueryProcessing();
         // Check the folder icon is displayed then click it
         waitForExpectedElement(By.xpath("//*[@id='co_docToolbarVerticalMenuRight']//*[@class='co_saveTo']//a"),30).isDisplayed();
         waitForExpectedElement(By.xpath("//*[@id='co_docToolbarVerticalMenuRight']//*[@class='co_saveTo']//a")).click();

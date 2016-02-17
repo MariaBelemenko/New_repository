@@ -7,16 +7,16 @@ import org.openqa.selenium.WebElement;
 public class NewFolderPopup extends AbstractPage {
 
 	public WebElement newFolderInput() {
-		return waitForExpectedElement(By.id("cobalt_ro_folder_action_textbox"));
+		return waitForExpectedElement(By.id("cobalt_ro_folder_action_textbox"),15);
 	}
 
 	public WebElement selectFolder(String parentFolder) {
-		return waitForExpectedElement(By.xpath("//*[contains(@class,'co_new_folderAction')]//a[text()='" + parentFolder + "']"));
+		return waitForExpectedElement(By.xpath("//*[contains(@class,'co_new_folderAction')]//a[text()='" + parentFolder + "']"),15);
 	}
 
 	public WebElement selectRootFolder() {
 		return waitForExpectedElement(By
-				.xpath("(//*[@class='co_tree_selectable co_tree_name co_tree_position--0--'])[last()]"));
+				.xpath("(//*[@class='co_tree_selectable co_tree_name co_tree_position--0--'])[last()]"),15);
 	}
 
 	public WebElement clickCancel() {
@@ -24,7 +24,7 @@ public class NewFolderPopup extends AbstractPage {
 	}
 
 	public WebElement save() {
-		return waitForElementVisible(By.xpath("//*[@type='button' and @value='OK']"));
+		return waitForExpectedElement(By.xpath("//*[@type='button' and @value='OK']"),15);
 	}
 
 	public WebElement getErrorMessage() {

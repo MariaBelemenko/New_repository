@@ -445,20 +445,14 @@ public class WhatsMarketComparisonToolTest extends BaseStepDef {
 
     private String saveToNewFolder(String newFolderName, String parentFolder) {
         String folderName = null;
-        saveToPopup.waitForPageToLoad();
-        saveToPopup.waitForPageToLoadAndJQueryProcessing();
         saveToPopup.newFolder().click();
-        saveToPopup.waitForPageToLoadAndJQueryProcessing();
         folderName = createNewFolder(newFolderName, parentFolder);
-        saveToPopup.waitForPageToLoadAndJQueryProcessing();
         saveToPopup.waitFolderSelected(newFolderName);
         saveToPopup.save().click();
         return folderName;
     }
 
     public String createNewFolder(String newFolderName, String parentFolder) {
-        newFolderPopup.waitForPageToLoad();
-        newFolderPopup.waitForPageToLoadAndJQueryProcessing();
         newFolderPopup.newFolderInput().sendKeys(newFolderName);
         if (parentFolder.equals("root")) {
             newFolderPopup.selectRootFolder().click();
@@ -466,9 +460,7 @@ public class WhatsMarketComparisonToolTest extends BaseStepDef {
         } else {
             newFolderPopup.selectFolder(parentFolder).click();
         }
-        newFolderPopup.waitForPageToLoadAndJQueryProcessing();
         newFolderPopup.save().click();
-        newFolderPopup.waitForPageToLoadAndJQueryProcessing();
         return parentFolder;
     }
 

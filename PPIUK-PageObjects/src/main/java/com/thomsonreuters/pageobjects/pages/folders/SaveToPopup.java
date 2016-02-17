@@ -35,7 +35,7 @@ public class SaveToPopup extends AbstractPage {
 	}
 
 	public WebElement newFolder() {
-		return waitForExpectedElement(By.xpath("//div[contains(@class, 'Overlay') and not(contains(@class, 'hide'))]//a[contains(@class, 'saveToNewFolder')]"));
+		return waitForExpectedElement(By.xpath("//div[contains(@class, 'Overlay') and not(contains(@class, 'hide'))]//a[contains(@class, 'saveToNewFolder')]"),15);
 	}
 	
 	public WebElement selectFolder(String folder) {
@@ -65,7 +65,7 @@ public class SaveToPopup extends AbstractPage {
 	}
 
 	public WebElement saveButton() {
-		return waitForExpectedElement(By.xpath("//li/input[contains(@class,'saveToDoSave')][@type='button']"),10);
+		return waitForExpectedElement(By.xpath("//li/input[contains(@class,'saveToDoSave')][@type='button']"),15);
 	}
 
 }
