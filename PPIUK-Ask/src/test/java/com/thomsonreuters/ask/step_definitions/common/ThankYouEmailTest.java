@@ -1,11 +1,8 @@
 package com.thomsonreuters.ask.step_definitions.common;
 
 import com.thomsonreuters.ask.step_definitions.BaseStepDef;
-import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.ExcelFileReader;
-import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.ask.AskFormPage;
-import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePage;
 import com.thomsonreuters.pageobjects.utils.ask.AskFormField;
 import com.thomsonreuters.pageobjects.utils.email.MailinatorMethods;
 import com.thomsonreuters.pageobjects.utils.form.FormUtils;
@@ -19,13 +16,9 @@ import static org.junit.Assert.assertTrue;
 
 public class ThankYouEmailTest extends BaseStepDef {
 
-    private KHResourcePage resourcePage = new KHResourcePage();
     private AskFormPage askFormPage = new AskFormPage();
     private FormUtils formUtils = new FormUtils();
-    private NavigationCobalt navigationCobalt = new NavigationCobalt();
     private MailinatorMethods mailinatorMethods = new MailinatorMethods();
-    private CommonMethods commonMethods = new CommonMethods();
-
 
     @When("^the user accepts ASK disclaimer terms$")
     public void acceptsDisclaimerTerms() throws Throwable {
@@ -48,7 +41,7 @@ public class ThankYouEmailTest extends BaseStepDef {
     @When("^A thank you page should appear with option to close the window$")
     public void thankYouPage() throws Throwable {
         askFormPage.waitForPageToLoad();
-        if(!askFormPage.getPageSource().contains("Thank you for submitting a question or comment to Ask.")) {
+        if (!askFormPage.getPageSource().contains("Thank you for submitting a question or comment to Ask.")) {
             throw new RuntimeException("Thank you page is absent!");
         }
     }
