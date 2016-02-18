@@ -168,9 +168,10 @@ public final class ReportAccumulator {
         //LOG.info("Modules :" + model.getModules());
         return model.getModules();
     }
-
-    private static void setBaseFolder() {
+	
+	private static void setBaseFolder() {
         String dir = System.getProperty("user.dir");
+        System.out.println("Directory : " + dir);
         dir = dir.substring(0, dir.indexOf("PLPlusUK")) + "PLPlusUK";
         plPlusUKFolder = new File(dir);
     }
