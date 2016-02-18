@@ -46,6 +46,7 @@ public class SharedAnnotationsPage extends AbstractPage {
     public boolean isTextBoxDisplayed() {
         try {
             return waitForExpectedElement(IFRAME_LOCATOR, TIMEOUT_5_SECONDS).isDisplayed();
+
         } catch (TimeoutException te) {
             return false;
         }
