@@ -7,20 +7,25 @@ import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
-import java.util.*;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.UUID;
 
 public final class ReportAccumulator {
 
     protected static final org.slf4j.Logger LOG = LoggerFactory.getLogger(ReportAccumulator.class);
     private static String reportJS = "report.js";
     private static String pngImageExtension = "png";
-    private static File plPlusUKFolder = null;
+    private static String plPlusUKFolder = System.getProperty("user.dir");
+    ;
     private static File plplusukReportsFolder = null;
     private File mergedReport = null;
 
     public static void main(String[] args) throws Throwable {
-        setBaseFolder();
+        //setBaseFolder();
         plplusukReportsFolder = new File(plPlusUKFolder + "\\target\\cucumber-htmlreport\\");
+//        System.out.println("Main method :" + plPlusUKFolder + "\\target\\cucumber-htmlreport\\");
         ReportAccumulator reportAccumulator = new ReportAccumulator();
         reportAccumulator.startReporting();
     }
@@ -40,13 +45,16 @@ public final class ReportAccumulator {
             try {
                 String module = modulesList.next();
                 String moduleName = plPlusUKFolder + "\\" + module;
+
+//                System.out.println("startReporting :" + moduleName);
+
                 File moduleReportsFolder = new File(moduleName + "\\target\\cucumber-htmlreport\\");
-                if (!moduleReportsFolder.isDirectory()) {
-                    return;
-                }
+//                if (!moduleReportsFolder.isDirectory()) {
+//                    return;
+//                }
 
                 for (File file : moduleReportsFolder.listFiles()) {
-                    try{
+                    try {
                         if (file.isDirectory()) {
                             if (new File(file, "index.html").exists()) {
                                 LOG.info("Module -> " + module + " ::report location ::" + moduleReportsFolder + "\\" + file.getName());
@@ -54,7 +62,7 @@ public final class ReportAccumulator {
                             }
                         }
                     } catch (Exception e) {
-                        LOG.warn("Issue in accessing maven module sub folder details:"+e);
+                        LOG.warn("Issue in accessing maven module sub folder details:" + e);
                     }
                 }
 
@@ -80,8 +88,8 @@ public final class ReportAccumulator {
         }
 
         Collection<File> images = FileUtils.listFiles(reportDirectory, new String[]{"png"}, true);
-        if(images.size()>0){
-            renameEmbededImages(new File(reportDirectory+"\\report.js"));
+        if (images.size() > 0) {
+            renameEmbededImages(new File(reportDirectory + "\\report.js"));
         }
 
         existingReports = FileUtils.listFiles(reportDirectory, new String[]{"js"}, true);
@@ -89,13 +97,13 @@ public final class ReportAccumulator {
             //only address report files
             if (isEmpty || report.getName().equals(reportJS)) {
                 if (isEmpty) {
-                    if(!report.getName().endsWith(pngImageExtension)){
+                    if (!report.getName().endsWith(pngImageExtension)) {
                         copyFileUsingStream(report);
                     }
                     if (report.getName().equals(reportJS)) {
                         mergedReport = report;
-                        copyFileUsingStream(new File(reportDirectory+"\\index.html"));
-                        copyFileUsingStream(new File(reportDirectory+"\\style.css"));
+                        copyFileUsingStream(new File(reportDirectory + "\\index.html"));
+                        copyFileUsingStream(new File(reportDirectory + "\\style.css"));
                     }
                     //otherwise merge this report into existing master report
                 } else {
@@ -133,12 +141,12 @@ public final class ReportAccumulator {
 
             String fileAsString = FileUtils.readFileToString(reportFile);
             Iterator<File> iterator = embeddedImages.iterator();
-            while(iterator.hasNext()){
-                try{
+            while (iterator.hasNext()) {
+                try {
                     File image = iterator.next();
                     String curImageName = image.getName();
                     String uniqueImageName = UUID.randomUUID().toString() + "." + pngImageExtension;
-                    File newNamedImageFile = new File(plplusukReportsFolder.getPath()+"\\"+ uniqueImageName);
+                    File newNamedImageFile = new File(plplusukReportsFolder.getPath() + "\\" + uniqueImageName);
                     image.setWritable(true);
                     if (image.renameTo(newNamedImageFile)) {
                         LOG.info("Image File renamed to avoid the file overriding issues.");
@@ -147,7 +155,7 @@ public final class ReportAccumulator {
                         LOG.warn("Sorry! the image file can't be renamed" + image.getName());
                     }
                     Thread.sleep(2000);
-                }catch(Exception e){
+                } catch (Exception e) {
                     LOG.warn("Renaming image file is having difficulty.");
                 }
             }
@@ -161,6 +169,7 @@ public final class ReportAccumulator {
         MavenXpp3Reader reader = new MavenXpp3Reader();
         Model model = null;
         try {
+//            System.out.println("getModuleNames :" + plPlusUKFolder + "\\pom.xml");
             model = reader.read(new FileReader(plPlusUKFolder + "\\pom.xml"));
         } catch (IOException e) {
         } catch (XmlPullParserException e) {
@@ -168,13 +177,12 @@ public final class ReportAccumulator {
         //LOG.info("Modules :" + model.getModules());
         return model.getModules();
     }
-	
-	private static void setBaseFolder() {
-        String dir = System.getProperty("user.dir");
-        System.out.println("Directory : " + dir);
-        dir = dir.substring(0, dir.indexOf("PLPlusUK")) + "PLPlusUK";
-        plPlusUKFolder = new File(dir);
-    }
+
+//    private static void setBaseFolder() {
+//        String dir = System.getProperty("user.dir");
+//        dir = dir.substring(0, dir.indexOf("PLPlusUK")) + "PLPlusUK";
+//        plPlusUKFolder = new File(dir);
+//    }
 
     private void copyFileUsingStream(File source) throws IOException {
         File dest = new File(plplusukReportsFolder + "\\" + source.getName());
