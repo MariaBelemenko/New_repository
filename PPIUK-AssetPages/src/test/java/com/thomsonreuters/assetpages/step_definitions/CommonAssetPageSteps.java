@@ -95,6 +95,7 @@ public class CommonAssetPageSteps extends BaseStepDef {
 
     @When("^the user see opened document in Westlaw UK$")
     public void theUserSeeOpenedDocumentInWestlawUK() throws Throwable {
+    	assetDocumentPage.waitForPageToLoad();
         assertTrue("The user doesn't see opened document in westlaw UK", assetPageUtils.openDocumentInWestlawUK());
     }
 

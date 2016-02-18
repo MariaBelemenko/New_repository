@@ -239,8 +239,10 @@ public class AssetPageUtils {
             assetDocumentPage.switchToWindow(winHandle);
             secondHandle = winHandle;
         }
+		assetDocumentPage.waitForPageToLoad();
         if (documentBody().isDisplayed()) {
             outPutLink().click();
+            assetDocumentPage.waitForPageToLoad();
             assetDocumentPage.switchToWindow(secondHandle);
             assetDocumentPage.getDriver.close();
             assetDocumentPage.switchToWindow(winHandleFirst);
