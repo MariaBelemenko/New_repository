@@ -1,4 +1,4 @@
-@e2e
+@e2e @prod
 Feature: Verify links to asset page
 
   Scenario Outline: Verify link to <Resource Type> Asset Page
