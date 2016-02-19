@@ -77,7 +77,7 @@ public class InlineLinkingTest extends BaseStepDef {
 
     @When("^the user clicks Back button in browser '(.*)' times$")
     public void goBackNTimesAndWaitForPageToLoad(int howMuch) throws Throwable {
-        resourcePage.browserBackMulti(howMuch);
+        homePage.browserBackMulti(howMuch);
         homePage.waitForPageToLoad();
     }
 
@@ -106,7 +106,7 @@ public class InlineLinkingTest extends BaseStepDef {
         int windowsCount;
         int counter = 10;
         do {
-            windowsCount = getDriver().getWindowHandles().size();
+            windowsCount = homePage.getWindowHandles().size();
             counter--;
             Thread.sleep(2000);
         }
