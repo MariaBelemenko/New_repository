@@ -1,8 +1,7 @@
 Feature: Annotations functionality
 
   Scenario: Delete All Annotations Present on Document
-    When PL+ user is logged in with following details
-      | userName | annotationsUser1 |
+    When PL+ user is logged in
     Then user navigates directly to document with guid and removes annotations on it
       | I33f1066be8cd11e398db8b09b4f043e0 |
       | Ib5551f79e83211e398db8b09b4f043e0 |
@@ -11,8 +10,7 @@ Feature: Annotations functionality
     And user logs out
 
   Scenario: Verify Annotations links on Document delivery tool bar
-    Given PL+ user is logged in with following details
-      | userName | annotationsUser1 |
+    When PL+ user is logged in
     When user navigates directly to document with guid "I33f1066be8cd11e398db8b09b4f043e0"
     Then the user is able to see new annotations link is present
     And verify new annotations link is clickable
@@ -23,8 +21,7 @@ Feature: Annotations functionality
 
   @AnnotationsSmokeTests @e2e
   Scenario: Verify Annotations feature
-    Given PL+ user is logged in with following details
-      | userName | annotationsUser1 |
+    When PL+ user is logged in
     When user navigates directly to document with guid "I33f1066be8cd11e398db8b09b4f043e0"
     When user click on new Annotations link
     Then annotations textbox will be displayed with tinymce editor
@@ -41,8 +38,7 @@ Feature: Annotations functionality
 
   @e2e
   Scenario: Delete Annotations
-    Given PL+ user is logged in with following details
-      | userName | annotationsUser1 |
+    When PL+ user is logged in
     When user navigates directly to document with guid "I33f1066be8cd11e398db8b09b4f043e0"
     And user added new annotation
     When user clicks the saved annotation
@@ -62,8 +58,7 @@ Feature: Annotations functionality
     Then annotations close and undo links will be disappeared
 
   Scenario: 803697 Verify ClientId is not displayed as part of Annotations metadata
-    Given PL+ user is logged in with following details
-      | userName | annotationsUser1 |
+    When PL+ user is logged in
     When user navigates directly to document with guid "Ib5551f79e83211e398db8b09b4f043e0"
     And user added new annotation
     Then verify saved annotations text will be displayed with metadata
@@ -71,7 +66,6 @@ Feature: Annotations functionality
 
   Scenario:User should be able to see notes added icon in history
     Given PL+ user is logged in with following details
-      | userName   | annotationsUser1 |
       | newSession | TRUE             |
     When user navigates directly to document with guid "Ie6a01717518811e498db8b09b4f043e0"
     Then adds current document to "root" folder
@@ -84,8 +78,7 @@ Feature: Annotations functionality
     Then the "1" document will be displayed along with nodes added link
 
   Scenario:User should be able to see notes added icon in search results list
-    Given PL+ user is logged in with following details
-      | userName | annotationsUser1 |
+    When PL+ user is logged in
     When the user runs a free text search for the query "Children"
     And the user opens '1' link in the search result and store its title and guid
     Then user added new annotation
@@ -93,8 +86,7 @@ Feature: Annotations functionality
     Then the search result "1" document will be displayed along with nodes added link
 
   Scenario:User should be able to see the disabled save button when annotation text exceeds 3000 chars length
-    Given PL+ user is logged in with following details
-      | userName | annotationsUser1 |
+    When PL+ user is logged in
     When user navigates directly to document with guid "I1559faa0eef211e28578f7ccc38dcbee"
     And user enters annotation text with "3001" chars length
     Then user should be able to see the warning message for exceeded text
@@ -105,8 +97,7 @@ Feature: Annotations functionality
     Then saving the annotation
 
   Scenario:User should be able to see the disabled save button when annotation text is below 3000 chars length and tags length is > 10000
-    Given PL+ user is logged in with following details
-      | userName | annotationsUser1 |
+    When PL+ user is logged in
     When user navigates directly to document with guid "I1559faa0eef211e28578f7ccc38dcbee"
     And user enters annotation with richText
     Then user should be able to see the warning message for exceeded richText
@@ -117,8 +108,7 @@ Feature: Annotations functionality
     Then saving the annotation
 
   Scenario:User should be able to see the disabled save button when annotation textbox is empty
-    Given PL+ user is logged in with following details
-      | userName | annotationsUser1 |
+    When PL+ user is logged in
     When user navigates directly to document with guid "I1559faa0eef211e28578f7ccc38dcbee"
     And user enters annotation text with "empty" chars length
     Then user verifies Save button is disabled
@@ -129,8 +119,7 @@ Feature: Annotations functionality
 
   @e2e
   Scenario: Verify show/hide Annotations links on Document delivery tool bar
-    Given PL+ user is logged in with following details
-      | userName | annotationsUser1 |
+    When PL+ user is logged in
     When user navigates directly to document with guid "Ie6a01717518811e498db8b09b4f043e0"
     And user added new annotation
     Then the user is able to see show/hide annotations link is present

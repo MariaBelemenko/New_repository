@@ -3,6 +3,7 @@ package com.thomsonreuters.annotations;
 import cucumber.api.CucumberOptions;
 import cucumber.api.SnippetType;
 import cucumber.api.junit.Cucumber;
+import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
@@ -12,6 +13,11 @@ import org.junit.runner.RunWith;
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
 public class RunAnnotationsFunctionalityTest {
+
+    @BeforeClass
+    public static void reporting() {
+        System.setProperty("username", "annotationsUser1");
+    }
 
 }
 
