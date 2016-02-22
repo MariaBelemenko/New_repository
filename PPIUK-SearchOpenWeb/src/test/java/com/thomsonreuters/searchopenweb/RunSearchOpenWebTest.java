@@ -18,6 +18,7 @@ public class RunSearchOpenWebTest {
     @BeforeClass
     public static void reporting(){
         System.setProperty("username","SearchOpenWebUser1");
+        System.setProperty("password", "Password1");
     }
 
 }
