@@ -1,7 +1,7 @@
-package com.thomsonreuters.searchknowhow.step_definitions.knowHowDelivery;
+package com.thomsonreuters.searchwhatsmarket.step_definitions.whatsMarketDelivery;
 
 import com.thomsonreuters.pageobjects.pages.common.CommonMailinatorPage;
-import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
+import com.thomsonreuters.searchwhatsmarket.step_definitions.BaseStepDef;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.WebElement;
 
