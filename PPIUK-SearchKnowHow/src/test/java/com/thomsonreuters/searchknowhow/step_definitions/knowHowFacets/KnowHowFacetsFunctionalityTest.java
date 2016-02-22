@@ -58,7 +58,7 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
 
     @When("^the user selects the know how option to apply filters$")
     public void theUserSelectsTheKnowHowOptionToApplyFilters() throws Throwable {
-        ((JavascriptExecutor) knowHowSearchResultsPage).executeScript("scroll(250,0);");
+       // ((JavascriptExecutor) knowHowSearchResultsPage).executeScript("scroll(250,0);");
         knowHowSearchResultsPage.applyFiltersButton().click();
         knowHowSearchResultsPage.waitForSearchResults();
     }
@@ -71,10 +71,13 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         numberReturnedFromWebsite = numberReturnedFromWebsite.replaceAll("[^0-9]", "");
         /** Stores the value from "numberReturnedFromWebsite" in the resultArray whilst at the same time converting it to a number */
         resultArray[count] = Integer.parseInt(numberReturnedFromWebsite);
+        assertTrue(resultArray[count] != null);
     }
 
     @When("^the user verifies that the know how search result count \"(.*?)\" equals facet count \"(.*?)\"$")
     public void theUserVerifiesThatTheKnowHowSearchResultCountEqualsFacetCount(Integer count1, Integer count2) throws Throwable {
+        System.out.println(Integer.toString(resultArray[count1]) + " **********");
+        System.out.println(Integer.toString(resultArray[count2]) + " **********");
         assertTrue(resultArray[count1] == resultArray[count2]);
     }
 

@@ -25,9 +25,10 @@ Feature: ukKnowHowFacetsFunctionality.feature - [713885] [702173] [710581] [7286
     When the user runs a free text search for the query "taxation"
     And the user pauses for "3" seconds
     And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
-    And the user selects the know how parent facet "Glossary"
-    And the user verifies that the know how facet is selected "Glossary"
+    And the user selects the know how "Resource Type" facet "Glossary"
+    And the user pauses for "3" seconds
     And the user selects the know how option to apply filters
+    And the user verifies that the know how facet is selected "Glossary"
     And the user gets the know how facet "Glossary" count and stores it as count "1"
     And the user selects the know how parent facet "Employment"
     And the user verifies that the know how facet is selected "Employment"

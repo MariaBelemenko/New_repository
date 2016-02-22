@@ -9,16 +9,16 @@ Feature: [763726][764077][768208][763786] As a PL+ user when I begin to type a s
     #818346 - suggestions not being generated with three characters
     When the user enters 3 characters into the search box "pro"
     Then the user should be presented with the below search suggestions
-      | PROCEEDINGS       |
-      | PROCEEDS OF CRIME |
+      | PRO BONO ADVICE       |
+      | PRO BONO AGREEMENT    |
     And the suggested search terms are displayed in alphabetical order
 
   @bug
   Scenario: [764077] Append terms to suggested terms - add text to end of selected term in know how
     #818346 - suggestions not being generated with three characters
     When the user enters 3 characters into the search box "pro"
-    And the user selects the suggested term "PROCEEDINGS"
-    And the user verifies that the term "PROCEEDINGS" appears in the search box
+    And the user selects the suggested term "PRO BONO ADVICE"
+    And the user verifies that the term "PRO BONO ADVICE" appears in the search box
     Then the user edits the text of the suggested search term and add additional text "group"
     And the user can submit the search request
     And the user can open the first know how search result "1"
@@ -41,5 +41,5 @@ Feature: [763726][764077][768208][763786] As a PL+ user when I begin to type a s
   Scenario: Verify the Auto Suggest in Search
     When the user starts typing the term "Pub"
     Then the user should see auto suggestion list
-    When the user selects the suggested term "PUBLIC COMPANY"
+    When the user selects the suggested term "PUB CREHAN"
     Then the search results should be shown according to the search term selected
