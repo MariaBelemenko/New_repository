@@ -1,4 +1,3 @@
-@stepha
 Feature: [705430] ukWhatsMarketChangeDetailsLevel.feature
   As a PL+ user I should be able to change my view of the level of detail that I can see for my What's Market search results,  so that I can view either full or limited information about each search result
   LESS/MORE/MOST - (WHATs Market)

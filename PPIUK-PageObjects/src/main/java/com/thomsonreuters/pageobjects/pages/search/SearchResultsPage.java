@@ -1166,21 +1166,21 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the first page navigation arrow at the base of the search results page
      */
     public WebElement firstPageNavigationArrow() {
-        return waitForExpectedElement(By.xpath("//a[@id='co_search_footer_pagination_first'][contains(text(),'First Page')]"));
+        return waitForExpectedElement(By.xpath("//a[@id='co_search_footer_pagination_first'][contains(text(),'First Page')]"),10);
     }
 
     /**
      * object representing the previous page navigation arrow at the base of the search results page
      */
     public WebElement previousPageNavigationArrow() {
-        return waitForExpectedElement(By.xpath("//a[@id='co_search_footer_pagination_prev'][contains(text(),'Previous Page')]"));
+        return waitForExpectedElement(By.xpath("//a[@id='co_search_footer_pagination_prev'][contains(text(),'Previous Page')]"),10);
     }
 
     /**
      * object representing the currently selected page on the search results page
      */
     public WebElement currentSelectedPage(String number) {
-        return waitForExpectedElement(By.xpath("//span[@id='co_search_footer_pagination_current']/strong[contains(text(),'" + number + "')]"));
+        return waitForExpectedElement(By.xpath("//span[@id='co_search_footer_pagination_current']/strong[contains(text(),'" + number + "')]"),10);
     }
 
     /**
