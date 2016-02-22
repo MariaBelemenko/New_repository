@@ -18,6 +18,7 @@ public class RunFrontEndHeaderTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "FrontEndUser5");
+        System.setProperty("password", "Password1");
     }
 
 }

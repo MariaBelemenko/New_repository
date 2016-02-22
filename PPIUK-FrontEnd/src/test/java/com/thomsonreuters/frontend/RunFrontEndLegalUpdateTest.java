@@ -18,6 +18,7 @@ public class RunFrontEndLegalUpdateTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "FrontEndUser8");
+        System.setProperty("password", "Password1");
     }
 
 }

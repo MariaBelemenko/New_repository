@@ -18,6 +18,7 @@ public class RunFrontEndTopicPageTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "FrontEndUser9");
+        System.setProperty("password", "Password1");
     }
 
 }

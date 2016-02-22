@@ -18,6 +18,7 @@ public class RunFrontEndKHPaddTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "FrontEndUser6");
+        System.setProperty("password", "Password1");
     }
 
 }

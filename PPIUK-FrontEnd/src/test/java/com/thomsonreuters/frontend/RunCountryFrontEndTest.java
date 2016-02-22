@@ -18,6 +18,7 @@ public class RunCountryFrontEndTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "FrontEndUser1");
+        System.setProperty("password", "Password1");
     }
 
 }

@@ -18,6 +18,7 @@ public class RunFrontEndWhatsMarketTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "FrontEndUser10");
+        System.setProperty("password", "Password1");
     }
 
 }

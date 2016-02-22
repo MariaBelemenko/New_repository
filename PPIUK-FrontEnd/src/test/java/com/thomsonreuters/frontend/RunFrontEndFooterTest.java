@@ -18,6 +18,7 @@ public class RunFrontEndFooterTest {
     @BeforeClass
     public static void reporting(){
         System.setProperty("username","FrontEndUser4");
+        System.setProperty("password", "Password1");
     }
 
 }

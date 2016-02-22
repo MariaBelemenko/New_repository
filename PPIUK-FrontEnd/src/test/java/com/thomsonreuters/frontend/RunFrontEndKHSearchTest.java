@@ -18,6 +18,7 @@ public class RunFrontEndKHSearchTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "FrontEndUser7");
+        System.setProperty("password", "Password1");
     }
 
 }

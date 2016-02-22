@@ -18,5 +18,6 @@ public class RunFrontEndFoldersTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "FrontEndUser3");
+        System.setProperty("password", "Password1");
     }
 }
