@@ -19,6 +19,7 @@ public class RunUrlKnowHowTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "UrlUser2");
+        System.setProperty("password", "Password1");
     }
 
 }

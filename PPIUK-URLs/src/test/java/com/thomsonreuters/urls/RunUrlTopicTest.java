@@ -19,6 +19,7 @@ public class RunUrlTopicTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "UrlUser3");
+        System.setProperty("password", "Password1");
     }
 
 }

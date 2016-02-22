@@ -19,6 +19,7 @@ public class RunUrlCanonicalTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "UrlUser1");
+		System.setProperty("password", "Password1");
     }
 
 }
