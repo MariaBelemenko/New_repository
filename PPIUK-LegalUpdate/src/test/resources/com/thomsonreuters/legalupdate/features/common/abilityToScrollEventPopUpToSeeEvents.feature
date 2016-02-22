@@ -1,4 +1,4 @@
-@manual
+@wip@manual
 Feature: The ability to scroll my event pop-up to see events that may not fit on the pop-up
 
   Scenario: The ability to scroll my event pop-up to see events that may not fit on the pop-up

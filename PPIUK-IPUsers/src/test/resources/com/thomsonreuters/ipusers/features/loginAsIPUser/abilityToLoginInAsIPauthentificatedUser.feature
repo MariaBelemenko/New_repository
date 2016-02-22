@@ -1,21 +1,13 @@
 @ip
 Feature: [738889] Create a landing page for IP authenticated users to enter an email
 
-  Scenario: [738889] Create a landing page for IP authenticated users to enter an email
-    Given PL+ user is logged in with following details
-      | loginRequired    | NO      |
-    When the user navigates to the email preference page
-    Then the user should be presented with the login page
-    When user enters his email address "adestra_user22@mailinator.com"
-    Then the user "adestra_user22@mailinator.com" should be presented with his subscriptions
-
   @manual
   Scenario: [815290] improve security around Adestra email preferences for IP users
     Given PL+ user is logged in with following details
       | loginRequired    | NO      |
     When the user navigates to the email preference page
     Then the user should be presented with the login page
-    When user enters his email address "adestra_user23@mailinator.com"
+    When user enters his email address "adestra_user22@mailinator.com"
     Then the user should receive a encrypted token with a link to their email inbox
     When an IP user has received the encrypted token/link in their email inbox
     And the user is using a IP authenticated device
