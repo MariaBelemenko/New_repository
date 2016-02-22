@@ -3,10 +3,8 @@ Feature: PL+ Home Page Tabs
   As a User
   I want to select the relevant tabs on the homepage
 
-  Background:
-    When PL+ user is logged in
-
   Scenario: Verify default Tab is 'Practice Areas' in Home Page
+    Given PL+ user is logged in
     Then user can view three tabs: Practice Areas, Resources and International
     And the user verifies that default Tab is 'Practice areas'
 
@@ -36,6 +34,7 @@ Feature: PL+ Home Page Tabs
 
   @e2e @prod
   Scenario Outline: Verify that Practice Area Tab-links when clicked, navigates to correct page
+    Given PL+ user is logged in
     When the user clicks link '<Link>' on 'the home' page
     Then the user verifies that the current PageTitle contains '<Link>'
   Examples:
