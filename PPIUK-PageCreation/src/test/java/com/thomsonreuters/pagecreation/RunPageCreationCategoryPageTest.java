@@ -18,6 +18,7 @@ public class RunPageCreationCategoryPageTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "CpetUser1");
+        System.setProperty("password", "Password1");
     }
 
 }

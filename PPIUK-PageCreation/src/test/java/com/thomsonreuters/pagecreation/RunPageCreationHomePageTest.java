@@ -18,6 +18,7 @@ public class RunPageCreationHomePageTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "CpetUser2");
+        System.setProperty("password", "Password1");
     }
 
 }
