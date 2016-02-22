@@ -2,7 +2,6 @@ Feature: As a User I want to view the download in FirmStyle option So that I kno
 
   Background:
     Given PL+ user is logged in with following details
-      | userName         | FSTestUser1 |
       | routing          | FIRM_STYLE  |
       | mandatoryRouting | YES         |
 
