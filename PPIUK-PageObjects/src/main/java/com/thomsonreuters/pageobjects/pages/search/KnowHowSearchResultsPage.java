@@ -22,21 +22,21 @@ public class KnowHowSearchResultsPage extends AbstractPage {
      * expand a facet
      */
     public WebElement expandFacet(String facetName) {
-        return waitForExpectedElement(By.xpath("//div[@id='co_narrowResultsBy']//label[contains(text(),'" + facetName + "')]/../a[@class='co_facet_expand']"));
+        return waitForExpectedElement(By.xpath("//div[@id='co_narrowResultsBy']//label[contains(text(),'" + facetName + "')]/../a[@class='co_facet_expand']"),10);
     }
 
     /**
      * collapse a facet
      */
     public WebElement collapseFacet(String facetName) {
-        return waitForExpectedElement(By.xpath("//div[@id='co_narrowResultsBy']//label[contains(text(),'" + facetName + "')]/../a[@class='co_facet_collapse']"));
+        return waitForExpectedElement(By.xpath("//div[@id='co_narrowResultsBy']//label[contains(text(),'" + facetName + "')]/../a[@class='co_facet_collapse']"),10);
     }
 
     /**
      * this is the facet name - pass in the facet name as a string e.g. Standard clauses
      */
     public WebElement facetName(String Name) throws Exception {
-        return retryingFindElement(By.xpath("//div[contains(@id,'narrowResultsBy')]//label[contains(text(),'" + Name + "')]"));
+        return waitForExpectedElement(By.xpath("//div[contains(@id,'narrowResultsBy')]//label[contains(text(),'" + Name + "')]"),10);
     }
 
     /**
@@ -47,7 +47,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
      */
     public boolean isFacetNameDisplayed(String Name) {
         try {
-            return retryingFindElement(By.xpath("//div[contains(@id,'narrowResultsBy')]//label[contains(text(),'" + Name + "')]")).isDisplayed();
+            return waitForExpectedElement(By.xpath("//div[contains(@id,'narrowResultsBy')]//label[contains(text(),'" + Name + "')]"),10).isDisplayed();
         } catch (PageOperationException pe) {
             LOG.info("context", pe);
             return false;
@@ -58,7 +58,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
      * Object representing the total search result count for the search
      */
     public WebElement knowHowSearchResultCount() {
-        return retryingFindElement(By.xpath("//div[@id='coid_website_searchAvailableFacets']//span[@class='co_search_titleCount']"));
+        return waitForExpectedElement(By.xpath("//div[@id='coid_website_searchAvailableFacets']//span[@class='co_search_titleCount']"),10);
     }
 
     /**
@@ -66,7 +66,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
      */
     public WebElement knowHowFacetCheckbox(String facetName) {
         try {
-            WebElement findlabel = retryingFindElement(By.xpath("//div[contains(@id,'narrowResultsBy')]//label[text()='" + facetName + "']"));
+            WebElement findlabel = waitForExpectedElement(By.xpath("//div[contains(@id,'narrowResultsBy')]//label[text()='" + facetName + "']"),10);
             String labelFor = findlabel.getAttribute("for");
             return waitForExpectedElement(By.id(labelFor));
         } catch (StaleElementReferenceException se) {
@@ -112,7 +112,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
      * This is an object representing the facet count associated with each facet (any facet on the know how page)
      */
     public WebElement facetCount(String facetname) {
-        return retryingFindElement(By.xpath("//div[@id='co_narrowResultsBy']//label[contains(text(),'" + facetname + "')]/../span[@class='co_facetCount']"));
+        return waitForExpectedElement(By.xpath("//div[@id='co_narrowResultsBy']//label[contains(text(),'" + facetname + "')]/../span[@class='co_facetCount']"),10);
     }
 
     /**
@@ -121,7 +121,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
     public List<String> getJurisdictionFacets() {
         List<String> list = new ArrayList<String>();
         try {
-            for (WebElement facet : retryingFindElements(By.xpath("//div[@id='co_narrowResultsBy']/div/h4[contains(text(), 'Jurisdiction')]/../ul/li/label"))) {
+            for (WebElement facet : waitForExpectedElements(By.xpath("//div[@id='co_narrowResultsBy']/div/h4[contains(text(), 'Jurisdiction')]/../ul/li/label"),10)) {
                 list.add(facet.getText());
             }
         } catch (TimeoutException te) {
@@ -150,7 +150,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
     public List<String> getMainPracticeAreaFacets(String facetHeaderName) {
         List<String> list = new ArrayList<String>();
         try {
-            for (WebElement facet : retryingFindElements(By.xpath("//h4[contains(@class,'facet_header')]/self::h4[text()='" + facetHeaderName + "']/../ul/li/label"))) {
+            for (WebElement facet : waitForExpectedElements(By.xpath("//h4[contains(@class,'facet_header')]/self::h4[text()='" + facetHeaderName + "']/../ul/li/label"),10)) {
                 list.add(facet.getText());
             }
         } catch (TimeoutException te) {
@@ -165,7 +165,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
     public List<String> getChildPracticeAreaFacets(String facetHeaderName) {
         List<String> list = new ArrayList<String>();
         try {
-            for (WebElement facet : retryingFindElements(By.xpath("//div[@id='facet_div_knowHowPracticeAreaSummary']//label[text()='" + facetHeaderName + "']/../div/ul/li/label"))) {
+            for (WebElement facet : waitForExpectedElements(By.xpath("//div[@id='facet_div_knowHowPracticeAreaSummary']//label[text()='" + facetHeaderName + "']/../div/ul/li/label"),10)) {
                 list.add(facet.getText());
             }
         } catch (TimeoutException te) {
@@ -180,7 +180,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
     public List<String> getGrandchildPracticeAreaFacets(String facetHeaderName) {
         List<String> list = new ArrayList<String>();
         try {
-            for (WebElement facet : retryingFindElements(By.xpath("//div[@id='facet_div_knowHowPracticeAreaSummary']//label[text()='" + facetHeaderName + "']/../div/ul/li/label"))) {
+            for (WebElement facet : waitForExpectedElements(By.xpath("//div[@id='facet_div_knowHowPracticeAreaSummary']//label[text()='" + facetHeaderName + "']/../div/ul/li/label"),10)) {
                 list.add(facet.getText());
             }
         } catch (TimeoutException te) {
@@ -195,7 +195,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
     public List<Integer> getFacetCounts(String facetHeaderName) {
         List<Integer> list = new ArrayList<Integer>();
         try {
-            for (WebElement facetCounts : retryingFindElements(By.xpath("//h4[contains(@class,'facet_header')]/self::h4[text()='" + facetHeaderName + "']/../ul/li/span"))) {
+            for (WebElement facetCounts : waitForExpectedElements(By.xpath("//h4[contains(@class,'facet_header')]/self::h4[text()='" + facetHeaderName + "']/../ul/li/span"),10)) {
                 int facetCounts2 = Integer.parseInt(facetCounts.getText().replace(",", ""));
                 list.add(facetCounts2);
             }
