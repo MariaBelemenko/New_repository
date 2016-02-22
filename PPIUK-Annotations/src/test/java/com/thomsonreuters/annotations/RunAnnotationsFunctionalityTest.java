@@ -17,6 +17,7 @@ public class RunAnnotationsFunctionalityTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "annotationsUser1");
+        System.setProperty("password", "Password1");
     }
 
 }

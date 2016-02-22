@@ -17,6 +17,7 @@ public class RunAnnotationsFACTest {
     @BeforeClass
     public static void reporting(){
         System.setProperty("username","librarian1");
+        System.setProperty("password", "Password1");
     }
 
 }
