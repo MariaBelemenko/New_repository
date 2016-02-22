@@ -18,6 +18,7 @@ public class RunLinkingTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "LinkingUser1");
+        System.setProperty("password", "Password1");
     }
 
 }
