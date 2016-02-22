@@ -18,6 +18,7 @@ public class RunFirmStyleLinkTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "FSTestUser1");
+        System.setProperty("password", "Password1");
     }
 
 }
