@@ -1,11 +1,9 @@
 Feature: Save username option on login
 
-  Background:
+  Scenario: As a PPI User I want to be able to login by using the saved username
     Given PL+ user is not logged in
     When the user navigates to the main PLCUK page
     And the user clicks on Sign On link on the header
-
-  Scenario: As a PPI User I want to be able to login by using the saved username
     When a PPI user enter its username and password
       | userName | srm_user2 |
     And user selects Save my Username checkbox
@@ -15,6 +13,9 @@ Feature: Save username option on login
     Then he will see the username box in the log in page populated with his username
 
   Scenario: As a PPI User I want to be able to login using the previously saved login credentials
+    Given PL+ user is not logged in
+    When the user navigates to the main PLCUK page
+    And the user clicks on Sign On link on the header
     When a PPI user enter its username and password
       | userName | srm_user2 |
     And user selects Save my Username and Password checkbox

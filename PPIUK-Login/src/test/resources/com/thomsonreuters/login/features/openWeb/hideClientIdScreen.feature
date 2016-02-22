@@ -5,7 +5,7 @@ Feature: Bypass Client ID screen
     When the user navigates to the main PLCUK page
     And the user clicks Log in button
     When a PPI user enter its username and password
-      | userName | Login_AutoUser |
+      | userName | LoginUser5 |
     And clicks on Sign in
     Then it gets redirected to the home page
     And he is not prompted to enter its Client ID

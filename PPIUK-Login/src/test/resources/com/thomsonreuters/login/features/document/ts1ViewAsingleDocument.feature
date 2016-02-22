@@ -1,11 +1,9 @@
 Feature: TS1 View a single document
- 
-   Background: 
+
+  @RemoveSRMOptionUK
+  Scenario: View a single document and timeout when Super Remember Me enabled
     Given PL+ user is not logged in
     When the user navigates to the main PLCUK page
- 
- @RemoveSRMOptionUK
-  Scenario: View a single document and timeout when Super Remember Me enabled
     Given a username/password user in the login screen
       | userName | srm_user               |
       | routing  | NONE                   |

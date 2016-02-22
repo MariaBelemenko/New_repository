@@ -6,7 +6,6 @@ Feature: As a not logged in user when I visit for the first time PL+ I do not wa
     Then the user should not be presented with the marketing screen lightbox
 
   Scenario: As a logged in user when I visit for the first time PL+ I do not want to see a marketing scree so I avoid unexpected messages
-    Given PL+ user is logged in with following details
-      | userName | Login_AutoUser |
+    Given PL+ user is logged in
     Then the user should not be presented with the marketing screen lightbox
    
