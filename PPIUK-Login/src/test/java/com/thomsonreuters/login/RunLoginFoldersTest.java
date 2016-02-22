@@ -18,6 +18,7 @@ public class RunLoginFoldersTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "LoginUser2");
+        System.setProperty("password", "Password1");
     }
 
 }

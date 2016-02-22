@@ -18,6 +18,7 @@ public class RunLoginTimeoutTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "LoginUser7");
+        System.setProperty("password", "Password1");
     }
 
 }

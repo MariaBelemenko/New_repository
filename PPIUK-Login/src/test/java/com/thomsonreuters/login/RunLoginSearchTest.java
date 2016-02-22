@@ -18,6 +18,7 @@ public class RunLoginSearchTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "LoginUser6");
+        System.setProperty("password", "Password1");
     }
 
 }

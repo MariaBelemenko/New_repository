@@ -18,6 +18,7 @@ public class RunLoginOpenWebTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "LoginUser5");
+        System.setProperty("password", "Password1");
     }
 
 }
