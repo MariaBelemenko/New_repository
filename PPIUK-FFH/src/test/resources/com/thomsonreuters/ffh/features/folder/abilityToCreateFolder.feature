@@ -4,8 +4,7 @@ Feature: AS a PPI User I want to be able to create a new folder so I can have di
   As a PPI User I want to be able to delete a folder so I don't have to see it if I don't need it anymore.
 
   Scenario Outline:
-    Given PL+ user is logged in with following details
-      | userName | FFHTestUser |
+    Given PL+ user is logged in
     When API cleans all folders and history and user relogs in
     And the user clicks on 'Folders' link on the header
     And the user creates new folder "<folder1>" in "<parentFolder1>" folder

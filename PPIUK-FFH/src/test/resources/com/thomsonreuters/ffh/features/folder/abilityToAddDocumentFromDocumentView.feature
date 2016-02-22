@@ -3,16 +3,14 @@ Feature: [730616] FFH083 As a PPI User When I am in a document I want to have th
   [729771] FFH052 As a PPI User I want to be able to delete a document from Folders so I can move it to Trash.
   [755256] FFH004 As a PPI User I want to see the content type  for every document in my Folders so I can identify and organize my documents.
   [755257] FFH005 As a PPI User I want to see a  Title, Resource Type and Date about the documents saved on Folders so I can identify the type of document.
-
   #Content type changed for Know-how = practical law, What's Market = What's Market,
   #Cases = cases, Legislation = statutes, Journals = secondary sources, Know-how = Legal Updates
   #Resource type was added for Know-how documents only
-  
-  Background: 
-    Given PL+ user is logged in with following details
-      | userName | FFHTestUser |
 
-  Scenario: 
+  Background:
+    Given PL+ user is logged in
+
+  Scenario:
     When API cleans all folders and history and user relogs in
 
   Scenario Outline: Know how
@@ -34,10 +32,9 @@ Feature: [730616] FFH083 As a PPI User When I am in a document I want to have th
     And the document date in Trash is correct
     When the user selects the document and moves back to original folder "<folder>"
     Then the document should be removed from Trash and be moved to folder "<folder>"
-
-    Examples: 
-      | query | folder | parentFolder |
-      | Tax   | test22 | root         |
+  Examples:
+    | query | folder | parentFolder |
+    | Tax   | test22 | root         |
 
   Scenario Outline: Whats Market
     When the user opens 'Resources' link
@@ -55,10 +52,9 @@ Feature: [730616] FFH083 As a PPI User When I am in a document I want to have th
     Then document present in the "Trash" folder
     And the document Content type in Trash is correct
     And the document date in Trash is correct
-
-    Examples: 
-      | query | folder |
-      | Media | root   |
+  Examples:
+    | query | folder |
+    | Media | root   |
 
   Scenario Outline: Legal Updates
     When the user opens 'Resources' link
@@ -77,10 +73,9 @@ Feature: [730616] FFH083 As a PPI User When I am in a document I want to have th
     Then document present in the "Trash" folder
     And the document Content type in Trash is correct
     And the document date in Trash is correct
-
-    Examples: 
-      | query  | folder |
-      | Credit | root   |
+  Examples:
+    | query  | folder |
+    | Credit | root   |
 
   Scenario Outline: Topics page
     When the user opens 'IP & IT' link
@@ -98,10 +93,9 @@ Feature: [730616] FFH083 As a PPI User When I am in a document I want to have th
     Then document present in the "Trash" folder
     And the document Content type in Trash is correct
     And the document date in Trash is correct
-
-    Examples: 
-      | folder |
-      | root   |
+  Examples:
+    | folder |
+    | root   |
 
   # 854196 [REGRESSION] Ask documents inaccessible
   @bug
@@ -122,10 +116,9 @@ Feature: [730616] FFH083 As a PPI User When I am in a document I want to have th
     Then document present in the "Trash" folder
     And the document Content type in Trash is correct
     And the document date in Trash is correct
-
-    Examples: 
-      | query       | folder |
-      | JCT DB 2011 | root   |
+  Examples:
+    | query       | folder |
+    | JCT DB 2011 | root   |
 
   # 835031 History, Recent history and Folders: Asset pages info display needs amending
   @bug
@@ -148,10 +141,9 @@ Feature: [730616] FFH083 As a PPI User When I am in a document I want to have th
     Then document present in the "Trash" folder
     And the document Content type in Trash is correct
     And the document date in Trash is correct
-
-    Examples: 
-      | GUID                              | link                 | folder |
-      | I984ef7626cf011e498db8b09b4f043e0 | Duty to give reasons | root   |
+  Examples:
+    | GUID                              | link                 | folder |
+    | I984ef7626cf011e498db8b09b4f043e0 | Duty to give reasons | root   |
 
   Scenario Outline: [785298] add glossary document to folder
     When the user is on the glossary tool page
@@ -167,7 +159,6 @@ Feature: [730616] FFH083 As a PPI User When I am in a document I want to have th
     Then document present in the "Trash" folder
     And the document Content type in Trash is correct
     And the document date in Trash is correct
-
-    Examples: 
-      | folder | glossaryDocPosition |
-      | root   | 2                   |
+  Examples:
+    | folder | glossaryDocPosition |
+    | root   | 2                   |

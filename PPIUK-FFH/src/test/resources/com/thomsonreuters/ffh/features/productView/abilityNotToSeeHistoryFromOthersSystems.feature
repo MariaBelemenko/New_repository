@@ -3,12 +3,11 @@ Feature: As a PPI User I do not want to see any previous History from other prod
 # It is needded to add story with Recent history
   Scenario Outline:
     Given WLN user is logged in with following details
-      | userName         | FFHTestUser |
-      | routing          | FOLDERS     |
-      | mandatoryRouting | YES         |
+      | routing          | FOLDERS |
+      | mandatoryRouting | YES     |
     When API cleans all folders and history
     Given PL+ user is logged in with following details
-      | userName | FFHTestUser |
+      | userName | FFHUser4 |
     When API cleans all folders and history and user relogs in
     And the user come back on to Home page
     And the user runs a free text search for the query "<query>"
@@ -23,9 +22,9 @@ Feature: As a PPI User I do not want to see any previous History from other prod
     And the '2' link contains text "<query>" and url '/Search/Results.html?query=Tax'
     And the '2' link contains event type 'Search'
     Given WLN user is logged in with following details
-      | userName         | FFHTestUser |
-      | routing          | FOLDERS     |
-      | mandatoryRouting | YES         |
+      | userName         | FFHUser4 |
+      | routing          | FOLDERS  |
+      | mandatoryRouting | YES      |
     When the user come back on to WLN Home page
     And the user clicks on 'History' link on the header
     And the user clicks on 'All_History' tab on the History page
@@ -48,13 +47,12 @@ Feature: As a PPI User I do not want to see any previous History from other prod
   # on the History page. In some cases, document title can be so long that on History page it contains short forms of words
   # and assert is fail.
   Scenario Outline:
-    Given PL+ user is logged in with following details
-      | userName | FFHTestUser |
+    Given PL+ user is logged in
     When API cleans all folders and history
     Given WLN user is logged in with following details
-      | userName         | FFHTestUser |
-      | routing          | FOLDERS     |
-      | mandatoryRouting | YES         |
+      | userName         | FFHUser4 |
+      | routing          | FOLDERS  |
+      | mandatoryRouting | YES      |
     When API cleans all folders and history and user relogs in
     And the user come back on to WLN Home page
     And the user runs a free text search for the query "<query>"
@@ -69,7 +67,7 @@ Feature: As a PPI User I do not want to see any previous History from other prod
     And the '2' link contains text "<query>" and url '/Search/Results.html?query=Tax'
     And the '2' link contains event type 'Search'
     Given PL+ user is logged in with following details
-      | userName | FFHTestUser |
+      | userName | FFHUser4 |
     When the user clicks on 'History' link on the header
     And the user clicks on 'All_History' tab on the History page
     Then the user checks history is empty

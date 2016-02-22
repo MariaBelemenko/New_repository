@@ -3,14 +3,12 @@ Feature: As a PPI User I want to be able to add a page to Favourites so I can ac
   As a PPI User I want to have a page dedicated to Favourites where I can manage the Favourites that I added.
   As a PPI User I want to be able to see my start page in Favourites so I can I am aware about which is my start page.
 
-  Background:
-    Given PL+ user is logged in with following details
-      | userName | FFHTestUser |
-
   Scenario:
+    Given PL+ user is logged in
     When API cleans all folders and history and user relogs in
 
   Scenario: Favourites
+    Given PL+ user is logged in
     When the user opens 'Commercial' link
     And the user adds page to favourites group 'pl1'
     And the user come back on to Home page
@@ -36,6 +34,7 @@ Feature: As a PPI User I want to be able to add a page to Favourites so I can ac
     Then page 'Commercial' opens
 
   Scenario Outline: Start Page
+    Given PL+ user is logged in
     When the user opens '<parent>' link
     And the user opens '<page>' link
     And the user makes page as My Start Page

@@ -1,8 +1,7 @@
 Feature: As a PPI User I want to keep track of the documents and searches that I visited so I can go back to a previous search or document.
 
-  Scenario Outline:
-    Given PL+ user is logged in with following details
-      | userName | FFHTestUser |
+  Scenario Outline: Track of documents and searches that I visited
+    Given PL+ user is logged in
     When API cleans all folders and history and user relogs in
     And the user runs a free text search for the query "<query>"
     And the user waits search result to load

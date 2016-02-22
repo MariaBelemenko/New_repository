@@ -1,14 +1,12 @@
 Feature: As a PPI User I do not want to see Favourites from other systems in my Favourites so I avoid to see undesireable Favourites
 
 # when Cases is available, add removed steps
-  Scenario:
-    Given PL+ user is logged in with following details
-      | userName | FFHTestUser |
+  Scenario: Verify the correct details are seen in Favourites
+    Given PL+ user is logged in
     When API cleans all folders and history
     Given WLN user is logged in with following details
-      | userName         | FFHTestUser |
-      | routing          | FOLDERS     |
-      | mandatoryRouting | YES         |
+      | routing          | FOLDERS |
+      | mandatoryRouting | YES     |
     When API cleans all folders and history and user relogs in
     #And the user come back on to WLN Home page
     #And the user opens WLN 'Cases' link
@@ -27,7 +25,7 @@ Feature: As a PPI User I do not want to see Favourites from other systems in my 
     And the user opens WLN 'Business Law Center' link
     And the user makes page as My Start Page
     Given PL+ user is logged in with following details
-      | userName | FFHTestUser |
+      | userName | FFHUser4 |
     Then the user checks the start page is Home page
     When the user clicks on 'Favourites' link on the header
     #Then the user checks that 'Cases' link is not in favourites group 'wln1' on Favourites page
@@ -41,14 +39,13 @@ Feature: As a PPI User I do not want to see Favourites from other systems in my 
     #And the user opens /Browse/Home/Resources url on plcuk website
     #And the user checks that 'Cases' link is not saved to Favourites
 
-  Scenario:
+  Scenario: Correct WLN links appear in favourites
     Given WLN user is logged in with following details
-      | userName         | FFHTestUser |
-      | routing          | FOLDERS     |
-      | mandatoryRouting | YES         |
+      | routing          | FOLDERS |
+      | mandatoryRouting | YES     |
     When API cleans all folders and history
     Given PL+ user is logged in with following details
-      | userName | FFHTestUser |
+      | userName | FFHUser4 |
     When API cleans all folders and history and user relogs in
     #And the user opens /Browse/Home/Resources url on plcuk website
     #And the user opens 'Cases' link
@@ -63,9 +60,9 @@ Feature: As a PPI User I do not want to see Favourites from other systems in my 
     And the user opens 'Finance' link
     And the user makes page as My Start Page
     Given WLN user is logged in with following details
-      | userName         | FFHTestUser |
-      | routing          | FOLDERS     |
-      | mandatoryRouting | YES         |
+      | userName         | FFHUser4 |
+      | routing          | FOLDERS  |
+      | mandatoryRouting | YES      |
     Then the user checks the start page is Home page
     #And the user checks that WLN 'Cases' link is not in favorites group 'pl1' on Favorites widget
     And the user checks that WLN 'Commercial' link is not in favorites group 'pl1' on Favorites widget

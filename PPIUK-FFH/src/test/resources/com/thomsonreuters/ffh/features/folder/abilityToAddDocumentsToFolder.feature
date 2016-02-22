@@ -1,13 +1,11 @@
 Feature: As a PPI User I want to be able to add documents to a folder so I can access them easier in next sessions.
 
-  Background:
-    Given PL+ user is logged in with following details
-      | userName | FFHTestUser |
-
   Scenario:
+    Given PL+ user is logged in
     When API cleans all folders and history and user relogs in
 
   Scenario Outline: From Home Page
+    Given PL+ user is logged in
     And the user runs a free text search for the query "<query>"
     And the user waits search result to load
     And the user selects '2' documents, stores its titles and guids and saves to new "<folder>" folder with parent folder "<parentFolder>"
@@ -20,6 +18,7 @@ Feature: As a PPI User I want to be able to add documents to a folder so I can a
     | Bill  | test1  | root         |
 
   Scenario Outline: From Resource page
+    Given PL+ user is logged in
     And the user opens 'Resources' link
     And the user opens 'PLC Magazine' link
     And the user runs a free text search for the query "<query>"
@@ -34,6 +33,7 @@ Feature: As a PPI User I want to be able to add documents to a folder so I can a
     | Client | test2  | root         |
 
   Scenario Outline: Know how
+    Given PL+ user is logged in
     When the user opens 'Resources' link
     And the user opens 'Standard documents and drafting notes' link
     And the user runs a free text search for the query "<query>"
@@ -48,6 +48,7 @@ Feature: As a PPI User I want to be able to add documents to a folder so I can a
     | Tax   | test24 | root         |
 
   Scenario Outline: Whats Market
+    Given PL+ user is logged in
     When the user opens 'Resources' link
     And the user opens 'What's Market' link
     And the user runs a free text search for the query "<query>"
@@ -62,6 +63,7 @@ Feature: As a PPI User I want to be able to add documents to a folder so I can a
     | Tax   | root   |
 
   Scenario Outline: Legal Updates
+    Given PL+ user is logged in
     When the user opens 'Resources' link
     When the user opens 'Legal updates' link
     And the user runs a free text search for the query "<query>"
@@ -76,6 +78,7 @@ Feature: As a PPI User I want to be able to add documents to a folder so I can a
     | Telecoms | root   |
 
   Scenario Outline: Topics page
+    Given PL+ user is logged in
     When the user opens 'IP & IT' link
     And the user opens 'Media & Telecoms' link
     And the user opens 'Music' link

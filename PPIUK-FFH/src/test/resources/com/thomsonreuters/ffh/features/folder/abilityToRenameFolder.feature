@@ -1,9 +1,8 @@
 @e2e
 Feature: As a PPI User I want to be able to edit the name of a folder so I can identified different folders.
 
-  Scenario Outline:
-    Given PL+ user is logged in with following details
-      | userName | FFHTestUser |
+  Scenario Outline: Able to edit the name of a folder
+    Given PL+ user is logged in
     When API cleans all folders and history and user relogs in
     And the user clicks on 'Folders' link on the header
     And the user creates new folder "<folder1>" in "<parentFolder1>" folder

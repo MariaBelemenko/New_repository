@@ -4,13 +4,12 @@ Feature: As a PPI User I do not want to see Folders from other products in my Fo
 # It is needded to add story with Recent folders
   Scenario Outline:
     Given WLN user is logged in with following details
-      | userName         | FFHTestUser |
-      | routing          | FOLDERS     |
-      | mandatoryRouting | YES         |
+      | routing          | FOLDERS |
+      | mandatoryRouting | YES     |
     When API cleans all folders and history
     And user relogs in
     Given PL+ user is logged in with following details
-      | userName | FFHTestUser |
+      | userName | FFHUser4 |
     When API cleans all folders and history and user relogs in
     And the user come back on to Home page
     And the user runs a free text search for the query "<query>"
@@ -19,9 +18,8 @@ Feature: As a PPI User I do not want to see Folders from other products in my Fo
     When the user clicks on 'Folders' link on the header
     And all documents present in the "<plFolder>" folder
     Given WLN user is logged in with following details
-      | userName         | FFHTestUser |
-      | routing          | FOLDERS     |
-      | mandatoryRouting | YES         |
+      | routing          | FOLDERS |
+      | mandatoryRouting | YES     |
     When the user clicks on 'Folders' link on the header
     Then the folder "<plFolder>" with parent folder "<parentFolder>" is absent
     And the user checks Faceting is absent
@@ -39,14 +37,13 @@ Feature: As a PPI User I do not want to see Folders from other products in my Fo
     | Crime | pl1      | root         |
 
   Scenario Outline:
-    Given PL+ user is logged in with following details
-      | userName | FFHTestUser |
+    Given PL+ user is logged in
     When API cleans all folders and history
     And user relogs in
     Given WLN user is logged in with following details
-      | userName         | FFHTestUser |
-      | routing          | FOLDERS     |
-      | mandatoryRouting | YES         |
+      | userName         | FFHUser4 |
+      | routing          | FOLDERS  |
+      | mandatoryRouting | YES      |
     When API cleans all folders and history and user relogs in
     And the user come back on to WLN Home page
     And the user runs a free text search for the query "<query>"
@@ -55,7 +52,7 @@ Feature: As a PPI User I do not want to see Folders from other products in my Fo
     When the user clicks on 'Folders' link on the header
     And all documents present in the "<wlnFolder>" folder
     Given PL+ user is logged in with following details
-      | userName | FFHTestUser |
+      | userName | FFHUser4 |
     When the user clicks on 'Folders' link on the header
     Then the folder "<wlnFolder>" with parent folder "<parentFolder>" is absent
     And the user checks Faceting is absent

@@ -2,8 +2,7 @@ Feature: As a PPI User I want to be able to rename a group when I try to organiz
   As a PPI User I want to be able to delete groups and/or pages on my Favourites so I can eliminate them from favourites when I don't need them anymore.
 
   Scenario:
-    Given PL+ user is logged in with following details
-      | userName | FFHTestUser |
+    Given PL+ user is logged in
     When API cleans all folders and history and user relogs in
     When the user clicks on 'Favourites' link on the header
     And the user creates new favourites group 'new123'
