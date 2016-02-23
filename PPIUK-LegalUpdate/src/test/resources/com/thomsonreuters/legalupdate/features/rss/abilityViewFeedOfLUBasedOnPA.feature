@@ -1,8 +1,7 @@
 Feature: The ability to view a feed of legal updates based on Practice Area
 
   Scenario Outline: View a feed of legal updates based on Practice Area
-    Given PL+ user is logged in with following details
-      | userName | LU_AutoUser |
+    Given PL+ user is logged in
     And that a user is viewing a specific legal updates page "/Browse/Home/Resources/Legalupdates"
     And the legal updates page is based on a particular Practice area tag "<practiceArea>"
     Then the user should be displayed a feed of Legal Updates for that Practice Area "<prescoped PA value>"

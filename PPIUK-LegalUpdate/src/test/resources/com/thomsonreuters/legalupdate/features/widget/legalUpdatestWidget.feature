@@ -1,8 +1,7 @@
 Feature: Ability to see last 5 legal updates on a widget with dates
 
   Scenario: See last 5 legal updates with list of LU Documents
-    Given PL+ user is logged in with following details
-      | userName | LU_AutoUser |
+    Given PL+ user is logged in
     Given a user navigate to a "Insurance" Topic page from a "Construction" Practice Area page
     And the user is presented with the Legal Updates widget
     And the user should see 5 updates on a "Legal Updates" widget
@@ -12,8 +11,7 @@ Feature: Ability to see last 5 legal updates on a widget with dates
     Then the user should be presented with a list of LU documents
 
   Scenario: See last 5 widgets displayed in publication
-    Given PL+ user is logged in with following details
-      | userName | LU_AutoUser |
+    Given PL+ user is logged in
     And a user is on the Legal Updates Home page
     And the user is presented with the Legal Updates widget
     And the user should see 5 updates on a "Legal updates" widget
@@ -23,8 +21,7 @@ Feature: Ability to see last 5 legal updates on a widget with dates
 
   @e2e @prod
   Scenario Outline: Legal Update Widget showing correct results
-    Given PL+ user is logged in with following details
-      | userName | LU_AutoUser |
+    Given PL+ user is logged in
     Given a user is on a "<practiceArea>" PA page
     And the user is presented with the Legal Updates widget
     And the user should see 5 updates on a "<widgetName>" widget

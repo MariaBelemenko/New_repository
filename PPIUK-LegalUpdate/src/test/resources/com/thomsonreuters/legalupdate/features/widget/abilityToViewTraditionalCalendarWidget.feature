@@ -2,8 +2,7 @@
 Feature: The ability to view a traditional calendar in a widget on Practice area browse page, so that I can see upcoming events
 
   Scenario: View a traditional calendar in a widget on Practice area browse page, so that I can see upcoming events
-    Given PL+ user is logged in with following details
-      | userName | LU_AutoUser |
+    Given PL+ user is logged in
     Given a user is on the website home page
     When the user navigates to the 'Media & Telecoms' practice area browse page
     Then the user should be presented with a calendar widget for the current month

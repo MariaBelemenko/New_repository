@@ -13,13 +13,13 @@ Feature: Legal Updates search - Sort by Relevance
   Scenario: 
     Given a user is on the Corporate PA LU results page
     When user runs a search
-    Then the�results should all be sorted by relevancy to the query
-    Then the�Results should all be Legal Update documents
-    Then the�Results should all be from the Corporate PA.
+    Then the results should all be sorted by relevancy to the query
+    Then the Results should all be Legal Update documents
+    Then the Results should all be from the Corporate PA.
 
   Scenario: 
     Given a user is on the�Tax: Energy and Environment Topic�LU results page
     When user runs a search
-    Then the�results should all be sorted by relevancy to the query
-    Then the�Results should all be Legal Update documents
-    Then the�Results should all be from the Tax: Energy and Environment Topic.
+    Then the results should all be sorted by relevancy to the query
+    Then the Results should all be Legal Update documents
+    Then the Results should all be from the Tax: Energy and Environment Topic.

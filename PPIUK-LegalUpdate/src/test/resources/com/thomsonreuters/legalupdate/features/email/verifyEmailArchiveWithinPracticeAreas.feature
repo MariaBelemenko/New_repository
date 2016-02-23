@@ -1,11 +1,8 @@
 Feature:Verify email archive functionality within practice areas
 
-  Background: Log on to test site with user having routing set to view the product details
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
-    And the user is on the home page
-
   Scenario: Verify email archive functionality within practice areas
+    Given PL+ user is logged in
+    And the user is on the home page
     When has selected the homepage practice area link to "Agriculture & Rural Land"
     And has selected the link to Resources
     And the user has selected the resource link entitled Email archive

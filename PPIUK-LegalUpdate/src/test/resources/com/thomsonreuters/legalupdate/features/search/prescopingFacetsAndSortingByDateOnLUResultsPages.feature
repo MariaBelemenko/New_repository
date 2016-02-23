@@ -1,8 +1,7 @@
 Feature: LU Results Facets - Pre-scoping, Sorting By Date
 
   Scenario Outline: PA LU Results: Facets - Pre-scoping, Sorting By Date
-    Given PL+ user is logged in with following details
-      | userName | LU_AutoUser |
+    Given PL+ user is logged in
     Given a user is on a "<practiceArea>" PA page
     When the user clicks on the 'View all' link of the LU widget
     Then the user should be presented with a list of LU documents
@@ -37,8 +36,7 @@ Feature: LU Results Facets - Pre-scoping, Sorting By Date
     | Tax                        |
 
   Scenario: Topic LU Results: Facets - Pre-scoping, Sorting By Date
-    Given PL+ user is logged in with following details
-      | userName | LU_AutoUser |
+    Given PL+ user is logged in
     Given a user navigate to a "Insurance" Topic page from a "Construction" Practice Area page
     When the user clicks on the 'View all' link of the LU widget
     Then the user should be taken to the "Insurance" Topic LU results list

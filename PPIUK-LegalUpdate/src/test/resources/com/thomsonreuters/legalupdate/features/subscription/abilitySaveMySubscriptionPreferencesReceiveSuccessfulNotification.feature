@@ -2,8 +2,7 @@
 Feature: The ability save my subscription preferences and receive a notification that my subscription has been successful
 
   Scenario: Save my subscription preferences and receive a notification that my subscription has been successful
-    Given PL+ user is logged in with following details
-      | userName | LU_AutoUser |
+    Given PL+ user is logged in
     Given a user is on a subscription panel
     When the user actions to save their subscription preferences
     Then the user should be presented a notification that their subscription has been successful

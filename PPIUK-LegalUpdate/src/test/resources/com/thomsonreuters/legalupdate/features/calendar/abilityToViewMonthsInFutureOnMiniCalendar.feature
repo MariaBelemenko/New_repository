@@ -2,8 +2,7 @@
 Feature: The ability to view  months in the future on the mini calendar
 
   Scenario: Ability to view  months in the future on the mini calendar
-    Given PL+ user is logged in with following details
-      | userName | LU_AutoUser |
+    Given PL+ user is logged in
     Given a user is on full calendar view for the current month
     And the user is presented with a mini calendar for the current month
     And the mini calendar displays the name and year of the current month

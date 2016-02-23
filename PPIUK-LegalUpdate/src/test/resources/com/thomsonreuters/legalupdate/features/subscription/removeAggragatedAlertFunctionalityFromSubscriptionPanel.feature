@@ -2,8 +2,7 @@
 Feature: Remove aggregated alert functionality from Subscription panel
 
   Scenario: Remove aggregated alert functionality from Subscription panel
-    Given PL+ user is logged in with following details
-      | userName | LU_AutoUser |
+    Given PL+ user is logged in
     Given a user is on a subscription panel
     Then the user should not be presented with the 'Add to existing Update' Checkbox
     And the user should not be presented with the 'Select update' Select box

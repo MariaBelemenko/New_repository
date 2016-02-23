@@ -3,8 +3,7 @@ Feature: Subscribe to content directly from a browse page,
   so that I can subscribe without leaving the page I am viewing
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | LU_AutoUser |
+    Given PL+ user is logged in
     Given a user is on a browse page
     When the user enters their subscription preferences menu
 

@@ -2,8 +2,7 @@
 Feature: The ability to export an event to Microsoft outlook from the widget lightbox, so that I can integrate events with my personal calendar
 
   Scenario: Export an event to Microsoft outlook from the widget lightbox, so that I can integrate events with my personal calendar
-    Given PL+ user is logged in with following details
-      | userName | LU_AutoUser |
+    Given PL+ user is logged in
     And a user is viewing the calendar widget on the 'Media & telecoms' practice area page
     When the user has clicks on an event indicator on the calendar widget
     And the user has been presented with the event pop-up

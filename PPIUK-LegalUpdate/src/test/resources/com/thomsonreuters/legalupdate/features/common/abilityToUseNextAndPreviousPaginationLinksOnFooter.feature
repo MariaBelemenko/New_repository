@@ -1,8 +1,7 @@
 Feature: The ability to use the Next and previous pagination links on the Footer so that I can navigate to other pages of search results.
 
   Scenario Outline: Use the Next and previous pagination links on the Footer so that I can navigate to other pages of search results.
-    Given PL+ user is logged in with following details
-      | userName | LU_AutoUser |
+    Given PL+ user is logged in
     And a user is on a legal updates results page "/LegalUpdates/Practice/1-379-8575"
     And a user is on legal updates results page number "<initial page number>"
     And the page navigation links are displayed either side of the page numbers

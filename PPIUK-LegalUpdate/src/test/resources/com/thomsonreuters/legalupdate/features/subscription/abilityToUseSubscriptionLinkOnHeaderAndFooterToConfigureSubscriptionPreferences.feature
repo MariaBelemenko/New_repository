@@ -2,8 +2,7 @@
 Feature: The ability to use subscription link on header and footer to config subscription preferences
 
   Scenario Outline: Use the Subscription link on the Header and Footer so that I can configure my subscription preferences
-    Given PL+ user is logged in with following details
-      | userName | LU_AutoUser |
+    Given PL+ user is logged in
     Given a user is on a legal updates results page
     When the user selects 'Subscribe' on the "<header or footer>"
     Then the user should be presented with a subscription popup

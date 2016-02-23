@@ -3,8 +3,7 @@ Feature: See what content that will be included in my alert when I enter the sub
   So I can choose wether to save or cancel the subscription
 
   Scenario: Verify what content that will be included in my alert when I enter the subscription panel from a widget
-    Given PL+ user is logged in with following details
-      | userName | LU_AutoUser |
+    Given PL+ user is logged in
     Given a user is on the 'media and telecoms' practice area page
     When the user clicks the 'Subscribe' link on the Legal Updates Widget
     Then the user should be presented the subscription panel with a Subscription Details box
