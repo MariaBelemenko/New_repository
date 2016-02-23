@@ -1,5 +1,5 @@
 @manual
-Feature As a user I want to see the topic page pagination according to the Design document
+Feature: As a user I want to see the topic page pagination according to the Design document
 
   Scenario: User verifies pagination styling
     Given a user is logged in
