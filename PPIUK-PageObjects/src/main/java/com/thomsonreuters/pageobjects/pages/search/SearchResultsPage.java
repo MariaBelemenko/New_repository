@@ -1,13 +1,21 @@
 package com.thomsonreuters.pageobjects.pages.search;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.lang.StringUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
+
 import com.thomsonreuters.driver.exception.PageOperationException;
 import com.thomsonreuters.driver.framework.AbstractPage;
 import com.thomsonreuters.pageobjects.common.ListFunctions;
-import org.apache.commons.lang.StringUtils;
-import org.openqa.selenium.*;
-import org.openqa.selenium.NoSuchElementException;
-
-import java.util.*;
 
 /**
  * This is the generic search results page for the search 1 project.
@@ -697,7 +705,15 @@ public class SearchResultsPage extends AbstractPage {
     }
 
     public WebElement searchResultPositionCheckbox(int position) {
-        return waitForExpectedElement(By.xpath("(//*[@id='coid_website_searchResults']//input[@type='checkbox'])[" + String.valueOf(position + 1) + "]"),15);
+		if (getCurrentUrl().toLowerCase().contains("topic")) {
+			return waitForExpectedElement(
+					By.xpath("(//*[@id='cobalt_search_knowHowTopicPlc_results']//input[@type='checkbox'])[" + String.valueOf(position)
+							+ "]"), 15);
+		} else {
+			return waitForExpectedElement(
+					By.xpath("(//*[@id='cobalt_search_knowHowPlc_results']//input[@type='checkbox'])[" + String.valueOf(position) + "]"),
+					15);
+		}
     }
 
     public WebElement saveToFolder() {

@@ -1,20 +1,22 @@
 package com.thomsonreuters.ffh.step_definitions.folder;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
+
 import com.thomsonreuters.ffh.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.pages.folders.NewFolderPopup;
 import com.thomsonreuters.pageobjects.pages.folders.ResearchOrganizerPage;
 import com.thomsonreuters.pageobjects.pages.folders.SaveToPopup;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.pageobjects.utils.folders.FoldersUtils;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.assertEquals;
 
 public class AbilityToAddDocumentsToFolderTest extends BaseStepDef {
 
@@ -36,7 +38,11 @@ public class AbilityToAddDocumentsToFolderTest extends BaseStepDef {
         searchResultsPage.waitForPageToLoad();
         String message = searchResultsPage.folderingPopupMessage().getText();
         LOG.info(message);
-        assertEquals("Message is incorrect", message, count + " of " + count + " items saved to '" + folderName + "'.");
+		if (Integer.valueOf(count) > 1) {
+			assertEquals("Message is incorrect", count + " of " + count + " items saved to '" + folderName + "'.", message);
+		} else {
+			assertEquals("Message is incorrect", titles.get(0) + " saved to '" + folderName + "'.", message);
+		}
     }
 
     @When("^the user selects '(.+)' documents, stores its titles and guids and saves to new \"([^\"]*)\" folder with parent folder \"([^\"]*)\"$")
@@ -48,7 +54,11 @@ public class AbilityToAddDocumentsToFolderTest extends BaseStepDef {
         searchResultsPage.waitForPageToLoadAndJQueryProcessing();
         String message = searchResultsPage.folderingPopupMessage().getText();
         LOG.info(message);
-        assertEquals("Message is incorrect", message, count + " of " + count + " items saved to '" + folder + "'.");
+		if (Integer.valueOf(count) > 1) {
+			assertEquals("Message is incorrect", count + " of " + count + " items saved to '" + folder + "'.", message);
+		} else {
+			assertEquals("Message is incorrect", titles.get(0) + " saved to '" + folder + "'.", message);
+		}
     }
 
     @Then("^the user selects '(.+)' documents and checks \"([^\"]*)\" folder is absent in root folder$")
