@@ -33,7 +33,7 @@ Feature: [730196][764868][764877] Verify the topic page facet links, topic page 
     And the facet ordering along with corresponding resource count is as follows
       | facetName                      | facetCount |
       | View all                       | 302        |
-      | Practice Notes                 | 44         |
+      | Practice Notes                 | 45         |
       | Standard Documents and Clauses | 46         |
       | Checklists                     | 6          |
       | Toolkits                       | 1          |

@@ -10,7 +10,7 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
     And user added new annotation
     And clicks on email delivery option for the document
     Then the user should be able to see Email basic tab options as follows
-      | Subject                     | Practical Law - Amendment and restatement agreement |
+      | Subject                     | Amendment and restatement agreement |
       | Email Note                  | optional notes                                      |
       | Document                    | Selected                                            |
       | Only Drafting Notes         | Not Selected                                        |

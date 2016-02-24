@@ -8,7 +8,7 @@ Feature: Verify KnowHow delivery functionality for any resource (except std docu
     When user added new annotation
     And clicks on email delivery option for the document
     Then the user should be able to see Email basic tab options as follows
-      | Subject           | Practical Law - Best or reasonable endeavours? |
+      | Subject           | Best or reasonable endeavours? |
       | Email Note        | optional notes                                 |
       | Table of Contents | Selected                                       |
       | Annotations       | Not Selected                                   |
