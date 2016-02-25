@@ -1,8 +1,7 @@
 Feature: Navigate from Also Found In section within documents to topic pages
 
   Scenario Outline: Links to related Topics within Also Found in section of documents
-    Given PL+ user is logged in with following details
-      | userName | Linking_AutoUser |
+    Given PL+ user is logged in
     When the user runs a free text search for the query "<query>"
     And the user opens the result in position "1"
     And the user verifies the presence of the Also Found In heading
