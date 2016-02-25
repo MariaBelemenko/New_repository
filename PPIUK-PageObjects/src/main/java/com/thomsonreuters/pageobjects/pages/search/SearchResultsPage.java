@@ -704,17 +704,21 @@ public class SearchResultsPage extends AbstractPage {
         return waitForExpectedElement(By.xpath("//*[@id='coid_website_searchResults']//a[contains(@href,'Document') and @rank='" + position + "']"),20);
     }
 
-    public WebElement searchResultPositionCheckbox(int position) {
-		if (getCurrentUrl().toLowerCase().contains("topic")) {
+	public WebElement searchResultPositionCheckbox(int position) {
+		if (getCurrentUrl().toLowerCase().contains("westlaw")) {
 			return waitForExpectedElement(
-					By.xpath("(//*[@id='cobalt_search_knowHowTopicPlc_results']//input[@type='checkbox'])[" + String.valueOf(position)
-							+ "]"), 15);
+					By.xpath("(//*[@id='cobalt_search_case_results']//input[@type='checkbox'])[" + String.valueOf(position) + "]"), 15);
 		} else {
-			return waitForExpectedElement(
-					By.xpath("(//*[@id='cobalt_search_knowHowPlc_results']//input[@type='checkbox'])[" + String.valueOf(position) + "]"),
-					15);
+			if (getCurrentUrl().toLowerCase().contains("topic")) {
+				return waitForExpectedElement(
+						By.xpath("(//*[@id='cobalt_search_knowHowTopicPlc_results']//input[@type='checkbox'])[" + String.valueOf(position)
+								+ "]"), 15);
+			} else {
+				return waitForExpectedElement(By.xpath("(//*[@id='cobalt_search_knowHowPlc_results']//input[@type='checkbox'])["
+						+ String.valueOf(position) + "]"), 15);
+			}
 		}
-    }
+	}
 
     public WebElement saveToFolder() {
         return waitForExpectedElement(By.xpath("(//*[@id='co_saveToWidget' or @id='saveToFolder']//a)[1]"));

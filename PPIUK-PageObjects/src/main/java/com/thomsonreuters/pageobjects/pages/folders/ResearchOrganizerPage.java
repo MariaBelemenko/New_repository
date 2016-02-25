@@ -1,15 +1,16 @@
 package com.thomsonreuters.pageobjects.pages.folders;
 
-import com.thomsonreuters.driver.exception.PageOperationException;
-import com.thomsonreuters.driver.framework.AbstractPage;
-import com.thomsonreuters.pageobjects.common.DocumentColumn;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.thomsonreuters.driver.exception.PageOperationException;
+import com.thomsonreuters.driver.framework.AbstractPage;
+import com.thomsonreuters.pageobjects.common.DocumentColumn;
 
 public class ResearchOrganizerPage extends AbstractPage {
 
@@ -103,6 +104,9 @@ public class ResearchOrganizerPage extends AbstractPage {
             title = "\"" + title + "\"";
             text = title;
         }
+		if (text.length() > 60) {
+			text = text.substring(0, 60);
+		}
         return findElement(By.xpath("//*[contains(@href, '" + documentGuid + "') and contains(text()," + text + ")]"));
     }
 
