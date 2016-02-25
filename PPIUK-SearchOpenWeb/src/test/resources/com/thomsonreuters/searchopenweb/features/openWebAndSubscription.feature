@@ -1,3 +1,4 @@
+@stepha
 Feature: Testing Open Web And Subscriptions
 
   Scenario: Verify open web user has no access to whats market content
@@ -10,8 +11,8 @@ Feature: Testing Open Web And Subscriptions
 
   Scenario: Verify logged in standard user does have access to what's market
     Given PL+ user is logged in with following details
-      | routing          | BETA |
-      | mandatoryRouting | YES  |
+     | routing          | BETA |
+     | mandatoryRouting | YES  |
     When the user selects the link to the Resource tab
     Then the user can verify that a link entitled "What's Market" is present
 
@@ -33,3 +34,14 @@ Feature: Testing Open Web And Subscriptions
     When the user runs a free text search for the query "deal"
     And the user pauses for "3" seconds
     Then the user is presented with a message confirming that the user needs a whats market subscription to view the results
+
+  Scenario: Verify Also Found in section available to open web users
+    Given PL+ user is logged in with following details
+      | routing       | OPEN_WEB_SEARCH |
+      | loginRequired | NO              |
+    And the user runs a free text search for the query "asset purchase"
+    And the user pauses for "3" seconds
+    Then the user is able to verify that a page of search results is displayed
+    And the user can open the first know how search result "1"
+    And the user can verify that the document contains the header Also Found In
+
