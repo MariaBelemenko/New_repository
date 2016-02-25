@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
         plugin = {"pretty", "html:target/cucumber-htmlreport/AnnotationsFACReport", "junit:target/junit_cucumber.xml", "json:target/cucumber.json"},
         features = "src/test/resources/com/thomsonreuters/annotations/features/sharing",
         monochrome = true,
+        tags = {"~@wip", "~@manual", "@chiran"},
         snippets = SnippetType.CAMELCASE)
 public class RunAnnotationsFACTest {
 

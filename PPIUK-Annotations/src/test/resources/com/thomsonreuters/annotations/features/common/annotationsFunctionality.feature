@@ -9,6 +9,7 @@ Feature: Annotations functionality
       | I1559faa0eef211e28578f7ccc38dcbee |
     And user logs out
 
+  @chiranTwo
   Scenario: Verify Annotations links on Document delivery tool bar
     When PL+ user is logged in
     When user navigates directly to document with guid "I33f1066be8cd11e398db8b09b4f043e0"
