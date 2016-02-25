@@ -1,3 +1,4 @@
+@stepha
 Feature: ukKnowHowSearchResultsSorting.feature - [702175] [706257][702174][702176][731598]
   1)ukKnowHowDefaultSortingS2-57.feature - As PL+ user when I search for Know How content then results are sorted by 'Keyword Relevancy' by default.
   Note: Removed the first scenario "verify that know how results are sorted by relevancy by default" as it is covering as part of remaining scenario in 702175
@@ -30,8 +31,9 @@ Feature: ukKnowHowSearchResultsSorting.feature - [702175] [706257][702174][70217
   #test below is not ideal - there is no way to verify the algorithm used for relevancy so have been obliged to rely on the fact that
   #once the option to sort by relevance is selected then the first three results should match the results displayed
   #before the user elected to sort by date
-  @e2e @prod
+  @e2e @prod @bug
   Scenario: [702176] [702174] Verify sort results by date. Verify that the user is able to sort search results by relevancy
+   #862981 - sorting by relevancy after sorting by date is no longer functioning
     When the user runs a free text search for the query "contract"
     And the user verifies that the option for sorting by relevance is displayed by default
     And the user obtains the title of the first result and stores it
