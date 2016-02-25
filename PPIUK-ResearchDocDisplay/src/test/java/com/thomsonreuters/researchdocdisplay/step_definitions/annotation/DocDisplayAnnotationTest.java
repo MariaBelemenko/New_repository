@@ -1,20 +1,23 @@
 package com.thomsonreuters.researchdocdisplay.step_definitions.annotation;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
+import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.CaseDocumentPage;
 import com.thomsonreuters.pageobjects.pages.urls.plcuk.KHDocumentPage;
 import com.thomsonreuters.pageobjects.utils.plPlusResearchDocDisplay.CaseDocumentPageUtils;
 import com.thomsonreuters.researchdocdisplay.step_definitions.BaseStepDef;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class DocDisplayAnnotationTest extends BaseStepDef {
 
     private NavigationCobalt navigationCobalt = new NavigationCobalt();
     private KHDocumentPage documentPagePLCUK = new KHDocumentPage();
     private CaseDocumentPageUtils caseDocumentPageUtils = new CaseDocumentPageUtils();
+    private CaseDocumentPage caseDocumentPage = new CaseDocumentPage();
 
     @When("^the user opens document with (.+) guid$")
     public void theUserOpensDocumentWithGuid(String guid) throws Throwable {
@@ -27,27 +30,11 @@ public class DocDisplayAnnotationTest extends BaseStepDef {
         assertTrue("Document not present", documentPagePLCUK.isDocumentBlockPresent());
     }
 
-    @Then("^the provision has \"(.*?)\" annotations$")
-    public void theProvisionHasAnnotations(String annotationsLinkText) throws Throwable {
-        assertTrue("The provision doesn't contain annotations",
-                caseDocumentPageUtils.istheProvisionHasAnnotations(annotationsLinkText));
-    }
-
-    @When("^the user navigates to annotations section$")
-    public void theUserNavigatesToAnnotationsSection() throws Throwable {
-        caseDocumentPageUtils.navigatesToAnnotationsSection();
-    }
-
-    @Then("^\"(.*?)\" annotations will be displayed by default$")
-    public void annotationsWillBeDisplayedByDefault(String annotationsText) throws Throwable {
-        assertTrue("The annotations didn't displayed by default",
-                caseDocumentPageUtils.isAnnotationsDisplayedByDefault(annotationsText));
-    }
 
     @Then("^show and hide link is displayed as part of annotations header$")
     public void showAndHideLinkIsDisplayedAsPartOfAnnotationsHeader() throws Throwable {
-        assertTrue("Show and hide link is not displayed",
-                caseDocumentPageUtils.isShowAndHideLinkIsDisplayed());
+    	caseDocumentPage.waitForPageToLoad();
+		assertTrue("Show and hide link is not displayed", caseDocumentPage.showAndHideLink().isDisplayed());
     }
 
     @When("^the user selects option to annotation$")

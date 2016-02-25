@@ -8,7 +8,6 @@ import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.Ca
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 
 import java.awt.*;
@@ -25,33 +24,10 @@ public class CaseDocumentPageUtils extends AbstractPage {
     private PageActions pageActions = new PageActions();
 
     private FileActions fileActions;
-
-    private WebElement annotationsLink;
     private File downloadedFile = null;
 
     protected static final Logger LOG = org.slf4j.LoggerFactory.getLogger(CaseDocumentPageUtils.class);
 
-    public boolean istheProvisionHasAnnotations(String annotationsLinkText) {
-        annotationsLink = caseDocumentPage.annotationsLink(annotationsLinkText);
-        return caseDocumentPage.annotationsLink(annotationsLinkText).isDisplayed();
-    }
-
-    public void navigatesToAnnotationsSection() {
-        annotationsLink.click();
-    }
-
-    public boolean isAnnotationsDisplayedByDefault(String annotationsText) {
-        if (caseDocumentPage.annotationsText(annotationsText).isDisplayed() == true) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean isShowAndHideLinkIsDisplayed() {
-        caseDocumentPage.waitForPageToLoad();
-        return caseDocumentPage.showAndHideLink().isDisplayed();
-    }
 
     public void selectOnShowAndHideLink() {
         JavascriptExecutor js = (JavascriptExecutor) caseDocumentPage.getDriver;

@@ -258,6 +258,10 @@ public class StandardDocumentPage extends DocumentDisplayAbstractPage {
         return link.findElement(By.xpath("../span[@class='ng-binding']"));
     }
 
+    public WebElement headerOnTheDocument(String header) {
+		return waitForExpectedElement(By.xpath(".//*[@id='co_document']//*[contains(text(), '" + header + "')]"));
+	}
+    
     /**
      * Check if resource type of current opened document is equals to expected
      *

@@ -11,10 +11,11 @@ Feature: As a PL+ User I can run a search from the header search bar and rearch 
     When the user clicks link '<Document title>' on 'search' page
     Then the document opens correctly
     And the document coded to "<Practice Area>" Practice Area
-  Examples:
-    | Document title                                                  | Practice Area |
-    | China updates tax regime for sale of offshore holding companies | China         |
-    | Challenging a medical certificate                               | PL Australia  |
-    | Finance Act 2015: diverted profits tax                          | PLC UK        |
-    | Auction Timeline                                                | PL Canada     |
-    | Reform of the 2001 Brussels Regulation: tracker                 | PLC US        |
+
+    Examples: 
+      | Document title                                                                      | Practice Area |
+      | China updates tax regime for sale of offshore holding companies                     | China         |
+      | Managing an ill or injured employee: challenging a medical certificate: quick guide | PL Australia  |
+      | Finance Act 2015: diverted profits tax                                              | PLC UK        |
+      | Auction Timeline                                                                    | PL Canada     |
+      | Reform of the 2001 Brussels Regulation: tracker                                     | PLC US        |
