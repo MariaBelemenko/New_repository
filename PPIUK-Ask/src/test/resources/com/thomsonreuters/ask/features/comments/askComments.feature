@@ -1,8 +1,7 @@
 Feature: View comment, report this post, reply/add comment to a ask resource
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | AskTestuser |
+    Given PL+ user is logged in
 
   Scenario: View comment - Display name, service, posted date, report this post and reply
     When user navigates directly to document with guid "Ie30b7a17ce4611e498db8b09b4f043e0"

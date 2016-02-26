@@ -1,10 +1,7 @@
 Feature: Check all the meta data is displayed on ASK resources
 
-  Background:
-    Given PL+ user is logged in with following details
-      | userName | AskTestuser |
-
   Scenario: Check correct metadata is displayed for "Ask Resource"
+    Given PL+ user is logged in
     When user navigates directly to document with guid "Ie30b7a17ce4611e498db8b09b4f043e0"
     Then ask disclaimer is displayed on the document
     And document title is displayed as "Does TUPE apply to a child employed by a local news agent to do newspaper rounds?"

@@ -4,8 +4,7 @@ Feature: PL+ user ASK Question link over Category,Topic and Home Page
   So that I can quickly ask a question
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | AskTestuser |
+    Given PL+ user is logged in
 
   @CloseAskWindow
   Scenario Outline: Verify Ask question link on Category Page

@@ -5,8 +5,7 @@ Feature: Disclaimers for Users
 
   @CloseAskWindow
   Scenario: Disclaimer text for logged in PL+ user
-    Given PL+ user is logged in with following details
-     | userName | AskTestuser |
+    Given PL+ user is logged in
     When the user clicks on 'Ask a question' link to ask a question
     And ASK form is displayed in new window
     Then the legal disclaimer is displayed on the ASK form

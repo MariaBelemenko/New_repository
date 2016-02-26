@@ -4,8 +4,7 @@ Feature: Ask Topic Links per Practice Area in ask Landing Page
   So that I can view Ask queries for that particular topic
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | AskTestuser |
+    Given PL+ user is logged in
 
   Scenario: Click a Ask Topic page and verify Ask Queries page-date sorted by ascending order, date format
     When the user is in page 'Browse Menu>Resources>Ask' with page Title 'Ask'

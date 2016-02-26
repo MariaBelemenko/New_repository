@@ -1,4 +1,4 @@
-@wip@e2e
+@wip @e2e
 Feature: [755567]Form Submission into Ask Mediator
   As a: PL+ subscriber or Non-Subscriber
   I want to: submit my question to the Ask Mediator
@@ -9,8 +9,7 @@ Feature: [755567]Form Submission into Ask Mediator
   #mvn clean test -PDEMO -Dcucumber.options="src\test\resources\com\thomsonreuters\tests\features\ask\askSharePoint.feature" -Dwinusername="TEN\UCxxxxxxx" -Dwinpassword="xxxxx"
   #Robot library is not used for the tests anymore.
   Background:
-    Given PL+ user is logged in with following details
-      | userName | AskTestuser |
+    Given PL+ user is logged in
 
   @CloseAskWindow
   Scenario Outline: Successful ASK form submission by PL+ user into ASK mediator from a document

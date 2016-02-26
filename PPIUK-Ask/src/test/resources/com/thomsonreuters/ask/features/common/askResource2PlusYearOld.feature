@@ -4,14 +4,12 @@ Feature: When 2+ year old ASK resource or deleted ask resourced is accessed, app
   So that I can get access only to latest ASK resource only
 
   Scenario: As a logged in user, verify error message displayed while accessing 2+ year old ASK resource
-    Given PL+ user is logged in with following details
-      | userName | AskTestuser |
+    Given PL+ user is logged in
     When the user is in Page '/0-522-1826'
     Then the user verifies that ask error message displayed contains 'Content not available\nContent is out of date and has been removed from the site'
 
   Scenario Outline: As a logged in user,verify error message is NOT displayed while accessing 2+ year old ASK resource, that has been  re-published
-    Given PL+ user is logged in with following details
-      | userName | AskTestuser |
+    Given PL+ user is logged in
     When the user is in Page '<Page>'
     Then the user verifies that ask error message displayed does NOT contains 'Content not available\nContent is out of date and has been removed from the site'
   Examples:
@@ -20,8 +18,7 @@ Feature: When 2+ year old ASK resource or deleted ask resourced is accessed, app
     | /0-525-8443 |
 
   Scenario Outline: As a logged in user,verify error message displayed while accessing deleted ASK resource
-    Given PL+ user is logged in with following details
-      | userName | AskTestuser |
+    Given PL+ user is logged in
     When the user is in Page '<Page>'
     Then the user verifies that ask error message displayed contains 'Content not available\nContent has been removed from the site'
   Examples:
@@ -35,8 +32,7 @@ Feature: When 2+ year old ASK resource or deleted ask resourced is accessed, app
     Then the user verifies that ask error message displayed contains 'Content not available\nContent is out of date and has been removed from the site'
 
   Scenario Outline: As a logged in user,verify error message displayed while accessing 2 or less years old ASK resource, that has been removed by moderator
-    Given PL+ user is logged in with following details
-      | userName | AskTestuser |
+    Given PL+ user is logged in
     When the user is in Page '<Page>'
     Then the user verifies that ask error message displayed contains 'Content not available\nContent has been removed from the site'
   Examples:

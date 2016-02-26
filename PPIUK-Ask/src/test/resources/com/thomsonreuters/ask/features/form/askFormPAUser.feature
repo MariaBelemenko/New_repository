@@ -4,8 +4,7 @@ Feature: PL+ user ASK form submission and Validations
   So that I am not confused and there is consistency between the two sites.
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | AskTestuser |
+    Given PL+ user is logged in
 
   Scenario: Display correct fields and indicate required fields
     When the user access the ASK form directly via url

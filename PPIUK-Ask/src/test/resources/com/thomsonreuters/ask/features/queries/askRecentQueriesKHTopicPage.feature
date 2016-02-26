@@ -4,8 +4,7 @@ Feature: Ask Recent Queries Widget for KH Topic Page
   So that I can quickly find questions and answers of my interest
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | AskTestuser |
+    Given PL+ user is logged in
 
   # 839330:WCMS widgets not displaying document titles for legal updates and ask widgets
   @e2e @prod @bug

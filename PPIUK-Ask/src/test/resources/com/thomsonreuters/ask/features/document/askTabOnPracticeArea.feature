@@ -4,8 +4,7 @@ Feature: Ask Tab on each Practice Area Page
   So that I can quickly find Ask content from each Practice Area page
 
   Background: 
-    Given PL+ user is logged in with following details
-      | userName | AskTestuser |
+    Given PL+ user is logged in
 
   Scenario: Verify that on a Practice Area Page ask Tab exists and it has 5 queries and queries are sorted by Post Date
     When the user is in page 'Construction' with page Title 'Construction'

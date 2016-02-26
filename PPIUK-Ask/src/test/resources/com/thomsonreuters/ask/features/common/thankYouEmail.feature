@@ -6,8 +6,7 @@ Feature: Thank You Email
 
   @CloseAskWindow
   Scenario: Thanks You Email
-    Given PL+ user is logged in with following details
-      | userName | AskTestuser |
+    Given PL+ user is logged in
     When the user clicks on 'Ask a question' link to ask a question
     And ASK form is displayed in new window
     And the user accepts ASK disclaimer terms

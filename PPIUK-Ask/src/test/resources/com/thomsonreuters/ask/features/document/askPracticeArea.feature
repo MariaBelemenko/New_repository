@@ -4,8 +4,7 @@ Feature: Ask Practice Area Widget
   So that I can quickly find questions and answers of my interested Practice Area
 
   Background: 
-    Given PL+ user is logged in with following details
-      | userName | AskTestuser |
+    Given PL+ user is logged in
 
   Scenario: Verify that only resources belonging to pre- configured Practice Areas are displayed
     When the user is in Page '/Browse/Home/Resources/AskConstruction'

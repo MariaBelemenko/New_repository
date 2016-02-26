@@ -4,8 +4,7 @@ Feature: Ask Recent Queries Widget
   So that I can quickly find questions and answers of my interest
 
   Background:
-    Given PL+ user is logged in with following details
-     | userName | AskTestuser |
+    Given PL+ user is logged in
 
   Scenario: Verify Recent Queries section has at least one ask resource
     When the user is in Page '/Browse/Home/Resources/AskCorporate'

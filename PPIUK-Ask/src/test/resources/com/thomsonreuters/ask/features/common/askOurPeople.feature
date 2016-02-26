@@ -4,8 +4,7 @@ Feature: Ask Our People Widget
   So that I can see who is answering my question and have a more personal connection with the Ask system
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | AskTestuser |
+    Given PL+ user is logged in
 
   Scenario Outline: Verify Our people widget contains correct Head of Practice Area for each Practice Area
     When the user is in page 'Browse Menu>Resources>Ask' with page Title 'Ask'
