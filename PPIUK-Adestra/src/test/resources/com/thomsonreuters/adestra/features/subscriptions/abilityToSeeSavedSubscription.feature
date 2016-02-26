@@ -7,10 +7,10 @@ Feature: As user i want to see saved subscription
   @UsubscribeUserFromAllSubscriptionsAndRemoveUnsubscribeOption
   Scenario Outline: As user i want to see saved subscription
     Given PL+ user is logged in with following details
-      | userName | adestra_user33 |
+      | userName | adestra_user22 |
     And a user is viewing the email preference page
     And a user creates subscription to the "<region>" "<corporate>" email service with "<frequency>"
-    When a user "adestra_user33@mailinator.com" is has subscription to the "<region>" "<corporate>" email service with "<frequency>"
+    When a user "adestra_user22@mailinator.com" is has subscription to the "<region>" "<corporate>" email service with "<frequency>"
     And the user has opened the "<region>" Services tab
     Then the user should be presented with "<region>" "<corporate>" services row
     And the "<region>" "<corporate>" services row will display the appropriate "<frequency>" check boxes
