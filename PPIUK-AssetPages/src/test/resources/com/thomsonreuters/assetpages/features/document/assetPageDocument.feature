@@ -2,8 +2,7 @@ Feature: As a PL+ User I want to see the party names
   As a PL+ User I want to see the case page
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
 
   Scenario Outline: The case documents contain party names
     When the user opens document with <GUID> guid

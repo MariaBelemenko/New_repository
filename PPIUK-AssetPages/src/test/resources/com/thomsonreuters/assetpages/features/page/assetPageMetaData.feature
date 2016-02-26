@@ -3,8 +3,7 @@ Feature: As a PL+ User I want to view the meta data relating to a case asset pag
   As a PL+ User I want does not want to see Court in case asset page
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
 
   Scenario Outline: The case documents contain the case metadata in the right hand side of the central column
     When the user opens document with <GUID> guid

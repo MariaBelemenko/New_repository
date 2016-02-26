@@ -2,8 +2,7 @@ Feature: As a PL+ User I want to view links to Westlaw UK on the primary source 
   As a PL+ User I want to view links to Westlaw UK that lead to EU Content
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
 
   @e2e @prod
   Scenario Outline: The primary source documents contains  links to Westlaw UK

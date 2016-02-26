@@ -2,8 +2,7 @@ Feature: As a PL+ User I want to see primary source document
   As a PL+ User I want to see the primary source title
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
 
   Scenario Outline: Document opens correctly
     When the user opens document with <GUID> guid

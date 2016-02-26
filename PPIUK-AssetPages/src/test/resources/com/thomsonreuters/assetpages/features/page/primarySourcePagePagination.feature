@@ -1,8 +1,7 @@
 Feature: As a PL+ User I want to view more that 300 links in Content reffering section grouped by document type in Primary source page
 
   Scenario Outline: The primary source document contain more than 300 links in Content reffering section grouped by document type
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly

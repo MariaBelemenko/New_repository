@@ -1,8 +1,7 @@
 Feature: As a PL+ User I want to see Top button
 
   Scenario Outline: The case documents contain Top button
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly

@@ -4,8 +4,7 @@ Feature: As a PL+ User I want to download asset page document in different forma
   As a PL+ User I want to download the asset page document and see right number of bullets
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
 
   Scenario Outline: The user download document in different formats
     When the user opens document with <GUID> guid

@@ -1,8 +1,7 @@
 Feature: As a PL+ User I want to view sorted links by document types in primary source pages
 
   Scenario Outline: The primary source document contain sorted links by document types
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly

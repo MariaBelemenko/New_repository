@@ -5,8 +5,7 @@ Feature: As a PL+ User I want to view links to�Bailii on the case asset page
   As a PL+ User I want to view link to curia.europa.eu on the case asset page
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
 
   Scenario Outline: The case assert documents contains links to�Bailii
     When the user opens document with <GUID> guid

@@ -2,8 +2,7 @@
 Feature: [818356] As a PL+ User I want to view list of Related documents grouped by document type in case asset page
 
   Background: 
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
 
   Scenario Outline: [818356] The case asset page contain list of Related documents grouped by document type
     When the user opens document with <GUID> guid

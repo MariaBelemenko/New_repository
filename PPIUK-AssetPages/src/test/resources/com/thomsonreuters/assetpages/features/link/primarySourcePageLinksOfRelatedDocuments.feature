@@ -2,8 +2,7 @@
 Feature: [818351] As a PL+ User I want to view list of Related documents grouped by document type
 
   Background: 
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
 
   Scenario Outline: [818351] The primary source document contain list of Related documents grouped by document type
     When the user opens document with <GUID> guid

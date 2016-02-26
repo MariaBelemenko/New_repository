@@ -2,8 +2,7 @@ Feature: As a PL+ User I want to select Content referring to this case link and 
   As a PL+ User I do not want to see  Content referring to this case link and Content referring to this case link section
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
 
 #855200[REGRESSION] Case asset page does not 'content referring to this case' section      
 @bug

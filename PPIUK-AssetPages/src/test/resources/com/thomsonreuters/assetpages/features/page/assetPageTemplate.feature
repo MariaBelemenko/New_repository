@@ -3,8 +3,7 @@ Feature: As a PL+ User I want to see Where Reported and Where Reported list in r
   As a PL+ User I want to see Resource Type and Count
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
 
   Scenario Outline: The case documents contain Where Reported list
     When the user opens document with <GUID> guid

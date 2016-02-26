@@ -2,8 +2,7 @@ Feature: As a PL+ User I want to select a Links to this case and jump to that pa
   As a PL+ User I do not want to see a Links to this case and Links to this case section
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
 
   Scenario Outline: The case documents contain Links to this case jump link in the left hand side navigation panel
     When the user opens document with <GUID> guid

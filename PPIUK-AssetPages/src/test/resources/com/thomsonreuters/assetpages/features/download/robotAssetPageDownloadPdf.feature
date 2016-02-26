@@ -2,8 +2,7 @@ Feature: [805839] As a PL+ User I want to view links to Westlaw UK and Bailii on
   [798569] As a PL+ User I want to download pdf document and view Content referring to this case in downloaded document
 
   Background: 
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
 
   Scenario Outline: [805839] The user download pdf document
     When the user opens document with <GUID> guid

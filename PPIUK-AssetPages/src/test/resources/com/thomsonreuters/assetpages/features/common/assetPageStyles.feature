@@ -1,8 +1,7 @@
 Feature: As a PL+ User I want to see applied css styles in asset pages
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
 
   Scenario Outline: The asset pages have css styles
     When the user opens document with <GUID> guid

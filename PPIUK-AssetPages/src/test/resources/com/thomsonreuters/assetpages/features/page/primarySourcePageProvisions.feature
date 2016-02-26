@@ -3,8 +3,7 @@ Feature: As a PL+ User I want to view list of provisions
   The other provisions section does not has co_borderTop style
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
 
   Scenario Outline: The case documents contain list of provisions
     When the user opens document with <GUID> guid

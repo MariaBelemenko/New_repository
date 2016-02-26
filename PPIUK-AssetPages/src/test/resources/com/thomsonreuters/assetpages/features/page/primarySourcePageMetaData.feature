@@ -2,8 +2,7 @@ Feature: As a PL+ User I want to see the Legislation metadata in the right hand 
   As a PL+ User I want to see the Jurisdiction in Legislation metadata in the right hand side of the central column
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
 
   Scenario Outline: The primary source documents contain metadata
     When the user opens document with <GUID> guid

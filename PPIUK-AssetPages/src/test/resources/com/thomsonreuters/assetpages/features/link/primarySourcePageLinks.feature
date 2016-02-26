@@ -3,8 +3,7 @@ Feature: As a PL+ User I want to view hardcoded and celex links on the primary s
   As a PL+ User I want to see and link to justice.gov.uk and to europa.eu and to app.westlawchina.com
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
 
   Scenario Outline: The primary source documents contains hardcoded links
     When the user opens document with <GUID> guid
