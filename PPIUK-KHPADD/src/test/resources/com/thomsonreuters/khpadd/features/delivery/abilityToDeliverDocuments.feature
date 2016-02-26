@@ -2,8 +2,7 @@
 Feature: E2E tests for Delivery
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | PLUKTestUser1 |
+    Given PL+ user is logged in
 
   Scenario Outline: Print the <Document Type Name> document type with <Print Option Name> print option
     When user navigates directly to document with guid "<GUID>"

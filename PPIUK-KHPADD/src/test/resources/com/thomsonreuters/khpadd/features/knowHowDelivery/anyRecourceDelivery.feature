@@ -9,9 +9,9 @@ Feature: Verify KnowHow delivery functionality for any resource (except std docu
     And clicks on email delivery option for the document
     Then the user should be able to see Email basic tab options as follows
       | Subject           | Best or reasonable endeavours? |
-      | Email Note        | optional notes                                 |
-      | Table of Contents | Selected                                       |
-      | Annotations       | Not Selected                                   |
+      | Email Note        | optional notes                 |
+      | Table of Contents | Selected                       |
+      | Annotations       | Not Selected                   |
     And the user edits the basic email options as follows
       | To                | deliveryTests@mailinator.com  |
       | Subject           | Practical Law - Resource      |

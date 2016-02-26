@@ -2,7 +2,7 @@
 Feature: E2E Inline Linking
 
   Background:
-    Given PL+ user 'PLUKTestUser1' searches for 'section 110 liquidation'
+    Given PL+ user 'KHPaddUser4' searches for 'section 110 liquidation'
     When the user clicks on the first link in results
     Then document title is displayed as "Section 110 liquidation schemes: step-by-step process"
     And resource type is displayed as "Practice notes" on right hand panel

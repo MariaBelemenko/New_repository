@@ -2,8 +2,7 @@
 Feature: Verify Meta Data and Sections of PA documents
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | PLUKTestUser1 |
+    Given PL+ user is logged in
 
   # Test will be passed ONLY if user have Pre-Release content option.
   # In other cases test will fail due to "Products" section on meta-data block not available for user w/o Pre-Release content.
