@@ -3,8 +3,7 @@ Feature: [702210][713886] ukKnowHowSearchResultsPerPage
   2)ukKnowHowSearchResultTotal.feature - Verify total results on the search results page
 
   Background: Log on to test site
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
 
   Scenario Outline: [702210] As  a PL+ user I should be able to select from the options available to me the total number of results displayed per page
     And the user runs a free text search for the query "<query>"
@@ -21,7 +20,6 @@ Feature: [702210][713886] ukKnowHowSearchResultsPerPage
     When the user runs a free text search for the query "tax"
     When the user selects the option to display "50 per page" of results per page
     Then the user can verify that the search result total contains text confirming that the specified number "50" of results are displayed
-
 
   Scenario: Verify page numbering and navigation options on know how search results page
     And the user runs a free text search for the query "law"

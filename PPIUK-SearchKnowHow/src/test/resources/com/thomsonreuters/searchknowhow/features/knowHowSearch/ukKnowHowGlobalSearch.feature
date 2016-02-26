@@ -9,8 +9,7 @@ Feature: KnowHowGlobalSearch.feature - [702180] [750884][702204][729245][702178]
   ukKnowHowUSSearchReturnsUSContentOnlyS2-61.feature -  As a PL+ user, when I search from the US content section then only content coded to US are returned.
 
   Scenario Outline: Verify search from Global site retrieves Global resources
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
     And has selected the Know How - Global link
     When the user runs a free text search for the query "<query>"
     And opens the link associated with the first result
@@ -20,8 +19,7 @@ Feature: KnowHowGlobalSearch.feature - [702180] [750884][702204][729245][702178]
     | china arbitration |
 
   Scenario Outline:[750884] As a user, I want the ability to view content with the PLC US product codes
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
     When the user runs a free text search for the query "<searchTerm>"
     And the user pauses for "3" seconds
     And the user can open the first know how search result "1"
@@ -33,8 +31,7 @@ Feature: KnowHowGlobalSearch.feature - [702180] [750884][702204][729245][702178]
     | adv: "Timeline of the Chapter 11" | PLC US Finance    |
 
   Scenario Outline: [702204] verify search results from a country page search are returned on the know how page
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
     When the user selects the link to Know How Spain
     And the user runs a free text search for the query "<query>"
     And the user pauses for "3" seconds
@@ -47,8 +44,7 @@ Feature: KnowHowGlobalSearch.feature - [702180] [750884][702204][729245][702178]
     | commercial |
 
   Scenario Outline: [729245] verify search results appear on know how tab and are scoped for PLC Magazine
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
     When the user selects the link to the PLC magazine page
     And the user runs a free text search for the query "<query>"
     And the user pauses for "3" seconds
@@ -63,8 +59,7 @@ Feature: KnowHowGlobalSearch.feature - [702180] [750884][702204][729245][702178]
     | Disaster Recovery | PLC Magazine (UK) |
 
   Scenario Outline:[702178][702179] Search from UK site retrieves UK resources. Search from US site retrieves US resources
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
     When has selected the Know How - <region> link
     And the user runs a free text search for the query "<query>"
     And the user pauses for "3" seconds

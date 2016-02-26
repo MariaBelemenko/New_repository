@@ -8,8 +8,7 @@ Feature: [706631][702181][702209][702202][713886][702199]
   7) ukKnowHowSpellingCorrectionsS2-84.feature - As a PL+ user when I search without applying a pre-filter then the search results are returned and none of the facets are checked by default.
 
   Background: Log on to test site
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
 
   Scenario: [706631] Know How Date Format
     Given PL+ user is logged in with following details

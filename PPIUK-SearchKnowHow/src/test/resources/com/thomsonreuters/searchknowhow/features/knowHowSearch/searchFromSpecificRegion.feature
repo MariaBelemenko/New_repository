@@ -3,8 +3,7 @@ Feature: The search and results are linked to a specific <region> only
   [638469], [637926]
 
   Scenario Outline: Search from <region> site retrieves <region> resources
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
     And has selected the Know How - <region> link
     When the user runs a free text search for the query "<query>"
     And the user can open the first know how search result "1"

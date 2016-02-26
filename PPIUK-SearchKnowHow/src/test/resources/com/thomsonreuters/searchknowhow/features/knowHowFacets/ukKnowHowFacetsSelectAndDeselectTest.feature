@@ -9,8 +9,7 @@ Feature: [714595][702169][702182][714594] ukKnowHowFacetsSelectAndDeselectTest.f
   5) ukKnowHowSelectDeselectSingleFacet.feature - Combined 3 existing scenarios into single scenario.
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
 
   Scenario Outline: [714595] verify search results updated in light of parent facet selections. verify search results updated in light of parent and child facet selections. verify search results updated in light of child facet selections
     When the user runs a free text search for the query "<query>"

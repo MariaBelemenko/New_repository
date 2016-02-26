@@ -3,10 +3,8 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
   Delivery of know how search results in list and full text format via print, save and email
 
   Background: Log on to test site
-    Given PL+ user is logged in with following details
-      | userName | Search2_AutoUser |
+    Given PL+ user is logged in
 
-  @manual
   Scenario: [702205] print list of know how search results from basic tab in list format
     When the user runs a free text search for the query "contract"
     And the user selects the checkbox associated with result "1"
@@ -20,7 +18,6 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user verifies that the request is processed and the document printed
     And the user verifies the format of the printed list
 
-  @manual
   Scenario: [702205] print list of know how search results from basic tab in document format
     When the user runs a free text search for the query "contract"
     And the user selects the checkbox associated with result "1"
@@ -34,7 +31,6 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user verifies that the request is processed and the document printed
     And the user verifies the format of the printed document
 
-  @manual
   Scenario: [no story] download delivery with and without table of contents
     When the user runs a free text search for the query "contract"
     And the user selects the checkbox associated with result "1"
@@ -53,7 +49,6 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user selects the Download option
     And the user verifies that the delivered version does not contain a table of contents
 
-  @manual
   Scenario: [no story] download delivery (single result only) with and without annotations
     When the user runs a free text search for the query "contract"
     And the user waits for the results to load
@@ -77,7 +72,6 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user verifies that the downloaded document does not include the highlighting
     And the user verifies that the downloaded document does not include the note
 
-  @manual
   Scenario: [no story] download delivery (2 results) with and without annotations
     When the user runs a free text search for the query "contract"
     And the user waits for the results to load
@@ -103,7 +97,6 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user verifies that the downloaded document does not include the highlighting
     And the user verifies that the downloaded document does not include the note
 
-  @manual
   Scenario: [no specific story] Verify cover sheet functionality
     When the user runs a free text search for the query "contract"
     And the user waits for the results to load
@@ -117,7 +110,7 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user selects the download option
     And the user verifies that the downloaded version includes a cover sheet containing the specified text
 
-  @bug @manual
+  @bug
   Scenario: [no specific story] Verify links within delivered document resolve to correct destination
     #804040
     When the user runs a free text search for the query "contract"

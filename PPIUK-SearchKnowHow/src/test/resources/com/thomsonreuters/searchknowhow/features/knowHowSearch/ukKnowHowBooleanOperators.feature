@@ -1,8 +1,7 @@
 Feature: [702195] Ability to use operators when searching on PL+ (know how)
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName          | Search1_AutoUser       |
+    Given PL+ user is logged in
 
   Scenario: verify that the number of results for an "and" search is lower than the number of  results for an "or" search
     When the user runs a free text search for the query "contract and acceptance"
@@ -28,9 +27,9 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
     And the user pauses for "5" seconds
     Then the user verifies the search result contains the search terms "<term1>" as a phrase within the full text
   Examples:
-    | result | term1        |
-    | 2      | income tax   |
-    | 3      | income tax   |
+    | result | term1      |
+    | 2      | income tax |
+    | 3      | income tax |
 
   Scenario Outline: Validate that use of & retrieves both search terms
     When the user runs a free text search for the query "contract and acceptance"
@@ -51,11 +50,11 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
     And the user opens the result in position "<result>"
     Then the displayed document will have the terms "school+schol holiday+vacation" marked up as hits
     #Then the result in position "<result>" contains either school & holiday or school & vacation or schol & holiday or schol & vacation
-    Examples:
-      | result |
-      | 1      |
-      | 2      |
-      | 3      |
+  Examples:
+    | result |
+    | 1      |
+    | 2      |
+    | 3      |
 
   Scenario Outline: Validate that use of the /s connector retrieves terms within the same sentence (not working)
     #there is an issue with sentence mark up - sometimes results not correct - business determined this is a won't fix so not an active bug
@@ -142,9 +141,9 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
       | obeys   |
       | obeyed  |
       | obeying |
-    Examples:
-      | result |
-      | 2      |
+  Examples:
+    | result |
+    | 2      |
 
   Scenario Outline: Validate that use of the universal character retrieves terms which are an appropriate match
     When the user runs a free text search for the query "g**se"
@@ -221,9 +220,9 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
     And the user opens the result in position "1"
     And the user pauses for "5" seconds
     Then the user is able to verify that the full text contains either the phrase "earlier decision" or "local authority" or both and also contains the term "economic" in the same sentence as the term "loss"
-    Examples:
-      | query |
-      | ("earlier decision" OR "local authority") AND (economic /s loss) |
+  Examples:
+    | query                                                            |
+    | ("earlier decision" OR "local authority") AND (economic /s loss) |
 
   @manual
   Scenario Outline: Advanced terms and connectors
@@ -232,8 +231,8 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
     And the user pauses for "5" seconds
     Then the user is able to verify that the full text contains the terms "recoverable" and "loss" within the same sentence or the terms "Anns" and "case" within the same paragraph and the terms "economic" or "loss" somewhere within the document
   Examples:
-    | query |
-    | ((recoverable +s loss) OR (Anns +p case)) AND (economic OR loss)      |
+    | query                                                            |
+    | ((recoverable +s loss) OR (Anns +p case)) AND (economic OR loss) |
 
   @manual
   Scenario: Advanced terms and connectors

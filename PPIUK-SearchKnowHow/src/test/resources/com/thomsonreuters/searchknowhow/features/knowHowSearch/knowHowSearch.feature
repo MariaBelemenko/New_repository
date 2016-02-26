@@ -4,8 +4,7 @@ Feature: [638468] knowHowSearch.feature
   [638468]
 
   Scenario Outline: UK and US Know-How matches Search Criteria and returns UK Know-How Content
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
     When has selected the Know How - <region> link
     And the user runs a free text search for the query "<query>"
     Then the user is able to verify that a page of search results is displayed
@@ -21,7 +20,6 @@ Feature: [638468] knowHowSearch.feature
     | US     | Analyzing a relevant market in Horizontal mergers |
 
   Scenario: Know-How search does not match search criteria
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
     When the user runs a free text search for the query "blubber"
     Then the user is notified that the search does not match any of the know how resources

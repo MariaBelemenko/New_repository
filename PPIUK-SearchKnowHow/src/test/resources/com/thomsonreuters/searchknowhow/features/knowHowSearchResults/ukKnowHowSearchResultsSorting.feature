@@ -8,8 +8,7 @@ Feature: ukKnowHowSearchResultsSorting.feature - [702175] [706257][702174][70217
   5)ukKnowHowJurisdictionOrdering.feature - Bespoke order for UK jurisdiction facets
 
   Background: Log on to test site
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
 
   Scenario: [702175]  verify that know how results are sorted by relevancy by default. Verify that a new search following the first search produces results sorted by relevancy by default
     When the user runs a free text search for the query "contract"
@@ -48,7 +47,6 @@ Feature: ukKnowHowSearchResultsSorting.feature - [702175] [706257][702174][70217
     And the user is able to verify that the title of the second result is the same as the stored value
     And the user is able to verify that the title of the third result is the same as the stored value
 
-    
   Scenario: [731598] Verify know how jurisdiction facets are displayed in bespoke order
     When the user runs a free text search for the query "tax"
     And the user verifies that the know how Jurisdiction facets appear in bespoke order

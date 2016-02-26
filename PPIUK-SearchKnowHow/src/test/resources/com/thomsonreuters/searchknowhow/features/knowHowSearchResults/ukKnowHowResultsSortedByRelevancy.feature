@@ -4,8 +4,7 @@ Feature: [706256] ukKnowHowResultsSortedByRelevancyOnAllTabsS2-57B.feature
   @wip
   Scenario: Sorting of results when doing a Know How search ( As this story needs to tested if the tabs are available in next release otherwise place on hold)
     #no tabbed search on site as at 30/07/15 not delivered for ppi phase 1
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
     And the user runs a free text search for the query "contract"
     And the user verifies that the option for sorting by relevance is displayed by default
     And the user obtains the title of the first result and stores it

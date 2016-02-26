@@ -1,16 +1,15 @@
 Feature: [763726][764077][768208][763786] As a PL+ user when I begin to type a search term then I can see a list of suggested search phrases according to what I have begun to enter
 
   Background: Log onto to test site
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
 
   @bug
   Scenario: [763726] When the user types 3 characters up to 10 suggested terms are displayed in know how
     #818346 - suggestions not being generated with three characters
     When the user enters 3 characters into the search box "pro"
     Then the user should be presented with the below search suggestions
-      | PRO BONO ADVICE       |
-      | PRO BONO AGREEMENT    |
+      | PRO BONO ADVICE    |
+      | PRO BONO AGREEMENT |
     And the suggested search terms are displayed in alphabetical order
 
   @bug

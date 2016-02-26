@@ -17,8 +17,7 @@ Feature: ukKnowHowFacetsFunctionality.feature - [713885] [702173] [710581] [7286
   Note: Refactored the existing two scenarios into single scenario.
 
   Background: Log on to test site
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
 
   @e2e @prod
   Scenario: [713885] Verify that when two or more facets are selected across facet groups then results are updated using the "and" operator

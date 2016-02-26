@@ -2,9 +2,7 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
   Delivery of know how search results in list and full text format via print, save and email
 
   Background: Log on to test site
-    Given PL+ user is logged in with following details
-      | userName | Search2_AutoUser |
-
+    Given PL+ user is logged in
 
   Scenario: [747921] Basic search result email delivery pop up - layout
     When the user runs a free text search for the query "contract"
@@ -90,12 +88,12 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user validates that the Mailinator e-mail is displayed as being to "stephtestemail"
     And the user validates that the Mailinator e-mail is displayed with a subject of "delivery test"
     And the user validates that the Mailinator e-mail contains the text "This is a test"
-    Examples:
-      | format                |
-      | Microsoft Word        |
-      | Word Processor (RTF)  |
-      | PDF                   |
-      | Microsoft Excel (CSV) |
+  Examples:
+    | format                |
+    | Microsoft Word        |
+    | Word Processor (RTF)  |
+    | PDF                   |
+    | Microsoft Excel (CSV) |
 
   Scenario Outline: [747921] email list of know how search results from basic tab in document format (various document formats)
     When the user runs a free text search for the query "contract"
@@ -120,8 +118,8 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user validates that the Mailinator e-mail is displayed as being to "stephtestemail"
     And the user validates that the Mailinator e-mail is displayed with a subject of "delivery test"
     And the user validates that the Mailinator e-mail contains the text "This is a test"
-    Examples:
-      | format               |
-      | Microsoft Word       |
-      | Word Processor (RTF) |
-      | PDF                  |
+  Examples:
+    | format               |
+    | Microsoft Word       |
+    | Word Processor (RTF) |
+    | PDF                  |

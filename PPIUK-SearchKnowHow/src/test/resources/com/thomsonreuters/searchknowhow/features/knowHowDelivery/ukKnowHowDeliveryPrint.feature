@@ -2,8 +2,7 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
   Delivery of know how search results in list and full text format via print, save and email
 
   Background: Log on to test site
-    Given PL+ user is logged in with following details
-      | userName | Search2_AutoUser |
+    Given PL+ user is logged in
 
   Scenario: [702205] Basic search result print delivery pop up - layout
     When the user runs a free text search for the query "contract"
@@ -77,8 +76,8 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user selects the documents format option "<format>"
     And the user selects the Download option
     And the user verifies that the single request is processed and a message displayed that the items are ready to download
-    Examples:
-      | format               |
-      | Microsoft Word       |
-      | Word Processor (RTF) |
-      | PDF                  |
+  Examples:
+    | format               |
+    | Microsoft Word       |
+    | Word Processor (RTF) |
+    | PDF                  |

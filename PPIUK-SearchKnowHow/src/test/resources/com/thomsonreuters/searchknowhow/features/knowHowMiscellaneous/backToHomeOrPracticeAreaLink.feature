@@ -1,8 +1,7 @@
 Feature: [no story] Verify Back to Home or Practice Area Link from know how search results page
 
   Background: Log on to test site with user having routing set to view the product details
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
     And the user is on the home page
 
   @e2e @prod

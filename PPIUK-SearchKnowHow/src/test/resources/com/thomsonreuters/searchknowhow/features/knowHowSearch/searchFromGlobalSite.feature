@@ -4,8 +4,7 @@ Feature: Where the Global entry point is used for the Know-How search then resul
   [638470]
 
   Scenario: Search from Global site retrieves Global resources
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
     And has selected the link to United Kingdom
     And has selected the Know How - Global link
     When the user runs a free text search for the query "china arbitration"

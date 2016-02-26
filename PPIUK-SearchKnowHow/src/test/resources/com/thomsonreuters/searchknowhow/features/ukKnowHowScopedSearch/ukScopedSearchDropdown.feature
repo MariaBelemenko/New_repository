@@ -2,8 +2,7 @@ Feature: [792545][792551][792565][792547][702177][792476][792527][792536] uk Sco
   (Country Pages, What's market pages, What's Market deal type pages, PLC Magazine, Homepage , PA Page , Topic Page, Ask Page, Glossary Page, document page)
 
   Background: Log on to test site with user having routing set to view the product details
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
     And the user is on the home page
 
   Scenario: [792545] - Scoped search on country pages

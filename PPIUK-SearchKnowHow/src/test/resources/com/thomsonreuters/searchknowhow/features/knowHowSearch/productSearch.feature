@@ -5,8 +5,7 @@ Feature: [637926][638469][638471] productSearch.feature
   [637926], [638469], [638471]
 
   Scenario Outline: The <region> entry point is used for the KH search and results
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
     And has selected the Know How - <region> link
     And the user runs a free text search for the query "<query>"
     And the user can open the first know how search result "1"

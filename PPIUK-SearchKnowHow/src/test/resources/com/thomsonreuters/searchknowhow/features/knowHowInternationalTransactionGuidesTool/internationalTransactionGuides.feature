@@ -1,8 +1,7 @@
 Feature:[803245] internationalTransactionGuides.feature
 
   Background: Log on
-    Given PL+ user is logged in with following details
-      | userName | Search1_AutoUser |
+    Given PL+ user is logged in
 
   Scenario: verify list of questions displayed to user when topic selected
     Given a user is on the ITG tool
