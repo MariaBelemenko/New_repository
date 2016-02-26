@@ -12,7 +12,7 @@ public class MailinatorPage extends AbstractPage {
     }
 
     public WebElement userMailBoxHeading() {
-        return waitForExpectedElement(By.id("InboxNameCtrl"));
+        return waitForExpectedElement(By.id("publicInboxCtrl"));
     }
 
     public WebElement checkMailTextBox() {
@@ -20,15 +20,15 @@ public class MailinatorPage extends AbstractPage {
     }
 
     public List<WebElement> emailFrom() {
-        return waitForExpectedElements(By.xpath("//div[@id='InboxCtrl']//li//div[@class='from ng-binding']"), 90);
+        return waitForExpectedElements(By.xpath("//div[contains(@onclick, 'Message')]//div[contains(@class, 'outermail')][1]"), 90);
     }
 
     public List<WebElement> emailSubject() {
-        return waitForExpectedElements(By.xpath("//div[@id='InboxCtrl']//li//div[@class='subject ng-binding']"), 90);
+        return waitForExpectedElements(By.xpath("//div[contains(@onclick, 'Message')]//div[contains(@class, 'outermail')][2]"), 90);
     }
 
     public List<WebElement> emailTimeDesc() {
-        return waitForElementsVisible(By.xpath("//div[@id='InboxCtrl']//li//div[@class='time ng-binding']"));
+        return waitForElementsVisible(By.xpath("//div[contains(@onclick, 'Message')]//div[contains(@class, 'outermail')][3]"));
     }
 
     public WebElement checkItButton() {
@@ -36,7 +36,11 @@ public class MailinatorPage extends AbstractPage {
     }
 
     public WebElement deleteEmailButton() {
-        return waitForElementVisible(By.xpath("//button[@class='btn' and contains(@onclick,'del')]"));
+        return waitForElementVisible(By.id("public_delete_button"));
+    }
+
+    public List<WebElement> getMailCheckboxes() {
+        return waitForExpectedElements(By.xpath("//div[./input[@type='checkbox']]//label"));
     }
 
 }

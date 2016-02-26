@@ -3,6 +3,9 @@ package com.thomsonreuters.pageobjects.utils.email;
 import com.thomsonreuters.driver.framework.AbstractPage;
 import com.thomsonreuters.pageobjects.pages.mailinator.MailinatorPage;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class MailinatorMethods extends AbstractPage {
 
@@ -36,16 +39,12 @@ public class MailinatorMethods extends AbstractPage {
     public void openEmailBoxAndDeleteAllEmails(String userEmail) {
         openInboxFolder(userEmail);
         mailinatorPage.userMailBoxHeading();
-        int emailsCount = 0;
-        try{
-            emailsCount = mailinatorPage.emailFrom().size();
-        } catch(TimeoutException e){
-            LOG.info("Email folder is empty");
+        List<WebElement> emailCheckboxes = mailinatorPage.getMailCheckboxes();
+        for (WebElement emailCheckbox : emailCheckboxes) {
+            emailCheckbox.click();
         }
-        while (emailsCount > 0) {
-            mailinatorPage.emailFrom().get(0).click();
+        if (emailCheckboxes.size() > 0) {
             mailinatorPage.deleteEmailButton().click();
-            emailsCount--;
         }
     }
 
