@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber-htmlreport/FirmStyleCommonReport", "junit:target/junit_cucumber.xml", "json:target/cucumber.json"},
         features = "src/test/resources/com/thomsonreuters/firmstyle/features/common",
-        tags = {"~@wip", "~@manual"},
+        tags = {"~@wip", "~@manual", "~@robot"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
 public class RunFirmStyleCommonTest {

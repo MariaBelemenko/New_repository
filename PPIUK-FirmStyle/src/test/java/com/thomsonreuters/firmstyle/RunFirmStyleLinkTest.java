@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber-htmlreport/ResearchBrowseLinkReport", "junit:target/junit_cucumber.xml", "json:target/cucumber.json"},
         features = "src/test/resources/com/thomsonreuters/firmstyle/features/link",
-        tags = {"~@wip", "~@manual"},
+        tags = {"~@wip", "~@manual","~@robot"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
 public class RunFirmStyleLinkTest {
@@ -18,7 +18,7 @@ public class RunFirmStyleLinkTest {
     @BeforeClass
     public static void reporting() {
         System.setProperty("username", "FSTestUser1");
-        System.setProperty("password", "Password1");
+        System.setProperty("password", "TestUser2014");
     }
 
 }
