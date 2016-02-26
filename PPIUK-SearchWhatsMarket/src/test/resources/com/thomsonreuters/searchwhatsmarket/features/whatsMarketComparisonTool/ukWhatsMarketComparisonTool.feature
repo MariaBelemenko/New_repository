@@ -2,8 +2,7 @@ Feature: ukWhatsMarketComparisonTool.feature
   [815685][815692][815714][815248][815245][815246][815247][815705][811160][811159]
 
   Background: Log on to test site
-    Given PL+ user is logged in with following details
-      | userName | Search2_AutoUser |
+    Given PL+ user is logged in
     And the user selects the link entitled Whats Market UK Home
 
   Scenario: Generate whats market comparison report

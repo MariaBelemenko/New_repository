@@ -2,12 +2,11 @@ Feature: ukWhatsMarketDeliveryEmail.feature
   [718904][747925][747924]
   Delivery of know how search results in list and full text format via email
 
-    Background: Log on to test site
-    Given PL+ user is logged in with following details
-    | userName | Search2_AutoUser |
+  Background: Log on to test site
+    Given PL+ user is logged in
     And the user selects the link entitled Whats Market UK Home
 
-    Scenario: [747925] Basic search result email delivery pop up - layout
+  Scenario: [747925] Basic search result email delivery pop up - layout
     When the user runs a free text search for the query "contract"
     And the user selects the checkbox associated with whats market result "1"
     And the user selects the checkbox associated with whats market result "2"
@@ -21,11 +20,11 @@ Feature: ukWhatsMarketDeliveryEmail.feature
     And the user is able to verify all fields and list of items are present
     And the user verifies the presence of a list of items dropdown option entitled Format
     And the user verifies the presence of a list of items format option entitled
-    | formatOption    |
-    | Microsoft Word  |
-    | Word Processor  |
-    | PDF             |
-    | Microsoft Excel |
+      | formatOption    |
+      | Microsoft Word  |
+      | Word Processor  |
+      | PDF             |
+      | Microsoft Excel |
     And the user verifies the presence of an Email option
     And the user verifies the presence of a Cancel option
     And the user selects the Documents option
@@ -33,7 +32,7 @@ Feature: ukWhatsMarketDeliveryEmail.feature
     And the user verifies the presence of an As option entitled "A Single Merged File"
     And the user verifies the presence of an As option entitled "Multiple Files"
 
-    Scenario: [747925] Advanced search result email delivery pop up - layout
+  Scenario: [747925] Advanced search result email delivery pop up - layout
     When the user runs a free text search for the query "deal"
     And the user selects the checkbox associated with whats market result "1"
     And the user selects the checkbox associated with whats market result "2"
@@ -61,7 +60,7 @@ Feature: ukWhatsMarketDeliveryEmail.feature
     And the user selects the advanced tab
     And the user verifies that the option entitled Expanded Margin for Notes is no longer present
 
-    Scenario Outline: [747925] email list of WM search results from basic tab in list format (various document formats)
+  Scenario Outline: [747925] email list of WM search results from basic tab in list format (various document formats)
     When the user runs a free text search for the query "deal"
     And the user selects the checkbox associated with whats market result "1"
     And the user selects the checkbox associated with whats market result "2"
@@ -82,7 +81,7 @@ Feature: ukWhatsMarketDeliveryEmail.feature
     And the user validates that the Mailinator e-mail is displayed as being to "stephtestemail"
     And the user validates that the Mailinator e-mail is displayed with a subject of "delivery test"
     And the user validates that the Mailinator e-mail contains the text "This is a test"
-    Examples:
+  Examples:
     | format                |
     | Microsoft Word        |
     | Word Processor (RTF)  |
@@ -90,7 +89,7 @@ Feature: ukWhatsMarketDeliveryEmail.feature
     | Microsoft Excel (CSV) |
 
       ## Please rerun the below scenario if it fails the first time. It should pass in rerun.
-    Scenario Outline: [747925] email list of WM search results from basic tab in document format (various document formats)
+  Scenario Outline: [747925] email list of WM search results from basic tab in document format (various document formats)
     When the user runs a free text search for the query "contract"
     And the user selects the checkbox associated with whats market result "1"
     And the user selects the checkbox associated with whats market result "2"
@@ -111,7 +110,7 @@ Feature: ukWhatsMarketDeliveryEmail.feature
     And the user validates that the Mailinator e-mail is displayed as being to "stephtestemail"
     And the user validates that the Mailinator e-mail is displayed with a subject of "delivery test"
     And the user validates that the Mailinator e-mail contains the text "This is a test"
-    Examples:
+  Examples:
     | format               |
     | Microsoft Word       |
     | Word Processor (RTF) |

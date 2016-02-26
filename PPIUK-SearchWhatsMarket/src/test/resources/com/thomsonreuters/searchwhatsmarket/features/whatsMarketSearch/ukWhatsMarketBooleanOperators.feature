@@ -3,8 +3,7 @@ Ability to use operators when searching on PL+ for what's market
 
   Background: Log on to test site
     Given PL+ user is logged in with following details
-      | userName   | Search2_AutoUser |
-      | newSession | TRUE             |
+      | newSession | TRUE |
     And has selected the link to the What's Market homepage
 
   Scenario: [711536] verify that the number of results for an "and" search is lower than the number of  results for an "or" search, [711536] Searching with commas

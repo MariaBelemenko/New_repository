@@ -2,8 +2,7 @@ Feature: [792551][792565][729246] ukScopedSearchDropdownWhatsMarket.feature
   ukScopedSearchWhatsMarketPageS2-96C.feature -  As a PL+ user when I perform a scoped search from the 'What's Market' page (tab) then results are prefiltered/scoped for Whats Market
 
   Background: Log on to test site with user having routing set to view the product details
-    Given PL+ user is logged in with following details
-      | userName | Search2_AutoUser |
+    Given PL+ user is logged in
     And the user is on the home page
 
   Scenario: [792551] - Scoped search on what's market pages

@@ -2,8 +2,7 @@ Feature: ukWhatsMarketComparisonToolAddToFolder.feature
   [815685][815692][815714][815248][815245][815246][815247][815705][811160][811159]
 
   Scenario Outline: [815247] Add WM comparison report to folder
-    Given PL+ user is logged in with following details
-      | userName | Search2_AutoUser |
+    Given PL+ user is logged in
     And the user clicks on 'Folders' link on the header
     And the user deletes the folder "<folderName>" if it exists
     And the user clicks the TR Practical Law logo
@@ -23,6 +22,6 @@ Feature: ukWhatsMarketComparisonToolAddToFolder.feature
     And the user clicks on 'Folders' link on the header
     Then the folder "<folderName>" appears in the "root" folder
     And the user verifies the whats market deal comparison report is present in the "<folderName>" folder
-    Examples:
-      | folderName |
-      | WMDeals    |
+  Examples:
+    | folderName |
+    | WMDeals    |

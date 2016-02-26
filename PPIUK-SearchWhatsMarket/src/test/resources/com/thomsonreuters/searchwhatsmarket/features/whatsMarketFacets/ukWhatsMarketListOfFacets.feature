@@ -2,8 +2,7 @@ Feature:[702214] ukWhatsMarketListOfFacets.feature
 Ability to filter UK What's Market search results by the facets available and particular to the What's Market service.
 
   Scenario: verify presence of all whats market facets
-    Given PL+ user is logged in with following details
-      | userName | Search2_AutoUser |
+    Given PL+ user is logged in
     And has selected the link to the What's Market homepage
     When the user runs a free text search for the query "law"
     And the user pauses for "2" seconds

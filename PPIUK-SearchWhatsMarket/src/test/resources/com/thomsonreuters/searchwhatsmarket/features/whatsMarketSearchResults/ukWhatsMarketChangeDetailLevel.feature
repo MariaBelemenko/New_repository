@@ -3,16 +3,14 @@ Feature: [705430] ukWhatsMarketChangeDetailsLevel.feature
   LESS/MORE/MOST - (WHATs Market)
 
   Scenario: Verify default setting for more detail reflects previous user session setting
-    Given PL+ user is logged in with following details
-      | userName | Search2_AutoUser |
+    Given PL+ user is logged in
     And has selected the link to the What's Market homepage
     When the user runs a free text search for the query "taxation"
     And the user can select the option to show more detail
 
   Scenario: Verify setting for more detail
     Given PL+ user is logged in with following details
-      | userName   | Search2_AutoUser |
-      | newSession | TRUE             |
+      | newSession | TRUE |
     And has selected the link to the What's Market homepage
     # Exclude "possible" from the results
     When the user runs a free text search for the query "merger million %possible"
@@ -28,8 +26,7 @@ Feature: [705430] ukWhatsMarketChangeDetailsLevel.feature
     And the user is able to verify that a deal summary for the first result is not displayed "1"
 
   Scenario: Verify setting for most detail
-    Given PL+ user is logged in with following details
-      | userName | Search2_AutoUser |
+    Given PL+ user is logged in
     And has selected the link to the What's Market homepage
     # A specific document is used here to ensure a deal summary is displayed
     When the user runs a free text search for the query "Possible offer for Kolar Gold Limited (strategic review including formal sale process)"
@@ -41,8 +38,7 @@ Feature: [705430] ukWhatsMarketChangeDetailsLevel.feature
     And the user is able to verify the presence of a date of announcement for the first result "1"
 
   Scenario: Verify setting for less detail
-    Given PL+ user is logged in with following details
-      | userName | Search2_AutoUser |
+    Given PL+ user is logged in
     And has selected the link to the What's Market homepage
     When the user runs a free text search for the query "merger and 2014"
     And the user is able to verify that the result in position "1" is whats market content because it contains one of the whats market resource types

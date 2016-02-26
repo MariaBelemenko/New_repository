@@ -5,8 +5,7 @@ Feature: ukWhatsMarketFacetsFunctionality.feature -[702225][718866][728696][7188
   4)ukWhatsMarketFacetsSelectionS2-38.feature - As a PL+ user viewing What's Market search results, when I select /deselect one or more facets, then my What's Market results are updated accordingly.
 
   Background: Log on to test site
-    Given PL+ user is logged in with following details
-      | userName | Search2_AutoUser |
+    Given PL+ user is logged in
     And has selected the link to the What's Market homepage
 
   @wip

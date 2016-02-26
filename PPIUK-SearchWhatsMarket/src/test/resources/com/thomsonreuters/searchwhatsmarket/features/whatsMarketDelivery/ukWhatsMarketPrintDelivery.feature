@@ -3,8 +3,7 @@ Feature: ukWhatsMarketPrintDelivery.feature
   Delivery of know how search results in list and full text format via print, save and email
 
   Background: Log on to test site
-    Given PL+ user is logged in with following details
-      | userName | Search2_AutoUser |
+    Given PL+ user is logged in
     And the user selects the link entitled Whats Market UK Home
 
   Scenario: [718904] Basic search result print delivery pop up - layout

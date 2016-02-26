@@ -2,7 +2,6 @@ Feature: [no story] ukWhatsMarketSearchResultsPerPage.feature
 
   Background: Log on to test site
     Given PL+ user is logged in with following details
-        | userName          | Search2_AutoUser       |
         | newSession        | TRUE                   |
     And the user selects the link entitled Whats Market UK Home
 

@@ -1,10 +1,9 @@
-  Feature: ukWhatsMarketDeliveryManual.feature
-    [718904][747925][747924]
+Feature: ukWhatsMarketDeliveryManual.feature
+  [718904][747925][747924]
   Delivery of know how search results in list and full text format via print, save and email
 
-
   @manual
-    Scenario: [718904] print list of WM search results from basic tab in list format
+  Scenario: [718904] print list of WM search results from basic tab in list format
     When the user runs a free text search for the query "contract"
     And the user selects the checkbox associated with whats market result "1"
     And the user selects the checkbox associated with whats market result "2"
@@ -16,8 +15,8 @@
     And the user verifies that the request is processed and the document printed
     And the user verifies the format of the printed list
 
-    @manual
-    Scenario: [718904] print list of WM search results from basic tab in document format
+  @manual
+  Scenario: [718904] print list of WM search results from basic tab in document format
     When the user runs a free text search for the query "contract"
     And the user selects the checkbox associated with whats market result "1"
     And the user selects the checkbox associated with whats market result "2"
@@ -29,10 +28,8 @@
     And the user verifies that the request is processed and the document printed
     And the user verifies the format of the printed document
 
-
-
-    @manual
-    Scenario: [no story] download delivery (single result only) with and without annotations
+  @manual
+  Scenario: [no story] download delivery (single result only) with and without annotations
     When the user runs a free text search for the query "contract"
     And the user opens the first result
     And the user selects a portion of the text and adds highlighting using the highlight tool
@@ -53,8 +50,8 @@
     And the user verifies that the downloaded document does not include the highlighting
     And the user verifies that the downloaded document does not include the note
 
-    @manual
-    Scenario: [no story] download delivery (2 results) with and without annotations
+  @manual
+  Scenario: [no story] download delivery (2 results) with and without annotations
     When the user runs a free text search for the query "contract"
     And the user opens the first result
     And the user selects a portion of the text and adds highlighting using the highlight tool
@@ -76,8 +73,8 @@
     And the user verifies that the downloaded document does not include the highlighting
     And the user verifies that the downloaded document does not include the note
 
-    @manual
-    Scenario: [no specific story] Verify cover sheet functionality
+  @manual
+  Scenario: [no specific story] Verify cover sheet functionality
     When the user runs a free text search for the query "contract"
     And the user selects the checkbox associated with whats market result "1"
     And the user selects the checkbox associated with whats market result "2"
@@ -89,9 +86,9 @@
     And the user selects the download option
     And the user verifies that the downloaded version includes a cover sheet containing the specified text
 
-    @manual @bug
-    Scenario: [no specific story] Verify links within delivered document resolve to correct destination
-        #804040
+  @manual @bug
+  Scenario: [no specific story] Verify links within delivered document resolve to correct destination
+      #804040
     When the user runs a free text search for the query "contract"
     And the user selects the checkbox associated with whats market result "1"
     And the user selects the checkbox associated with whats market result "2"

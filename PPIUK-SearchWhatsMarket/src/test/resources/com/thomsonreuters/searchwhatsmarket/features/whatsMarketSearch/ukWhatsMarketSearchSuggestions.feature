@@ -2,8 +2,7 @@ Feature: [767388][767411][764084][767407] ukWhatsMarketSearchSuggestions.feature
   As a PL+ user when I begin to type a search term then I can see a list of suggested search phrases according to what I have begun to enter
 
   Background: Log onto to test site
-    Given PL+ user is logged in with following details
-      | userName | Search2_AutoUser |
+    Given PL+ user is logged in
 
   @bug
   Scenario: [767388] When the user types 3 characters up to 10 suggested terms are displayed in whats market

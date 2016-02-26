@@ -2,12 +2,11 @@ Feature: ukWhatsMarketDownloadDelivery.feature
   [718904][747925][747924]
   Delivery of know how search results in list and full text format via save
 
-    Background: Log on to test site
-    Given PL+ user is logged in with following details
-    | userName | Search2_AutoUser |
+  Background: Log on to test site
+    Given PL+ user is logged in
     And the user selects the link entitled Whats Market UK Home
 
-    Scenario: Basic search result download delivery pop up - layout
+  Scenario: Basic search result download delivery pop up - layout
     When the user runs a free text search for the query "deal"
     And the user selects the checkbox associated with whats market result "1"
     And the user selects the checkbox associated with whats market result "2"
@@ -20,11 +19,11 @@ Feature: ukWhatsMarketDownloadDelivery.feature
     And the user selects the list of items option
     And the user verifies the presence of a list of items dropdown option entitled Format
     And the user verifies the presence of a list of items format option entitled
-    | formatOption    |
-    | Microsoft Word  |
-    | Word Processor  |
-    | PDF             |
-    | Microsoft Excel |
+      | formatOption    |
+      | Microsoft Word  |
+      | Word Processor  |
+      | PDF             |
+      | Microsoft Excel |
     And the user verifies the presence of a Download option
     And the user verifies the presence of a Cancel option
     And the user selects the Documents option
@@ -32,7 +31,7 @@ Feature: ukWhatsMarketDownloadDelivery.feature
     And the user verifies the presence of an option entitled "A Single Merged File"
     And the user verifies the presence of an option entitled "Multiple Files"
 
-    Scenario: [747924] Advanced search result download delivery pop up - layout
+  Scenario: [747924] Advanced search result download delivery pop up - layout
     When the user runs a free text search for the query "deal"
     And the user selects the checkbox associated with whats market result "1"
     And the user selects the checkbox associated with whats market result "2"
@@ -60,7 +59,7 @@ Feature: ukWhatsMarketDownloadDelivery.feature
     And the user selects the advanced tab
     And the user verifies that the option entitled Expanded Margin for Notes is no longer present
 
-    Scenario Outline: [747924] download list of know how search results from basic tab in list format (various document formats)
+  Scenario Outline: [747924] download list of know how search results from basic tab in list format (various document formats)
     When the user runs a free text search for the query "contract"
     And the user selects the checkbox associated with whats market result "1"
     And the user selects the checkbox associated with whats market result "2"
@@ -70,14 +69,14 @@ Feature: ukWhatsMarketDownloadDelivery.feature
     And the user selects the list of items format option "<format>"
     And the user selects the Download option
     And the user verifies that the request is processed and a message displayed that the items are ready to download
-    Examples:
+  Examples:
     | format                |
     | Microsoft Word        |
     | Word Processor (RTF)  |
     | PDF                   |
     | Microsoft Excel (CSV) |
 
-    Scenario Outline: [747924] download list of WM search results from basic tab in document format (various document formats)
+  Scenario Outline: [747924] download list of WM search results from basic tab in document format (various document formats)
     When the user runs a free text search for the query "contract"
     And the user selects the checkbox associated with whats market result "1"
     And the user selects the checkbox associated with whats market result "2"
@@ -87,13 +86,13 @@ Feature: ukWhatsMarketDownloadDelivery.feature
     And the user selects the documents format option "<format>"
     And the user selects the Download option
     And the user verifies that the request is processed and a message displayed that the items are ready to download
-    Examples:
+  Examples:
     | format               |
     | Microsoft Word       |
     | Word Processor (RTF) |
     | PDF                  |
 
-    Scenario Outline: [no story] download delivery where only 1 checkbox selected - to deliver in document format only
+  Scenario Outline: [no story] download delivery where only 1 checkbox selected - to deliver in document format only
     When the user runs a free text search for the query "contract"
     And the user selects the checkbox associated with whats market result "1"
     And the user selects the download delivery option
@@ -101,8 +100,8 @@ Feature: ukWhatsMarketDownloadDelivery.feature
     And the user selects the documents format option "<format>"
     And the user selects the Download option
     And the user verifies that the single request is processed and a message displayed that the items are ready to download
-    Examples:
-      | format               |
-      | Microsoft Word       |
-      | Word Processor (RTF) |
-      | PDF                  |
+  Examples:
+    | format               |
+    | Microsoft Word       |
+    | Word Processor (RTF) |
+    | PDF                  |

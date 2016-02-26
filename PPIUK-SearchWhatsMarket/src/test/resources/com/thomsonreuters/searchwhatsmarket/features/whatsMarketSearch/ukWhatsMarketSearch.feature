@@ -4,8 +4,7 @@ Feature: ukWhatsMarketSearch.feature - [702213][702225][731586][702218][702219]
   3) ukWhatsMarketHomepageSearch.feature - Verify search from whats market tab and view results for What’s Market content. (Deal Type) link search from the What's Market homepage - As a PL+ user, when I select a "topic" link from the What's Market homepage, then I will see search results for that "topic" as if I had performed a search for that deal type.
 
   Background: Log on to test site
-    Given PL+ user is logged in with following details
-      | userName | Search2_AutoUser |
+    Given PL+ user is logged in
 
   @e2e @prod
   Scenario Outline: [702213] run a search request against whats market content from the plc homepage and obtain valid results
