@@ -531,22 +531,18 @@ public class AssetPageUtils {
     }
 
     public boolean isTheLinksOfTypeOfDocumentAreSortedAlphabetically(String documentTypeText) {
-
         List<WebElement> links = primarySourceDocumentPage.listOfLinksByDocumentType(documentTypeText);
-        List<String> ar = new ArrayList<String>();
-        List<String> arr = new ArrayList<String>();
-        for (int i = 0; i < links.size(); i++) {
-            WebElement link = links.get(i);
-            if (link.getText().isEmpty() == false || !link.getText().equals("")) {
-                ar.add(link.getText());
+        List<String> actualLinkList = new ArrayList<String>();
+        List<String> expectedLinkList = new ArrayList<String>();
+        for (WebElement link : links) {
+            String linkText = link.getText().trim();
+            if (!linkText.isEmpty()) {
+                actualLinkList.add(linkText);
             }
         }
-
-        arr.addAll(ar);
-        Collections.sort(ar);
-
-        return arr.equals(ar);
-
+        expectedLinkList.addAll(actualLinkList);
+        Collections.sort(actualLinkList);
+        return expectedLinkList.equals(actualLinkList);
     }
 
     public boolean isTheNumberOfLinksMoreThan(String numberOfLinks) {

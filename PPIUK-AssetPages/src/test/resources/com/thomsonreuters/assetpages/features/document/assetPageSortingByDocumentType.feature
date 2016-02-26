@@ -16,8 +16,8 @@ Feature: As a PL+ User I want to view sorted links by document type in case asse
     And links of "<docType3>" type of document are sorted alphabetically
     Then the user sees "<docType4>" type of document below "<docType3>"
     And links of "<docType4>" type of document are sorted alphabetically
-  Examples:
-    | GUID                              | docType1                   | docType2                | docType3      | docType4                |
-    | Ibd8aa83a518811e498db8b09b4f043e0 | UK Practice Note Overviews | UK Standard Documents   | UK Checklists | UK Legislation Trackers |
-    | Ia3640900518111e498db8b09b4f043e0 | UK Standard Documents      | UK Legislation Trackers | UK Articles   | Legal Update (Archive)  |
+    Examples:
+      | GUID                              | docType1                   | docType2                | docType3                | docType4               |
+      | Ibd8aa83a518811e498db8b09b4f043e0 | UK Practice Notes Overview | UK Standard Documents   | UK Legislation Trackers | UK Articles            |
+      | Ia3640900518111e498db8b09b4f043e0 | UK Standard Documents      | UK Legislation Trackers | UK Articles             | Legal Update (Archive) |
     
