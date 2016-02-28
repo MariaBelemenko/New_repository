@@ -139,22 +139,11 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.thomsonreuters.framework</groupId>
-            <artifactId>TR-Test-Automation-Framework</artifactId>
-            <version>1.4</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.thomsonreuters.driver</groupId>
-            <artifactId>TR-Test-Automation-Driver</artifactId>
-            <version>2.6</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.thomsonreuters.pageobjects</groupId>
             <artifactId>ppiuk-pageobjects</artifactId>
             <version>1a.0.1</version>
         </dependency>
+
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-server-standalone</artifactId>
