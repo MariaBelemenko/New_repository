@@ -1,5 +1,4 @@
-Feature: As a user,
-  I want to see the What's Market page as in Design Document
+Feature: As a user, I want to see the What's Market page as in Design Document
 
   Scenario: User verifies Whats Market Search Structure
     Given PL+ user is logged in

@@ -100,9 +100,9 @@ public class FrontEndCommonSteps extends BaseStepDef {
 
     @Then("^user clicks the Twitter link$")
     public void userclickstheTwitterLink() throws Throwable {
-        ((JavascriptExecutor) getDriver()).executeScript("scroll(0,1550);");
+        ((JavascriptExecutor) footer).executeScript("scroll(0,1550);");
         WebElement element = footer.twitterArrowLink();
-        JavascriptExecutor executor = (JavascriptExecutor) getDriver();
+        JavascriptExecutor executor = (JavascriptExecutor) footer;
         executor.executeScript("arguments[0].click();", element);
     }
 
@@ -116,7 +116,7 @@ public class FrontEndCommonSteps extends BaseStepDef {
                     break;
                 }
             }
-            assertTrue("Count is not right..!", commonMethods.isTextPresent(knowHowSearchResultsPage.searchResultByCountLabel(), perPageNo, 5000));
+            assertTrue("Count is not right..!", commonMethods.isTextPresent(knowHowSearchResultsPage.searchResultByCountLabel(), perPageNo));
         }
     }
 
@@ -333,7 +333,7 @@ public class FrontEndCommonSteps extends BaseStepDef {
         boolean flag = false;
         searchResultsPage.moreOrLessDetailAnchor().click();
         searchResultsPage.mostDetailOption().click();
-        commonMethods.waitForElement(whatsMarketSearchResultsPage.searchResultsByTitleLink(1), 5000);
+        commonMethods.waitForExpectedElement(whatsMarketSearchResultsPage.searchResultsByTitleLink(1));
         while (!flag) {
             for (WebElement actualDealTitleLink : whatsMarketSearchResultsPage.searchResultsTitleLinks()) {
                 if (actualDealTitleLink.getText().contains(dealTitle)) {
@@ -344,7 +344,7 @@ public class FrontEndCommonSteps extends BaseStepDef {
                 record++;
             }
             if (!flag) {
-                commonMethods.waitForElement(searchResultsPage.selectNextPageByLink(), 4000).click();
+                commonMethods.waitForExpectedElement(searchResultsPage.selectNextPageByLink()).click();
             }
         }
 
