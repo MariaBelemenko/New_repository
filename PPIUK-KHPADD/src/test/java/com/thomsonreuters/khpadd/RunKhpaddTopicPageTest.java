@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-htmlreport/KhpaddTopicPageReport", "junit:target/junit_cucumber.xml", "json:target/cucumber.json"},
+        plugin = {"pretty", "html:target/cucumber-htmlreport/KhpaddTopicPageReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunKhpaddTopicPageTest.json"},
         features = "src/test/resources/com/thomsonreuters/khpadd/features/topicPage",
         tags = {"~@wip", "~@manual"},
         monochrome = true,

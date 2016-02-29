@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-htmlreport/ShouldLinkingReport", "junit:target/junit_cucumber.xml", "json:target/cucumber.json"},
+        plugin = {"pretty", "html:target/cucumber-htmlreport/ShouldLinkingReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunShouldLinkingTest.json"},
         features = "src/test/resources/com/thomsonreuters/should/features/linking",
         tags = {"~@wip", "~@manual"},
         monochrome = true,

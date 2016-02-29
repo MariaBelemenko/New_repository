@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-htmlreport/FrontEndHeaderReport", "junit:target/junit_cucumber.xml", "json:target/cucumber.json"},
+        plugin = {"pretty", "html:target/cucumber-htmlreport/FrontEndHeaderReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunFrontEndHeaderTest.json"},
         features = "src/test/resources/com/thomsonreuters/frontend/features/header",
         tags = {"~@wip", "~@manual"},
         monochrome = true,

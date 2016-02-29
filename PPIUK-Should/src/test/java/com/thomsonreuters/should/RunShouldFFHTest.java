@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-htmlreport/ShouldFFHReport", "junit:target/junit_cucumber.xml", "json:target/cucumber.json"},
+        plugin = {"pretty", "html:target/cucumber-htmlreport/ShouldFFHReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunShouldFFHTest.json"},
         features = "src/test/resources/com/thomsonreuters/should/features/ffh",
         tags = {"~@wip", "~@manual"},
         monochrome = true,

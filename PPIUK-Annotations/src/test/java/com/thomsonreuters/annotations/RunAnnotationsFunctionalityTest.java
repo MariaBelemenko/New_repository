@@ -8,10 +8,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-htmlreport/AnnotationsFunctionalityReport", "junit:target/junit_cucumber.xml", "json:target/cucumber.json"},
+        plugin = {"pretty", "html:target/cucumber-htmlreport/AnnotationsFunctionalityReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunAnnotationsFunctionalityTest.json"},
         features = "src/test/resources/com/thomsonreuters/annotations/features/common",
         monochrome = true,
-        tags = {"~@wip", "~@manual", "@chiranTwo"},
+        tags = {"~@wip", "~@manual"},
         snippets = SnippetType.CAMELCASE)
 public class RunAnnotationsFunctionalityTest {
 

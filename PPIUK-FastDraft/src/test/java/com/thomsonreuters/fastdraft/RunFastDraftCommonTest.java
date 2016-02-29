@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-htmlreport/FastDraftCommonReport", "junit:target/junit_cucumber.xml", "json:target/cucumber.json"},
+        plugin = {"pretty", "html:target/cucumber-htmlreport/FastDraftCommonReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunFastDraftCommonTest.json"},
         features = "src/test/resources/com/thomsonreuters/fastdraft/features/common",
         tags = {"~@wip", "~@manual"},
         monochrome = true,

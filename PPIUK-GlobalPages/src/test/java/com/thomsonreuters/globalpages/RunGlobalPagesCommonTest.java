@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-htmlreport/GlobalPagesCommonReport", "junit:target/junit_cucumber.xml", "json:target/cucumber.json"},
+        plugin = {"pretty", "html:target/cucumber-htmlreport/GlobalPagesCommonReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunGlobalPagesCommonTest.json"},
         features = "src/test/resources/com/thomsonreuters/globalpages/features/common",
         tags = {"~@wip", "~@manual"},
         monochrome = true,

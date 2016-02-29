@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-htmlreport/ShouldLegalUpdateReport", "junit:target/junit_cucumber.xml", "json:target/cucumber.json"},
+        plugin = {"pretty", "html:target/cucumber-htmlreport/ShouldLegalUpdateReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunShouldLegalUpdateTest.json"},
         features = "src/test/resources/com/thomsonreuters/should/features/legalUpdate",
         tags = {"~@wip", "~@manual"},
         monochrome = true,

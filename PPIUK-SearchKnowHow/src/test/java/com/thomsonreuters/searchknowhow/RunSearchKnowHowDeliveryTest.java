@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-htmlreport/SearchKnowHowDeliveryReport", "junit:target/junit_cucumber.xml", "json:target/cucumber.json"},
+        plugin = {"pretty", "html:target/cucumber-htmlreport/SearchKnowHowDeliveryReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunSearchKnowHowDeliveryTest.json"},
         features = "src/test/resources/com/thomsonreuters/searchknowhow/features/knowHowDelivery",
         tags = {"~@wip", "~@manual"},
         monochrome = true,
