@@ -35,7 +35,6 @@ Feature: Annotations FAC
 
   #Annotations Sharing Scenarios
 
-  @chiran
   Scenario: Share annotations options
     When PL+ user is logged in
     And user navigates directly to document with guid "Ib5551f79e83211e398db8b09b4f043e0"

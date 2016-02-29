@@ -1,5 +1,6 @@
-# Manual Scenarios
 @manual
+Feature: Annotations Common Functionality Manual tests
+
 Scenario:User should be able to see the disabled save button when inline notes text exceeds 3000 chars length & User should be able to see the disabled save button when inline notes text is below 3000 chars length and tags length is > 10000
 Given PL+ user is logged in with following details
 | userName | librarian1 |
