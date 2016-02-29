@@ -15,6 +15,7 @@ import cucumber.api.java.en.When;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -146,6 +147,11 @@ public class OpenWebAndSubscriptionTest extends BaseStepDef {
         Robot robot = new Robot();
         timeToWait = timeToWait * 1000;
         robot.delay(timeToWait);
+    }
+
+    @When("^the user can verify that the document contains the header Also Found In$")
+    public void theUserCanVerifyThatTheDocumentContainsTheHeaderAlsoFoundIn() throws Throwable {
+        knowHowDocumentPage.alsoFoundInHeader().isDisplayed();
     }
 
 }
