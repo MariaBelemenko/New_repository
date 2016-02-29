@@ -1,4 +1,3 @@
-@stepha
 Feature: Testing Open Web And Subscriptions
 
   Scenario: Verify open web user has no access to whats market content
@@ -35,7 +34,9 @@ Feature: Testing Open Web And Subscriptions
     And the user pauses for "3" seconds
     Then the user is presented with a message confirming that the user needs a whats market subscription to view the results
 
+  @bug
   Scenario: Verify Also Found in section available to open web users
+    #860453 - topic information missing from know how resources
     Given PL+ user is logged in with following details
       | routing       | OPEN_WEB_SEARCH |
       | loginRequired | NO              |
