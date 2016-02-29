@@ -15,7 +15,8 @@ Feature: As a PL+ User I want to view sorted links by document types in primary 
     And links of "<docType3>" type of document are sorted alphabetically
     Then the user sees "<docType4>" type of document below "<docType3>"
     And links of "<docType4>" type of document are sorted alphabetically
-  Examples:
-    | GUID                              | docType1                   | docType2              | docType3            | docType4               |
-    | I405a58d853d111e498db8b09b4f043e0 | UK Practice Note Overviews | UK Standard Documents | UK Standard Clauses | UK Drafting Notes      |
-    | I96ee510f7a3a11e498db8b09b4f043e0 | UK Standard Clauses        | UK Drafting Notes     | UK Checklists       | Legal Update (Archive) |
+
+    Examples: 
+      | GUID                              | docType1                   | docType2              | docType3            | docType4               |
+      | I405a58d853d111e498db8b09b4f043e0 | UK Practice Notes Overview | UK Standard Documents | UK Standard Clauses | UK Drafting Notes      |
+      | I96ee510f7a3a11e498db8b09b4f043e0 | UK Standard Clauses        | UK Drafting Notes     | UK Checklists       | Legal Update (Archive) |
