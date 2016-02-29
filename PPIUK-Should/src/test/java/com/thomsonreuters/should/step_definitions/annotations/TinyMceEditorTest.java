@@ -22,7 +22,7 @@ public class TinyMceEditorTest extends BaseStepDef {
     private DocumentDeliveryPage deliveryPage = new DocumentDeliveryPage();
 
     public static String input;
-    public static String editOption;
+    public static String editOption = "";
     public static String mainWindow;
     public static List<String> numbersList;
 
@@ -58,6 +58,13 @@ public class TinyMceEditorTest extends BaseStepDef {
         } else {
             sharedAnnotationsPage.selectStyle(getFormatType(style));
         }
+    }
+
+    @When("^highlighted text with the cursor$")
+    public void highlightedTextWithTheCursor() throws Throwable {
+        input = "input" + System.currentTimeMillis();
+        sharedAnnotationsPage.amendInput(input);
+        sharedAnnotationsPage.selectText();
     }
 
     @Then("^character style of highlighted text changes to \"(.*?)\"$")

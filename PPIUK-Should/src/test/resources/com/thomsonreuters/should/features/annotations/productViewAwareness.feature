@@ -42,7 +42,7 @@ Feature: Product View Awareness functionality, PL+ annotations should be not acc
       | newSession | TRUE       |
     When user navigates directly to document with guid "I33f12c20e8cd11e398db8b09b4f043e0"
     And the user has accessed annotations text box
-    And highlighted text with the cursor
+    And highlight the text with cursor
     And user has shared the annotations with another contact "librarian3"
     And user logs out
 

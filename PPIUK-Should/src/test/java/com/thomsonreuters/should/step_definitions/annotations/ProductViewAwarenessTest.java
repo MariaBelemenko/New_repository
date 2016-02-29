@@ -88,8 +88,8 @@ public class ProductViewAwarenessTest extends BaseStepDef {
         editOption = "toolbar";
     }
 
-    @When("^highlighted text with the cursor$")
-    public void highlightedTextWithTheCursor() throws Throwable {
+    @When("^highlight the text with cursor$")
+    public void highlighTextWithCursor() throws Throwable {
         input = "input" + System.currentTimeMillis();
         sharedAnnotationsPage.amendInput(input);
         sharedAnnotationsPage.selectText();
