@@ -833,6 +833,7 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
             annotationUsers.put(cobaltLogin.annUserName, new User(cobaltLogin.annUserFirstName, cobaltLogin.annUserLastName));
             annotationUsers.put(cobaltLogin.annAnotherUserName, new User(cobaltLogin.annAnotherFirstName, cobaltLogin.annAnotherLastName));
             annotationUsers.put(cobaltLogin.annReadOnlyUserName, new User(cobaltLogin.annReadOnlyFirstName, cobaltLogin.annReadOnlyLastName));
+            annotationUsers.put(cobaltLogin.annAnotherReadOnlyUserName, new User(cobaltLogin.annAnotherReadOnlyFirstName, cobaltLogin.annAnotherReadOnlyLastName));
             LOG.info("annotationsUsers:" + annotationUsers.size());
         }
     }
