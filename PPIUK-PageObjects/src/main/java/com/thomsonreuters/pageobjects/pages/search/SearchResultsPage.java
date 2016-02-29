@@ -705,19 +705,8 @@ public class SearchResultsPage extends AbstractPage {
     }
 
 	public WebElement searchResultPositionCheckbox(int position) {
-		if (getCurrentUrl().toLowerCase().contains("westlaw")) {
-			return waitForExpectedElement(
-					By.xpath("(//*[@id='cobalt_search_case_results']//input[@type='checkbox'])[" + String.valueOf(position) + "]"), 15);
-		} else {
-			if (getCurrentUrl().toLowerCase().contains("topic")) {
-				return waitForExpectedElement(
-						By.xpath("(//*[@id='cobalt_search_knowHowTopicPlc_results']//input[@type='checkbox'])[" + String.valueOf(position)
-								+ "]"), 15);
-			} else {
-				return waitForExpectedElement(By.xpath("(//*[@id='cobalt_search_knowHowPlc_results']//input[@type='checkbox'])["
-						+ String.valueOf(position) + "]"), 15);
-			}
-		}
+		return waitForExpectedElement(
+				By.xpath("(//*[@id='co_search_results_inner']//input[@type='checkbox'])[" + String.valueOf(position) + "]"), 15);
 	}
 
     public WebElement saveToFolder() {
