@@ -201,11 +201,11 @@ public class CategoryPage extends AbstractPage {
 	}
 
 	public WebElement addToFavoritesLink() {
-		return comMethods.waitForElementToBeVisible(By.xpath(ADD_TO_FAVORITES), 1000);
+		return comMethods.waitForExpectedElement(By.xpath(ADD_TO_FAVORITES), 1000);
 	}
 
 	public WebElement makeThisMyStartPageLink() {
-		return comMethods.waitForElementToBeVisible(By.xpath(MAKE_THIS_MY_START_PAGE), 1000);
+		return comMethods.waitForExpectedElement(By.xpath(MAKE_THIS_MY_START_PAGE), 1000);
 	}
 
 	public void openTab(String tabName) {
