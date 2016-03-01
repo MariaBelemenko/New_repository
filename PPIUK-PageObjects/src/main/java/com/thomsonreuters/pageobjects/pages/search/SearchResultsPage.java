@@ -424,7 +424,7 @@ public class SearchResultsPage extends AbstractPage {
      * setting - this object is the first option for less detail
      */
     public WebElement lessDetailOption() {
-        return waitForExpectedElement(By.linkText("Less detail"));
+        return waitForExpectedElement(By.xpath("//ul[@class='co_dropDownMenuList']//a[contains(., 'Less') and contains(., 'etail')]"));
     }
 
     /**
@@ -432,7 +432,7 @@ public class SearchResultsPage extends AbstractPage {
      * setting - this object is the first option for less detail
      */
     public WebElement moreDetailOption() {
-        return waitForExpectedElement(By.linkText("More detail"));
+        return waitForExpectedElement(By.xpath("//ul[@class='co_dropDownMenuList']//a[contains(., 'More') and contains(., 'etail')]"));
     }
 
     /**
@@ -440,7 +440,7 @@ public class SearchResultsPage extends AbstractPage {
      * setting - this object is the first option for less detail
      */
     public WebElement mostDetailOption() {
-        return retryingFindElement(By.linkText("Most detail"));
+        return retryingFindElement(By.xpath("//ul[@class='co_dropDownMenuList']//a[contains(., 'Most') and contains(., 'etail')]"));
     }
 
     public WebElement detailSliderDropdown() {
