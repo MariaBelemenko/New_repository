@@ -15,6 +15,7 @@ import com.thomsonreuters.pageobjects.common.DocumentColumn;
 public class ResearchOrganizerPage extends AbstractPage {
 
     private static final String EXPECTED_CLASS_ATTRIBUTE_VALUE_FOR_TABS = "co_tabLeft co_tabActive";
+    private static final int EXPECTED_DOCUMENT_NAME_LENGTH = 60;
 
     public WebElement foldersTab() {
         return waitForExpectedElement(By.id("co_researchOrganizer_myFolders"));
@@ -90,24 +91,13 @@ public class ResearchOrganizerPage extends AbstractPage {
     }
 
     public WebElement linkToDocumentInTrash(String title) {
-        String text = "'" + title + "'";
-        if (title.contains("'")) {
-            title = "\"" + title + "\"";
-            text = title;
-        }
-        return findElement(By.xpath("//*[text()=" + text + "]"));
+    	title = makeDocumentShorterForFoldersAndHistoryChecks(title);
+        return findElement(By.xpath("//*[contains(text(),\"" + title + "\")]"));
     }
 
     public WebElement linkToDocument(String documentGuid, String title) {
-        String text = "'" + title + "'";
-        if (title.contains("'")) {
-            title = "\"" + title + "\"";
-            text = title;
-        }
-		if (text.length() > 60) {
-			text = text.substring(0, 60);
-		}
-        return findElement(By.xpath("//*[contains(@href, '" + documentGuid + "') and contains(text()," + text + ")]"));
+    	title = makeDocumentShorterForFoldersAndHistoryChecks(title);
+        return findElement(By.xpath("//*[contains(@href, '" + documentGuid + "') and contains(text(),\"" + title + "\")]"));
     }
 
     public WebElement linkToDocumentContentType(String documentGuid, String contentType) {
@@ -157,21 +147,13 @@ public class ResearchOrganizerPage extends AbstractPage {
     }
 
     public String getContentTypeInTrash(String documentName) {
-        String text = "'" + documentName + "'";
-        if (documentName.contains("'")) {
-            documentName = "\"" + documentName + "\"";
-            text = documentName;
-        }
-        return waitForExpectedElement(By.xpath("//*[text()=" + text + "]/ancestor::tr/*[@class='co_detailsTable_type']")).getText();
+    	documentName = makeDocumentShorterForFoldersAndHistoryChecks(documentName);
+        return waitForExpectedElement(By.xpath("//*[contains(text(),\"" + documentName + "\")]/ancestor::tr/*[@class='co_detailsTable_type']")).getText();
     }
 
     public String getDateInTrash(String documentName) {
-        String text = "'" + documentName + "'";
-        if (documentName.contains("'")) {
-            documentName = "\"" + documentName + "\"";
-            text = documentName;
-        }
-        return waitForExpectedElement(By.xpath("//*[text()=" + text + "]/ancestor::tr/*[@class='co_detailsTable_date']")).getText();
+    	documentName = makeDocumentShorterForFoldersAndHistoryChecks(documentName);
+        return waitForExpectedElement(By.xpath("//*[contains(text(),\"" + documentName + "\")]/ancestor::tr/*[@class='co_detailsTable_date']")).getText();
     }
 
     public String getResourceType(String documentGuid) {
@@ -536,7 +518,8 @@ public class ResearchOrganizerPage extends AbstractPage {
      * @return Element with document checkbox
      */
     public WebElement getDocumentCheckbox(String documentName) {
-        return waitForExpectedElement(By.xpath("//tr[contains(@id, 'datatable') and contains(., '" + documentName + "')]//input[@type='checkbox']"));
+    	documentName = makeDocumentShorterForFoldersAndHistoryChecks(documentName);
+    	return waitForExpectedElement(By.xpath("//tr[contains(@id, 'datatable') and contains(., '" + documentName + "')]//input[@type='checkbox']"));
     }
 
     /**
@@ -553,7 +536,8 @@ public class ResearchOrganizerPage extends AbstractPage {
      * @return True = if doc exists, otherwise - false.
      */
     public boolean isDocumentExists(String documentName) {
-        return waitForElementExists(By.xpath("//tr[contains(@id, 'datatable') and contains(., '" + documentName + "')]//input[@type='checkbox']")).isDisplayed();
+    	documentName = makeDocumentShorterForFoldersAndHistoryChecks(documentName);
+    	return waitForElementExists(By.xpath("//tr[contains(@id, 'datatable') and contains(., '" + documentName + "')]//input[@type='checkbox']")).isDisplayed();
     }
 
     /**
@@ -562,7 +546,8 @@ public class ResearchOrganizerPage extends AbstractPage {
      * @return True = if doc is not exists, otherwise - false.
      */
     public boolean isDocumentAbsent(String documentName) {
-        return waitForElementAbsent(By.xpath("//tr[contains(@id, 'datatable') and contains(., '" + documentName + "')]//input[@type='checkbox']"));
+    	documentName = makeDocumentShorterForFoldersAndHistoryChecks(documentName);
+    	return waitForElementAbsent(By.xpath("//tr[contains(@id, 'datatable') and contains(., '" + documentName + "')]//input[@type='checkbox']"));
     }
     /**
      * element that provides date picker for Before, After, On and From Date Text-boxes
@@ -587,4 +572,18 @@ public class ResearchOrganizerPage extends AbstractPage {
     	int numberOfDocument = Integer.parseInt(number)-1;
         return waitForExpectedElement(By.xpath("//input[@id='cobalt_foldering_ro_select_checkbox_" + numberOfDocument + "']"));
     }
+    
+	/**
+	 * if the document has too long name, it is needed to make it shorter for
+	 * checks
+	 * @param documentName
+	 * @return
+	 */
+	private String makeDocumentShorterForFoldersAndHistoryChecks(String documentName) {
+		if (documentName.length() > EXPECTED_DOCUMENT_NAME_LENGTH) {
+			documentName = documentName.substring(0, EXPECTED_DOCUMENT_NAME_LENGTH);
+		}
+		return documentName;
+	}
+	
 }
