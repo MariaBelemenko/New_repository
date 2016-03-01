@@ -11,9 +11,8 @@ import java.util.List;
 
 public class CategoryPage extends AbstractPage {
 
-	private AddToFavouritesPopup addToFavouritesWidget;
-	private AddToFavouritesPopup addToFavouritesPopup;
-    private CommonMethods comMethods;
+	private AddToFavouritesPopup addToFavouritesPopup = new AddToFavouritesPopup();
+    private CommonMethods comMethods = new CommonMethods();
 
 	private WebElement activeElement;
 	private LayoutGroup activeLayoutGroup;
@@ -135,7 +134,7 @@ public class CategoryPage extends AbstractPage {
 		waitForExpectedElement(By.xpath("//*[@id='co_foldering_categoryPage']")).click();
 		waitForPageToLoad();
 		selectFavouritesGroup(groupName);
-		addToFavouritesWidget.save().click();
+        addToFavouritesPopup.save().click();
 		waitForPageToLoad();
 	}
 
@@ -147,7 +146,6 @@ public class CategoryPage extends AbstractPage {
 			addToFavouritesPopup.waitForPageToLoad();
 			addToFavouritesPopup.createGroupButton().click();
 			addToFavouritesPopup.waitForPageToLoad();
-
 		}
 		WebElement groupCheckbox = addToFavouritesPopup.groupCheckbox(groupName);
 		if (!groupCheckbox.isSelected()) {
@@ -203,6 +201,11 @@ public class CategoryPage extends AbstractPage {
 	public WebElement addToFavoritesLink() {
 		return comMethods.waitForExpectedElement(By.xpath(ADD_TO_FAVORITES), 1000);
 	}
+
+    public Boolean addToFavouritesLinkPresent() {
+        comMethods.findElement(By.xpath(ADD_TO_FAVORITES));
+        return true;
+    }
 
 	public WebElement makeThisMyStartPageLink() {
 		return comMethods.waitForExpectedElement(By.xpath(MAKE_THIS_MY_START_PAGE), 1000);
