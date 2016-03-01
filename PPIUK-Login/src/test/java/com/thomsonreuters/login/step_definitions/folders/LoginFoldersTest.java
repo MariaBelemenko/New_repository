@@ -8,7 +8,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
+import static org.testng.AssertJUnit.assertNull;
 
 public class LoginFoldersTest extends BaseStepDef {
 
@@ -29,6 +29,7 @@ public class LoginFoldersTest extends BaseStepDef {
 
     @Then("^he does not see any favourites icon/link$")
     public void heDoesNotSeeAnyFavouritesIconLink() throws Throwable {
+//        assertFalse("Add to Favorites is visible for user", categoryPage.addToFavouritesLinkPresent());
         assertNull("Add to Favorites is visible for user", categoryPage.addToFavoritesLink());
     }
 
