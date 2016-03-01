@@ -50,8 +50,7 @@ Feature: Inline Notes functionality
     Then user should be able be able to see the both notes pointing to same line
     And user will not be having any overlapping issue
 
-  @Bug
-  Scenario: Bug 821563: Inline notes with selected color
+  Scenario: Inline notes with selected color
     When user selects the text "Taxation of Chargeable Gains Act 1992"
     And user selects an add note with black color
     Then Inline Notes textbox will be displayed with tinymce editor
@@ -61,8 +60,7 @@ Feature: Inline Notes functionality
     Then verify the saved inline notes will be displayed in the same location where it was created
     And verify that inline notes color is black color
 
-  @Bug
-  Scenario Outline: Bug 833724: Character/Header Styles: BOLD/ITALIC/UNDERLINE/STRIKETHROUGH/ALIGN RIGHT/LEFT/CENTER selected after entering text
+  Scenario Outline: Character/Header Styles: BOLD/ITALIC/UNDERLINE/STRIKETHROUGH/ALIGN RIGHT/LEFT/CENTER selected after entering text
     When clearing existing styles and Inline Notes text
     And selecting "<style>" and writing text
     Then text displays with "<style>" character style
