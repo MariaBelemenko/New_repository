@@ -178,13 +178,14 @@ Feature: Integration of TinyMce Editor
     When click on that link text "http://google.co.uk"
     Then hyperlinked url will be opened in new tab with title "Google"
 
+    @Chiran
   Scenario Outline: Sharing annotations to reviewer with rich format text
     Given PL+ user is logged in with following details
       | userName   | librarian1 |
       | newSession | TRUE       |
     When user navigates directly to document with guid "I63cd7ba5e68b11e398db8b09b4f043e0"
     Then user has created the annotations with "<style>"
-    And user has shared the annotations with another contact "librarian3"
+    And user shared the annotations with another contact "librarian3"
     Given PL+ user is logged in with following details
       | userName | librarian3 |
     When user navigates directly to document with guid "I63cd7ba5e68b11e398db8b09b4f043e0"

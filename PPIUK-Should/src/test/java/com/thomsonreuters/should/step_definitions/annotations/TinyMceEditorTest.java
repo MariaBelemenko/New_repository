@@ -1,10 +1,8 @@
 package com.thomsonreuters.should.step_definitions.annotations;
 
 import com.thomsonreuters.pageobjects.common.CommonMethods;
-import com.thomsonreuters.pageobjects.pages.annotations.FormatType;
 import com.thomsonreuters.pageobjects.pages.annotations.SharedAnnotationsPage;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.documentNavigation.DocumentDeliveryPage;
-import com.thomsonreuters.should.step_definitions.BaseStepDef;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.Keys;
@@ -15,16 +13,16 @@ import java.util.List;
 
 import static junit.framework.Assert.assertTrue;
 
-public class TinyMceEditorTest extends BaseStepDef {
+public class TinyMceEditorTest extends AnnotationsTest {
 
     private SharedAnnotationsPage sharedAnnotationsPage = new SharedAnnotationsPage();
     private CommonMethods commonMethods = new CommonMethods();
     private DocumentDeliveryPage deliveryPage = new DocumentDeliveryPage();
 
-    public static String input;
     public static String editOption = "";
     public static String mainWindow;
     public static List<String> numbersList;
+    public static String input;
 
     @When("^clearing existing styles and annotation text$")
     public void cleanStyle() throws Throwable {
@@ -196,13 +194,6 @@ public class TinyMceEditorTest extends BaseStepDef {
         commonMethods.switchToWindow(mainWindow);
     }
 
-    @When("^user has created the annotations with \"(.*?)\"$")
-    public void userHasCreatedTheAnnotationsWith(String style) throws Throwable {
-        deliveryPage.clickOnLink(DocumentDeliveryPage.Links.NEW_ANNOTATION);
-        input = "input" + System.currentTimeMillis();
-        sharedAnnotationsPage.selectStyle(getFormatType(style));
-        sharedAnnotationsPage.amendInput(input);
-    }
 
     @Then(("^the annotations text should be displayed in the \"(.*?)\" format$"))
     public void theAnotationTextShouldBeDisplayedInStyleFormat(String style) {
@@ -210,8 +201,23 @@ public class TinyMceEditorTest extends BaseStepDef {
                 SharedAnnotationsPage.ExpectedResult.VISIBLE, input));
     }
 
-    private FormatType getFormatType(String style) {
-        return FormatType.valueOf(style.toUpperCase().trim());
+    @When("^user shared the annotations with another contact \"(.*?)\"$")
+    public void userSharedTheAnnotationsWithAnotherContact(String contact) throws Throwable {
+        sharedAnnotationsPage.clickOnContactsLink();
+        sharedAnnotationsPage.searchContact(getUserFullName(contact));
+        sharedAnnotationsPage.selectContact(getUserNameStartswithLastName(contact));
+        sharedAnnotationsPage.selectInsertButtonOnContactsPage();
+        sharedAnnotationsPage.scrollToTinyMceEditor();
+        sharedAnnotationsPage.saveAnnotation();
+        assertTrue("Application having page loading issue", sharedAnnotationsPage.isMetaDataDispalyed(input));
     }
 
+    @When("^user has created the annotations with \"(.*?)\"$")
+    public void userHasCreatedTheAnnotationsWith(String style) throws Throwable {
+        deliveryPage.clickOnLink(DocumentDeliveryPage.Links.NEW_ANNOTATION);
+        input = "input" + System.currentTimeMillis();
+        sharedAnnotationsPage.amendInput(input);
+        sharedAnnotationsPage.selectText();
+        sharedAnnotationsPage.selectStyle(getFormatType(style));
+    }
 }

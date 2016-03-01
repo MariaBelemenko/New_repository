@@ -1,23 +1,19 @@
 package com.thomsonreuters.should.step_definitions.annotations;
 
-import com.thomsonreuters.driver.exception.PageOperationException;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.annotations.SharedAnnotationsPage;
 import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.login.OnepassLogin;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePage;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.documentNavigation.DocumentDeliveryPage;
-import com.thomsonreuters.pageobjects.utils.User;
-import com.thomsonreuters.should.step_definitions.BaseStepDef;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.springframework.util.StringUtils;
 
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 
-public class ProductViewAwarenessTest extends BaseStepDef {
+public class ProductViewAwarenessTest extends AnnotationsTest {
 
     private NavigationCobalt navigationCobalt = new NavigationCobalt();
     private KHResourcePage resourcePage = new KHResourcePage();
@@ -26,8 +22,8 @@ public class ProductViewAwarenessTest extends BaseStepDef {
     private WLNHeader wlnHeader = new WLNHeader();
     private OnepassLogin onePassLogin = new OnepassLogin();
 
-    public static String input;
     public static String editOption;
+    public static String input;
 
     public static final String groupName = "annotationsTestGroup";
 
@@ -95,17 +91,6 @@ public class ProductViewAwarenessTest extends BaseStepDef {
         sharedAnnotationsPage.selectText();
     }
 
-    @When("^user has shared the annotations with another contact \"(.*?)\"$")
-    public void userHasSharedTheAnnotationsWithAnotherContact(String contact) throws Throwable {
-        sharedAnnotationsPage.clickOnContactsLink();
-        sharedAnnotationsPage.searchContact(getUserFullName(contact));
-        sharedAnnotationsPage.selectContact(getUserNameStartswithLastName(contact));
-        sharedAnnotationsPage.selectInsertButtonOnContactsPage();
-        sharedAnnotationsPage.scrollToTinyMceEditor();
-        sharedAnnotationsPage.saveAnnotation();
-        assertTrue("Application having page loading issue", sharedAnnotationsPage.isMetaDataDispalyed(input));
-    }
-
     @Then("^user logs out$")
     public void userLogsOut() throws Throwable {
         wlnHeader.signOff();
@@ -138,20 +123,14 @@ public class ProductViewAwarenessTest extends BaseStepDef {
         sharedAnnotationsPage.insertInputInWLNAnnotationTextBox(input);
     }
 
-    private String getUserFullName(String contact) {
-        User user = annotationUsers.get(contact);
-        if (StringUtils.isEmpty(user)) {
-            throw new PageOperationException("Usernames are not matching between usernameAndPassword properties and plPlusUser username value.");
-        }
-        return user.getFullName();
+    @When("^user has shared the annotations with another contact \"(.*?)\"$")
+    public void userHasSharedTheAnnotationsWithAnotherContact(String contact) throws Throwable {
+        sharedAnnotationsPage.clickOnContactsLink();
+        sharedAnnotationsPage.searchContact(getUserFullName(contact));
+        sharedAnnotationsPage.selectContact(getUserNameStartswithLastName(contact));
+        sharedAnnotationsPage.selectInsertButtonOnContactsPage();
+        sharedAnnotationsPage.scrollToTinyMceEditor();
+        sharedAnnotationsPage.saveAnnotation();
+        assertTrue("Application having page loading issue", sharedAnnotationsPage.isMetaDataDispalyed(input));
     }
-
-    private String getUserNameStartswithLastName(String contact) {
-        User user = annotationUsers.get(contact);
-        if (StringUtils.isEmpty(user)) {
-            throw new PageOperationException("Usernames are not matching between usernameAndPassword properties and plPlusUser username value.");
-        }
-        return user.getLastName() + ", " + user.getFirstName();
-    }
-
 }
