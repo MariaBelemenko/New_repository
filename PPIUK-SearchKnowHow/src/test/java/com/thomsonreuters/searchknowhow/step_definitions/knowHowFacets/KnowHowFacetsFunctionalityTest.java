@@ -7,6 +7,7 @@ import com.thomsonreuters.pageobjects.pages.search.SearchHomePage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.pageobjects.utils.search.SearchUtils;
 import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
+import com.thomsonreuters.pageobjects.pages.search.CasesSearchResultsPage;
 import cucumber.api.Transpose;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -28,6 +29,7 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
     private CommonMethods commonMethods = new CommonMethods();
     private SearchHomePage searchHomePage = new SearchHomePage();
     private SearchUtils searchUtils = new SearchUtils();
+    private CasesSearchResultsPage casesSearchResultsPage = new CasesSearchResultsPage();
 
     Integer[] resultArray = new Integer[10];
     private int facetsDocsCount = 0;
@@ -79,11 +81,6 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         System.out.println(Integer.toString(resultArray[count1]) + " **********");
         System.out.println(Integer.toString(resultArray[count2]) + " **********");
         assertTrue(resultArray[count1] == resultArray[count2]);
-    }
-
-    @When("^the user verifies that the know how facet count \"(.*?)\" is less than \"(.*?)\"$")
-    public void theUserVerifiesThatTheKnowHowFacetCountIsLessThan(Integer count1, Integer count2) throws Throwable {
-        assertTrue(resultArray[count1] < resultArray[count2]);
     }
 
     @When("^the user deselects the know how facet \"(.*?)\"$")
@@ -233,6 +230,20 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         Arrays.fill(resultArray, null);
     }
 
+    @When("^the user verifies that the know how facet count \"(.*?)\" is less than \"(.*?)\"$")
+    public void theUserVerifiesThatTheKnowHowFacetCountIsLessThan(Integer count1, Integer count2) throws Throwable {
+        System.out.println(Integer.toString(resultArray[count2]) + " **********");
+        assertTrue(resultArray[count1] < resultArray[count2]);
+    }
+
+    @When("^the user gets the know how search result count and stores it as count \"(.*?)\"$")
+    public void theUserGetsTheKnowHowSearchResultCountAndStoresItAsCount(Integer count) throws Throwable {
+        String numberReturnedFromWebsite = knowHowSearchResultsPage.knowHowSearchResultCount().getText();
+        numberReturnedFromWebsite = numberReturnedFromWebsite.replaceAll("[^0-9]", "");
+        resultArray[count] = Integer.parseInt(numberReturnedFromWebsite);
+        System.out.println("Storing count " + Integer.toString(resultArray[count]) + " in result " + Integer.toString(count) + " **********");
+    }
+
     @When("^the user verifies the presence of an associated know how facet \"(.*?)\" count$")
     public void theUserVerifiesThePresenceOfAnAssociatedKnowHowFacetCount(String arg1) throws Throwable {
         knowHowSearchResultsPage.facetCount(arg1).isDisplayed();
@@ -274,6 +285,25 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
     public void theUserSeeTheSearchResultCountUpdatedAccordingly() throws Throwable {
         assertTrue("Results count was not updated after filtering",
                 searchUtils.getSearchResultsCountAsInt() <= facetsDocsCount);
+    }
+
+    @Then("^the user verifies that the facet is instantly applied and the search result count updated accordingly$")
+    public void theUserVerifiesThatTheFacetIsInstantlyAppliedAndTheSearchResultCountUpdatedAccordingly() throws Throwable {
+        searchResultsPage.facetCheckbox("Family").isSelected();
+        theUserGetsTheCasesSearchResultCountAndStoresItAsCount(2);
+        theUserVerifiesThatTheKnowHowSearchResultCountIsLessThan(2, 1);
+    }
+
+    @When("^the user gets the cases search result count and stores it as count \"(.*?)\"$")
+    public void theUserGetsTheCasesSearchResultCountAndStoresItAsCount(Integer count) throws Throwable {
+        String numberReturnedFromWebsite = casesSearchResultsPage.casesSearchResultCount().getText();
+        numberReturnedFromWebsite = numberReturnedFromWebsite.replaceAll("[^0-9]", "");
+        resultArray[count] = Integer.parseInt(numberReturnedFromWebsite);
+    }
+
+    @When("^the user verifies that the know how search result count \"(.*?)\" is less than \"(.*?)\"$")
+    public void theUserVerifiesThatTheKnowHowSearchResultCountIsLessThan(Integer count1, Integer count2) throws Throwable {
+        assertTrue(resultArray[count1] < resultArray[count2]);
     }
 
 }

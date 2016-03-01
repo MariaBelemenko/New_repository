@@ -22,10 +22,8 @@ Feature: ukKnowHowFacetsFunctionality.feature - [713885] [702173] [710581] [7286
   @e2e @prod
   Scenario: [713885] Verify that when two or more facets are selected across facet groups then results are updated using the "and" operator
     When the user runs a free text search for the query "taxation"
-    And the user pauses for "3" seconds
     And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
     And the user selects the know how "Resource Type" facet "Glossary"
-    And the user pauses for "3" seconds
     And the user selects the know how option to apply filters
     And the user verifies that the know how facet is selected "Glossary"
     And the user gets the know how facet "Glossary" count and stores it as count "1"
@@ -39,7 +37,6 @@ Feature: ukKnowHowFacetsFunctionality.feature - [713885] [702173] [710581] [7286
 
   Scenario: [713885] Verify that when two or more facets are deselected then results are updated using the "and" operator
     When the user runs a free text search for the query "taxation"
-    And the user pauses for "3" seconds
     And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
     And the user selects the know how parent facet "Glossary"
     And the user verifies that the know how facet is selected "Glossary"
@@ -77,7 +74,6 @@ Feature: ukKnowHowFacetsFunctionality.feature - [713885] [702173] [710581] [7286
   @e2e @prod
   Scenario Outline: [710581] verify child facet not selected when parent is selected and that selecting a child deselects the parent
     When the user runs a free text search for the query "<query>"
-    And the user pauses for "3" seconds
     And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
     And the user verifies that know how "Practice Area" facet "<facet1>" is not selected
     And the user selects the know how parent facet "<facet1>"
@@ -93,7 +89,6 @@ Feature: ukKnowHowFacetsFunctionality.feature - [713885] [702173] [710581] [7286
   @e2e @prod
   Scenario Outline: [710581] Verify search without modification of query discards all selected facets
     When the user runs a free text search for the query "<query>"
-    And the user pauses for "3" seconds
     And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
     And the user selects the know how "Resource Type" facet "<facet1>"
     And the user selects the know how "Practice Area" facet "<facet2>"
@@ -112,7 +107,6 @@ Feature: ukKnowHowFacetsFunctionality.feature - [713885] [702173] [710581] [7286
 
   Scenario Outline: [710581] Verify search with modification of query discards all selected facets
     When the user runs a free text search for the query "<query>"
-    And the user pauses for "3" seconds
     And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
     And the user selects the know how "Resource Type" facet "<facet1>"
     And the user selects the know how "Practice Area" facet "<facet2>"
@@ -130,20 +124,17 @@ Feature: ukKnowHowFacetsFunctionality.feature - [713885] [702173] [710581] [7286
     | taxation | contract | Glossary | Employment | Any UK jurisdiction |
 
   Scenario: [no applicable story] verify that when the select multiple filter mode is cancelled facets are updated straight away
-    When the user is on a know how search results page following a search for the term "fishing" and has stored the result count
+    When the user runs a free text search for the query "fishing"
+    And the user gets the know how search result count and stores it as count "1"
     And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
     Then the user can select the filter mode cancel option
-    And the user pauses for "3" seconds
     And the user can verify the presence of the option entitled select multiple filters
     And the user selects the know how parent facet "Family"
-    And the user pauses for "3" seconds
     And the user verifies that the facet is instantly applied and the search result count updated accordingly
 
   Scenario:[728696] verify no know how facets with a count of 0 are displayed
     When the user runs a free text search for the query "law"
-    And the user pauses for "3" seconds
     And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
-    And the user pauses for "5" seconds
     And the user verifies that the facet count for all the individual facets is not "0"
     And the user verifies that the facet count for all the individual facets is not ""
     And the user verifies that the facet count for all the individual facets does not contain "-"

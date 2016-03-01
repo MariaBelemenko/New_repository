@@ -3,7 +3,6 @@ package com.thomsonreuters.searchknowhow.step_definitions.knowHowDelivery;
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.PageActions;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawUKCategoryPage;
-import com.thomsonreuters.pageobjects.pages.search.CasesSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
@@ -29,7 +28,6 @@ public class KnowHowDeliveryTest extends BaseStepDef {
     private SearchResultsPage searchResultsPage = new SearchResultsPage();
     private CommonMethods commonMethods = new CommonMethods();
     private KnowHowSearchResultsPage knowHowSearchResultsPage = new KnowHowSearchResultsPage();
-    private CasesSearchResultsPage casesSearchResultsPage = new CasesSearchResultsPage();
 
     Integer[] resultArray = new Integer[10];
 
@@ -367,38 +365,6 @@ public class KnowHowDeliveryTest extends BaseStepDef {
     @When("^the user selects the print option$")
     public void theUserSelectsThePrintOption() throws Throwable {
         searchResultsPage.printButton().click();
-    }
-
-    @When("^the user is on a know how search results page following a search for the term \"(.*?)\" and has stored the result count$")
-    public void theUserIsOnAKnowHowSearchResultsPageFollowingASearchForTheTermAndHasStoredTheResultCount(String query) throws Throwable {
-        theUserRunsAFreeTextSearchForTheQuery(query);
-        theUserGetsTheKnowHowSearchResultCountAndStoresItAsCount(1);
-    }
-
-    @When("^the user gets the know how search result count and stores it as count \"(.*?)\"$")
-    public void theUserGetsTheKnowHowSearchResultCountAndStoresItAsCount(Integer count) throws Throwable {
-        String numberReturnedFromWebsite = knowHowSearchResultsPage.knowHowSearchResultCount().getText();
-        numberReturnedFromWebsite = numberReturnedFromWebsite.replaceAll("[^0-9]", "");
-        resultArray[count] = Integer.parseInt(numberReturnedFromWebsite);
-    }
-
-    @Then("^the user verifies that the facet is instantly applied and the search result count updated accordingly$")
-    public void theUserVerifiesThatTheFacetIsInstantlyAppliedAndTheSearchResultCountUpdatedAccordingly() throws Throwable {
-        searchResultsPage.facetCheckbox("Family").isSelected();
-        theUserGetsTheCasesSearchResultCountAndStoresItAsCount(2);
-        theUserVerifiesThatTheKnowHowSearchResultCountIsLessThan(2, 1);
-    }
-
-    @When("^the user gets the cases search result count and stores it as count \"(.*?)\"$")
-    public void theUserGetsTheCasesSearchResultCountAndStoresItAsCount(Integer count) throws Throwable {
-        String numberReturnedFromWebsite = casesSearchResultsPage.casesSearchResultCount().getText();
-        numberReturnedFromWebsite = numberReturnedFromWebsite.replaceAll("[^0-9]", "");
-        resultArray[count] = Integer.parseInt(numberReturnedFromWebsite);
-    }
-
-    @When("^the user verifies that the know how search result count \"(.*?)\" is less than \"(.*?)\"$")
-    public void theUserVerifiesThatTheKnowHowSearchResultCountIsLessThan(Integer count1, Integer count2) throws Throwable {
-        assertTrue(resultArray[count1] < resultArray[count2]);
     }
 
 }
