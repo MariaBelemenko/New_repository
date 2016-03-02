@@ -33,7 +33,7 @@ public class AskLandingPageTest extends BaseStepDef {
         } else if (pageName.equalsIgnoreCase("ask tab")) {
             assertThat("Disclaimer is Not displayed", askCategoryPage.askDisclaimerTextOnAskTab().getText(), containsString(text));
         } else if (pageName.equalsIgnoreCase("ask landing")) {
-            assertThat("Disclaimer is Not displayed", askCategoryPage.askDisclaimerTextOnAskLandingPage().getText(), containsString(text));
+            assertTrue("Disclaimer is Not displayed", askCategoryPage.askDisclaimerTextOnAskLandingPage(text).isDisplayed());
         } else if (pageName.equalsIgnoreCase("ask Category")) {
             assertThat("Disclaimer is Not displayed", askCategoryPage.askDisclaimerText().getText(), containsString(text));
         }

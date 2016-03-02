@@ -24,8 +24,8 @@ public class AskCategoryPage extends AbstractPage {
         return waitForExpectedElement(By.cssSelector("#coid_categoryBoxTab4SubPanel1-0-main div:nth-of-type(1) .co_genericBoxContent"));
     }
 
-    public WebElement askDisclaimerTextOnAskLandingPage() {
-        return waitForExpectedElement(By.cssSelector("#coid_website_browseMainColumn div .co_genericBoxContent"));
+    public WebElement askDisclaimerTextOnAskLandingPage(String withText) {
+        return waitForExpectedElement(By.xpath("//div[@class='ask-disclaimer' and contains(., '" + withText + "')]"));
     }
 
     public WebElement askFeaturedQueriesQuestText() {
