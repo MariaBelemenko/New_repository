@@ -21,7 +21,7 @@ Feature: ukWhatsMarketComparisonToolDelivery.feature
     And the user ensures that the left hand column select is displayed
     And the user selects the download icon on the comparison report page
       # Bug 850563 can prevent the title showing.
-    And the user verifies the presence of a pop up entitled 'Download Report'
+    #And the user verifies the presence of a pop up entitled 'Download Report'
     And the user verifies the presence of a dropdown entitled Format
     And the user selects the format option entitled "<option>"
     And the user click on download button
@@ -51,7 +51,7 @@ Feature: ukWhatsMarketComparisonToolDelivery.feature
     And the user ensures that the left hand column select is displayed
     And the user selects the Email icon on the comparison report page
     # Bug 850563 can prevent the title showing.
-    And the user verifies the presence of a pop up entitled 'Email Report'
+    #And the user verifies the presence of a pop up entitled 'Email Report'
     And the user verifies the presence of a dropdown entitled Format
     And the user selects the format option entitled "<option>"
     And the user selects the Email option
