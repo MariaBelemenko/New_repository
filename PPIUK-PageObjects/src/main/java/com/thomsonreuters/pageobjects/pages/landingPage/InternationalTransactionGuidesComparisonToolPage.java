@@ -22,7 +22,7 @@ public class InternationalTransactionGuidesComparisonToolPage extends AbstractPa
 
     public WebElement topicLink(String name) {
 
-        return waitForExpectedElement(By.xpath("//div[@id='co_docContentBody']//a[@class='ng-scope ng-binding'][contains(text(),'" + name + "')]"));
+        return waitForExpectedElement(By.xpath("//div[@id='co_docContentBody']//a[@class='ng-scope ng-binding'][contains(text(),'" + name + "')]"),10);
     }
 
     /**

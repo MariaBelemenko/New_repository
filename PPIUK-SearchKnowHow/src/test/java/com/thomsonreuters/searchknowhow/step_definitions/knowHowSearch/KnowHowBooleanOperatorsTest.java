@@ -59,6 +59,42 @@ public class KnowHowBooleanOperatorsTest extends BaseStepDef {
         }
     }
 
+    @Then("^the displayed document will have any of the terms \"([^\"]*)\" marked up as hits$")
+    public void theDisplayedDocumentWillHaveAnyOfTheTermsMarkedUpAsHits(String searchTerms) throws Throwable {
+        if (!searchTerms.equals("") && !searchTerms.isEmpty()) {
+            /** Split each term using the space character */
+            String eachTerms[] = searchTerms.split(" ");
+            Boolean termFound = false;
+            String textFromElement;
+            for (int dataRow = 0; dataRow < eachTerms.length; dataRow++) {
+                String currentTerm = eachTerms[dataRow].toUpperCase();
+                /** remove any white spaces */
+                currentTerm = currentTerm.replaceAll("\\s+", "");
+                /** Ignore And and Or */
+                if ((!currentTerm.equals("AND")) && (!currentTerm.equals("&")) && (!currentTerm.equals("OR"))) {
+                    if (currentTerm.length() > 0) {
+                        /** If a single term is connected with a + plus sign split that into multiple terms, any of which will pass */
+                        String equivalentTerms[] = currentTerm.split("\\+");
+                        for (int dataRowTwo = 0; dataRowTwo < equivalentTerms.length; dataRowTwo++) {
+                            currentTerm = equivalentTerms[dataRowTwo];
+                            LOG.info(" ...Checking that the term '" + currentTerm + "' is marked up as a hit");
+                            List<WebElement> searchTermsFound = ppiGenericDocDisplay.ppiTermNavigationHitMarkupCheckTermsAsList();
+                            LOG.info("The number of marked up search terms found is: " + searchTermsFound.size());
+                            for (WebElement element : searchTermsFound) {
+                                textFromElement = element.getText().toUpperCase();
+                                if (Pattern.matches(wildcardToRegex("*" + currentTerm + "*"), textFromElement)) {
+                                    termFound = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            assertTrue("No terms were matched", termFound);
+        }
+    }
+
     @Then("^the user verifies the search result contains the search terms \"(.*?)\" as a phrase within the full text$")
     public void theUserVerifiesTheSearchResultContainsTheSearchTermsAsAPhraseWithinTheFullText(String phrase) throws Throwable {
         String docText = getFullText().toLowerCase();
@@ -105,8 +141,10 @@ public class KnowHowBooleanOperatorsTest extends BaseStepDef {
     @Then("^the user verifies the search result contains the first search term \"(.*?)\" in the full text for the first term and not the second \"(.*?)\"$")
     public void theUserVerifiesTheSearchResultsContainsTheFirstSearchNotTheSecondOne(String firstTerm, String secondTerm) throws Throwable {
         String docText = getFullText().toLowerCase();
-        assertTrue(docText.contains(firstTerm.toLowerCase().trim()));
-        assertFalse(docText.contains(secondTerm.toLowerCase().trim()));
+        firstTerm = firstTerm.toLowerCase().trim();
+        secondTerm = secondTerm.toLowerCase().trim();
+        assertTrue(docText.contains(firstTerm));
+        assertFalse(docText.contains(secondTerm));
     }
 
     @Then("^the user verifies the search result contains the full text includes one or more of the variants$")

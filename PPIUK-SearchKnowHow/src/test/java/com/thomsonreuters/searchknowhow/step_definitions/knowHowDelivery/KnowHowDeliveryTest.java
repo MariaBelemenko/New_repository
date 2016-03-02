@@ -33,11 +33,12 @@ public class KnowHowDeliveryTest extends BaseStepDef {
 
     @When("^the user runs a free text search for the query \"(.*)\"$")
     public void theUserRunsAFreeTextSearchForTheQuery(String query) throws Throwable {
-        StringSelection stringSelection = new StringSelection(query);
         Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
         practicalLawUKCategoryPage.searchButton().isDisplayed();
         practicalLawUKCategoryPage.freeTextField().clear();
+        //Paste the clipboard text if the query contains brackets or ampersand
         if (query.contains("(") || query.contains(")") || query.contains("&")) {
+            StringSelection stringSelection = new StringSelection(query);
             clpbrd.setContents(stringSelection, null);
             practicalLawUKCategoryPage.freeTextField().sendKeys(Keys.CONTROL + "v");
         } else {

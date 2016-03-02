@@ -84,7 +84,7 @@ public class WhatsMarketSearchResultsPage extends AbstractPage {
      */
     public String getResultItemMetaData(String index) {
         try {
-            return retryingFindElement(By.cssSelector("#co_searchResults_citation_" + index + " span:nth-child(2)")).getText();
+            return waitForExpectedElement(By.cssSelector("#co_searchResults_citation_" + index + " span:nth-child(2)"),15).getText();
         } catch (PageOperationException pe) {
             LOG.info("context", pe);
             return StringUtils.EMPTY;

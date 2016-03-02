@@ -7,14 +7,12 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
     When the user runs a free text search for the query "contract and acceptance"
     Then the user gets the know how search result count and stores it as count "1"
     When the user runs a free text search for the query "contract or acceptance"
-    And the user pauses for "3" seconds
     Then the user gets the know how search result count and stores it as count "2"
     And the user verifies that the know how search result count "1" is less than "2"
 
   Scenario Outline: verify that results for an "and" search comprise all search terms
     When the user runs a free text search for the query "<query>"
     And the user opens the result in position "<result>"
-    And the user pauses for "5" seconds
     Then the displayed document will have the terms "<terms>" marked up as hits
   Examples:
     | query                   | result | terms               |
@@ -35,7 +33,7 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
     When the user runs a free text search for the query "contract and acceptance"
     And the user opens the result in position "<result>"
     And the user pauses for "5" seconds
-    Then the displayed document will have the terms "<terms>" marked up as hits
+    Then the displayed document will have any of the terms "<terms>" marked up as hits
   Examples:
     | result | terms               |
     | 2      | contract acceptance |
@@ -72,7 +70,6 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Scenario Outline: Validate that use of the /p connectors retrieves terms within the same paragraph
     When the user runs a free text search for the query "house /p defect"
     And the user opens the result in position "<result>"
-    And the user pauses for "5" seconds
     Then the user verifies the search result contains the search terms "house" "defect" within a single paragraph in the full text
   Examples:
     | result |
@@ -124,7 +121,9 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Scenario Outline: Validate that use of the % connector prevents terms placed after it from being retrieved
     When the user runs a free text search for the query "house % defect"
     And the user opens the result in position "<result>"
-    Then the user verifies the search result contains the first search term "house" in the full text for the first term and not the second "defect"
+    And the user pauses for "5" seconds
+    #hous used to allow for "housing"
+    Then the user verifies the search result contains the first search term "hous" in the full text for the first term and not the second "defect"
   Examples:
     | result |
     | 2      |
@@ -197,8 +196,8 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
 
   Scenario: Searching with commas
     When the user runs a free text search for the query "contract, acceptance,"
-    And the user pauses for "3" seconds
     And the user opens the result in position "1"
+    And the user pauses for "5" seconds
     Then the user verifies the search result contains the search terms "contract" and also "acceptance" within the full text
 
   Scenario: Advanced terms and connectors

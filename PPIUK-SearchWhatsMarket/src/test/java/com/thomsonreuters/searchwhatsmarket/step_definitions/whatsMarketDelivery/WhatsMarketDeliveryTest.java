@@ -45,13 +45,13 @@ public class WhatsMarketDeliveryTest extends BaseStepDef {
     @When("^the user runs a free text search for the query \"(.*)\"$")
     public void theUserRunsAFreeTextSearchForTheQuery(String query) throws Throwable {
         /** Paste string into the system clipboard instead */
-        StringSelection stringSelection = new StringSelection(query);
         Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
         /** Ensure the search button has rendered */
         practicalLawUKCategoryPage.searchButton().isDisplayed();
         practicalLawUKCategoryPage.freeTextField().clear();
-        /**Paste the clipboard text if the query contains brackets or ampersand */
+        //Paste the clipboard text if the query contains brackets or ampersand
         if (query.contains("(") || query.contains(")") || query.contains("&")) {
+            StringSelection stringSelection = new StringSelection(query);
             clpbrd.setContents(stringSelection, null);
             practicalLawUKCategoryPage.freeTextField().sendKeys(Keys.CONTROL + "v");
         } else {

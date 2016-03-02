@@ -166,8 +166,9 @@ Feature: [792545][792551][792565][792547][702177][792476][792527][792536] uk Sco
     And the user can open the first know how search result "3"
     And the user verifies that the product detail contains the practice area "Finance"
 
-  @e2e @prod
+  @e2e @prod @bug
   Scenario: [792536] - Scoped search on Topic Page
+    # Bug 860453 - REGRESSION - topic information missing from know how resources
     When the user navigates to practice area "Employment" filtered by "Contracts of employment" topic page
     Then the user can verify that the scoped search dropdown states "Contracts of Employment"
     Then the user can display the scoped search dropdown menu options

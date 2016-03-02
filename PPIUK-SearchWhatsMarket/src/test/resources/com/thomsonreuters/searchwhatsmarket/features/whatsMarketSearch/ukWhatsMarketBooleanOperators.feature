@@ -7,7 +7,7 @@ Ability to use operators when searching on PL+ for what's market
     And has selected the link to the What's Market homepage
 
   Scenario: [711536] verify that the number of results for an "and" search is lower than the number of  results for an "or" search, [711536] Searching with commas
-    When the user runs a free text search for the query "contract and acceptance"
+    When the user runs a free text search for the query "contract & acceptance"
     And the user gets the know how search result count and stores it as count "1"
     And the user runs a free text search for the query "contract or acceptance"
     And the user gets the know how search result count and stores it as count "2"
@@ -27,15 +27,15 @@ Ability to use operators when searching on PL+ for what's market
 
   @bug
   Scenario Outline: [711536] Searching with a mix of and and or operators
-    # http://tfsnpt.int.thomson.com:8080/tfs/Cobalt_Collection/Cobalt%20Product%20Backlog/_workItems/index#_a=edit&id=815995
+    # http://tfsnpt.int.thomson.com:8080/tfs/Cobalt_Collection/Cobalt%20Product%20Backlog/_workItems/index#_a=editANDid=815995
     #815995
-    When the user runs a free text search for the query "(company or merger) & (insolvency or administration)"
+    When the user runs a free text search for the query "(company or merger) AND (insolvency or administration)"
     And the user opens the whats market result in position "<result>"
     Then the result contains either of the results
-      | company & insolvency     |
-      | company & administration |
-      | merger & administration  |
-      | merger & insolvency      |
+      | company AND insolvency     |
+      | company AND administration |
+      | merger AND administration  |
+      | merger AND insolvency      |
   Examples:
     | result |
     | 1      |
@@ -51,9 +51,9 @@ Ability to use operators when searching on PL+ for what's market
     | "income tax" | 3      |
 
   @bug
-  Scenario Outline: [711536] Validate that use of & retrieves both search terms, [711536] Validate that use of the /p connectors retrieves terms within the same sentence
+  Scenario Outline: [711536] Validate that use of AND retrieves both search terms, [711536] Validate that use of the /p connectors retrieves terms within the same sentence
     #815995
-    When the user runs a free text search for the query "contract & acceptance"
+    When the user runs a free text search for the query "contract AND acceptance"
     And the user opens the whats market result in position "<result>"
     Then the user verifies the search result contains the search terms "contract" and also "acceptance" within the full text
     And returns to the WM search results by Return to list
