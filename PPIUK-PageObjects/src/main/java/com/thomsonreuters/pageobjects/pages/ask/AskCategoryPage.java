@@ -74,9 +74,15 @@ public class AskCategoryPage extends AbstractPage {
         return waitForExpectedElements(By.cssSelector("div[id*='coid_categoryBoxTab1SubPanel1'] div .co_genericBoxContent"));
     }
 
-	public List<WebElement> recentQueries() {
-		return waitForExpectedElements(By.xpath("//span[@class='co_date_message']/../../.."));
-	}
+    public List<WebElement> recentQueries() {
+        // TODO Refactor this
+        return waitForExpectedElements(By.xpath("//div[contains(@class, 'genericBox') and (contains(., 'Recent') or contains(., 'ueries'))]//a | //div[contains(@id, 'TabPanel') and contains(@class, 'Show')]//div[@class='co_artifactContent']//a"));
+    }
+
+    public List<WebElement> getCommentLabelsForRecentQueries() {
+        // TODO Refactor this
+        return waitForExpectedElements(By.xpath("//div[contains(@class, 'genericBox') and (contains(., 'Recent') or contains(., 'ueries'))]//span[@class='co_comments_count'] | //div[contains(@id, 'TabPanel') and contains(@class, 'Show')]//div[@class='co_artifactContent']//span[@class='co_comments_count']"));
+    }
 
     public List<WebElement> recentQueriesOnAskTab() {
         return waitForExpectedElements(By.cssSelector("#coid_categoryBoxTab4SubPanel1-0-main div:nth-of-type(2) .co_genericBoxContent li"));

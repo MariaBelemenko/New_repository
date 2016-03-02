@@ -9,10 +9,10 @@ Feature: Ask Practice Area Widget
   Scenario: Verify that only resources belonging to pre- configured Practice Areas are displayed
     When the user is in Page '/Browse/Home/Resources/AskConstruction'
     Then the user verifies that only '5' ask resource  is displayed
-    And the user verifies that link 'How do I prevent a contractor abusing its position as both main contractor and enabling works contractor?' is  displayed on 'the page'
-    When the user clicks link 'How do I prevent a contractor abusing its position as both main contractor and enabling works contractor?' on 'the ask recent queries' page
+    And the user verifies that link 'Can parties agree a collateral warranty is not a construction contract?' is  displayed on 'the page'
+    When the user clicks link 'Can parties agree a collateral warranty is not a construction contract?' on 'the ask recent queries' page
     Then ask disclaimer is displayed on the document
-    And document title is displayed as "How do I prevent a contractor abusing its position as both main contractor and enabling works contractor?"
+    And document title is displayed as "Can parties agree a collateral warranty is not a construction contract?"
 
   # (Deleted) 839916:ASK - discrepancy between ask question listing for the number of replies and the actual link to the response /// (but fine for prod. See issue details)
   @manual @pendingAutomation @bug

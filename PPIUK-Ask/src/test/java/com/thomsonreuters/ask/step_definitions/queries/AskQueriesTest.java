@@ -56,16 +56,7 @@ public class AskQueriesTest extends BaseStepDef {
 
     @When("^the user clicks recent query no (\\d+)$")
     public void theUserClicksRecentQueryNo(int index) throws Throwable {
-        askCategoryPage.waitForPageToLoad();
-        String link = askCategoryPage.recentQueries().get(index - 1).getText().trim();
-        Pattern pattern = Pattern.compile("(.*)\\?(.*)");
-        Matcher m = pattern.matcher(link);
-        if (m.find()) {
-            link = m.group(0);
-            askCategoryPage.waitForExpectedElement(By.linkText(link)).click();
-        } else {
-            throw new Exception("Unable to extract ask query from the Recent queries section on the page");
-        }
+        askCategoryPage.recentQueries().get(index - 1).click();
     }
 
     @And("^the user verifies that all queries have date in format '(.*)'$")
@@ -76,11 +67,11 @@ public class AskQueriesTest extends BaseStepDef {
 
     @And("^the user verifies that all queries have at least (\\d+) reply/replies'$")
     public void theUserVerifiesThatAllQueriesHaveAtLeastReplyReplies(int noOfReplies) throws Throwable {
-        List<WebElement> queries = askCategoryPage.recentQueries();
+        List<WebElement> queries = askCategoryPage.getCommentLabelsForRecentQueries();
         for (WebElement query : queries) {
-            WebElement replyText = query.findElement(By.className("co_comments_count"));
-            assertThat("The no of replies in the queries are NOT expected", replyText.getText(), Matchers.containsString(Integer.toString(noOfReplies)));
-            assertThat("The reply text in the queries are NOT expected", replyText.getText(), Matchers.containsString("repl"));
+            String text = query.getText();
+            assertThat("The no of replies in the queries are NOT expected", text, Matchers.containsString(Integer.toString(noOfReplies)));
+            assertThat("The reply text in the queries are NOT expected", text, Matchers.containsString("repl"));
         }
     }
 
