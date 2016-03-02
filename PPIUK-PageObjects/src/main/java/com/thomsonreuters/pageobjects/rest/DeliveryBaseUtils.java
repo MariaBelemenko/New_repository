@@ -10,6 +10,7 @@ import com.thomsonreuters.pageobjects.rest.model.response.delivery.status.Status
 import com.thomsonreuters.pageobjects.rest.service.impl.RestServiceDeliveryImpl;
 import com.thomsonreuters.pageobjects.utils.pdf.PDFBoxUtil;
 import com.thomsonreuters.pageobjects.utils.plPlusResearchDocDisplay.AssetPageUtils;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -71,7 +72,14 @@ public class DeliveryBaseUtils {
      * @return Transaction id which can be given to Status Response to check deliver status
      */
     public String getTransactionId() {
-        return (String) webDriverDiscovery.getRemoteWebDriver().executeScript("return Cobalt.Delivery.DeliveryOptionsDialog.Instance()._currentTransactionId;");
+        Function<RemoteWebDriver, String> waitCondition = new Function<RemoteWebDriver, String>() {
+            @Override
+            public String apply(RemoteWebDriver driver) {
+                String transactionId = (String) driver.executeScript("return Cobalt.Delivery.DeliveryOptionsDialog.Instance()._currentTransactionId;");
+                return (transactionId != null && !transactionId.isEmpty()) ? transactionId : null;
+            }
+        };
+        return AbstractPage.waitFor(waitCondition, webDriverDiscovery.getRemoteWebDriver());
     }
 
     /**

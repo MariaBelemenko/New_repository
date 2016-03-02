@@ -168,7 +168,7 @@ public class CategoryPage extends AbstractPage {
 		LOG.info("Make the Category page as My Start Page");
 		waitForPageToLoad();
 		waitForExpectedElement(By.xpath(MAKE_THIS_MY_START_PAGE)).click();
-		waitForPageToLoad();
+		waitForExpectedElement(By.xpath(REMOVE_THIS_MY_START_PAGE));
 	}
 
 	public void openPageByText(String pageName) {
@@ -231,7 +231,7 @@ public class CategoryPage extends AbstractPage {
 		LOG.info("Remove the Category page as My Start Page");
 		waitForPageToLoad();
 		waitForExpectedElement(By.xpath(REMOVE_THIS_MY_START_PAGE)).click();
-		waitForPageToLoad();
+		waitForExpectedElement(By.xpath(MAKE_THIS_MY_START_PAGE));
 	}
 
 }
