@@ -8,7 +8,7 @@ Feature: PL+ WLUK user want to view the party names and aliases of the case part
   Scenario Outline: The case documents contain party names
     When the user opens document with <GUID> guid
     Then the document opens correctly
-    Then the user see party names
+    And the party names are displayed
   Examples:
     | GUID                              |
     | IBE054C30399911DCB27FFE1C1BCE7676 |
@@ -18,8 +18,8 @@ Feature: PL+ WLUK user want to view the party names and aliases of the case part
     When the user opens document with <aliasesGuid> guid
     Then the user click on View Document button
     Then the document opens correctly
-    Then the user see party names
-    Then the user see alias party names
+    And the party names are displayed
+    Then the alias party names are displayed
   Examples:
     | aliasesGuid                       |
     | I4C068AF0F0E011DCA6E2BE3BAAB09C4B |

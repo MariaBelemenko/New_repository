@@ -75,11 +75,6 @@ public class AssetPageUtils {
         return assetDocumentPage.findChildElement(documentBody(), EU_DOCUMENT_TITLE);
     }
 
-    public boolean isThePartyNamesIsDisplayed() {
-        assetDocumentPage.waitForPageToLoad();
-        return assetDocumentPage.partyNames().isDisplayed();
-    }
-
     public boolean isTheUserSeeLinksToBailii(String bailiiLink) {
         try {
             assetDocumentPage.bailiiLink(bailiiLink);

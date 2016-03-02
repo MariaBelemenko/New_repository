@@ -30,7 +30,7 @@ public class CaseDocumentPage extends DocumentDisplayAbstractPage {
     private static final By STATUS_DESCRIPTION = By.xpath(".//div[@id='co_docContentMetaInfo']/div[@class='co_greenStatus']");
     private static final By PARTY_NAMES = By.xpath(".//div[@id='co_docHeaderContainer']/div[@class='co_paragraph']/h1");
     private static final By PARTY_NAMES_IN_CASELAW = By.className("co_title");
-    private static final By ALIAS_PARTY_NAMES = By.xpath(".//*[@id='co_docHeaderContainer']//div/div[last()]");
+    private static final By ALIAS_PARTY_NAMES = By.xpath(".//*[contains(@class, 'co_title')]/following-sibling::div[contains(text(), '')]");
 
     private CommonMethods commonMethods = new CommonMethods();
 

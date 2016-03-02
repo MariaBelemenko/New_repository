@@ -46,11 +46,6 @@ public class CaseDocumentPageUtils extends AbstractPage {
         }
     }
 
-    public boolean isTheUserSeePartyNames() {
-        caseDocumentPage.waitForPageToLoad();
-        return caseDocumentPage.partyNamesInCaseLaw().isDisplayed();
-    }
-
     public boolean isTheUserSeeTheContentColumn() {
         return caseDocumentPage.contentColumn().isDisplayed();
     }

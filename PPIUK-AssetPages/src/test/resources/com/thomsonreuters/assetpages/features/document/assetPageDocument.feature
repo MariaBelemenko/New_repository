@@ -8,7 +8,7 @@ Feature: As a PL+ User I want to see the party names
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly
-    Then the party names is displayed in assert page
+    Then the party names are displayed
   Examples:
     | GUID                              |
     | I984f1d406cf011e498db8b09b4f043e0 |
@@ -26,11 +26,12 @@ Feature: As a PL+ User I want to see the party names
     | I984f1dad6cf011e498db8b09b4f043e0 |
     | I984ef7626cf011e498db8b09b4f043e0 |
 
+
   Scenario Outline: The asset pages have correct title
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly
-    Then the party names is displayed in assert page
+    Then the party names are displayed
     And the asset page has title
     And the title include party names
   Examples:

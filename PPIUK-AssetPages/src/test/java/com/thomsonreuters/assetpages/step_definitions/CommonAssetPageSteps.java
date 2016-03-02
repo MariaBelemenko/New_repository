@@ -13,10 +13,10 @@ public class CommonAssetPageSteps extends BaseStepDef {
     private AssetPageUtils assetPageUtils = new AssetPageUtils();
     private AssetDocumentPage assetDocumentPage = new AssetDocumentPage();
 
-    @Then("^the party names is displayed in assert page$")
-    public void thePartyNamesIsDisplayedInAssertPage() throws Throwable {
-        assertTrue("The party names is not displayed", assetPageUtils.isThePartyNamesIsDisplayed());
-    }
+    @Then("^the party names are displayed$")
+	public void thePartyNamesAreDisplayed() throws Throwable {
+		assertTrue("The party names is not displayed", assetDocumentPage.partyNames().isDisplayed());
+	}
 
     @Then("^the user see links to \"(.*?)\" Bailii$")
     public void theUserSeeLinksToBailii(String bailiiLink) throws Throwable {

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class AssetDocumentPage extends DocumentDisplayAbstractPage {
 
-	private static final By PARTY_NAMES = By.xpath(".//div[@id='co_docHeaderContainer']/div[@class='co_paragraph']/h1");
+	private static final By PARTY_NAMES = By.xpath(".//div[@class='co_paragraph']/*[contains(@class, 'co_title')]");
 	private static final By LINK_TO_LEGAL_UPDATES = By
 			.xpath(".//div[@id='co_legalUpdates']/ul[@class='co_assetList']//a");
 	private static final By CASE_PAGE_TEXT = By
