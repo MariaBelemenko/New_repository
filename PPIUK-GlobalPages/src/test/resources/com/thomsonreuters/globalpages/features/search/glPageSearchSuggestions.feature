@@ -30,8 +30,10 @@ Feature: As a PL+ User when I enter 3+ charatcers into the search field on the g
     | character | term      |
     | tag       | TAG ALONG |
 
+@now
   Scenario Outline: The user verifies that all search results contain the search term
     When the user runs a free text search for the query "<term>"
+    When the user can select the option to show more detail
     Then the returned results contain the search "<term>"
   Examples:
     | term |
