@@ -15,7 +15,6 @@ Feature: As a PL+ User I want to see the Legislation metadata in the right hand 
     | GUID                              |
     | I6905ab2e63a911e598dc8b09b4f043e0 |
     | I6905ab3163a911e598dc8b09b4f043e0 |
-    | I6905ab4863a911e598dc8b09b4f043e0 |
     | I8127783d52a011e598dc8b09b4f043e0 |
 
   Scenario Outline: The primary source documents contain jurisdiction

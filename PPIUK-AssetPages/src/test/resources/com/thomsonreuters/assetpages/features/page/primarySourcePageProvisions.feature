@@ -44,5 +44,4 @@ Feature: As a PL+ User I want to view list of provisions
   Examples:
     | GUID                              |
     | Ib29e0159660011e598dc8b09b4f043e0 |
-    | I6626585163a911e598dc8b09b4f043e0 |
     | I6626588263a911e598dc8b09b4f043e0 |
