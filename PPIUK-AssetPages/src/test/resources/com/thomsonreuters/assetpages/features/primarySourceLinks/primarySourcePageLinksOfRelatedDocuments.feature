@@ -1,4 +1,3 @@
-@e2e @prod 
 Feature: [818351] As a PL+ User I want to view list of Related documents grouped by document type
 
   Background: 
@@ -17,6 +16,5 @@ Feature: [818351] As a PL+ User I want to view list of Related documents grouped
 
     Examples: 
       | GUID                              | link                                       | type                  |
-      | I6905aae963a911e598dc8b09b4f043e0 | Corporate restructuring: debt equity swaps | UK Practice Note      |
       | I405a58d853d111e498db8b09b4f043e0 | Comfort letter: binding                    | UK Standard Documents |
       | I67915bfd63a911e598dc8b09b4f043e0 | Electronic communications: checklist       | UK Checklists         |
