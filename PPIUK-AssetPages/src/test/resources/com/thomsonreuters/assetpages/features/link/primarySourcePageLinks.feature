@@ -15,8 +15,6 @@ Feature: As a PL+ User I want to view hardcoded and celex links on the primary s
   Examples:
     | GUID                              |
     | I8127783d52a011e598dc8b09b4f043e0 |
-    | I6626355563a911e598dc8b09b4f043e0 |
-    | If27c4ef865ef11e598dc8b09b4f043e0 |
     | I0cacf9b465a511e598dc8b09b4f043e0 |
 
   Scenario Outline: The primary source documents contains celex links
@@ -53,8 +51,6 @@ Feature: As a PL+ User I want to view hardcoded and celex links on the primary s
     | GUID                              |
     | I2f49c89c574211e598dc8b09b4f043e0 |
     | I662636d863a911e598dc8b09b4f043e0 |
-    | I662659f663a911e598dc8b09b4f043e0 |
-    | I66265b6763a911e598dc8b09b4f043e0 |
 
   Scenario Outline: The primary source documents contains link and every link opens in a new tab
     When the user opens document with <GUID> guid

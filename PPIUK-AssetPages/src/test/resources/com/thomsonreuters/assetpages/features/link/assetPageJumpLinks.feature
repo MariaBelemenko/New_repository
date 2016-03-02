@@ -14,7 +14,6 @@ Feature: As a PL+ User I want to select a Links to this case and jump to that pa
   Examples:
     | GUID                              |
     | I984f1d3b6cf011e498db8b09b4f043e0 |
-    | I984f1d8d6cf011e498db8b09b4f043e0 |
     | I984f1dad6cf011e498db8b09b4f043e0 |
 
   Scenario Outline: The case documents does not contain Links to this case and does not contaion Links to this case section

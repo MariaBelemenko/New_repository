@@ -18,8 +18,6 @@ Feature: As a PL+ User I want to view links to�Bailii on the case asset page
     | GUID                              |
     | I984ef7466cf011e498db8b09b4f043e0 |
     | Ieda8cc31f27711e498db8b09b4f043e0 |
-    | I984f1d486cf011e498db8b09b4f043e0 |
-    | I984ef7466cf011e498db8b09b4f043e0 |
 
   Scenario Outline: The primary source documents contains link to curia.europa.eu
     When the user opens document with <GUID> guid
@@ -44,8 +42,6 @@ Feature: As a PL+ User I want to view links to�Bailii on the case asset page
     | GUID                              |
     | I984f1d8d6cf011e498db8b09b4f043e0 |
     | I984f1db76cf011e498db8b09b4f043e0 |
-    | I984ef7626cf011e498db8b09b4f043e0 |
-    | I984f1d556cf011e498db8b09b4f043e0 |
 
   Scenario Outline: The case assert documents contains hardcoded links
     When the user opens document with <GUID> guid

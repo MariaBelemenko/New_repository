@@ -13,7 +13,6 @@ Feature: As a PL+ User I want to see the party names
     | GUID                              |
     | I984f1d406cf011e498db8b09b4f043e0 |
     | I984f1d556cf011e498db8b09b4f043e0 |
-    | I984f1d566cf011e498db8b09b4f043e0 |
     | I984ef7626cf011e498db8b09b4f043e0 |
 
   Scenario Outline: The case documents contain case page
@@ -24,7 +23,6 @@ Feature: As a PL+ User I want to see the party names
   Examples:
     | GUID                              |
     | I984f1d566cf011e498db8b09b4f043e0 |
-    | I984f1d8d6cf011e498db8b09b4f043e0 |
     | I984f1dad6cf011e498db8b09b4f043e0 |
     | I984ef7626cf011e498db8b09b4f043e0 |
 
@@ -40,4 +38,3 @@ Feature: As a PL+ User I want to see the party names
     | I984f1d566cf011e498db8b09b4f043e0 |
     | I984f1d8d6cf011e498db8b09b4f043e0 |
     | I8ca3a4eb65a211e598dc8b09b4f043e0 |
-    | I6626330963a911e598dc8b09b4f043e0 |

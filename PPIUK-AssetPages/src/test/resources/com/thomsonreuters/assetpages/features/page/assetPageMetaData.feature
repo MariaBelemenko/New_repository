@@ -20,7 +20,6 @@ Feature: As a PL+ User I want to view the meta data relating to a case asset pag
     | GUID                              |
     | I984ef7626cf011e498db8b09b4f043e0 |
     | I984ef77b6cf011e498db8b09b4f043e0 |
-    | I984f1d406cf011e498db8b09b4f043e0 |
 
   Scenario Outline: The case documents does not contain Division
     When the user opens document with <GUID> guid
@@ -32,8 +31,6 @@ Feature: As a PL+ User I want to view the meta data relating to a case asset pag
     | GUID                              |
     | Ieda8cc31f27711e498db8b09b4f043e0 |
     | I984f1d486cf011e498db8b09b4f043e0 |
-    | I984f1de46cf011e498db8b09b4f043e0 |
-    | I8cba0f92532011e598dc8b09b4f043e0 |
 
   Scenario Outline: The case documents does not contain Court
     When the user opens document with <GUID> guid
@@ -44,8 +41,6 @@ Feature: As a PL+ User I want to view the meta data relating to a case asset pag
   Examples:
     | GUID                              |
     | I984f1d8d6cf011e498db8b09b4f043e0 |
-    | I0d6a7f806cf411e498db8b09b4f043e0 |
-    | I8cba0f92532011e598dc8b09b4f043e0 |
     | Ib96f28826cf311e498db8b09b4f043e0 |
 
   Scenario Outline: The case documents does not contain Court
@@ -58,6 +53,4 @@ Feature: As a PL+ User I want to view the meta data relating to a case asset pag
   Examples:
     | GUID                              |
     | I984f1e8a6cf011e498db8b09b4f043e0 |
-    | I984f1ed76cf011e498db8b09b4f043e0 |
     | I984f1f176cf011e498db8b09b4f043e0 |
-    | Id3bc47f66cf011e498db8b09b4f043e0 |

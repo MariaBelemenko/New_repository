@@ -13,5 +13,4 @@ Feature: As a PL+ User I want to see Top button
   Examples:
     | GUID                              |
     | Ieda8cc31f27711e498db8b09b4f043e0 |
-    | I984ef7606cf011e498db8b09b4f043e0 |
     | I984ef7626cf011e498db8b09b4f043e0 |

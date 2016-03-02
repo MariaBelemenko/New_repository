@@ -20,7 +20,6 @@ Feature: As a PL+ User I want to view links to Westlaw UK on the primary source 
   Examples:
     | GUID                              |
     | I35a77ff953d011e498db8b09b4f043e0 |
-    | I67915bc263a911e598dc8b09b4f043e0 |
     | I1cbdc15f53cf11e498db8b09b4f043e0 |
     | I6626330963a911e598dc8b09b4f043e0 |
 
@@ -40,7 +39,5 @@ Feature: As a PL+ User I want to view links to Westlaw UK on the primary source 
     | GUID                              |
     | I8ca3a4eb65a211e598dc8b09b4f043e0 |
     | I6626330963a911e598dc8b09b4f043e0 |
-    | If27c508d65ef11e598dc8b09b4f043e0 |
-    | If27c76db65ef11e598dc8b09b4f043e0 |
     | I69061fad63a911e598dc8b09b4f043e0 |
     | I6626343a63a911e598dc8b09b4f043e0 |

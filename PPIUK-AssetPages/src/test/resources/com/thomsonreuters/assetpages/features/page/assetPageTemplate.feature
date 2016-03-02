@@ -15,9 +15,7 @@ Feature: As a PL+ User I want to see Where Reported and Where Reported list in r
   Examples:
     | GUID                              |
     | I984f1e2b6cf011e498db8b09b4f043e0 |
-    | I984f1e376cf011e498db8b09b4f043e0 |
     | I984ef7626cf011e498db8b09b4f043e0 |
-    | I984f1d556cf011e498db8b09b4f043e0 |
 
   Scenario Outline: The case documents does not contain End of Document
     When the user opens document with <GUID> guid
@@ -29,8 +27,6 @@ Feature: As a PL+ User I want to see Where Reported and Where Reported list in r
     And the end of document does not contain text
   Examples:
     | GUID                              |
-    | I984f1de46cf011e498db8b09b4f043e0 |
-    | I984f1d8d6cf011e498db8b09b4f043e0 |
     | I984ef7766cf011e498db8b09b4f043e0 |
     | I984f1d556cf011e498db8b09b4f043e0 |
 
@@ -43,5 +39,4 @@ Feature: As a PL+ User I want to see Where Reported and Where Reported list in r
   Examples:
     | GUID                              |
     | I984f1de46cf011e498db8b09b4f043e0 |
-    | I984ef7766cf011e498db8b09b4f043e0 |
     | I984f1d556cf011e498db8b09b4f043e0 |

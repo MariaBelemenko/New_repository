@@ -17,7 +17,5 @@ Feature: As a PL+ User I want to view links to Westlaw UK on the case asset page
   Examples:
     | GUID                              |
     | I984ef7466cf011e498db8b09b4f043e0 |
-    | I984f1d486cf011e498db8b09b4f043e0 |
-    | I984ef7396cf011e498db8b09b4f043e0 |
     | I984ef7626cf011e498db8b09b4f043e0 |
 

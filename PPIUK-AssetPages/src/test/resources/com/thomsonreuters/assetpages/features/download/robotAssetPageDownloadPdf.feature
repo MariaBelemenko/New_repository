@@ -1,3 +1,4 @@
+@wip
 Feature: [805839] As a PL+ User I want to view links to Westlaw UK and Bailii on downloaded from PL+ pdf document
   [798569] As a PL+ User I want to download pdf document and view Content referring to this case in downloaded document
 
@@ -19,7 +20,6 @@ Feature: [805839] As a PL+ User I want to view links to Westlaw UK and Bailii on
     Examples: 
       | GUID                              |
       | I984f1fea6cf011e498db8b09b4f043e0 |
-      | I984f1d406cf011e498db8b09b4f043e0 |
       | I984ef7626cf011e498db8b09b4f043e0 |
 
   Scenario Outline: [798569] [818357] The user download pdf document and view Content referring to this case in downloaded document
