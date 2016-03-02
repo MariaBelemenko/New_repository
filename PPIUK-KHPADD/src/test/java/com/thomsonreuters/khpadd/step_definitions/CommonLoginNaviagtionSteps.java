@@ -144,6 +144,13 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         }
     }
 
+    // TODO Merge with plUserIsNotLoggedIn() method (move common actions to separate step)
+    @Given("^PL\\+ user is not logged in without cookie message closing$")
+    public void plUserIsNotLoggedInAndLeaveCookieMessage() throws Throwable {
+        newSession(CobaltUser.updateMissingFields(currentUser)); // Is it ok to updateMissingFields inside newSession() as first action in method?
+        navigationCobalt.navigateToPLUKPlus();
+    }
+
     @Given("^PL\\+ user is logged in$")
     public void plUserIsLoggedIn() throws Throwable {
         CobaltUser plPlusUser = new CobaltUser();

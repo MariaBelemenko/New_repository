@@ -1,7 +1,7 @@
 Feature: [786052] Verify cookie consent message on the homepage when the user accesses the PL+ site
 
   Background:
-    Given PL+ user is not logged in
+    Given PL+ user is not logged in without cookie message closing
     When the user navigates to the main PLCUK page
     Then the user 'is' presented with the cookie consent message
     When the user clicks on Sign On link on the header
