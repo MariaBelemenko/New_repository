@@ -82,7 +82,6 @@ public class RestServiceDeliveryImpl extends RestServiceImpl implements RestServ
      * @return File with downloaded document
      */
     public File downloadDocumentAndGetFile(StatusResponse statusResponse, boolean isPrintable) {
-        HttpHeaders httpHeaders = configureHeaders();
         String fileUrl;
         if (isPrintable) {
             fileUrl = getProtocol() + getCurrentBaseUrl() + "/V1/Delivery/Print.pdf?deliveryId=" + statusResponse.getDeliveryId() +
@@ -91,10 +90,25 @@ public class RestServiceDeliveryImpl extends RestServiceImpl implements RestServ
             fileUrl = getProtocol() + getCurrentBaseUrl() + "/V1/Delivery/Download/" + statusResponse.getDeliveryId() + "/" +
                     statusResponse.getFileName();
         }
+        return getFileViaHttp(fileUrl, statusResponse.getFileName());
+    }
+
+    /**
+     * Download file via HTTP through GET request
+     *
+     * @param fileUrl URL to file
+     * @param targetFileName Relative file name which should be using for downloaded document. File will be stored in
+     *                       "./target" folder.
+     *                       WARNING: If file already exists then file will be downloaded with incremented file name.
+     *                       E.g., "DocName_1.doc". Please, see {@link FileActions#incrementFileNameIfExists(File)}
+     * @return File with downloaded document
+     */
+    public File getFileViaHttp(String fileUrl, String targetFileName) {
+        HttpHeaders httpHeaders = configureHeaders();
         HttpEntity<byte[]> downloadFileResponse = getRestTemplate().exchange(fileUrl, HttpMethod.GET, new HttpEntity<>(httpHeaders), byte[].class);
         // Property points to root project dir ONLY if project running with Maven. In other cases you may receive wrong location or NullPointerException
         String targetDir = System.getProperty("basedir");
-        String docFileName = targetDir + "/target/" + statusResponse.getFileName();
+        String docFileName = targetDir + "/target/" + targetFileName;
         File downloadedFile = fileActions.incrementFileNameIfExists(new File(docFileName));
         try {
             FileUtils.writeByteArrayToFile(downloadedFile, downloadFileResponse.getBody());

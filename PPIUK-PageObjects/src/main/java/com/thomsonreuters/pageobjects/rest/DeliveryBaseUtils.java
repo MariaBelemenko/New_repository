@@ -98,6 +98,20 @@ public class DeliveryBaseUtils {
     }
 
     /**
+     * Download document via "Open In Word" action
+     *
+     * @return File with downloaded document
+     */
+    public File downloadViaOpenInWordAndGetDocument() {
+        String fileNameScript = "($('.co_title') !== null ? $('.co_title').text() : 'Quick Draft').replace(/\\W/g, '')";
+        String fileUrl = (String) webDriverDiscovery.getRemoteWebDriver().executeScript(
+                "return $('.kh_standardDocumentAttachment a').attr('href') + '&imageFileName=' + " + fileNameScript + ";");
+        String fileName = (String) webDriverDiscovery.getRemoteWebDriver().executeScript(
+                "return " + fileNameScript + ";");
+        return deliveryService.getFileViaHttp(fileUrl, fileName);
+    }
+
+    /**
      * Check that give document contains and / or not contains expected phrases
      *
      * @param document           File with document (can be obtained by {@link RestServiceDeliveryImpl#downloadDocumentAndGetFile(StatusResponse, boolean)})
