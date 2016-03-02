@@ -11,7 +11,7 @@ public enum AskFormField implements FormField {
     //AGREE_TO_DISCLAIMER("Agree to disclaimer", By.id("HasReadTerms"), CheckBoxOrRadioButton.newInstance(), By.cssSelector("span[data-valmsg-for='HasReadTerms']"), "Please indicate that you have read the disclaimer"),
 
     QUESTION(Constants.QUESTION, By.id(Constants.QUESTION), DefaultFormField.newInstance(), By.cssSelector("span[data-valmsg-for='Question']"), "Please enter your query"),
-    DOCUMENT_URL("Document Id", By.id("DocId"), DefaultFormField.newInstance().getTextByValue(), null, null),
+    DOCUMENT_URL("Document Id", By.id("ResourceId"), DefaultFormField.newInstance().getTextByValue(), null, null),
 
     FIRST_NAME("First Name", By.id("FirstName"), DefaultFormField.newInstance().getTextByValue(), By.cssSelector("span[data-valmsg-for='FirstName']"), "Please enter your first name"),
     LAST_NAME("Last Name", By.id("LastName"), DefaultFormField.newInstance().getTextByValue(), By.cssSelector("span[data-valmsg-for='LastName']"), "Please enter your last name"),
