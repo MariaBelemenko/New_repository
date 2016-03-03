@@ -35,7 +35,6 @@ Feature: [792551][792565][729246] ukScopedSearchDropdownWhatsMarket.feature
   Scenario Outline: [729246] - Verify search results prefiltered for what's market
     When has selected the link to the What's Market homepage
     And the user runs a free text search for the query "<query2>"
-    And the user pauses for "3" seconds
     And the user can select the option to show most detail
     Then the user is able to verify that the result in position "<position>" is whats market content because it contains one of the whats market resource types
   Examples:

@@ -407,7 +407,7 @@ public class SearchResultsPage extends AbstractPage {
      * This is a method for the drop down anchor for displaying more or less details on the search results page.
      */
     public WebElement moreOrLessDetailAnchor() {
-        return waitForExpectedElement(By.id("detailSliderSelectorSelectedOption"));
+        return waitForExpectedElement(By.id("detailSliderSelectorSelectedOption"),10);
     }
 
     public boolean ismoreOrLessDetailAnchorDisplayed() {
@@ -424,7 +424,7 @@ public class SearchResultsPage extends AbstractPage {
      * setting - this object is the first option for less detail
      */
     public WebElement lessDetailOption() {
-        return waitForExpectedElement(By.xpath("//ul[@class='co_dropDownMenuList']//a[contains(., 'Less') and contains(., 'etail')]"));
+        return waitForExpectedElement(By.xpath("//ul[@class='co_dropDownMenuList']//a[contains(., 'Less') and contains(., 'etail')]"),10);
     }
 
     /**
@@ -432,7 +432,7 @@ public class SearchResultsPage extends AbstractPage {
      * setting - this object is the first option for less detail
      */
     public WebElement moreDetailOption() {
-        return waitForExpectedElement(By.xpath("//ul[@class='co_dropDownMenuList']//a[contains(., 'More') and contains(., 'etail')]"));
+        return waitForExpectedElement(By.xpath("//ul[@class='co_dropDownMenuList']//a[contains(., 'More') and contains(., 'etail')]"),10);
     }
 
     /**
@@ -440,7 +440,7 @@ public class SearchResultsPage extends AbstractPage {
      * setting - this object is the first option for less detail
      */
     public WebElement mostDetailOption() {
-        return retryingFindElement(By.xpath("//ul[@class='co_dropDownMenuList']//a[contains(., 'Most') and contains(., 'etail')]"));
+        return waitForExpectedElement(By.xpath("//ul[@class='co_dropDownMenuList']//a[contains(., 'Most') and contains(., 'etail')]"),10);
     }
 
     public WebElement detailSliderDropdown() {
