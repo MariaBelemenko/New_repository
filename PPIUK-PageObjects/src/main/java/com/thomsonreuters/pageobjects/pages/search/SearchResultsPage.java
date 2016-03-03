@@ -1154,42 +1154,42 @@ public class SearchResultsPage extends AbstractPage {
      * Getting all the Search Results Title Links without using any for loop or passing any id in the argument
      */
     public List<WebElement> getAllSearchTitleLinks() {
-        return retryingFindElements(By.xpath("//a[contains(@id,'cobalt_result_knowhow_title')]"));
+        return waitForExpectedElements(By.xpath("//a[contains(@id,'cobalt_result_knowhow_title')]"),10);
     }
 
     /**
      * object representing the last page navigation arrow at the base of the search results page
      */
     public WebElement lastPageNavigationArrow() {
-        return waitForExpectedElement(By.xpath("//a[@id='co_search_footer_pagination_last'][contains(text(),'Last Page')]"));
+        return waitForExpectedElement(By.xpath("//a[@id='co_search_footer_pagination_last'][contains(text(),'Last Page')]"),15);
     }
 
     /**
      * object representing the last page navigation arrow at the base of the search results page
      */
     public WebElement nextPageNavigationArrow() {
-        return waitForExpectedElement(By.xpath("//a[@id='co_search_footer_pagination_next'][contains(text(),'Next Page')]"));
+        return waitForExpectedElement(By.xpath("//a[@id='co_search_footer_pagination_next'][contains(text(),'Next Page')]"),15);
     }
 
     /**
      * object representing the first page navigation arrow at the base of the search results page
      */
     public WebElement firstPageNavigationArrow() {
-        return waitForExpectedElement(By.xpath("//a[@id='co_search_footer_pagination_first'][contains(text(),'First Page')]"),10);
+        return waitForExpectedElement(By.xpath("//a[@id='co_search_footer_pagination_first'][contains(text(),'First Page')]"),15);
     }
 
     /**
      * object representing the previous page navigation arrow at the base of the search results page
      */
     public WebElement previousPageNavigationArrow() {
-        return waitForExpectedElement(By.xpath("//a[@id='co_search_footer_pagination_prev'][contains(text(),'Previous Page')]"),10);
+        return waitForExpectedElement(By.xpath("//a[@id='co_search_footer_pagination_prev'][contains(text(),'Previous Page')]"),15);
     }
 
     /**
      * object representing the currently selected page on the search results page
      */
     public WebElement currentSelectedPage(String number) {
-        return waitForExpectedElement(By.xpath("//span[@id='co_search_footer_pagination_current']/strong[contains(text(),'" + number + "')]"),10);
+        return waitForExpectedElement(By.xpath("//span[@id='co_search_footer_pagination_current']/strong[contains(text(),'" + number + "')]"),15);
     }
 
     /**
