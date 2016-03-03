@@ -8,7 +8,7 @@ Feature: Ask Practice Area Widget
 
   Scenario: Verify that only resources belonging to pre- configured Practice Areas are displayed
     When the user is in Page '/Browse/Home/Resources/AskConstruction'
-    Then the user verifies that only '5' ask resource  is displayed
+    Then the user verifies that only '6' ask resource  is displayed
     And the user verifies that link 'Can parties agree a collateral warranty is not a construction contract?' is  displayed on 'the page'
     When the user clicks link 'Can parties agree a collateral warranty is not a construction contract?' on 'the ask recent queries' page
     Then ask disclaimer is displayed on the document
