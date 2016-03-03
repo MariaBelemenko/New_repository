@@ -1,3 +1,4 @@
+@stepg
 Feature: [767388][767411][764084][767407] ukWhatsMarketSearchSuggestions.feature
   As a PL+ user when I begin to type a search term then I can see a list of suggested search phrases according to what I have begun to enter
 
@@ -17,13 +18,13 @@ Feature: [767388][767411][764084][767407] ukWhatsMarketSearchSuggestions.feature
 
   Scenario: [767411] Append terms to suggested terms - add text to end of selected term in whats market
     And has selected the link to the What's Market homepage
-    When the user enters 3 characters into the search box "rel"
-    And the user selects the suggested term "RELATED PARTY TRANSACTION"
-    And the user verifies that the term "RELATED PARTY TRANSACTION" appears in the search box
+    When the user enters 3 characters into the search box "ars"
+    And the user selects the suggested term "ARSENAL"
+    And the user verifies that the term "ARSENAL" appears in the search box
     Then the user edits the text of the suggested search term and add additional text "group"
     And the user can submit the search request
     And the user can open the first whats market search result "1"
-    And the user can verify that the full text of the know how document contains the search terms "Related Party Transaction" and "group"
+    And the user can verify that the full text of the know how document contains the search terms "Arsenal" and "group"
 
   Scenario: [764084] WM suggestions only appear on WM pages - all other pages return KH suggestions
     And has selected the link to the What's Market homepage
