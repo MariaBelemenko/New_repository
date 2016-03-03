@@ -7,8 +7,8 @@ Feature: Date corresponds to the correct format
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly
-    Then the user see date on the document
-    Then the date corresponds to the required format
+    And the document contains date in "dd MMMM yyyy" format
+    
   Examples:
     | GUID                              |
     | I79273E60A8EF11E0888FEF03F0EFCF17 |

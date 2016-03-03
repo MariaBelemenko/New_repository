@@ -4,7 +4,6 @@ import com.thomsonreuters.driver.exception.PageOperationException;
 import com.thomsonreuters.driver.framework.AbstractPage;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.ProvisionPage;
 import com.thomsonreuters.pageobjects.utils.document.DateFormat;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -100,34 +99,12 @@ public class ProvisionPageUtils {
             return false;
     }
 
-    private String date;
-
-    public boolean isDateOnDocumentDisplayed() {
-        try {
-            provisionPage.waitForPageToLoad();
-            String[] metaInfo = provisionPage.dateText().getText().split("\n");
-            date = metaInfo[4];
-        } catch (NoSuchElementException ex) {
-            return false;
-        }
-        return provisionPage.isElementDisplayed(provisionPage.dateText());
-    }
-
-    public boolean isTheDateCorrespondsToTheRequiredFormat() {
-        String resultDate = dateFormat.convertDateToTheCorrectFormat(date);
-        if (date.equals(resultDate))
-            return true;
-        else
-            return false;
-    }
-
     public String clickOnJumpLink(String jumpLinkText) {
         provisionPage.jumpLink(jumpLinkText).click();
         return provisionPage.jumpLink(jumpLinkText).getText();
     }
 
     public boolean isTheUserRedirectToDesiredPartOfDocument(String jumpLinkText) {
-
         if (provisionPage.isElementDisplayed(provisionPage.jumpLinkText(jumpLinkText)) == true
                 && provisionPage.jumpLinkText(jumpLinkText).getText().equals(provisionPage.jumpLink(jumpLinkText).getText()))
             return true;

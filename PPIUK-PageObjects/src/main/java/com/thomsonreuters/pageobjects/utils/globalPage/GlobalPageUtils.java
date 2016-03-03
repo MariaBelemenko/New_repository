@@ -5,7 +5,6 @@ import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.pages.globalPage.ChinaCategoryPage;
 import com.thomsonreuters.pageobjects.pages.globalPage.GlobalCategoryPage;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.CaseDocumentPage;
-import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.StandardDocumentPage;
 import com.thomsonreuters.pageobjects.utils.legalUpdates.CalendarAndDate;
 import org.openqa.selenium.*;
 import org.slf4j.LoggerFactory;
@@ -23,8 +22,6 @@ public class GlobalPageUtils {
     private GlobalCategoryPage globalCategoryPage = new GlobalCategoryPage();
     private ChinaCategoryPage chinaCategoryPage = new ChinaCategoryPage();
     private CaseDocumentPage caseDocumentPage = new CaseDocumentPage();
-    private CommonMethods commonMethods = new CommonMethods();
-    private StandardDocumentPage standardDocumentPage = new StandardDocumentPage();
 
     private static final String SPLIT = " ";
     private static final String DOCUMENT_XML = "http://legaltechtools.int.thomsonreuters.com/Velma/Novus/Document?guid=";
@@ -41,9 +38,9 @@ public class GlobalPageUtils {
     public boolean isTheDatesSortedInReverseChronologicalOrder(List<String> updatesDates, String dateFormat)
             throws ParseException {
         boolean result = false;
-        List<Date> dates = CalendarAndDate.convertStringToDate(updatesDates, dateFormat);
+        List<Date> dates = CalendarAndDate.convertListOfStringToListOfDate(updatesDates, dateFormat);
         Collections.sort(dates, Collections.reverseOrder());
-        List<String> resultDates = CalendarAndDate.convertDateToString(dates, dateFormat);
+        List<String> resultDates = CalendarAndDate.convertListOfDateToListOfString(dates, dateFormat);
         for (int i = 0; i < updatesDates.size(); i++) {
             if (updatesDates.get(i).equals(resultDates.get(i)))
                 result = true;

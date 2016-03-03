@@ -93,7 +93,7 @@ public class CalendarAndDate {
 		return date;
 	}
 
-    public static List<Date> convertStringToDate(List<String> stringDates, String dateFormat) throws ParseException {
+    public static List<Date> convertListOfStringToListOfDate(List<String> stringDates, String dateFormat) throws ParseException {
         List<Date> dates = new ArrayList<Date>();
         DateFormat sdrf = new SimpleDateFormat(dateFormat);
         for (int i = 0; i < stringDates.size(); i++) {
@@ -103,7 +103,7 @@ public class CalendarAndDate {
         return dates;
     }
 
-    public static List<String> convertDateToString(List<Date> dates, String dateFormat) {
+    public static List<String> convertListOfDateToListOfString(List<Date> dates, String dateFormat) {
         List<String> stringDates = new ArrayList<String>();
         DateFormat sdrf = new SimpleDateFormat(dateFormat);
         for (int i = 0; i < dates.size(); i++) {
@@ -111,5 +111,15 @@ public class CalendarAndDate {
         }
         return stringDates;
     }
+    
+    public static Date convertStringToDate(String date, String dateFormat) throws ParseException {
+		DateFormat sdrf = new SimpleDateFormat(dateFormat);
+	    return sdrf.parse(date);
+	}
+
+	public static String convertDateToString(Date date, String dateFormat) {
+		DateFormat sdrf = new SimpleDateFormat(dateFormat);
+		return sdrf.format(date);
+	}
 
 }

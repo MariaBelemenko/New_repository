@@ -1,19 +1,24 @@
 package com.thomsonreuters.pageobjects.utils.plPlusResearchDocDisplay;
 
-import com.thomsonreuters.driver.exception.PageOperationException;
-import com.thomsonreuters.driver.framework.AbstractPage;
-import com.thomsonreuters.pageobjects.common.FileActions;
-import com.thomsonreuters.pageobjects.common.PageActions;
-import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.CaseDocumentPage;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
+import java.text.ParseException;
+import java.util.Date;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.slf4j.Logger;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.IOException;
+import com.thomsonreuters.driver.exception.PageOperationException;
+import com.thomsonreuters.driver.framework.AbstractPage;
+import com.thomsonreuters.pageobjects.common.FileActions;
+import com.thomsonreuters.pageobjects.common.PageActions;
+import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.CaseDocumentPage;
+import com.thomsonreuters.pageobjects.utils.legalUpdates.CalendarAndDate;
 
 public class CaseDocumentPageUtils extends AbstractPage {
 
@@ -98,4 +103,8 @@ public class CaseDocumentPageUtils extends AbstractPage {
             return false;
     }
 
+    public boolean isTheDateHasCorrectFormat(String date, String format) throws ParseException {
+		Date resultDate = CalendarAndDate.convertStringToDate(date, format);
+		return CalendarAndDate.convertDateToString(resultDate, format).equals(date);
+	}
 }

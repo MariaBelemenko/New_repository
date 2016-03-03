@@ -58,8 +58,6 @@ public class ProvisionPage extends DocumentDisplayAbstractPage {
 	private static final By DOC_CONTENT = By.className("co_footnoteSection");
 	private static final By NOTE_POINT = By
 			.xpath(".//div[@class = 'co_paragraph']");
-	private static final By DATE_TEXT_LOCATOR = By
-			.xpath(".//*[@id='co_docContentMetaInfo']");
 
 	private static final By TITLE_TEXT = By
 			.xpath(".//h1[@class='co_title noTOC']");
@@ -668,11 +666,7 @@ public class ProvisionPage extends DocumentDisplayAbstractPage {
 	public WebElement amendmentsLink(String amendmentsLink) {
 		return retryingFindElement(By.linkText(amendmentsLink));
 	}
-
-	public WebElement dateText() {
-		return waitForExpectedElement(DATE_TEXT_LOCATOR);
-	}
-
+	
 	public WebElement titleText() {
 		return retryingFindElement(TITLE_TEXT);
 	}

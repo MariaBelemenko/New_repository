@@ -109,6 +109,10 @@ public class CaseDocumentPage extends DocumentDisplayAbstractPage {
         return retryingFindElement(By.xpath(".//ol[@class='kh_toc-list']/li[contains(text(),'" + judgmentText + "')]"));
     }
 
+    public WebElement dateText() {
+		return retryingFindElement(By.xpath(".//*[@id='co_docContentMetaInfo']"));
+	}
+
     public CaseDocumentPage() {
     }
 
