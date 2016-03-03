@@ -1,21 +1,13 @@
 package com.thomsonreuters.pageobjects.pages.search;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.lang.StringUtils;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
-
 import com.thomsonreuters.driver.exception.PageOperationException;
 import com.thomsonreuters.driver.framework.AbstractPage;
 import com.thomsonreuters.pageobjects.common.ListFunctions;
+import org.apache.commons.lang.StringUtils;
+import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
+
+import java.util.*;
 
 /**
  * This is the generic search results page for the search 1 project.
@@ -860,7 +852,7 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the download delivery icon on the search results page
      */
     public WebElement downloadDeliveryIcon() {
-        return waitForExpectedElement(By.xpath("//a[@id='deliveryLinkRow1Download']/span"));
+        return retryingFindElement(By.xpath("//a[@id='deliveryLinkRow1Download']/span"));
     }
 
     /**
@@ -881,7 +873,7 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the download delivery pop up with the heading Download Documents
      */
     public WebElement downloadDocumentsPopUp() {
-        return waitForExpectedElement(By.xpath("//div[@id='co_deliveryLightbox']/div[1]//h3[contains(text(),'Download Documents')]"));
+        return retryingFindElement(By.xpath("//div[@id='co_deliveryLightbox']/div[1]//h3[contains(text(),'Download Documents')]"));
     }
 
     /**
