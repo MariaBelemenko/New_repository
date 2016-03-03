@@ -1,4 +1,4 @@
-Feature: [730965] As a: website user  I want: to navigate back to the top of the resource  So that: I don’t have to scroll through the resource
+Feature: [730965] As a website user, I want to navigate back to the top of the resource, So that I don’t have to scroll through the resource
 
   Scenario Outline: Back to top sticky link for <documentType>
     Given PL+ user is logged in

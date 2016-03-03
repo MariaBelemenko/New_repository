@@ -6,7 +6,6 @@ import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.GlossaryPage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.WebElement;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -25,9 +24,8 @@ public class GlossaryModalTest extends BaseStepDef {
 
     @When("^user clicks on glossary term \"(.*?)\" in the resource page$")
     public void userClicksOnGlossaryTermInTheResourcePage(String glossaryTerm) throws Throwable {
-        WebElement element = glossaryPage.glossaryTerm(glossaryTerm);
-//        new getDriver().moveToElement(element).build().perform();
-        element.click();
+        glossaryPage.glossaryTerm(glossaryTerm).isDisplayed();
+        glossaryPage.glossaryTerm(glossaryTerm).click();
     }
 
     @Then("^the glossary modal pop up box opens with the title \"(.*?)\"$")

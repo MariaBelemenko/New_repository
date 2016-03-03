@@ -7,7 +7,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.core.Is;
-import org.openqa.selenium.WebElement;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -105,8 +104,9 @@ public class GlossaryPageTest extends BaseStepDef {
 
     @Then("^the user should be able to view the definition of the term \"(.*?)\" on the page$")
     public void theUserShouldBeAbleToViewTheDefinitionOfTheTermOnThePage(String arg1) throws Throwable {
-        WebElement term = glossaryPage.glossaryHeading();
-        assertTrue(term.getText().contains(arg1));
+        glossaryPage.glossaryHeading().getText().contains(arg1);
+//        WebElement term = glossaryPage.glossaryHeading();
+//        assertTrue(term.getText().contains(arg1));
     }
 
     @When("^clicks on the (know how resource|glossary term) link \"(.*?)\" in the definition page$")

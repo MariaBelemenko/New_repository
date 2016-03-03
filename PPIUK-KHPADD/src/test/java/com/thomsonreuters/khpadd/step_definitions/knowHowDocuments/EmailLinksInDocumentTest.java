@@ -6,6 +6,8 @@ import com.thomsonreuters.pageobjects.pages.urls.plcuk.KHDocumentPage;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import java.util.List;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -20,9 +22,23 @@ public class EmailLinksInDocumentTest extends BaseStepDef {
         navigationCobalt.waitForPageToLoadAndJQueryProcessingWithCustomTimeOut(90);
     }
 
+    @Then("^document contains link to$")
+    public void documentContainsLink(List<String> name) throws Throwable {
+        for (String linkName : name) {
+            assertTrue("Document doesn't contain link to " + name, khDocumentPage.isContainLinkTo(linkName));
+        }
+    }
+
     @Then("^document contains link to '(.+)'$")
     public void documentContainsLinkTo(String name) throws Throwable {
         assertTrue("Document doesn't contain link to " + name, khDocumentPage.isContainLinkTo(name));
+    }
+
+    @Then("^document contains email link to$")
+    public void documentContainsEmailLink(List<String> email) throws Throwable {
+        for (String linkEmail : email) {
+            assertTrue("Document doesn't contain email link to " + email, khDocumentPage.isContainEmailLinkTo(linkEmail));
+        }
     }
 
     @Then("^document contains email link to '(.+)'$")

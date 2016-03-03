@@ -4,7 +4,6 @@ import com.thomsonreuters.khpadd.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePage;
 import cucumber.api.java.en.Then;
 import org.hamcrest.core.Is;
-import org.openqa.selenium.JavascriptExecutor;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -14,8 +13,7 @@ public class BackToTopTest extends BaseStepDef {
 
     @Then("^user scroll down the resource by offset (\\d+)$")
     public void scrollDownTheResource(int offset) throws Throwable {
-        JavascriptExecutor jse = (JavascriptExecutor) getDriver();
-        jse.executeScript("window.scrollTo(0," + offset + ");");
+        resourcePage.executeScript("window.scrollTo(0," + offset + ");");
     }
 
     @Then("^back to top sticky link is displayed$")

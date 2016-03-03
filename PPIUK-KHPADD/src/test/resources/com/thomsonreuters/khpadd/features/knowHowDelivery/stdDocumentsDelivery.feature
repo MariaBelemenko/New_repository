@@ -3,20 +3,17 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
   Background:
     Given PL+ user is logged in
 
-  #existing bug 833268 for subject text field having "practical Law" - moved this part of the scenario to shouldBugs.feature
-  @bug
-  Scenario: (bug 833268)Verify and Edit Email Delivery Options and send email for Standard documents with drafting notes having Annotations and Table of Contents
+  Scenario: Verify and Edit Email Delivery Options and send email for Standard documents with drafting notes having Annotations and Table of Contents
     When user navigates directly to document with guid "Ifc80a710e02811e398db8b09b4f043e0"
     And user added new annotation
     And clicks on email delivery option for the document
     Then the user should be able to see Email basic tab options as follows
       | Subject                     | Amendment and restatement agreement |
-      | Email Note                  | optional notes                                      |
-      | Document                    | Selected                                            |
-      | Only Drafting Notes         | Not Selected                                        |
-      | Document and Drafting Notes | Not Selected                                        |
-      | Table of Contents           | Selected                                            |
-      | Annotations                 | Not Selected                                        |
+      | Email Note                  | optional notes                      |
+      | Document                    | Selected                            |
+      | Only Drafting Notes         | Not Selected                        |
+      | Document and Drafting Notes | Not Selected                        |
+      | Table of Contents           | Selected                            |
     And the user edits the basic email options as follows
       | To                | deliveryTests@mailinator.com          |
       | Subject           | Practical Law - Std document Resource |
@@ -24,7 +21,6 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
       | Format            | Microsoft Word                        |
       | Document          | Selected                              |
       | Table of Contents | Selected                              |
-      | Annotations       | Selected                              |
     And the user clicks on Email advanced tab
     Then the user should be able to see Email advanced tab options as follows
       | Expanded Margin for Notes | Not Selected |
@@ -46,7 +42,6 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
       | Only Drafting Notes         |
       | Document and Drafting Notes |
       | Table of Contents           |
-      | Annotations                 |
     And an email is sent successfully by clicking on the Email button
 
   Scenario: Verify Email functionality for Standard documents with drafting notes not having Annotations and Table of Contents
@@ -64,7 +59,6 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
       | Only Drafting Notes         | Not Selected |
       | Document and Drafting Notes | Not Selected |
       | Table of Contents           | Selected     |
-      | Annotations                 | Not Selected |
     When the user clicks on Print advanced tab
     Then the user should be able to see Print advanced tab options as follows
       | Expanded Margin for Notes | Not Selected |
@@ -79,7 +73,6 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
     And the user edits the basic print options as follows
       | Document and Drafting Notes | Selected |
       | Table of Contents           | Selected |
-      | Annotations                 | Selected |
     And the user clicks on Print advanced tab
     When the user edits the advanced print options as follows
       | Cover Page | Selected |
@@ -100,7 +93,6 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
       | Only Drafting Notes         | Not Selected   |
       | Document and Drafting Notes | Not Selected   |
       | Table of Contents           | Selected       |
-      | Annotations                 | Not Selected   |
       | Format                      | Microsoft Word |
     When the user clicks on Download advanced tab
     Then the user should be able to see Download advanced tab options as follows
@@ -116,7 +108,6 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
     And the user edits the basic download options as follows
       | Document          | Selected             |
       | Table of Contents | Selected             |
-      | Annotations       | Selected             |
       | Format            | Word Processor (RTF) |
     And the user clicks on Download advanced tab
     When the user edits the advanced download options as follows

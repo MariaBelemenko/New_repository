@@ -16,7 +16,6 @@ Feature: E2E tests for Delivery
     | I33f1535be8cd11e398db8b09b4f043e0 | Document                    | Insert new party in the parties clause          | Drafting                               |
     | I33f1535be8cd11e398db8b09b4f043e0 | Document and Drafting Notes | Insert new party in the parties clause,Drafting |                                        |
     | I33f1535be8cd11e398db8b09b4f043e0 | Only Drafting Notes         | Drafting                                        | Insert new party in the parties clause |
-    | Ib55547a4e83211e398db8b09b4f043e0 | Document                    | arrangements involving                          |                                        |
     | I68a322bf013611e498db8b09b4f043e0 | Document                    | Matt Molloy has added                           |                                        |
 
   Scenario Outline: Cancel print the document
@@ -28,7 +27,7 @@ Feature: E2E tests for Delivery
     | GUID                              |
     | I8417aeac1cb111e38578f7ccc38dcbee |
 
-  Scenario Outline: Download the <Document Type Name> document type with <Download Option Name> delivery option (without Table of Contents)
+  Scenario Outline: Download a specific document type with <Download Option Name> delivery option (without Table of Contents)
     When user navigates directly to document with guid "<GUID>"
     And clicks on Download delivery option for the document
     Then the delivery options dialog is present and What To Deliver option presence is '<Drafting notes>'
@@ -41,11 +40,8 @@ Feature: E2E tests for Delivery
     | I8417aeac1cb111e38578f7ccc38dcbee | Document and Drafting Notes | This agreement is dated,Drafting               |                         | yes            | Pdf    | Inadequacy of damages    |
     | I8417aeac1cb111e38578f7ccc38dcbee | Only Drafting Notes         | Drafting                                       | This agreement is dated | yes            | Pdf    | Inadequacy of damages    |
     | I266a85d33c4611e598dc8b09b4f043e0 | Document                    | Reference to any Event                         | This document contains  | yes            | Pdf    | Straddle period          |
-    | I266a85d33c4611e598dc8b09b4f043e0 | Document and Drafting Notes | Reference to any Event,This document contains  |                         | yes            | Pdf    | Straddle period          |
     | I266a85d33c4611e598dc8b09b4f043e0 | Only Drafting Notes         | This document contains                         | Reference to any Event  | yes            | Pdf    | Straddle period          |
     | I03f4d785eee311e28578f7ccc38dcbee | Document                    | The US enacted antitrust laws                  |                         | no             | Pdf    | Other Antitrust Statutes |
-    | I2e24e270870a11e598dc8b09b4f043e0 | Document                    | EU and UK balance of competences on tax        |                         | no             | Pdf    | Impact of leaving the EU |
-    | I8be84316c1c511e498db8b09b4f043e0 | Document                    | ESMA will update the tables on a regular basis |                         | no             | Pdf    |                          |
     | I8417aeac1cb111e38578f7ccc38dcbee | Document                    | This agreement is dated                        | Drafting                | yes            | Rtf    |                          |
     | I8417aeac1cb111e38578f7ccc38dcbee | Document and Drafting Notes | This agreement is dated,Drafting               |                         | yes            | Rtf    |                          |
     | I8417aeac1cb111e38578f7ccc38dcbee | Only Drafting Notes         | Drafting                                       | This agreement is dated | yes            | Rtf    |                          |
@@ -53,7 +49,6 @@ Feature: E2E tests for Delivery
     | I266a85d33c4611e598dc8b09b4f043e0 | Document and Drafting Notes | Reference to any Event,This document contains  |                         | yes            | Rtf    |                          |
     | I03f4d785eee311e28578f7ccc38dcbee | Document                    | The US enacted antitrust laws                  |                         | no             | Rtf    |                          |
     | I266a85d33c4611e598dc8b09b4f043e0 | Only Drafting Notes         | This document contains                         | Reference to any Event  | yes            | Rtf    |                          |
-    | I2e24e270870a11e598dc8b09b4f043e0 | Document                    | EU and UK balance of competences on tax        |                         | no             | Rtf    |                          |
     | I8be84316c1c511e498db8b09b4f043e0 | Document                    | ESMA will update the tables on a regular basis |                         | no             | Rtf    |                          |
     | I8417aeac1cb111e38578f7ccc38dcbee | Document                    | This agreement is dated                        | Drafting                | yes            | Doc    |                          |
     | I8417aeac1cb111e38578f7ccc38dcbee | Document and Drafting Notes | This agreement is dated,Drafting               |                         | yes            | Doc    |                          |
@@ -61,9 +56,7 @@ Feature: E2E tests for Delivery
     | I266a85d33c4611e598dc8b09b4f043e0 | Document                    | Reference to any Event                         | This document contains  | yes            | Doc    |                          |
     | I266a85d33c4611e598dc8b09b4f043e0 | Document and Drafting Notes | Reference to any Event,This document contains  |                         | yes            | Doc    |                          |
     | I266a85d33c4611e598dc8b09b4f043e0 | Only Drafting Notes         | This document contains                         | Reference to any Event  | yes            | Doc    |                          |
-    | I03f4d785eee311e28578f7ccc38dcbee | Document                    | The US enacted antitrust laws                  |                         | no             | Doc    |                          |
     | I2e24e270870a11e598dc8b09b4f043e0 | Document                    | EU and UK balance of competences on tax        |                         | no             | Doc    |                          |
-    | I8be84316c1c511e498db8b09b4f043e0 | Document                    | ESMA will update the tables on a regular basis |                         | no             | Doc    |                          |
 
   @wip
   Scenario Outline: Emailing the <Document Type Name> with <What to Deliver> and <Format> email option

@@ -1,3 +1,4 @@
+@wip
 Feature: [711155] As a Know How user,
   I want to scroll and select terms within the glossary modal,
   so that I can view the glossary term in the Glossary document.
