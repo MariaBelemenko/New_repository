@@ -23,7 +23,7 @@ public class GlossaryPage extends AbstractPage {
      * in the left hand pane)
      */
     public WebElement glossaryHeading() {
-        return waitForExpectedElement(By.id("co_docHeaderContainer"));
+        return findElement(By.id("co_docHeaderContainer"));
     }
 
     public List<WebElement> listOfTabbedAlphabets() {
@@ -75,7 +75,7 @@ public class GlossaryPage extends AbstractPage {
      * This is the title of the glossary pop up box
      */
     public WebElement glossaryModalTitle() {
-        return waitForExpectedElement(By.cssSelector("div#co_glossaryLightBox h1.co_title"), 10);
+        return waitForExpectedElement(By.cssSelector("div#co_glossaryLightBox h1.co_title"));
     }
 
     public boolean isGlossaryModalTitleDisplayed() {

@@ -24,7 +24,7 @@ public class OnepassLoginUtils {
 
     private WelcomePage welcome = new WelcomePage();
 
-    protected CommonMethods comMethods;
+    protected CommonMethods comMethods = new CommonMethods();
 
     protected static final Logger LOG = org.slf4j.LoggerFactory.getLogger(OnepassLoginUtils.class);
 
