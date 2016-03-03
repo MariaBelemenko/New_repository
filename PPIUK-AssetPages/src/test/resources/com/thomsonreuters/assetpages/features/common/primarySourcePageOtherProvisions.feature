@@ -1,6 +1,5 @@
 Feature: As a PL+ User I want to view list of other provisions
 
-
   Scenario Outline: The asset page documents contain links to other provisions
     Given PL+ user is logged in
     When the user opens document with <GUID> guid
@@ -9,7 +8,6 @@ Feature: As a PL+ User I want to view list of other provisions
     Then the user sees "To view the other provisions relating to this primary source, see:" section
     Then the user sees "<link1>" in "To view the other provisions relating to this primary source, see:" other provisions section
     When the user clicks on this "<link1>" link
-    Then the user is taken from primary source page to internal document
     Then the document opens correctly
   Examples:
     | GUID                              | link1                                      |

@@ -5,7 +5,6 @@ import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.As
 import com.thomsonreuters.pageobjects.utils.plPlusResearchDocDisplay.AssetPageUtils;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.JavascriptExecutor;
 
 import static org.junit.Assert.assertTrue;
 
@@ -17,8 +16,7 @@ public class AssetPageTopButtonTest extends BaseStepDef {
     @Then("^apply document settings$")
     public void applyDocumentSettings() throws Throwable {
         assetPageUtils.addTextToTheDocumentPage();
-        JavascriptExecutor e = (JavascriptExecutor) assetDocumentPage;
-        e.executeScript("$('#co_backToTop').css('display', 'block');");
+        assetDocumentPage.executeScript("$('#co_backToTop').css('display', 'block');");
     }
 
     @Then("^the user see Top button$")

@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.CaseDocumentPage;
+import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.StandardDocumentPage;
 import com.thomsonreuters.pageobjects.pages.urls.plcuk.KHDocumentPage;
 import com.thomsonreuters.pageobjects.utils.plPlusResearchDocDisplay.CaseDocumentPageUtils;
 import com.thomsonreuters.researchdocdisplay.step_definitions.BaseStepDef;
@@ -18,6 +19,7 @@ public class DocDisplayAnnotationTest extends BaseStepDef {
     private KHDocumentPage documentPagePLCUK = new KHDocumentPage();
     private CaseDocumentPageUtils caseDocumentPageUtils = new CaseDocumentPageUtils();
     private CaseDocumentPage caseDocumentPage = new CaseDocumentPage();
+    private StandardDocumentPage standardDocumentPage = new StandardDocumentPage();
 
     @When("^the user opens document with (.+) guid$")
     public void theUserOpensDocumentWithGuid(String guid) throws Throwable {
@@ -53,5 +55,11 @@ public class DocDisplayAnnotationTest extends BaseStepDef {
         assertTrue("The annotations is not displayed on document",
                 caseDocumentPageUtils.isAnnotationSectionIsDisplayed());
     }
+
+    @Then("^the user is taken to the \"(.*?)\" part of the document$")
+	public void theUserIsTakenToThePartOfTheDocument(String section) throws Throwable {
+		assertTrue("The user is not taken to the " + section + " part of document",
+				caseDocumentPage.isViewScrolledToElement(standardDocumentPage.headerOnTheDocument(section)));
+	}
 
 }

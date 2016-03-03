@@ -257,8 +257,7 @@ public class AssetPageUtils {
 
     public boolean isTheUserTakenToSelectedPartOfTheDocument(String linkText) {
         assetDocumentPage.waitForPageToLoad();
-        JavascriptExecutor e = (JavascriptExecutor) assetDocumentPage.getDriver;
-        boolean result = (Boolean) e.executeScript("function isScrolledIntoView(elem,off) {"
+        boolean result = (Boolean) assetDocumentPage.executeScript("function isScrolledIntoView(elem,off) {"
                 + " var $elem = $(elem); var $window = $(window); " + "var docViewTop = $window.scrollTop()+off; "
                 + "var docViewBottom = docViewTop + $window.height();" + "var elemTop = $elem.offset().top;"
                 + "var elemBottom = elemTop + $elem.height();"
@@ -443,14 +442,10 @@ public class AssetPageUtils {
     }
 
     public boolean isTheUserTakenToTheInternalDocument(String hrefAtribute) {
-        String secondUrl = assetDocumentPage.getCurrentUrl();
-        LOG.info("secondUrl", secondUrl);
-        LOG.info("hrefAtribute", hrefAtribute);
-        if (secondUrl.contains(hrefAtribute) && !firstUrl.equals(secondUrl)
-                && secondUrl.contains("https://a.uk.practicallaw"))
-            return true;
-        else
-            return false;
+    	String secondUrl = assetDocumentPage.getCurrentUrl();
+		LOG.info("secondUrl", secondUrl);
+		LOG.info("hrefAtribute", hrefAtribute);
+		return !firstUrl.equals(secondUrl) && secondUrl.contains("uk.practicallaw");
     }
 
     public boolean isTheDocumentContainLink(String linkText) {

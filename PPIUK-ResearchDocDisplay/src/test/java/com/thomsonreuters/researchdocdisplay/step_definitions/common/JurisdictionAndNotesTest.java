@@ -1,12 +1,13 @@
 package com.thomsonreuters.researchdocdisplay.step_definitions.common;
 
+import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.PageActions;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.ProvisionPage;
 import com.thomsonreuters.pageobjects.utils.plPlusResearchDocDisplay.ProvisionPageUtils;
 import com.thomsonreuters.researchdocdisplay.step_definitions.BaseStepDef;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
 import static org.junit.Assert.assertTrue;
 
 public class JurisdictionAndNotesTest extends BaseStepDef {
@@ -14,6 +15,7 @@ public class JurisdictionAndNotesTest extends BaseStepDef {
     private ProvisionPage provisionPage = new ProvisionPage();
     private ProvisionPageUtils provisionPageUtils = new ProvisionPageUtils();
     protected PageActions pageActions = new PageActions();
+    private CommonMethods commonMethods = new CommonMethods();
 
     private String url;
 
@@ -107,6 +109,11 @@ public class JurisdictionAndNotesTest extends BaseStepDef {
     @When("^the user click on the link$")
     public void theUserClickOnTheLink() throws Throwable {
         url = provisionPageUtils.clickOnInternalLinkInLightbox();
+    }
+    
+    @When("^the user clicks on \"(.*?)\" link$")
+    public void theUserClicksOnLink(String linkText) {
+        commonMethods.clickLink(linkText);
     }
 
 }
