@@ -3,7 +3,6 @@ package com.thomsonreuters.pageobjects.pages.search;
 import com.thomsonreuters.driver.exception.PageOperationException;
 import com.thomsonreuters.driver.framework.AbstractPage;
 import org.openqa.selenium.*;
-
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
@@ -501,7 +500,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
      * This is the object representing the Select multiple filters button
      */
     public WebElement selectMultipleFiltersButton() {
-        return waitForExpectedElement(By.linkText("Select multiple filters"));
+        return retryingFindElement(By.linkText("Select multiple filters"));
     }
 
     /**

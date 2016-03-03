@@ -9,7 +9,6 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user selects the checkbox associated with result "1"
     And the user selects the checkbox associated with result "2"
     And the user selects the download delivery option
-    And the user pauses for "3" seconds
     And the user verifies the presence of a pop up entitled Download Documents
     And the user verifies the presence of a basic tab
     And the user verifies that the basic option is selected by default
@@ -60,37 +59,21 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user selects the advanced tab
     And the user verifies that the option entitled Expanded Margin for Notes is no longer present
 
-  Scenario Outline: [747922] download list of know how search results from basic tab in list format (various document formats)
+  Scenario: [747922] download list of know how search results from basic tab in list format (various document formats)
     When the user runs a free text search for the query "contract for sale"
     And the user selects the checkbox associated with result "1"
     And the user selects the checkbox associated with result "2"
-    And the user selects the download delivery option
-    And the user pauses for "3" seconds
-    And the user verifies the presence of a pop up entitled Download Documents
-    And the user selects the list of items option
-    And the user selects the list of items format option "<format>"
-    And the user selects the Download option
-    And the user verifies that the request is processed and a message displayed that the items are ready to download
-  Examples:
-    | format                |
+    And the user downloads as list_of_items and verifies the processed message for successful downloads
     | Microsoft Word        |
     | Word Processor (RTF)  |
     | PDF                   |
     | Microsoft Excel (CSV) |
 
-  Scenario Outline: [747922] download list of know how search results from basic tab in document format (various document formats)
+  Scenario: [747922] download list of know how search results from basic tab in document format (various document formats)
     When the user runs a free text search for the query "contract"
     And the user selects the checkbox associated with result "1"
     And the user selects the checkbox associated with result "2"
-    And the user selects the download delivery option
-    And the user pauses for "3" seconds
-    And the user verifies the presence of a pop up entitled Download Documents
-    And the user selects the Documents option
-    And the user selects the documents format option "<format>"
-    And the user selects the Download option
-    And the user verifies that the request is processed and a message displayed that the items are ready to download
-  Examples:
-    | format               |
+    And the user downloads as Documents and verifies the processed message for successful downloads
     | Microsoft Word       |
     | Word Processor (RTF) |
     | PDF                  |

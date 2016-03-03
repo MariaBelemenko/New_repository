@@ -17,6 +17,7 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.util.Map;
+import java.util.List;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -71,6 +72,37 @@ public class KnowHowDeliveryTest extends BaseStepDef {
     @When("^the user selects the download delivery option$")
     public void theUserSelectsTheDownloadDeliveryOption() throws Throwable {
         searchResultsPage.downloadDeliveryIcon().click();
+        searchResultsPage.waitForPageToLoad();
+    }
+
+    @When("^the user downloads as (list_of_items|Documents) and verifies the processed message for successful downloads$")
+    public void theUserDownloadsDocument(String docType, List<String> downloadTypes) throws Throwable {
+        Select option = null;
+        for (String downloadType : downloadTypes) {
+
+            searchResultsPage.downloadDeliveryIcon().click();
+            searchResultsPage.waitForPageToLoad();
+
+            assertTrue(searchResultsPage.downloadDocumentsPopUp().isDisplayed());
+
+            if (docType.equals("list_of_items")) {
+                if (!searchResultsPage.listOfItemsOption().isSelected()) {
+                    searchResultsPage.listOfItemsOption().click();
+                    option = new Select(searchResultsPage.formatDropdownList());
+                    option.selectByVisibleText(downloadType);
+                }
+            } else if (docType.equals("Documents")) {
+                if (!searchResultsPage.documentsOption().isSelected()) {
+                    searchResultsPage.documentsOption().click();
+                    option = new Select(searchResultsPage.formatDropdownDocuments());
+                    option.selectByVisibleText(downloadType);
+                }
+            }
+
+            searchResultsPage.downloadButton().click();
+
+            assertTrue(searchResultsPage.downloadReadyMessage().isDisplayed());
+        }
     }
 
     @Then("^the user pauses for \"(.*?)\" seconds$")

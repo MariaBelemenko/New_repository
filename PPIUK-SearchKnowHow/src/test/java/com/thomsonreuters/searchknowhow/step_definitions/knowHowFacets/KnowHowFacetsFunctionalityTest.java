@@ -2,19 +2,18 @@ package com.thomsonreuters.searchknowhow.step_definitions.knowHowFacets;
 
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.SortOptions;
+import com.thomsonreuters.pageobjects.pages.search.CasesSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchHomePage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.pageobjects.utils.search.SearchUtils;
 import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
-import com.thomsonreuters.pageobjects.pages.search.CasesSearchResultsPage;
 import cucumber.api.Transpose;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import junit.framework.Assert;
-import org.openqa.selenium.JavascriptExecutor;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,15 +35,11 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
 
     @Then("^the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is$")
     public void theUserIsAbleToCheckWhetherTheOptionToApplyFiltersIsDisplayedAndIfNotToEnsureThatItIs() {
-        Boolean isPresent = false;
         try {
             if (knowHowSearchResultsPage.selectMultipleFiltersButton().isDisplayed()) {
-                isPresent = true;
+                knowHowSearchResultsPage.clickOnSelectMultipleFilters();
             }
         } catch (Exception e) {
-        }
-        if (isPresent = true) {
-            knowHowSearchResultsPage.clickOnSelectMultipleFilters();
         }
     }
 
