@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertTrue;
+
 
 public class WhatsMarketComparisonReportPage extends AbstractPage {
 
@@ -177,9 +179,18 @@ public class WhatsMarketComparisonReportPage extends AbstractPage {
     /**
      * object representing the Move down option on the organize columns pop up box
      */
+    public WebElement organizeOptionLink(String linkText) {
+
+        return waitForExpectedElement(By.xpath("//div[@class='co_column']//a[text()='" + linkText + "']"),10);
+    }
+
+    /**
+     * object representing the Move down option on the organize columns pop up box
+     */
     public WebElement moveDownOption() {
         return waitForExpectedElement(By.id("reorderMoveDown"));
     }
+
 
     /**
      * object representing the close option on the organize columns pop up box
@@ -393,5 +404,21 @@ public class WhatsMarketComparisonReportPage extends AbstractPage {
     public WebElement homeNode() {
         return waitForExpectedElement(By.xpath("//a[@id='logo']"));
     }
+
+
+    /**
+     * object representing the Organize Columns button
+     */
+    public WebElement organizeColumnsButton(String activeStatus) {
+        WebElement button;
+        if (activeStatus.equalsIgnoreCase("is")) {
+            button = waitForExpectedElement(By.xpath("//div[@id='co_contentWrapper']//self::div[@class='sidebar-is-active']"),10);
+        } else  {
+            // assume "is not" otherwise
+            button = waitForExpectedElement(By.xpath("//div[@id='co_contentWrapper']//self::div[@class='']"),10);
+        }
+        return button;
+    }
+
 
 }

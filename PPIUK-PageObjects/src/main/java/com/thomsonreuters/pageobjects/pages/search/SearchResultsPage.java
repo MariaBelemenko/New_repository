@@ -1035,7 +1035,7 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the checkbox associated with each result item on the whats market search results page
      */
     public WebElement resultCheckboxWhatsMarket(String number) {
-        return waitForExpectedElement(By.xpath("//input[@id='cobalt_search_whatsmarket_checkbox_" + number + "']"));
+        return waitForExpectedElement(By.xpath("//input[@id='cobalt_search_whatsmarket_checkbox_" + number + "']"),15);
     }
 
     /**

@@ -150,11 +150,7 @@ public class WhatsMarketComparisonToolTest extends BaseStepDef {
 
     @When("^the user verifies the Comparison Terms selector (is|is not) displayed$")
     public void theUserVerifiesTheComparisonTermsSelector(String isIsNot) throws Throwable {
-        if (isIsNot.equalsIgnoreCase("is")) {
-            assertTrue(getDriver().findElement(By.xpath("//div[@id='co_contentWrapper']//self::div[@class='sidebar-is-active']")).isDisplayed());
-        } else if (isIsNot.equalsIgnoreCase("is not")) {
-            assertTrue(getDriver().findElement(By.xpath("//div[@id='co_contentWrapper']//self::div[@class='']")).isDisplayed());
-        }
+        whatsMarketComparisonReportPage.organizeColumnsButton(isIsNot).isDisplayed();
     }
 
     @When("^the user selects the menu icon$")
@@ -204,7 +200,7 @@ public class WhatsMarketComparisonToolTest extends BaseStepDef {
 
     @When("^the user clicks the \"(.*?)\" button on Organize Columns popup$")
     public void theUserClicksTheButtonOnOrganizeColumnsPopup(String arg1) throws Throwable {
-        getDriver().findElement(By.linkText(arg1)).click();
+        whatsMarketComparisonReportPage.organizeOptionLink(arg1).click();
     }
 
     @When("^the user verifies column \"(.*?)\" is in position \"(.*?)\" on Organize Columns popup$")

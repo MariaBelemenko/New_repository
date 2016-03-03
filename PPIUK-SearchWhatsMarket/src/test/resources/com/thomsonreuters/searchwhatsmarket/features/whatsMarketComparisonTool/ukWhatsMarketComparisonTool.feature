@@ -40,12 +40,11 @@ Feature: ukWhatsMarketComparisonTool.feature
     And the user verifies the presence of a column entitled "Industry sector"
 
   Scenario: Verify user unable to compare two differing deal types
-    When the user runs a free text search for the query "law"
-    And the user verifies the presence of the whats market facet "Administrations"
+    When the user runs a free text search for the query "assets"
     And the user selects the checkbox associated with whats market result "1"
-    And the user selects the checkbox associated with whats market result "2"
-    And the user selects the checkbox associated with whats market result "3"
     And the user selects the checkbox associated with whats market result "4"
+    And the user selects the checkbox associated with whats market result "8"
+    And the user selects the checkbox associated with whats market result "10"
     And the user selects the compare button
     And the user verifies the presence of the error message You can only compare deals of the same type
     And the user selects OK

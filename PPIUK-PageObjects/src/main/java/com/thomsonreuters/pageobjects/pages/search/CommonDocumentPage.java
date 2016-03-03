@@ -16,7 +16,7 @@ public abstract class CommonDocumentPage extends AbstractPage {
     }
 
     protected WebElement getTitle(By by) {
-        return retryingFindElement(by);
+        return waitForExpectedElement(by,10);
     }
 
     /**
