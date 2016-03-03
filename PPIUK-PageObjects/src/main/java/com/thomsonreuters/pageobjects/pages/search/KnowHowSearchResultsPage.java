@@ -209,7 +209,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
      * This is for "Clear all" link element
      */
     public WebElement clearAllLink() {
-        return waitForExpectedElement(By.xpath("//div[@id='co_undoAllSelections']/a"));
+        return waitForExpectedElement(By.xpath("//div[@id='co_undoAllSelections']/a"),10);
     }
 
 
