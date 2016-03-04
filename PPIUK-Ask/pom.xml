@@ -19,6 +19,34 @@
     <cobalt.users.xls.path>src/test/resources/CobaltUsers.xlsx</cobalt.users.xls.path>
   </properties>
 
+  <repositories>
+    <repository>
+      <id>tr-qa</id>
+      <name>TR QA Artifactory</name>
+      <url>http://10.194.240.152:8081/artifactory/qa-artifactory</url>
+      <layout>default</layout>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+      </releases>
+    </repository>
+    <repository>
+      <id>central</id>
+      <name>Central Repository</name>
+      <url>http://repo.maven.apache.org/maven2</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+  </repositories>
+
   <profiles>
     <profile>
       <id>jenkins</id>
@@ -146,7 +174,7 @@
 
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-server-standalone</artifactId>
+      <artifactId>selenium-server</artifactId>
       <version>2.47.0</version>
     </dependency>
   </dependencies>

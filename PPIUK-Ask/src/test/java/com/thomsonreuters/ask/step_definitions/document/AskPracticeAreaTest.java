@@ -87,7 +87,7 @@ public class AskPracticeAreaTest extends BaseStepDef {
         } else if (pageName.equalsIgnoreCase("ask tab")) {
             assertThat("Disclaimer is Not displayed", askCategoryPage.askDisclaimerTextOnAskTab().getText(), containsString(text));
         } else if (pageName.equalsIgnoreCase("ask landing")) {
-            assertTrue("Disclaimer is Not displayed", askCategoryPage.waitForExpectedElement(By.xpath("//div[@class='ask-disclaimer' and contains(., '" + text + "')]")).isDisplayed());
+            assertTrue("Disclaimer is Not displayed", askCategoryPage.askDisclaimerTextOnAskLandingPage(text).isDisplayed());
         } else if (pageName.equalsIgnoreCase("ask Category")) {
             assertThat("Disclaimer is Not displayed", askCategoryPage.askDisclaimerText().getText(), containsString(text));
         }
