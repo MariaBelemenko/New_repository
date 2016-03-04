@@ -3,8 +3,7 @@ Feature: As a PL+ User, I want to sort my search results by relevancy, date and 
   So that I can view the list of search results in my preferred order
 
   Scenario Outline: Verify sort results by date. Verify that the user is able to sort search results by relevancy
-    Given PL+ user is logged in with following details
-      | userName | GlPage_UK1 |
+    Given PL+ user is logged in
     When the user selects "International" tab and clicks on "<link>" link in "International subscriptions" section
     Then the Category Page opens correctly
     When the user runs a free text search for the query "tag"

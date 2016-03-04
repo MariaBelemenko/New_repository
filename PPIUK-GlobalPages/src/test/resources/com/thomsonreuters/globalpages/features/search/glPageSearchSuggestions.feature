@@ -1,8 +1,7 @@
 Feature: As a PL+ User when I enter 3+ charatcers into the search field on the global page, a list of suggested terms is suggested to me
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | GlPage_UK1 |
+    Given PL+ user is logged in
     When the user navigates to the Global Page
     Then the Global Page opens correctly
 

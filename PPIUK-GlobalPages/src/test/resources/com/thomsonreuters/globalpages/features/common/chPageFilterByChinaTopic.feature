@@ -1,14 +1,11 @@
 Feature: As a User
   I am able to run search and filter by China topic
 
-  Background:
-    Given PL+ user is logged in with following details
-      | userName | GlPage_UK1 |
+  Scenario Outline: verify filter by china topic
+    Given PL+ user is logged in
     And the user navigates to the main PLCUK page
     When the user selects "International" tab and clicks on "China" link in "International subscriptions" section
     Then the Category Page opens correctly
-
-  Scenario Outline: verify filter by china topic
     And the user runs a free text search for the query "<query>"
     Then the "Practice Area" section includes only "China" topics
       | Anti-bribery and anti-corruption     |

@@ -2,8 +2,7 @@ Feature: As a PL+ User, I want to to view the pagination of my search result
   So that I can identify which page of search results I am viewing
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | GlPage_UK1 |
+    Given PL+ user is logged in
 
   Scenario Outline: User checks the Pagination of GP and China search results.
     When the user selects "International" tab and clicks on "<link>" link in "International subscriptions" section

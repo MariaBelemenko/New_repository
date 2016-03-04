@@ -1,8 +1,7 @@
 Feature: As a PL+ User I can display less, more or most detail for each of my search results
 
   Scenario Outline: Verify default setting for more detail in open web
-    Given PL+ user is logged in with following details
-      | userName | GlPage_UK1 |
+    Given PL+ user is logged in
     And the user navigates to the main PLCUK page
     When the user selects "International" tab and clicks on "<link>" link in "International subscriptions" section
     Then the Category Page opens correctly
@@ -33,7 +32,7 @@ Feature: As a PL+ User I can display less, more or most detail for each of my se
       | Absract        |
       | First Snippet  |
       | Second Snippet |
-    Examples:
-      | link   |
-      | Global |
-      | China  |
+  Examples:
+    | link   |
+    | Global |
+    | China  |

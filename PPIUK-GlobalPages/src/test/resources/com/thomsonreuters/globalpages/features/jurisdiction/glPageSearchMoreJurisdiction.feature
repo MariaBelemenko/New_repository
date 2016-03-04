@@ -1,12 +1,9 @@
 Feature: As a PL+ User, I want to view the right number of Jurisdictions and open More Jurisdictions
 
-  Background:
-    Given PL+ user is logged in with following details
-      | userName | GlPage_UK1 |
+  Scenario: User checks the right number of Jurisdictions
+    Given PL+ user is logged in
     When the user navigates to the Global Page
     Then the Global Page opens correctly
-
-  Scenario: User checks the right number of Jurisdictions
     When the user runs a free text search for the query "tax"
     Then the jurisdiction section contains the following countries
       | International  |

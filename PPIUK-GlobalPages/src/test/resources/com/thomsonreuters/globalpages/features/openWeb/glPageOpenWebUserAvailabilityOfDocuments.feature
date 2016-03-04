@@ -12,8 +12,7 @@ Feature: [838026] Open web user is able to view the abstract for each document
     And there will be text informing the user to login to view full text document
     And "Sign in" button is present in document body
     And "Request a free trial" button is present in document body
-
-    Examples: 
-      | Document title                                |
-      | Execution of deeds and documents              |
-      | Execution of deeds and documents by charities |
+  Examples:
+    | Document title                                |
+    | Execution of deeds and documents              |
+    | Execution of deeds and documents by charities |

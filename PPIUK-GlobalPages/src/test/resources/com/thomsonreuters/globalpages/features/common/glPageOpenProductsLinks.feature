@@ -1,8 +1,7 @@
 Feature: As a PL+ User, I can open US, UK, Canada, China, Global links from country toggle dropdown
 
   Scenario Outline: verify that logged user can open US, UK, Canada, China, Global links open in the same window
-    Given PL+ user is logged in with following details
-      | userName | GlPage_UK1 |
+    Given PL+ user is logged in
     When the user navigates to the main PLCUK page
     When user hovers over the country toggle dropdown
     And the user selects "<link>"

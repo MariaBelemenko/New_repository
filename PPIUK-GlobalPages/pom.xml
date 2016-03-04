@@ -11,7 +11,7 @@
     <description>PPI UK - Global Pages Project</description>
 
     <properties>
-        <surefire.fork.count>10</surefire.fork.count>
+        <surefire.fork.count>6</surefire.fork.count>
         <driverType>firefox</driverType>
         <newSession>false</newSession>
         <jenkinsStyleReports>true</jenkinsStyleReports>

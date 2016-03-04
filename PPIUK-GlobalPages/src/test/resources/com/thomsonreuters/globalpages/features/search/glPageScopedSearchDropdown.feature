@@ -1,8 +1,7 @@
 Feature: As a PL+ User, I am able to search for an individual country instead , rather than all content
 
-  Background: 
-    Given PL+ user is logged in with following details
-      | userName | GlPage_UK1 |
+  Background:
+    Given PL+ user is logged in
     When the user navigates to the main PLCUK page
     When the user selects "International" tab and clicks on "Global" link in "International subscriptions" section
     Then the Category Page opens correctly
@@ -100,6 +99,6 @@ Feature: As a PL+ User, I am able to search for an individual country instead , 
     And the user can open the first know how search result "1"
     Then the document opens correctly
 
-    Examples: 
-      | country        |
-      | United Kingdom |
+  Examples:
+    | country        |
+    | United Kingdom |

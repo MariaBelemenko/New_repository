@@ -1,8 +1,7 @@
 Feature: As a PL+ User, I want to navigate to Canada, China, Global, US resources from homepage
 
   Scenario Outline: Verify that logged user can open Canada, China, Global, US links in the International subscriptions section open in the same window
-    Given PL+ user is logged in with following details
-      | userName | GlPage_UK1 |
+    Given PL+ user is logged in
     When the user navigates to the main PLCUK page
     When the user selects "International" tab and clicks on "<link>" link in "International subscriptions" section
     And the user clicks on Continue button

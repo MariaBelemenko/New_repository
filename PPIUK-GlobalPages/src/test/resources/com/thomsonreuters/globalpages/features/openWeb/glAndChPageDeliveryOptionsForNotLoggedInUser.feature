@@ -1,6 +1,6 @@
 Feature: Not logged in user cannot use delivery options in China and Global page
 
-  Background: 
+  Background:
     Given PL+ user is not logged in
 
   Scenario Outline: As a Not logged in user I want to not be able to to use delivery options on document page
@@ -10,10 +10,10 @@ Feature: Not logged in user cannot use delivery options in China and Global page
     When the user runs a free text search for the query "tax"
     Then he does not see in the document page any link related to delivery options (email, download, print)
     And he is not able to use these features on document page
-    Examples:
-      | link   |
-      | Global |
-      | China  |
+  Examples:
+    | link   |
+    | Global |
+    | China  |
 
   Scenario Outline: As a Not logged in user I want to not be able to to use delivery options on China and Global legal updates results page
     When the user navigates to the main PLCUK page
@@ -23,7 +23,7 @@ Feature: Not logged in user cannot use delivery options in China and Global page
     Then the user should be taken to the "<link>" Topic LU results list
     Then he does not see on a legal updates results page any link related to delivery options (email, download, print)
     And he is not able to use these features on legal updates results page
-    Examples: 
-      | link   |
-      | Global |
-      | China  |
+  Examples:
+    | link   |
+    | Global |
+    | China  |

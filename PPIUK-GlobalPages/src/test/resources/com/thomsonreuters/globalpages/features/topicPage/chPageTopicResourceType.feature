@@ -1,8 +1,7 @@
 Feature: As a PL+ User, I am able to navigates to topic page
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | GlPage_UK1 |
+    Given PL+ user is logged in
     When the user navigates to the main PLCUK page
     When the user selects "International" tab and clicks on "China" link in "International subscriptions" section
     Then the Category Page opens correctly

@@ -1,10 +1,9 @@
 Feature: As a PL+ User, I am able to over-ride the default scoping in China page
 
   Scenario Outline: verify the scop search drop down
-    Given PL+ user is logged in with following details
-      | userName         | GlPage_UK1 |
-      | routing          | BETA       |
-      | mandatoryRouting | YES        |
+    Given PL+ user is logged in
+      | routing          | BETA |
+      | mandatoryRouting | YES  |
     When the user navigates to the main PLCUK page
     When the user selects "International" tab and clicks on "China" link in "International subscriptions" section
     Then the Category Page opens correctly
@@ -78,7 +77,6 @@ Feature: As a PL+ User, I am able to over-ride the default scoping in China page
     And the user can open the first know how search result "1"
     Then the document opens correctly
     And the user verifies that the product detail contains the practice area "<product>"
-
   Examples:
     | practiceArea | product           |
     | Employment   | PLC UK Employment |
@@ -86,8 +84,7 @@ Feature: As a PL+ User, I am able to over-ride the default scoping in China page
     | China        | China             |
 
   Scenario: verify back to china button
-    Given PL+ user is logged in with following details
-      | userName | GlPage_UK1 |
+    Given PL+ user is logged in
     When the user navigates to the main PLCUK page
     When the user selects "International" tab and clicks on "China" link in "International subscriptions" section
     Then the Category Page opens correctly
