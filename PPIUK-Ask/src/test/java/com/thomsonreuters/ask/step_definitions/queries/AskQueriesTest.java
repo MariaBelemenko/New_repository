@@ -67,7 +67,7 @@ public class AskQueriesTest extends BaseStepDef {
 
     @And("^the user verifies that all queries have at least (\\d+) reply/replies'$")
     public void theUserVerifiesThatAllQueriesHaveAtLeastReplyReplies(int noOfReplies) throws Throwable {
-        List<WebElement> queries = askCategoryPage.getCommentLabelsForRecentQueries();
+        List<WebElement> queries = askCategoryPage.waitForExpectedElements(By.xpath("//div[contains(@class, 'genericBox') and (contains(., 'Recent') or contains(., 'ueries'))]//span[@class='co_comments_count'] | //div[contains(@id, 'TabPanel') and contains(@class, 'Show')]//div[@class='co_artifactContent']//span[@class='co_comments_count']"));
         for (WebElement query : queries) {
             String text = query.getText();
             assertThat("The no of replies in the queries are NOT expected", text, Matchers.containsString(Integer.toString(noOfReplies)));
