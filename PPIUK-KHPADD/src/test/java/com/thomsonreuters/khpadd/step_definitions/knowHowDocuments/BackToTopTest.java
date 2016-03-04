@@ -18,15 +18,12 @@ public class BackToTopTest extends BaseStepDef {
 
     @Then("^back to top sticky link is displayed$")
     public void backToTopIsDisplayed() throws Throwable {
-        Thread.sleep(2000);
         assertThat(resourcePage.backToTop().isDisplayed(), Is.is(true));
     }
 
     @Then("^user can navigate to top from anywhere in the document by clicking on the back to top link$")
     public void navigateToTop() throws Throwable {
         resourcePage.backToTop().click();
-        Thread.sleep(2000);
     }
-
 
 }

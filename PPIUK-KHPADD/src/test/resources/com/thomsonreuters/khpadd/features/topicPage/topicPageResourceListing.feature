@@ -13,32 +13,32 @@ Feature: [730196][764868][764877] Verify the topic page facet links, topic page 
     Then document title is displayed as "Administrative receivership"
     And resource type is displayed as "Practice notes" on right hand panel
 
-  Scenario:[764877 Verifying facet group counts on the topic page [bug#776171]
+  Scenario:[764877 Verifying facet group counts on the topic page
     When the user navigates to practice area "Finance" filtered by "Security and quasi security" topic page
     Then the user is presented with a topic page with title "Security and Quasi Security"
     And the facet ordering along with corresponding resource count is as follows
       | facetName                      | facetCount |
-      | View all                       | 388        |
+      | View all                       | 389        |
       | Practice Notes                 | 104        |
       | Standard Documents and Clauses | 56         |
       | Checklists                     | 12         |
       | Trackers                       | 1          |
-      | Articles                       | 106        |
+      | Articles                       | 107        |
       | Country Q&A                    | 39         |
       | Glossary                       | 70         |
 
-  Scenario:[764868] Verifying facet ordering [bug#776750]
+  Scenario:[764868] Verifying facet ordering
     When the user navigates to practice area "Corporate" filtered by "Directors" topic page
     Then the user is presented with a topic page with title "Directors"
     And the facet ordering along with corresponding resource count is as follows
       | facetName                      | facetCount |
-      | View all                       | 302        |
+      | View all                       | 304        |
       | Practice Notes                 | 45         |
       | Standard Documents and Clauses | 46         |
       | Checklists                     | 6          |
       | Toolkits                       | 1          |
       | Trackers                       | 1          |
-      | Articles                       | 166        |
+      | Articles                       | 167        |
       | Country Q&A                    | 34         |
       | Glossary                       | 4          |
 

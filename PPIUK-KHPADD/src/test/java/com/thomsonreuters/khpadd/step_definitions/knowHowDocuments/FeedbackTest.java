@@ -5,6 +5,7 @@ import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.pages.footer.FeedbackForm;
 import com.thomsonreuters.pageobjects.pages.footer.FeedbackFormField;
 import com.thomsonreuters.pageobjects.pages.footer.WLNFooter;
+import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.legalUpdates.LegalUpdatesTopicPage;
 import com.thomsonreuters.pageobjects.pages.pageCreation.HomePage;
 import com.thomsonreuters.pageobjects.utils.form.FormUtils;
@@ -21,6 +22,7 @@ import static org.junit.Assert.assertTrue;
 public class FeedbackTest extends BaseStepDef {
 
     private WLNFooter footer = new WLNFooter();
+    private WLNHeader wlnHeader = new WLNHeader();
     private FormUtils formUtils = new FormUtils();
     private FeedbackForm feedbackForm = new FeedbackForm();
     private CommonMethods commonMethods = new CommonMethods();
@@ -29,7 +31,8 @@ public class FeedbackTest extends BaseStepDef {
 
     @When("^user clicks on the Feedback link on the footer$")
     public void userClicksOnTheGivenLinkOnFooter() throws Throwable {
-        footer.clickOnFeedBackLink();
+        footer.footerFeedbackLink().click();
+//        footer.clickOnFeedBackLink();
     }
 
     @Then("^the user should see the following fields on Feedback form$")
@@ -61,11 +64,13 @@ public class FeedbackTest extends BaseStepDef {
 
     @When("^the user clicks on Submit button$")
     public void theUserClicksOnSubmitButton() throws Throwable {
+        feedbackForm.submitButton().isEnabled();
         feedbackForm.submitButton().click();
     }
 
     @Then("^the feedback is submitted successfully$")
     public void theFeedbackIsSubmittedSuccessfully() throws Throwable {
+        Thread.sleep(1000);
         assertTrue("The feedback was successfully submitted".equalsIgnoreCase(commonMethods.getAlertDialogMsg()));
         commonMethods.acceptAlertDialogMsg();
     }
