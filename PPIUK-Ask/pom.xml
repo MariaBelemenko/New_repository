@@ -19,7 +19,7 @@
     <cobalt.users.xls.path>src/test/resources/CobaltUsers.xlsx</cobalt.users.xls.path>
   </properties>
 
-  <repositories>
+  <!--<repositories>
     <repository>
       <id>tr-qa</id>
       <name>TR QA Artifactory</name>
@@ -45,7 +45,7 @@
         <enabled>true</enabled>
       </releases>
     </repository>
-  </repositories>
+  </repositories>-->
 
   <profiles>
     <profile>
