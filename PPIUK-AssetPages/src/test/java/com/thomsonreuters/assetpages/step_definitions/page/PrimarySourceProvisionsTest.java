@@ -38,12 +38,6 @@ public class PrimarySourceProvisionsTest extends BaseStepDef {
         primarySourceDocumentPage.linkInSpecificProvisionCoverageSection(linkText).click();
     }
 
-    @Then("^the user is taken to the primary source document$")
-    public void theUserIsTakenToThePrimarySourceDocument() throws Throwable {
-        assertTrue("The user doesn't taken to the primary source document",
-                assetPageUtils.isTheUserTakenToTheInternalDocument(hrefAtribute));
-    }
-
     @Then("^the \"(.*?)\" section displayed below \"(.*?)\" section$")
     public void theSectionDisplayedBelowSection(String specificProvisionText, String otherProvisionsText) throws Throwable {
         assertTrue("The Specific provision doesn't displayed below other provision section",

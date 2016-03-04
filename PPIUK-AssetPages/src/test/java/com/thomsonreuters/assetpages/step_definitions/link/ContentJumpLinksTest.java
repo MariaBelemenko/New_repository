@@ -18,18 +18,10 @@ public class ContentJumpLinksTest extends BaseStepDef {
     private AssetPageUtils assetPageUtils = new AssetPageUtils();
     private AssetDocumentPage assetDocumentPage = new AssetDocumentPage();
 
-    private String linkText;
-
     @Then("^text added to the document$")
     public void textAddedToTheDocument() throws Throwable {
         primarySourceDocumentPage.waitForPageToLoadAndJQueryProcessing();
         assetPageUtils.addTextToTheDocumentPage();
-    }
-
-    @Then("^the user is taken to selected part of the document$")
-    public void theUserIsTakenToSelectedPartOfTheDocument() throws Throwable {
-        assertTrue("The user doesn't taken to the selected part of the document",
-                assetPageUtils.isTheUserTakenToSelectedPartOfTheDocument(linkText));
     }
 
     @Then("^the user does not see \"(.*?)\" jump link$")

@@ -10,3 +10,5 @@ Feature: Verify links to asset page
     | GUID                              | Document Link                                           | Resource Type  |
     | Ib55549aee83211e398db8b09b4f043e0 | Case T-276/04, Compagnie Maritime Belge SA v Commission | Case page      |
     | I973aa955e1c411e398db8b09b4f043e0 | section 110                                             | Primary Source |
+    
+   

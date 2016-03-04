@@ -12,7 +12,7 @@ Feature: As a PL+ User I want to view list of provisions
     Then the user sees "Specific provision coverage" Specific provision coverage
     Then the user sees the "<link>" link in Specific provision coverage section
     When the user clicks on this "<link>" link in Specific provision coverage section
-    Then the user is taken to the primary source document
+    Then the document opens correctly
   Examples:
     | GUID                              | link                                                         |
     | I3890f315651511e598dc8b09b4f043e0 | Section 1, Freedom of Information Act 2000                   |

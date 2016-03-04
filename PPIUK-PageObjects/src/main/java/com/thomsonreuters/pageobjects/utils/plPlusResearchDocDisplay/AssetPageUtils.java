@@ -8,6 +8,7 @@ import com.thomsonreuters.pageobjects.pages.folders.ResearchOrganizerPage;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.AssetDocumentPage;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.PrimarySourceDocumentPage;
 import com.thomsonreuters.pageobjects.utils.pdf.PDFBoxUtil;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -17,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.rtf.RTFEditorKit;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -195,6 +197,7 @@ public class AssetPageUtils {
     }
 
     public void goBackToThePreviousWindow() {
+    	System.out.println("1111111");
         assetDocumentPage.switchToWindow(winHandleFirst);
     }
 
@@ -443,9 +446,9 @@ public class AssetPageUtils {
 
     public boolean isTheUserTakenToTheInternalDocument(String hrefAtribute) {
     	String secondUrl = assetDocumentPage.getCurrentUrl();
-		LOG.info("secondUrl", secondUrl);
-		LOG.info("hrefAtribute", hrefAtribute);
-		return !firstUrl.equals(secondUrl) && secondUrl.contains("uk.practicallaw");
+		LOG.info("secondUrl" + secondUrl);
+		LOG.info("hrefAtribute" + hrefAtribute);
+		return !firstUrl.equals(secondUrl) && secondUrl.contains("https://a.uk.practicallaw");
     }
 
     public boolean isTheDocumentContainLink(String linkText) {
