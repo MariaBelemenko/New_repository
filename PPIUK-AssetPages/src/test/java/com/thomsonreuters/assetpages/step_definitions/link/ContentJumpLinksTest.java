@@ -56,8 +56,8 @@ public class ContentJumpLinksTest extends BaseStepDef {
     
     @Then("^the user is taken to the \"([^\"]*)\" part of the document$")
     public void theUserIsTakenToThePartOfTheDocument(String section) throws Throwable {
-//    	assertTrue("The user is not taken to the " + section + " part of document",
-//    			assetDocumentPage.isViewScrolledToElement(standardDocumentPage.headerOnTheDocument(section)));
+    	assertTrue("The user is not taken to the " + section + " part of document",
+    			assetDocumentPage.isViewScrolledToElement(standardDocumentPage.headerOnTheDocument(section)));
     }
     
     

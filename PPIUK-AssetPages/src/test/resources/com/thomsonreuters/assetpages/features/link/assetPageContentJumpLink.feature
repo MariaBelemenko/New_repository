@@ -4,6 +4,7 @@ Feature: As a PL+ User I want to select Content referring to this case link and 
   Background:
     Given PL+ user is logged in
 
+  @usmanh
   Scenario Outline: The case documents contain jump links in the left hand side navigation panel
     When the user opens document with <GUID> guid
     Then the user click on View Document button
