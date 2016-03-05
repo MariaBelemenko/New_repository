@@ -1,22 +1,30 @@
 package com.thomsonreuters.khpadd.step_definitions.knowHowDocuments;
 
-import com.thomsonreuters.khpadd.step_definitions.BaseStepDef;
-import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.DraftingNotes;
-import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePage;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import org.hamcrest.core.Is;
-
-import java.util.List;
-
 import static junit.framework.Assert.assertFalse;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+import java.util.List;
+
+import org.hamcrest.core.Is;
+
+import com.thomsonreuters.khpadd.step_definitions.BaseStepDef;
+import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.DraftingNotes;
+import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePage;
+import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.PrimarySourceDocumentPage;
+import com.thomsonreuters.pageobjects.utils.plPlusResearchDocDisplay.AssetPageUtils;
+
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
 public class DraftingNotesTest extends BaseStepDef {
 
     private KHResourcePage resourcePage = new KHResourcePage();
+    
+    private PrimarySourceDocumentPage primarySourceDocumentPage = new PrimarySourceDocumentPage();
+    
+	private AssetPageUtils assetPageUtils = new AssetPageUtils();
 
     public int notesIcons;
 
@@ -85,5 +93,18 @@ public class DraftingNotesTest extends BaseStepDef {
         assertTrue(notesIcons == notesCount);
         assertFalse(resourcePage.isContentParagraphsDisplayed());
     }
+    
+    @Then("^the source document with guid \"(.*?)\" remains open and new tab opens$")
+	public void theSourceDocumentRemainsOpen(String guid) throws Throwable {	
+		assertTrue("The source document doesn't remain open", assetPageUtils.isTheSourceDocumentRemainsOpen(guid));
+	}
+    
+    @Then("^the user is taken to \"(.*?)\" resource$")
+	public void theUserIsTakenToResource(String linkText) throws Throwable {
+		primarySourceDocumentPage.waitForPageToLoad();
+		assetPageUtils.getBaseParameters();
+		assertTrue("The user doesn't taken to the selected resource",
+				assetPageUtils.isTheUserTakenToTheSelectedResource(linkText));
+	}
 
 }
