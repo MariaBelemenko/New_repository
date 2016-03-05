@@ -33,9 +33,9 @@ public class LegalUpdatesResultsPage extends LegalUpdatesBasePage {
     private HashMap<String, By> paginationArrowMap;
 
     public LegalUpdatesResultsPage() {
+    	initPaginationArrowsMap();
     }
 
-    @PostConstruct
     private void initPaginationArrowsMap() {
         paginationArrowMap = new HashMap<String, By>();
         paginationArrowMap.put("<<", By.id("co_search_footer_pagination_first"));
