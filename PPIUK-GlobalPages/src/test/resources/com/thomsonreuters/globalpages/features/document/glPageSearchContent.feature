@@ -1,7 +1,7 @@
 Feature: As a PL+ User I can run a search from the header search bar and rearch result will unclude PLUK PLUS PLCA PLCh PLAUS content
 
   Scenario Outline: The user can run a search and results returned include PLUK PLUS PLCA PLCh PLAUS content
-    Given PL+ user is logged in
+    Given PL+ user is logged in with following details
       | routing          | BETA |
       | mandatoryRouting | YES  |
     When the user navigates to the Global Page

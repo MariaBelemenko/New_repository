@@ -1,7 +1,7 @@
 Feature: As a PL+ User, I am able to over-ride the default scoping in China page
 
   Scenario Outline: verify the scop search drop down
-    Given PL+ user is logged in
+    Given PL+ user is logged in with following details
       | routing          | BETA |
       | mandatoryRouting | YES  |
     When the user navigates to the main PLCUK page
