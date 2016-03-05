@@ -12,7 +12,7 @@ Feature: [818351] As a PL+ User I want to view list of Related documents grouped
     Then the user sees the "<link>" link
     And this link "<link>" belong to document "<type>" type
     When the user clicks on this "<link>" link
-    Then the user is taken from primary source page to internal document
+    Then the document opens correctly
 
     Examples: 
       | GUID                              | link                                       | type                  |

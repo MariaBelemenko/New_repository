@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 
 import org.assertj.core.api.SoftAssertions;
+import org.hamcrest.core.Is;
 import org.openqa.selenium.WebElement;
 
 import com.thomsonreuters.globalpages.step_definitions.BaseStepDef;
@@ -13,8 +14,10 @@ import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.company.MeetTheTeam;
 import com.thomsonreuters.pageobjects.pages.globalPage.ChinaCategoryPage;
 import com.thomsonreuters.pageobjects.pages.globalPage.GlobalCategoryPage;
+import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.CommonResourcePage;
 import com.thomsonreuters.pageobjects.pages.urls.plcuk.KHDocumentPage;
 import com.thomsonreuters.pageobjects.utils.globalPage.GlobalPageUtils;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -28,6 +31,7 @@ public class GlPageTabTest extends BaseStepDef {
     private CommonMethods commonMethods = new CommonMethods();
     private KHDocumentPage khDocumentPage = new KHDocumentPage();
     private NavigationCobalt navigation = new NavigationCobalt();
+    private CommonResourcePage commonResourcePage = new CommonResourcePage();
 
     private static final String PATH_TO_GLOBAL_PAGE = "/Browse/Home/Global";
 
@@ -111,6 +115,11 @@ public class GlPageTabTest extends BaseStepDef {
     private void theUserNavigatesToTheGlobalPage() throws Throwable {
         navigation.navigateToPLCUKPlusSpecificURL(PATH_TO_GLOBAL_PAGE);
         globalCategoryPage.waitForPageToLoad();
+    }
+    
+    @Then("^document title is displayed as \"([^\"]*)\"$")
+    public void documentTitleIsDisplayedAs(String title) throws Throwable {
+    	assertThat(commonResourcePage.title().getText().trim().replaceAll("\\n", " "), Is.is(title.replaceAll("\\\\n", " ")));
     }
 
 }

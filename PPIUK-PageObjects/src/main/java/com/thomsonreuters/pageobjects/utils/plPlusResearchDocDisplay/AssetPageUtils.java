@@ -393,8 +393,7 @@ public class AssetPageUtils {
 
     public boolean isTheUserScrolledToTheTopOfTheDocument() {
         assetDocumentPage.waitForPageToLoad();
-        JavascriptExecutor e = (JavascriptExecutor) assetDocumentPage.getDriver;
-        boolean result = (Boolean) e.executeScript("function isScrolledIntoView(elem,off) {"
+        boolean result = (Boolean) assetDocumentPage.executeScript("function isScrolledIntoView(elem,off) {"
                 + " var $elem = $(elem); var $window = $(window); " + "var docViewTop = $window.scrollTop()+off; "
                 + "var docViewBottom = docViewTop + $window.height();" + "var elemTop = $elem.offset().top;"
                 + "var elemBottom = elemTop + $elem.height();"
@@ -404,8 +403,7 @@ public class AssetPageUtils {
     }
 
     public void addTextToTheDocumentPage() {
-        JavascriptExecutor e = (JavascriptExecutor) assetDocumentPage.getDriver;
-        e.executeScript("for (var i = 0; i < 150; i++){$('#co_docContentBody').html('TESTtestTest ' + $('#co_docContentBody').html() )}");
+        assetDocumentPage.executeScript("for (var i = 0; i < 150; i++){$('#co_docContentBody').html('TESTtestTest ' + $('#co_docContentBody').html() )}");
     }
 
     public boolean isTableOfContentDisplayed() {
@@ -585,7 +583,7 @@ public class AssetPageUtils {
 
     public boolean isTheNumberOfOpenedTubsEqueals(int numberOfOpenedTubs) {
         int i = 0;
-        for (String winHandle : assetDocumentPage.getDriver.getWindowHandles()) {
+        for (String winHandle : assetDocumentPage.getWindowHandles()) {
             assetDocumentPage.switchToWindow(winHandle);
             i++;
         }
