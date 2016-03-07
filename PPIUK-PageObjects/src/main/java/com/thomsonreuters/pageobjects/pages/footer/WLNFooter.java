@@ -15,6 +15,10 @@ public class WLNFooter extends AbstractPage {
 
     public WLNFooter() {
     }
+
+    public WebElement footerFeedbackLink() {
+        return findElement(By.id("PracticalLawFeedbackLink"));
+    }
     
     public WebElement signInLink() {
         return waitAndFindElement(By.linkText("Sign in"));
@@ -123,7 +127,7 @@ public class WLNFooter extends AbstractPage {
 
     public void clickOnFeedBackLink() {
         try{
-            waitForExpectedElement(By.id("PracticalLawFeedbackLink")).click();
+            footerFeedbackLink().click();
             waitForElementsVisible(By.id("co_feedback"));
         }catch(TimeoutException te){
             throw new PageOperationException("Exceeded time to find the FeedBack button on footer block of the page.");
