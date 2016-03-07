@@ -10,6 +10,8 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class ExcelFileReader {
 
@@ -22,6 +24,7 @@ public final class ExcelFileReader {
 
     private static final String USERS_SHEET_NAME = "Users";
     private static final String EMAILS_SHEET_NAME = "Emails";
+    protected static Map<String, String> excelPasswords;
 
     private static RandomAccessFile raf = null;
 
@@ -50,7 +53,16 @@ public final class ExcelFileReader {
     }
 
     public static String getCobaltPassword(String username) {
-        return getDataFromCobaltUSers(USERS_SHEET_NAME, username, USERS_PASSWORD_COLUMN_NUMBER);
+        try{
+            if(excelPasswords == null || excelPasswords.size() == 0 || !excelPasswords.containsKey(username)) {
+                LOG.info("Calling Excel File Reader to read the password from excel file.");
+                excelPasswords = getPasswords();
+            }
+            return excelPasswords.get(username);
+        }catch(Exception e){
+            throw new PageOperationException("No user has found in excel sheet for the given name:"+username +e.getMessage());
+        }
+        //return getDataFromCobaltUSers(USERS_SHEET_NAME, username, USERS_PASSWORD_COLUMN_NUMBER);
     }
 
     public static String getEmailPassword(String email) {
@@ -222,6 +234,26 @@ public final class ExcelFileReader {
         } catch (IOException e) {
             throw new PageOperationException("Unable to write to excel file \n" + e.getMessage());
         }
+    }
+
+    public static Map<String, String> getPasswords() {
+        LOG.info("Reading passwords into map as key value pairs");
+        Map<String, String> passwords = new HashMap<String, String>();
+        String dataFromCell = null;
+        try {
+            FileInputStream file = new FileInputStream(COBALT_USERS_XLSX);
+            XSSFWorkbook workbook = new XSSFWorkbook(file);
+            XSSFSheet sheet = workbook.getSheet(USERS_SHEET_NAME);
+            int rowsCount = sheet.getLastRowNum();
+            for (int i = 1; i <= rowsCount; i++) {
+                Row row = sheet.getRow(i);
+                passwords.put(row.getCell(0).getStringCellValue(), row.getCell(1).getStringCellValue());
+            }
+        } catch (IOException e) {
+            LOG.error(IOEXCEPTION, e);
+            passwords = new HashMap<String, String>();
+        }
+        return passwords;
     }
 
 }
