@@ -1,10 +1,8 @@
 @e2e
 Feature: E2E tests for Delivery
 
-  Background:
-    Given PL+ user is logged in
-
   Scenario Outline: Print the <Document Type Name> document type with <Print Option Name> print option
+    Given PL+ user is logged in
     When user navigates directly to document with guid "<GUID>"
     And clicks on Print delivery option for the document
     Then the user download printable document with option '<Print Option Name>' and verifies that it contains '<Exists Phrases>' and not contains '<Non-exists Phrases>'
@@ -19,6 +17,7 @@ Feature: E2E tests for Delivery
     | I68a322bf013611e498db8b09b4f043e0 | Document                    | Matt Molloy has added                           |                                        |
 
   Scenario Outline: Cancel print the document
+    Given PL+ user is logged in
     When user navigates directly to document with guid "<GUID>"
     And clicks on Print delivery option for the document
     And user closes the delivery box by clicking on the cancel button
@@ -27,7 +26,9 @@ Feature: E2E tests for Delivery
     | GUID                              |
     | I8417aeac1cb111e38578f7ccc38dcbee |
 
+  @usmanNew
   Scenario Outline: Download a specific document type with <Download Option Name> delivery option (without Table of Contents)
+    Given PL+ user is logged in
     When user navigates directly to document with guid "<GUID>"
     And clicks on Download delivery option for the document
     Then the delivery options dialog is present and What To Deliver option presence is '<Drafting notes>'
@@ -52,14 +53,12 @@ Feature: E2E tests for Delivery
     | I8be84316c1c511e498db8b09b4f043e0 | Document                    | ESMA will update the tables on a regular basis |                         | no             | Rtf    |                          |
     | I8417aeac1cb111e38578f7ccc38dcbee | Document                    | This agreement is dated                        | Drafting                | yes            | Doc    |                          |
     | I8417aeac1cb111e38578f7ccc38dcbee | Document and Drafting Notes | This agreement is dated,Drafting               |                         | yes            | Doc    |                          |
-    | I8417aeac1cb111e38578f7ccc38dcbee | Only Drafting Notes         | Drafting                                       | This agreement is dated | yes            | Doc    |                          |
-    | I266a85d33c4611e598dc8b09b4f043e0 | Document                    | Reference to any Event                         | This document contains  | yes            | Doc    |                          |
-    | I266a85d33c4611e598dc8b09b4f043e0 | Document and Drafting Notes | Reference to any Event,This document contains  |                         | yes            | Doc    |                          |
     | I266a85d33c4611e598dc8b09b4f043e0 | Only Drafting Notes         | This document contains                         | Reference to any Event  | yes            | Doc    |                          |
     | I2e24e270870a11e598dc8b09b4f043e0 | Document                    | EU and UK balance of competences on tax        |                         | no             | Doc    |                          |
 
   @wip
   Scenario Outline: Emailing the <Document Type Name> with <What to Deliver> and <Format> email option
+    Given PL+ user is logged in
     When user navigates directly to document with guid "<GUID>"
     And clicks on email delivery option for the document
     Then the user should be able to see Email basic tab options as follows
@@ -96,6 +95,7 @@ Feature: E2E tests for Delivery
 
   @wip
   Scenario Outline: Emailing the <Document Type Name> with <What to Deliver> and <Format> email option
+    Given PL+ user is logged in
     When user navigates directly to document with guid "<GUID>"
     And clicks on email delivery option for the document
     Then the user should be able to see Email basic tab options as follows
@@ -121,6 +121,7 @@ Feature: E2E tests for Delivery
 
   @wip
   Scenario Outline: Emailing the <Document Type Name> with <Format> email option
+    Given PL+ user is logged in
     When user navigates directly to document with guid "<GUID>"
     And clicks on email delivery option for the document
     Then the user should be able to see Email basic tab options as follows

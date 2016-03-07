@@ -58,14 +58,13 @@ public class AbilityToDeliverDocumentsTest extends BaseStepDef {
     private EmailMessageUtils emailMessageUtils = new EmailMessageUtils();
     private StandardDocumentPage standardDocumentPage = new StandardDocumentPage();
 
-    private int CUSTOM_DRIVER_WAIT_TIME = 120;
     private String messageBody;
     private File downloadedFile = null;
 
     @Given("^user navigates directly to document with guid \"(.*?)\"$")
     public void userNavigatesDirectlyToDocumentWithGuid(String guid) throws Throwable {
         navigationCobalt.navigateToWLNSpecificResourcePage("/Document/" + guid + "/View/FullText.html");
-        resourcePage.waitForPageToLoadAndJQueryProcessingWithCustomTimeOut(CUSTOM_DRIVER_WAIT_TIME);
+        resourcePage.waitForPageToLoadAndJQueryProcessingWithCustomTimeOut(30);
     }
 
     @When("^clicks on (email|Print|Download) delivery option for the document$")

@@ -1,6 +1,6 @@
 Feature: [834285] Feedback form for Advanced Access & Live site
 
-  @wip @UsmanWork
+  @wip
   Scenario: Verification of all the fields in the feedback form and the Feedback link on PL+
     Given PL+ user is logged in
     When user navigates directly to document with guid "Ib55549a0e83211e398db8b09b4f043e0"
