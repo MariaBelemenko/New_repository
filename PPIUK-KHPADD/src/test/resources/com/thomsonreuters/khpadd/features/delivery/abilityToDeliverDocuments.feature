@@ -26,7 +26,6 @@ Feature: E2E tests for Delivery
     | GUID                              |
     | I8417aeac1cb111e38578f7ccc38dcbee |
 
-  @usmanNew
   Scenario Outline: Download a specific document type with <Download Option Name> delivery option (without Table of Contents)
     Given PL+ user is logged in
     When user navigates directly to document with guid "<GUID>"
