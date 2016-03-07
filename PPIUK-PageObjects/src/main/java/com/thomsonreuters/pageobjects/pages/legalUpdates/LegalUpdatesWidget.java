@@ -29,7 +29,7 @@ public class LegalUpdatesWidget extends AbstractPage {
 	}
 	
 	public WebElement veiwAllUpdatesLink(String widgetName) {
-    	return retryingFindElement(By.xpath(String.format("//div[@id='coid_website_browseRightColumn']//h3[text()='%s']/following-sibling::div[@class='co_genericBoxFooter']//a", widgetName)));
+    	return retryingFindElement(By.xpath(String.format("//div[@id='coid_website_browseRightColumn']//h3[contains(text(),'%s')]/following-sibling::div[@class='co_genericBoxFooter']//a", widgetName)));
     }
 
 	public WebElement emailPreferencesLink() {

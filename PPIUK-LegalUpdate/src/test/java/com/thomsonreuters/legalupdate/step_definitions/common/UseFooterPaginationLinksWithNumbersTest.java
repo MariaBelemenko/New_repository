@@ -36,7 +36,7 @@ public class UseFooterPaginationLinksWithNumbersTest extends BaseStepDef {
 
     @When("^the user clicks on the 'View all' link of the LU widget$")
     public void theUserClicksOnTheViewAllLinkOfTheLUWidget() throws Throwable {
-        luWidget.veiwAllUpdatesLink().click();
+        luWidget.veiwAllUpdatesLink("Legal").click();
         legalUpdatesResultsPage.waitForPageToLoad();
     }
 
