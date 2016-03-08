@@ -259,7 +259,7 @@ public class StandardDocumentPage extends DocumentDisplayAbstractPage {
     }
 
     public WebElement headerOnTheDocument(String header) {
-		return waitForExpectedElement(By.xpath(".//*[@id='co_document']//*[contains(text(), '" + header + "')]"));
+		return waitForExpectedElement(By.xpath("//*[@id='co_document']//*[contains(text(), '" + header + "')]"));
 	}
     
     /**

@@ -8,9 +8,8 @@ import com.thomsonreuters.pageobjects.utils.document.content.Section;
 import com.thomsonreuters.pageobjects.utils.document.metadata.Jurisdiction;
 import com.thomsonreuters.pageobjects.utils.document.metadata.Product;
 import org.jsoup.Jsoup;
+import org.openqa.selenium.Cookie;
 import org.slf4j.LoggerFactory;
-
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -24,18 +23,15 @@ import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathConstants;
 import javax.xml.xpath.XPathFactory;
 import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 
 public class LinkingUtils extends DefaultHandler {
 
-    private WebDriverDiscovery webDriverDiscovery;
+    private WebDriverDiscovery webDriverDiscovery = new WebDriverDiscovery();
 
     private static final String HEADER_ACCEPT_HTML_XML = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
     private static final int STATUS_CODE_OK = 200;
-    // FATWIRE_TOOL needs to be appended with plcRef
     private static final String FATWIRE_TOOL = "http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&plcref=";
 
     protected static final org.slf4j.Logger LOG = LoggerFactory.getLogger(LinkingUtils.class);
@@ -149,9 +145,10 @@ public class LinkingUtils extends DefaultHandler {
 
     /**
      * Get elements from HTML DOM
+     *
      * @param htmlPageSource HTML page source
-     * @param sizzle Extended CSS selector. For additional documentation please see http://jsoup.org/cookbook/extracting-data/selector-syntax
-     *               WARNING: possible unexpected work if selector has parents (e.g., "div[id='someId'] a")
+     * @param sizzle         Extended CSS selector. For additional documentation please see http://jsoup.org/cookbook/extracting-data/selector-syntax
+     *                       WARNING: possible unexpected work if selector has parents (e.g., "div[id='someId'] a")
      * @return List of found elements
      */
     public org.jsoup.select.Elements getElementsFromHtml(String htmlPageSource, String sizzle) {
@@ -161,6 +158,7 @@ public class LinkingUtils extends DefaultHandler {
 
     /**
      * Check if link OK and returning document
+     *
      * @param hrefAttr Href attribute from "a" element or just URL. If value point to relative resource then
      *                 current domain will be added to absolute resource path
      * @return True - if response code for link is 200 and response body not contains "error" word.
@@ -172,6 +170,7 @@ public class LinkingUtils extends DefaultHandler {
 
     /**
      * Get HTML page source for page presented by navigating to link
+     *
      * @param link Link of page (full or relative)
      * @return String with page HTML code
      */
@@ -182,12 +181,13 @@ public class LinkingUtils extends DefaultHandler {
 
     /**
      * Get Response object for link
+     *
      * @param absoluteOrRelativeUrl Full or relative URL
-     * @param acceptHeader "Accept" header value (e.g., "text/html", "application/json", ...)
+     * @param acceptHeader          "Accept" header value (e.g., "text/html", "application/json", ...)
      * @return Object with response {@link com.sun.jersey.api.client.ClientResponse}
      */
     private ClientResponse getResponseFor(String absoluteOrRelativeUrl, String acceptHeader) {
-        String cookies = webDriverDiscovery.getBrowserCookiesAsString();
+        String cookies = getBrowserCookiesAsString();
         String baseUrl = "";
         if (!absoluteOrRelativeUrl.startsWith("http")) {
             String currUrl = webDriverDiscovery.getRemoteWebDriver().getCurrentUrl();
@@ -201,8 +201,48 @@ public class LinkingUtils extends DefaultHandler {
                 .get(ClientResponse.class);
     }
 
+    public String getBrowserCookiesAsString() {
+        return getBrowserCookiesAsString(null);
+    }
+
+    public String getBrowserCookiesAsString(Set<Cookie> ignoredCookies) {
+        Set<Cookie> cookies = removeCookiesFrom(webDriverDiscovery.manage().getCookies(), ignoredCookies);
+        StringBuilder sb = new StringBuilder();
+        int i = 1;
+        int cookiesCount = cookies.size();
+        for (Cookie cookie : cookies) {
+            sb.append(cookie.getName()).append("=").append(cookie.getValue());
+            if (i < cookiesCount) {
+                sb.append("; ");
+            }
+            i++;
+        }
+        return sb.toString();
+    }
+
+    private Set<Cookie> removeCookiesFrom(Set<Cookie> sourceCookies, Set<Cookie> cookiesToRemove) {
+        if (cookiesToRemove == null) {
+            return sourceCookies;
+        }
+        Set<Cookie> resultCookiesList = new HashSet();
+        boolean isFound = false;
+        for (Cookie sourceCookie : sourceCookies) {
+            for (Cookie cookieToRemove : cookiesToRemove) {
+                if ((sourceCookie.getName().endsWith(cookieToRemove.getName())) || (sourceCookie.getName().startsWith(cookieToRemove.getName()))) {
+                    isFound = true;
+                    break;
+                }
+            }
+            if (!isFound) {
+                resultCookiesList.add(sourceCookie);
+            }
+        }
+        return resultCookiesList;
+    }
+
     /**
      * Get products list from Fatwire XML document for meta data
+     *
      * @param productsNodeList Nodes with products
      * @return List with products {@link Product}
      */
@@ -224,6 +264,7 @@ public class LinkingUtils extends DefaultHandler {
 
     /**
      * Get jurisdictions list from Fatwire XML document for meta data
+     *
      * @param jurisdictionsNodeList Nodes with jurisdictions
      * @return List with jurisdictions {@link Jurisdiction}
      */
@@ -250,6 +291,7 @@ public class LinkingUtils extends DefaultHandler {
 
     /**
      * Get list of sections from Fatwire XML document
+     *
      * @param sectionsNodeList Nodes with sections
      * @return List with jurisdictions {@link Section}
      */
@@ -266,4 +308,5 @@ public class LinkingUtils extends DefaultHandler {
         }
         return sections;
     }
+
 }
