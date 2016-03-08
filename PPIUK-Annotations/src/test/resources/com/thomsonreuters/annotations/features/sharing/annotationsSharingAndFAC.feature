@@ -57,7 +57,7 @@ Feature: Annotations FAC
     And user has shared the annotations with another contact "librarian3"
     And user logs out
 
-  @AnnotationsSmokeTests @e2e @bug
+  @AnnotationsSmokeTests @e2e
   Scenario:(bug #852662)Reviewer should be able to see the shared annotations
     Given PL+ user is logged in with following details
       | userName   | librarian3 |
@@ -97,8 +97,7 @@ Feature: Annotations FAC
     And user has shared the annotations with another contact "librarian3"
     And user logs out
 
-    @bug
-  Scenario:(bug #852662)Reviewer should be able to see the annotations with the links
+   Scenario:Reviewer should be able to see the annotations with the links
     Given PL+ user is logged in with following details
       | userName   | librarian3 |
       | newSession | TRUE       |
@@ -106,6 +105,7 @@ Feature: Annotations FAC
     Then annotation text with url is displayed
     When click on shared url link
     Then hyperlinked url will be opened in new tab with title "Google"
+     And user logs out
 
   Scenario:User should be able to see the annotations shared icon
     When PL+ user is logged in
