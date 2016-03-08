@@ -768,7 +768,7 @@ public class AnnotationsStepDef extends BaseStepDef {
     public void userNavigatesDirectlyToDocumentWithGuid(List<String> guids) throws Throwable {
         for (String guid : guids) {
             navigationCobalt.navigateToWLNSpecificResourcePage("/Document/" + guid + "/View/FullText.html");
-            navigationCobalt.waitForPageToLoadAndJQueryProcessing();
+            //navigationCobalt.waitForPageToLoad();
             sharedAnnotationsPage.deleteAllAnnotations(getUserFullName(currentUser.getUserName()));
         }
     }
@@ -946,7 +946,7 @@ public class AnnotationsStepDef extends BaseStepDef {
     @Then("^user logs out$")
     public void userLogsOut() throws Throwable {
         wlnHeader.signOff();
-        onePassLogin.waitForPageToLoad();
+        //onePassLogin.waitForPageToLoad();
     }
 
     @When("^the user clicks on '(.+)' link on the header$")
