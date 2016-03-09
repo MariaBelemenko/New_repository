@@ -20,6 +20,7 @@ public class FoldersUtils {
 
     private static final Logger LOG = LoggerFactory.getLogger(FoldersUtils.class);
     private static final String ENTER_BUTTON_CODE = "13";
+    private static final int EXPECTED_DOCUMENT_NAME_LENGTH = 60;
 
     private ResearchOrganizerPage researchOrganizerPage = new ResearchOrganizerPage();
     private NewGroupPopup newGroupPopup = new NewGroupPopup();
@@ -106,10 +107,6 @@ public class FoldersUtils {
         }
     }
 
-    //////////////////
-    // Private methods
-    //////////////////
-
     /**
      * Check if strings in list going in order according to given direction (asc or desc)
      *
@@ -154,6 +151,19 @@ public class FoldersUtils {
             return false;
         }
         return true;
+    }
+
+    /**
+     * if the document has too long name, it is needed to make it shorter for checks
+     *
+     * @param documentName
+     * @return
+     */
+    public String makeDocumentShorterForFoldersAndHistoryChecks(String documentName) {
+        if (documentName.length() > EXPECTED_DOCUMENT_NAME_LENGTH) {
+            documentName = documentName.substring(0, EXPECTED_DOCUMENT_NAME_LENGTH);
+        }
+        return documentName;
     }
 
 }
