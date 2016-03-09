@@ -7,7 +7,6 @@ Feature: As a PL+ User I want to view hardcoded and celex links on the primary s
 
   Scenario Outline: The primary source documents contains hardcoded links
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user sees the "http://www.justice.gov.uk" link
     When the user clicks on this "http://www.justice.gov.uk" link
@@ -20,7 +19,6 @@ Feature: As a PL+ User I want to view hardcoded and celex links on the primary s
 
   Scenario Outline: The primary source documents contains celex links
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see celex links "EUR-Lex"
     When the user click on celex link "EUR-Lex"
@@ -32,7 +30,6 @@ Feature: As a PL+ User I want to view hardcoded and celex links on the primary s
 
   Scenario Outline: The primary source documents contains link to justice.gov.uk and to europa.eu
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user sees the "<link>" link
     When the user clicks on this "<link>" link
@@ -45,7 +42,6 @@ Feature: As a PL+ User I want to view hardcoded and celex links on the primary s
 
   Scenario Outline: The primary source documents contains link to Westlawchina.com
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user sees the "Westlawchina.com" link
     When the user clicks on this "Westlawchina.com" link
@@ -58,7 +54,6 @@ Feature: As a PL+ User I want to view hardcoded and celex links on the primary s
 
   Scenario Outline: The westlaw uk link opens in a new tab
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user sees the "Westlaw UK" link
     When the user clicks on this "Westlaw UK" link
@@ -70,7 +65,6 @@ Feature: As a PL+ User I want to view hardcoded and celex links on the primary s
 
   Scenario Outline: The justice link opens in a new tab
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user sees the "http://www.justice.gov.uk" link
     When the user clicks on this "http://www.justice.gov.uk" link

@@ -3,7 +3,6 @@ Feature: As a PL+ User I want to view links in Links according with classname an
   Scenario Outline: The case documents contain links in Links to this case section
     Given PL+ user is logged in
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     And the document contain "<links>" links
     And these "<links>" displayed accoding with className and hrefAtribute

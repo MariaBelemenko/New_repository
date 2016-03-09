@@ -6,7 +6,6 @@ Feature: As a PL+ User I want to see the party names
 
   Scenario Outline: The case documents contain party names
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the party names are displayed
   Examples:
@@ -17,7 +16,6 @@ Feature: As a PL+ User I want to see the party names
 
   Scenario Outline: The case documents contain case page
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the Case page "Case page" is displayed in assert page
   Examples:
@@ -29,7 +27,6 @@ Feature: As a PL+ User I want to see the party names
 
   Scenario Outline: The asset pages have correct title
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the party names are displayed
     And the asset page has title

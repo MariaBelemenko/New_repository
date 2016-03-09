@@ -5,7 +5,6 @@ Feature: As a PL+ User I want to see that the primary source documents saves in 
     Given PL+ user is logged in
     When API cleans all folders and history and user relogs in
     And the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user store title and URL of primary source document
     Then the user sees the "<link>" link

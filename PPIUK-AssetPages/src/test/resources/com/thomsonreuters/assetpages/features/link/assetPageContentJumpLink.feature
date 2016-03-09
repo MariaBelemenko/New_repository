@@ -7,7 +7,6 @@ Feature: As a PL+ User I want to select Content referring to this case link and 
   @usmanh 
   Scenario Outline: The case documents contain jump links in the left hand side navigation panel
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then text added to the document
     Then the user see "Content referring to this case" jump link in the left hand side navigation panel
@@ -20,7 +19,6 @@ Feature: As a PL+ User I want to select Content referring to this case link and 
 
   Scenario Outline: The case documents does not contain Content referring to this case link and does not contaion Content referring to this case section
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user does not see "Content referring to this case" jump link
     When the user does not see "Content referring to this case" section

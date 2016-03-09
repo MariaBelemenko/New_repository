@@ -8,7 +8,6 @@ Feature: As a PL+ User I want to download asset page document in different forma
 
   Scenario Outline: The user download document in different formats
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see Download icon in delivery options in right hand side
     When the user click on Download icon
@@ -21,7 +20,6 @@ Feature: As a PL+ User I want to download asset page document in different forma
 
   Scenario Outline: The user download document include table of content
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see "<linkInTableOfContent>" jump link in the left hand side navigation panel
     Then the user see Download icon in delivery options in right hand side
@@ -36,7 +34,6 @@ Feature: As a PL+ User I want to download asset page document in different forma
 
   Scenario Outline: The user downloaded document contain right number of bullets
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see Download icon in delivery options in right hand side
     When the user click on Download icon

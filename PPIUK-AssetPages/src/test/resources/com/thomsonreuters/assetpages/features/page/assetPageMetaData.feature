@@ -7,7 +7,6 @@ Feature: As a PL+ User I want to view the meta data relating to a case asset pag
 
   Scenario Outline: The case documents contain the case metadata in the right hand side of the central column
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     And the metadata is displayed in the right hand side of the central column
     And the metadata contains "Resource Type"
@@ -24,7 +23,6 @@ Feature: As a PL+ User I want to view the meta data relating to a case asset pag
 
   Scenario Outline: The case documents does not contain Division
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     And the metadata is displayed in the right hand side of the central column
     And the metadata does not contain "Division"
@@ -36,7 +34,6 @@ Feature: As a PL+ User I want to view the meta data relating to a case asset pag
 
   Scenario Outline: The case documents does not contain Court
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     And the metadata is displayed in the right hand side of the central column
     And the metadata does not contain "Court"
@@ -48,7 +45,6 @@ Feature: As a PL+ User I want to view the meta data relating to a case asset pag
 
   Scenario Outline: The case documents does not contain Court
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     And the metadata is displayed in the right hand side of the central column
     And the metadata contains "Court"

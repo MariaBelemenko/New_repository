@@ -7,7 +7,6 @@ Feature: As a PL+ User I want to view list of provisions
 
   Scenario Outline: The case documents contain list of provisions
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user sees "Specific provision coverage" Specific provision coverage
     Then the user sees the "<link>" link in Specific provision coverage section
@@ -21,7 +20,6 @@ Feature: As a PL+ User I want to view list of provisions
 
   Scenario Outline: The case documents contain specific provision coverage below other provisions
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user sees "To view the other provisions relating to this primary source, see:" section
     Then the user sees "<link1>" in "To view the other provisions relating to this primary source, see:" other provisions section
@@ -37,7 +35,6 @@ Feature: As a PL+ User I want to view list of provisions
 
   Scenario Outline: The other provisions section does not has co_borderTop style
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user sees "To view the other provisions relating to this primary source, see:" section
     And the "To view the other provisions relating to this primary source, see:" section does not has "co_borderTop" style

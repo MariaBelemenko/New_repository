@@ -6,7 +6,6 @@ Feature: As a PL+ User that requested to turn on Legislation.gov.uk link I want 
     Given PL+ user is logged in with following details
       | userName | RDD_test_user |
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see links to "Legislation.gov.uk" Legislation
     When the user click on "Legislation.gov.uk" Legislation link
@@ -20,7 +19,6 @@ Feature: As a PL+ User that requested to turn on Legislation.gov.uk link I want 
       | userName         | Rdd_user_two |
       | mandatoryRouting | YES          |
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user does not see links to "Legislation.gov.uk" Legislation
   Examples:

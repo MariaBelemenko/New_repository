@@ -3,7 +3,6 @@ Feature: As a PL+ User I want to view and hide the Table of content
   Scenario Outline: The case documents contain Table of content
     Given PL+ user is logged in
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see Table of content
     When the user click on "Table of Contents" Table of content

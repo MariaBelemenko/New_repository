@@ -2,7 +2,6 @@ Feature: As as the user is not logged in PL+ I want to view case asset page docu
 
   Scenario Outline: The case assert documents opens without login
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
   Examples:
     | GUID                              |

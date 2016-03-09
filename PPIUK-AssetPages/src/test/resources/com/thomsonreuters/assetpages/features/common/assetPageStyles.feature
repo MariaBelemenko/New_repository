@@ -5,7 +5,6 @@ Feature: As a PL+ User I want to see applied css styles in asset pages
 
   Scenario Outline: The asset pages have css styles
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the bullets have "disc" style
     Then the double lines have "double" style
@@ -20,7 +19,6 @@ Feature: As a PL+ User I want to see applied css styles in asset pages
 
   Scenario Outline: The show more link located on the right side
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see "Content referring to this primary source" jump link in the left hand side navigation panel
     When the user clicks on "Content referring to this primary source" jump link
@@ -33,7 +31,6 @@ Feature: As a PL+ User I want to see applied css styles in asset pages
 
   Scenario Outline: The headers of section have correct font size
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     And the "<header>" displayed on the document
     And the "<header>" header has "21px" font size
@@ -45,7 +42,6 @@ Feature: As a PL+ User I want to see applied css styles in asset pages
 
   Scenario Outline: The bullets near links have correct font size
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     And near the "<reference>" bullet have "16px" font size
   Examples:

@@ -6,7 +6,6 @@ Feature: As a PL+ User I want to select a Links to this case and jump to that pa
 
   Scenario Outline: The case documents contain Links to this case jump link in the left hand side navigation panel
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see "Legal updates on this case" jump link in the left hand side navigation panel
     When the user clicks on "Legal updates on this case" jump link
@@ -19,7 +18,6 @@ Feature: As a PL+ User I want to select a Links to this case and jump to that pa
 
   Scenario Outline: The case documents does not contain Links to this case and does not contaion Links to this case section
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user does not see "Legal updates on this case" jump link
     When the user does not see "Legal updates on this case" section

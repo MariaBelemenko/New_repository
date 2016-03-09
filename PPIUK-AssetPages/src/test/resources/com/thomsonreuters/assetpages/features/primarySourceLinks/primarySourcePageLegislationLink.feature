@@ -3,7 +3,6 @@ Feature: As a PL+ User I want to view links to�Legislation.gov.uk on the prima
   Scenario Outline: The primary source documents contains links to�Legislation
     Given PL+ user is logged in
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see links to "Legislation.gov.uk" Legislation
     When the user click on "Legislation.gov.uk" Legislation link

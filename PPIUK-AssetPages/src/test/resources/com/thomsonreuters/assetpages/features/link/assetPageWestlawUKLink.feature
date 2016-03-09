@@ -4,7 +4,6 @@ Feature: As a PL+ User I want to view links to Westlaw UK on the case asset page
   Scenario Outline: The case assert documents contains  links to Westlaw UK
     Given PL+ user is logged in
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see link to "Westlaw UK" Westlaw UK
     When the user click on link to "Westlaw UK" Westlaw UK

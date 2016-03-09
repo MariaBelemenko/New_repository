@@ -3,7 +3,6 @@ Feature: As a PL+ User I want to view sorted links by document types in primary 
   Scenario Outline: The primary source document contain sorted links by document types
     Given PL+ user is logged in
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see "Content referring to this primary source" jump link in the left hand side navigation panel
     When the user clicks on "Content referring to this primary source" jump link

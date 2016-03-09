@@ -3,7 +3,6 @@ Feature: As a PL+ User I want to view list of other provisions
   Scenario Outline: The asset page documents contain links to other provisions
     Given PL+ user is logged in
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user sees "To view the other provisions relating to this primary source, see:" section
     Then the user sees "<link1>" in "To view the other provisions relating to this primary source, see:" other provisions section

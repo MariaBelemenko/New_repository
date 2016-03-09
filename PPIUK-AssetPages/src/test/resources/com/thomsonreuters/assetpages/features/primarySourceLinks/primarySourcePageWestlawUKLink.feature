@@ -7,7 +7,6 @@ Feature: As a PL+ User I want to view links to Westlaw UK on the primary source 
   @e2e @prod
   Scenario Outline: The primary source documents contains  links to Westlaw UK
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see link to "Westlaw UK" Westlaw UK
     When the user click on link to "Westlaw UK" Westlaw UK
@@ -24,7 +23,6 @@ Feature: As a PL+ User I want to view links to Westlaw UK on the primary source 
 
   Scenario Outline: The primary source documents contains  links to Westlaw UK and they lead to EU Content
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see link to "Westlaw UK" Westlaw UK
     When the user click on link to "Westlaw UK" Westlaw UK

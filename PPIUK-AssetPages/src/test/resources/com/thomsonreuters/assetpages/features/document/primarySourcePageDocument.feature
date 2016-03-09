@@ -6,7 +6,6 @@ Feature: As a PL+ User I want to see primary source document
 
   Scenario Outline: Document opens correctly
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
   Examples:
     | GUID                              |
@@ -18,7 +17,6 @@ Feature: As a PL+ User I want to see primary source document
 
   Scenario Outline: The title displayed in primary source document
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the primary source title is displayed
   Examples:

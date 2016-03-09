@@ -5,7 +5,6 @@ Feature: [818356] As a PL+ User I want to view list of Related documents grouped
 
   Scenario Outline: [818356] The case asset page contain list of Related documents grouped by document type
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see "Content referring to this case" jump link in the left hand side navigation panel
     When the user clicks on "Content referring to this case" jump link

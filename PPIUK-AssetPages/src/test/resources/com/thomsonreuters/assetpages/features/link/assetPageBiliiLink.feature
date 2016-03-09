@@ -6,7 +6,6 @@ Feature: As a PL+ User that requested to turn on Bailii link I want to see Baili
     Given PL+ user is logged in with following details
       | userName | RDD_test_user |
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see links to "Bailii" Bailii
     When the user click on "Bailii" Bailii link
@@ -21,7 +20,6 @@ Feature: As a PL+ User that requested to turn on Bailii link I want to see Baili
     Given PL+ user is logged in with following details
       | userName | Rdd_user_two |
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user does not see links to "Bailii" Bailii
   Examples:

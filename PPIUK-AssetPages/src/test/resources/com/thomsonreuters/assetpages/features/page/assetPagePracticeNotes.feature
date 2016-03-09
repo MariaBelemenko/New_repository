@@ -5,7 +5,6 @@ Feature: As a PL+ User I want to view links to view and link to Practice notes
   Scenario Outline: The case documents contain Practice Notes
     Given PL+ user is logged in
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user sees "UK Practice Notes" UK Practice Notes section
     And the user sees "<link>" in UK Practice Notes section

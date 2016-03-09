@@ -6,7 +6,6 @@ Feature: As a PL+ User I want to see the Legislation metadata in the right hand 
 
   Scenario Outline: The primary source documents contain metadata
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     And the metadata is displayed in the right hand side of the central column
     And the metadata contains "Resource Type"
@@ -19,7 +18,6 @@ Feature: As a PL+ User I want to see the Legislation metadata in the right hand 
 
   Scenario Outline: The primary source documents contain jurisdiction
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     And the metadata is displayed in the right hand side of the central column
     And the metadata contains "Jurisdiction"
@@ -29,7 +27,6 @@ Feature: As a PL+ User I want to see the Legislation metadata in the right hand 
 
   Scenario Outline: The primary source documents contain jurisdictions
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     And the metadata is displayed in the right hand side of the central column
     And the metadata contains "Jurisdiction"

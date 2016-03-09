@@ -9,7 +9,6 @@ Feature: As a PL+ User I want to view links to�Bailii on the case asset page
 
   Scenario Outline: The case assert documents contains links to�Bailii
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see links to "Bailii" Bailii
     When the user click on "Bailii" Bailii link
@@ -21,7 +20,6 @@ Feature: As a PL+ User I want to view links to�Bailii on the case asset page
 
   Scenario Outline: The primary source documents contains link to curia.europa.eu
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user sees the "curia.europa.eu" link
     When the user clicks on this "curia.europa.eu" link
@@ -33,7 +31,6 @@ Feature: As a PL+ User I want to view links to�Bailii on the case asset page
   @e2e @prod
   Scenario Outline: The case assert documents contains links to legal updates
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see links to legal updates
     When the user click on link to legal updates
@@ -45,7 +42,6 @@ Feature: As a PL+ User I want to view links to�Bailii on the case asset page
 
   Scenario Outline: The case assert documents contains hardcoded links
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
     Then the document opens correctly
     Then the user see hardcoded "<link>" links
     When the user clicks on hardcoded "<link>" link
