@@ -1121,6 +1121,13 @@ public class SearchResultsPage extends AbstractPage {
         return waitForExpectedElement(By.id("co_deliveryEmailButton"));
     }
 
+    public void waitForEmailSuccessMessage(){
+        try{
+            waitForExpectedElement(By.id("co_deliveryWaitMessageTitle"),10);
+            waitForElementInvisible(By.id("co_deliveryWaitMessageTitle"));
+        }catch(TimeoutException te){
+        }
+    }
     /**
      * object representing the print radio button on the print delivery pop up
      */

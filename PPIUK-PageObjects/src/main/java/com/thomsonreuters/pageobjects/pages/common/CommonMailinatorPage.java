@@ -36,13 +36,13 @@ public class CommonMailinatorPage extends AbstractPage {
 
     public List displayedEmailList() {
 
-        List<WebElement> eList = findElements(By.xpath("//a[contains(@onclick,'showmail')]"));
+        List<WebElement> eList = findElements(By.cssSelector(".someviewport div[id*='row_public']"));
 
         return eList;
     }
 
     public Integer displayedEmailCount() {
-        List<WebElement> eList = findElements(By.xpath("//a[contains(@onclick,'showmail')]"));
+        List<WebElement> eList = findElements(By.cssSelector(".someviewport div[id*='row_public']"));
         return eList.size();
     }
 
@@ -53,6 +53,11 @@ public class CommonMailinatorPage extends AbstractPage {
     public WebElement emailSubject(
             String subjectText) {
         return waitForExpectedElement(By.xpath("//div[contains(@class,'subject')]/self::*[contains(text(),'" + subjectText + "')]"));
+    }
+
+    public void selectFirstEmail(){
+        WebElement element = (WebElement) displayedEmailList().get(0);
+        element.findElement(By.cssSelector("div[onclick*='showTheMessage']")).click();
     }
 
     public String firstEmailOnclickId(){
@@ -67,15 +72,15 @@ public class CommonMailinatorPage extends AbstractPage {
     }
 
     public WebElement emailDisplayTo() {
-        return waitForExpectedElement(By.xpath("//div[contains(text(),'To:')]/following-sibling::div"));
+        return waitForExpectedElement(By.xpath("//td[contains(text(),'To:')]/following-sibling::td"));
     }
 
     public WebElement emailDisplayFrom() {
-        return waitForExpectedElement(By.xpath("//div[contains(text(),'From:')]/following-sibling::div"));
+        return waitForExpectedElement(By.xpath("//td[contains(text(),'From:')]/following-sibling::td"));
     }
 
     public WebElement emailDisplaySubject() {
-        return waitForExpectedElement(By.xpath("//div[contains(text(),'Subject:')]/following-sibling::div"));
+        return waitForExpectedElement(By.xpath("//td[contains(text(),'Subject:')]/following-sibling::td"));
     }
 
     public WebElement emailMainText() {
@@ -93,7 +98,14 @@ public class CommonMailinatorPage extends AbstractPage {
     }
 
     public WebElement emailMainTextFrame() {
-        return waitForExpectedElement(By.name("rendermail"));
+        return waitForExpectedElement(By.id("publicshowmaildivcontent"));
     }
 
+    public String getEmailText() {
+        WebElement iframe = emailMainTextFrame();
+        switchToIframe(iframe);
+        String text = waitForExpectedElement(By.cssSelector("html body")).getText();
+        switchToMainWindow();
+        return text;
+    }
 }
