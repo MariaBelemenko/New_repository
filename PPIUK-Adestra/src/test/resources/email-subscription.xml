@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2015: Thomson Reuters. All Rights Reserved. Proprietary and Confidential information of Thomson Reuters. Disclosure, Use or Reproduction without the written authorization of Thomson Reuters is prohibited. -->
+<!-- Empty required-subscription means the email is free, eg EMPLC, EMAILGC -->
+
+<email-subscription>
+
+  <category name="US">
+    <!-- Start of change by TS 28/03/2013 - Add new Antitrust monthly email options to US section -->
+    <email-products>
+      <common-name>Antitrust</common-name>
+      <product freq="M">
+        <name>EMUSANTM</name>
+        <description>Antitrust (Monthly)</description>
+      </product>
+      <required-subscription>ADST-US-ANTITRUST</required-subscription>
+    </email-products>
+    <!-- End of change by TS 28/03/2013 -->
+    <!-- Start of change by TS 12/03/2013 - Add new International Arbitration Weekly and Monthly email options to US section -->
+    <email-products>
+      <!-- Start of change by TS 28/03/2013 - Rename Arbitration email in all sections -->
+      <common-name>Arbitration: International</common-name>
+      <!-- End of change by TS 28/03/2013 -->
+      <product freq="W">
+        <name>EMUSARBW</name>
+        <description>International Arbitration (Weekly) US Version</description>
+      </product>
+      <product freq="M">
+        <name>EMUSARBM</name>
+        <description>International Arbitration (Monthly) US Version</description>
+      </product>
+      <required-subscription>ADST-US-ARBITRATION</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Commercial</common-name>
+      <product freq="M">
+        <name>EMUSCOMM</name>
+        <description>Commercial (Monthly)</description>
+      </product>
+      <required-subscription>ADST-US-COMMERCIAL</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Corporate &amp; Securities</common-name>
+      <product freq="W">
+        <name>EMUSCORPW</name>
+        <description>Corporate &amp; Securities (Weekly)</description>
+      </product>
+      <required-subscription>ADST-US-CORPSEC</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Employee Benefits &amp; Executive Compensation</common-name>
+      <product freq="W">
+        <name>EMUSEBECW</name>
+        <description>Employee Benefits &amp; Executive Compensation (Weekly)</description>
+      </product>
+      <required-subscription>ADST-US-EMPBEN</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Finance</common-name>
+      <product freq="W">
+        <name>EMUSFINW</name>
+        <description>Finance (Weekly)</description>
+      </product>
+      <required-subscription>ADST-US-FINANCE</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Intellectual Property &amp; Technology</common-name>
+      <product freq="W">
+        <name>EMUSIPTW</name>
+        <description>Intellectual Property &amp; Technology (Weekly)</description>
+      </product>
+      <required-subscription>ADST-US-IPANDTECH</required-subscription>
+    </email-products>
+    <!-- End of change by TS 12/03/2013 -->
+    <email-products>
+      <common-name>Labor &amp; Employment</common-name>
+      <product freq="W">
+        <name>EMUSLABORW</name>
+        <description>Labor &amp; Employment (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMUSLABORM</name>
+        <description>Labor &amp; Employment (Monthly)</description>
+      </product>
+      <required-subscription>ADST-US-LABORANDEMP</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Litigation</common-name>
+      <product freq="W">
+        <name>EMUSLITW</name>
+        <description>Litigation (Weekly)</description>
+      </product>
+      <required-subscription>ADST-US-LITIGATION</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Real Estate</common-name>
+      <product freq="M">
+        <name>EMUSREM</name>
+        <description>Real Estate (Monthly)</description>
+      </product>
+      <required-subscription>ADST-US-REALESTATE</required-subscription>
+    </email-products>
+  </category>
+
+  <category name="UK">
+    <email-products>
+      <common-name>Agriculture and Rural Land</common-name>
+      <product freq="W">
+        <name>EMUKPAGRIW</name>
+        <description>Agriculture and Rural Land (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMUKPAGRIM</name>
+        <description>Agriculture and Rural Land (Monthly)</description>
+      </product>
+      <required-subscription>ADST-UK-AGRICULTURE</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Arbitration/International Arbitration: see Global Services tab</common-name>
+    </email-products>
+    <email-products>
+        <common-name>Business Crime &amp; Investigations</common-name>
+        <product freq="W">
+            <name>EMUKBCIW</name>
+            <description>BCI (Weekly)</description>
+        </product>
+        <product freq="M">
+            <name>EMUKBCIM</name>
+            <description>BCI (Monthly)</description>
+        </product>
+        <required-subscription>ADST-UK-BCI</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Books online news</common-name>
+      <product freq="M">
+        <name>EMBOOKSA</name>
+        <description>Books online news (Monthly)</description>
+      </product>
+      <required-subscription></required-subscription>  <!--Without required subscription-->
+    </email-products>
+    <email-products>
+      <common-name>Business briefing</common-name>
+      <product freq="M">
+        <name>EMBRIEFINGM</name>
+        <description>Business briefing (Monthly)</description>
+      </product>
+      <required-subscription>ADST-UK-BUSBRIEF</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Commercial</common-name>
+      <product freq="W">
+        <name>EMCOMMW</name>
+        <description>Commercial (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMCOMMM</name>
+        <description>Commercial (Monthly)</description>
+      </product>
+      <required-subscription>ADST-UK-COMMERCIAL</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Competition UK</common-name>
+      <product freq="D">
+        <name>EMCOMPUKD</name>
+        <description>Competition UK (Daily)</description>
+      </product>
+      <product freq="W">
+        <name>EMCOMPUKW</name>
+        <description>Competition UK (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMCOMPUKM</name>
+        <description>Competition UK (Monthly)</description>
+      </product>
+      <required-subscription>ADST-UK-COMPETITION</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Construction</common-name>
+      <product freq="W">
+        <name>EMCONW</name>
+        <description>Construction Weekly</description>
+      </product>
+      <required-subscription>ADST-UK-CONSTRUCTION</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Corporate</common-name>
+      <product freq="D">
+        <name>EMCORPD</name>
+        <description>Corporate (Daily)</description>
+      </product>
+      <product freq="W">
+        <name>EMCORPW</name>
+        <description>Corporate (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMCORPM</name>
+        <description>Corporate (Monthly)</description>
+      </product>
+      <product freq="A">
+        <name>EMCORPA</name>
+        <description>Corporate (Alert)</description>
+      </product>
+      <required-subscription>ADST-UK-CORPORATE</required-subscription>
+    </email-products>
+    <email-products>
+        <common-name>Data Protection</common-name>
+        <product freq="W">
+            <name>EMUKDATAPROW</name>
+            <description>Data Protection (Weekly)</description>
+        </product>
+        <product freq="M">
+            <name>EMUKDATAPROM</name>
+            <description>Data Protection (Monthly)</description>
+        </product>
+        <required-subscription>ADST-UK-DATAPROTECT</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Dispute Resolution</common-name>
+      <product freq="W">
+        <name>EMDISPW</name>
+        <description>Dispute (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMDISPM</name>
+        <description>Dispute (Monthly)</description>
+      </product>
+      <required-subscription>ADST-UK-DISPUTERES</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Employment</common-name>
+      <product freq="W">
+        <name>EMEMPW</name>
+        <description>Employment (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMEMPM</name>
+        <description>Employment (Monthly)</description>
+      </product>
+      <required-subscription>ADST-UK-EMPLOYMENT</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Environment</common-name>
+      <product freq="W">
+        <name>EMENVW</name>
+        <description>Environment (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMENVM</name>
+        <description>Environment (Monthly)</description>
+      </product>
+      <required-subscription>ADST-UK-ENVIRONMENT</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Family</common-name>
+      <product freq="W">
+        <name>EMFAMW</name>
+        <description>Family (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMFAMM</name>
+        <description>Family (Monthly)</description>
+      </product>
+      <required-subscription>ADST-UK-FAMILY</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Finance</common-name>
+      <product freq="W">
+        <name>EMFINW</name>
+        <description>Finance (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMFINM</name>
+        <description>Finance (Monthly)</description>
+      </product>
+      <product freq="A">
+        <name>EMFINA</name>
+        <description>Finance (Alert)</description>
+      </product>
+      <required-subscription>ADST-UK-FINANCE</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Financial Services</common-name>
+      <product freq="D">
+        <name>EMFINSRVD</name>
+        <description>Financial Services (Daily)</description>
+      </product>
+      <product freq="W">
+        <name>EMFINSRVW</name>
+        <description>Financial Services (Weekly)</description>
+      </product>
+      <required-subscription>ADST-UK-FINSERV</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Financial Services 12pm alert</common-name>
+      <product freq="A">
+        <name>EMFINSRV12A</name>
+        <description>Financial Services (Alert)</description>
+      </product>
+      <required-subscription>ADST-UK-FINSERV</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Financial Services 4pm alert</common-name>
+      <product freq="A">
+        <name>EMFINSRVA</name>
+        <description>Financial Services (Alert)</description>
+      </product>
+      <required-subscription>ADST-UK-FINSERV</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>In-house lawyer update</common-name>
+      <product freq="W">
+        <name>EMLDRND</name>
+        <description>In-house lawyer update (Weekly)</description>
+      </product>
+      <required-subscription>ADST-UK-INHOUSE</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>IP&amp;IT</common-name>
+      <product freq="W">
+        <name>EMIPITW</name>
+        <description>IP&amp;IT (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMIPITM</name>
+        <description>IP&amp;IT (Monthly)</description>
+      </product>
+      <required-subscription>ADST-UK-IPIT</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Law Firm Publications update</common-name>
+      <product freq="W">
+        <name>EMPORTM</name>
+        <description>Law Firm Publications update (Weekly)</description>
+      </product>
+      <required-subscription>ADST-UK-LAWFIRMPUB</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Life Sciences: see Global Services tab</common-name>
+    </email-products>
+    <email-products>
+        <common-name>Local government</common-name>
+        <product freq="W">
+            <name>EMUKLOCGOVW</name>
+            <description>Local government (Weekly)</description>
+        </product>
+        <required-subscription>ADST-UK-LOCALGOV</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Media &amp; Telecoms</common-name>
+      <product freq="W">
+        <name>EMTELECW</name>
+        <description>Media &amp; Telecoms weekly e-mail</description>
+      </product>
+      <product freq="M">
+        <name>EMTELECM</name>
+        <description>Media &amp; Telecoms monthly e-mail</description>
+      </product>
+      <required-subscription>ADST-UK-MEDIATELECOMS</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Pensions</common-name>
+      <product freq="W">
+        <name>EMPENSIONW</name>
+        <description>Pensions (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMPENSIONM</name>
+        <description>Pensions (Monthly)</description>
+      </product>
+      <required-subscription>ADST-UK-PENSIONS</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Planning</common-name>
+      <product freq="W">
+        <name>EMUKPLANW</name>
+        <description>Planning (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMUKPLANM</name>
+        <description>Planning (Monthly)</description>
+      </product>
+      <required-subscription>ADST-UK-PLANNING</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>PLC Magazine contents</common-name>
+      <product freq="M">
+        <name>EMPLC</name>
+        <description>PLC Magazine contents (Monthly)</description>
+      </product>
+      <required-subscription></required-subscription>  <!--Without required subscription-->
+    </email-products>
+    <email-products>
+      <common-name>Private Client</common-name>
+      <product freq="W">
+        <name>EMPRIVW</name>
+        <description>Private Client (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMPRIVM</name>
+        <description>Private Client (Monthly)</description>
+      </product>
+      <product freq="A">
+        <name>EMPRIVA</name>
+        <description>Private Client (Alert)</description>
+      </product>
+      <required-subscription>ADST-UK-PRIVATECLIENT</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Property</common-name>
+      <product freq="D">
+        <name>EMPROPD</name>
+        <description>Property (Daily)</description>
+      </product>
+      <product freq="W">
+        <name>EMPROPW</name>
+        <description>Property (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMPROPM</name>
+        <description>Property (Monthly)</description>
+      </product>
+      <required-subscription>ADST-UK-PROPERTY</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Public Law</common-name>
+      <product freq="W">
+        <name>EMPUBSECW</name>
+        <description>Public Law (Weekly)</description>
+      </product>
+      <required-subscription>ADST-UK-PUBLICLAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Restructuring and Insolvency</common-name>
+      <product freq="M">
+        <name>EMRANDIM</name>
+        <description>Restructuring and Insolvency (monthly)</description>
+      </product>
+      <product freq="W">
+        <name>EMRANDIW</name>
+        <description>Restructuring and Insolvency (weekly)</description>
+      </product>
+      <required-subscription>ADST-UK-RANDI</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Share Schemes &amp; Incentives</common-name>
+      <product freq="W">
+        <name>EMINCENTW</name>
+        <description>Share Schemes &amp; Incentives (Weekly)</description>
+      </product>
+      <required-subscription>ADST-UK-SSANDI</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Tax</common-name>
+      <product freq="W">
+        <name>EMTAXW</name>
+        <description>Tax (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMTAXM</name>
+        <description>Tax (Monthly)</description>
+      </product>
+      <product freq="A">
+        <name>EMTAXA</name>
+        <description>Tax (Alert)</description>
+      </product>
+      <required-subscription>ADST-UK-TAX</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>What&#39;s Market deal alert</common-name>
+      <product freq="A">
+        <name>EMWMDA</name>
+        <description>What&#39;s Market deal alert</description>
+      </product>
+      <required-subscription>ADST-UK-WHATMRKT</required-subscription>
+    </email-products>
+  </category>
+
+  <category name="EU">
+    <email-products>
+      <common-name>Competition EU</common-name>
+      <product freq="D">
+        <name>EMCOMPECD</name>
+        <description>Competition EU (Daily)</description>
+      </product>
+      <product freq="W">
+        <name>EMCOMPECW</name>
+        <description>Competition EU (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMCOMPECM</name>
+        <description>Competition EU (Monthly)</description>
+      </product>
+      <required-subscription>ADST-EU-COMPETITION</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU</common-name>
+      <product freq="W">
+        <name>EMEUW</name>
+        <description>EU (Weekly)</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU agriculture</common-name>
+      <product freq="A">
+        <name>EMEUAGRID</name>
+        <description>EU agriculture</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU automotive</common-name>
+      <product freq="A">
+        <name>EMEUAUTOD</name>
+        <description>EU automotive</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU aviation and airports</common-name>
+      <product freq="A">
+        <name>EMEUAIRD</name>
+        <description>EU aviation and airports</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU chemicals</common-name>
+      <product freq="A">
+        <name>EMEUCHEMD</name>
+        <description>EU chemicals</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU consumer affairs</common-name>
+      <product freq="A">
+        <name>EMEUCPRD</name>
+        <description>EU consumer affairs</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU corporate</common-name>
+      <product freq="A">
+        <name>EMEUCORPD</name>
+        <description>EU corporate</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU defence</common-name>
+      <product freq="A">
+        <name>EMEUDEFD</name>
+        <description>EU defence</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU employment and social affairs</common-name>
+      <product freq="A">
+        <name>EMEUEMPLD</name>
+        <description>EU employment and social affairs)</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU energy</common-name>
+      <product freq="A">
+        <name>EMEUENGD</name>
+        <description>EU energy</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU enterprise and industry</common-name>
+      <product freq="A">
+        <name>EMEUENTINDD</name>
+        <description>EU enterprise and industry alert email</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU environment and climate change</common-name>
+      <product freq="A">
+        <name>EMEUENVD</name>
+        <description>EU environment and climate change</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU economic and financial affairs</common-name>
+      <product freq="A">
+        <name>EMEUFIND</name>
+        <description>EU economic and financial affairs</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU food and food safety</common-name>
+      <product freq="A">
+        <name>EMEUFOODD</name>
+        <description>EU food and food safety</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU healthcare and life sciences</common-name>
+      <product freq="A">
+        <name>EMEUHCARED</name>
+        <description>EU healthcare and life sciences</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU infrastructure funds</common-name>
+      <product freq="A">
+        <name>EMEUIFUNDSD</name>
+        <description>EU infrastructure funds</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU institutional affairs</common-name>
+      <product freq="A">
+        <name>EMEUINSTAFFD</name>
+        <description>EU institutional affairs alert email</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU international trade and customs</common-name>
+      <product freq="A">
+        <name>EMEUINTTRDD</name>
+        <description>EU international trade and customs</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU intellectual property</common-name>
+      <product freq="A">
+        <name>EMEUIPD</name>
+        <description>EU intellectual property</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU justice and home affairs</common-name>
+      <product freq="A">
+        <name>EMEUJUSHOMED</name>
+        <description>EU justice and home affairs alert email</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU maritime transport and inland waterways</common-name>
+      <product freq="A">
+        <name>EMEUMRTD</name>
+        <description>EU maritime transport and inland waterwayss</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU maritime affairs and fisheries</common-name>
+      <product freq="A">
+        <name>EMEUMAAFA</name>
+        <description>EU maritime affairs and fisheries</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU post and logistics</common-name>
+      <product freq="A">
+        <name>EMEULGSTD</name>
+        <description>EU post and logistics</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU product safety</common-name>
+      <product freq="A">
+        <name>EMEUPSFTD</name>
+        <description>EU product safety</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU public procurement</common-name>
+      <product freq="A">
+        <name>EMEUPROCD</name>
+        <description>EU public procurement</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU rail</common-name>
+      <product freq="A">
+        <name>EMEURAILD</name>
+        <description>EU rail</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU regulatory and legislative procedures</common-name>
+      <product freq="A">
+        <name>EMEUREGLEGD</name>
+        <description>EU regulatory and legislative procedures alert email</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU road</common-name>
+      <product freq="A">
+        <name>EMEUROADD</name>
+        <description>EU road</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU taxation</common-name>
+      <product freq="A">
+        <name>EMEUTAXD</name>
+        <description>EU taxation</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU telecommunications, media and technology</common-name>
+      <product freq="A">
+        <name>EMEUTMTD</name>
+        <description>EU telecommunications, media and technology</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU tobacco</common-name>
+      <product freq="A">
+        <name>EMEUTOBCD</name>
+        <description>EU tobacco</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>EU water</common-name>
+      <product freq="A">
+        <name>EMEUWATERD</name>
+        <description>EU water</description>
+      </product>
+      <required-subscription>ADST-EU-LAW</required-subscription>
+    </email-products>
+  </category>
+
+  <category name="Global">
+    <!-- Start of change by TS 12/03/2013 - Move Arbitration from UK to Global -->
+    <email-products>
+      <!-- Start of change by TS 28/03/2013 - Rename Arbitration email in all sections -->
+      <common-name>Arbitration/International Arbitration</common-name>
+      <!-- End of change by TS 28/03/2013 -->
+      <product freq="W">
+        <name>EMARBW</name>
+        <description>Arbitration (Weekly)</description>
+      </product>
+      <product freq="M">
+        <name>EMARBM</name>
+        <description>Arbitration (Monthly)</description>
+      </product>
+      <required-subscription>ADST-GLOB-ARBITRATION</required-subscription>
+    </email-products>
+    <!-- End of change by TS 12/03/2013 -->
+    <email-products>
+      <common-name>Competition multi-jurisdictional</common-name>
+      <product freq="M">
+        <name>EMPLCG1</name>
+        <description>Competition multi-jurisdictional (Monthly)</description>
+      </product>
+      <required-subscription>ADST-GLOB-COMPMJ</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>China - News</common-name>
+      <product freq="A">
+        <name>EMCHINANEWSA</name>
+        <description>China - News (Alert)</description>
+      </product>
+      <required-subscription></required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Global - News</common-name>
+      <product freq="A">
+        <name>EMGLOBALNEWSA</name>
+        <description>Global - News (Alert)</description>
+      </product>
+      <required-subscription></required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Life Sciences</common-name>
+      <product freq="W">
+        <name>EMLIFSCW</name>
+        <description>Life Sciences weekly email update</description>
+      </product>
+      <product freq="M">
+        <name>EMLIFSCM</name>
+        <description>Life Sciences monthly email update</description>
+      </product>
+      <required-subscription>ADST-GLOB-LIFESCIENCE</required-subscription>
+    </email-products>
+  </category>
+    
+  <category name="Canada">
+    <email-products>
+      <common-name>Capital Markets &amp; Securities</common-name>
+      <product freq="M">
+        <name>EMCACMANDSM</name>
+        <description>Capital Markets &amp; Securities (Monthly)</description>
+      </product>
+      <required-subscription>ADST-CAN-CAPMRKTSEC</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Commercial</common-name>
+      <product freq="M">
+        <name>EMCACOMMM</name>
+        <description>Commercial (monthly)</description>
+      </product>
+      <required-subscription>ADST-CAN-COMMERCIAL</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Competition</common-name>
+      <product freq="M">
+        <name>EMCACOMPM</name>
+        <description>Competition (monthly)</description>
+      </product>
+      <required-subscription>ADST-CAN-COMPETITION</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Corporate and M&amp;A</common-name>
+      <product freq="M">
+        <name>EMCACMANDAM</name>
+        <description>Corporate and M&amp;A (Monthly)</description>
+      </product>
+      <required-subscription>ADST-CAN-CORPORATE</required-subscription>
+    </email-products>
+    <email-products>
+      <common-name>Employment</common-name>
+      <product freq="M">
+        <name>EMCAEMPM</name>
+        <description>Employment (monthly)</description>
+      </product>
+      <required-subscription>ADST-CAN-EMPLOYMENT</required-subscription>
+    </email-products>
+    <email-products>
+        <common-name>Litigation: Personal Injury</common-name>
+        <product freq="M">
+            <name>EMCAPERINJM</name>
+            <description>Litigation: Personal Injury (monthly)</description>
+        </product>
+        <required-subscription>ADST-CAN-LITIGATION</required-subscription>
+    </email-products>
+  </category>
+
+</email-subscription>

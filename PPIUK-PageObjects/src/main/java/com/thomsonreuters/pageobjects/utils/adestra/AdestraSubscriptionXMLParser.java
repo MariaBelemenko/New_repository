@@ -32,8 +32,12 @@ public class AdestraSubscriptionXMLParser extends DefaultHandler {
 	private static final File baseUserDir = new File(System.getProperty("user.dir"));
 	private static final File subscriptionXMLFile = new File(baseUserDir + "/src/test/resources/email-subscription.xml");
 
-	@PostConstruct
-	public void parse() {
+	
+	public AdestraSubscriptionXMLParser() {
+		parse();
+	}
+	
+	private void parse() {
 		subscriptionParametersList = new LinkedList<SubscriptionParameters>();
 		SAXParserFactory spfac = SAXParserFactory.newInstance();
 		SAXParser sp;

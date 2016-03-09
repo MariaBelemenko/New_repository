@@ -1,19 +1,18 @@
 package com.thomsonreuters.pageobjects.pages.adestra;
 
-import com.thomsonreuters.driver.framework.AbstractPage;
-import org.openqa.selenium.*;
-
-import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
+
+import com.thomsonreuters.driver.framework.AbstractPage;
 
 public class SubscriptionPreferencePage extends AbstractPage {
-
-    private HashMap<String, By> serviceTabMap;
-    
-    private HashMap<String, String> regionTableID;
-    
-    private HashMap<String, String> frequencyCheckBoxIndex;
     
     private final String SPECIFIED_CHECKBOX = "//div[@id='%s']//td[text()=\"%s\"]/following-sibling::td[%s]/input";
     
@@ -24,34 +23,28 @@ public class SubscriptionPreferencePage extends AbstractPage {
     public SubscriptionPreferencePage() {
     }
 
-    @PostConstruct
-    private void initServiceTabMap() {
-        serviceTabMap = new HashMap<String, By>();
-        serviceTabMap.put("US", By.linkText("US services"));
-        serviceTabMap.put("UK", By.linkText("UK services"));
-        serviceTabMap.put("EU", By.linkText("EU services"));
-        serviceTabMap.put("Global", By.linkText("Global services"));
-        serviceTabMap.put("Canada", By.linkText("Canada services"));
-    }
+   private final Map<String, By> serviceTabMap = new HashMap<String, By>(){{
+        put("US", By.linkText("US services"));
+        put("UK", By.linkText("UK services"));
+        put("EU", By.linkText("EU services"));
+        put("Global", By.linkText("Global services"));
+        put("Canada", By.linkText("Canada services"));
+    }};
 
-    @PostConstruct
-    private void initRegionTableID() {
-        regionTableID = new HashMap<String, String>();
-        regionTableID.put("US", "coid_categoryBoxTabPanel4");
-        regionTableID.put("UK", "coid_categoryBoxTabPanel1");
-        regionTableID.put("EU", "coid_categoryBoxTabPanel2");
-        regionTableID.put("Global", "coid_categoryBoxTabPanel3");
-        regionTableID.put("Canada", "coid_categoryBoxTabPanel5");
-    }
+    private final Map<String, String> regionTableID = new HashMap<String, String>(){{
+        put("US", "coid_categoryBoxTabPanel4");
+        put("UK", "coid_categoryBoxTabPanel1");
+        put("EU", "coid_categoryBoxTabPanel2");
+        put("Global", "coid_categoryBoxTabPanel3");
+        put("Canada", "coid_categoryBoxTabPanel5");
+    }};
     
-    @PostConstruct
-    private void initfrequencyCheckBoxIndex() {
-    	frequencyCheckBoxIndex = new HashMap<String, String>();
-    	frequencyCheckBoxIndex.put("D", "1");
-    	frequencyCheckBoxIndex.put("W", "2");
-    	frequencyCheckBoxIndex.put("M", "3");
-    	frequencyCheckBoxIndex.put("A", "4");
-    }
+    private final Map<String, String> frequencyCheckBoxIndex = new HashMap<String, String>(){{
+    	put("D", "1");
+    	put("W", "2");
+    	put("M", "3");
+    	put("A", "4");
+    }};
 
     public WebElement specifiedServiceTabLink(String region) {
         return waitForExpectedElement(serviceTabMap.get(region), 90);

@@ -17,6 +17,7 @@ public class AdestraUtils {
     private AdestraSubscriptionXMLParser adestraSubscriptionXMLParser = new AdestraSubscriptionXMLParser();
 
     public List<SubscriptionParameters> getServiceForSpecifiedRegion(String region) {
+    	adestraSubscriptionXMLParser.parse();
         List<SubscriptionParameters> services = new ArrayList<SubscriptionParameters>();
         for (SubscriptionParameters parameter : adestraSubscriptionXMLParser.getResult()) {
             if (parameter.getCategoryName().equals(region)) {
@@ -57,6 +58,7 @@ public class AdestraUtils {
     }
 
     public List<SubscriptionParameters> getSpecifiedServices(String region, String service, List<String> frequencies) {
+    	adestraSubscriptionXMLParser.parse();
         List<SubscriptionParameters> services = new ArrayList<SubscriptionParameters>();
         for (SubscriptionParameters parameter : adestraSubscriptionXMLParser.getResult()) {
             for (String frequency : frequencies) {
