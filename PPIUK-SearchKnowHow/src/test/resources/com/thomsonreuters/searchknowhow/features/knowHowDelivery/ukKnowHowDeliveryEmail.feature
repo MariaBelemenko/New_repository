@@ -9,7 +9,6 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user selects the checkbox associated with result "1"
     And the user selects the checkbox associated with result "2"
     And the user selects the email delivery option
-    And the user pauses for "3" seconds
     #SHOULD bug 850563
     #And the user verifies the presence of a pop up entitled Email Documents
     And the user verifies the presence of a basic tab
@@ -40,7 +39,6 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user selects the checkbox associated with result "1"
     And the user selects the checkbox associated with result "2"
     And the user selects the email delivery option
-    And the user pauses for "3" seconds
     #SHOULD bug 850563
     #And the user verifies the presence of a pop up entitled Email Documents
     And the user selects the option entitled documents
@@ -70,7 +68,6 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user selects the checkbox associated with result "1"
     And the user selects the checkbox associated with result "2"
     And the user selects the email delivery option
-    And the user pauses for "3" seconds
     #SHOULD bug 850563
     #And the user verifies the presence of a pop up entitled Email Documents
     And the user selects the list of items option
@@ -80,7 +77,6 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user enters "delivery test" into the email Subject field
     And the user enters "This is a test" into the email note field
     And the user selects the Email option
-    And the user pauses for "60" seconds
     And the user refreshes the Mailinator e-mail page
     And the user validates that there's at least "1" e-mail on Mailinator
     And the user validates that the most recent Mailinator e-mail contains the subject "delivery test"
@@ -100,7 +96,6 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user selects the checkbox associated with result "1"
     And the user selects the checkbox associated with result "2"
     And the user selects the email delivery option
-    And the user pauses for "3" seconds
     #SHOULD BUG 850563
     #And the user verifies the presence of a pop up entitled Email Documents
     And the user selects the option entitled documents
@@ -110,7 +105,6 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user enters "delivery test" into the email Subject field
     And the user enters "This is a test" into the email note field
     And the user selects the Email option
-    And the user pauses for "60" seconds
     And the user refreshes the Mailinator e-mail page
     And the user validates that there's at least "1" e-mail on Mailinator
     And the user validates that the most recent Mailinator e-mail contains the subject "delivery test"

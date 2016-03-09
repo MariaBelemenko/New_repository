@@ -35,22 +35,28 @@ public class MailinatorTest extends BaseStepDef {
     }
 
     @Then("^the user validates that there's at least \"([^\"]*)\" e-mail on Mailinator$")
-    public void theUserValidatesThatTheresAtLeastOneEmailOnMailinator(Integer emailResultsExpected) throws Throwable {
-        Integer emailCount = mailinatorpage.displayedEmailCount();
-        String emailCountString = emailCount.toString();
-        assertTrue(emailCount >= emailResultsExpected);
+    public void theUserValidatesThatTheresAtLeastOneEmailOnMailinator(String emailResultsExpected) throws Throwable {
+        for(int i=0;i<20;i++){
+            try{
+                if(mailinatorpage.displayedEmailCount()>0){
+                    break;
+                }else{
+                    mailinatorpage.refreshPage();
+                }
+            }catch (Exception e){}
+        }
+        assertTrue( mailinatorpage.displayedEmailCount().intValue() >= Integer.parseInt(emailResultsExpected));
     }
 
     @Then("^the user validates that the most recent Mailinator e-mail contains the subject \"([^\"]*)\"$")
     public void theUserValidatesThatTheMostRecentMailinatorEmailHasTheSubject(String emailSubject) throws Throwable {
-        String onclickId = mailinatorpage.firstEmailOnclickId();
-        assertTrue(mailinatorpage.emailSubjectOnclick(onclickId).getText().contains(emailSubject));
+        //String onclickId = mailinatorpage.firstEmailOnclickId();
+        assertTrue(((WebElement)(mailinatorpage.displayedEmailList().get(0))).getText().contains(emailSubject));
     }
 
     @Then("^the user clicks the most recent e-mail on Mailinator$")
     public void theUserClicksTheMostRecentEmailOnMailinator() throws Throwable {
-        String onclickId = mailinatorpage.firstEmailOnclickId();
-        mailinatorpage.emailSubjectOnclick(onclickId).click();
+       mailinatorpage.selectFirstEmail();
     }
 
     @Then("^the user validates that the Mailinator e-mail is displayed as being to \"([^\"]*)\"$")
@@ -72,11 +78,7 @@ public class MailinatorTest extends BaseStepDef {
 
     @Then("^the user validates that the Mailinator e-mail contains the text \"([^\"]*)\"$")
     public void theUserValidatesThatTheMailinatorEmailContainsTheText(String emailText) throws Throwable {
-        /** Switch to the e-mail frame to be able to read the e-mail */
-        mailinatorpage.switchToIframe(mailinatorpage.emailMainTextFrame());
-        assertTrue(mailinatorpage.emailMainText().getText().contains(emailText));
-        /** Switch back to the full webpage */
-        mailinatorpage.switchToMainWindow();
+        assertTrue(mailinatorpage.getEmailText().contains(emailText));
     }
 
     @Then("^the user validates that the Mailinator e-mail contains a link with \"([^\"]*)\"$")

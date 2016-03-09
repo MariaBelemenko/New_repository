@@ -17,7 +17,7 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Examples:
     | query                   | result | terms               |
     | contract and acceptance | 1      | contract acceptance |
-    | contract and acceptance | 2      | contract acceptance |
+#    | contract and acceptance | 2      | contract acceptance |
 
   Scenario Outline: verify that a user can submit a phrase search
     When the user runs a free text search for the query "income tax"
@@ -27,7 +27,7 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Examples:
     | result | term1      |
     | 2      | income tax |
-    | 3      | income tax |
+#    | 3      | income tax |
 
   Scenario Outline: Validate that use of & retrieves both search terms
     When the user runs a free text search for the query "contract and acceptance"
@@ -37,7 +37,7 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Examples:
     | result | terms               |
     | 2      | contract acceptance |
-    | 3      | contract acceptance |
+#    | 3      | contract acceptance |
 
   @bug
   Scenario Outline: Searching with a mix of and and or operators
@@ -51,8 +51,8 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Examples:
     | result |
     | 1      |
-    | 2      |
-    | 3      |
+#    | 2      |
+#    | 3      |
 
   Scenario Outline: Validate that use of the /s connector retrieves terms within the same sentence (not working)
     #there is an issue with sentence mark up - sometimes results not correct - business determined this is a won't fix so not an active bug
@@ -64,8 +64,8 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Examples:
     | result |
     | 1      |
-    | 2      |
-    | 3      |
+#    | 2      |
+#    | 3      |
 
   Scenario Outline: Validate that use of the /p connectors retrieves terms within the same paragraph
     When the user runs a free text search for the query "house /p defect"
@@ -74,7 +74,7 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Examples:
     | result |
     | 2      |
-    | 3      |
+#    | 3      |
 
   Scenario Outline: Validate that use of the +s connector retrieves search terms where the first precedes the second in the same sentence
     #there is an issue with sentence mark up - sometimes results not correct - business determined this is a won't fix so not an active bug
@@ -86,7 +86,7 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Examples:
     | result |
     | 1      |
-    | 2      |
+#    | 2      |
 
   Scenario Outline: Validate that use of the +p connector retrieves search terms where the first precedes the second in the same paragraph
     When the user runs a free text search for the query "contractual +p break"
@@ -96,7 +96,7 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Examples:
     | result |
     | 2      |
-    | 3      |
+#    | 3      |
 
   Scenario Outline: Validate that use of the /n connector (where n is a number) retrieves terms within n terms of each other
     When the user runs a free text search for the query "building /6 inspection"
@@ -106,7 +106,7 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Examples:
     | result |
     | 2      |
-    | 3      |
+#    | 3      |
 
   Scenario Outline: Validate that use of the /n connector (where n is a number) retrieves numerical terms within n terms of each other
     When the user runs a free text search for the query "building +6 inspection"
@@ -116,7 +116,7 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Examples:
     | result |
     | 2      |
-    | 3      |
+#    | 3      |
 
   Scenario Outline: Validate that use of the % connector prevents terms placed after it from being retrieved
     When the user runs a free text search for the query "house % defect"
@@ -127,7 +127,7 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Examples:
     | result |
     | 2      |
-    | 3      |
+#    | 3      |
 
   Scenario Outline: Validate that use of the root expander ! retrieves terms with variant endings
     When the user runs a free text search for the query "obey!"
@@ -151,7 +151,7 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Examples:
     | result |
     | 2      |
-    | 3      |
+#    | 3      |
 
   Scenario Outline: Validate that use of the universal character * at the end of a term dictates the maximum length of that term
     When the user runs a free text search for the query "object***"
@@ -160,7 +160,7 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Examples:
     | result |
     | 2      |
-    | 3      |
+#    | 3      |
 
   Scenario Outline: Validate turning off plurals and equivalents using #
     When the user runs a free text search for the query "#damage"
@@ -170,7 +170,7 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Examples:
     | result |
     | 2      |
-    | 3      |
+#    | 3      |
 
   Scenario Outline: Validating compound terms
     When the user runs a free text search for the query "good-will"
@@ -182,7 +182,7 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Examples:
     | result |
     | 2      |
-    | 3      |
+#    | 3      |
 
   Scenario Outline: Searching with brackets
     When the user runs a free text search for the query "(scotland)"
@@ -192,7 +192,7 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
   Examples:
     | result |
     | 2      |
-    | 3      |
+#    | 3      |
 
   Scenario: Searching with commas
     When the user runs a free text search for the query "contract, acceptance,"

@@ -356,6 +356,7 @@ public class KnowHowDeliveryTest extends BaseStepDef {
     @When("^the user selects the Email option$")
     public void theUserSelectsTheEmailOption() throws Throwable {
         searchResultsPage.emailButton().click();
+        searchResultsPage.waitForEmailSuccessMessage();
     }
 
     @When("^the user selects the print delivery option$")
