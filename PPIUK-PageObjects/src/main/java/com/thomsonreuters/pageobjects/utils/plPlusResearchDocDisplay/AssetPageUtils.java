@@ -282,15 +282,10 @@ public class AssetPageUtils {
         return assetDocumentPage.jumpLink(jumpLinkText).getText();
     }
 
-    public boolean isTheUserSeeTheCaseMetadataInTheRightHandSideOfTheCentralColumn() {
-        assetDocumentPage.waitForPageToLoad();
-        return assetDocumentPage.caseMetadata().isDisplayed();
-    }
-
-    public boolean isTheUserSeeTheText(String text) {
+    public boolean isTheFieldInMetadataDisplayed(String text) {
         assetDocumentPage.waitForPageToLoad();
         try {
-            assetDocumentPage.metaDataText(text).isDisplayed();
+            assetDocumentPage.metaDataField(text).isDisplayed();
             return true;
         } catch (PageOperationException poe) {
             LOG.info("context", poe);
@@ -559,21 +554,6 @@ public class AssetPageUtils {
         return result;
     }
 
-    public boolean isTheUserSeesTheJurisdiction(String jurisdictionText) {
-        if (primarySourceDocumentPage.metaDataText(jurisdictionText).isDisplayed() == true
-                && primarySourceDocumentPage.metaDataText(jurisdictionText).getText().equals(jurisdictionText))
-            return true;
-        else
-            return false;
-    }
-
-    public boolean isTheUserSeesContentOfMetaDataFields(String metaDataText) {
-        if (primarySourceDocumentPage.contentOfMetaDataFields(metaDataText).isDisplayed() == true
-                && !primarySourceDocumentPage.contentOfMetaDataFields(metaDataText).getText().isEmpty())
-            return true;
-        else
-            return false;
-    }
 
     public boolean isTheJurisdictionsContainLessThanOneJurisdiction(String jurisdictionsText) {
         String[] words = primarySourceDocumentPage.contentOfMetaDataFields(jurisdictionsText).getText().split(",");

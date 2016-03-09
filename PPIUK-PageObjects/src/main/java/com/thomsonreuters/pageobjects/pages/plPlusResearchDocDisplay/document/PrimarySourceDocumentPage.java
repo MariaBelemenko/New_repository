@@ -11,7 +11,6 @@ public class PrimarySourceDocumentPage extends DocumentDisplayAbstractPage {
 
 	private static final By DOCUMENT_TITLE = By
 			.xpath(".//div[@id='co_docHeaderContainer']/div[@class='co_paragraph']/h1");
-	private static final By META_DATA = By.id("co_docContentMetaInfo");
 	private static final By JURISDICTION_OF_COURT = By.xpath(".//div[@class='co_docContentMetaInfoJurisdiction']/span");
 	private static final By SPECIFIC_PROVISION_COVERAGE_SECTION = By.className("co_specificProvisionCoverage");
 	private static final By RELATED_CONTENT = By.id("co_relatedContent");
@@ -19,14 +18,6 @@ public class PrimarySourceDocumentPage extends DocumentDisplayAbstractPage {
 
 	public WebElement documentTitle() {
 		return retryingFindElement(DOCUMENT_TITLE);
-	}
-
-	public WebElement metaData() {
-		return retryingFindElement(META_DATA);
-	}
-
-	public WebElement metaDataText(String metaDataText) {
-		return retryingFindElement(By.xpath(".//div/b[contains(text()," + "'" + metaDataText + "'" + ")]"));
 	}
 
 	public WebElement legislationLink(String legislationLinkText) {
@@ -142,7 +133,4 @@ public class PrimarySourceDocumentPage extends DocumentDisplayAbstractPage {
 		return retryingFindElement(By.xpath(".//div[contains(text(), '" + sectionNameText + "')]/../.."));
 	}
 
-	public WebElement documentStatus(String statusName) {
-		return retryingFindElement(By.xpath(".//div[@id='co_docContentMetaInfo']//span[contains(text(), '" + statusName + "')]"));
-	}
 }

@@ -16,7 +16,6 @@ import java.util.Collections;
  */
 public class CaseDocumentPage extends DocumentDisplayAbstractPage {
 
-    private static final By DOCUMENT_CONTENT = By.className("co_DocContentAll");
     private static final By PDF_IMAGE = By.className("co_pdfIcon");
     private static final By LEFT_NAVIGATION_COLUMN = By.className("kh_toc-content");
     private static final By META_CONTENT = By.id("co_docContentMetaInfo");
@@ -36,10 +35,6 @@ public class CaseDocumentPage extends DocumentDisplayAbstractPage {
 
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(CaseDocumentPage.class);
     private By pdfDownloadLinkLocator = By.cssSelector("");
-
-    public WebElement contentOfTheDocument() {
-        return retryingFindElement(DOCUMENT_CONTENT);
-    }
 
     public WebElement pdfImage() {
         return retryingFindElement(PDF_IMAGE);

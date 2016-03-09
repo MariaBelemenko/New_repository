@@ -121,46 +121,6 @@ public class CommonAssetPageSteps extends BaseStepDef {
                 assetPageUtils.isTheCasePageIsDisplayedInAssertPage(casePageText));
     }
 
-    @Then("^the user see the case metadata in the right hand side of the central column$")
-    public void theUserSeeTheCaseMetadataInTheRightHandSideOfTheCentralColumn() throws Throwable {
-        assertTrue("The user doesn't see the case meta data in the right hand side of the central column",
-                assetPageUtils.isTheUserSeeTheCaseMetadataInTheRightHandSideOfTheCentralColumn());
-    }
-
-    @Then("^the user see the \"(.*?)\" Resource type$")
-    public void theUserSeeTheResourceType(String resourceTypeText) throws Throwable {
-        assertTrue("The user doesn't see the resource type text", assetPageUtils.isTheUserSeeTheText(resourceTypeText));
-    }
-
-    @Then("^the user see the \"(.*?)\" Court name$")
-    public void theUserSeeTheCourtName(String courtText) throws Throwable {
-        assertTrue("The user doesn't see the court name", assetPageUtils.isTheUserSeeTheText(courtText));
-    }
-
-    @Then("^the user see the \"(.*?)\" Date$")
-    public void theUserSeeTheDate(String dateText) throws Throwable {
-        assertTrue("The user doesn't see the date", assetPageUtils.isTheUserSeeTheText(dateText));
-    }
-
-    @Then("^the user see citations it has been reported \"(.*?)\"$")
-    public void theUserSeeCitationsItHasBeenReported(String whereReportedText) throws Throwable {
-        assertTrue("The user doesn't see citations", assetPageUtils.isTheUserSeeTheText(whereReportedText));
-    }
-
-    @Then("^the user see the \"(.*?)\" Division$")
-    public void theUserSeeTheDivision(String divisionText) throws Throwable {
-        assertTrue("The user doesn't see the division", assetPageUtils.isTheUserSeeTheText(divisionText));
-    }
-
-    @Then("^the user see the \"(.*?)\" Jurisdiction$")
-    public void theUserSeeTheJurisdiction(String jurisdictionText) throws Throwable {
-        assertTrue("The user doesn't see the jurisdiction", assetPageUtils.isTheUserSeeTheText(jurisdictionText));
-    }
-
-    @Then("^the user see \"(.*?)\" Specialist court$")
-    public void theUserSeeSpecialistCourt(String specialistCourtText) throws Throwable {
-        assertTrue("The user doesn't see the Specialist court", assetPageUtils.isTheUserSeeTheText(specialistCourtText));
-    }
 
     @Then("^the user see Specialist court value$")
     public void theUserSeeSpecialistCourtValue() throws Throwable {
@@ -190,15 +150,11 @@ public class CommonAssetPageSteps extends BaseStepDef {
                 assetDocumentPage.isElementDisplayed(assetDocumentPage.whereReportedList()));
     }
 
-    @Then("^the user doesn not see the \"(.*?)\" Division$")
-    public void theUserDoesnNotSeeTheDivision(String divisionText) throws Throwable {
-        assertFalse("The user see the division", assetPageUtils.isTheUserSeeTheText(divisionText));
-    }
+    @Then("^the metadata does not contain \"(.*?)\"$")
+	public void theMetadataDoesNotContain(String field) throws Throwable {
+		assertFalse("The user see the division", assetPageUtils.isTheFieldInMetadataDisplayed(field));
+	}
 
-    @Then("^the user does not see the \"(.*?)\" Court$")
-    public void theUserDoesNotSeeTheCourt(String courtText) throws Throwable {
-        assertFalse("The user see the court", assetPageUtils.isTheUserSeeTheText(courtText));
-    }
 
     @Then("^the user sees link \"(.*?)\" in the \"(.*?)\" section$")
     public void theUserSeesLinkInTheSection(String linkText, String sectionName) throws Throwable {

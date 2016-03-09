@@ -110,27 +110,27 @@ public class DocumentDetailsTest extends BaseStepDef {
 
     @Then("^the user see \"(.*?)\" Court$")
     public void theUserSeeCourt(String courtText) throws Throwable {
-        assertTrue("The user doesn't see court", assetPageUtils.isTheUserSeeTheText(courtText));
+        assertTrue("The user doesn't see court", assetPageUtils.isTheFieldInMetadataDisplayed(courtText));
     }
 
     @Then("^the user see \"(.*?)\" Date$")
     public void theUserSeeDate(String dateText) throws Throwable {
-        assertTrue("The user doesn't see date", assetPageUtils.isTheUserSeeTheText(dateText));
+        assertTrue("The user doesn't see date", assetPageUtils.isTheFieldInMetadataDisplayed(dateText));
     }
 
     @Then("^the user see \"(.*?)\" Where Reported$")
     public void theUserSeeWhereReported(String whereReportedText) throws Throwable {
-        assertTrue("The user doesn't see Where Reported", assetPageUtils.isTheUserSeeTheText(whereReportedText));
+        assertTrue("The user doesn't see Where Reported", assetPageUtils.isTheFieldInMetadataDisplayed(whereReportedText));
     }
 
     @When("^the user see \"(.*?)\" hearing dates$")
     public void theUserSeeHearingDates(String hearingDates) throws Throwable {
-        assertTrue("The user doesn't see hearing dates", assetPageUtils.isTheUserSeeTheText(hearingDates));
+        assertTrue("The user doesn't see hearing dates", assetPageUtils.isTheFieldInMetadataDisplayed(hearingDates));
     }
 
     @Then("^the user see \"(.*?)\" Appellate committee$")
     public void theUserSeeAppellateCommittee(String appellateCommitteeText) throws Throwable {
-        assertTrue("The user doesn't see appellate committee", assetPageUtils.isTheUserSeeTheText(appellateCommitteeText));
+        assertTrue("The user doesn't see appellate committee", assetPageUtils.isTheFieldInMetadataDisplayed(appellateCommitteeText));
     }
 
 }

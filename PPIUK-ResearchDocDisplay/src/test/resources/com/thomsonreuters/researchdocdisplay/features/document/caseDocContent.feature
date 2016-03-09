@@ -51,24 +51,24 @@ Feature: Date corresponds to the correct format
     | IE8146150B21311E49FBB8F994A94F811 |
     | IA77ABBF0A43711E0BAE6C7A444C8F8F8 |
 
-  @wip
-  Scenario Outline: Document consist judgment content and PDF
+  @wip 
+  Scenario Outline: case document contains metadata
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly
-    Then the user see the content of the document
-    And the user see "Where Reported" Where Reported
-    And the user see "Hearing Dates" hearing dates
-    And the content include Respondents with title "Counsel" Counsel
-    And the user see pdf images
-    And the user see a column for the left hand navigation
-    And the user see the meta content on the document
-    And the user see the delivery options
-    And the judgement doucument consist that document in PDF
-    When the user selects the Judgement PDF
-    Then a PDF copy of the Judgement is downloaded
-    When the user opens document with <footNoteGuid> guid
-    Then the user see "Footnotes" footnotes
+    And the metadata is displayed in the right hand side of the central column
+    And the metadata contains "Where Reported" 
+    And the metadata contains "Hearing Dates"
+    And the metadata contains "Counsel"
+    #And the user see pdf images
+    #And the user see a column for the left hand navigation
+    #And the user see the meta content on the document
+    #And the user see the delivery options
+    #And the judgement doucument consist that document in PDF
+    #When the user selects the Judgement PDF
+    #Then a PDF copy of the Judgement is downloaded
+    #When the user opens document with <footNoteGuid> guid
+    #Then the user see "Footnotes" footnotes
   Examples:
     | GUID                              |
     | I79273E60A8EF11E0888FEF03F0EFCF17 |

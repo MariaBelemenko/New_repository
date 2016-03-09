@@ -35,16 +35,4 @@ public class AssetPageTemplateTest extends BaseStepDef {
         assertTrue("The End of Document contain text", assetPageUtils.isTheEndOfDocumentContainText());
     }
 
-    @Then("^the document contain \"(.*?)\" Resource Type$")
-    public void theDocumentContainResourceType(String resourceTypeText) throws Throwable {
-        assertTrue("The document doesn't contain resource type",
-                assetDocumentPage.isElementDisplayed(assetDocumentPage.resourceType(resourceTypeText)));
-    }
-
-    @Then("^the document contain \"(.*?)\" Court$")
-    public void theDocumentContainCourt(String courtText) throws Throwable {
-        assertTrue("The document doesn't contain court",
-                assetDocumentPage.isElementDisplayed(assetDocumentPage.court(courtText)));
-    }
-
 }

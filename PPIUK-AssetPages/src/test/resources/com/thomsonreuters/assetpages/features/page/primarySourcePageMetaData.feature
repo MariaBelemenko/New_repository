@@ -8,9 +8,9 @@ Feature: As a PL+ User I want to see the Legislation metadata in the right hand 
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly
-    Then the user see the Legislation metadata in the right hand side of the central column
-    And the user see "Resource Type" resource type
-    And The user sees "Maintained" status
+    And the metadata is displayed in the right hand side of the central column
+    And the metadata contains "Resource Type"
+    And the metadata contains "Maintained"
   Examples:
     | GUID                              |
     | I6905ab2e63a911e598dc8b09b4f043e0 |
@@ -21,9 +21,8 @@ Feature: As a PL+ User I want to see the Legislation metadata in the right hand 
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly
-    Then the user see the Legislation metadata in the right hand side of the central column
-    And the user see "Jurisdiction" jurisdiction
-    And the user sees the content of "Jurisdiction" jurisdiction
+    And the metadata is displayed in the right hand side of the central column
+    And the metadata contains "Jurisdiction"
   Examples:
     | GUID                              |
     | I2f49c89c574211e598dc8b09b4f043e0 |
@@ -32,9 +31,8 @@ Feature: As a PL+ User I want to see the Legislation metadata in the right hand 
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly
-    Then the user see the Legislation metadata in the right hand side of the central column
-    Then the user see "Jurisdictions" jurisdictions
-    And the user sees the content of "Jurisdictions" jurisdictions
+    And the metadata is displayed in the right hand side of the central column
+    And the metadata contains "Jurisdiction"
     And the "Jurisdictions" Jurisdictions contain more than one jurisdiction
   Examples:
     | GUID                              |

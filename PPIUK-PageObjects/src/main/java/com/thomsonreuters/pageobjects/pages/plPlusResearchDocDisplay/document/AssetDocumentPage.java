@@ -74,8 +74,8 @@ public class AssetDocumentPage extends DocumentDisplayAbstractPage {
 		return retryingFindElement(CASE_META_DATA);
 	}
 
-	public WebElement metaDataText(String text) {
-		return retryingFindElement(By.xpath(".//div/b[contains(text()," + "'" + text + "'" + ")]"));
+	public WebElement metaDataField(String text) {
+		return retryingFindElement(By.xpath(".//*[@id='co_docContentMetaInfo']//*[contains(text(), '" + text + "')]"));
 	}
 
 	public WebElement junpLinkSection(String jumpLinkText) {
@@ -132,16 +132,6 @@ public class AssetDocumentPage extends DocumentDisplayAbstractPage {
 
 	public WebElement tableOfContentSection() {
 		return retryingFindElement(TABLE_OF_CONTENTS_SECTION);
-	}
-
-	public WebElement resourceType(String resourceTypeText) {
-		return retryingFindElement(By.xpath(".//div[@class='co_documentType']/b[contains(text()," + "'"
-				+ resourceTypeText + "'" + ")]"));
-	}
-
-	public WebElement court(String courtText) {
-		return retryingFindElement(By.xpath(".//div[@class='co_docContentMetaInfoCourt']/b[contains(text()," + "'"
-				+ courtText + "'" + ")]"));
 	}
 
 	public WebElement caseAssetDocClass() {

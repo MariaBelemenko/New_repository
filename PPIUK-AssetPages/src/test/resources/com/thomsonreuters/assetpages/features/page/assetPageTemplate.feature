@@ -9,8 +9,8 @@ Feature: As a PL+ User I want to see Where Reported and Where Reported list in r
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly
-    And the user see the case metadata in the right hand side of the central column
-    And the user see citations it has been reported "Where Reported"
+    And the metadata is displayed in the right hand side of the central column
+    And the metadata contains "Where Reported"
     And the user see Where Reported list
   Examples:
     | GUID                              |
@@ -34,8 +34,9 @@ Feature: As a PL+ User I want to see Where Reported and Where Reported list in r
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly
-    Then the document contain "Resource Type " Resource Type
-    And the document contain "Court" Court
+    And the metadata is displayed in the right hand side of the central column
+    And the metadata contains "Resource Type"
+    And the metadata contains "Court"
   Examples:
     | GUID                              |
     | I984f1de46cf011e498db8b09b4f043e0 |
