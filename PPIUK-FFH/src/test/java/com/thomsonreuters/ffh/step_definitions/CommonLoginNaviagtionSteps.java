@@ -43,7 +43,6 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
     private RoutingPage routingPage;
     private NavigationCobalt navigationCobalt;
     private OnepassLogin onepassLogin;
-    private OnepassLoginUtils onepassLoginUtils;
     private WelcomePage welcome;
     private PracticalLawHomepage plcHomePage;
     private CobaltLogin cobaltLogin;
@@ -60,7 +59,6 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
 
     public CommonLoginNaviagtionSteps() {
         routingPage = new RoutingPage();
-        onepassLoginUtils = new OnepassLoginUtils();
         pageActions = new PageActions();
         comMethods = new CommonMethods();
         wlnHeader = new WLNHeader();
@@ -225,7 +223,7 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         if (StringUtils.isEmpty(plPlusUser.getUserName())) {
             plPlusUser.setUserName(!"None".equalsIgnoreCase(System.getProperty("username")) ? System.getProperty("username") : ExcelFileReader.getDefaultUser());
         }
-        loginUser(CobaltUser.updateMissingFields(plPlusUserList.get(0)));
+        loginUser(plPlusUser);
     }
 
     @Given("^ANZ user is logged in with routing details$")
@@ -650,9 +648,9 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
      */
     private void login(CobaltUser user) throws InterruptedException, IOException {
         if ("SUPER_REMEMBER_ME_USER".equals(user.getRole())) {
-            onepassLoginUtils.loginToCobaltWithSRM(user.getUserName(), getPasswordForPlPlusUser(user.getUserName()));
+            onepassLoginUtils.get().loginToCobaltWithSRM(user.getUserName(), getPasswordForPlPlusUser(user.getUserName()));
         } else {
-            onepassLoginUtils.loginToCobalt(user.getUserName(), getPasswordForPlPlusUser(user.getUserName()));
+            onepassLoginUtils.get().loginToCobalt(user.getUserName(), getPasswordForPlPlusUser(user.getUserName()));
         }
         plcHomePage.waitForPageToLoad();
         plcHomePage.closeCookieConsentMessage();

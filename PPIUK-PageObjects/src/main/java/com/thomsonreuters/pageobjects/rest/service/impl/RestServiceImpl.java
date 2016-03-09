@@ -34,7 +34,7 @@ public abstract class RestServiceImpl implements RestService {
     /**
      * Custom response handler to make possibility to log response body with error from Cobalt
      */
-    public class CustomResponseErrorHandler extends DefaultResponseErrorHandler {
+    public static class CustomResponseErrorHandler extends DefaultResponseErrorHandler {
 
         private final org.slf4j.Logger LOG = LoggerFactory.getLogger(CustomResponseErrorHandler.class);
 
@@ -50,6 +50,12 @@ public abstract class RestServiceImpl implements RestService {
     }
 
     public RestTemplate getRestTemplate() {
+        restTemplate.setErrorHandler(new CustomResponseErrorHandler());
+        return restTemplate;
+    }
+
+    public static RestTemplate getNewRestTemplate() {
+        RestTemplate restTemplate = new RestTemplate();
         restTemplate.setErrorHandler(new CustomResponseErrorHandler());
         return restTemplate;
     }
@@ -136,5 +142,9 @@ public abstract class RestServiceImpl implements RestService {
 
     public WebDriverDiscovery getWebDriverDiscovery() {
         return webDriverDiscovery;
+    }
+
+    public void setOnepassLoginUtils(OnepassLoginUtils onepassLoginUtils) {
+        this.onepassLoginUtils = onepassLoginUtils;
     }
 }
