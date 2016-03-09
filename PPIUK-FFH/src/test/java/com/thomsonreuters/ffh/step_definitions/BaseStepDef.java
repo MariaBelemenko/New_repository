@@ -1,5 +1,7 @@
 package com.thomsonreuters.ffh.step_definitions;
 
+import com.thomsonreuters.driver.framework.AbstractPage;
+import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.utils.CobaltUser;
 import com.thomsonreuters.pageobjects.utils.User;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +20,7 @@ public class BaseStepDef {
     }
 
     protected WebDriver getDriver() {
-        return null;
+        return AbstractPage.getDriver;
     }
 
 }

@@ -1,5 +1,6 @@
 package com.thomsonreuters.pageobjects.utils.folders;
 
+import com.thomsonreuters.driver.framework.AbstractPage;
 import com.thomsonreuters.pageobjects.common.DocumentColumn;
 import com.thomsonreuters.pageobjects.common.ExcelFileReader;
 import com.thomsonreuters.pageobjects.common.SortOptions;
@@ -63,7 +64,7 @@ public class FoldersUtils {
 
     public void shareFolderViaEmailByEmail(String owner, String folderName, String emailToShare) {
         shareFolder(folderName);
-        JavascriptExecutor js = (JavascriptExecutor) shareFolderPopup;
+        JavascriptExecutor js = (JavascriptExecutor) AbstractPage.getDriver;
         js.executeScript("$('#coid_contacts_addedContactsInput').click();");
         js.executeScript(
                 String.format("$('#coid_contacts_addedContactsInput input').val(\"%s\").trigger($.Event(\"keyup\", { keyCode: %s }));",
