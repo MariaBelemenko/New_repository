@@ -3,7 +3,7 @@ package com.thomsonreuters.pageobjects.utils.Linking;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
-import com.thomsonreuters.driver.framework.WebDriverDiscovery;
+import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.utils.document.content.Section;
 import com.thomsonreuters.pageobjects.utils.document.metadata.Jurisdiction;
 import com.thomsonreuters.pageobjects.utils.document.metadata.Product;
@@ -28,7 +28,7 @@ import java.util.*;
 
 public class LinkingUtils extends DefaultHandler {
 
-    private WebDriverDiscovery webDriverDiscovery = new WebDriverDiscovery();
+    private NavigationCobalt navigationCobalt = new NavigationCobalt();
 
     private static final String HEADER_ACCEPT_HTML_XML = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8";
     private static final int STATUS_CODE_OK = 200;
@@ -190,7 +190,7 @@ public class LinkingUtils extends DefaultHandler {
         String cookies = getBrowserCookiesAsString();
         String baseUrl = "";
         if (!absoluteOrRelativeUrl.startsWith("http")) {
-            String currUrl = webDriverDiscovery.getRemoteWebDriver().getCurrentUrl();
+            String currUrl = navigationCobalt.getCurrentUrl();
             String[] splitedUrlBySlash = currUrl.split("/");
             baseUrl = splitedUrlBySlash[0] + "//" + splitedUrlBySlash[2];
         }
@@ -206,7 +206,7 @@ public class LinkingUtils extends DefaultHandler {
     }
 
     public String getBrowserCookiesAsString(Set<Cookie> ignoredCookies) {
-        Set<Cookie> cookies = removeCookiesFrom(webDriverDiscovery.manage().getCookies(), ignoredCookies);
+        Set<Cookie> cookies = removeCookiesFrom(navigationCobalt.getCookies(), ignoredCookies);
         StringBuilder sb = new StringBuilder();
         int i = 1;
         int cookiesCount = cookies.size();
