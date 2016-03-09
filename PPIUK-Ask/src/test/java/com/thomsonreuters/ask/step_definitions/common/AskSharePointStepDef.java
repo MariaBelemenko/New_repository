@@ -24,7 +24,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
  */
 public class AskSharePointStepDef extends BaseStepDef {
 
-    private static final String ASK_EMAIL = "AskTestuser@mailinator.com";
+    private static final String ASK_EMAIL = "AskUser2@mailinator.com";
     // If ask form invoked not from doc view page than URL won't be populated. It is ok, see details in TFS 858408
     private static final String ASK_DOCUMENT_URL = "";
     private static final String ASK_PLC_DOCUMENT_ID_EMPTY = "";

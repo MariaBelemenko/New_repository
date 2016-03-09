@@ -33,7 +33,7 @@ public class AskCommentsTest extends BaseStepDef {
     private static final String ASK_TIME_FORMAT = "HH:mm";
     private static final String ASK_DATE_TIME_FORMAT = ASK_DATE_FORMAT + " " + ASK_TIME_FORMAT;
     private static final String ASK_REPLY_TEXT = "This from Auto Testing ";
-    private static final String ASK_REPLIER_NAME = "Stephanie Armytage";
+    private static final String ASK_REPLIER_NAME = "Usman Hussain Test 67";
     private static final String ASK_ANONYMOUS = "Anonymous";
 
     private int noOfComments;
