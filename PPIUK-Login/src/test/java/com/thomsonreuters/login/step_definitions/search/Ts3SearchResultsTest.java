@@ -1,14 +1,14 @@
 package com.thomsonreuters.login.step_definitions.search;
 
+import static org.junit.Assert.assertTrue;
+
 import com.thomsonreuters.login.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawUKCategoryPage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 
-import static org.junit.Assert.assertTrue;
+import cucumber.api.java.en.When;
 
 public class Ts3SearchResultsTest extends BaseStepDef {
 
@@ -45,13 +45,6 @@ public class Ts3SearchResultsTest extends BaseStepDef {
         knowHowSearchResultsPage.waitForSearchResults();
     }
 
-    @Then("^he should stay on same document page as OpenWeb user$")
-    public void heShouldStayOnSameDocumentPageAsOpenWebUser() throws Throwable {
-        navigationCobalt.waitForPageToLoad();
-        String currentPageTitle = navigationCobalt.getPageTitle();
-        assertTrue("User was redirected to another page after timed out session",
-                expectedPageTitle.equals(currentPageTitle) && wlnHeader.isSignInLinkPresent());
-    }
 
     @When("^the user verifies that the know how facet is selected \"(.*?)\"$")
     public void theUserVerifiesThatTheKnowHowFacetIsSelected(String arg1) throws Throwable {

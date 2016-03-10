@@ -1,14 +1,14 @@
 package com.thomsonreuters.login.step_definitions.folders;
 
+import static org.junit.Assert.assertFalse;
+
 import com.thomsonreuters.login.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.documentNavigation.DocumentDeliveryPage;
 import com.thomsonreuters.pageobjects.pages.widgets.CategoryPage;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
-import static org.junit.Assert.assertFalse;
-import static org.testng.AssertJUnit.assertNull;
 
 public class LoginFoldersTest extends BaseStepDef {
 
@@ -29,8 +29,7 @@ public class LoginFoldersTest extends BaseStepDef {
 
     @Then("^he does not see any favourites icon/link$")
     public void heDoesNotSeeAnyFavouritesIconLink() throws Throwable {
-//        assertFalse("Add to Favorites is visible for user", categoryPage.addToFavouritesLinkPresent());
-        assertNull("Add to Favorites is visible for user", categoryPage.addToFavoritesLink());
+		assertFalse("Add to Favorites is visible for user", categoryPage.addToFavouritesLinkPresent());
     }
 
     @Then("^he is not able to add it to Favourites$")

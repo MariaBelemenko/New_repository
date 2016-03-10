@@ -1,13 +1,13 @@
 package com.thomsonreuters.login.step_definitions.openWeb;
 
+import static org.junit.Assert.assertFalse;
+
 import com.thomsonreuters.login.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.widgets.CategoryPage;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
 
 public class HideMarketStartPageForOpenWebUserTest extends BaseStepDef {
 
@@ -22,7 +22,7 @@ public class HideMarketStartPageForOpenWebUserTest extends BaseStepDef {
 
     @Then("^he does not see any Start Page icon/link$")
     public void heDoesNotSeeAnyStartPageIconLink() throws Throwable {
-        assertNull("Make this my start page link is visible for user", categoryPage.makeThisMyStartPageLink());
+		assertFalse("Make this my start page link is visible for user", categoryPage.makeThisMyStartPageLinkPresent());
     }
 
     @Then("^he is not able to select the page as start page$")

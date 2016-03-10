@@ -7,6 +7,7 @@ Feature: Not logged in user can log in as username and password
     And the user clicks on Sign On link on the header
     Then the user is able to sign in with OnePass
       | userName | LoginUser3 |
+    Then it gets redirected to the home page
     And Sign On link is not shown to user
     And Sign In link is not shown to user
 
@@ -16,8 +17,10 @@ Feature: Not logged in user can log in as username and password
     And the user clicks on Sign In link on the footer
     Then the user is able to sign in with OnePass
       | userName | LoginUser3 |
+    Then it gets redirected to the home page
     And Sign In link is not shown to user
     And Sign On link is not shown to user
+
 
   Scenario: As a not logged in user I want to use Sign On button on the document to login.
     Given PL+ user is not logged in

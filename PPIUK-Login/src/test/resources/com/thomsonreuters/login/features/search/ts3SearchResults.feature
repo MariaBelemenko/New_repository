@@ -8,9 +8,9 @@ Feature: Search results shown after being timed out
     When the user runs a free text cobalt search with query "taxation"
     And the user expands the know how facet "<facet1>"
     And the user expands the know how facet "<facet2>"
+    And the user selects the know how child facet "<facet5>"
     And the user expands the know how facet "<facet3>"
     And the user selects the know how child facet "<facet4>"
-    And the user selects the know how child facet "<facet5>"
     And the user selects the know how option to apply filters
     And he has a session open and timed out
     And he should stay on same document page as OpenWeb user
@@ -24,7 +24,7 @@ Feature: Search results shown after being timed out
     Then the user verifies that the know how facet is selected "<facet5>"
   Examples:
     | facet1    | facet2       | facet3  | facet4          | facet5                 |
-    | Corporate | Acquisitions | Finance | Project finance | Acquisitions: Auctions |
+    | Corporate | Acquisitions | China | Finance | Acquisitions: Auctions |
 
   @manual @wip @bug
   Scenario:
