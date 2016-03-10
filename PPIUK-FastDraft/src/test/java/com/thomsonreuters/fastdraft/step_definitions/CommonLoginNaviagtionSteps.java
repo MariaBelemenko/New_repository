@@ -404,13 +404,6 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
                     routingPage.showFeatureSelectionsLink().click();
                     break;
 
-                case FAST_DRAFT_INCORRECT:
-                    navigateToRoutingPage(user.getProduct());
-                    routingPage.fastDraftHost().clear();
-                    routingPage.fastDraftHost().sendKeys("http://uc199881-tpv-z:9933/");
-                    routingPage.showFeatureSelectionsLink().click();
-                    break;
-
                 case FAST_DRAFT_FIRM_STYLE:
                     navigateToRoutingPage(user.getProduct());
                     routingPage.showFeatureSelectionsLink().click();

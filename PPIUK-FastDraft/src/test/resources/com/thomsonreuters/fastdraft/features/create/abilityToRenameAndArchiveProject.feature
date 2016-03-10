@@ -1,4 +1,4 @@
-Feature: View, Rename and Archive FastDraft Project and FastDraft document
+Feature: [770615] FD12a View, Rename and Archive FastDraft Project and FastDraft document
 
   Scenario:
     Given PL+ user is logged in with following details

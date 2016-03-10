@@ -1,4 +1,5 @@
-Feature: Create and Save and Delete a FastDraft Project (Document)
+Feature: [782598] FD11a FD12b Create and Save a FastDraft Project (Document)
+  [770562] FD11d Delete FastDraft Project (Document)
 
   Scenario: Delete all the fast draft projects
     Given PL+ user is logged in with following details

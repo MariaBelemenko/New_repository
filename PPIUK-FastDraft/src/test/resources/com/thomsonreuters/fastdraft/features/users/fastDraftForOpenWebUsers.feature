@@ -1,4 +1,5 @@
-Feature: Testing FD Open Web users and Form E for IP and OpenWeb users
+Feature: [780905] FD6 Testing FD Open Web users
+[792122] FD17 Testing Form E for IP and OpenWeb users
 
   Scenario:
     Given PL+ user is logged in with following details

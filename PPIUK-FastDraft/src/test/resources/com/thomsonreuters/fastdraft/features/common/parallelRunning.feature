@@ -1,4 +1,4 @@
-Feature: Parallel Running of FastDraft
+Feature: [780794] FD19 Parallel Running Testing
 
 # PLEASE note for CI/DEMO/QED the link to Legacy FD is
 # When the user goes to View all FastDraft items = http://d" + System.getProperty("base.legacy.url") + "-infra.dev.practicallaw.com:8080/da/

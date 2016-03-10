@@ -1,6 +1,5 @@
-Feature: Testing feature toggle
+Feature: [795432] Testing feature toggle
 
-  @usman
   Scenario: Ensure FastDraft URL is correct and redirection works
     Given PL+ user is logged in with following details
       | userName         | FFHTestUser1_Firm2 |

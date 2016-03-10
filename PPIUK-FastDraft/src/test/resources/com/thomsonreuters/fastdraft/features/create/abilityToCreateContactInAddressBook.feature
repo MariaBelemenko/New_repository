@@ -1,6 +1,5 @@
-Feature: Create contact and attach contact to a FastDraft document
+Feature: [789826] (Testing Task Only) - Create contact and attach contact to a FastDraft document
 
-  @usman
   Scenario:
     Given PL+ user is logged in with following details
       | userName         | FDTestUser2 |

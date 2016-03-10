@@ -1,11 +1,9 @@
-@wip @robot
-Feature: Redirecting to FastDraft popup
+@manual
+Feature: [799335] Redirecting to FastDraft popup
 
-# This test uses JAVA Robot, therefore it could be run locally only
   Scenario:
     Given PL+ user is logged in with following details
       | userName         | FDTestUser2          |
-      | routing          | FAST_DRAFT_INCORRECT |
       | mandatoryRouting | YES                  |
     When the user goes My FastDraft
     Then the user sees Redirecting to FastDraft popup
@@ -16,7 +14,6 @@ Feature: Redirecting to FastDraft popup
   Scenario: 
     Given PL+ user is logged in with following details
       | userName         | FDTestUser2          |
-      | routing          | FAST_DRAFT_INCORRECT |
       | mandatoryRouting | YES                  |
     When the user come back on to Home page
     And the user opens "Family" link
@@ -30,7 +27,6 @@ Feature: Redirecting to FastDraft popup
   Scenario: 
     Given PL+ user is logged in with following details
       | userName         | FDTestUser2          |
-      | routing          | FAST_DRAFT_INCORRECT |
       | mandatoryRouting | YES                  |
     When the user come back on to Home page
     And the user opens 'Resources' link
@@ -46,7 +42,6 @@ Feature: Redirecting to FastDraft popup
   Scenario: 
     Given PL+ user is logged in with following details
       | userName         | FDTestUser2          |
-      | routing          | FAST_DRAFT_INCORRECT |
       | mandatoryRouting | YES                  |
     When the user come back on to Home page
     And the user opens "Family" link

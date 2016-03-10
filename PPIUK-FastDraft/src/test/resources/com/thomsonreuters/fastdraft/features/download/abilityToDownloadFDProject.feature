@@ -1,6 +1,7 @@
-@wip @robot
-@e2e
-Feature: Download Fast Draft Project (Document)
+@robot @e2e
+Feature: [770524] FD10 Download Fast Draft Project (Document)
+
+# This test uses JAVA Robot, therefore it could be run locally only
 
 # This test uses JAVA Robot, therefore it could be run locally only
   Scenario Outline: Standard Document and No FS

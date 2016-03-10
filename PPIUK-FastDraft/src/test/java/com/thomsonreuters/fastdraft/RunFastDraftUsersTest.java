@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber-htmlreport/FastDraftUsersReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunFastDraftUsersTest.json"},
         features = "src/test/resources/com/thomsonreuters/fastdraft/features/users",
-        tags = {"~@wip", "~@manual"},
+        tags = {"~@wip", "~@manual", "~@robot"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
 public class RunFastDraftUsersTest {

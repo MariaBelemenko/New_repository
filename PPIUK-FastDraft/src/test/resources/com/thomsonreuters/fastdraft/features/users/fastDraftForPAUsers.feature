@@ -1,4 +1,6 @@
-Feature: Testing FD PA Users and Link to FastDraft from PL My FastDraft Dashboard and Start Drafting
+Feature: [780907] FD3 Testing FD PA Users
+[774399] FD16 Testing Link to FastDraft from PL+:  My FastDraft Dashboard
+[774396] FD7 Testing Link to FastDraft from PL+- Start Drafting
 
   Scenario:
     Given PL+ user is logged in with following details
