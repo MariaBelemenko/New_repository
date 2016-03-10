@@ -3,8 +3,9 @@ Feature: As a PPI User I do not want to see any previous History from other prod
 # It is needded to add story with Recent history
   Scenario Outline:
     Given WLN user is logged in with following details
-      | routing          | FOLDERS |
-      | mandatoryRouting | YES     |
+      | userName         | FFHUser4 |
+      | routing          | FOLDERS  |
+      | mandatoryRouting | YES      |
     When API cleans all folders and history
     Given PL+ user is logged in with following details
       | userName | FFHUser4 |

@@ -5,8 +5,9 @@ Feature: As a PPI User I do not want to see Favourites from other systems in my 
     Given PL+ user is logged in
     When API cleans all folders and history
     Given WLN user is logged in with following details
-      | routing          | FOLDERS |
-      | mandatoryRouting | YES     |
+      | userName         | FFHUser4 |
+      | routing          | FOLDERS  |
+      | mandatoryRouting | YES      |
     When API cleans all folders and history and user relogs in
     #And the user come back on to WLN Home page
     #And the user opens WLN 'Cases' link
@@ -41,8 +42,9 @@ Feature: As a PPI User I do not want to see Favourites from other systems in my 
 
   Scenario: Correct WLN links appear in favourites
     Given WLN user is logged in with following details
-      | routing          | FOLDERS |
-      | mandatoryRouting | YES     |
+      | userName         | FFHUser4 |
+      | routing          | FOLDERS  |
+      | mandatoryRouting | YES      |
     When API cleans all folders and history
     Given PL+ user is logged in with following details
       | userName | FFHUser4 |

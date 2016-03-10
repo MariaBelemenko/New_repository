@@ -4,6 +4,7 @@ Feature: As a PPI User I do not want to see Folders from other products in my Fo
 # It is needded to add story with Recent folders
   Scenario Outline:
     Given WLN user is logged in with following details
+      | userName | FFHUser4 |
       | routing          | FOLDERS |
       | mandatoryRouting | YES     |
     When API cleans all folders and history
@@ -18,6 +19,7 @@ Feature: As a PPI User I do not want to see Folders from other products in my Fo
     When the user clicks on 'Folders' link on the header
     And all documents present in the "<plFolder>" folder
     Given WLN user is logged in with following details
+      | userName | FFHUser4 |
       | routing          | FOLDERS |
       | mandatoryRouting | YES     |
     When the user clicks on 'Folders' link on the header
