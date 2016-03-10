@@ -2,7 +2,7 @@ Feature: The ability to see alerts controls on a single page
 
   Background: Logging in for Adestra
     Given PL+ user is logged in with following details
-      | userName | adestra_user22 |
+      | userName | adestra_user33 |
     And a user is viewing the email preference page
 
   Scenario Outline: As user I want to see services and relevant checkboxes the page
@@ -32,7 +32,7 @@ Feature: The ability to see alerts controls on a single page
     When the user has opened the "<region>" Services tab
     And the user selects checkboxes for each  "<region>" service
     And the user saves his preferences
-    Then user "adestra_user22@mailinator.com" preferences should be saved in adestra
+    Then user "adestra_user33@mailinator.com" preferences should be saved in adestra
   Examples:
     | region |
     | US     |
