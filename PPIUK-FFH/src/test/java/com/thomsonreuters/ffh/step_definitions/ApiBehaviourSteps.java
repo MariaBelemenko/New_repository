@@ -21,13 +21,11 @@ public class ApiBehaviourSteps extends BaseStepDef {
      */
     @When("^API cleans all folders and history$")
     public void apiCleansAllFoldersAndHistory() throws Throwable {
-        restSteps.setOnepassLoginUtils(getOnepassLoginUtils());
         restSteps.doSuperDelete();
     }
 
     @When("^API cleans all folders and history and user relogs in$")
     public void apiCleansAllFoldersAndHistoryAndUserRelogsIn() throws Throwable {
-        restSteps.setOnepassLoginUtils(getOnepassLoginUtils());
         restSteps.doSuperDelete();
         commonLoginNaviagtionSteps.userRelogsIn();
     }
@@ -45,7 +43,6 @@ public class ApiBehaviourSteps extends BaseStepDef {
             LOG.error("API calls are not implemented for IE");
             return;
         }
-        restSteps.setOnepassLoginUtils(getOnepassLoginUtils());
         restSteps.wlnDoSuperDelete();
     }
 

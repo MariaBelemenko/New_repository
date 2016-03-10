@@ -2,8 +2,6 @@ package com.thomsonreuters.pageobjects.rest.auth.proxy;
 
 
 import com.thomsonreuters.pageobjects.rest.auth.model.PostForRegKeysResponse;
-import com.thomsonreuters.pageobjects.rest.service.impl.RestServiceImpl;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
@@ -12,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class OnePassProxy {
     private static final String HOST = "http://onepassservicesqa.int.westlaw.com";
-    private RestTemplate restTemplate = RestServiceImpl.getNewRestTemplate();
+    private RestTemplate restTemplate = new RestTemplate();
 
     /**
      * POST request to Onepass module with endpoint '/onepass/v2/authenticate/onepass'

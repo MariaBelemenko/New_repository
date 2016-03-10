@@ -1,11 +1,8 @@
 package com.thomsonreuters.pageobjects.rest;
 
 import com.thomsonreuters.pageobjects.rest.service.impl.RestServiceFFHImpl;
-import com.thomsonreuters.pageobjects.utils.OnepassLoginUtils;
 
 public class FolderBaseUtils {
-
-    private OnepassLoginUtils onepassLoginUtils = new OnepassLoginUtils(); // To avoid NPE
 
     private RestServiceFFHImpl restService = new RestServiceFFHImpl();
 
@@ -15,7 +12,6 @@ public class FolderBaseUtils {
     }
 
     public void doSuperDelete() {
-        restService.setOnepassLoginUtils(onepassLoginUtils);
         restService.deleteDoSuperDelete();
     }
     
@@ -26,9 +22,5 @@ public class FolderBaseUtils {
 
     private String getRootFolderID() {
         return restService.getRootAncestors()[0].getCategoryId();
-    }
-
-    public void setOnepassLoginUtils(OnepassLoginUtils onepassLoginUtils) {
-        this.onepassLoginUtils = onepassLoginUtils;
     }
 }
