@@ -44,7 +44,7 @@ public class SearchResultsPage extends AbstractPage {
      * The number of the first search result on a page, for example on the 1st page, it would be 1
      */
     public WebElement theFirstSearchResult() {
-        return findElement(By.xpath("//span[@class='co_searchCount']"));
+        return waitForExpectedElement(By.xpath("//span[@class='co_searchCount']"));
     }
 
     /**
@@ -66,7 +66,7 @@ public class SearchResultsPage extends AbstractPage {
     }
 
     public WebElement resourceTypeDescription() {
-        return findElement(By.cssSelector("#co_searchResults_citation_1 .co_greenStatus"));
+        return waitForExpectedElement(By.cssSelector("#co_searchResults_citation_1 .co_greenStatus"));
     }
 
     public WebElement backToCategoryPageLink() {
@@ -202,15 +202,15 @@ public class SearchResultsPage extends AbstractPage {
     }
 
     public WebElement jurisdictionsForFirstResult() {
-        return findElement(By.cssSelector("#co_searchResults_citation_1 div.co_search_detailLevel_1:nth-of-type(2)"));
+        return waitForExpectedElement(By.cssSelector("#co_searchResults_citation_1 div.co_search_detailLevel_1:nth-of-type(2)"));
     }
 
     public WebElement statusForFirstResult() {
-        return findElement(By.cssSelector("#co_searchResults_citation_1 div.co_search_detailLevel_1:nth-of-type(3)"));
+        return waitForExpectedElement(By.cssSelector("#co_searchResults_citation_1 div.co_search_detailLevel_1:nth-of-type(3)"));
     }
 
     public WebElement plcRefIdForNthSearchResult(int n) {
-        return findElement(By.cssSelector("li#cobalt_search_results_knowhowukdebug" + n + " #co_searchResults_citation_1 div.co_search_detailLevel_1:nth-of-type(4) span a"));
+        return waitForExpectedElement(By.cssSelector("li#cobalt_search_results_knowhowukdebug" + n + " #co_searchResults_citation_1 div.co_search_detailLevel_1:nth-of-type(4) span a"));
     }
 
     /**
@@ -276,7 +276,7 @@ public class SearchResultsPage extends AbstractPage {
      * @return
      */
     public List<WebElement> searchResultsList() {
-        return findElements(By.cssSelector(".co_searchResult_list li[id^=\"cobalt_search_results\"]"));
+        return waitForExpectedElements(By.xpath("//ol[@class='co_searchResult_list']//li[contains(@id,'cobalt_search_results')]"),10);
     }
 
     /**

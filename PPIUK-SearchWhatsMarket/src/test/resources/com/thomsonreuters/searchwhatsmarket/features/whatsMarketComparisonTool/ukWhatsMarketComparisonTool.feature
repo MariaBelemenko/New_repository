@@ -298,7 +298,6 @@ Feature: ukWhatsMarketComparisonTool.feature
 
   Scenario: [811160] verify comparison options for sample deal types
     And has selected the link to the deal type "Public M & A"
-    And the user pauses for "3" seconds
     And the user selects the checkbox associated with whats market result "1"
     And the user selects the checkbox associated with whats market result "2"
     And the user selects the checkbox associated with whats market result "3"
