@@ -271,8 +271,13 @@ public class WhatsMarketComparisonToolTest extends BaseStepDef {
     @When("^the user verifies all Comparison Terms checkboxes are unchecked$")
     public void theUserVerifiesAllComparisonTermsCheckboxesAreUnchecked() throws Throwable {
         assertFalse(whatsMarketComparisonReportPage.selectAllCheckbox().isSelected());
-        List<WebElement> checked = getDriver().findElements(By.xpath("//div[@id='fieldGroupsContainer']//li/input[@checked='checked']"));
-        assertTrue(checked.isEmpty());
+        boolean checkboxDisplayed = true;
+        try {
+            whatsMarketComparisonReportPage.firstDealComparisonTermsCheckedOn().isDisplayed();
+        } catch (Exception e) {
+            checkboxDisplayed = false;
+        }
+        assertFalse(checkboxDisplayed);
     }
 
     @When("^the user clicks the 'clear selected' button$")

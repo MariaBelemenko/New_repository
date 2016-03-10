@@ -420,5 +420,13 @@ public class WhatsMarketComparisonReportPage extends AbstractPage {
         return button;
     }
 
+    public List<WebElement> dealComparisonTermsCheckedOn() {
+        return waitForExpectedElements(By.xpath("//div[@id='fieldGroupsContainer']//li/input[@checked='checked']"),10);
+    }
+
+    public WebElement firstDealComparisonTermsCheckedOn() {
+        return waitForExpectedElement(By.xpath("//div[@id='fieldGroupsContainer']//li/input[@checked='checked']"),10);
+    }
+
 
 }
