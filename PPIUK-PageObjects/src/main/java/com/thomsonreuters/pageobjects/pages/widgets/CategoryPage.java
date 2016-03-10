@@ -1,13 +1,14 @@
 package com.thomsonreuters.pageobjects.pages.widgets;
 
-import com.thomsonreuters.pageobjects.common.CommonMethods;
-import com.thomsonreuters.driver.framework.AbstractPage;
-import com.thomsonreuters.pageobjects.pages.folders.AddToFavouritesPopup;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
+import com.thomsonreuters.driver.framework.AbstractPage;
+import com.thomsonreuters.pageobjects.common.CommonMethods;
+import com.thomsonreuters.pageobjects.pages.folders.AddToFavouritesPopup;
 
 public class CategoryPage extends AbstractPage {
 
@@ -199,7 +200,7 @@ public class CategoryPage extends AbstractPage {
 	}
 
 	public WebElement addToFavoritesLink() {
-		return comMethods.waitForExpectedElement(By.xpath(ADD_TO_FAVORITES), 1000);
+		return comMethods.waitForExpectedElement(By.xpath(ADD_TO_FAVORITES), 1);
 	}
 
     public Boolean addToFavouritesLinkPresent() {
@@ -208,7 +209,7 @@ public class CategoryPage extends AbstractPage {
     }
 
 	public WebElement makeThisMyStartPageLink() {
-		return comMethods.waitForExpectedElement(By.xpath(MAKE_THIS_MY_START_PAGE), 1000);
+		return comMethods.waitForExpectedElement(By.xpath(MAKE_THIS_MY_START_PAGE), 1);
 	}
 
 	public void openTab(String tabName) {

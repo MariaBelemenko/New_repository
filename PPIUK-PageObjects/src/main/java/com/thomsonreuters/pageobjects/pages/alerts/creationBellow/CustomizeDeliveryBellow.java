@@ -1,12 +1,12 @@
 package com.thomsonreuters.pageobjects.pages.alerts.creationBellow;
 
-import com.thomsonreuters.driver.framework.AbstractPage;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-
-import java.util.List;
+import com.thomsonreuters.driver.framework.AbstractPage;
 
 
 public class CustomizeDeliveryBellow extends AbstractPage {
@@ -19,7 +19,7 @@ public class CustomizeDeliveryBellow extends AbstractPage {
     }
 
     public WebElement inputedEmailListItem() {
-        return waitForExpectedElement(By.xpath("//li[@class='co_contacts_addedContactsGroup']/a"), 3000);
+		return waitForExpectedElement(By.xpath("//li[@class='co_contacts_addedContactsGroup']/a"), 5);
     }
 
     public WebElement emailSubscribersInput() {

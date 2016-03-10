@@ -1,12 +1,13 @@
 package com.thomsonreuters.pageobjects.pages.alerts.creationBellow;
 
-import com.thomsonreuters.driver.framework.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import com.thomsonreuters.driver.framework.AbstractPage;
+
 public class BasicsBellow extends AbstractPage {
     public WebElement alertNameInput() {
-        return waitForExpectedElement(By.id("optionsAlertName"), 3000);
+		return waitForExpectedElement(By.id("optionsAlertName"), 5);
     }
 
     public WebElement alertDescriptionTextarea() {

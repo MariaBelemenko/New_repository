@@ -1,10 +1,11 @@
 package com.thomsonreuters.pageobjects.pages.delivery;
 
-import com.thomsonreuters.pageobjects.rest.model.request.delivery.initiateDelivery.InitiateDelivery;
+import java.util.Arrays;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.util.Arrays;
+import com.thomsonreuters.pageobjects.rest.model.request.delivery.initiateDelivery.InitiateDelivery;
 
 /**
  * Option for download delivery
@@ -29,15 +30,15 @@ public class DownloadOptionsPage extends CommonDeliveryOptionsPage {
      * This is the download button for submitting the request
      */
     public WebElement downloadButton() {
-        return waitForExpectedElement(By.id("co_deliveryDownloadButton"), 200);
+		return waitForExpectedElement(By.id("co_deliveryDownloadButton"), 20);
     }
 
     public WebElement exportButton() {
-        return waitForExpectedElement(By.id("co_deliveryExportButton"), 200);
+		return waitForExpectedElement(By.id("co_deliveryExportButton"), 20);
     }
 
     public WebElement confirmDownloadButton() {
-        return waitForExpectedElement(By.id("coid_deliveryWaitMessage_downloadButton"), 200);
+		return waitForExpectedElement(By.id("coid_deliveryWaitMessage_downloadButton"), 20);
     }
 
     /**
