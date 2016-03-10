@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
 import com.thomsonreuters.driver.framework.AbstractPage;
@@ -200,16 +201,29 @@ public class CategoryPage extends AbstractPage {
 	}
 
 	public WebElement addToFavoritesLink() {
-		return comMethods.waitForExpectedElement(By.xpath(ADD_TO_FAVORITES), 1);
+		return comMethods.waitForExpectedElement(By.xpath(ADD_TO_FAVORITES), 10);
 	}
 
     public Boolean addToFavouritesLinkPresent() {
-        comMethods.findElement(By.xpath(ADD_TO_FAVORITES));
-        return true;
+		try {
+			WebElement link = addToFavoritesLink();
+			return link.isDisplayed();
+		} catch (TimeoutException | NoSuchElementException e) {
+			return false;
+		}
     }
 
 	public WebElement makeThisMyStartPageLink() {
-		return comMethods.waitForExpectedElement(By.xpath(MAKE_THIS_MY_START_PAGE), 1);
+		return comMethods.waitForExpectedElement(By.xpath(MAKE_THIS_MY_START_PAGE), 10);
+	}
+
+	public Boolean makeThisMyStartPageLinkPresent() {
+		try {
+			WebElement link = makeThisMyStartPageLink();
+			return link.isDisplayed();
+		} catch (TimeoutException | NoSuchElementException e) {
+			return false;
+		}
 	}
 
 	public void openTab(String tabName) {

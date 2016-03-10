@@ -1,14 +1,15 @@
 package com.thomsonreuters.pageobjects.pages.header;
 
-import com.thomsonreuters.driver.exception.PageOperationException;
-import com.thomsonreuters.driver.framework.AbstractPage;
-import com.thomsonreuters.pageobjects.common.PageActions;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
+import com.thomsonreuters.driver.exception.PageOperationException;
+import com.thomsonreuters.driver.framework.AbstractPage;
+import com.thomsonreuters.pageobjects.common.PageActions;
 
 public class WLNHeader extends AbstractPage {
 
@@ -244,27 +245,24 @@ public class WLNHeader extends AbstractPage {
     public boolean isFavoritesLinkPresent() {
         try {
             return favouritesLink().isDisplayed();
-        } catch (PageOperationException poe) {
-            LOG.info("context", poe);
-            return false;
+		} catch (PageOperationException | TimeoutException | NoSuchElementException | NullPointerException e) {
+			return false;
         }
     }
 
     public boolean isHistoryLinkPresent() {
         try {
             return historyLink().isDisplayed();
-        } catch (PageOperationException poe) {
-            LOG.info("context", poe);
-            return false;
+		} catch (PageOperationException | TimeoutException | NoSuchElementException | NullPointerException e) {
+			return false;
         }
     }
 
     public boolean isFoldersLinkPresent() {
         try {
             return foldersLink().isDisplayed();
-        } catch (NoSuchElementException | NullPointerException poe) {
-            LOG.info("context", poe);
-            return false;
+		} catch (PageOperationException | TimeoutException | NoSuchElementException | NullPointerException e) {
+			return false;
         }
     }
 
