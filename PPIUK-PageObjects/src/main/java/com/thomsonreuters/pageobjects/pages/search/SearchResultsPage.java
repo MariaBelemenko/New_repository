@@ -77,28 +77,28 @@ public class SearchResultsPage extends AbstractPage {
      * This is the option to sort by relevance or date and this object only represents the displayed value
      */
     public WebElement sortByDropdownList() {
-        return retryingFindElement(By.cssSelector("#co_search_sortDropDownControl option[selected='selected']"));
+        return waitForExpectedElement(By.cssSelector("#co_search_sortDropDownControl option[selected='selected']"),8);
     }
 
     /**
      * This element is the selected option from sort by relevance or date dropdown
      */
     public WebElement sortByDropdownSelectedOption() {
-        return retryingFindElement(By.xpath("//div[@id='co_search_sortDropDownControl']//a[@id='co_search_sortOptions']//span/.."));
+        return waitForExpectedElement(By.xpath("//div[@id='co_search_sortDropDownControl']//a[@id='co_search_sortOptions']//span/.."),8);
     }
 
     /**
      * This element is the sort by link
      */
     public WebElement sortByDropdownLink() {
-        return retryingFindElement(By.xpath("//a[@id='co_search_sortOptions']"));
+        return waitForExpectedElement(By.xpath("//a[@id='co_search_sortOptions']"),8);
     }
 
     /**
      * This element is returns you the link in the dropdown options (either 'Relevancy' or 'Date')
      */
     public WebElement sortByDropDownOption(String option) {
-        return retryingFindElement(By.xpath("//div[@id='co_search_sortDropDownControl']//a[text()='" + option + "']"));
+        return waitForExpectedElement(By.xpath("//div[@id='co_search_sortDropDownControl']//a[text()='" + option + "']"),8);
     }
 
     /**
@@ -108,7 +108,7 @@ public class SearchResultsPage extends AbstractPage {
      */
     public String getSelectedDropDownList() {
         try {
-            return listFunctions.getSelectedValueList(retryingFindElement(By.cssSelector("div#co_search_sortDropDownControl a#co_search_sortOptions")));
+            return listFunctions.getSelectedValueList(waitForExpectedElement(By.cssSelector("div#co_search_sortDropDownControl a#co_search_sortOptions"),8));
         } catch (StaleElementReferenceException se) {
             LOG.info("Finding the select option dropdown item again as there is a Stale Element Exception occured.", se);
             getSelectedDropDownList();
@@ -218,7 +218,7 @@ public class SearchResultsPage extends AbstractPage {
      * indication of how many results are displayed per page
      */
     public WebElement resultsPerPageText() {
-        return retryingFindElement(By.xpath("//ol[@id='co_navigationPages']/li[1]/span"));
+        return waitForExpectedElement(By.xpath("//ol[@id='co_navigationPages']/li[1]/span"),8);
     }
 
     /**
@@ -239,7 +239,7 @@ public class SearchResultsPage extends AbstractPage {
      * this is the page numbering displayed at the base of the page
      */
     public WebElement pagination(String number) {
-        return retryingFindElement(By.xpath("//a[@id='co_search_footer_pagination_page" + number + "']"));
+        return waitForExpectedElement(By.xpath("//a[@id='co_search_footer_pagination_page" + number + "']"),8);
     }
 
     /**
@@ -283,7 +283,7 @@ public class SearchResultsPage extends AbstractPage {
      * This method gets the title of the know how search result item based on the given resultItem index on the results list.
      */
     public String getResultItem(String resultItemNumber) {
-        return retryingFindElement(By.cssSelector("#cobalt_result_knowhow_title" + resultItemNumber)).getText();
+        return waitForExpectedElement(By.cssSelector("#cobalt_result_knowhow_title" + resultItemNumber),10).getText();
     }
 
     /**
@@ -374,7 +374,7 @@ public class SearchResultsPage extends AbstractPage {
             text = "Most detail";
         }
         try {
-            return retryingFindElement(By.id("detailSliderSelectorSelectedOption")).getText().contains(text);
+            return waitForExpectedElement(By.id("detailSliderSelectorSelectedOption"),8).getText().contains(text);
         } catch (PageOperationException poe) {
             LOG.info("context", poe);
             return false;
@@ -392,7 +392,7 @@ public class SearchResultsPage extends AbstractPage {
      * this is the arrow icon to select when changing the terms in context selection
      */
     public WebElement changeTermsInContextArrowIcon() {
-        return retryingFindElement(By.cssSelector("#co_searchDetailSliderLink"));
+        return waitForExpectedElement(By.cssSelector("#co_searchDetailSliderLink"),8);
     }
 
     /**
@@ -467,7 +467,7 @@ public class SearchResultsPage extends AbstractPage {
      */
     public boolean isDidYouMeanTextDisplayed() {
         try {
-            return retryingFindElement(By.className("co_search_didyoumean")).isDisplayed();
+            return waitForExpectedElement(By.className("co_search_didyoumean"),8).isDisplayed();
         } catch (PageOperationException pe) {
             LOG.info("context", pe);
             return false;
@@ -507,7 +507,7 @@ public class SearchResultsPage extends AbstractPage {
      * this is the whats market link on search results
      */
     public WebElement whatsMarketLink() {
-        return retryingFindElement(By.xpath("//div[@id='contentTypeTabsPlcuk']//li/a[contains(text(),'Market UK')]"));
+        return waitForExpectedElement(By.xpath("//div[@id='contentTypeTabsPlcuk']//li/a[contains(text(),'Market UK')]"),8);
     }
 
     /**
@@ -558,7 +558,7 @@ public class SearchResultsPage extends AbstractPage {
      * this is the search result total at the top of the search results page
      */
     public WebElement searchResultsTotal(String number) {
-        return retryingFindElement(By.xpath("//ol[@id='co_navigationPages']/li/span[contains(text(),'" + number + "')]"));
+        return waitForExpectedElement(By.xpath("//ol[@id='co_navigationPages']/li/span[contains(text(),'" + number + "')]"),8);
     }
 
     /**
@@ -572,28 +572,28 @@ public class SearchResultsPage extends AbstractPage {
      * this is the arrow associated with the envelope icon for selecting delivery options
      */
     public WebElement deliveryDropButton() {
-        return retryingFindElement(By.xpath("//li[contains(@id,'deliveryWidget')]//span[contains(@class,'icon_down_blue_arrow')]"));
+        return waitForExpectedElement(By.xpath("//li[contains(@id,'deliveryWidget')]//span[contains(@class,'icon_down_blue_arrow')]"),8);
     }
 
     /**
      * this is the email option accessed via the dropdown above
      */
     public WebElement emailDeliveryOption() {
-        return retryingFindElement(By.id("deliveryLinkRow1Email"));
+        return waitForExpectedElement(By.id("deliveryLinkRow1Email"),8);
     }
 
     /**
      * this is the print option accessed via the dropdown above
      */
     public WebElement printDeliveryOption() {
-        return retryingFindElement(By.id("deliveryRow1Print"));
+        return waitForExpectedElement(By.id("deliveryRow1Print"),8);
     }
 
     /**
      * this is the download option accessed via the dropdown above
      */
     public WebElement downloadDeliveryOption() {
-        return retryingFindElement(By.id("deliveryRow1Download"));
+        return waitForExpectedElement(By.id("deliveryRow1Download"),8);
     }
 
     public boolean isDeliveryDropButtonPresent() {
@@ -702,11 +702,11 @@ public class SearchResultsPage extends AbstractPage {
 	}
 
     public WebElement saveToFolder() {
-        return waitForExpectedElement(By.xpath("(//*[@id='co_saveToWidget' or @id='saveToFolder']//a)[1]"));
+        return waitForExpectedElement(By.xpath("(//*[@id='co_saveToWidget' or @id='saveToFolder']//a)[1]"),10);
     }
 
     public WebElement folderingPopupMessage() {
-        return waitForExpectedElement(By.xpath("//*[@class='co_foldering_popupMessageContainer']//*[@class='co_infoBox_message']"));
+        return waitForExpectedElement(By.xpath("//*[@class='co_foldering_popupMessageContainer']//*[@class='co_infoBox_message']"),10);
     }
 
     /**
@@ -749,7 +749,7 @@ public class SearchResultsPage extends AbstractPage {
     public List<String> getAllResultsTitle() {
         List<String> list = new ArrayList<String>();
         try {
-            for (WebElement searchResult : retryingFindElements(By.cssSelector("a[id^='cobalt_result_knowhow_title']"))) {
+            for (WebElement searchResult : waitForExpectedElements(By.cssSelector("a[id^='cobalt_result_knowhow_title']"),8)) {
                 list.add(searchResult.getText());
             }
         } catch (PageOperationException te) {
@@ -779,7 +779,7 @@ public class SearchResultsPage extends AbstractPage {
      * @param resultItemTitle
      */
     public void clickOnResultItemToOpenInPLCWindow(String resultItemTitle) {
-        retryingFindElement(By.xpath(".//label[contains(text(),'" + resultItemTitle + "')]/../*[@class='co_searchResults_citation']/div/span/a[@target='plc_window']")).click();
+        waitForExpectedElement(By.xpath(".//label[contains(text(),'" + resultItemTitle + "')]/../*[@class='co_searchResults_citation']/div/span/a[@target='plc_window']"),8).click();
     }
 
     /**
@@ -788,7 +788,7 @@ public class SearchResultsPage extends AbstractPage {
      * @param resultIndex
      */
     public void openPLCLinkFromResultItem(String resultIndex) {
-        retryingFindElement(By.cssSelector("#cobalt_search_results_knowhowuk" + resultIndex + " a[target='plc_window']")).click();
+        waitForExpectedElement(By.cssSelector("#cobalt_search_results_knowhowuk" + resultIndex + " a[target='plc_window']"),8).click();
     }
 
     /**
@@ -852,7 +852,7 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the download delivery icon on the search results page
      */
     public WebElement downloadDeliveryIcon() {
-        return retryingFindElement(By.xpath("//a[@id='deliveryLinkRow1Download']/span"));
+        return waitForExpectedElement(By.xpath("//a[@id='deliveryLinkRow1Download']/span"),8);
     }
 
     /**
@@ -873,7 +873,7 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the download delivery pop up with the heading Download Documents
      */
     public WebElement downloadDocumentsPopUp() {
-        return retryingFindElement(By.xpath("//div[@id='co_deliveryLightbox']/div[1]//h3[contains(text(),'Download Documents')]"));
+        return waitForExpectedElement(By.xpath("//div[@id='co_deliveryLightbox']/div[1]//h3[contains(text(),'Download Documents')]"),8);
     }
 
     /**
@@ -908,7 +908,7 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the advanced tab on download and email delivery pop up
      */
     public WebElement advancedTab() {
-        return retryingFindElement(By.linkText("Advanced"));
+        return waitForExpectedElement(By.linkText("Advanced"),8);
     }
 
     /**
@@ -999,7 +999,7 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the term highlighting checkbox on download and email delivery pop up
      */
     public WebElement termHighlightingCheckbox() {
-        return retryingFindElement(By.id("coid_chkDdcLayoutTermHighlighting"));
+        return waitForExpectedElement(By.id("coid_chkDdcLayoutTermHighlighting"),8);
     }
 
     /**
@@ -1083,14 +1083,14 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the message displayed to the user following a successful download request
      */
     public WebElement downloadReadyMessage() {
-        return retryingFindElement(By.xpath("//div[@id='co_deliveryWaitMessageTitle'][contains(text(),'The items are ready to download')]"));
+        return waitForExpectedElement(By.xpath("//div[@id='co_deliveryWaitMessageTitle'][contains(text(),'The items are ready to download')]"),8);
     }
 
     /**
      * object representing the message displayed to the user following a successful download request
      */
     public WebElement downloadSingleDocReadyMessage() {
-        return retryingFindElement(By.xpath("//div[@id='co_headerMessage'][contains(text(),'Ready For Download')]"));
+        return waitForExpectedElement(By.xpath("//div[@id='co_headerMessage'][contains(text(),'Ready For Download')]"),8);
     }
 
     /**

@@ -146,30 +146,36 @@ Feature: [730616] FFH083 As a PPI User When I am in a document I want to have th
     | I984ef7626cf011e498db8b09b4f043e0 | Duty to give reasons | root   |
 
 
-    @wip
-      Scenario Outline:
-      And the user opens the document Pipe v Spicerhaart Estate Agents Ltd
-      And the user adds the item to the folder
-      And the user verifies that the case of Pipe  appears in the folder list as the first item
-      And the user verifies that the Content type for the case is Primary Sources
-      And the user verifies that the description of the document is “Pipe v Spicerhaart Estate Agents Ltd (t/a Haart) [2016] EWHC 61 (QB) (18 January 2016)”
-      And the user verifies the date is “18-Jan-2016”
-      And the user verifies the presence of the notation “Case Page”
-      And the user selects the history documents link
-      And the user verifies that the case of Pipe appears in the history list as the first item
-      And the user verifies that the description of the document is “Pipe v Spicerhaart Estate Agents Ltd (t/a Haart) [2016] EWHC 61 (QB) (18 January 2016)”
-      And the user verifies the date is “18-Jan-2016”
-      And the user verifies the presence of the notation “Case Page”
-      And the user selects the link to the homepage
-      And the user views the recent history widget
-      And the user verifies that the case of Pipe  appears in the recent history list as the first item
-      And the user verifies that the description of the document is “Pipe v Spicerhaart Estate Agents Ltd (t/a Haart) [2016] EWHC 61 (QB) (18 January 2016)”
-      And the user verifies the date is “18-Jan-2016”
-      And the user verifies the presence of the notation “Case Page”
-      And the user selects the link to folders
-      And the user deletes the case of Pipe from folders
-
-
+  @wip
+  Scenario Outline:
+  #This test starts by cleaning up - assuming the test could have failed on a previous run
+    Given the user clicks on 'Folders' link on the header
+    And the user deletes the document with the guid "<guid>" from the current folder if it exists
+    When the user opens document with <guid> guid
+    Then the user adds current document to the root folder
+    And the user clicks on 'Folders' link on the header
+    And the user adds the item to the folder
+    And the user verifies that the case of Pipe  appears in the folder list as the first item
+    And the user verifies that the Content type for the case is Primary Sources
+    And the user verifies that the description of the document is “Pipe v Spicerhaart Estate Agents Ltd (t/a Haart) [2016] EWHC 61 (QB) (18 January 2016)”
+    And the user verifies the date is “18-Jan-2016”
+    And the user verifies the presence of the notation “Case Page”
+    And the user selects the history documents link
+    And the user verifies that the case of Pipe appears in the history list as the first item
+    And the user verifies that the description of the document is “Pipe v Spicerhaart Estate Agents Ltd (t/a Haart) [2016] EWHC 61 (QB) (18 January 2016)”
+    And the user verifies the date is “18-Jan-2016”
+    And the user verifies the presence of the notation “Case Page”
+    And the user selects the link to the homepage
+    And the user views the recent history widget
+    And the user verifies that the case of Pipe  appears in the recent history list as the first item
+    And the user verifies that the description of the document is “Pipe v Spicerhaart Estate Agents Ltd (t/a Haart) [2016] EWHC 61 (QB) (18 January 2016)”
+    And the user verifies the date is “18-Jan-2016”
+    And the user verifies the presence of the notation “Case Page”
+    And the user selects the link to folders
+    And the user deletes the case of Pipe from folders
+  Examples:
+    | guid                              |
+    | Ieda8cc31f27711e498db8b09b4f043e0 |
 
   Scenario Outline: [785298] add glossary document to folder
     When the user is on the glossary tool page

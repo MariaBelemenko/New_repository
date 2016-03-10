@@ -150,9 +150,16 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
     public void addDocumentToFolderFromDocumentView(String folder) throws Throwable {
         documentDeliveryPage.clickOnAddToFolderLink();
         String folderName = saveToFolder(folder);
-        researchOrganizerPage.waitForPageToLoad();
         String message = searchResultsPage.folderingPopupMessage().getText();
         assertEquals("Message is incorrect", singleDocument.getTitle() + " saved to '" + folderName + "'.", message);
+    }
+
+    @And("^the user adds current document to the root folder$")
+    public void addDocumentToRootFolderFromDocumentView() throws Throwable {
+        documentDeliveryPage.clickOnAddToFolderLink();
+        saveToPopup.saveButton().click();
+        String message = searchResultsPage.folderingPopupMessage().getText();
+        assertTrue(message.contains("saved to"));
     }
 
     @And("^the user adds current document to new \"([^\"]*)\" folder with parent folder \"([^\"]*)\"$")
@@ -165,17 +172,39 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
         assertEquals("Message is incorrect", singleDocument.getTitle() + " saved to '" + folder + "'.", message);
     }
 
+    @When("^the user deletes the document with the guid \"([^\"]*)\" from the current folder$")
+    public void the_user_deletes_the_document_with_the_guid_from_the_current_folder(String documentGUID) throws Throwable {
+        try {
+            researchOrganizerPage.documentCheckbox(documentGUID).click();
+            researchOrganizerPage.deleteButton().click();
+            String message = searchResultsPage.folderingPopupMessage().getText();
+            assertTrue(message.contains(" moved to Trash. Undo"));
+        } catch (NoSuchElementException e) {
+            throw new RuntimeException("A document with GUID '" + documentGUID + " ' is not present in the current folder");
+        }
+    }
+
+    @When("^the user deletes the document with the guid \"([^\"]*)\" from the current folder if it exists$")
+    public void the_user_deletes_the_document_with_the_guid_from_the_current_folder_if_it_exist(String documentGUID) throws Throwable {
+        try {
+            researchOrganizerPage.documentCheckbox(documentGUID).click();
+            researchOrganizerPage.deleteButton().click();
+            String message = searchResultsPage.folderingPopupMessage().getText();
+            assertTrue(message.contains(" moved to Trash. Undo"));
+        } catch (Exception e) {
+        }
+
+    }
+
     @When("^the user deletes the document from \"([^\"]*)\" folder$")
     public void deleteDocument(String folder) throws Throwable {
         foldersUtils.openFolder(folder);
         researchOrganizerPage.waitForPageToLoad();
         researchOrganizerPage.documentCheckbox(singleDocument.getGuid()).click();
         researchOrganizerPage.deleteButton().click();
-        researchOrganizerPage.waitForPageToLoad();
         String message = searchResultsPage.folderingPopupMessage().getText();
         String expectedMessage = singleDocument.getTitle() + " moved to Trash. Undo";
         assertEquals("Message is incorrect", expectedMessage, message);
-        researchOrganizerPage.waitForPageToLoad();
     }
 
     @When("^the user deletes all documents from \"([^\"]*)\" folder$")
@@ -184,7 +213,6 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
         researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
         researchOrganizerPage.selectAllDocumentsCheckbox().click();
         researchOrganizerPage.deleteButton().click();
-        researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
         String message = searchResultsPage.folderingPopupMessage().getText();
         String expectedMessage = " moved to Trash. Undo";
         if (!message.contains(expectedMessage)) {

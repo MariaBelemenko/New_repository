@@ -237,8 +237,10 @@ public class WhatsMarketSearchResultsPage extends AbstractPage {
     public boolean isSearchResultDateDisplayedInExpectedFormat(String dateFormat) {
         try {
             for (WebElement element : searchResultsPage.searchResultsList()) {
-                String dateString = element.findElement(By.cssSelector("div.co_searchContent div.co_searchResults_citation span:nth-child(1)")).getText();
+                //String dateString = element.findElement(By.cssSelector("div.co_searchContent div.co_searchResults_citation span:nth-child(1)")).getText();
+                String dateString = element.findElement(By.xpath("div[contains(@class,'co_search_detailLevel')]//span[contains(.,'Published on ')]")).getText();
                 dateString = dateString.replace("Published on ","");
+                System.out.println("Result date is: " + dateString);
                 return commonMethods.isDateInValidFormat(dateString, dateFormat);
             }
         } catch (StaleElementReferenceException sle) {
