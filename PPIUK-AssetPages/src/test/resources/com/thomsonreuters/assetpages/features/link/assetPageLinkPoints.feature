@@ -1,4 +1,4 @@
-Feature: As a PL+ User I want to view links in Links according with classname and hrefAtribute
+Feature: [814994] As a PL+ User I want to view links in Links according with classname and hrefAtribute
 
   Scenario Outline: The case documents contain links in Links to this case section
     Given PL+ user is logged in

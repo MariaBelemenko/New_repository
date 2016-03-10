@@ -1,6 +1,6 @@
-Feature: As a PL+ User I want to view list of other provisions
+Feature: [816053] [820479] As a PL+ User I want to view list of other provisions
 
-  Scenario Outline: The asset page documents contain links to other provisions
+  Scenario Outline: [816053] [820479] The asset page documents contain links to other provisions
     Given PL+ user is logged in
     When the user opens document with <GUID> guid
     Then the document opens correctly

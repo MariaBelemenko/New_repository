@@ -1,9 +1,9 @@
-Feature: As a PL+ User I want to see applied css styles in asset pages
+Feature: [818592] As a PL+ User I want to see applied css styles in asset pages
 
   Background:
     Given PL+ user is logged in
 
-  Scenario Outline: The asset pages have css styles
+  Scenario Outline: [818592] The asset pages have css styles
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the bullets have "disc" style
@@ -17,7 +17,7 @@ Feature: As a PL+ User I want to see applied css styles in asset pages
     | I73bd1d085abd11e598dc8b09b4f043e0 | EUR-Lex                   |
     | I8127783d52a011e598dc8b09b4f043e0 | http://www.justice.gov.uk |
 
-  Scenario Outline: The show more link located on the right side
+  Scenario Outline: [818592] The show more link located on the right side
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the user see "Content referring to this primary source" jump link in the left hand side navigation panel
@@ -29,7 +29,7 @@ Feature: As a PL+ User I want to see applied css styles in asset pages
     | GUID                              |
     | I35a6e3dd53d011e498db8b09b4f043e0 |
 
-  Scenario Outline: The headers of section have correct font size
+  Scenario Outline: [825949] The headers of section have correct font size
     When the user opens document with <GUID> guid
     Then the document opens correctly
     And the "<header>" displayed on the document
@@ -40,7 +40,7 @@ Feature: As a PL+ User I want to see applied css styles in asset pages
     | I73bd1d085abd11e598dc8b09b4f043e0 | Content referring to this primary source |
     | I8127783d52a011e598dc8b09b4f043e0 | Links to this primary source             |
 
-  Scenario Outline: The bullets near links have correct font size
+  Scenario Outline: [825954] The bullets near links have correct font size
     When the user opens document with <GUID> guid
     Then the document opens correctly
     And near the "<reference>" bullet have "16px" font size

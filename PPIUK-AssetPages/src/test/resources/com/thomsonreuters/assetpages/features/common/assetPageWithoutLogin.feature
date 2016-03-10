@@ -1,6 +1,6 @@
-Feature: As as the user is not logged in PL+ I want to view case asset page documents and primary source document
+Feature: [805767] As as the user is not logged in PL+ I want to view case asset page documents and primary source document
 
-  Scenario Outline: The case assert documents opens without login
+  Scenario Outline: [805767] The case assert documents opens without login
     When the user opens document with <GUID> guid
     Then the document opens correctly
   Examples:

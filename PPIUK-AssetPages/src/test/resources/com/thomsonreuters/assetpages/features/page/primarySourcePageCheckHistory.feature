@@ -1,7 +1,7 @@
 @wip
-Feature: As a PL+ User I want to see that the primary source documents saves in the history
+Feature: [799682] As a PL+ User I want to see that the primary source documents saves in the history
 
-  Scenario Outline: As a PL+ User I want to see that the primary source documents saves in the history
+  Scenario Outline: [799682] As a PL+ User I want to see that the primary source documents saves in the history
     Given PL+ user is logged in
     When API cleans all folders and history and user relogs in
     And the user opens document with <GUID> guid

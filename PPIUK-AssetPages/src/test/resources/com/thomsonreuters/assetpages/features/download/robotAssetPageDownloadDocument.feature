@@ -1,12 +1,11 @@
-@wip
-Feature: As a PL+ User I want to download asset page document in different formats
-  As a PL+ User I want to download asset page document with table of content
-  As a PL+ User I want to download the asset page document and see right number of bullets
+Feature: [818357] As a PL+ User I want to download asset page document in different formats
+  [823819] As a PL+ User I want to download asset page document with table of content
+  [825581] As a PL+ User I want to download the asset page document and see right number of bullets
 
   Background:
     Given PL+ user is logged in
 
-  Scenario Outline: The user download document in different formats
+  Scenario Outline: [818357] [818350] The user download document in different formats
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the user see Download icon in delivery options in right hand side
@@ -18,7 +17,7 @@ Feature: As a PL+ User I want to download asset page document in different forma
     | I6905aae963a911e598dc8b09b4f043e0 | doc       |
     | I67915bfe63a911e598dc8b09b4f043e0 | rtf       |
 
-  Scenario Outline: The user download document include table of content
+  Scenario Outline: [823819] The user download document include table of content
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the user see "<linkInTableOfContent>" jump link in the left hand side navigation panel
@@ -32,7 +31,7 @@ Feature: As a PL+ User I want to download asset page document in different forma
     | I79546a1cc1c911e498db8b09b4f043e0 | Links to this primary source |
     | I023b5f2853d211e498db8b09b4f043e0 | Links to this primary source |
 
-  Scenario Outline: The user downloaded document contain right number of bullets
+  Scenario Outline: [825581] The user downloaded document contain right number of bullets
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the user see Download icon in delivery options in right hand side

@@ -1,6 +1,6 @@
-Feature: As a PL+ User I want to view links to�Legislation.gov.uk on the primary source page
+Feature: [789994] As a PL+ User I want to view links to�Legislation.gov.uk on the primary source page
 
-  Scenario Outline: The primary source documents contains links to�Legislation
+  Scenario Outline: [789994] The primary source documents contains links to�Legislation
     Given PL+ user is logged in
     When the user opens document with <GUID> guid
     Then the document opens correctly

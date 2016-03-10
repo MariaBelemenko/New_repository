@@ -1,6 +1,6 @@
-Feature: As a PL+ User I want to view more that 300 links in Content reffering section grouped by document type in Primary source page
+Feature: [818353] [818354] [826294] As a PL+ User I want to view more that 300 links in Content reffering section grouped by document type in Primary source page
 
-  Scenario Outline: The primary source document contain more than 300 links in Content reffering section grouped by document type
+  Scenario Outline: [818353] The primary source document contain more than 300 links in Content reffering section grouped by document type
     Given PL+ user is logged in
     When the user opens document with <GUID> guid
     Then the document opens correctly

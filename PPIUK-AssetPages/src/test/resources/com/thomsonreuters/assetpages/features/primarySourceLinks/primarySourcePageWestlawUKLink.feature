@@ -1,11 +1,11 @@
-Feature: As a PL+ User I want to view links to Westlaw UK on the primary source page
-  As a PL+ User I want to view links to Westlaw UK that lead to EU Content
+Feature: [789998] As a PL+ User I want to view links to Westlaw UK on the primary source page
+  [805772] As a PL+ User I want to view links to Westlaw UK that lead to EU Content
 
   Background:
     Given PL+ user is logged in
 
   @e2e @prod
-  Scenario Outline: The primary source documents contains  links to Westlaw UK
+  Scenario Outline: [789998] [818359] The primary source documents contains  links to Westlaw UK
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the user see link to "Westlaw UK" Westlaw UK
@@ -21,7 +21,7 @@ Feature: As a PL+ User I want to view links to Westlaw UK on the primary source 
     | I1cbdc15f53cf11e498db8b09b4f043e0 |
     | I6626330963a911e598dc8b09b4f043e0 |
 
-  Scenario Outline: The primary source documents contains  links to Westlaw UK and they lead to EU Content
+  Scenario Outline: [805772] The primary source documents contains  links to Westlaw UK and they lead to EU Content
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the user see link to "Westlaw UK" Westlaw UK

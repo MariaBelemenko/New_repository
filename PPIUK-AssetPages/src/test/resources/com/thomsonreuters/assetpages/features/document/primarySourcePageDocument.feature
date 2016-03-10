@@ -1,10 +1,10 @@
-Feature: As a PL+ User I want to see primary source document
-  As a PL+ User I want to see the primary source title
+Feature: [805771] As a PL+ User I want to see primary source document
+  [790162] As a PL+ User I want to see the primary source title
 
   Background:
     Given PL+ user is logged in
 
-  Scenario Outline: Document opens correctly
+  Scenario Outline: [805771] Document opens correctly
     When the user opens document with <GUID> guid
     Then the document opens correctly
   Examples:
@@ -15,7 +15,7 @@ Feature: As a PL+ User I want to see primary source document
     | I8127783d52a011e598dc8b09b4f043e0 |
     | I2f49c89c574211e598dc8b09b4f043e0 |
 
-  Scenario Outline: The title displayed in primary source document
+  Scenario Outline: [790162] The title displayed in primary source document
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the primary source title is displayed

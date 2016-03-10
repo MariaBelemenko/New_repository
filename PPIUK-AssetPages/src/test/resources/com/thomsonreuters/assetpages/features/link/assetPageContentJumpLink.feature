@@ -1,11 +1,11 @@
-Feature: As a PL+ User I want to select Content referring to this case link and jump to that part of the document
+Feature: [788452] [805752] [818597] As a PL+ User I want to select Content referring to this case link and jump to that part of the document
   As a PL+ User I do not want to see  Content referring to this case link and Content referring to this case link section
 
   Background:
     Given PL+ user is logged in
 
   @usmanh 
-  Scenario Outline: The case documents contain jump links in the left hand side navigation panel
+  Scenario Outline: [788452] [825918] The case documents contain jump links in the left hand side navigation panel
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then text added to the document
@@ -17,7 +17,7 @@ Feature: As a PL+ User I want to select Content referring to this case link and 
     | I984ef7606cf011e498db8b09b4f043e0 |
     | I984ef7626cf011e498db8b09b4f043e0 |
 
-  Scenario Outline: The case documents does not contain Content referring to this case link and does not contaion Content referring to this case section
+  Scenario Outline: [788452] The case documents does not contain Content referring to this case link and does not contaion Content referring to this case section
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the user does not see "Content referring to this case" jump link

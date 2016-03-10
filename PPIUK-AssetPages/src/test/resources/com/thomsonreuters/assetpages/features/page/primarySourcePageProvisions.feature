@@ -1,11 +1,11 @@
-Feature: As a PL+ User I want to view list of provisions
-  As a PL+ User I want to view specific provision coverage below other provisions
-  The other provisions section does not has co_borderTop style
+Feature: [790160] As a PL+ User I want to view list of provisions
+  [821624] As a PL+ User I want to view specific provision coverage below other provisions
+  [821896] The other provisions section does not has co_borderTop style
 
   Background:
     Given PL+ user is logged in
 
-  Scenario Outline: The case documents contain list of provisions
+  Scenario Outline: [790160] The case documents contain list of provisions
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the user sees "Specific provision coverage" Specific provision coverage
@@ -18,7 +18,7 @@ Feature: As a PL+ User I want to view list of provisions
     | I614f4589640411e598dc8b09b4f043e0 | Regulation 2, The Environmental Information Regulations 2004 |
     | I15d141d86d6f11e498db8b09b4f043e0 | Section 1, Localism Act 2011                                 |
 
-  Scenario Outline: The case documents contain specific provision coverage below other provisions
+  Scenario Outline: [821624] The case documents contain specific provision coverage below other provisions
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the user sees "To view the other provisions relating to this primary source, see:" section
@@ -33,7 +33,7 @@ Feature: As a PL+ User I want to view list of provisions
     | I06f06160659411e598dc8b09b4f043e0 | The Charities Act 2006 (Commencement No.7, Transitional and Transitory Provisions         | Paragraph 1, Schedule 2, The Charities Act 2006    |
     | Id91ef79e659711e598dc8b09b4f043e0 | The Marriage (Same Sex Couples) Act 2013                                                  | Paragraph 1, Schedule, Marriage (Same Sex Couples) |
 
-  Scenario Outline: The other provisions section does not has co_borderTop style
+  Scenario Outline: [821896] The other provisions section does not has co_borderTop style
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the user sees "To view the other provisions relating to this primary source, see:" section

@@ -1,4 +1,3 @@
-@wip
 Feature: [805839] As a PL+ User I want to view links to Westlaw UK and Bailii on downloaded from PL+ pdf document
   [798569] As a PL+ User I want to download pdf document and view Content referring to this case in downloaded document
 

@@ -1,11 +1,11 @@
-Feature: As a PL+ User I want to view the meta data relating to a case asset page
-  As a PL+ User I want does not want to see Division in case asset page
-  As a PL+ User I want does not want to see Court in case asset page
+Feature: [788462] As a PL+ User I want to view the meta data relating to a case asset page
+  [813548] As a PL+ User I want does not want to see Division in case asset page
+  [813548] As a PL+ User I want does not want to see Court in case asset page
 
   Background: 
     Given PL+ user is logged in
 
-  Scenario Outline: The case documents contain the case metadata in the right hand side of the central column
+  Scenario Outline: [788462] The case documents contain the case metadata in the right hand side of the central column
     When the user opens document with <GUID> guid
     Then the document opens correctly
     And the metadata is displayed in the right hand side of the central column
@@ -21,7 +21,7 @@ Feature: As a PL+ User I want to view the meta data relating to a case asset pag
       | I984ef7626cf011e498db8b09b4f043e0 |
       | I984ef77b6cf011e498db8b09b4f043e0 |
 
-  Scenario Outline: The case documents does not contain Division
+  Scenario Outline: [813548] The case documents does not contain Division
     When the user opens document with <GUID> guid
     Then the document opens correctly
     And the metadata is displayed in the right hand side of the central column
@@ -32,7 +32,7 @@ Feature: As a PL+ User I want to view the meta data relating to a case asset pag
       | Ieda8cc31f27711e498db8b09b4f043e0 |
       | I984f1d486cf011e498db8b09b4f043e0 |
 
-  Scenario Outline: The case documents does not contain Court
+  Scenario Outline: [813548] The case documents does not contain Court
     When the user opens document with <GUID> guid
     Then the document opens correctly
     And the metadata is displayed in the right hand side of the central column
@@ -43,7 +43,7 @@ Feature: As a PL+ User I want to view the meta data relating to a case asset pag
       | I984f1d8d6cf011e498db8b09b4f043e0 |
       | Ib96f28826cf311e498db8b09b4f043e0 |
 
-  Scenario Outline: The case documents does not contain Court
+  Scenario Outline: [816071] The case documents does not contain Court
     When the user opens document with <GUID> guid
     Then the document opens correctly
     And the metadata is displayed in the right hand side of the central column

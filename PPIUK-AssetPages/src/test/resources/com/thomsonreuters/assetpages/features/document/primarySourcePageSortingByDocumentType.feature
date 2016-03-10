@@ -1,6 +1,6 @@
-Feature: As a PL+ User I want to view sorted links by document types in primary source pages
+Feature: [818352] As a PL+ User I want to view sorted links by document types in primary source pages
 
-  Scenario Outline: The primary source document contain sorted links by document types
+  Scenario Outline: [818352] The primary source document contain sorted links by document types
     Given PL+ user is logged in
     When the user opens document with <GUID> guid
     Then the document opens correctly

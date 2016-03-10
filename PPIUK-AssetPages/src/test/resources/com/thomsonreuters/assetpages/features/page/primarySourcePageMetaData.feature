@@ -1,10 +1,10 @@
-Feature: As a PL+ User I want to see the Legislation metadata in the right hand side of the central column
-  As a PL+ User I want to see the Jurisdiction in Legislation metadata in the right hand side of the central column
+Feature: [789983] As a PL+ User I want to see the Legislation metadata in the right hand side of the central column
+  [816056] As a PL+ User I want to see the Jurisdiction in Legislation metadata in the right hand side of the central column
 
   Background:
     Given PL+ user is logged in
 
-  Scenario Outline: The primary source documents contain metadata
+  Scenario Outline: [789983] The primary source documents contain metadata
     When the user opens document with <GUID> guid
     Then the document opens correctly
     And the metadata is displayed in the right hand side of the central column
@@ -16,7 +16,7 @@ Feature: As a PL+ User I want to see the Legislation metadata in the right hand 
     | I6905ab3163a911e598dc8b09b4f043e0 |
     | I8127783d52a011e598dc8b09b4f043e0 |
 
-  Scenario Outline: The primary source documents contain jurisdiction
+  Scenario Outline: [816056] The primary source documents contain jurisdiction
     When the user opens document with <GUID> guid
     Then the document opens correctly
     And the metadata is displayed in the right hand side of the central column
@@ -25,7 +25,7 @@ Feature: As a PL+ User I want to see the Legislation metadata in the right hand 
     | GUID                              |
     | I2f49c89c574211e598dc8b09b4f043e0 |
 
-  Scenario Outline: The primary source documents contain jurisdictions
+  Scenario Outline: [820299] The primary source documents contain jurisdictions
     When the user opens document with <GUID> guid
     Then the document opens correctly
     And the metadata is displayed in the right hand side of the central column

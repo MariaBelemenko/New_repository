@@ -1,6 +1,6 @@
-Feature: As a PL+ User I want to view and hide the Table of content
+Feature: [811152] As a PL+ User I want to view and hide the Table of content
 
-  Scenario Outline: The case documents contain Table of content
+  Scenario Outline: [811152] The case documents contain Table of content
     Given PL+ user is logged in
     When the user opens document with <GUID> guid
     Then the document opens correctly

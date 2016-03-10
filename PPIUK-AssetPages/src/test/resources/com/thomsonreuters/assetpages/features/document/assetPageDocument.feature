@@ -1,10 +1,10 @@
-Feature: As a PL+ User I want to see the party names
-  As a PL+ User I want to see the case page
+Feature: [788195] As a PL+ User I want to see the party names
+  [791608] As a PL+ User I want to see the case page
 
   Background:
     Given PL+ user is logged in
 
-  Scenario Outline: The case documents contain party names
+  Scenario Outline: [788195] The case documents contain party names
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the party names are displayed
@@ -14,7 +14,7 @@ Feature: As a PL+ User I want to see the party names
     | I984f1d556cf011e498db8b09b4f043e0 |
     | I984ef7626cf011e498db8b09b4f043e0 |
 
-  Scenario Outline: The case documents contain case page
+  Scenario Outline: [791608] The case documents contain case page
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the Case page "Case page" is displayed in assert page
@@ -25,7 +25,7 @@ Feature: As a PL+ User I want to see the party names
     | I984ef7626cf011e498db8b09b4f043e0 |
 
 
-  Scenario Outline: The asset pages have correct title
+  Scenario Outline: [821567] The asset pages have correct title
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the party names are displayed

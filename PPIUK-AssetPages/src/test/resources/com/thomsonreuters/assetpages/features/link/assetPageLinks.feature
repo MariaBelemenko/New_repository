@@ -1,13 +1,13 @@
-Feature: As a PL+ User I want to view links to�Bailii on the case asset page
-  As a PL+ User I want to view links to legal updates on the case asset page
-  As a PL+ User I want to view hardcoded links on the case asset page
-  As a PL+ User I want to view celex links on the case asset page
-  As a PL+ User I want to view link to curia.europa.eu on the case asset page
+Feature: [789814] As a PL+ User I want to view links to�Bailii on the case asset page
+  [788351] As a PL+ User I want to view links to legal updates on the case asset page
+  [789815] As a PL+ User I want to view hardcoded links on the case asset page
+  [789816] As a PL+ User I want to view celex links on the case asset page
+  [816069] As a PL+ User I want to view link to curia.europa.eu on the case asset page
 
   Background:
     Given PL+ user is logged in
 
-  Scenario Outline: The case assert documents contains links to�Bailii
+  Scenario Outline: [789814] The case assert documents contains links to�Bailii
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the user see links to "Bailii" Bailii
@@ -18,7 +18,7 @@ Feature: As a PL+ User I want to view links to�Bailii on the case asset page
     | I984ef7466cf011e498db8b09b4f043e0 |
     | Ieda8cc31f27711e498db8b09b4f043e0 |
 
-  Scenario Outline: The primary source documents contains link to curia.europa.eu
+  Scenario Outline: [816069] The primary source documents contains link to curia.europa.eu
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the user sees the "curia.europa.eu" link
@@ -29,7 +29,7 @@ Feature: As a PL+ User I want to view links to�Bailii on the case asset page
     | I1d52fc53ad5511e498db8b09b4f043e0 |
 
   @e2e @prod
-  Scenario Outline: The case assert documents contains links to legal updates
+  Scenario Outline: [788351] The case assert documents contains links to legal updates
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the user see links to legal updates
@@ -40,7 +40,7 @@ Feature: As a PL+ User I want to view links to�Bailii on the case asset page
     | I984f1d8d6cf011e498db8b09b4f043e0 |
     | I984f1db76cf011e498db8b09b4f043e0 |
 
-  Scenario Outline: The case assert documents contains hardcoded links
+  Scenario Outline: [789815] The case assert documents contains hardcoded links
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the user see hardcoded "<link>" links
