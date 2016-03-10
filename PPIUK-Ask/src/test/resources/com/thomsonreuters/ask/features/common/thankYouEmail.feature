@@ -21,7 +21,7 @@ Feature: Thank You Email
     And user submits the ASK form
     And A thank you page should appear with option to close the window
     And user closes the ASK window
-    Then 'AskTestuser' should receive Thanks You email from 'info.practicallaw@thomsonreuters.com' in specified email inbox
+    Then 'AskUser2' should receive Thanks You email from 'info.practicallaw@thomsonreuters.com' in specified email inbox
 
   @manual
   Scenario: Thanks You Email
