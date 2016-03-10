@@ -22,8 +22,8 @@ Feature: [795432] Testing feature toggle
     And the user clicks Start Drafting button
     Then the user is redirected to question page for "<document>"
   Examples:
-    | practiceArea | document                                     | ref        |
-    | Employment   | Settlement agreement: employment (long form) | 3-200-3665 |
+    | practiceArea | document                                     |
+    | Employment   | Settlement agreement: employment (long form) |
 
   Scenario: Form E
     Given PL+ user is logged in with following details

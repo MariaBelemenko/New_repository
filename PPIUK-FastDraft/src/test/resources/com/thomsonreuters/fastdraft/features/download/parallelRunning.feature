@@ -4,7 +4,6 @@ Feature: [780794] FD19 Parallel Running Testing
 # When the user goes to View all FastDraft items = http://d" + System.getProperty("base.legacy.url") + "-infra.dev.practicallaw.com:8080/da/
   Scenario:
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2 |
       | routing          | FAST_DRAFT  |
       | mandatoryRouting | YES         |
     When the user goes My FastDraft

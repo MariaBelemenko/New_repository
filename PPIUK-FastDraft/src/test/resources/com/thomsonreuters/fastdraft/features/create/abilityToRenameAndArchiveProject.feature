@@ -2,9 +2,8 @@ Feature: [770615] FD12a View, Rename and Archive FastDraft Project and FastDraft
 
   Scenario:
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2 |
-      | routing          | FAST_DRAFT  |
-      | mandatoryRouting | YES         |
+      | routing          | FAST_DRAFT |
+      | mandatoryRouting | YES        |
     When the user goes My FastDraft
     Then the user is redirected to Fast Draft dashboard
     When the user deletes all Fast Draft projects
@@ -13,9 +12,8 @@ Feature: [770615] FD12a View, Rename and Archive FastDraft Project and FastDraft
 
   Scenario Outline:
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2 |
-      | routing          | FAST_DRAFT  |
-      | mandatoryRouting | YES         |
+      | routing          | FAST_DRAFT |
+      | mandatoryRouting | YES        |
     When the user goes My FastDraft
     Then the user is redirected to Fast Draft dashboard
     When creates new project "<projectType>" and "<documentType>" with project name "<projectName>" and document name "<documentName>"
@@ -52,9 +50,8 @@ Feature: [770615] FD12a View, Rename and Archive FastDraft Project and FastDraft
     And the user deletes the project "<projectNewName>"
     Then the project "<projectNewName>" is absent
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2 |
-      | routing          | FAST_DRAFT  |
-      | mandatoryRouting | YES         |
+      | routing          | FAST_DRAFT |
+      | mandatoryRouting | YES        |
     And user relogs in
   Examples:
     | projectType                         | documentType    | documentType2           | projectName | projectNewName | documentName | documentNewName | documentName2 |

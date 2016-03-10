@@ -2,9 +2,8 @@ Feature: [789826] (Testing Task Only) - Create contact and attach contact to a F
 
   Scenario:
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2 |
-      | routing          | FAST_DRAFT  |
-      | mandatoryRouting | YES         |
+      | routing          | FAST_DRAFT |
+      | mandatoryRouting | YES        |
     When the user goes My FastDraft
     Then the user is redirected to Fast Draft dashboard
     When the user deletes all Fast Draft projects
@@ -13,9 +12,8 @@ Feature: [789826] (Testing Task Only) - Create contact and attach contact to a F
 
   Scenario Outline: Create contact in Address book
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2 |
-      | routing          | FAST_DRAFT  |
-      | mandatoryRouting | YES         |
+      | routing          | FAST_DRAFT |
+      | mandatoryRouting | YES        |
     When the user goes My FastDraft
     Then the user is redirected to Fast Draft dashboard
     When the user goes Address book

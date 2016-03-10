@@ -4,9 +4,8 @@ Feature: [777181] As a PL+ "PA" user I want to upload a Form E document using a 
 # This test uses JAVA Robot, therefore it could be run locally only
   Scenario:
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2 |
-      | routing          | FAST_DRAFT  |
-      | mandatoryRouting | YES         |
+      | routing          | FAST_DRAFT |
+      | mandatoryRouting | YES        |
     When the user goes My FastDraft
     Then the user is redirected to Fast Draft dashboard
     When the user deletes all Fast Draft projects
@@ -15,9 +14,8 @@ Feature: [777181] As a PL+ "PA" user I want to upload a Form E document using a 
 
   Scenario Outline: Form E editable PDF
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2 |
-      | routing          | FAST_DRAFT  |
-      | mandatoryRouting | YES         |
+      | routing          | FAST_DRAFT |
+      | mandatoryRouting | YES        |
     When the user come back on to Home page
     And the user deletes all files with name "draft" and extension ".pdf" from Downloads
     #Upload form FD document page from FD page
@@ -90,9 +88,8 @@ Feature: [777181] As a PL+ "PA" user I want to upload a Form E document using a 
     #Delete document
     And the file should be removed
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2 |
-      | routing          | FAST_DRAFT  |
-      | mandatoryRouting | YES         |
+      | routing          | FAST_DRAFT |
+      | mandatoryRouting | YES        |
     And user relogs in
   Examples:
     | projectName  | documentName | projectName2 | documentName2 | nameField | name | newName | dayField                  | monthField                  | yearField                  |

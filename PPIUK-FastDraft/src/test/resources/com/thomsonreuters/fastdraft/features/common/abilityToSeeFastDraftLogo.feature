@@ -1,11 +1,10 @@
-Feature: [774401] FD1 As a PL+ User I want to view a list of standard documents and drafting notes and see which documents have a FD template So that I can see which documents I can draft in Fast Draft
+Feature: [774401] FD1 As a PL+ User I want toï¿½view a list ofï¿½standard documents and drafting notes and see which documents have a FD template So that I can see which documents I can draft in Fast Draft
   [774396] FD7 As a PL+ PA User I want to start drafting a Fast Draft document from PL+ So that I can save time and effort when creating a document for my client
 
   Scenario Outline:
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2 |
-      | routing          | FAST_DRAFT  |
-      | mandatoryRouting | YES         |
+      | routing          | FAST_DRAFT |
+      | mandatoryRouting | YES        |
     When the user come back on to Home page
     And the user opens 'Resources' link
     And the user opens 'Standard documents and drafting notes' link

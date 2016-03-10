@@ -3,7 +3,6 @@ Feature: [799335] Redirecting to FastDraft popup
 
   Scenario:
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2          |
       | mandatoryRouting | YES                  |
     When the user goes My FastDraft
     Then the user sees Redirecting to FastDraft popup
@@ -13,7 +12,6 @@ Feature: [799335] Redirecting to FastDraft popup
 
   Scenario: 
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2          |
       | mandatoryRouting | YES                  |
     When the user come back on to Home page
     And the user opens "Family" link
@@ -26,7 +24,6 @@ Feature: [799335] Redirecting to FastDraft popup
 
   Scenario: 
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2          |
       | mandatoryRouting | YES                  |
     When the user come back on to Home page
     And the user opens 'Resources' link
@@ -41,7 +38,6 @@ Feature: [799335] Redirecting to FastDraft popup
 
   Scenario: 
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2          |
       | mandatoryRouting | YES                  |
     When the user come back on to Home page
     And the user opens "Family" link

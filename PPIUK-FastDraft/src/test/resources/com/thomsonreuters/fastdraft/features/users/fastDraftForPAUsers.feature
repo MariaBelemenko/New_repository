@@ -1,12 +1,11 @@
 Feature: [780907] FD3 Testing FD PA Users
-[774399] FD16 Testing Link to FastDraft from PL+:  My FastDraft Dashboard
-[774396] FD7 Testing Link to FastDraft from PL+- Start Drafting
+  [774399] FD16 Testing Link to FastDraft from PL+:  My FastDraft Dashboard
+  [774396] FD7 Testing Link to FastDraft from PL+- Start Drafting
 
   Scenario:
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2 |
-      | routing          | FAST_DRAFT  |
-      | mandatoryRouting | YES         |
+      | routing          | FAST_DRAFT |
+      | mandatoryRouting | YES        |
     When the user goes My FastDraft
     Then the user is redirected to Fast Draft dashboard
     When the user deletes all Fast Draft projects
@@ -15,9 +14,8 @@ Feature: [780907] FD3 Testing FD PA Users
 
   Scenario:
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2 |
-      | routing          | FAST_DRAFT  |
-      | mandatoryRouting | YES         |
+      | routing          | FAST_DRAFT |
+      | mandatoryRouting | YES        |
     When the user goes My FastDraft
     Then the user is redirected to Fast Draft dashboard
     And current Fast Draft URL is correct
@@ -25,9 +23,8 @@ Feature: [780907] FD3 Testing FD PA Users
 
   Scenario Outline:
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2 |
-      | routing          | FAST_DRAFT  |
-      | mandatoryRouting | YES         |
+      | routing          | FAST_DRAFT |
+      | mandatoryRouting | YES        |
     When the user come back on to Home page
     And the user opens "Family" link
     And the user opens Form E page
@@ -41,9 +38,8 @@ Feature: [780907] FD3 Testing FD PA Users
 
   Scenario Outline:
     Given PL+ user is logged in with following details
-      | userName         | FDTestUser2 |
-      | routing          | FAST_DRAFT  |
-      | mandatoryRouting | YES         |
+      | routing          | FAST_DRAFT |
+      | mandatoryRouting | YES        |
     When the user come back on to Home page
     And the user opens 'Resources' link
     And the user opens 'Standard documents and drafting notes' link
