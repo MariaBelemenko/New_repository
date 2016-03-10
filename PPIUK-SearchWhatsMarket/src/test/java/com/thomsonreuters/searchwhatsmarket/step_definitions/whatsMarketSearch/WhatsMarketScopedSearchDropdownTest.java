@@ -50,11 +50,8 @@ public class WhatsMarketScopedSearchDropdownTest extends BaseStepDef {
     }
 
     @When("^has selected the link to the deal type \"([^\"]*)\"$")
-    public void hasSelectedTheLinkToTheDealType(String arg1) throws Throwable {
-        if (arg1.equals("Administrations")) {
-            whatsMarketHomePage.Administrations().click();
-        } else if (arg1.equals("Public M & A"))
-            whatsMarketHomePage.PublicMandALink().click();
+    public void hasSelectedTheLinkToTheDealType(String linkText) throws Throwable {
+        whatsMarketHomePage.dealTypeLink(linkText).click();
     }
 
     @When("^the user is able to verify that the result in position \"([^\"]*)\" has the deal type \"([^\"]*)\"$")

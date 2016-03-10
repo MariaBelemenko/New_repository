@@ -79,8 +79,8 @@ public class WhatsMarketDeliveryTest extends BaseStepDef {
     }
 
     @When("^the user selects the checkbox associated with whats market result \"([^\"]*)\"$")
-    public void theUserSelectsTheCheckboxAssociatedWithWhatsMarketResult(String arg1) throws Throwable {
-        searchResultsPage.resultCheckboxWhatsMarket(arg1).click();
+    public void theUserSelectsTheCheckboxAssociatedWithWhatsMarketResult(String resultNumber) throws Throwable {
+        searchResultsPage.resultCheckboxWhatsMarket(resultNumber).click();
     }
 
     @When("^the user selects the download delivery option$")

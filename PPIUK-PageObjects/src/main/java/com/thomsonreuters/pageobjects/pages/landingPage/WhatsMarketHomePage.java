@@ -44,7 +44,7 @@ public class WhatsMarketHomePage extends AbstractPage {
 
     public WebElement dealTypeLink(String dealtype) {
 
-        return waitForExpectedElement(By.xpath("//div[@id='coid_categoryBoxTabPanel1']//a[contains(text(),'" + dealtype + "')]"));
+        return waitForExpectedElement(By.xpath("//div[@id='coid_categoryBoxTabPanel1']//a[contains(text(),'" + dealtype + "')]"),10);
 
     }
 
