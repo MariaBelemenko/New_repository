@@ -443,14 +443,14 @@ public class SearchResultsPage extends AbstractPage {
      * this is the first terms in context paragraph or snippet
      */
     public WebElement firstSnippetPara() {
-        return waitForElementPresent(By.id("cobalt_result_knowhow_snippet_1_1"));
+        return retryingFindElement(By.id("cobalt_result_knowhow_snippet_1_1"));
     }
 
     /**
      * this is the second terms in context paragraph or snippet
      */
     public WebElement secondSnippetPara() {
-        return waitForElementPresent(By.id("cobalt_result_knowhow_snippet_1_2"));
+        return retryingFindElement(By.id("cobalt_result_knowhow_snippet_1_2"));
     }
 
     /**
