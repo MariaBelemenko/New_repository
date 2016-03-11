@@ -1,10 +1,13 @@
 Feature: Search results shown after being timed out
 
+#bug 838963 Bug [PLAU & PLUK] Search Timeout: child facets state on search page is not retained after timeout
+
+	@bug
   Scenario Outline: Checking that facets can be selected after being timed out
     Given PL+ user is logged in with routing details
       | mandatoryRouting | YES                              |
       | routing          | SPECIFIED_USER_TIMEOUT_3_MINUTES |
-      | userName         | srm_user                         |
+      | userName         | LoginUser6                         |
     When the user runs a free text cobalt search with query "taxation"
     And the user expands the know how facet "<facet1>"
     And the user expands the know how facet "<facet2>"
@@ -18,7 +21,7 @@ Feature: Search results shown after being timed out
     And the user verifies that the know how facet is selected "<facet5>"
     And the user clicks Log in button
     And a PPI user enter its username and password
-      | userName | srm_user |
+      | userName | LoginUser6 |
     And clicks on Sign in
     Then the user verifies that the know how facet is selected "<facet4>"
     Then the user verifies that the know how facet is selected "<facet5>"

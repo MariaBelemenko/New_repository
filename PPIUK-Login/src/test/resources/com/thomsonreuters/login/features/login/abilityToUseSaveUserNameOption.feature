@@ -5,7 +5,7 @@ Feature: Save username option on login
     When the user navigates to the main PLCUK page
     And the user clicks on Sign On link on the header
     When a PPI user enter its username and password
-      | userName | srm_user2 |
+      | userName | LoginUser3 |
     And user selects Save my Username checkbox
     And clicks on Sign in
     Then user logs out
@@ -17,7 +17,7 @@ Feature: Save username option on login
     When the user navigates to the main PLCUK page
     And the user clicks on Sign On link on the header
     When a PPI user enter its username and password
-      | userName | srm_user2 |
+      | userName | LoginUser3 |
     And user selects Save my Username and Password checkbox
     And clicks on Sign in
     Then user logs out

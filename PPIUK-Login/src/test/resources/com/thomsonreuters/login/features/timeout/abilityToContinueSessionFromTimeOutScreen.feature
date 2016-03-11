@@ -4,7 +4,7 @@ Feature: Continue my session from time out screen
     Given PL+ user is logged in with routing details
       | mandatoryRouting | YES                              |
       | routing          | SPECIFIED_USER_TIMEOUT_3_MINUTES |
-      | userName         | srm_user                         |
+      | userName         | LoginUser7                         |
     When he sees the timed out pop up screen
     And he clicks on the continue session button
     Then the pop up screen dissappears
