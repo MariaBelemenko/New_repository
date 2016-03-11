@@ -1,16 +1,14 @@
 Feature: Verify KnowHow delivery functionality for any resource (except std document with drafting notes)
 
-  Background:
-    Given PL+ user is logged in
-
   Scenario: Edit and Verify Email Delivery Options and send email for any resource (except std document with drafting notes) with annotations and with table of contents
+    Given PL+ user is logged in
     When user navigates directly to document with guid "I8417ae7f1cb111e38578f7ccc38dcbee"
     When user added new annotation
     And clicks on email delivery option for the document
     Then the user should be able to see Email basic tab options as follows
-      | Subject           | Best or reasonable endeavours? |
-      | Email Note        | optional notes                 |
-      | Table of Contents | Selected                       |
+      | Subject           | Practical Law - Best or reasonable endeavours? |
+      | Email Note        | optional notes                                 |
+      | Table of Contents | Selected                                       |
     And the user edits the basic email options as follows
       | To                | deliveryTests@mailinator.com  |
       | Subject           | Practical Law - Resource      |
@@ -29,6 +27,7 @@ Feature: Verify KnowHow delivery functionality for any resource (except std docu
     And an email is sent successfully by clicking on the Email button
 
   Scenario: Verify email functionality resource with no Table of contents and no annotations
+    Given PL+ user is logged in
     When user navigates directly to document with guid "Ibda335689cc011e498db8b09b4f043e0"
     And clicks on email delivery option for the document
     Then the user should be able to see Email basic tab options as follows
@@ -37,6 +36,7 @@ Feature: Verify KnowHow delivery functionality for any resource (except std docu
       | Annotations |
 
   Scenario: Verify email functionality for sending resource Only link
+    Given PL+ user is logged in
     When user navigates directly to document with guid "I8417ae7f1cb111e38578f7ccc38dcbee"
     And clicks on email delivery option for the document
     And the user selects "Resource Link Only" as email format
@@ -46,11 +46,12 @@ Feature: Verify KnowHow delivery functionality for any resource (except std docu
     And an email is sent successfully by clicking on the Email button
 
   Scenario: Verify Print Form fields and default values for any resource (except std document with drafting notes) with annotations and with table of contents
+    Given PL+ user is logged in
     When user navigates directly to document with guid "I01e8643390af11e498db8b09b4f043e0"
     And user added new annotation
     And clicks on Print delivery option for the document
     Then the user should be able to see Print basic tab options as follows
-      | Table of Contents | Selected     |
+      | Table of Contents | Selected |
     And the user clicks on Print advanced tab
     And the user should be able to see Print advanced tab options as follows
       | Expanded Margin for Notes | Not Selected |
@@ -59,6 +60,7 @@ Feature: Verify KnowHow delivery functionality for any resource (except std docu
       | Font Size                 | Normal       |
 
   Scenario: Edit Print Delivery Options and print any resource (except std document with drafting notes) with annotations and with table of contents
+    Given PL+ user is logged in
     When user navigates directly to document with guid "I01e8643390af11e498db8b09b4f043e0"
     And user added new annotation
     And clicks on Print delivery option for the document
@@ -70,6 +72,7 @@ Feature: Verify KnowHow delivery functionality for any resource (except std docu
     Then the cover page comment textbox is displayed
 
   Scenario: Verify Print Delivery Options and print any resource (except std document with drafting notes) no Table of contents and no annotations
+    Given PL+ user is logged in
     When user navigates directly to document with guid "I002dcac8a7ce11e498db8b09b4f043e0"
     And clicks on Print delivery option for the document
     Then the user should be able to see Print basic tab options as follows
@@ -78,11 +81,12 @@ Feature: Verify KnowHow delivery functionality for any resource (except std docu
       | Annotations |
 
   Scenario: Verify Download Form fields and default values for any resource (except std document with drafting notes) with annotations and with table of contents
+    Given PL+ user is logged in
     When user navigates directly to document with guid "I8417ae7f1cb111e38578f7ccc38dcbee"
     And user added new annotation
     And clicks on Download delivery option for the document
     Then the user should be able to see Download basic tab options as follows
-      | Table of Contents | Selected     |
+      | Table of Contents | Selected |
     And the user clicks on Print advanced tab
     And the user should be able to see Download advanced tab options as follows
       | Expanded Margin for Notes | Not Selected |
@@ -91,6 +95,7 @@ Feature: Verify KnowHow delivery functionality for any resource (except std docu
       | Font Size                 | Normal       |
 
   Scenario: Edit Download Delivery Options and download any resource (except std document with drafting notes) with annotations and with table of contents
+    Given PL+ user is logged in
     When user navigates directly to document with guid "I8417ae7f1cb111e38578f7ccc38dcbee"
     And user added new annotation
     And clicks on Download delivery option for the document
@@ -105,6 +110,7 @@ Feature: Verify KnowHow delivery functionality for any resource (except std docu
     Then the cover page comment textbox is displayed
 
   Scenario: Verify Download Delivery Options and download any resource (except std document with drafting notes) no Table of contents and no annotations
+    Given PL+ user is logged in
     When user navigates directly to document with guid "Ibda335689cc011e498db8b09b4f043e0"
     And clicks on Download delivery option for the document
     Then the user edits the basic download options as follows

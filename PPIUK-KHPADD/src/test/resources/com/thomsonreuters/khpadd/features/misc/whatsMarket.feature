@@ -14,7 +14,7 @@ Feature: [770676][745800] What's Market resource type configuration and also rem
     Then document title is displayed as "Creightons plc disposal of The Real Shaving Company business"
     When clicks on email delivery option for the document
     Then the user should be able to see Email basic tab options as follows
-      | Subject    | Creightons plc disposal of The Real Shaving Company business |
+      | Subject    | Practical Law - Creightons plc disposal of The Real Shaving Company business |
       | Email Note | optional notes                                                               |
     And the following options will not be displayed
       | Table of Contents |

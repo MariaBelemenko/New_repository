@@ -1,14 +1,13 @@
 Feature: [834285] Feedback form for Advanced Access & Live site
 
-  @wip
   Scenario: Verification of all the fields in the feedback form and the Feedback link on PL+
     Given PL+ user is logged in
     When user navigates directly to document with guid "Ib55549a0e83211e398db8b09b4f043e0"
     And user clicks on the Feedback link on the footer
     Then the user should see the following fields on Feedback form
-      | Feedback from | KHPadd User4                                                                    |
-      | User name     | KHPaddUser4                                                                     |
-      | Email address | KHPaddUser4@mailinator.com                                                      |
+      | Feedback from | KHPadd User4                                                   |
+      | User name     | KHPaddUser4                                                    |
+      | Email address | KHPaddUser4@mailinator.com                                     |
       | Page          | Appointment of directors - Practical Law                       |
       | URL           | /Document/Ib55549a0e83211e398db8b09b4f043e0/View/FullText.html |
     When the user updates the following fields on Feedback form

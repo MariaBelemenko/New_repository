@@ -1,4 +1,4 @@
-@e2e
+@e2e @xxxx
 Feature: Verify Meta Data and Sections of PA documents
 
   Scenario Outline: Verify practice areas documents metadata and sections of Practice Notes, Standard Docs, Standard Clauses, Checklists

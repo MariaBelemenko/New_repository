@@ -13,9 +13,8 @@ Feature: [730588, 730584] Verify Title and Related Content on the sticky bar
   Scenario: As a user scrolls to each heading, that heading will appear in the sticky bar underneath the document title
     Given PL+ user is logged in
     When user navigates directly to document with guid "I020627b21cb611e38578f7ccc38dcbee"
-    And user scroll down the resource to heading "Private company acquisitions"
     Then the document title "Financing an offer for a public company: the certain funds requirement" is displayed on the sticky bar
-    And scrolled heading "Private company acquisitions" is displayed on the sticky bar
+    And scrolled heading "Does the certain funds requirement apply to all offers under the Code?" is displayed on the sticky bar
 
   Scenario: Related Content Link on the sticky bar
     Given PL+ user is logged in

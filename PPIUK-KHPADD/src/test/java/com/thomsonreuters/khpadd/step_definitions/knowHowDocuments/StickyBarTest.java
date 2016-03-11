@@ -16,10 +16,8 @@ public class StickyBarTest extends BaseStepDef {
 
     @Then("^the document title \"(.*?)\" is displayed on the sticky bar$")
     public void theDocumentTitleIsDisplayedOnTheStickyBar(String expectedTitle) throws Throwable {
-        String actualTitle = resourcePage.titleOnStickyBar().getText().trim();
-        int endIndex = actualTitle.contains("\n") ? actualTitle.indexOf("\n") : actualTitle.length();
-        LOG.info("Heading = " + actualTitle.substring(0, endIndex).trim());
-        assertThat(actualTitle.substring(0, endIndex).trim(), Is.is(expectedTitle));
+        resourcePage.scrollDown(10);
+        resourcePage.stickyBarTitle(expectedTitle).isDisplayed();
     }
 
     @Given("^user scroll down the resource to heading \"(.*?)\"$")

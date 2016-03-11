@@ -1,19 +1,17 @@
 Feature: Verify KnowHow delivery functionality for Standard documents with drafting notes
 
-  Background:
-    Given PL+ user is logged in
-
   Scenario: Verify and Edit Email Delivery Options and send email for Standard documents with drafting notes having Annotations and Table of Contents
+    Given PL+ user is logged in
     When user navigates directly to document with guid "Ifc80a710e02811e398db8b09b4f043e0"
     And user added new annotation
     And clicks on email delivery option for the document
     Then the user should be able to see Email basic tab options as follows
-      | Subject                     | Amendment and restatement agreement |
-      | Email Note                  | optional notes                      |
-      | Document                    | Selected                            |
-      | Only Drafting Notes         | Not Selected                        |
-      | Document and Drafting Notes | Not Selected                        |
-      | Table of Contents           | Selected                            |
+      | Subject                     | Practical Law - Amendment and restatement agreement |
+      | Email Note                  | optional notes                                      |
+      | Document                    | Selected                                            |
+      | Only Drafting Notes         | Not Selected                                        |
+      | Document and Drafting Notes | Not Selected                                        |
+      | Table of Contents           | Selected                                            |
     And the user edits the basic email options as follows
       | To                | deliveryTests@mailinator.com          |
       | Subject           | Practical Law - Std document Resource |
@@ -33,6 +31,7 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
     And an email is sent successfully by clicking on the Email button
 
   Scenario: Verify email functionality for sending resource Only link
+    Given PL+ user is logged in
     When user navigates directly to document with guid "Ifc80a710e02811e398db8b09b4f043e0"
     And clicks on email delivery option for the document
     And the user selects "Resource Link Only" as email format
@@ -45,12 +44,14 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
     And an email is sent successfully by clicking on the Email button
 
   Scenario: Verify Email functionality for Standard documents with drafting notes not having Annotations and Table of Contents
+    Given PL+ user is logged in
     When user navigates directly to document with guid "I072d6d86e84211e398db8b09b4f043e0"
     And clicks on email delivery option for the document
     Then the following options will not be displayed
       | Annotations |
 
   Scenario: Verify Print Form fields and default values for Standard documents with drafting notes having Annotations and Table of Contents
+    Given PL+ user is logged in
     When user navigates directly to document with guid "Ifc80a710e02811e398db8b09b4f043e0"
     And user added new annotation
     And clicks on Print delivery option for the document
@@ -67,6 +68,7 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
       | Font Size                 | Normal       |
 
   Scenario: Edit Print Delivery Options and print Standard documents with drafting notes having Annotations and Table of Contents
+    Given PL+ user is logged in
     When user navigates directly to document with guid "Ifc80a710e02811e398db8b09b4f043e0"
     And user added new annotation
     And clicks on Print delivery option for the document
@@ -79,12 +81,14 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
     Then the cover page comment textbox is displayed
 
   Scenario: Verify Print functionality for Standard documents with drafting notes not having Annotations and Table of Contents
+    Given PL+ user is logged in
     When user navigates directly to document with guid "I072d6d86e84211e398db8b09b4f043e0"
     And clicks on Print delivery option for the document
     Then the following options will not be displayed
       | Annotations |
 
   Scenario: Verify Download Form fields and default values for Standard documents with drafting notes having Annotations and Table of Contents
+    Given PL+ user is logged in
     When user navigates directly to document with guid "Ifc80a710e02811e398db8b09b4f043e0"
     And user added new annotation
     And clicks on Download delivery option for the document
@@ -102,6 +106,7 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
       | Font Size                 | Normal       |
 
   Scenario: Edit Download Delivery Options and download Standard documents with drafting notes having Annotations and Table of Contents
+    Given PL+ user is logged in
     When user navigates directly to document with guid "Ifc80a710e02811e398db8b09b4f043e0"
     And user added new annotation
     And clicks on Download delivery option for the document
@@ -116,6 +121,7 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
     Then the cover page comment textbox is displayed
 
   Scenario: Verify Download functionality for Standard documents with drafting notes not having Annotations and Table of Contents
+    Given PL+ user is logged in
     When user navigates directly to document with guid "I072d6d86e84211e398db8b09b4f043e0"
     And clicks on Download delivery option for the document
     Then the following options will not be displayed

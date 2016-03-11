@@ -1,9 +1,7 @@
 Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of Items (Topic Page)
 
-  Background:
-    Given PL+ user is logged in
-
   Scenario: Verify the delivery icons functionality on the topic page based on editor's pick selection
+    Given PL+ user is logged in
     When the user navigates to practice area "Employment" filtered by "Contracts of employment" topic page
     When the user selects the following Editor's Picks resources
       | Employment contract for a senior employee                   |
@@ -23,6 +21,7 @@ Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of
       | Save to Folder |
 
   Scenario: Verify the delivery icons functionality on the topic page based on other resources selection
+    Given PL+ user is logged in
     When the user navigates to practice area "Employment" filtered by "Contracts of employment" topic page
     And the user selects the following Topic page resources
       | Change of control clauses |
@@ -39,7 +38,8 @@ Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of
       | Print    |
       | Download |
 
-  Scenario: (bug 833268)Verify Email functionality for List of Items delivery on topic Page using the List of items option
+  Scenario: Verify Email functionality for List of Items delivery on topic Page using the List of items option
+    Given PL+ user is logged in
     When the user navigates to practice area "Property" filtered by "Development" topic page
     Then the user is presented with a topic page with title "Development"
     When the user selects the following Editor's Picks resources
@@ -52,7 +52,7 @@ Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of
     And the user edits the basic email options as follows
       | List of Items | Selected |
     Then the user should be able to see Email basic tab options as follows
-      | Subject       | Practical Law - List of 3 results for Development |
+      | Subject       | Practical Law - List of 2 results for Development |
       | Email Note    | optional notes                                    |
       | List of Items | Selected                                          |
       | Documents     | Not Selected                                      |
@@ -77,6 +77,7 @@ Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of
     And an email with the list of resources is sent successfully by clicking on the Email button
 
   Scenario: Verify Resource Link only option is available when only one document is selected on topic page
+    Given PL+ user is logged in
     When the user navigates to practice area "Property" filtered by "Land registration" topic page
     Then the user is presented with a topic page with title "Land Registration"
     When the user selects the following Editor's Picks resources
@@ -91,6 +92,7 @@ Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of
 
   @bug
   Scenario: (bug 854990)[781128] Verify delivery of single or 2 standard documents from the Topic Page (bug 833268)
+    Given PL+ user is logged in
     When the user navigates to practice area "Corporate" filtered by "Asset acquisitions" topic page
     And clicks on the facet group "Standard Documents and Clauses"
     When the user selects the following Topic page resources
@@ -120,6 +122,7 @@ Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of
     And an email with the list of resources is sent successfully by clicking on the Email button
 
   Scenario:(bug 833268) Verify Email functionality for List of Items delivery on topic Page using the Documents option(zipped format)
+    Given PL+ user is logged in
     When the user navigates to practice area "Property" filtered by "Development" topic page
     Then the user is presented with a topic page with title "Development"
     When the user selects the following Editor's Picks resources
@@ -166,6 +169,7 @@ Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of
     And an email with the list of resources is sent successfully by clicking on the Email button
 
   Scenario: Verify Email functionality for List of Items delivery on topic Page using the Documents option(A single merged file format)
+    Given PL+ user is logged in
     When the user navigates to practice area "Property" filtered by "Development" topic page
     Then the user is presented with a topic page with title "Development"
     When the user selects the following Editor's Picks resources

@@ -18,9 +18,9 @@ Feature: [730196][764868][764877] Verify the topic page facet links, topic page 
     Then the user is presented with a topic page with title "Security and Quasi Security"
     And the facet ordering along with corresponding resource count is as follows
       | facetName                      | facetCount |
-      | View all                       | 389        |
+      | View all                       | 390        |
       | Practice Notes                 | 104        |
-      | Standard Documents and Clauses | 56         |
+      | Standard Documents and Clauses | 57         |
       | Checklists                     | 12         |
       | Trackers                       | 1          |
       | Articles                       | 107        |
