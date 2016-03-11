@@ -1,6 +1,7 @@
 package com.thomsonreuters.khpadd.step_definitions.knowHowDocuments;
 
 import com.thomsonreuters.khpadd.step_definitions.BaseStepDef;
+import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.CommonResourcePage;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -13,11 +14,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class StickyBarTest extends BaseStepDef {
 
     private KHResourcePage resourcePage = new KHResourcePage();
+    private CommonResourcePage commonResourcePage = new CommonResourcePage();
 
     @Then("^the document title \"(.*?)\" is displayed on the sticky bar$")
     public void theDocumentTitleIsDisplayedOnTheStickyBar(String expectedTitle) throws Throwable {
         resourcePage.scrollDown(10);
-        resourcePage.stickyBarTitle(expectedTitle).isDisplayed();
+        commonResourcePage.stickyBarTitle(expectedTitle).isDisplayed();
     }
 
     @Given("^user scroll down the resource to heading \"(.*?)\"$")
