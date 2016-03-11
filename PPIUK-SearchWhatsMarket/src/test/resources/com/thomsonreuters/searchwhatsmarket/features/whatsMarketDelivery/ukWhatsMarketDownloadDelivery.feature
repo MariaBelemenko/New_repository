@@ -59,7 +59,9 @@ Feature: ukWhatsMarketDownloadDelivery.feature
     And the user selects the advanced tab
     And the user verifies that the option entitled Expanded Margin for Notes is no longer present
 
+  @bug
   Scenario Outline: [747924] download list of know how search results from basic tab in list format (various document formats)
+    #869061 - REGRESSION - excel csv missing from what's market delivery options
     When the user runs a free text search for the query "contract"
     And the user selects the checkbox associated with whats market result "1"
     And the user selects the checkbox associated with whats market result "2"
