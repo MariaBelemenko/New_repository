@@ -35,6 +35,10 @@ public class CommonResourcePage extends AbstractPage {
         return waitForExpectedElement(By.cssSelector("#co_docContentHeader.is-sticky #co_docHeaderContainer .co_title"));
     }
 
+    public WebElement stickyBarTitle(String title) {
+        return findElement(By.xpath("//div[@id='co_docHeaderContainer']//h1[text()='" + title + "']"));
+    }
+
     public WebElement subSectionHeadingOnStickyBar() {
         return waitForExpectedElement(By.cssSelector("#co_docContentHeader.is-sticky #co_docHeaderContainer .co_title .subSectionTitle"));
     }
