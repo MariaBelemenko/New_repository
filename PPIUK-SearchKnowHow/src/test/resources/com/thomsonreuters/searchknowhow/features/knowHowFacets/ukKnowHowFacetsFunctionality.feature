@@ -87,41 +87,19 @@ Feature: ukKnowHowFacetsFunctionality.feature - [713885] [702173] [710581] [7286
     | taxation | Construction | Construction_Insurance |
 
   @e2e @prod
-  Scenario Outline: [710581] Verify search without modification of query discards all selected facets
-    When the user runs a free text search for the query "<query>"
+  Scenario: [710581] Verify search without/with modification of query discards all selected facets
+    When the user runs a free text search for the query "taxation"
     And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
-    And the user selects the know how "Resource Type" facet "<facet1>"
-    And the user selects the know how "Practice Area" facet "<facet2>"
-    And the user selects the know how "Jurisdiction" facet "<facet3>"
+    And the user selects the know how "Resource Type" facet "Glossary"
+    And the user selects the know how "Practice Area" facet "Employment"
+    And the user selects the know how "Jurisdiction" facet "Any UK jurisdiction"
     And the user selects the know how option to apply filters
-    Then the user verifies that know how "Resource Type" facet "<facet1>" is selected
-    And the user verifies that know how "Practice Area" facet "<facet2>" is selected
-    And the user verifies that know how "Jurisdiction" facet "<facet3>" is selected
-    When the user runs a free text search for the query "<query>"
-    Then the user verifies that know how "Resource Type" facet "<facet1>" is not selected
-    And the user verifies that know how "Practice Area" facet "<facet2>" is not selected
-    And the user verifies that know how "Jurisdiction" facet "<facet3>" is not selected
-  Examples:
-    | query    | facet1   | facet2     | facet3              |
-    | taxation | Glossary | Employment | Any UK jurisdiction |
-
-  Scenario Outline: [710581] Verify search with modification of query discards all selected facets
-    When the user runs a free text search for the query "<query>"
-    And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
-    And the user selects the know how "Resource Type" facet "<facet1>"
-    And the user selects the know how "Practice Area" facet "<facet2>"
-    And the user selects the know how "Jurisdiction" facet "<facet3>"
-    And the user selects the know how option to apply filters
-    Then the user verifies that know how "Resource Type" facet "<facet1>" is selected
-    And the user verifies that know how "Practice Area" facet "<facet2>" is selected
-    And the user verifies that know how "Jurisdiction" facet "<facet3>" is selected
-    When the user runs a free text search for the query "<query2>"
-    Then the user verifies that know how "Resource Type" facet "<facet1>" is not selected
-    And the user verifies that know how "Practice Area" facet "<facet2>" is not selected
-    And the user verifies that know how "Jurisdiction" facet "<facet3>" is not selected
-  Examples:
-    | query    | query2   | facet1   | facet2     | facet3              |
-    | taxation | contract | Glossary | Employment | Any UK jurisdiction |
+    Then the user verifies that know how "Resource Type" facet "Glossary" is selected
+    And the user verifies that know how "Practice Area" facet "Employment" is selected
+    And the user verifies that know how "Jurisdiction" facet "Any UK jurisdiction" is selected
+    And the user runs a search with below queries and verify that discards all selected facets
+    |taxation|
+    |contract|
 
   Scenario: [no applicable story] verify that when the select multiple filter mode is cancelled facets are updated straight away
     When the user runs a free text search for the query "fishing"

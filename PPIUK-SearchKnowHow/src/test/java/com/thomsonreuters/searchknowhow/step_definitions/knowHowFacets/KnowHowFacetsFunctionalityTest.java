@@ -8,6 +8,7 @@ import com.thomsonreuters.pageobjects.pages.search.SearchHomePage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.pageobjects.utils.search.SearchUtils;
 import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
+import com.thomsonreuters.searchknowhow.step_definitions.knowHowDelivery.KnowHowDeliveryTest;
 import cucumber.api.Transpose;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -16,7 +17,9 @@ import cucumber.api.java.en.When;
 import junit.framework.Assert;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -29,7 +32,7 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
     private SearchHomePage searchHomePage = new SearchHomePage();
     private SearchUtils searchUtils = new SearchUtils();
     private CasesSearchResultsPage casesSearchResultsPage = new CasesSearchResultsPage();
-
+    public Map<String,String> facetsInputMap;
     Integer[] resultArray = new Integer[10];
     private int facetsDocsCount = 0;
 
@@ -95,6 +98,21 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         Assert.assertTrue(knowHowSearchResultsPage.facetGroupHeaderJurisdiction().isDisplayed());
     }
 
+    @And("^the user runs a search with below queries and verify that discards all selected facets$")
+    public void testFacetSelectionWithMultipleSearch(List<String> queryStrings) throws Throwable {
+        KnowHowDeliveryTest knowHowDeliveryTest = new KnowHowDeliveryTest();
+
+        for (String queryString : queryStrings) {
+            knowHowDeliveryTest.theUserRunsAFreeTextSearchForTheQuery(queryString);
+
+            if (facetsInputMap != null) {
+                for (String key : facetsInputMap.keySet()) {
+                    assertFalse(knowHowSearchResultsPage.isFacetSelected(key, facetsInputMap.get(key).split("_")));
+                }
+            }
+        }
+    }
+
     @Then("^the user verifies that know how \"(.*?)\" facet \"(.*?)\" is not selected$")
     public void isFacetNotSelected(String facetType, String facet) throws Throwable {
         assertFalse(knowHowSearchResultsPage.isFacetSelected(facetType, facet.split("_")));
@@ -105,8 +123,13 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         knowHowSearchResultsPage.selectFacetCheckBox(facetType, facet.split("_"));
     }
 
+
     @Then("^the user verifies that know how \"(.*?)\" facet \"(.*?)\" is selected$")
     public void isFacetSelected(String facetType, String facet) throws Throwable {
+        if(facetsInputMap == null){
+            facetsInputMap = new HashMap<String, String>();
+        }
+        facetsInputMap.put(facetType,facet);
         assertTrue(knowHowSearchResultsPage.isFacetSelected(facetType, facet.split("_")));
     }
 

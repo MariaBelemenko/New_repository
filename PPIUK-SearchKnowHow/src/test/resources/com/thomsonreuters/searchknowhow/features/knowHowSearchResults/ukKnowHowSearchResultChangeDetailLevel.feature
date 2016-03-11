@@ -25,12 +25,12 @@ Feature: [702211][779805] ukKnowHowSearchResultChangeDetailLevelS2-90.feature
     And has selected the topic link to "Directors"
     And has selected the link to View All on the Legal Updates Widget
     Then the user can verify that search results are displayed according to detail selection
-      |LESS|
       |MOST|
       |MORE|
+      |LESS|
 
-#  Scenario:[779805] Verify default setting for more detail reflects previous user session setting for practice area legal updates
-#    Given PL+ user is logged in with following details
-#    |newSession|true|
-#    When the user runs a free text search for the query "taxation"
-#    And the user can verify that the less detail icon is displayed
+  Scenario:[779805/780171/702211] Verify default setting for more detail reflects previous user session setting for practice area legal updates
+    Given PL+ user is logged in with following details
+    |newSession|true|
+    When the user runs a free text search for the query "Corporate"
+    And the user can verify that the less detail icon is displayed

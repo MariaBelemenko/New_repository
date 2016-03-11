@@ -83,7 +83,7 @@ public class SearchFromGlobalSiteTest extends BaseStepDef {
             counter--;
         }
         while (windowCount < 2 && counter > 0);
-        for (String handle : getDriver().getWindowHandles()) {
+        for (String handle : searchResultsPage.getWindowHandles()) {
             if (!handle.equalsIgnoreCase(westlawNextWindow)) {
                 plcLegacyWindow = handle;
                 searchResultsPage.switchToWindow(handle);
