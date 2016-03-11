@@ -28,8 +28,8 @@ public class OnepassLoginUtils {
 
     protected static final Logger LOG = org.slf4j.LoggerFactory.getLogger(OnepassLoginUtils.class);
 
-    private String userName;
-    private String password;
+    private static String userName;
+    private static String password;
 
     public OnepassLoginUtils(){
      onepassLogin = new OnepassLogin();
