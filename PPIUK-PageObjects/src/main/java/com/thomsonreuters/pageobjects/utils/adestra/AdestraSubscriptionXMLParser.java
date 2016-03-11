@@ -1,18 +1,17 @@
 package com.thomsonreuters.pageobjects.utils.adestra;
 
-import org.slf4j.Logger;
-
-import org.xml.sax.Attributes;
-import org.xml.sax.SAXException;
-import org.xml.sax.helpers.DefaultHandler;
-
-import javax.annotation.PostConstruct;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.slf4j.Logger;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
 
 public class AdestraSubscriptionXMLParser extends DefaultHandler {
@@ -86,7 +85,7 @@ public class AdestraSubscriptionXMLParser extends DefaultHandler {
 			subscriptionParametersList.add(subscriptionParameters);
 		} else {
 			String elementVal = thisElement.toString();
-			if (qName.equals("pageobjects-name")) {
+			if (qName.equals("common-name")) {
 				commonName = elementVal;
 			}
 
