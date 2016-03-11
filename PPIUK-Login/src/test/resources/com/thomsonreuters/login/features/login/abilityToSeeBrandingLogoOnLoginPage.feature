@@ -1,6 +1,6 @@
-Feature: Include Practical Law Branding
+Feature: [752692] Include Practical Law Branding
 
-  Scenario: As a PPI user I want to see Practical Law Branding on the Log in screen so I know that is part of the product that I am trying to access.
+  Scenario: [752692] As a PPI user I want to see Practical Law Branding on the Log in screen so I know that is part of the product that I am trying to access.
     Given PL+ user is not logged in
     When the user navigates to the main PLCUK page
     And the user clicks on Sign On link on the header
@@ -11,7 +11,7 @@ Feature: Include Practical Law Branding
     And image "3" should lead to "http://www.serengetilaw.com/international/uk/Pages/default.aspx"
 
   @manual @wip
-  Scenario Outline: As a PPI User I want to be able to have a dedicated page to login
+  Scenario Outline: [752689] As a PPI User I want to be able to have a dedicated page to login
     Given PL+ user is not logged in
     When the user navigates to the main PLCUK page
     And the user clicks on Sign On link on the header

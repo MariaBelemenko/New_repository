@@ -1,8 +1,8 @@
-Feature: Enable option for Super Remember Me in PL+.
+Feature: [752718] Enable option for Super Remember Me in PL+.
 
   #do not remove this tag! this is to delete SRM option after test
   @RemoveSRMOptionUK @e2e
-  Scenario: Checking Remember me function is working
+  Scenario: [752718] SRM user can login back from logout page
     Given PL+ user is not logged in
     When the user navigates to the main PLCUK page
     Given a username/password user in the login screen
@@ -18,7 +18,7 @@ Feature: Enable option for Super Remember Me in PL+.
 
   #do not remove this tag! this is to delete SRM option after test
   @RemoveSRMOptionUK
-  Scenario: Checking Remember me function is working when selecting, on this computer
+  Scenario: [752718] SRM user can automatically login after he logged out
     Given PL+ user is not logged in
     When the user navigates to the main PLCUK page
     Given a username/password user in the login screen

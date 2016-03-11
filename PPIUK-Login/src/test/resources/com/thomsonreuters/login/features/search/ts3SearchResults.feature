@@ -1,9 +1,9 @@
-Feature: Search results shown after being timed out
+Feature: [798001] Search results shown after being timed out
 
 #bug 838963 Bug [PLAU & PLUK] Search Timeout: child facets state on search page is not retained after timeout
 
 	@bug
-  Scenario Outline: Checking that facets can be selected after being timed out
+  Scenario Outline: [798001] Checking that facets can be selected after being timed out
     Given PL+ user is logged in with routing details
       | mandatoryRouting | YES                              |
       | routing          | SPECIFIED_USER_TIMEOUT_3_MINUTES |
@@ -30,7 +30,7 @@ Feature: Search results shown after being timed out
     | Corporate | Acquisitions | China | Finance | Acquisitions: Auctions |
 
   @manual @wip @bug
-  Scenario:
+  Scenario: [798001] Checking that facets can be selected after being timed out for SRM user
     Given a PPI user authenticated through username and password who previously selected the Super remember me cookie option
     And he is viewing the results of a search in PL+
     And have some facets applied

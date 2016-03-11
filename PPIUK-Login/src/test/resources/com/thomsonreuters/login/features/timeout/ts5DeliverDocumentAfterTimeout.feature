@@ -1,7 +1,7 @@
 @manual
-Feature: Deliver document after timeout
+Feature: [797999] Deliver document after timeout
 
-  Scenario:
+  Scenario: [797999] Deliver document after timeout with SRM enabled
     Given a PPI user authenticated through username and password who previously selected the Super remember me cookie option
     And he is viewing a document in PL+
     When he leaves the computer unattended for more than 1 hour
@@ -10,7 +10,7 @@ Feature: Deliver document after timeout
     Then he does not notice anything about the reauthentication process
     And the delivery widget is still present.
 
-  Scenario:
+  Scenario: [797999] Deliver document after timeout and login back
     Given a PPI user authenticated through username and password who previously opted out  the Super remember me cookie option
     And have more than one tab opened
     And he is viewing a document in PL+

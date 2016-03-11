@@ -1,7 +1,7 @@
 @e2e @prod
-Feature: User completely logged out when clicked on log out
+Feature: [752698] User completely logged out when clicked on log out
 
-  Scenario: As a PPI user I want to be completely logged out from that product when I clicked log out so I can log in as a different user.
+  Scenario: [752698] As a PPI user I want to be completely logged out from that product when I clicked log out so I can log in as a different user.
     Given PL+ user is logged in with following details
       | userName | srm_user               |
       | role     | SUPER_REMEMBER_ME_USER |

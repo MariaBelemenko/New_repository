@@ -1,6 +1,6 @@
-Feature: Have a log in page (Academic Login excluded)
+Feature: [752689] Have a log in page (Academic Login excluded)
 
-  Scenario: As a PPI User I want to be able to have a dedicated page to login
+  Scenario: [752689] As a PPI User I want to be able to have a dedicated page to login
     Given PL+ user is not logged in
     When the user navigates to the main PLCUK page
     And the user clicks on Sign On link on the header

@@ -1,6 +1,6 @@
-Feature: Continue my session from time out screen
+Feature: [752988] Continue my session from time out screen
 
-  Scenario: A not selected previously Super Remember me cookie should allow me to continue my session from the time out screen message
+  Scenario: [752988] A not selected previously Super Remember me cookie should allow me to continue my session from the time out screen message
     Given PL+ user is logged in with routing details
       | mandatoryRouting | YES                              |
       | routing          | SPECIFIED_USER_TIMEOUT_3_MINUTES |
