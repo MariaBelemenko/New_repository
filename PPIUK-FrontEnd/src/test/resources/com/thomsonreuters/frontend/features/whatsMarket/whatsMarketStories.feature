@@ -3,7 +3,7 @@ Feature: As a user, I want to see the What's Market page as in Design Document
   Scenario: User verifies Whats Market Search Structure
     Given PL+ user is logged in
     And the user navigates to "What's Market" resource Page
-    When the user searches for term "contract"
+    When the user searches for term "Poundland"
     Then user should see the following metadata in the deal "Poundland Group plc placing"
       | Resource Title    | Value                          |
       | Announcement Date | 24 Sep 2015                    |
