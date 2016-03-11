@@ -1,4 +1,4 @@
-Feature: As a not logged user
+Feature: [851088] As a not logged user
   I want to navigate to China page and see the featured content links
 
   Background:

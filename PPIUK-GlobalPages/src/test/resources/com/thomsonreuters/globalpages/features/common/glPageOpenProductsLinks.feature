@@ -1,4 +1,4 @@
-Feature: As a PL+ User, I can open US, UK, Canada, China, Global links from country toggle dropdown
+Feature: [838713][838719][834291] As a PL+ User, I can open US, UK, Canada, China, Global links from country toggle dropdown
 
   Scenario Outline: verify that logged user can open US, UK, Canada, China, Global links open in the same window
     Given PL+ user is logged in

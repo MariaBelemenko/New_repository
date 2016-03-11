@@ -1,4 +1,4 @@
-Feature: As a PL+ User, I am able to navigates to topic page
+Feature: [841507] As a PL+ User, I am able to navigates to topic page
 
   Background:
     Given PL+ user is logged in

@@ -1,4 +1,4 @@
-Feature: As a User, I want to see header and footer on the Global and China search results page
+Feature: [838717][839947] As a User, I want to see header and footer on the Global and China search results page
 
   Scenario Outline: As a user, I want to see a header and footer on the Global and China search results page
     Given PL+ user is logged in

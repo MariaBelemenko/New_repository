@@ -1,4 +1,4 @@
-Feature: As a PL+ User, I want to view the right number of Jurisdictions and open More Jurisdictions in the China search page
+Feature: [839947] As a PL+ User, I want to view the right number of Jurisdictions and open More Jurisdictions in the China search page
 
   Scenario: User checks the right number of Jurisdictions in the china search page
     Given PL+ user is logged in

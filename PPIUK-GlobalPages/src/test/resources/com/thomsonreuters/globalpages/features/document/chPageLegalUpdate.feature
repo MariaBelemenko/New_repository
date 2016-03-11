@@ -1,4 +1,4 @@
-Feature: As a PL+ User, when I am on the global page I want to be able to view a list of the latest legal updates that have been coded to the international jurisdiction
+Feature: [839955] As a PL+ User, when I am on the global page I want to be able to view a list of the latest legal updates that have been coded to the international jurisdiction
 
   Background:
     Given PL+ user is logged in with following details

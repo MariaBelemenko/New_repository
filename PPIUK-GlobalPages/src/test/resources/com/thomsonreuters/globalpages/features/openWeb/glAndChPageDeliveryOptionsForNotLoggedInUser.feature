@@ -1,4 +1,4 @@
-Feature: Not logged in user cannot use delivery options in China and Global page
+Feature: [838717][839947] Not logged in user cannot use delivery options in China and Global page
 
   Background:
     Given PL+ user is not logged in

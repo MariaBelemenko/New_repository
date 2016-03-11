@@ -1,6 +1,6 @@
-Feature: As a PL+ User, I want to view the right number of Jurisdictions and open More Jurisdictions
+Feature: [838717] [839960] As a PL+ User, I want to view the right number of Jurisdictions and open More Jurisdictions
 
-  Scenario: User checks the right number of Jurisdictions
+  Scenario: [838717] [839960] User checks the right number of Jurisdictions
     Given PL+ user is logged in
     When the user navigates to the Global Page
     Then the Global Page opens correctly

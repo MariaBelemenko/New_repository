@@ -1,4 +1,4 @@
-Feature: As a PL+ User, I am able to browse by Related jurisdictions links in the China category page
+Feature: [851088] As a PL+ User, I am able to browse by Related jurisdictions links in the China category page
 
   Scenario Outline: verify the related jurisdictions links in the China category page
     Given PL+ user is logged in

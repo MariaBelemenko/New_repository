@@ -1,4 +1,4 @@
-Feature: As a not logged user, I want to navigate to Canada, China, Global, US resources
+Feature: [845124][838713][848244] As a not logged user, I want to navigate to Canada, China, Global, US resources
 
   Background:
     Given PL+ user is not logged in
@@ -16,7 +16,7 @@ Feature: As a not logged user, I want to navigate to Canada, China, Global, US r
     | Canada | ca.practicallaw.com                                             |
     | Global | thomsonreuters.com/Browse/Home/Global                           |
 
-  Scenario Outline: verify that not logget user can open Canada, China, Global, US links in the International subscriptions section open in the same window
+  Scenario Outline: [845124] verify that not logget user can open Canada, China, Global, US links in the International subscriptions section open in the same window
     When the user selects "International" tab and clicks on "<link>" link in "International subscriptions" section
     Then the user is taken to the "<webSite>" web site in the same window and tab
   Examples:

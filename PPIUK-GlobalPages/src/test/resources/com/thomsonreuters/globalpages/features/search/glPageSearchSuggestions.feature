@@ -1,4 +1,4 @@
-Feature: As a PL+ User when I enter 3+ charatcers into the search field on the global page, a list of suggested terms is suggested to me
+Feature: [839937] As a PL+ User when I enter 3+ charatcers into the search field on the global page, a list of suggested terms is suggested to me
 
   Background:
     Given PL+ user is logged in

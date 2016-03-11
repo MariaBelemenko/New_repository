@@ -1,7 +1,7 @@
-Feature: As a PL+ User, I want to to view the page number for my search result
+Feature: [838717][839947] As a PL+ User, I want to to view the page number for my search result
   So that I can identify which page of search results I am viewing
 
-  Scenario Outline: User checks the Rer page appearance for Global page and China search results
+  Scenario Outline: [838717][839947] User checks the Rer page appearance for Global page and China search results
     Given PL+ user is not logged in
     And the user navigates to the main PLCUK page
     When the user selects "International" tab and clicks on "<link>" link in "International subscriptions" section

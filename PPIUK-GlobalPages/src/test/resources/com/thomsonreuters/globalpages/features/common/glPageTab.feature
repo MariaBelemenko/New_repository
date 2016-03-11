@@ -1,4 +1,4 @@
-Feature: As a User
+Feature: [839949] As a User
   I can navigate to the global page and browse by resource types
 
   Background:

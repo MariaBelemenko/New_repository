@@ -1,4 +1,4 @@
-Feature: As a PL+ User I can run search and the list of Jurisdictions is displayed in the left hand side
+Feature: [839960] As a PL+ User I can run search and the list of Jurisdictions is displayed in the left hand side
 
   Scenario: The user can run a search and results include list of Jurisdictions in the left hand side
     Given PL+ user is logged in

@@ -1,4 +1,4 @@
-Feature: As a PL+ User, I want to download the document from global search result page
+Feature: [838717][839947] As a PL+ User, I want to download the document from global search result page
   Delivery of global search results in list and full text format via print, save and email
 
   Background:
@@ -6,7 +6,7 @@ Feature: As a PL+ User, I want to download the document from global search resul
       | userName | GlPage_UKUS1 |
     And the user navigates to the main PLCUK page
 
-  Scenario Outline: Basic search result download delivery pop up - layout
+  Scenario Outline: [838717] [839947] Basic search result download delivery pop up - layout
     When the user selects "International" tab and clicks on "<link>" link in "International subscriptions" section
     Then the Category Page opens correctly
     When the user runs a free text search for the query "tax"
@@ -38,7 +38,7 @@ Feature: As a PL+ User, I want to download the document from global search resul
     | Global |
     | China  |
 
-  Scenario Outline: Basic search result email delivery pop up - layout
+  Scenario Outline: [838717][839947] Basic search result email delivery pop up - layout
     When the user selects "International" tab and clicks on "<link>" link in "International subscriptions" section
     Then the Category Page opens correctly
     When the user runs a free text search for the query "contract"
@@ -74,7 +74,7 @@ Feature: As a PL+ User, I want to download the document from global search resul
     | Global |
     | China  |
 
-  Scenario Outline: Basic search result print delivery pop up - layout
+  Scenario Outline: [838717][839947] Basic search result print delivery pop up - layout
     When the user selects "International" tab and clicks on "<link>" link in "International subscriptions" section
     Then the Category Page opens correctly
     When the user runs a free text search for the query "contract"
@@ -96,7 +96,7 @@ Feature: As a PL+ User, I want to download the document from global search resul
     | Global |
     | China  |
 
-  Scenario Outline: The user download pdf document in pdf extention
+  Scenario Outline: [838717] The user download pdf document in pdf extention
     When the user selects "International" tab and clicks on "<link>" link in "International subscriptions" section
     Then the Category Page opens correctly
     When the user runs a free text search for the query "contract of sale"

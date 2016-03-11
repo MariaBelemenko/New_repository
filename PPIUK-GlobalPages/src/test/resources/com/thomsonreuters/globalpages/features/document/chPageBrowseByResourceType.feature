@@ -1,4 +1,4 @@
-Feature: As a PL+ User, I am able to browse the content by resource type
+Feature: [839958] As a PL+ User, I am able to browse the content by resource type
 
   Background:
     Given PL+ user is logged in

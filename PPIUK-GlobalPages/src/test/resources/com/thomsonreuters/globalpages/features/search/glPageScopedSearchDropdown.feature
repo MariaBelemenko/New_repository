@@ -1,4 +1,4 @@
-Feature: As a PL+ User, I am able to search for an individual country instead , rather than all content
+Feature: [839420] As a PL+ User, I am able to search for an individual country instead , rather than all content
 
   Background:
     Given PL+ user is logged in

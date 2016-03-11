@@ -1,4 +1,4 @@
-Feature: As a not logged user
+Feature: [851088] As a not logged user
   I want to navigate to Global page and see Country Q&A comparison tool
 
   Scenario: Verify Country Q&A comparison tool

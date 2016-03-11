@@ -1,4 +1,4 @@
-Feature: As a PL+ User, I am able to over-ride the default scoping in China page
+Feature: [839944] [843637] As a PL+ User, I am able to over-ride the default scoping in China page
 
   Scenario Outline: verify the scop search drop down
     Given PL+ user is logged in with following details

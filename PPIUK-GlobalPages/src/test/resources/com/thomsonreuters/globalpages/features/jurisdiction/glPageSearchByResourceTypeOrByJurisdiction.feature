@@ -1,4 +1,4 @@
-Feature: As a PL+ User I can refine my search results by Resource Type and or Jurisdiction
+Feature: [839936] As a PL+ User I can refine my search results by Resource Type and or Jurisdiction
 
   Background:
     Given PL+ user is logged in

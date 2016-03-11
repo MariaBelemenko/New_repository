@@ -1,8 +1,8 @@
 @wip
-Feature: As a PL+ User, I want to sort my search results by relevancy, date and Title [A-Z]
+Feature: [838717][839947] As a PL+ User, I want to sort my search results by relevancy, date and Title [A-Z]
   So that I can view the list of search results in my preferred order
 
-  Scenario Outline: Verify sort results by date. Verify that the user is able to sort search results by relevancy
+  Scenario Outline: [838717][839947] Verify sort results by date. Verify that the user is able to sort search results by relevancy
     Given PL+ user is logged in
     When the user selects "International" tab and clicks on "<link>" link in "International subscriptions" section
     Then the Category Page opens correctly

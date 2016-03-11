@@ -1,10 +1,10 @@
-Feature: As a PL+ User, I want to to view the pagination of my search result
+Feature: [838717][839947] As a PL+ User, I want to to view the pagination of my search result
   So that I can identify which page of search results I am viewing
 
   Background:
     Given PL+ user is logged in
 
-  Scenario Outline: User checks the Pagination of GP and China search results.
+  Scenario Outline: [838717][839947] User checks the Pagination of GP and China search results.
     When the user selects "International" tab and clicks on "<link>" link in "International subscriptions" section
     Then the Category Page opens correctly
     When the user runs a free text search for the query "tax"
@@ -20,7 +20,7 @@ Feature: As a PL+ User, I want to to view the pagination of my search result
     | Global |
     | China  |
 
-  Scenario: User checks the first and last page in Pagination of GP search results.
+  Scenario: [838717] User checks the first and last page in Pagination of GP search results.
     When the user selects "International" tab and clicks on "Global" link in "International subscriptions" section
     Then the Category Page opens correctly
     When the user runs a free text search for the query "tax"

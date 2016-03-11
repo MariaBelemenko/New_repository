@@ -1,7 +1,7 @@
 @wip
-Feature: As a user I am authenticated into PLUS using a Transfer Token and am not dependent upon a OnePass cookie
+Feature: [838727][838102] As a user I am authenticated into PLUS using a Transfer Token and am not dependent upon a OnePass cookie
 
-  Scenario: Verify that user has the abitity to login PLSU automatically
+  Scenario: [838727] Verify that user has the abitity to login PLSU automatically
     Given PL+ user is logged in
     When the user navigates to the main PLCUK page
     When the user selects "International" tab and clicks on "US" link in "International subscriptions" section
