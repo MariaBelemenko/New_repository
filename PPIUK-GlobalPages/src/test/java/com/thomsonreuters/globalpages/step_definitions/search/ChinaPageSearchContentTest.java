@@ -30,6 +30,7 @@ public class ChinaPageSearchContentTest extends BaseStepDef {
 
     @When("^the user selects \"(.*?)\" tab$")
     public void theUserSelectsTab(String tab) throws Throwable {
+    	globalCategoryPage.waitForPageToLoad();
         homePage.specificTab(tab).click();
     }
 

@@ -29,10 +29,12 @@ Feature: [839937] As a PL+ User when I enter 3+ charatcers into the search field
     | character | term      |
     | tag       | TAG ALONG |
 
+
   Scenario Outline: The user verifies that all search results contain the search term
     When the user runs a free text search for the query "<term>"
+    And the user verifies that the term "<term>" appears in the search box
     When the user can select the option to show more detail
     Then the returned results contain the search "<term>"
   Examples:
     | term |
-    | tag  |
+    | tax  |

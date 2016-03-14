@@ -507,7 +507,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
      * This is the title of the know how search result in position X
      */
     public WebElement knowHowSearchResultTitle(String result) {
-        return waitForExpectedElement(By.id("cobalt_result_knowhow_title" + result));
+        return retryingFindElement(By.id("cobalt_result_knowhow_title" + result));
     }
 
     /**

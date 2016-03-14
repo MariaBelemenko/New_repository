@@ -150,6 +150,7 @@ public class ChinaPageTopicTest extends BaseStepDef {
 
     @Then("^the user can open the first know how search result \"(.*)\"$")
     public void theUserCanOpenTheFirstKnowHowSearchResult(String arg1) throws Throwable {
+    	chinaCategoryPage.waitForPageToLoad();
         knowHowSearchResultsPage.knowHowSearchResultTitle(arg1).click();
     }
 

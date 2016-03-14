@@ -3,7 +3,8 @@ Feature: [851088] As a not logged user
 
   Background:
     Given PL+ user is not logged in
-    And the user navigates to the main PLCUK page
+    When the user navigates to the main PLCUK page
+    Then the user clicks on "Close" link
 
   Scenario Outline: verify featured content links
     When the user selects "International" tab and clicks on "China" link in "International subscriptions" section

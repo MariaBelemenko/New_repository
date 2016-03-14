@@ -567,6 +567,7 @@ public class AssetPageUtils {
             assetDocumentPage.switchToWindow(winHandle);
             i++;
         }
+        LOG.info("number of opened tubs: " + i);
         return i == numberOfOpenedTubs;
     }
 

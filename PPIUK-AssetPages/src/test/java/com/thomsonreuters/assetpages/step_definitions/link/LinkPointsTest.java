@@ -1,16 +1,20 @@
 package com.thomsonreuters.assetpages.step_definitions.link;
 
+import static org.junit.Assert.assertTrue;
+
 import com.thomsonreuters.assetpages.step_definitions.BaseStepDef;
+import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.PrimarySourceDocumentPage;
 import com.thomsonreuters.pageobjects.utils.plPlusResearchDocDisplay.AssetPageUtils;
-import cucumber.api.java.en.Then;
 
-import static org.junit.Assert.assertTrue;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 public class LinkPointsTest extends BaseStepDef {
 
     private PrimarySourceDocumentPage primarySourceDocumentPage = new PrimarySourceDocumentPage();
     private AssetPageUtils assetPageUtils = new AssetPageUtils();
+    private CommonMethods commonMethods = new CommonMethods();
 
     @Then("^the document contain \"(.*?)\" links$")
     public void theDocumentContainLinks(String linkText) throws Throwable {
@@ -29,6 +33,12 @@ public class LinkPointsTest extends BaseStepDef {
     public void theUserSeesTheLink(String linkText) throws Throwable {
         assertTrue("The user doesn't see Link",
                 primarySourceDocumentPage.isElementDisplayed(primarySourceDocumentPage.linkInPrimarySource(linkText)));
+    }
+    
+    @When("^the user clicks on \"([^\"]*)\" link$")
+    public void theUserClicksOnLink(String link) throws Throwable {
+    	primarySourceDocumentPage.waitForPageToLoad();
+    	commonMethods.clickLink(link);
     }
 
 }

@@ -49,6 +49,7 @@ public class PrimarySourcePgLegGovUKLinkTest extends BaseStepDef {
 
     @Then("^the number of open tabs equals \"(.*?)\"$")
     public void theNumberOfOpenTabsEquals(String numberOfOpenedTubs) throws Throwable {
+    	primarySourceDocumentPage.waitForPageToLoad();
         assertTrue("Incorrect number of opened tubs",
                 assetPageUtils.isTheNumberOfOpenedTubsEqueals(Integer.parseInt(numberOfOpenedTubs)));
     }
