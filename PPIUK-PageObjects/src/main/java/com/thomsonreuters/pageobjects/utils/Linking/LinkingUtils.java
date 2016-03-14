@@ -220,7 +220,7 @@ public class LinkingUtils extends DefaultHandler {
         return sb.toString();
     }
 
-    private Set<Cookie> removeCookiesFrom(Set<Cookie> sourceCookies, Set<Cookie> cookiesToRemove) {
+    public Set<Cookie> removeCookiesFrom(Set<Cookie> sourceCookies, Set<Cookie> cookiesToRemove) {
         if (cookiesToRemove == null) {
             return sourceCookies;
         }
