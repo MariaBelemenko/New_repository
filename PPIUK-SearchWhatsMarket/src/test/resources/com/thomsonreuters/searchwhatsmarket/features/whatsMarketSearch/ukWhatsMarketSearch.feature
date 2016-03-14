@@ -20,7 +20,6 @@ Feature: ukWhatsMarketSearch.feature - [702213][702225][731586][702218][702219]
   Scenario:[702225] WM search results are returned on the WM Search Result page then by default 5 facets are displayed per facet type with an option to see more
     And has selected the link to the What's Market homepage
     When the user runs a free text search for the query "taxation"
-    And the user pauses for "3" seconds
     And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
     #the test below covers expansion and collapse of facets - see code
     Then the user is able to verify that the facets by default 5 facets are displayed/expanded per facet type with an option to see more

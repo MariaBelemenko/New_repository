@@ -104,7 +104,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
      * This is an object representing the Apply Filters button
      */
     public WebElement applyFiltersButton() {
-        return retryingFindElement(By.linkText("Apply filters"));
+        return waitForExpectedElement(By.linkText("Apply filters"),8);
     }
 
     /**
@@ -232,7 +232,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
      * This is the dropdown to select search results per page
      */
     public WebElement resultDropdown() {
-        return retryingFindElement(By.id("coid_search_pagination_size"));
+        return waitForExpectedElement(By.id("coid_search_pagination_size"),8);
     }
 
     /**
@@ -244,7 +244,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
      */
     public boolean isFacetDisplayed(String facetGroup, String... facetNames) {
         try {
-            return retryingFindElement(By.xpath(String.format(generateFacetXpath(facetGroup, facetNames).toString(), facetNames[facetNames.length - 1]))).isDisplayed();
+            return waitForExpectedElement(By.xpath(String.format(generateFacetXpath(facetGroup, facetNames).toString(), facetNames[facetNames.length - 1])),8).isDisplayed();
         } catch (PageOperationException p) {
             LOG.info("context", p);
             return false;
@@ -272,7 +272,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
         String tempStr = "/label[text()='";
         try {
             for (int i = 0; i < facetNames.length - 1; i++) {
-                WebElement checkbox = retryingFindElement(By.xpath(xpath + tempStr + facetNames[i] + "']/../a"));
+                WebElement checkbox = waitForExpectedElement(By.xpath(xpath + tempStr + facetNames[i] + "']/../a"),8);
                 if (checkbox.getAttribute("class").equals("co_facet_expand")) {
                     checkbox.click();
                 }
@@ -306,7 +306,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
      */
     public boolean isParentHasAtLeastOneChildFacet(String facetGroup, String[] facetNames) {
         try {
-            return retryingFindElement(By.xpath(String.format(generateFacetXpath(facetGroup, facetNames).toString() + "/../div/ul", facetNames[facetNames.length - 1]))).isDisplayed();
+            return waitForExpectedElement(By.xpath(String.format(generateFacetXpath(facetGroup, facetNames).toString() + "/../div/ul", facetNames[facetNames.length - 1])),8).isDisplayed();
         } catch (PageOperationException p) {
             LOG.info("context", p);
             return false;
@@ -380,7 +380,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
             xpath = getFacetTypeXpath(facetType);
             if (!StringUtils.isEmpty(parentFacetNames)) {
                 for (int i = 0; i < parentFacetNames.length; i++) {
-                    WebElement checkbox = retryingFindElement(By.xpath(xpath + "/label[text()='" + parentFacetNames[i].trim() + "']/../a"));
+                    WebElement checkbox = waitForExpectedElement(By.xpath(xpath + "/label[text()='" + parentFacetNames[i].trim() + "']/../a"),8);
                     if (checkbox.getAttribute("class").equals("co_facet_expand")) {
                         checkbox.click();
                     }
@@ -388,13 +388,13 @@ public class KnowHowSearchResultsPage extends AbstractPage {
                 }
             }
             xpath.append("/label");
-            for (WebElement element : retryingFindElements(By.xpath(xpath.toString()))) {
+            for (WebElement element : waitForExpectedElements(By.xpath(xpath.toString()),8)) {
                 list.add(element.getText());
             }
             if (!StringUtils.isEmpty(parentFacetNames)) {
                 xpath = getFacetTypeXpath(facetType);
                 for (int i = 0; i < parentFacetNames.length; i++) {
-                    WebElement checkbox = retryingFindElement(By.xpath(xpath + "/label[text()='" + parentFacetNames[i].trim() + "']/../a"));
+                    WebElement checkbox = waitForExpectedElement(By.xpath(xpath + "/label[text()='" + parentFacetNames[i].trim() + "']/../a"),8);
                     if (!checkbox.getAttribute("class").equals("co_facet_expand")) {
                         checkbox.click();
                     }
@@ -421,7 +421,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
             } catch (TimeoutException | NoSuchElementException te) {
                 LOG.info("context", te);
             }
-            //retryingFindElements(By.cssSelector("h3 a"));
+            //waitForExpectedElements(By.cssSelector("h3 a"));
         } catch (PageOperationException | TimeoutException  te) {
             throw new PageOperationException("Exceeded time to locate the results on search results page" + te.getMessage());
         }
@@ -434,7 +434,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
     private WebElement getCheckBox(String facetGroup, String[] facetNames) {
         try {
             String xpath = "/../input";
-            return retryingFindElement(By.xpath(String.format(generateFacetXpath(facetGroup, facetNames).toString(), facetNames[facetNames.length - 1]) + xpath));
+            return waitForExpectedElement(By.xpath(String.format(generateFacetXpath(facetGroup, facetNames).toString(), facetNames[facetNames.length - 1]) + xpath),8);
         } catch (TimeoutException te) {
             LOG.info("context", te);
             throw new PageOperationException("Exceeded time to find the facet count for : ");
@@ -464,7 +464,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
      */
     public boolean isMoreOptionAvailableForKnowHowJurisdiction() {
         try {
-            return retryingFindElement(By.linkText("More Jurisdictions")).isDisplayed();
+            return waitForExpectedElement(By.linkText("More Jurisdictions"),8).isDisplayed();
         } catch (PageOperationException se) {
             LOG.info("context", se);
         }
@@ -476,7 +476,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
      */
     public void clickMoreOptionOnKnowHowJurisdiction() {
         try {
-            retryingFindElement(By.linkText("More Jurisdictions")).click();
+            waitForExpectedElement(By.linkText("More Jurisdictions"),8).click();
             waitForElementVisible(By.id("co_facet_knowHowJurisdictionSummary_popup"));
         } catch (TimeoutException se) {
             LOG.info("context", se);
@@ -500,14 +500,14 @@ public class KnowHowSearchResultsPage extends AbstractPage {
      * This is the object representing the Select multiple filters button
      */
     public WebElement selectMultipleFiltersButton() {
-        return retryingFindElement(By.linkText("Select multiple filters"));
+        return waitForExpectedElement(By.linkText("Select multiple filters"),8);
     }
 
     /**
      * This is the title of the know how search result in position X
      */
     public WebElement knowHowSearchResultTitle(String result) {
-        return retryingFindElement(By.id("cobalt_result_knowhow_title" + result));
+        return waitForExpectedElement(By.id("cobalt_result_knowhow_title" + result),8);
     }
 
     /**
@@ -516,7 +516,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
      * @param resultIndex
      */
     public void clickOnResultItem(int resultIndex) {
-        retryingFindElement(By.id("cobalt_result_knowhow_title" + resultIndex)).click();
+        waitForExpectedElement(By.id("cobalt_result_knowhow_title" + resultIndex),8).click();
     }
 
     /**
@@ -527,7 +527,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
     public List<String> getSearchSuggestions() {
         List<String> list = new ArrayList<String>();
         try {
-            for (WebElement element : retryingFindElements(By.cssSelector("#searchBoxIndexSpan li"))) {
+            for (WebElement element : waitForExpectedElements(By.cssSelector("#searchBoxIndexSpan li"),8)) {
                 list.add(element.getText());
             }
             return list;
@@ -556,7 +556,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
 
     public boolean isFacetCountPresent(String count) {
         try{
-            for(WebElement element: retryingFindElements(By.xpath("//div[@id='co_narrowResultsBy']//span[@class='co_facetCount']"))){
+            for(WebElement element: waitForExpectedElements(By.xpath("//div[@id='co_narrowResultsBy']//span[@class='co_facetCount']"),8)){
                 if(element.getText().equals(count)){
                     return true;
                 }
@@ -639,7 +639,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
      */
     public boolean isNotesAddedLinkPresent(String position){
         try{
-            return retryingFindElement(By.cssSelector("#cobalt_search_results_knowHowPlc"+position+" .co_document_icon_notes>img")).isDisplayed();
+            return waitForExpectedElement(By.cssSelector("#cobalt_search_results_knowHowPlc"+position+" .co_document_icon_notes>img"),8).isDisplayed();
         }catch(PageOperationException te){}
         return false;
     }
