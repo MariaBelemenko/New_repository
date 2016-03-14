@@ -1,5 +1,5 @@
 @wip
-Feature: The ability to navigate from the legal Update widget to the email preference page
+Feature: [729278] The ability to navigate from the legal Update widget to the email preference page
 
   Scenario: Navigate from the legal Update widget to the email preference page
     Given PL+ user is logged in

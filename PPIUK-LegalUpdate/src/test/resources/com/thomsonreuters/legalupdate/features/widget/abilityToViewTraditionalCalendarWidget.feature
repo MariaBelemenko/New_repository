@@ -1,5 +1,5 @@
 @wip
-Feature: The ability to view a traditional calendar in a widget on Practice area browse page, so that I can see upcoming events
+Feature: [720475; 720496; 720509] The ability to view a traditional calendar in a widget on Practice area browse page, so that I can see upcoming events
 
   Scenario: View a traditional calendar in a widget on Practice area browse page, so that I can see upcoming events
     Given PL+ user is logged in

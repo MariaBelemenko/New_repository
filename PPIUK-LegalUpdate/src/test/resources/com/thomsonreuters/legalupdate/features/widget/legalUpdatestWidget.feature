@@ -1,4 +1,4 @@
-Feature: Ability to see last 5 legal updates on a widget with dates
+Feature: [780300;780301;780302] Ability to see last 5 legal updates on a widget with dates
 
   Scenario: See last 5 legal updates with list of LU Documents
     Given PL+ user is logged in

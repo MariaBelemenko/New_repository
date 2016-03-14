@@ -1,5 +1,5 @@
 @manual
-Feature: Legal Updates search - Sort by Relevance
+Feature: [782532] Legal Updates search - Sort by Relevance
 
   #from Beecham, Chris (Legal) <Chris.Beecham@thomsonreuters.com>
   # formula is rather involved, it is described in more detail here:

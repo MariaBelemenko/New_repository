@@ -1,5 +1,5 @@
 @wip
-Feature: Change the calendar event pop-up into a widget extension
+Feature: [747385] Change the calendar event pop-up into a widget extension
 
   Scenario: Make changes to calendar event pop-up into a widget extension
     Given PL+ user is logged in

@@ -1,5 +1,5 @@
 @wip
-Feature: Remove aggregated alert functionality from Subscription panel
+Feature: [718136] Remove aggregated alert functionality from Subscription panel
 
   Scenario: Remove aggregated alert functionality from Subscription panel
     Given PL+ user is logged in

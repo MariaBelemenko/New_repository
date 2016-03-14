@@ -1,5 +1,5 @@
 @wip
-Feature: Subscribe to content directly from a browse page,
+Feature: [704489] Subscribe to content directly from a browse page,
   so that I can subscribe without leaving the page I am viewing
 
   Background:
@@ -7,15 +7,15 @@ Feature: Subscribe to content directly from a browse page,
     Given a user is on a browse page
     When the user enters their subscription preferences menu
 
-  Scenario: Enter a custom name for my subscription, so that I can easily recognise my subscription
+  Scenario: [704490] Enter a custom name for my subscription, so that I can easily recognise my subscription
     Then the user should be presented with the default subscription name
     And should have the ability to type over the default name to enter a custom name "My New Subcription"
 
-  Scenario: Select email delivery method for my subscription, so that I can receive the without having to visit the website.
+  Scenario: [704492] Select email delivery method for my subscription, so that I can receive the without having to visit the website.
     Then the user should be presented with an option to select 'Email' delivery of content
     Then the user should be presented with an option to select 'MyUpdates' delivery of content
 
-  Scenario: Select the frequency of my email alerts
+  Scenario: [704494; 714939] Select the frequency of my email alerts
     When the user selects the email delivery method
     Then the user should have the ability to select the frequency that they would like to receive their email alerts
       | Daily       |

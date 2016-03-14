@@ -1,5 +1,5 @@
 @wip
-Feature: The ability save my subscription preferences and receive a notification that my subscription has been successful
+Feature: [706089] The ability save my subscription preferences and receive a notification that my subscription has been successful
 
   Scenario: Save my subscription preferences and receive a notification that my subscription has been successful
     Given PL+ user is logged in

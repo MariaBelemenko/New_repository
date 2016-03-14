@@ -1,4 +1,4 @@
-Feature: LU Results Facets - Pre-scoping, Sorting By Date
+Feature: [781429;779802;780163;780187;780121;780124;780149;780287;780286] LU Results Facets - Pre-scoping, Sorting By Date
 
   Scenario Outline: PA LU Results: Facets - Pre-scoping, Sorting By Date
     Given PL+ user is logged in

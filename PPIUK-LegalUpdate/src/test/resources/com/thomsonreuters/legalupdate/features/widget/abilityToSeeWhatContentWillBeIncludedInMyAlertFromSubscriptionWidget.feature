@@ -1,5 +1,5 @@
 @wip
-Feature: See what content that will be included in my alert when I enter the subscription panel from a widget,
+Feature: [719407] See what content that will be included in my alert when I enter the subscription panel from a widget,
   So I can choose wether to save or cancel the subscription
 
   Scenario: Verify what content that will be included in my alert when I enter the subscription panel from a widget

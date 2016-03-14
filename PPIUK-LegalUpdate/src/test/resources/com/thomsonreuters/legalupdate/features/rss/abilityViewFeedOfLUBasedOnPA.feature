@@ -1,4 +1,4 @@
-Feature: The ability to view a feed of legal updates based on Practice Area
+Feature: [692720] The ability to view a feed of legal updates based on Practice Area
 
   Scenario Outline: View a feed of legal updates based on Practice Area
     Given PL+ user is logged in

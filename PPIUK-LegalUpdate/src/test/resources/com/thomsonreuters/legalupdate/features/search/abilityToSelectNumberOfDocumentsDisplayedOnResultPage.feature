@@ -1,4 +1,4 @@
-Feature: The user should have the ability to select the number of Legal update documents are displayed on their results list.
+Feature: [713467] The user should have the ability to select the number of Legal update documents are displayed on their results list.
 
   #do not remove this tag! this is to set 20 results per page after test
   @SetDefaultNumberOfResultsPerPage

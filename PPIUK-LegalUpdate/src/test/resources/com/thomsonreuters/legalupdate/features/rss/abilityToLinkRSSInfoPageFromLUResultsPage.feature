@@ -1,4 +1,4 @@
-Feature: The ability to link to the RSS information page when I am viewing the legal updates results page
+Feature: [743716] The ability to link to the RSS information page when I am viewing the legal updates results page
 
   Scenario: Link to the RSS information page when I am viewing the legal updates results page
     Given PL+ user is logged in

@@ -1,5 +1,5 @@
 @wip
-Feature: The ability to use subscription link on header and footer to config subscription preferences
+Feature: [713462; 713410] The ability to use subscription link on header and footer to config subscription preferences
 
   Scenario Outline: Use the Subscription link on the Header and Footer so that I can configure my subscription preferences
     Given PL+ user is logged in
