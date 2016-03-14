@@ -1,13 +1,16 @@
 package com.thomsonreuters.fastdraft.step_definitions;
 
+import org.assertj.core.api.SoftAssertions;
+
+import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.fastDraft.*;
 import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.PracticalLawToolsPage;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.StandardDocumentPage;
 import com.thomsonreuters.pageobjects.utils.fastDraft.FastDraftUtils;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -24,6 +27,7 @@ public class CommonFastDraftSteps extends BaseStepDef {
     private WLNHeader wlnHeader = new WLNHeader();
     private FastDraftUtils fastDraftUtils = new FastDraftUtils();
     private PracticalLawToolsPage practicalLawToolsPage = new PracticalLawToolsPage();
+    private NavigationCobalt navigationCobalt = new NavigationCobalt();
 
     @When("^the user goes My FastDraft$")
     public void goMyFastDraft() {
@@ -102,18 +106,18 @@ public class CommonFastDraftSteps extends BaseStepDef {
         resetCurrentUser();
     }
 
-//    @Then("^Fast Draft Tools page is displayed$")
-//    public void checkToolsPageIsDisplayed() {
-//        practicalLawToolsPage.waitForPageToLoad();
-//        practicalLawToolsPage.waitForPageToLoadAndJQueryProcessing();
-//        String learnMoreLink = "/About/PracticalLawTools";
-//        String currentUrl = practicalLawToolsPage.getCurrentUrl();
-//        SoftAssertions softly = new SoftAssertions();
-//        softly.assertThat(currentUrl.contains(learnMoreLink))
-//                .overridingErrorMessage("Expected current URL contains link '" + learnMoreLink + "', current is '" + currentUrl + "'").isTrue();
-//        softly.assertThat(practicalLawToolsPage.isFastDraftTabActive()).overridingErrorMessage("Fastdraft tab is not active").isTrue();
-//        softly.assertAll();
-//    }
+    @Then("^Fast Draft Tools page is displayed$")
+    public void checkToolsPageIsDisplayed() {
+        practicalLawToolsPage.waitForPageToLoad();
+        practicalLawToolsPage.waitForPageToLoadAndJQueryProcessing();
+        String learnMoreLink = "/About/PracticalLawTools";
+        String currentUrl = practicalLawToolsPage.getCurrentUrl();
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(currentUrl.contains(learnMoreLink))
+                .overridingErrorMessage("Expected current URL contains link '" + learnMoreLink + "', current is '" + currentUrl + "'").isTrue();
+        softly.assertThat(practicalLawToolsPage.isFastDraftTabActive()).overridingErrorMessage("Fastdraft tab is not active").isTrue();
+        softly.assertAll();
+    }
 
     @Then("^the project \"([^\"]*)\" presents$")
     public void checkProjectPresents(String projectName) throws Throwable {
@@ -289,6 +293,12 @@ public class CommonFastDraftSteps extends BaseStepDef {
     @When("^the user closes Redirecting to FastDraft$")
     public void closeRedirectingToFastDraftPopup() throws Throwable {
         standardDocumentPage.closeRedirectingToFastDraftPopup().click();
+    }
+    
+    @When("^the user navigates to the main PLCUK page$")
+    public void theUserNavigatesToTheMainPLCUKPage() throws Throwable {
+        navigationCobalt.navigateToPLUKPlus();
+        navigationCobalt.waitForPageToLoad();
     }
 
 }

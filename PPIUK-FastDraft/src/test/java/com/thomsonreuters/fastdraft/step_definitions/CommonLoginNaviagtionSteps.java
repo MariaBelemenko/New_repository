@@ -379,16 +379,6 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
                     routingPage.selectDropDownByVisibleText(routingPage.wlnByPass100KAncillaryDropdown(), "Grant");
                     break;
 
-                case FAST_DRAFT_OPEN_WEB:
-                    user.setLoginRequired("NO");
-                    navigateToRoutingPage(user.getProduct());
-                    routingPage.selectDropDownByVisibleText(routingPage.skipAnonymousAuthenticationDropdown(), "False");
-                    routingPage.anonymousRegistrationKeyTextBox().sendKeys("1890639-SKKON3");
-                    routingPage.fastDraftHost().clear();
-                    routingPage.fastDraftHost().sendKeys("d" + System.getProperty("base.legacy.url") + "-infra.dev.practicallaw.com");
-                    routingPage.showFeatureSelectionsLink().click();
-                    break;
-
                 case FAST_DRAFT_IP_USERS:
                     user.setLoginRequired("NO");
                     navigateToRoutingPage(user.getProduct());
