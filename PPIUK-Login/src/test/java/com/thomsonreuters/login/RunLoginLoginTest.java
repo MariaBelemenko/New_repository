@@ -1,12 +1,11 @@
 package com.thomsonreuters.login;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.SnippetType;
-import cucumber.api.junit.Cucumber;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
-import java.util.Date;
+import cucumber.api.CucumberOptions;
+import cucumber.api.SnippetType;
+import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
@@ -25,7 +24,7 @@ public class RunLoginLoginTest {
             e.printStackTrace();
         }
         System.setProperty("username", "LoginUser3");
-		System.setProperty("password", "Password3");
+		System.setProperty("password", "Password2");
     }
 
 }
