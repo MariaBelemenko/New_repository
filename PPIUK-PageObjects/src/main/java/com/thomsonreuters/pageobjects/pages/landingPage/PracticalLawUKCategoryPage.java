@@ -3,6 +3,7 @@ package com.thomsonreuters.pageobjects.pages.landingPage;
 import com.thomsonreuters.driver.framework.AbstractPage;
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -22,7 +23,12 @@ public class PracticalLawUKCategoryPage extends AbstractPage {
     }
 
     public WebElement freeTextField() {
-        return retryingFindElement(By.id("searchInputId"));
+        return waitForExpectedElement(By.id("searchInputId"),10);
+    }
+
+    public void freeTextFieldJavaScript(String value) {
+        WebElement element = freeTextField();
+        getDriver.executeScript("arguments[0].value = '" + value + "'", element);
     }
 
     public WebElement searchButton() {

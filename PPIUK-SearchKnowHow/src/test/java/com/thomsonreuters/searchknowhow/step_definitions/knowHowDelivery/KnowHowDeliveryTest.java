@@ -33,23 +33,23 @@ public class KnowHowDeliveryTest extends BaseStepDef {
     Integer[] resultArray = new Integer[10];
 
     @When("^the user runs a free text search for the query \"(.*)\"$")
-    public void theUserRunsAFreeTextSearchForTheQuery(String query) throws Throwable {
-        Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
+    public void theUserRunsAFreeTextSearchForTheQuery(String value) throws Throwable {
+        /** Ensure the search button has rendered */
         practicalLawUKCategoryPage.searchButton().isDisplayed();
         practicalLawUKCategoryPage.freeTextField().clear();
-        //Paste the clipboard text if the query contains brackets or ampersand
-        if (query.contains("(") || query.contains(")") || query.contains("&")) {
-            StringSelection stringSelection = new StringSelection(query);
-            clpbrd.setContents(stringSelection, null);
-            practicalLawUKCategoryPage.freeTextField().sendKeys(Keys.CONTROL + "v");
+        //Use Javascript executor instead of sendkeys for characters that won't type due to a Selenium bug
+        if (value.contains("(") || value.contains(")") || value.contains("&")) {
+            practicalLawUKCategoryPage.freeTextFieldJavaScript(value);
         } else {
-            practicalLawUKCategoryPage.freeTextField().sendKeys(query);
+            practicalLawUKCategoryPage.freeTextField().sendKeys(value);
         }
+
         if (practicalLawUKCategoryPage.getClass().equals(ChromeDriver.class)) {
             pageActions.keyPress(Keys.ENTER);
         } else {
             practicalLawUKCategoryPage.searchButton().click();
         }
+        /** Wait for the results list to display */
         theUserVerifiesThatTheResultsListPageIsDisplayed();
     }
 
