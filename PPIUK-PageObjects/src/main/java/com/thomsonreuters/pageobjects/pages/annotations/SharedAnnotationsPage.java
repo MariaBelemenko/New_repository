@@ -497,7 +497,7 @@ public class SharedAnnotationsPage extends AbstractPage {
         }catch(StaleElementReferenceException sle){
             deleteAnnotation(user);
         }catch (PageOperationException te) {
-            throw new PageOperationException("Unable to select delete icon on annotations : ");
+            throw new PageOperationException("Unable to select delete icon on annotations : "+ te.getCause());
         }
     }
 
