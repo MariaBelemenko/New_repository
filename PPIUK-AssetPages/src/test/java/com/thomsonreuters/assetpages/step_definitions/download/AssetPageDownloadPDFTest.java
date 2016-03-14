@@ -2,16 +2,22 @@ package com.thomsonreuters.assetpages.step_definitions.download;
 
 import com.thomsonreuters.assetpages.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.common.WindowHandler;
+import com.thomsonreuters.pageobjects.pages.delivery.DownloadOptionsPage;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.AssetDocumentPage;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.documentNavigation.DocumentDeliveryPage;
 import com.thomsonreuters.pageobjects.rest.DeliveryBaseUtils;
+import com.thomsonreuters.pageobjects.rest.model.request.delivery.initiateDelivery.InitiateDelivery;
 import com.thomsonreuters.pageobjects.utils.plPlusResearchDocDisplay.AssetPageUtils;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import java.io.File;
 
+import org.openqa.selenium.support.ui.Select;
+
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class AssetPageDownloadPDFTest extends BaseStepDef {
@@ -21,6 +27,7 @@ public class AssetPageDownloadPDFTest extends BaseStepDef {
     private WindowHandler windowHandler = new WindowHandler();
     private DocumentDeliveryPage documentDeliveryPage = new DocumentDeliveryPage();
     private DeliveryBaseUtils deliveryBaseUtils = new DeliveryBaseUtils();
+    private DownloadOptionsPage downloadOptionsDialog = new DownloadOptionsPage();
 
     @Then("^the user see Download icon in delivery options in right hand side$")
     public void theUserSeeDownloadIconInDeliveryOptionsInRightHandSide() throws Throwable {
@@ -243,6 +250,34 @@ public class AssetPageDownloadPDFTest extends BaseStepDef {
     public void theDownloadedDocumentContainsInColor(String textToFingFromPdf, String fontColor) throws Throwable {
         assertTrue("The downloaded document doesn't contain text with " + fontColor + " font Color",
                 assetPageUtils.getColorFromPDFLinks(deliveryBaseUtils.getDownloadedDoc(), textToFingFromPdf).toString().equals(fontColor));
+    }
+    
+    @Then("^download document in \"(.*?)\" extension$")
+    public void downloadDocumentInExtension(String extension) throws Throwable {
+        selectDocFormatInDeliveryOptionsWindow(extension);
+        clickDownloadInDeliveryOptionsWindow();
+        assertDocumentReadyToDownload();
+        InitiateDelivery.DocFormat docFormat = InitiateDelivery.DocFormat.getFormatIgnoreCase(extension);
+        assertTrue("Document not downloaded",
+                deliveryBaseUtils.isDocDownloadedAndChecked(docFormat, false));
+    }
+
+    @When("^the user selects '(.*)' document format in delivery options window$")
+    public void selectDocFormatInDeliveryOptionsWindow(String format) {
+        InitiateDelivery.DocFormat docFormat = InitiateDelivery.DocFormat.getFormatIgnoreCase(format);
+        assertNotNull("Unknown document format: " + format, docFormat);
+        new Select(downloadOptionsDialog.formatDropdown()).selectByValue(docFormat.toString());
+    }
+    
+    @When("^the user clicks Download button in delivery options window$")
+    public void clickDownloadInDeliveryOptionsWindow() {
+        downloadOptionsDialog.waitForElementToBeClickable(downloadOptionsDialog.downloadButton());
+        downloadOptionsDialog.downloadButton().click();
+    }
+    
+    private void assertDocumentReadyToDownload() {
+        assertTrue("Download button absent", downloadOptionsDialog.getDownloadButtonWhenDocReadyToDownload().isDisplayed());
+        assertTrue("Document is not ready to download", downloadOptionsDialog.getReadyForDownloadWindow().getText().contains("ready"));
     }
 
 }

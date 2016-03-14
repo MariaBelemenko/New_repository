@@ -3,9 +3,14 @@ package com.thomsonreuters.globalpages.step_definitions.search;
 import com.thomsonreuters.globalpages.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.SortOptions;
+import com.thomsonreuters.pageobjects.pages.delivery.DownloadOptionsPage;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawUKCategoryPage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
+import com.thomsonreuters.pageobjects.rest.DeliveryBaseUtils;
+import com.thomsonreuters.pageobjects.rest.model.request.delivery.initiateDelivery.InitiateDelivery;
+
+import static org.junit.Assert.assertNotNull;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -13,6 +18,8 @@ import cucumber.api.java.en.When;
 import java.awt.*;
 import java.util.List;
 import java.util.Map;
+
+import org.openqa.selenium.support.ui.Select;
 
 import static org.junit.Assert.assertTrue;
 
@@ -22,6 +29,8 @@ public class SearchDeliveryTest extends BaseStepDef {
     private CommonMethods commonMethods = new CommonMethods();
     private KnowHowSearchResultsPage knowHowSearchResultsPage = new KnowHowSearchResultsPage();
     private PracticalLawUKCategoryPage practicalLawUKCategoryPage = new PracticalLawUKCategoryPage();
+    private DeliveryBaseUtils deliveryBaseUtils = new DeliveryBaseUtils();
+    private DownloadOptionsPage downloadOptionsDialog = new DownloadOptionsPage();
 
     private List<String> actualSuggestions;
     private String searchTerm;
@@ -199,5 +208,32 @@ public class SearchDeliveryTest extends BaseStepDef {
     public void theUserVerifiesThatTheTermAppearsInTheSearchBox(String arg1) throws Throwable {
         assertTrue(practicalLawUKCategoryPage.freeTextField().getAttribute("value").equals(arg1));
     }
+    
+    @Then("^download document in \"(.*?)\" extension$")
+    public void downloadDocumentInExtension(String extension) throws Throwable {
+        selectDocFormatInDeliveryOptionsWindow(extension);
+        clickDownloadInDeliveryOptionsWindow();
+        assertDocumentReadyToDownload();
+        InitiateDelivery.DocFormat docFormat = InitiateDelivery.DocFormat.getFormatIgnoreCase(extension);
+        assertTrue("Document not downloaded",
+                deliveryBaseUtils.isDocDownloadedAndChecked(docFormat, false));
+    }
 
+    @When("^the user selects '(.*)' document format in delivery options window$")
+    public void selectDocFormatInDeliveryOptionsWindow(String format) {
+        InitiateDelivery.DocFormat docFormat = InitiateDelivery.DocFormat.getFormatIgnoreCase(format);
+        assertNotNull("Unknown document format: " + format, docFormat);
+        new Select(downloadOptionsDialog.formatDropdown()).selectByValue(docFormat.toString());
+    }
+    
+    @When("^the user clicks Download button in delivery options window$")
+    public void clickDownloadInDeliveryOptionsWindow() {
+        downloadOptionsDialog.waitForElementToBeClickable(downloadOptionsDialog.downloadButton());
+        downloadOptionsDialog.downloadButton().click();
+    }
+    
+    private void assertDocumentReadyToDownload() {
+        assertTrue("Download button absent", downloadOptionsDialog.getDownloadButtonWhenDocReadyToDownload().isDisplayed());
+        assertTrue("Document is not ready to download", downloadOptionsDialog.getReadyForDownloadWindow().getText().contains("ready"));
+    }
 }

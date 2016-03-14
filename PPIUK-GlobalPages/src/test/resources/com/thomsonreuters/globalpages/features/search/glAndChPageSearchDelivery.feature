@@ -102,6 +102,8 @@ Feature: [838717][839947] As a PL+ User, I want to download the document from gl
     When the user runs a free text search for the query "contract of sale"
     And the user selects the checkbox associated with result "1"
     And the user selects the download delivery option
+    Then download document in "pdf" extension
+    
   Examples:
     | link   |
     | Global |
