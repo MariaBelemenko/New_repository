@@ -1,14 +1,5 @@
 Feature: Annotations functionality
 
-  Scenario: Delete All Annotations Present on Document
-    When PL+ user is logged in
-    Then user navigates directly to document with guid and removes annotations on it
-      | I33f1066be8cd11e398db8b09b4f043e0 |
-      | Ib5551f79e83211e398db8b09b4f043e0 |
-      | Ie6a01717518811e498db8b09b4f043e0 |
-      | I1559faa0eef211e28578f7ccc38dcbee |
-    And user logs out
-
   Scenario: Verify Annotations links on Document delivery tool bar
     When PL+ user is logged in
     When user navigates directly to document with guid "I33f1066be8cd11e398db8b09b4f043e0"
@@ -152,4 +143,13 @@ Feature: Annotations functionality
     When user added new annotation
     And the user verifies the annotations count under link
     Then Annotations count should match with annotations present on document.
+
+  Scenario: Delete All Annotations Present on Document
+    When PL+ user is logged in
+    Then user navigates directly to document with guid and removes annotations on it
+      | I33f1066be8cd11e398db8b09b4f043e0 |
+      | Ib5551f79e83211e398db8b09b4f043e0 |
+      | Ie6a01717518811e498db8b09b4f043e0 |
+#      | I1559faa0eef211e28578f7ccc38dcbee |
+    And user logs out
 

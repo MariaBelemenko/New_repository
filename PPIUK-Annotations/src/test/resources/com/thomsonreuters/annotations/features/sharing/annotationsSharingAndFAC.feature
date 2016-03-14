@@ -131,7 +131,7 @@ Feature: Annotations FAC
       | I33f12dd3e8cd11e398db8b09b4f043e0 |
       | I33f12c20e8cd11e398db8b09b4f043e0 |
       | Ie6a01717518811e498db8b09b4f043e0 |
-      | I1559faa0eef211e28578f7ccc38dcbee |
+#      | I1559faa0eef211e28578f7ccc38dcbee |
     And user logs out
     When PL+ user is logged in with following details
       | userName | librarian3 |
@@ -147,4 +147,4 @@ Feature: Annotations FAC
       | Icecfe81ee58c11e398db8b09b4f043e0 |
       | I33f12dd3e8cd11e398db8b09b4f043e0 |
       | Ie6a01717518811e498db8b09b4f043e0 |
-      | I1559faa0eef211e28578f7ccc38dcbee |
+#      | I1559faa0eef211e28578f7ccc38dcbee |
