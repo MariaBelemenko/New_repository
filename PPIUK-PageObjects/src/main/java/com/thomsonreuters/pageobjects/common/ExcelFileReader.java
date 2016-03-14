@@ -71,11 +71,10 @@ public final class ExcelFileReader {
     }
 
     private static void loadDataIntoMAP() {
-        LOG.info("excelPasswords : "+excelPasswords);
         for (int i = 0; i < 5; i++) {
             try {
                 if (excelPasswords == null || excelPasswords.size() == 0) {
-                    LOG.info("Calling Excel File Reader to read the password from excel file.");
+                    //LOG.info("Calling Excel File Reader to read the password from excel file.");
                     excelPasswords = getDataFromExcel();
                 }
                 break;
@@ -90,7 +89,7 @@ public final class ExcelFileReader {
     }
 
     public static synchronized Map<String, Row> getDataFromExcel() {
-        LOG.info("Reading passwords into map as key value pairs");
+        //LOG.info("Reading passwords into map as key value pairs");
         Map<String, Row> passwords = new HashMap<String, Row>();
         String dataFromCell = null;
         try {
