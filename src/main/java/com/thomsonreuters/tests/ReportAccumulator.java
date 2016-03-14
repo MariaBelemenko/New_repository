@@ -23,9 +23,7 @@ public final class ReportAccumulator {
     private File mergedReport = null;
 
     public static void main(String[] args) throws Throwable {
-        //setBaseFolder();
         plplusukReportsFolder = new File(plPlusUKFolder + "\\target\\cucumber-htmlreport\\");
-//        System.out.println("Main method :" + plPlusUKFolder + "\\target\\cucumber-htmlreport\\");
         ReportAccumulator reportAccumulator = new ReportAccumulator();
         reportAccumulator.startReporting();
     }
@@ -57,7 +55,7 @@ public final class ReportAccumulator {
                     try {
                         if (file.isDirectory()) {
                             if (new File(file, "index.html").exists()) {
-                                LOG.info("Module -> " + module + " ::report location ::" + moduleReportsFolder + "\\" + file.getName());
+                                //LOG.info("Module -> " + module + " ::report location ::" + moduleReportsFolder + "\\" + file.getName());
                                 mergeReports(new File(moduleReportsFolder + "\\" + file.getName()));
                             }
                         }
@@ -149,19 +147,19 @@ public final class ReportAccumulator {
                     File newNamedImageFile = new File(plplusukReportsFolder.getPath() + "\\" + uniqueImageName);
                     image.setWritable(true);
                     if (image.renameTo(newNamedImageFile)) {
-                        LOG.info("Image File renamed to avoid the file overriding issues.");
+                        //LOG.info("Image File renamed to avoid the file overriding issues.");
                         fileAsString = fileAsString.replace(curImageName, uniqueImageName);
                     } else {
-                        LOG.warn("Sorry! the image file can't be renamed" + image.getName());
+                        //LOG.warn("Sorry! the image file can't be renamed" + image.getName());
                     }
                     Thread.sleep(2000);
                 } catch (Exception e) {
-                    LOG.warn("Renaming image file is having difficulty.");
+                    //LOG.warn("Renaming image file is having difficulty.");
                 }
             }
             FileUtils.writeStringToFile(reportFile, fileAsString);
         } catch (Exception e) {
-            LOG.warn("Issue in renameEnbeddedImages()");
+            //LOG.warn("Issue in renameEnbeddedImages()");
         }
     }
 
