@@ -91,7 +91,7 @@ public class KHResourcePage extends CommonResourcePage {
     }
 
     public WebElement registerForFreeAccess() {
-        return findElement(By.linkText("Register"));
+        return findElement(By.linkText("Request a free trial"));
     }
 
     public void clickOnSuspendBillingContinueButton() {
