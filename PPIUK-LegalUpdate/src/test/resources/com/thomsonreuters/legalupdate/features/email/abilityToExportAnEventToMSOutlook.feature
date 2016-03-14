@@ -1,5 +1,5 @@
 @wip
-Feature: The ability to export an event to Microsoft outlook from the widget lightbox, so that I can integrate events with my personal calendar
+Feature: [721830] The ability to export an event to Microsoft outlook from the widget lightbox, so that I can integrate events with my personal calendar
 
   Scenario: Export an event to Microsoft outlook from the widget lightbox, so that I can integrate events with my personal calendar
     Given PL+ user is logged in

@@ -1,4 +1,4 @@
-Feature: The ability to select my email delivery options
+Feature: [718147] The ability to select my email delivery options
 
   Scenario: Select my email delivery options
     Given PL+ user is logged in

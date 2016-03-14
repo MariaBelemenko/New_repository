@@ -1,4 +1,4 @@
-Feature: The ability to use the pagination links on the Footer so that I can navigate to other pages of search results
+Feature: [713466] The ability to use the pagination links on the Footer so that I can navigate to other pages of search results
 
   Scenario Outline: I want to use the pagination links on the Footer so that I can navigate to other pages of search results
     Given PL+ user is logged in

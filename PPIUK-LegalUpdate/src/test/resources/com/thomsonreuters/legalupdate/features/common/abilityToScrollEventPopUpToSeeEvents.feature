@@ -1,5 +1,5 @@
 @manual
-Feature: The ability to scroll my event pop-up to see events that may not fit on the pop-up
+Feature: [740880]The ability to scroll my event pop-up to see events that may not fit on the pop-up
 
   Scenario: The ability to scroll my event pop-up to see events that may not fit on the pop-up
     Given PL+ user is logged in

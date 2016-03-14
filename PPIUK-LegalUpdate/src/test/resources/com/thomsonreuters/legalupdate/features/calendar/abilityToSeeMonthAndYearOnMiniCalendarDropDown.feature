@@ -1,5 +1,5 @@
 @wip
-Feature: The ability to see the month and the year on the mini-calendar drop down
+Feature: [737225] The ability to see the month and the year on the mini-calendar drop down
 
   Scenario: I want to see the month and the year on the mini-calendar drop down
     Given PL+ user is logged in

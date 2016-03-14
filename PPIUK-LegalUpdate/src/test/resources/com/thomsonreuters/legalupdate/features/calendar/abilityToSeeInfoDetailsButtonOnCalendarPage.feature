@@ -1,6 +1,5 @@
 @wip
-Feature: As a User,
-  I want the ability to select how much information I see about an event
+Feature: [741008] As a User, I want the ability to select how much information I see about an event
 
   Scenario: Ability to select how much information I see about an event
     Given PL+ user is logged in

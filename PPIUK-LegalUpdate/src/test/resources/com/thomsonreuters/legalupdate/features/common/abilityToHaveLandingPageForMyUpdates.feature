@@ -1,5 +1,5 @@
 @wip
-Feature: The ability to filter my legal updates results page by the resource type
+Feature: [719729] The ability to filter my legal updates results page by the resource type
 
   Scenario: I want to have a landing page for MyUpdates
     Given PL+ user is logged in

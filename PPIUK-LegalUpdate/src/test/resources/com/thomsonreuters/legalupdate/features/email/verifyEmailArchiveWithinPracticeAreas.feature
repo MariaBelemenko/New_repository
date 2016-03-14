@@ -1,4 +1,4 @@
-Feature:Verify email archive functionality within practice areas
+Feature: [833231] Verify email archive functionality within practice areas
 
   Scenario: Verify email archive functionality within practice areas
     Given PL+ user is logged in

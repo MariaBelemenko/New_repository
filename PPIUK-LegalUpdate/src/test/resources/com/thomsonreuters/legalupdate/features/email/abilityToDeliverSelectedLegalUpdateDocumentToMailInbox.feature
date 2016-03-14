@@ -1,4 +1,4 @@
-Feature: The ability to use Email delivery option
+Feature: [718153] The ability to use Email delivery option
 
   Scenario: Select to deliver my selected legal update(s), I want the document to be delivered to my email inbox.
     Given PL+ user is logged in

@@ -1,5 +1,5 @@
 @wip
-Feature: Event pop-up should span the width of the page
+Feature: [740847] Event pop-up should span the width of the page
 
   Scenario: Event pop-up should span the width of the page
     Given PL+ user is logged in

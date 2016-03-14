@@ -1,5 +1,5 @@
 @wip
-Feature: The ability to scroll up and down the mini calendar month selector
+Feature: [740846] The ability to scroll up and down the mini calendar month selector
 
   Scenario: Ability to scroll up and down the mini calendar month selector
     Given PL+ user is logged in

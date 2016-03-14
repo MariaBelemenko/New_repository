@@ -1,4 +1,4 @@
-Feature: The ability to use the Deliver link on the header and the footer.
+Feature: [713438] The ability to use the Deliver link on the header and the footer.
 
   Scenario: I want to use the Deliver link on the header
     Given PL+ user is logged in

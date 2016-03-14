@@ -1,5 +1,5 @@
 @wip
-Feature: Create LegalUpdate alert
+Feature: [712240]Create LegalUpdate alert
 
   Background:
     Given PL+ user is logged in with following details

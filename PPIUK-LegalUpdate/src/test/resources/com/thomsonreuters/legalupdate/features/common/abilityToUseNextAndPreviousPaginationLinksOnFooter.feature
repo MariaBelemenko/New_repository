@@ -1,4 +1,4 @@
-Feature: The ability to use the Next and previous pagination links on the Footer so that I can navigate to other pages of search results.
+Feature: [714945] The ability to use the Next and previous pagination links on the Footer so that I can navigate to other pages of search results.
 
   Scenario Outline: Use the Next and previous pagination links on the Footer so that I can navigate to other pages of search results.
     Given PL+ user is logged in

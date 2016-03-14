@@ -1,4 +1,4 @@
-Feature: The ability to use Email delivery option on the header
+Feature: [716429] The ability to use Email delivery option on the header
 
   Scenario: Use the email delivery option on the header
     Given PL+ user is logged in
