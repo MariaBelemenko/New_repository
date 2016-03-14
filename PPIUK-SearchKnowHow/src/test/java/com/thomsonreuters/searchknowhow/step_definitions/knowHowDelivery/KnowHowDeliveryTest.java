@@ -40,6 +40,7 @@ public class KnowHowDeliveryTest extends BaseStepDef {
         //Use Javascript executor instead of sendkeys for characters that won't type due to a Selenium bug
         if (value.contains("(") || value.contains(")") || value.contains("&")) {
             practicalLawUKCategoryPage.freeTextFieldJavaScript(value);
+            practicalLawUKCategoryPage.freeTextField().sendKeys(" ");
         } else {
             practicalLawUKCategoryPage.freeTextField().sendKeys(value);
         }
@@ -49,6 +50,7 @@ public class KnowHowDeliveryTest extends BaseStepDef {
         } else {
             practicalLawUKCategoryPage.searchButton().click();
         }
+
         /** Wait for the results list to display */
         theUserVerifiesThatTheResultsListPageIsDisplayed();
     }
