@@ -1,11 +1,10 @@
 package com.thomsonreuters.login;
 
-import org.junit.BeforeClass;
-import org.junit.runner.RunWith;
-
 import cucumber.api.CucumberOptions;
 import cucumber.api.SnippetType;
 import cucumber.api.junit.Cucumber;
+import org.junit.BeforeClass;
+import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(plugin = { "pretty", "html:target/cucumber-htmlreport/LoginSrmReport", "junit:target/junit_cucumber.xml",
@@ -15,6 +14,11 @@ public class RunLoginSrmTest {
 
 	@BeforeClass
 	public static void reporting() {
+        try {
+            Thread.sleep(21000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 		System.setProperty("username", "srm_user");
 		System.setProperty("password", "srmUSER2015");
 	}

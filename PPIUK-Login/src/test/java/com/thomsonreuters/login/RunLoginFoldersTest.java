@@ -17,6 +17,11 @@ public class RunLoginFoldersTest {
 
     @BeforeClass
     public static void reporting() {
+        try {
+            Thread.sleep(6000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.setProperty("username", "LoginUser2");
         System.setProperty("password", "Password1");
     }

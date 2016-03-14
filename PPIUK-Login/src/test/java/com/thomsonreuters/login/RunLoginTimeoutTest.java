@@ -17,6 +17,11 @@ public class RunLoginTimeoutTest {
 
     @BeforeClass
     public static void reporting() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         System.setProperty("username", "LoginUser7");
         System.setProperty("password", "Password1");
     }
