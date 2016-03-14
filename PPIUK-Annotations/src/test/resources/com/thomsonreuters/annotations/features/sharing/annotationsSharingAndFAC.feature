@@ -1,38 +1,6 @@
 @AnnotationsSmokeTests
 Feature: Annotations FAC
 
-  Scenario: Delete All Annotations Present on Document
-    When PL+ user is logged in
-    Then user navigates directly to document with guid and removes annotations on it
-      | I33f1066be8cd11e398db8b09b4f043e0 |
-      | Ib5551f6ce83211e398db8b09b4f043e0 |
-      | I072d4b0ee84211e398db8b09b4f043e0 |
-      | Ib9512a07ad4511e498db8b09b4f043e0 |
-      | I63cd7ba5e68b11e398db8b09b4f043e0 |
-      | I3351a7b0e8da11e398db8b09b4f043e0 |
-      | Ib5551f79e83211e398db8b09b4f043e0 |
-      | Icecfe81ee58c11e398db8b09b4f043e0 |
-      | I33f12dd3e8cd11e398db8b09b4f043e0 |
-      | I33f12c20e8cd11e398db8b09b4f043e0 |
-      | Ie6a01717518811e498db8b09b4f043e0 |
-      | I1559faa0eef211e28578f7ccc38dcbee |
-    And user logs out
-    When PL+ user is logged in with following details
-      | userName | librarian3 |
-    Then user navigates directly to document with guid and removes annotations on it
-      | I33f1066be8cd11e398db8b09b4f043e0 |
-      | I33f12c20e8cd11e398db8b09b4f043e0 |
-      | Ib5551f6ce83211e398db8b09b4f043e0 |
-      | I072d4b0ee84211e398db8b09b4f043e0 |
-      | Ib9512a07ad4511e498db8b09b4f043e0 |
-      | I63cd7ba5e68b11e398db8b09b4f043e0 |
-      | I3351a7b0e8da11e398db8b09b4f043e0 |
-      | Ib5551f79e83211e398db8b09b4f043e0 |
-      | Icecfe81ee58c11e398db8b09b4f043e0 |
-      | I33f12dd3e8cd11e398db8b09b4f043e0 |
-      | Ie6a01717518811e498db8b09b4f043e0 |
-      | I1559faa0eef211e28578f7ccc38dcbee |
-
   #Annotations Sharing Scenarios
 
   Scenario: Share annotations options
@@ -148,3 +116,35 @@ Feature: Annotations FAC
       | Default |
       | Grant   |
       | Deny    |
+
+  Scenario: Delete All Annotations Present on Document
+    When PL+ user is logged in
+    Then user navigates directly to document with guid and removes annotations on it
+      | I33f1066be8cd11e398db8b09b4f043e0 |
+      | Ib5551f6ce83211e398db8b09b4f043e0 |
+      | I072d4b0ee84211e398db8b09b4f043e0 |
+      | Ib9512a07ad4511e498db8b09b4f043e0 |
+      | I63cd7ba5e68b11e398db8b09b4f043e0 |
+      | I3351a7b0e8da11e398db8b09b4f043e0 |
+      | Ib5551f79e83211e398db8b09b4f043e0 |
+      | Icecfe81ee58c11e398db8b09b4f043e0 |
+      | I33f12dd3e8cd11e398db8b09b4f043e0 |
+      | I33f12c20e8cd11e398db8b09b4f043e0 |
+      | Ie6a01717518811e498db8b09b4f043e0 |
+      | I1559faa0eef211e28578f7ccc38dcbee |
+    And user logs out
+    When PL+ user is logged in with following details
+      | userName | librarian3 |
+    Then user navigates directly to document with guid and removes annotations on it
+      | I33f1066be8cd11e398db8b09b4f043e0 |
+      | I33f12c20e8cd11e398db8b09b4f043e0 |
+      | Ib5551f6ce83211e398db8b09b4f043e0 |
+      | I072d4b0ee84211e398db8b09b4f043e0 |
+      | Ib9512a07ad4511e498db8b09b4f043e0 |
+      | I63cd7ba5e68b11e398db8b09b4f043e0 |
+      | I3351a7b0e8da11e398db8b09b4f043e0 |
+      | Ib5551f79e83211e398db8b09b4f043e0 |
+      | Icecfe81ee58c11e398db8b09b4f043e0 |
+      | I33f12dd3e8cd11e398db8b09b4f043e0 |
+      | Ie6a01717518811e498db8b09b4f043e0 |
+      | I1559faa0eef211e28578f7ccc38dcbee |
