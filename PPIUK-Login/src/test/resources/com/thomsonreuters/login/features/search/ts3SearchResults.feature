@@ -1,6 +1,6 @@
 Feature: [798001] Search results shown after being timed out
 
-#bug 838963 Bug [PLAU & PLUK] Search Timeout: child facets state on search page is not retained after timeout
+#bug 868963 Bug [PLAU & PLUK] Search Timeout: child facets state on search page is not retained after timeout
 
 	@bug
   Scenario Outline: [798001] Checking that facets can be selected after being timed out
