@@ -6,7 +6,7 @@ Feature: [798001] Search results shown after being timed out
   Scenario Outline: [798001] Checking that facets can be selected after being timed out
     Given PL+ user is logged in with routing details
       | mandatoryRouting | YES                              |
-      | routing          | SPECIFIED_USER_TIMEOUT_5_MINUTES |
+      | routing          | SPECIFIED_USER_TIMEOUT_7_MINUTES |
       | userName         | LoginUser6                         |
     When the user runs a free text cobalt search with query "taxation"
     And the user expands the know how facet "<facet1>"
