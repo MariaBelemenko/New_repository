@@ -4,7 +4,7 @@ Feature: [752689] Save username option on login
     Given PL+ user is not logged in
     When the user navigates to the main PLCUK page
     And the user clicks on Sign On link on the header
-    When a PPI user enter its username and password
+    When the user enters his username and password on the login page
       | userName | LoginUser3 |
     And user selects Save my Username checkbox
     And clicks on Sign in
@@ -16,7 +16,7 @@ Feature: [752689] Save username option on login
     Given PL+ user is not logged in
     When the user navigates to the main PLCUK page
     And the user clicks on Sign On link on the header
-    When a PPI user enter its username and password
+    When the user enters his username and password on the login page
       | userName | LoginUser3 |
     And user selects Save my Username and Password checkbox
     And clicks on Sign in

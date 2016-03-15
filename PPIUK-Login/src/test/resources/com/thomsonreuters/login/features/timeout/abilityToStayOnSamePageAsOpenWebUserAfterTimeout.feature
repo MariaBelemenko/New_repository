@@ -9,7 +9,7 @@ Feature: [758805] Skip Open web authentication if a user is not Open web (Userna
     And he has a session open and timed out
     Then he should stay on same document page as OpenWeb user
     And the user clicks Log in button
-    When a PPI user enter its username and password
+    When the user enters his username and password on the login page
       | userName | LoginUser7  |
     And clicks on Sign in
     Then user gets redirected to the document page that he was visiting and is logged in

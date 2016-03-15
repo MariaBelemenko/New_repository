@@ -1,23 +1,18 @@
 package com.thomsonreuters.login.step_definitions.login;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import com.thomsonreuters.login.step_definitions.BaseStepDef;
-import com.thomsonreuters.pageobjects.common.ExcelFileReader;
 import com.thomsonreuters.pageobjects.pages.footer.WLNFooter;
 import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawHomepage;
 import com.thomsonreuters.pageobjects.pages.login.OnepassLogin;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.documentNavigation.DocumentNavigationPage;
-import com.thomsonreuters.pageobjects.utils.CobaltUser;
 import com.thomsonreuters.pageobjects.utils.OnepassLoginUtils;
-import cucumber.api.Transpose;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
-import java.util.List;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class AbilityToLoginTest extends BaseStepDef {
 
@@ -40,13 +35,6 @@ public class AbilityToLoginTest extends BaseStepDef {
     public void theUserClicksOnSignInWithADifferentAccountLinkOnTheHeader() throws Throwable {
         wlnHeader.signInWithDifferentAccount();
         onepassLogin.waitForPageToLoad();
-    }
-
-    @Then("^the user is able to sign in with OnePass$")
-    public void theUserIsAbleToSignInWithOnePass(@Transpose List<CobaltUser> plPlusUserList) throws Throwable {
-        currentUser = CobaltUser.updateMissingFields(plPlusUserList.get(0));
-        onepassLoginUtils.loginToCobalt(currentUser.getUserName(), ExcelFileReader.getCobaltPassword(currentUser.getUserName()));
-        practicalLawHomepage.waitForPageToLoadAndJQueryProcessing();
     }
 
     @Then("^the user is able to see default client id \"(.*?)\"$")

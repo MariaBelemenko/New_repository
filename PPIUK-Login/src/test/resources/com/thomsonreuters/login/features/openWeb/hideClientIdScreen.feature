@@ -4,7 +4,7 @@ Feature: [752694] Bypass Client ID screen
     Given PL+ user is not logged in
     When the user navigates to the main PLCUK page
     And the user clicks Log in button
-    When a PPI user enter its username and password
+    When the user enters his username and password on the login page
       | userName | LoginUser5 |
     And clicks on Sign in
     Then it gets redirected to the home page

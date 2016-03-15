@@ -20,7 +20,7 @@ Feature: [798001] Search results shown after being timed out
     And the user verifies that the know how facet is selected "<facet4>"
     And the user verifies that the know how facet is selected "<facet5>"
     And the user clicks Log in button
-    And a PPI user enter its username and password
+    And the user enters his username and password on the login page
       | userName | LoginUser6 |
     And clicks on Sign in
     Then the user verifies that the know how facet is selected "<facet4>"

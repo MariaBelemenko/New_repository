@@ -5,7 +5,8 @@ Feature: [752718] Enable option for Super Remember Me in PL+.
   Scenario: [752718] SRM user can login back from logout page
     Given PL+ user is not logged in
     When the user navigates to the main PLCUK page
-    Given a username/password user in the login screen
+    And the user clicks on Sign On link on the header
+    When the user enters his username and password on the login page
       | userName | srm_user               |
       | routing  | NONE                   |
       | role     | SUPER_REMEMBER_ME_USER |
@@ -21,7 +22,8 @@ Feature: [752718] Enable option for Super Remember Me in PL+.
   Scenario: [752718] SRM user can automatically login after he logged out
     Given PL+ user is not logged in
     When the user navigates to the main PLCUK page
-    Given a username/password user in the login screen
+    And the user clicks on Sign On link on the header
+    When the user enters his username and password on the login page
       | userName | srm_user               |
       | routing  | NONE                   |
       | role     | SUPER_REMEMBER_ME_USER |

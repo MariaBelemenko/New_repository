@@ -3,13 +3,7 @@ package com.thomsonreuters.login.step_definitions.document;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import java.util.List;
-
-import org.openqa.selenium.By;
-import org.springframework.util.StringUtils;
-
 import com.thomsonreuters.login.step_definitions.BaseStepDef;
-import com.thomsonreuters.pageobjects.common.ExcelFileReader;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawHomepage;
@@ -17,11 +11,9 @@ import com.thomsonreuters.pageobjects.pages.login.OnepassLogin;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.documentNavigation.AnnotationPage;
 import com.thomsonreuters.pageobjects.utils.CobaltUser;
 import com.thomsonreuters.pageobjects.utils.OnepassLoginUtils;
-
-import cucumber.api.Transpose;
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.By;
 
 public class LoginDocumentTest extends BaseStepDef {
 
@@ -43,17 +35,6 @@ public class LoginDocumentTest extends BaseStepDef {
     public void heIsNotAbleToUseAnnotations() throws Throwable {
         annotationPage.makeTextSelectionToOpenCreateAnnotationLightBox(By.xpath("//h1[contains(@class,'co_title')]"), By.xpath("//div[@class='co_productname']"));
         assertFalse(annotationPage.isCreateAnnotationsWidgetPresent());
-    }
-
-    @Given("^a username/password user in the login screen$")
-    public void aUsernamePasswordUserInTheLoginScreen(@Transpose List<CobaltUser> plPlusUserList) throws Throwable {
-        wlnHeader.signInLink().click();
-        CobaltUser plPlusUser = CobaltUser.updateMissingFields(plPlusUserList.get(0));
-		if (StringUtils.isEmpty(plPlusUser.getUserName())) {
-			plPlusUser.setUserName(!"None".equalsIgnoreCase(System.getProperty("username")) ? System.getProperty("username")
-					: ExcelFileReader.getDefaultUser());
-		}
-        onepassLoginUtils.enterUserNameAndPassword(plPlusUser.getUserName(), ExcelFileReader.getCobaltPassword(plPlusUser.getUserName()));
     }
 
     @When("^he selects the option to be remembered on this computer$")

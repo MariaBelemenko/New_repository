@@ -1,6 +1,5 @@
 package com.thomsonreuters.login.step_definitions;
 
-import com.thomsonreuters.pageobjects.common.ExcelFileReader;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawHomepage;
@@ -8,13 +7,10 @@ import com.thomsonreuters.pageobjects.pages.login.OnepassLogin;
 import com.thomsonreuters.pageobjects.pages.onePass.OnePassLogoutPage;
 import com.thomsonreuters.pageobjects.utils.CobaltUser;
 import com.thomsonreuters.pageobjects.utils.OnepassLoginUtils;
-import cucumber.api.Transpose;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
 import java.io.IOException;
-import java.util.List;
 
 public class CommonLoginSteps extends BaseStepDef {
 
@@ -77,12 +73,6 @@ public class CommonLoginSteps extends BaseStepDef {
         currentUser = new CobaltUser();
     }
 
-    @When("^a PPI user enter its username and password$")
-    public void aPPIUserEnterItsUsernameAndPassword(@Transpose List<CobaltUser> plPlusUserList) throws Throwable {
-        CobaltUser plPlusUser = CobaltUser.updateMissingFields(plPlusUserList.get(0));
-        onePassLoginUtils.enterUserNameAndPassword(plPlusUser.getUserName(), ExcelFileReader.getCobaltPassword(plPlusUser.getUserName()));
-        currentUser = plPlusUser;
-    }
 
     @When("^clicks on Sign in$")
     public void clicksOnSignIn() throws Throwable {

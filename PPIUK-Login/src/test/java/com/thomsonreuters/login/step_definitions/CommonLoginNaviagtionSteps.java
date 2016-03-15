@@ -1,5 +1,22 @@
 package com.thomsonreuters.login.step_definitions;
 
+import static com.thomsonreuters.pageobjects.utils.CobaltUser.isUserFirstUser;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.springframework.util.StringUtils;
+
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.ExcelFileReader;
 import com.thomsonreuters.pageobjects.common.PageActions;
@@ -15,23 +32,18 @@ import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePag
 import com.thomsonreuters.pageobjects.pages.plcLegacy.PLCLegacyHeader;
 import com.thomsonreuters.pageobjects.pages.plcLegacy.PLCLegacyLoginScreen;
 import com.thomsonreuters.pageobjects.pages.search.SearchHomePage;
-import com.thomsonreuters.pageobjects.utils.*;
+import com.thomsonreuters.pageobjects.utils.CobaltUser;
+import com.thomsonreuters.pageobjects.utils.OnepassLoginUtils;
+import com.thomsonreuters.pageobjects.utils.Product;
+import com.thomsonreuters.pageobjects.utils.Routing;
+import com.thomsonreuters.pageobjects.utils.RoutingPage;
+import com.thomsonreuters.pageobjects.utils.User;
 import com.thomsonreuters.pageobjects.utils.folders.FoldersUtils;
+
 import cucumber.api.Transpose;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.Select;
-import org.springframework.util.StringUtils;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-
-import static com.thomsonreuters.pageobjects.utils.CobaltUser.isUserFirstUser;
 
 /**
  * Login and Navigation Steps.
@@ -159,10 +171,7 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
 
     @Given("^PL\\+ user is logged in with following details after IP login$")
     public void ipUserIsLoggedIn(@Transpose List<CobaltUser> plPlusUserList) throws Throwable {
-        CobaltUser plPlusUser = CobaltUser.updateMissingFields(plPlusUserList.get(0));
-        if (StringUtils.isEmpty(plPlusUser.getUserName())) {
-            plPlusUser.setUserName(!"None".equalsIgnoreCase(System.getProperty("username")) ? System.getProperty("username") : ExcelFileReader.getDefaultUser());
-        }
+		CobaltUser plPlusUser = updateFieldsForPlPlusUser(plPlusUserList.get(0));
         String mandatoryRouting = plPlusUser.getMandatoryRouting();
         if ("false".equalsIgnoreCase(System.getProperty(ROUTING)) && (StringUtils.isEmpty(mandatoryRouting) || mandatoryRouting.equals("NO"))) {
             plPlusUser.setRouting(Routing.NONE);
@@ -175,16 +184,29 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
 
     @Given("^PL\\+ user is logged in with following details$")
     public void plUserIsLoggedInWithFollowingDetails(@Transpose List<CobaltUser> plPlusUserList) throws Throwable {
-        CobaltUser plPlusUser = CobaltUser.updateMissingFields(plPlusUserList.get(0));
-        if (StringUtils.isEmpty(plPlusUser.getUserName())) {
-            plPlusUser.setUserName(!"None".equalsIgnoreCase(System.getProperty("username")) ? System.getProperty("username") : ExcelFileReader.getDefaultUser());
-        }
+		CobaltUser plPlusUser = updateFieldsForPlPlusUser(plPlusUserList.get(0));
         String mandatoryRouting = plPlusUser.getMandatoryRouting();
         if ("false".equalsIgnoreCase(System.getProperty(ROUTING)) && (StringUtils.isEmpty(mandatoryRouting) || mandatoryRouting.equals("NO"))) {
             plPlusUser.setRouting(Routing.NONE);
+			CobaltUser.updateMissingFields(plPlusUser);
         }
-        loginUser(CobaltUser.updateMissingFields(plPlusUserList.get(0)));
+		loginUser(plPlusUser);
     }
+
+	@Given("^the user logs in from the login page$")
+	public void userLogsInFromLoginPage(@Transpose List<CobaltUser> plPlusUserList) throws InterruptedException, IOException {
+		CobaltUser plPlusUser = updateFieldsForPlPlusUser(plPlusUserList.get(0));
+		login(plPlusUser);
+		currentUser = plPlusUser;
+	}
+
+	@Given("^the user enters his username and password on the login page$")
+	public void userEntersUsernameAndPasswordOnLoginPage(@Transpose List<CobaltUser> plPlusUserList) throws InterruptedException,
+			IOException {
+		CobaltUser plPlusUser = updateFieldsForPlPlusUser(plPlusUserList.get(0));
+		onepassLoginUtils.enterUserNameAndPassword(plPlusUser.getUserName(), getPasswordForPlPlusUser(plPlusUser.getUserName()));
+		currentUser = plPlusUser;
+	}
 
     @When("^user is navigated to routing$")
     public void userNavitedToRoutingPage() {
@@ -323,6 +345,16 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         }
         return ExcelFileReader.getCobaltPassword(userName);
     }
+
+	private CobaltUser updateFieldsForPlPlusUser(CobaltUser plPlusUser) {
+		CobaltUser.updateMissingFields(plPlusUser);
+		if (StringUtils.isEmpty(plPlusUser.getUserName())) {
+			plPlusUser.setUserName(!"None".equalsIgnoreCase(System.getProperty("username")) ? System.getProperty("username")
+					: ExcelFileReader.getDefaultUser());
+			CobaltUser.updateMissingFields(plPlusUser);
+		}
+		return plPlusUser;
+	}
 
     private void doRouting(CobaltUser user) throws InterruptedException {
         if (user.getProduct().equals(Product.PLC) || Product.ANZ.equals(user.getProduct())) {

@@ -4,7 +4,8 @@ Feature: [798060] TS1 View a single document
   Scenario: [798060] View a single document and timeout when Super Remember Me enabled
     Given PL+ user is not logged in
     When the user navigates to the main PLCUK page
-    Given a username/password user in the login screen
+    And the user clicks on Sign On link on the header
+    When the user enters his username and password on the login page
       | userName | srm_user               |
       | routing  | NONE                   |
       | role     | SUPER_REMEMBER_ME_USER |
