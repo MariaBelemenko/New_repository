@@ -1,4 +1,4 @@
-Feature: [712496][706631][702217][731605] ukWhatsMarketSorting.feature
+  Feature: [712496][706631][702217][731605] ukWhatsMarketSorting.feature
   Ensure sorting of search results is correct and can be sorted in different ways
   The following scenarios test the following stories:
   [712496], [706631], [702217], [731605]
@@ -9,15 +9,15 @@ Feature: [712496][706631][702217][731605] ukWhatsMarketSorting.feature
     And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
     And the user selects the know how parent facet "Legal Updates"
     And the user selects the option to apply filters
-    Then the results displayed with date in "dd MMM yyyy" format
-    And results date should contain 0 if day has single digit in date
+    Then the results displayed with published date in "dd MMM yyyy" format
+    And results published date should contain 0 if day has single digit in date
 
   Scenario: What's Market Search Result DATE FORMAT
     Given PL+ user is logged in
     When has selected the link to the What's Market homepage
     When the user runs a free text search for the query "taxation"
-    Then results date should contain 0 if day has single digit in date
-    Then the results displayed with date in "dd MMM yyyy" format
+    Then results left aligned date should contain 0 if day has single digit in date
+    Then the results displayed with the left aligned date in "dd MMM yyyy" format
     Then the results displayed with sorted by date with most recent first
 
   Scenario: [731605] Whats Market Facet Display Order

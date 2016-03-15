@@ -164,7 +164,7 @@ public class WhatsMarketSearchResultsPage extends AbstractPage {
         }
     }
 
-    public List<WebElement> searchResultPublishedDates() {
+    public List<WebElement> searchResultRobustDates() {
         List<WebElement> searchResultsDates;
         try {
             searchResultsDates = waitForExpectedElements(By.xpath("//ol[@class='co_searchResult_list']/li[contains(@id,'cobalt_search_results')]//div[contains(@class,'co_search_detailLevel')]//span[contains(.,'Published on ')]"), 10);
@@ -173,6 +173,14 @@ public class WhatsMarketSearchResultsPage extends AbstractPage {
             searchResultsDates = waitForExpectedElements(By.xpath("//ol[@class='co_searchResult_list']/li[contains(@id,'cobalt_search_results')]//div[contains(@id,'co_searchResults_citation')]/span[1]"), 10);
         }
         return searchResultsDates;
+    }
+
+    public List<WebElement> leftAlignedDates() {
+        return waitForExpectedElements(By.xpath("//ol[@class='co_searchResult_list']/li[contains(@id,'cobalt_search_results')]//div[contains(@id,'co_searchResults_citation')]/span[1]"), 10);
+    }
+
+    public List<WebElement> searchResultPublishedDates() {
+        return waitForExpectedElements(By.xpath("//ol[@class='co_searchResult_list']/li[contains(@id,'cobalt_search_results')]//div[contains(@class,'co_search_detailLevel')]//span[contains(.,'Published on ')]"), 10);
     }
 
     /**

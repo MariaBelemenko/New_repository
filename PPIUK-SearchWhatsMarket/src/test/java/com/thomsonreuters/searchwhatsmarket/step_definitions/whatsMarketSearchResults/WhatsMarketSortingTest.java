@@ -30,14 +30,28 @@ public class WhatsMarketSortingTest extends BaseStepDef {
         knowHowSearchResultsPage.knowHowFacetCheckbox(arg1).click();
     }
 
-    @Then("^the results displayed with date in \"(.*?)\" format$")
-    public void isDateFormatCorrect(String dateFormat) throws Throwable {
+    @Then("^the results displayed with the left aligned date in \"(.*?)\" format$")
+    public void isLeftAlignedDateFormatCorrect(String dateFormat) throws Throwable {
+        List<WebElement> datesToCheck = whatsMarketSearchResultsPage.leftAlignedDates();
+        commonMethods.checkDateFormatsAreValid(datesToCheck,dateFormat);
+    }
+
+    @Then("^results left aligned date should contain 0 if day has single digit in date$")
+    public void isResultsLeftAlignedDateContainingZero() throws Throwable {
+        searchResultsPage.moreOrLessDetailAnchor().click();
+        searchResultsPage.moreDetailOption().click();
+        List<WebElement> datesToCheck = whatsMarketSearchResultsPage.searchResultRobustDates();
+        assertTrue(commonMethods.isDateStartsWithZeroForSingleDigitDay(datesToCheck));
+    }
+
+    @Then("^the results displayed with published date in \"(.*?)\" format$")
+    public void isDateFormatCorrectPublishedDate(String dateFormat) throws Throwable {
         List<WebElement> datesToCheck = whatsMarketSearchResultsPage.searchResultPublishedDates();
         commonMethods.checkDateFormatsAreValid(datesToCheck,dateFormat);
     }
 
-    @Then("^results date should contain 0 if day has single digit in date$")
-    public void isResultsDateContainingZero() throws Throwable {
+    @Then("^results published date should contain 0 if day has single digit in date$")
+    public void isResultsPublishedDateContainingZero() throws Throwable {
         searchResultsPage.moreOrLessDetailAnchor().click();
         searchResultsPage.moreDetailOption().click();
         List<WebElement> datesToCheck = whatsMarketSearchResultsPage.searchResultPublishedDates();
@@ -46,7 +60,7 @@ public class WhatsMarketSortingTest extends BaseStepDef {
 
     @Then("^the results displayed with sorted by date with most recent first$")
     public void resultsDisplayedDateOrder() throws Throwable {
-        List<WebElement> datesToCheck = whatsMarketSearchResultsPage.searchResultPublishedDates();
+        List<WebElement> datesToCheck = whatsMarketSearchResultsPage.searchResultRobustDates();
         assertTrue(commonMethods.isResultsSortedByDate(datesToCheck,SortOptions.DESC));
     }
 
