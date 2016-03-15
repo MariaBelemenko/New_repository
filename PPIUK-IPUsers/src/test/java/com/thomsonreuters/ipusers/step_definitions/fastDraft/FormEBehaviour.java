@@ -101,11 +101,13 @@ public class FormEBehaviour extends BaseStepDef {
 
     @Then("^the user is redirected to document page with upload error$")
     public void checkDocumentPageWithErrorPresents() throws Throwable {
+        changesInUploadedPDF.waitForPageToLoad();
         assertTrue("Document page with upload error is not displayed", changesInUploadedPDF.isDocumentPageWithErrorPresents());
     }
 
     @Then("^the user is redirected to document page with upload not the correct type error$")
     public void checkDocumentPageWithUploadNotCorrectTypeErrorPresents() throws Throwable {
+        changesInUploadedPDF.waitForPageToLoad();
         assertTrue("Document page with upload not the correct type error is not displayed", changesInUploadedPDF.isDocumentPageWithUploadNotCorrectTypeErrorPresents());
     }
 

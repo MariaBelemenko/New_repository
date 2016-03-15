@@ -239,11 +239,13 @@ public class BaseFastDraftBehaviour extends BaseStepDef {
 
     @Then("^the user checks text field \"([^\"]*)\" has value \"([^\"]*)\"$")
     public void checkTextField(String fieldId, String value) throws Throwable {
+        questionPage.waitForPageToLoad();
         assertEquals("User name field is incorrect", value, questionPage.textField(fieldId).getAttribute("value"));
     }
 
     @Then("^the user checks dropdown field \"([^\"]*)\" has value \"([^\"]*)\"$")
     public void checkDropdownField(String fieldId, String value) throws Throwable {
+        questionPage.waitForPageToLoad();
         assertEquals("User name field is incorrect", value, questionPage.dropDownField(fieldId).getAttribute("value"));
     }
 
@@ -264,6 +266,7 @@ public class BaseFastDraftBehaviour extends BaseStepDef {
 
     @Then("^the project \"([^\"]*)\" is absent$")
     public void checkProjectAbsents(String projectName) throws Throwable {
+        dashboardPage.waitForPageToLoad();
         assertTrue("Project with name '" + projectName + "' presents on Fast Draft Dashboard", dashboardPage.isProjectAbsent(projectName));
     }
 
