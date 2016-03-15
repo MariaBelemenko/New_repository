@@ -2,21 +2,6 @@ package com.thomsonreuters.login.step_definitions;
 
 import static com.thomsonreuters.pageobjects.utils.CobaltUser.isUserFirstUser;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.springframework.util.StringUtils;
-
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.ExcelFileReader;
 import com.thomsonreuters.pageobjects.common.PageActions;
@@ -39,11 +24,23 @@ import com.thomsonreuters.pageobjects.utils.Routing;
 import com.thomsonreuters.pageobjects.utils.RoutingPage;
 import com.thomsonreuters.pageobjects.utils.User;
 import com.thomsonreuters.pageobjects.utils.folders.FoldersUtils;
-
 import cucumber.api.Transpose;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.springframework.util.StringUtils;
 
 /**
  * Login and Navigation Steps.
@@ -596,6 +593,12 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
                     comMethods.waitForElementToBeVisible(By.xpath("//input[@id='Text2' and @name='SessionTimeoutOverride']"), 1000).clear();
                     comMethods.waitForElementToBeVisible(By.xpath("//input[@id='Text2' and @name='SessionTimeoutOverride']"), 1000).sendKeys("3");
                     break;
+
+				case SPECIFIED_USER_TIMEOUT_5_MINUTES:
+					navigateToRoutingPage(user.getProduct());
+					comMethods.waitForElementToBeVisible(By.xpath("//input[@id='Text2' and @name='SessionTimeoutOverride']"), 1000).clear();
+					comMethods.waitForElementToBeVisible(By.xpath("//input[@id='Text2' and @name='SessionTimeoutOverride']"), 1000).sendKeys("5");
+					break;
 
                 case NON_SUBSCRIBER:
                     navigateToRoutingPage(user.getProduct());
