@@ -130,7 +130,7 @@ public class HomePage extends AbstractPage {
     }
 
     public WebElement specificTab(String tabName) {
-        return waitForElementPresent(By.xpath("//a[@class='co_tabLink' and text()='" + tabName + "']"));
+        return waitForExpectedElement(By.xpath("//a[@class='co_tabLink' and text()='" + tabName + "']"));
     }
 
     public WebElement homePageStartComparingButton() {

@@ -6,6 +6,7 @@ import com.thomsonreuters.globalpages.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.globalPage.GlobalCategoryPage;
 import com.thomsonreuters.pageobjects.pages.pageCreation.HomePage;
+import com.thomsonreuters.pageobjects.pages.search.SearchHomePage;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -15,6 +16,7 @@ public class ChinaPageSearchContentTest extends BaseStepDef {
     private NavigationCobalt navigation = new NavigationCobalt();
     private HomePage homePage = new HomePage();
     private GlobalCategoryPage globalCategoryPage = new GlobalCategoryPage();
+    private SearchHomePage searchHomePage = new SearchHomePage();
 
     private static final String PATH_TO_CHINA_PAGE = "/Browse/Home/International/ChinaGlobal";
 
@@ -47,4 +49,11 @@ public class ChinaPageSearchContentTest extends BaseStepDef {
         softly.assertAll();
     }
 
+    @When("^the user searches for \"([^\"]*)\"$")
+    public void theUserSearchesFor(String searchQuery) throws Throwable {
+    	searchHomePage.enterSearchText(searchQuery);
+        searchHomePage.searchButton().click();
+        searchHomePage.waitForPageToLoad();
+        searchHomePage.waitForPageToLoadAndJQueryProcessing();
+    }
 }

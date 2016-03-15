@@ -1,6 +1,6 @@
 Feature: [839937] As a PL+ User when I enter 3+ charatcers into the search field on the global page, a list of suggested terms is suggested to me
 
-  Background:
+  Background: 
     Given PL+ user is logged in
     When the user navigates to the Global Page
     Then the Global Page opens correctly
@@ -17,24 +17,26 @@ Feature: [839937] As a PL+ User when I enter 3+ charatcers into the search field
       | TAG-ALONG        |
       | TAG-ALONG RIGHTS |
     And the suggested search terms are displayed in alphabetical order
-  Examples:
-    | character1 | character2 | suggestion |
-    | ta         | g          | TAG ALONG  |
+
+    Examples: 
+      | character1 | character2 | suggestion |
+      | ta         | g          | TAG ALONG  |
 
   Scenario Outline: The user select term from the list of suggestions
     When the user enter "<character>" on the search field
     Then the user selects the suggested term "<term>"
     And the user verifies that the term "<term>" appears in the search box
-  Examples:
-    | character | term      |
-    | tag       | TAG ALONG |
 
+    Examples: 
+      | character | term      |
+      | tag       | TAG ALONG |
 
   Scenario Outline: The user verifies that all search results contain the search term
-    When the user runs a free text search for the query "<term>"
+    When the user searches for "<term>"
     And the user verifies that the term "<term>" appears in the search box
     When the user can select the option to show more detail
     Then the returned results contain the search "<term>"
-  Examples:
-    | term |
-    | tax  |
+
+    Examples: 
+      | term |
+      | tax  |
