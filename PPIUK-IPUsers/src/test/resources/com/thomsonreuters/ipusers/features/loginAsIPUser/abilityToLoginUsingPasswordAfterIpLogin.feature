@@ -10,4 +10,3 @@ Feature: [752710]  LI016 - IP can log in as username and password
     And a PPI user enter its username and password
       | userName | IPAPuser |
     And clicks on Sign in
-    Then the user is able to see default client id "PRACTICAL LAW UK"
