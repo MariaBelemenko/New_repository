@@ -10,6 +10,8 @@ import com.thomsonreuters.searchwhatsmarket.step_definitions.BaseStepDef;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
@@ -30,19 +32,28 @@ public class WhatsMarketSortingTest extends BaseStepDef {
 
     @Then("^the results displayed with date in \"(.*?)\" format$")
     public void isDateFormatCorrect(String dateFormat) throws Throwable {
-        assertTrue(whatsMarketSearchResultsPage.isSearchResultDateDisplayedInExpectedFormat(dateFormat));
+        String dateString;
+        List<WebElement> searchResultsDates = whatsMarketSearchResultsPage.searchResultPublishedDates();
+        for (int loopCount=0; loopCount<searchResultsDates.size(); loopCount++) {
+            dateString = searchResultsDates.get(loopCount).getText();
+            dateString = dateString.replace("Published on ","");
+            //System.out.println("Result date is: " + dateString);
+            assertTrue(commonMethods.isDateInValidFormat(dateString, dateFormat));
+        }
     }
 
     @Then("^results date should contain 0 if day has single digit in date$")
     public void isResultsDateContainingZero() throws Throwable {
         searchResultsPage.moreOrLessDetailAnchor().click();
         searchResultsPage.moreDetailOption().click();
-        assertTrue(whatsMarketSearchResultsPage.isDateStartsWithZeroForSingleDigitDay());
+        List<WebElement> datesToCheck = whatsMarketSearchResultsPage.searchResultPublishedDates();
+        assertTrue(commonMethods.isDateStartsWithZeroForSingleDigitDay(datesToCheck));
     }
 
     @Then("^the results displayed with sorted by date with most recent first$")
     public void resultsDisplayedDateOrder() throws Throwable {
-        assertTrue(whatsMarketSearchResultsPage.isResultsSortedByDate(SortOptions.DESC));
+        List<WebElement> datesToCheck = whatsMarketSearchResultsPage.searchResultPublishedDates();
+        assertTrue(commonMethods.isResultsSortedByDate(datesToCheck,SortOptions.DESC));
     }
 
     @Given("^the user selects the more link for the facet group \"(.*?)\"$")

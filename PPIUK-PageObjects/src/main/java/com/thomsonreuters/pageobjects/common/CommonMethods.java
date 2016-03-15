@@ -1,8 +1,10 @@
 package com.thomsonreuters.pageobjects.common;
 
 import com.google.common.base.Function;
+import com.thomsonreuters.driver.exception.PageOperationException;
 import com.thomsonreuters.driver.framework.AbstractPage;
 import org.apache.commons.lang.RandomStringUtils;
+import org.apache.xpath.operations.Bool;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.internal.Coordinates;
@@ -11,12 +13,13 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
-
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
+import java.util.Date;
 
 import static junit.framework.Assert.assertTrue;
 
@@ -252,12 +255,60 @@ public class CommonMethods extends AbstractPage {
         return true;
     }
 
+    /**
+     * This method verifies the displayed search results are in expected sorting order by date or not and returns the boolean value accordingly.
+     *
+     * @param sortOptions
+     * @return boolean
+     */
+    public Boolean isResultsSortedByDate(List<WebElement> dateElements, SortOptions sortOptions) {
+        List<Date> dates = new ArrayList<Date>();
+        Date resultDate;
+        Boolean areDatesValid = true;
+        for (WebElement element : dateElements) {
+            String dateString = element.getText();
+            DateFormat df = new SimpleDateFormat("dd MMMM yyyy");
+            try {
+                resultDate = df.parse(dateString);
+            } catch (ParseException e) {
+                areDatesValid = false;
+                LOG.info("context", e);
+                throw new PageOperationException("Application is displaying the dates in different format." + e.getMessage());
+            }
+        }
+        if (areDatesValid) {
+            return isSorted(dates, sortOptions);
+        } else {
+            // Return false - failed as dates are not valid to begin with
+            return areDatesValid;
+        }
+    }
+
+    /**
+     * This method verifies the displayed search results are displaying dates starting with 0 if the day has single digit.
+     *
+     * @return boolean
+     */
+    public Boolean isDateStartsWithZeroForSingleDigitDay(List<WebElement> dateElements) {
+        Boolean result = true;
+        for (WebElement element : dateElements) {
+            String dateString = element.getText();
+            dateString = dateString.replace("Published on ","");
+            String[] dateStrings = dateString.split(" ");
+            String dayString = dateStrings[0];
+            if (Integer.valueOf(dayString) < 10 && !dayString.startsWith("0")) {
+                result = false;
+            }
+        }
+        return result;
+    }
+
     public boolean isDateInValidFormat(String s, String dateFormat) {
         SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
         try {
             sdf.setLenient(false);
             Date date = sdf.parse(s);
-            LOG.info("Given date is in Valid format." + date);
+            //LOG.info("Given date is in Valid format." + date);
             return true;
         } catch (ParseException e) {
             LOG.info("Given date is not in Valid format." + s);

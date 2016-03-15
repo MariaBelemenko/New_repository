@@ -276,7 +276,8 @@ public class SearchResultsPage extends AbstractPage {
      * @return
      */
     public List<WebElement> searchResultsList() {
-        return waitForExpectedElements(By.cssSelector(".co_searchResult_list li[id^=\"cobalt_search_results\"]"));
+        return waitForExpectedElements(By.xpath("//ol[@class='co_searchResult_list']/li[contains(@id,'cobalt_search_results')]"),10);
+        //By.cssSelector(".co_searchResult_list li[id^=\"cobalt_search_results\"]")
     }
 
     /**
