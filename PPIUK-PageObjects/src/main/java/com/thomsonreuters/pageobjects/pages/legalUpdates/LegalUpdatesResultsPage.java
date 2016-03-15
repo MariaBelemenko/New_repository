@@ -98,7 +98,7 @@ public class LegalUpdatesResultsPage extends LegalUpdatesBasePage {
     }
 
     public WebElement resultsPerPageLink() {
-        return retryingFindElement(By.id("selectedDisplayItemCount"));
+        return waitForExpectedElement(By.id("selectedDisplayItemCount"));
     }
 
     public void selectShownResultsNumberPerPage(String numberOfResultsPerPage) {

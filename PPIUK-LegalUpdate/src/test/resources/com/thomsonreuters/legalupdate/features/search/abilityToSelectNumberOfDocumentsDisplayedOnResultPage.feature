@@ -14,7 +14,7 @@ Feature: [713467] The user should have the ability to select the number of Legal
   Scenario: Use the Select box on the Footer so that I can choose the number of results that I can see on my page
     Given PL+ user is logged in
     Given a user navigate to a "Directors" Topic page from a "Corporate" Practice Area page
-    When the user clicks on the 'View all' link of the LU widget
+    When the user clicks on the 'View all' link of the "Legal Updates" widget
     And the default number of results on that page is 20
     When the user selects another number from the select box
     Then the number of legal updates that are displayed should change to reflect the selection of the user

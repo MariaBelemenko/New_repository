@@ -4,6 +4,8 @@ import com.thomsonreuters.legalupdate.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawUKCategoryPage;
 import com.thomsonreuters.pageobjects.pages.legalUpdates.LegalUpdatesResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
+
+import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -55,4 +57,13 @@ public class SelectNumberOfDocsDisplayedOnResultsPageTest extends BaseStepDef {
                 fiftyPerPage == FIFTY_PER_PAGE && oneHundredPerPage == ONE_HUNDRED_PER_PAGE);
     }
 
+    @After(order = 100000, value = "@SetDefaultNumberOfResultsPerPage")
+    public void returnNumberOfResultsToDefault20PerPage() {
+        //need this if-else condition because selected value in pagination drop down is associated with client ID and stored for particular client ID
+        if (!legalUpdatesResultsPage.resultsPerPageLink().getText().contains(Integer.toString(20))) {
+            practicalLawUKCategoryPage.resultsPerPageDropdown(LegalUpdatesResultsPage.TWENTY_PER_PAGE_SELECT_OPTION);
+            legalUpdatesResultsPage.waitForPageToLoad();
+            knowHowSearchResultsPage.waitForSearchResults();
+        }
+    }
 }
