@@ -5,6 +5,7 @@ import com.thomsonreuters.driver.exception.PageOperationException;
 import com.thomsonreuters.driver.framework.AbstractPage;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.xpath.operations.Bool;
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.internal.Coordinates;
@@ -253,6 +254,16 @@ public class CommonMethods extends AbstractPage {
             }
         }
         return true;
+    }
+
+    public void checkDateFormatsAreValid(List<WebElement> dateElements, String dateFormat) {
+        String dateString;
+        for (int loopCount=0; loopCount<dateElements.size(); loopCount++) {
+            dateString = dateElements.get(loopCount).getText();
+            dateString = dateString.replace("Published on ","");
+            //System.out.println("Result date is: " + dateString);
+            Assert.assertTrue(isDateInValidFormat(dateString, dateFormat));
+        }
     }
 
     /**

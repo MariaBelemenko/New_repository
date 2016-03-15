@@ -32,14 +32,8 @@ public class WhatsMarketSortingTest extends BaseStepDef {
 
     @Then("^the results displayed with date in \"(.*?)\" format$")
     public void isDateFormatCorrect(String dateFormat) throws Throwable {
-        String dateString;
-        List<WebElement> searchResultsDates = whatsMarketSearchResultsPage.searchResultPublishedDates();
-        for (int loopCount=0; loopCount<searchResultsDates.size(); loopCount++) {
-            dateString = searchResultsDates.get(loopCount).getText();
-            dateString = dateString.replace("Published on ","");
-            //System.out.println("Result date is: " + dateString);
-            assertTrue(commonMethods.isDateInValidFormat(dateString, dateFormat));
-        }
+        List<WebElement> datesToCheck = whatsMarketSearchResultsPage.searchResultPublishedDates();
+        commonMethods.checkDateFormatsAreValid(datesToCheck,dateFormat);
     }
 
     @Then("^results date should contain 0 if day has single digit in date$")
