@@ -15,7 +15,7 @@ Feature: [798001] Search results shown after being timed out
     And the user expands the know how facet "<facet3>"
     And the user selects the know how child facet "<facet4>"
     And the user selects the know how option to apply filters
-    And he has a session open and timed out
+    And he has a session open and timed out after 7 minutes
     And he should stay on same document page as OpenWeb user
     And the user verifies that the know how facet is selected "<facet4>"
     And the user verifies that the know how facet is selected "<facet5>"

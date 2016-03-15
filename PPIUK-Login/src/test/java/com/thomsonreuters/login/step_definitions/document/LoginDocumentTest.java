@@ -62,6 +62,13 @@ public class LoginDocumentTest extends BaseStepDef {
         Thread.sleep(200000);
     }
 
+	@When("^he has a session open and timed out after (\\d) minutes$")
+	public void heHasASessionOpenAndTimedOutAfter(int minutes) throws Throwable {
+		expectedPageTitle = navigationCobalt.getPageTitle();
+		/** This sleep is needed to emulate user idle within system please do not remove! */
+		Thread.sleep((minutes * 60 + 20) * 1000);
+	}
+
     @Then("^user gets redirected to the document page that he was visiting and is logged in$")
     public void userGetsRedirectedToTheDocumentPageThatHeWasVisiting() throws Throwable {
         navigationCobalt.waitForPageToLoad();
