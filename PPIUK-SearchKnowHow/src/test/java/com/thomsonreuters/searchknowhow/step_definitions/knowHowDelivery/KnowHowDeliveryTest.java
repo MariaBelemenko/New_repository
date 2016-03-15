@@ -37,7 +37,7 @@ public class KnowHowDeliveryTest extends BaseStepDef {
         /** Ensure the search button has rendered */
         practicalLawUKCategoryPage.searchButton().isDisplayed();
         practicalLawUKCategoryPage.freeTextField().clear();
-        //Use Javascript executor instead of sendkeys for characters that won't type due to a Selenium bug
+        /** Use Javascript executor instead of sendkeys for characters that won't type due to a Selenium bug */
         if (value.contains("(") || value.contains(")") || value.contains("&")) {
             practicalLawUKCategoryPage.freeTextFieldJavaScript(value);
             practicalLawUKCategoryPage.freeTextField().sendKeys(" ");
