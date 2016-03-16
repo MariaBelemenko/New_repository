@@ -26,12 +26,12 @@ public class MailinatorTest extends BaseStepDef {
 
     @Then("^the user navigates to the Mailinator e-mail \"([^\"]*)\"$")
     public void theUserNavigatesToTheMailinatorEmail(String emailURL) throws Throwable {
-        mailinatorpage.navigate(mailinatorURL + "/inbox.jsp?to=" + emailURL);
+        mailinatorpage.navigate(mailinatorURL + "/inbox2.jsp?public_to=" + emailURL);
     }
 
     @Then("^the user refreshes the Mailinator e-mail page$")
     public void theUserRefreshesTheMailinatorEmailPage() throws Throwable {
-        mailinatorpage.navigate(mailinatorURL + "/inbox.jsp?to=" + emailAccountSetup);
+        mailinatorpage.navigate(mailinatorURL + "/inbox2.jsp?public_to=" + emailAccountSetup);
     }
 
     @Then("^the user validates that there's at least \"([^\"]*)\" e-mail on Mailinator$")
