@@ -594,10 +594,10 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
                     comMethods.waitForElementToBeVisible(By.xpath("//input[@id='Text2' and @name='SessionTimeoutOverride']"), 1000).sendKeys("3");
                     break;
 
-				case SPECIFIED_USER_TIMEOUT_7_MINUTES:
+				case SPECIFIED_USER_TIMEOUT_4_MINUTES:
 					navigateToRoutingPage(user.getProduct());
 					comMethods.waitForElementToBeVisible(By.xpath("//input[@id='Text2' and @name='SessionTimeoutOverride']"), 1000).clear();
-					comMethods.waitForElementToBeVisible(By.xpath("//input[@id='Text2' and @name='SessionTimeoutOverride']"), 1000).sendKeys("7");
+					comMethods.waitForElementToBeVisible(By.xpath("//input[@id='Text2' and @name='SessionTimeoutOverride']"), 1000).sendKeys("4");
 					break;
 
                 case NON_SUBSCRIBER:

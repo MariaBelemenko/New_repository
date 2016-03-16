@@ -6,7 +6,7 @@ Feature: [798001] Search results shown after being timed out
   Scenario Outline: [798001] Checking that facets can be selected after being timed out
     Given PL+ user is logged in with routing details
       | mandatoryRouting | YES                              |
-      | routing          | SPECIFIED_USER_TIMEOUT_7_MINUTES |
+      | routing          | SPECIFIED_USER_TIMEOUT_4_MINUTES |
       | userName         | LoginUser6                         |
     When the user runs a free text cobalt search with query "taxation"
     And the user expands the know how facet "<facet1>"
@@ -15,7 +15,7 @@ Feature: [798001] Search results shown after being timed out
     And the user expands the know how facet "<facet3>"
     And the user selects the know how child facet "<facet4>"
     And the user selects the know how option to apply filters
-    And he has a session open and timed out after 7 minutes
+    And he has a session open and timed out after 4 minutes
     And he should stay on same document page as OpenWeb user
     And the user verifies that the know how facet is selected "<facet4>"
     And the user verifies that the know how facet is selected "<facet5>"
