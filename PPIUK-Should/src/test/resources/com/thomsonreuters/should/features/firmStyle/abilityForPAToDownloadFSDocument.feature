@@ -4,7 +4,7 @@ Feature: [780805] FS4 Testing Restrict on basis FAC
 
   # This test uses JAVA Robot, therefore it could be run locally only
   # 833984 [REGRESSION] Download FS document starting from Open Web user is broken
-  @bug @manual
+  @bug
   Scenario Outline: Open Web Drect link House Style
     Given PL+ user is logged in with following details
       | routing          | OPEN_WEB |
@@ -27,7 +27,7 @@ Feature: [780805] FS4 Testing Restrict on basis FAC
     | Family         | Specimen questions: Income: tax returns | 0-533-2706.fs.doc | /0-533-2706.fs.doc |
     | Private Client | Master Will with drafting notes         | 5-381-4187.fs.doc | /5-381-4187.fs.doc |
 
-  @bug @manual
+  @bug
   Scenario Outline: Open Web Drect link Firm Style
     Given PL+ user is logged in with following details
       | routing          | OPEN_WEB |
