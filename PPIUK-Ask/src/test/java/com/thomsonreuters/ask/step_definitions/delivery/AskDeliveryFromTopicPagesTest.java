@@ -35,6 +35,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.StringContains.containsString;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class AskDeliveryFromTopicPagesTest extends BaseStepDef {
@@ -114,10 +115,9 @@ public class AskDeliveryFromTopicPagesTest extends BaseStepDef {
     @Then("^the user verifies that '(Ready For Email|Ready For Download|Preparing For Print|Preparing For Email|Preparing For Download)' is displayed on the overlay$")
     public void theUserVerifiesThatReadyForEmailIsDisplayOnOverlay(String header) throws Throwable {
         if (header.contains("Ready")) {
-            Thread.sleep(1000);
-            assertThat("The " + header + " is NOT displayed", askResourcePage.readyMessageOverlayHeader().getText(), containsString(header));
+            assertTrue("The " + header + " is NOT displayed", askResourcePage.readyMessageOverlayHeader().isDisplayed());
         } else {
-            assertThat("The " + header + " is NOT displayed", askResourcePage.prepareMessageOverlayHeader().getText(), containsString(header));
+            assertTrue("The " + header + " is NOT displayed", askResourcePage.prepareMessageOverlayHeader().isDisplayed());
         }
     }
 
