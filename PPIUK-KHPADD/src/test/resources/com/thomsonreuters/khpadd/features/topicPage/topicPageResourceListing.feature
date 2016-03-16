@@ -16,31 +16,29 @@ Feature: [730196][764868][764877] Verify the topic page facet links, topic page 
   Scenario:[764877 Verifying facet group counts on the topic page
     When the user navigates to practice area "Finance" filtered by "Security and quasi security" topic page
     Then the user is presented with a topic page with title "Security and Quasi Security"
-    And the facet ordering along with corresponding resource count is as follows
-      | facetName                      | facetCount |
-      | View all                       | 390        |
-      | Practice Notes                 | 104        |
-      | Standard Documents and Clauses | 57         |
-      | Checklists                     | 12         |
-      | Trackers                       | 1          |
-      | Articles                       | 107        |
-      | Country Q&A                    | 39         |
-      | Glossary                       | 70         |
+    And the facet ordering along is as follows
+      | View all                       |
+      | Practice Notes                 |
+      | Standard Documents and Clauses |
+      | Checklists                     |
+      | Trackers                       |
+      | Articles                       |
+      | Country Q&A                    |
+      | Glossary                       |
 
   Scenario:[764868] Verifying facet ordering
     When the user navigates to practice area "Corporate" filtered by "Directors" topic page
     Then the user is presented with a topic page with title "Directors"
-    And the facet ordering along with corresponding resource count is as follows
-      | facetName                      | facetCount |
-      | View all                       | 304        |
-      | Practice Notes                 | 45         |
-      | Standard Documents and Clauses | 46         |
-      | Checklists                     | 6          |
-      | Toolkits                       | 1          |
-      | Trackers                       | 1          |
-      | Articles                       | 167        |
-      | Country Q&A                    | 34         |
-      | Glossary                       | 4          |
+    And the facet ordering along is as follows
+      | View all                       |
+      | Practice Notes                 |
+      | Standard Documents and Clauses |
+      | Checklists                     |
+      | Toolkits                       |
+      | Trackers                       |
+      | Articles                       |
+      | Country Q&A                    |
+      | Glossary                       |
 
   @e2e @prod
   Scenario: [770720][730571] Verify display of Optional blocks where widgets have not / have been created

@@ -14,11 +14,11 @@ import cucumber.api.java.en.When;
 import org.hamcrest.core.Is;
 
 import java.util.List;
-import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+
 
 public class TopicPageResourceListingTest extends BaseStepDef {
 
@@ -50,16 +50,10 @@ public class TopicPageResourceListingTest extends BaseStepDef {
         topicPage.clickTopicLinkOnPAPage(resourceName).click();
     }
 
-    @When("^the facet ordering along with corresponding resource count is as follows$")
-    public void theFacetOrderingAlongWithCorrespondingResourceCountIsAsFollows(List<TopicPageFacets> expectedFacets) throws Throwable {
-        Map<String, String> actualFacetList = topicPage.getTopicPageFacetsAsMap();
-        for (TopicPageFacets facet : expectedFacets) {
-            String expectedFacetName = facet.getFacetName();
-            String expectedFacetCount = facet.getFacetCount();
-            String actualFacetCount = actualFacetList.get(expectedFacetName);
-            assertFalse(facet.getFacetName() + " is not present in Facet Listing", null == facet.getFacetName());
-            assertTrue(expectedFacetCount.equals(actualFacetCount));
-        }
+    @When("^the facet ordering along is as follows$")
+    public void theFacetOrderingAlongWithCorrespondingResourceCountIsAsFollows(List<String> expectedFacetNames) throws Throwable {
+        List<String> actualFacetNameList = topicPage.getTopicPageFacetsAsList();
+        assertEquals(actualFacetNameList, expectedFacetNames);
     }
 
     @When("^following optional blocks are not displayed on the right hand side$")
@@ -155,19 +149,6 @@ public class TopicPageResourceListingTest extends BaseStepDef {
             resourceType = "Practice_notes";
         }
         assertTrue(expectedResources.equals(topicPage.getResourcesList(resourceType)));
-    }
-
-    public class TopicPageFacets {
-        private String facetName;
-        private String facetCount;
-
-        public String getFacetName() {
-            return facetName;
-        }
-
-        public String getFacetCount() {
-            return facetCount;
-        }
     }
 
 }

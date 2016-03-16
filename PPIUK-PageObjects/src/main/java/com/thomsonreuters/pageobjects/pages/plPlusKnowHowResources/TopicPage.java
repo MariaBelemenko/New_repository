@@ -5,11 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
-
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class TopicPage extends AbstractPage {
 
@@ -25,17 +21,15 @@ public class TopicPage extends AbstractPage {
         return map;
     }
 
-    public Map<String, String> getTopicPageFacetsAsMap() {
+    public List<String> getTopicPageFacetsAsList() {
         List<WebElement> FacetsList = findElements(By.cssSelector("#ukplc_topic_facet_links li a"));
-        Map<String, String> map = new LinkedHashMap<>();
+        List<String> facetNameLinkedList = new LinkedList<>();
         for (int i = 0; i < FacetsList.size(); i++) {
             String facet = FacetsList.get(i).getText().trim();
-            String[] facetValues = facet.split("\n");
-            String facetName = facetValues[0];
-            String facetCount = facetValues[1];
-            map.put(facetName, facetCount);
+            String facetName = facet.split("\n")[0];
+            facetNameLinkedList.add(facetName);
         }
-        return map;
+        return facetNameLinkedList;
     }
 
     public List<String> getResourcesList(String resourceType) {
