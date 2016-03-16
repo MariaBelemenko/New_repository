@@ -13,9 +13,9 @@ import java.util.List;
 
 public class SearchUtils {
 
-    private KnowHowSearchResultsPage knowHowSearchResultsPage;
+    private KnowHowSearchResultsPage knowHowSearchResultsPage = new KnowHowSearchResultsPage();
 
-    private CommonMethods commonMethods;
+    private CommonMethods commonMethods = new CommonMethods();
 
     /**
      * Check that every result contains one string from text. Method will check the part of word (without last two letters) because
