@@ -15,14 +15,10 @@ import com.westgroup.novus.productapi.Relationship;
 import com.westgroup.novus.productapi.RelationshipManager;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.awt.*;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
 
 import static com.thoughtworks.selenium.SeleneseTestNgHelper.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -171,26 +167,6 @@ public class LinkingShouldBugsTest extends BaseStepDef {
         novus.setResponseTimeout(30000);
         novus.useLatestPit();
         return novus;
-    }
-
-    @When("^the user runs a free text search for the query \"(.*)\"$")
-    public void theUserRunsAFreeTextSearchForTheQuery(String query) throws Throwable {
-        StringSelection stringSelection = new StringSelection(query);
-        Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
-        practicalLawUKCategoryPage.searchButton().isDisplayed();
-        practicalLawUKCategoryPage.freeTextField().clear();
-        if (query.contains("(") || query.contains(")") || query.contains("&")) {
-            clpbrd.setContents(stringSelection, null);
-            practicalLawUKCategoryPage.freeTextField().sendKeys(Keys.CONTROL + "v");
-        } else {
-            practicalLawUKCategoryPage.freeTextField().sendKeys(query);
-        }
-        if (practicalLawUKCategoryPage.getClass().equals(ChromeDriver.class)) {
-            pageActions.keyPress(Keys.ENTER);
-        } else {
-            practicalLawUKCategoryPage.searchButton().click();
-        }
-        theUserVerifiesThatTheResultsListPageIsDisplayed();
     }
 
     @When("^the user verifies that the results list page is displayed$")
