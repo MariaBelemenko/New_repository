@@ -50,7 +50,7 @@ public class MailinatorMethods extends AbstractPage {
 
     private void openInboxFolder(String userEmail) {
         LOG.info("Checking inbox for email user: " + userEmail);
-        mailinatorPage.checkMailTextBox().sendKeys(userEmail);
+        mailinatorPage.checkMailTextBox().sendKeys(userEmail.trim());
         mailinatorPage.checkItButton().click();
     }
 
