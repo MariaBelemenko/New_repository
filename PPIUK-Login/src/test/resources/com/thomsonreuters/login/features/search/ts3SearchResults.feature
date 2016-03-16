@@ -32,10 +32,11 @@ Feature: [798001] Search results shown after being timed out
   @manual @wip @bug
   Scenario: [798001] Checking that facets can be selected after being timed out for SRM user
     Given a PPI user authenticated through username and password who previously selected the Super remember me cookie option
+    And he logs out and logs in again with routing option Timeout = 3 minutes
     And he is viewing the results of a search in PL+
     And have some facets applied
-    When he leaves the computer unattended for more than 1 hour
-    And he keeps seeing the results of the search in PL+
+    When he leaves the computer unattended for more than 3 minutes
+    And he keeps seeing the results of the search in PL+ and is logged in 
     And the same facets keep applied(selections are retained)
     And when he does click anywhere
     Then he does not notice anything about the reauthentication process.
