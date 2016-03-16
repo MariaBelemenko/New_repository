@@ -1033,7 +1033,7 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the term highlighting checkbox on download and email delivery pop up
      */
     public WebElement termHighlightingCheckbox() {
-        return waitForExpectedElement(By.id("coid_chkDdcLayoutTermHighlighting"), 8);
+        return retryingFindElement(By.id("coid_chkDdcLayoutTermHighlighting"));
     }
 
     /**
