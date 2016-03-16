@@ -14,30 +14,13 @@ import java.util.List;
 
 public class CommonMailinatorPage extends AbstractPage {
 
-    public WebElement emailFromByOnclick(
+    public WebElement emailListSubjectOnclick(
             String Onclick) {
-        return waitForExpectedElement(By.xpath("//a[@onclick=\"" + Onclick + "\"]/div[contains(@class,'from')]"));
-    }
-
-    public WebElement emailSubjectOnclick(
-            String Onclick) {
-        return waitForExpectedElement(By.xpath("//a[@onclick=\"" + Onclick + "\"]/div[contains(@class,'subject')]"));
-    }
-
-    public WebElement emailTimeOnclick(
-            String Onclick) {
-        return waitForExpectedElement(By.xpath("//a[@onclick=\"" + Onclick + "\"]/div[contains(@class,'time')]"));
-    }
-
-    public WebElement emailTimeRecentByOnclick(
-            String Onclick) {
-        return waitForExpectedElement(By.xpath("//a[@onclick=\"" + Onclick + "\"]/div[contains(@class,'time')]/self::*[contains(text(),'minute')]"));
+        return waitForExpectedElement(By.xpath("//div[@id=\"" + Onclick + "\"]//div[contains(@style,'blue')]/div[contains(@class,'innermail')]"));
     }
 
     public List displayedEmailList() {
-
         List<WebElement> eList = findElements(By.cssSelector(".someviewport div[id*='row_public']"));
-
         return eList;
     }
 
@@ -46,29 +29,14 @@ public class CommonMailinatorPage extends AbstractPage {
         return eList.size();
     }
 
-    public WebElement emailEmptyInbox() {
-        return waitForExpectedElement(By.xpath("//div[@id='noemailmsg']"));
-    }
-
-    public WebElement emailSubject(
-            String subjectText) {
-        return waitForExpectedElement(By.xpath("//div[contains(@class,'subject')]/self::*[contains(text(),'" + subjectText + "')]"));
-    }
-
     public void selectFirstEmail(){
         WebElement element = (WebElement) displayedEmailList().get(0);
         element.findElement(By.cssSelector("div[onclick*='showTheMessage']")).click();
     }
 
     public String firstEmailOnclickId(){
-        WebElement firstEmailLink = waitForExpectedElement(By.xpath("//a[1]/self::a[contains(@onclick,'showmail')]"));
-        String onclickId = firstEmailLink.getAttribute("onclick");
-        return onclickId;
-    }
-
-    public WebElement emailByOnclick(
-            String Onclick) {
-        return waitForExpectedElement(By.xpath("//a[@onclick='" + Onclick + "']"));
+        WebElement firstEmailLink = (WebElement) displayedEmailList().get(0);
+        return firstEmailLink.getAttribute("id");
     }
 
     public WebElement emailDisplayTo() {
@@ -83,22 +51,13 @@ public class CommonMailinatorPage extends AbstractPage {
         return waitForExpectedElement(By.xpath("//td[contains(text(),'Subject:')]/following-sibling::td"));
     }
 
-    public WebElement emailMainText() {
-
-        return waitForExpectedElement(By.xpath("//div[@class='mailview']"));
-    }
-
-    public WebElement buttonOriginal() {
-        return waitForExpectedElement(By.xpath("//button[contains(@onclick,'load')]"));
-    }
-
     public WebElement emailMainTextLink(
             String containsHref) {
-        return waitForExpectedElement(By.xpath("//div[@class='mailview']/a[contains(@href,'" + containsHref + "')]"));
+        return waitForExpectedElement(By.xpath("//body/a[contains(@href,'" + containsHref + "')]"));
     }
 
     public WebElement emailMainTextFrame() {
-        return waitForExpectedElement(By.id("publicshowmaildivcontent"));
+        return waitForExpectedElement(By.id("publicshowmaildivcontent"),10);
     }
 
     public String getEmailText() {
