@@ -80,7 +80,7 @@ Feature: [839949] As a User
     | link   | webSite                                     |
     | Canada | ca.practicallaw.com                         |
     | China  | thomsonreuters.com/Browse/Home/Global/China |
-    | UK     | thomsonreuters.com/Browse/Home/Home         |
+    | UK     | thomsonreuters.com/Browse/Home         |
     | US     | westlaw.com                                 |
 
   Scenario Outline: verify links in International practice areas section in the countries tab
