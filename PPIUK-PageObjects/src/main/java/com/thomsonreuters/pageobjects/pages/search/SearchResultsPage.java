@@ -1012,7 +1012,7 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the download radio button on download delivery pop up
      */
     public WebElement downloadButton() {
-        return waitForExpectedElement(By.xpath("//input[@id='co_deliveryDownloadButton'][@type='button']"), 10);
+        return retryingFindElement(By.xpath("//input[@id='co_deliveryDownloadButton'][@type='button']"));
     }
 
     /**
