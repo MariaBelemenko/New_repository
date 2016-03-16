@@ -5,7 +5,7 @@ Feature: [702211][779805] ukKnowHowSearchResultChangeDetailLevelS2-90.feature
   Scenario:[702211] Verify setting for more/most/less detail
     Given PL+ user is logged in
     When the user runs a free text search for the query "taxation"
-    Then the user can verify that search results are displayed according to detail selection
+    Then the user can verify that generic search results are displayed according to detail selection
     |MORE|
     |MOST|
     |LESS|
@@ -14,7 +14,7 @@ Feature: [702211][779805] ukKnowHowSearchResultChangeDetailLevelS2-90.feature
     Given PL+ user is logged in
     And has selected the homepage practice area link to "Arbitration"
     And has selected the link to View All on the Legal Updates Widget
-    Then the user can verify that search results are displayed according to detail selection
+    Then the user can verify that legal updates search results are displayed according to detail selection
       |MORE|
       |MOST|
       |LESS|
@@ -24,7 +24,7 @@ Feature: [702211][779805] ukKnowHowSearchResultChangeDetailLevelS2-90.feature
     And has selected the homepage practice area link to "Corporate"
     And has selected the topic link to "Directors"
     And has selected the link to View All on the Legal Updates Widget
-    Then the user can verify that search results are displayed according to detail selection
+    Then the user can verify that topic search results are displayed according to detail selection
       |MOST|
       |MORE|
       |LESS|
