@@ -135,11 +135,27 @@ public class SearchResultsPage extends AbstractPage {
     }
 
     public WebElement firstResultTitle() {
-        return waitForExpectedElement(By.id("cobalt_result_knowhow_title1"));
+        return retryingFindElement(By.id("cobalt_result_knowhow_title1"));
     }
 
     public WebElement firstResultAbstractText() {
         return retryingFindElement(By.xpath("//div[@id='co_searchResults_summary_1']/ul/li"));
+    }
+
+    public boolean isFirstResultAbstractTextDisplayed() {
+        try {
+            return firstResultAbstractText().isDisplayed();
+        } catch (PageOperationException pe) {
+            return false;
+        }
+    }
+
+    public boolean isFirstResultTitleDisplayed() {
+        try {
+            return firstResultTitle().isDisplayed();
+        } catch (PageOperationException pe) {
+            return false;
+        }
     }
 
     public WebElement sorryNoResultsMessage() {
@@ -276,10 +292,9 @@ public class SearchResultsPage extends AbstractPage {
      * @return
      */
     public List<WebElement> searchResultsList() {
-        return waitForExpectedElements(By.xpath("//ol[@class='co_searchResult_list']/li[contains(@id,'cobalt_search_results')]"),10);
+        return waitForExpectedElements(By.xpath("//ol[@class='co_searchResult_list']/li[contains(@id,'cobalt_search_results')]"), 10);
         //By.cssSelector(".co_searchResult_list li[id^=\"cobalt_search_results\"]")
     }
-
     /**
      * This method gets the title of the know how search result item based on the given resultItem index on the results list.
      */
@@ -446,14 +461,30 @@ public class SearchResultsPage extends AbstractPage {
      * this is the first terms in context paragraph or snippet
      */
     public WebElement firstSnippetPara() {
-        return waitForExpectedElement(By.id("cobalt_result_knowhow_snippet_1_1"),10);
+        return retryingFindElement(By.id("cobalt_result_knowhow_snippet_1_1"));
+    }
+
+    public boolean isFirstSnippetParaDisplayed() {
+        try {
+            return firstSnippetPara().isDisplayed();
+        } catch (PageOperationException pe) {
+            return false;
+        }
+    }
+
+    public boolean isSecondSnippetParaDisplayed() {
+        try {
+            return secondSnippetPara().isDisplayed();
+        } catch (PageOperationException pe) {
+            return false;
+        }
     }
 
     /**
      * this is the second terms in context paragraph or snippet
      */
     public WebElement secondSnippetPara() {
-        return waitForExpectedElement(By.id("cobalt_result_knowhow_snippet_1_2"),10);
+        return retryingFindElement(By.id("cobalt_result_knowhow_snippet_1_2"));
     }
 
     /**
@@ -470,8 +501,8 @@ public class SearchResultsPage extends AbstractPage {
      */
     public boolean isDidYouMeanTextDisplayed() {
         try {
-            return waitForExpectedElement(By.className("co_search_didyoumean"),10).isDisplayed();
-        } catch (PageOperationException pe) {
+            return waitForExpectedElement(By.className("co_search_didyoumean"), 10).isDisplayed();
+        } catch (TimeoutException pe) {
             LOG.info("context", pe);
             return false;
         }
@@ -510,7 +541,7 @@ public class SearchResultsPage extends AbstractPage {
      * this is the whats market link on search results
      */
     public WebElement whatsMarketLink() {
-        return waitForExpectedElement(By.xpath("//div[@id='contentTypeTabsPlcuk']//li/a[contains(text(),'Market UK')]"),10);
+        return waitForExpectedElement(By.xpath("//div[@id='contentTypeTabsPlcuk']//li/a[contains(text(),'Market UK')]"), 10);
     }
 
     /**
@@ -561,7 +592,7 @@ public class SearchResultsPage extends AbstractPage {
      * this is the search result total at the top of the search results page
      */
     public WebElement searchResultsTotal(String number) {
-        return waitForExpectedElement(By.xpath("//ol[@id='co_navigationPages']/li/span[contains(text(),'" + number + "')]"),10);
+        return waitForExpectedElement(By.xpath("//ol[@id='co_navigationPages']/li/span[contains(text(),'" + number + "')]"), 10);
     }
 
     /**
@@ -575,28 +606,28 @@ public class SearchResultsPage extends AbstractPage {
      * this is the arrow associated with the envelope icon for selecting delivery options
      */
     public WebElement deliveryDropButton() {
-        return waitForExpectedElement(By.xpath("//li[contains(@id,'deliveryWidget')]//span[contains(@class,'icon_down_blue_arrow')]"),10);
+        return waitForExpectedElement(By.xpath("//li[contains(@id,'deliveryWidget')]//span[contains(@class,'icon_down_blue_arrow')]"), 10);
     }
 
     /**
      * this is the email option accessed via the dropdown above
      */
     public WebElement emailDeliveryOption() {
-        return waitForExpectedElement(By.id("deliveryLinkRow1Email"),8);
+        return waitForExpectedElement(By.id("deliveryLinkRow1Email"), 8);
     }
 
     /**
      * this is the print option accessed via the dropdown above
      */
     public WebElement printDeliveryOption() {
-        return waitForExpectedElement(By.id("deliveryRow1Print"),8);
+        return waitForExpectedElement(By.id("deliveryRow1Print"), 8);
     }
 
     /**
      * this is the download option accessed via the dropdown above
      */
     public WebElement downloadDeliveryOption() {
-        return waitForExpectedElement(By.id("deliveryRow1Download"),8);
+        return waitForExpectedElement(By.id("deliveryRow1Download"), 8);
     }
 
     public boolean isDeliveryDropButtonPresent() {
@@ -752,7 +783,7 @@ public class SearchResultsPage extends AbstractPage {
     public List<String> getAllResultsTitle() {
         List<String> list = new ArrayList<String>();
         try {
-            for (WebElement searchResult : waitForExpectedElements(By.cssSelector("a[id^='cobalt_result_knowhow_title']"),10)) {
+            for (WebElement searchResult : waitForExpectedElements(By.cssSelector("a[id^='cobalt_result_knowhow_title']"), 10)) {
                 list.add(searchResult.getText());
             }
         } catch (PageOperationException te) {
@@ -782,7 +813,7 @@ public class SearchResultsPage extends AbstractPage {
      * @param resultItemTitle
      */
     public void clickOnResultItemToOpenInPLCWindow(String resultItemTitle) {
-        waitForExpectedElement(By.xpath(".//label[contains(text(),'" + resultItemTitle + "')]/../*[@class='co_searchResults_citation']/div/span/a[@target='plc_window']"),8).click();
+        waitForExpectedElement(By.xpath(".//label[contains(text(),'" + resultItemTitle + "')]/../*[@class='co_searchResults_citation']/div/span/a[@target='plc_window']"), 8).click();
     }
 
     /**
@@ -791,7 +822,7 @@ public class SearchResultsPage extends AbstractPage {
      * @param resultIndex
      */
     public void openPLCLinkFromResultItem(String resultIndex) {
-        waitForExpectedElement(By.cssSelector("#cobalt_search_results_knowhowuk" + resultIndex + " a[target='plc_window']"),8).click();
+        waitForExpectedElement(By.cssSelector("#cobalt_search_results_knowhowuk" + resultIndex + " a[target='plc_window']"), 8).click();
     }
 
     /**
@@ -855,7 +886,7 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the download delivery icon on the search results page
      */
     public WebElement downloadDeliveryIcon() {
-        return waitForExpectedElement(By.xpath("//a[@id='deliveryLinkRow1Download']/span"),8);
+        return waitForExpectedElement(By.xpath("//a[@id='deliveryLinkRow1Download']/span"), 8);
     }
 
     /**
@@ -876,7 +907,7 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the download delivery pop up with the heading Download Documents
      */
     public WebElement downloadDocumentsPopUp() {
-        return waitForExpectedElement(By.xpath("//div[@id='co_deliveryLightbox']/div[1]//h3[contains(text(),'Download Documents')]"),8);
+        return waitForExpectedElement(By.xpath("//div[@id='co_deliveryLightbox']/div[1]//h3[contains(text(),'Download Documents')]"), 8);
     }
 
     /**
@@ -911,7 +942,7 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the advanced tab on download and email delivery pop up
      */
     public WebElement advancedTab() {
-        return waitForExpectedElement(By.linkText("Advanced"),8);
+        return waitForExpectedElement(By.linkText("Advanced"), 8);
     }
 
     /**
@@ -1002,7 +1033,7 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the term highlighting checkbox on download and email delivery pop up
      */
     public WebElement termHighlightingCheckbox() {
-        return waitForExpectedElement(By.id("coid_chkDdcLayoutTermHighlighting"),8);
+        return waitForExpectedElement(By.id("coid_chkDdcLayoutTermHighlighting"), 8);
     }
 
     /**
@@ -1086,14 +1117,14 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the message displayed to the user following a successful download request
      */
     public WebElement downloadReadyMessage() {
-        return waitForExpectedElement(By.xpath("//div[@id='co_deliveryWaitMessageTitle'][contains(text(),'The items are ready to download')]"),8);
+        return waitForExpectedElement(By.xpath("//div[@id='co_deliveryWaitMessageTitle'][contains(text(),'The items are ready to download')]"), 8);
     }
 
     /**
      * object representing the message displayed to the user following a successful download request
      */
     public WebElement downloadSingleDocReadyMessage() {
-        return waitForExpectedElement(By.xpath("//div[@id='co_headerMessage'][contains(text(),'Ready For Download')]"),8);
+        return waitForExpectedElement(By.xpath("//div[@id='co_headerMessage'][contains(text(),'Ready For Download')]"), 8);
     }
 
     /**
@@ -1263,5 +1294,4 @@ public class SearchResultsPage extends AbstractPage {
     public WebElement selectAllCheckbox() {
         return waitForExpectedElement(By.xpath("//input[@id='co_searchHeader_selectAll']"));
     }
-
 }
