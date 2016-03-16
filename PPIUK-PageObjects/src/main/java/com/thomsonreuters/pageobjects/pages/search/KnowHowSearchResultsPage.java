@@ -211,9 +211,6 @@ public class KnowHowSearchResultsPage extends AbstractPage {
         return waitForExpectedElement(By.xpath("//div[@id='co_undoAllSelections']/a"),10);
     }
 
-
-
-
     /**
      * This is for "Combined Know How UK" title element
      */

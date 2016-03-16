@@ -1,13 +1,11 @@
 package com.thomsonreuters.searchwhatsmarket.step_definitions.whatsMarketSearch;
 
+import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.WhatsMarketSearchResultsPage;
 import com.thomsonreuters.searchwhatsmarket.step_definitions.BaseStepDef;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +16,7 @@ public class WhatsMarketSearchTest extends BaseStepDef {
 
     private WhatsMarketSearchResultsPage whatsMarketSearchResultsPage = new WhatsMarketSearchResultsPage();
     private KnowHowSearchResultsPage knowHowSearchResultsPage = new KnowHowSearchResultsPage();
+    private CommonMethods commonMethods = new CommonMethods();
 
     @Then("^the user is able to verify that the result in position (\\d+) is whats market content because it contains at least one of the following transaction types$")
     public void theUserIsAbleToVerifyThatTheResultInPositionIsWhatsMarketContentBecauseItContainsAtLeastOneOfTheFollowingTransactionTypes(String result) throws Throwable {
@@ -56,12 +55,7 @@ public class WhatsMarketSearchTest extends BaseStepDef {
 
     @When("^the user clicks on clear all link$")
     public void theUserClicksOnClearAllLink() throws Throwable {
-        /** Find an element and define it */
-        WebElement elementToClick = knowHowSearchResultsPage.clearAllLink();
-        /** Scroll the browser to the element's Y position */
-        ((JavascriptExecutor) getDriver()).executeScript("scroll(250,0);");
-        /** Click the element */
-        elementToClick.click();
+        commonMethods.moveToElementUsingJSThenClick(knowHowSearchResultsPage.clearAllLink());
     }
 
     @When("^the user verifies that the whats market facet \"(.*?)\" is not selected$")

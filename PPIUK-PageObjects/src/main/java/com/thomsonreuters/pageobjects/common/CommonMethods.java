@@ -220,7 +220,12 @@ public class CommonMethods extends AbstractPage {
     }
 
     public void moveToElementUsingJS(WebElement element) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        getDriver().executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+    public void moveToElementUsingJSThenClick(WebElement element) {
+        getDriver().executeScript("arguments[0].scrollIntoView(true);", element);
+        element.click();
     }
 
     public void moveToElementUsingLocation(WebElement element) {
