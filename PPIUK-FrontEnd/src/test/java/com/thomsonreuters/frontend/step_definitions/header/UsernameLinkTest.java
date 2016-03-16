@@ -31,8 +31,7 @@ public class UsernameLinkTest extends BaseStepDef {
     @Then("^user clicks on user icon$")
     public void userHoversOnUsernameLink() throws Throwable {
         WebElement element = header.usernameIcon();
-        Actions action = new Actions(getDriver());
-        action.moveToElement(element).build().perform();
+        comMethods.mouseOver(element);
     }
 
     @Then("^user should see the user popup$")
@@ -44,7 +43,7 @@ public class UsernameLinkTest extends BaseStepDef {
     public void userShouldNavigatedToPage(String resultPage) throws Throwable {
         if (resultPage.equalsIgnoreCase("One Pass")) {
             assertTrue("Onepass page not displayed..!", onePass.manageOnepassTitle().isDisplayed());
-            getDriver().navigate().back();
+            header.browserGoBack();
             assertTrue("Login page not displayed..!", header.companyLogo().isDisplayed());
         } else if (resultPage.equalsIgnoreCase("Session Summary")) {
             assertTrue("Sign off page not displayed..!", onePassLogoutPage.signOffPageSignOnButton().isDisplayed());

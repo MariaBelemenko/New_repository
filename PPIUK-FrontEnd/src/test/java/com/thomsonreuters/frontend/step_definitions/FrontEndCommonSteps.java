@@ -100,10 +100,9 @@ public class FrontEndCommonSteps extends BaseStepDef {
 
     @Then("^user clicks the Twitter link$")
     public void userclickstheTwitterLink() throws Throwable {
-        ((JavascriptExecutor) footer).executeScript("scroll(0,1550);");
+        commonMethods.scrollUpOrDown(1550);
         WebElement element = footer.twitterArrowLink();
-        JavascriptExecutor executor = (JavascriptExecutor) footer;
-        executor.executeScript("arguments[0].click();", element);
+        commonMethods.clickElementUsingJS(element);
     }
 
     @Then("^the user selects the \"(.*?)\" from per page dropdown$")
@@ -329,7 +328,7 @@ public class FrontEndCommonSteps extends BaseStepDef {
     @Then("^user should see the following metadata in the deal \"(.*?)\"$")
     public void userShouldsethePageNo(String dealTitle, DataTable dataTable) throws Throwable {
         Map<String, String> table = dataTable.asMap(String.class, String.class);
-        int record = 0;
+        int record=0,count = 0;
         boolean flag = false;
         searchResultsPage.moreOrLessDetailAnchor().click();
         searchResultsPage.mostDetailOption().click();
@@ -337,14 +336,17 @@ public class FrontEndCommonSteps extends BaseStepDef {
         while (!flag) {
             for (WebElement actualDealTitleLink : whatsMarketSearchResultsPage.searchResultsTitleLinks()) {
                 if (actualDealTitleLink.getText().contains(dealTitle)) {
-                    ++record;
                     flag = true;
                     break;
                 }
                 record++;
-            }
+            }++record;
+            count++;
             if (!flag) {
                 commonMethods.waitForExpectedElement(searchResultsPage.selectNextPageByLink()).click();
+            }
+            if(count>=10){
+                break;
             }
         }
 

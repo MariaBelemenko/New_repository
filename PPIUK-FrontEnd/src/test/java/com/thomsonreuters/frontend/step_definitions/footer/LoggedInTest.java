@@ -1,5 +1,6 @@
 package com.thomsonreuters.frontend.step_definitions.footer;
 
+import com.thomsonreuters.driver.exception.PageOperationException;
 import com.thomsonreuters.frontend.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.pages.footer.WLNFooter;
@@ -72,8 +73,8 @@ public class LoggedInTest extends BaseStepDef {
     public void userShouldSeeThePageAccordingToTheDesign(String labelText) throws Throwable {
         boolean isTabPresent=false;
         if(labelText.equalsIgnoreCase("Careers")){
-            assertTrue(labelText +" Page not displayed..!",footer.careerPageTitle().getText().contains(labelText.toUpperCase()));
-            getDriver().navigate().back();
+            assertTrue(labelText + " Page not displayed..!", footer.careerPageTitle().getText().contains(labelText.toUpperCase()));
+            footer.browserGoBack();
             comMethods.waitForElement(footer.footerWidget(), 3000);
         }else{
             for(WebElement tab : footer.pageTabLinks()) {
@@ -95,7 +96,7 @@ public class LoggedInTest extends BaseStepDef {
                 comMethods.mouseOver(comMethods.getElementByLinkText(item));
                 comMethods.clickLink(item);
                 assertTrue(item + " Page not displayed..!", header.pageHeaderLabel().getText().contains(item));
-                getDriver().navigate().back();
+                footer.browserGoBack();
                 comMethods.waitForElement(header.pageHeaderLabel(), 2000);
             }
         }

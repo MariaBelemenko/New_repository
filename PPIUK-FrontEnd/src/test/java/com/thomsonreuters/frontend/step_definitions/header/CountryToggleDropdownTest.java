@@ -35,6 +35,7 @@ public class CountryToggleDropdownTest extends BaseStepDef {
                 } else {
                     newURL = entry.getValue();
                 }
+                LOG.info("***new URL*****=>"+header.countryDropdownMenuLinks().get(row).getAttribute("href"));
                 assertTrue(newURL + " link not present..!",
                         header.countryDropdownMenuLinks().get(row).getAttribute("href").equalsIgnoreCase(newURL));
                 row++;
