@@ -1,5 +1,5 @@
 Feature: As a  user, I want to see the document display page styling according to the design
-
+  
   Scenario: User verifies the "Drafting Notes" expansion and collapsing
     Given PL+ user is logged in
     And the user runs a free text search for the query "Contract for the sale of freehold land"
