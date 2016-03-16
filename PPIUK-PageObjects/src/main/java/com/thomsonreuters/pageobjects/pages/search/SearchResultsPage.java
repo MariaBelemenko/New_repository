@@ -3,11 +3,17 @@ package com.thomsonreuters.pageobjects.pages.search;
 import com.thomsonreuters.driver.exception.PageOperationException;
 import com.thomsonreuters.driver.framework.AbstractPage;
 import com.thomsonreuters.pageobjects.common.ListFunctions;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import org.apache.commons.lang.StringUtils;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-
-import java.util.*;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
 
 /**
  * This is the generic search results page for the search 1 project.
@@ -633,8 +639,7 @@ public class SearchResultsPage extends AbstractPage {
     public boolean isDeliveryDropButtonPresent() {
         try {
             return deliveryDropButton().isDisplayed();
-        } catch (PageOperationException poe) {
-            LOG.info("context", poe);
+		} catch (PageOperationException | TimeoutException | NoSuchElementException e) {
             return false;
         }
     }
@@ -642,8 +647,7 @@ public class SearchResultsPage extends AbstractPage {
     public boolean isEmailDeliveryOptionPresent() {
         try {
             return emailDeliveryOption().isDisplayed();
-        } catch (PageOperationException poe) {
-            LOG.info("context", poe);
+		} catch (PageOperationException | TimeoutException | NoSuchElementException e) {
             return false;
         }
     }
@@ -651,8 +655,7 @@ public class SearchResultsPage extends AbstractPage {
     public boolean isDownloadDeliveryOptionPresent() {
         try {
             return downloadDeliveryOption().isDisplayed();
-        } catch (PageOperationException poe) {
-            LOG.info("context", poe);
+		} catch (PageOperationException | TimeoutException | NoSuchElementException e) {
             return false;
         }
     }
@@ -660,8 +663,7 @@ public class SearchResultsPage extends AbstractPage {
     public boolean isPrintDeliveryOptionPresent() {
         try {
             return printDeliveryOption().isDisplayed();
-        } catch (PageOperationException poe) {
-            LOG.info("context", poe);
+		} catch (PageOperationException | TimeoutException | NoSuchElementException e) {
             return false;
         }
     }

@@ -15,6 +15,6 @@ Feature: [752714] Not logged in user cannot use delivery options
 
   Scenario: [752714] As a Not logged in user I want to not be able to to use delivery options on legal updates results page
     Given PL+ user is not logged in
-    Given a user is on a legal updates results page "/Browse/Home/Resources/LegalUpdates/UKMediaTelecomsLegalUpdates"
+    Given a user is on a legal updates results page "/LegalUpdates/Practice/1-509-3753"
     Then he does not see on a legal updates results page any link related to delivery options (email, download, print)
     And he is not able to use these features on legal updates results page

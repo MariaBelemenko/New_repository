@@ -1,5 +1,7 @@
 package com.thomsonreuters.login.step_definitions.openWeb;
 
+import static org.junit.Assert.assertFalse;
+
 import com.thomsonreuters.driver.exception.PageOperationException;
 import com.thomsonreuters.login.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
@@ -11,8 +13,8 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
-
-import static org.junit.Assert.assertFalse;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 
 public class HideDeliveryOptionForOpenWebUserTest extends BaseStepDef {
 
@@ -68,7 +70,7 @@ public class HideDeliveryOptionForOpenWebUserTest extends BaseStepDef {
         boolean isUserAbleToUseDeliveryOptions = true;
         try {
             searchResultsPage.deliveryDropButton().click();
-        } catch (PageOperationException poe) {
+		} catch (PageOperationException | TimeoutException | NoSuchElementException e) {
             isUserAbleToUseDeliveryOptions = false;
         }
         assertFalse("User is not able to use delivery options", isUserAbleToUseDeliveryOptions);
