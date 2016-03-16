@@ -1,4 +1,4 @@
-Feature: Practice Area Search
+Feature: [638471] practiceAreaSearch.feature
   This feature covers tests for the following stories:
   [638471]
 

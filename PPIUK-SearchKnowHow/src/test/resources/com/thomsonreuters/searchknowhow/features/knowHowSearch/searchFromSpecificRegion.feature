@@ -1,4 +1,4 @@
-Feature: The search and results are linked to a specific <region> only
+Feature: [638469][637926] searchFromSpecificRegion.feature
   This feature covers tests for the following stories:
   [638469], [637926]
 
