@@ -29,7 +29,7 @@ Feature: [798001] Search results shown after being timed out
     | facet1    | facet2       | facet3  | facet4          | facet5                 |
     | Corporate | Acquisitions | China | Finance | Acquisitions: Auctions |
 
-  @manual @wip @bug
+  @manual @wip
   Scenario: [798001] Checking that facets can be selected after being timed out for SRM user
     Given a PPI user authenticated through username and password who previously selected the Super remember me cookie option
     And he logs out and logs in again with routing option Timeout = 3 minutes
@@ -40,4 +40,3 @@ Feature: [798001] Search results shown after being timed out
     And the same facets keep applied(selections are retained)
     And when he does click anywhere
     Then he does not notice anything about the reauthentication process.
- #bug 801106
