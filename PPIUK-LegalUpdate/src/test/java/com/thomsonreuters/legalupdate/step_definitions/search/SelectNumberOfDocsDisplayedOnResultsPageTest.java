@@ -31,8 +31,8 @@ public class SelectNumberOfDocsDisplayedOnResultsPageTest extends BaseStepDef {
         if (!legalUpdatesResultsPage.resultsPerPageLink().getText().contains(Integer.toString(20))) {
             practicalLawUKCategoryPage.resultsPerPageDropdown(LegalUpdatesResultsPage.TWENTY_PER_PAGE_SELECT_OPTION);
             legalUpdatesResultsPage.waitForPageToLoad();
-            knowHowSearchResultsPage.waitForSearchResults();
         }
+        knowHowSearchResultsPage.waitForSearchResults();
         assertTrue("Default page count is not " + pageCount + "actual value is " + legalUpdatesResultsPage.getUpdatesResultCount(),
                 legalUpdatesResultsPage.resultsPerPageLink().getText().contains(Integer.toString(pageCount)) && legalUpdatesResultsPage.getUpdatesResultCount() == pageCount);
     }
