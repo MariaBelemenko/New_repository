@@ -1,6 +1,6 @@
 package com.thomsonreuters.pageobjects.utils.document;
 
-import com.thomsonreuters.pageobjects.utils.LinkingUtils;
+import com.thomsonreuters.pageobjects.utils.Linking.LinkingUtils;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.openqa.selenium.WebElement;
