@@ -528,7 +528,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
                 list.add(element.getText());
             }
             return list;
-        } catch (PageOperationException poe) {
+        } catch (PageOperationException | TimeoutException poe) {
             LOG.info("context", poe);
             return Collections.emptyList();
         }

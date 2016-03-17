@@ -9,7 +9,6 @@ import java.text.ParseException;
 import java.util.Date;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.slf4j.Logger;
 
@@ -35,8 +34,7 @@ public class CaseDocumentPageUtils extends AbstractPage {
 
 
     public void selectOnShowAndHideLink() {
-        JavascriptExecutor js = (JavascriptExecutor) caseDocumentPage.getDriver;
-        js.executeScript("document.getElementById('co_ExpandCollapseLegislationAnnotationSection').scrollIntoView(true); window.scrollBy(0,-300);");
+        caseDocumentPage.executeScript("document.getElementById('co_ExpandCollapseLegislationAnnotationSection').scrollIntoView(true); window.scrollBy(0,-300);");
         pageActions.mouseOver(caseDocumentPage.showAndHideLink());
         caseDocumentPage.showAndHideLink().click();
     }
