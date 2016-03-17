@@ -19,7 +19,6 @@ import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.pageobjects.utils.RoutingPage;
 import com.thomsonreuters.pageobjects.utils.User;
-import com.thomsonreuters.pageobjects.utils.document.Document;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -1041,12 +1040,6 @@ public class AnnotationsStepDef extends BaseStepDef {
 
     @When("^the user opens '(.+)' link in the search result and store its title and guid$")
     public void openSearchResultLinkAtPositionAndStore(String linkPosition) throws Throwable {
-        openSearchResultLinkAtPositionAndStoreItsTitleAndGuid(linkPosition);
-    }
-
-    private void openSearchResultLinkAtPositionAndStoreItsTitleAndGuid(String linkPosition) throws Throwable {
-        searchResultsPage.waitForPageToLoad();
-        Document singleDocument = new Document();
         searchResultsPage.searchResultPosition(linkPosition).click();
         try {
             searchResultsPage.waitForPageToLoad();
@@ -1054,13 +1047,25 @@ public class AnnotationsStepDef extends BaseStepDef {
         } catch (Exception e) {
             LOG.info("The document failed to load");
         }
-        //Wait for this document appears in History. If it is to quickly the document could be missing
-        Thread.sleep(5000);
-        singleDocument.setTitle(standardDocumentPage.documentTitle().getText());
-        singleDocument.setGuid(getDocumentGUID());
     }
-
-    private String getDocumentGUID() {
-        return standardDocumentPage.documentMetaInfo().getAttribute("id").split("_")[3];
-    }
+//
+//    private void openSearchResultLinkAtPositionAndStoreItsTitleAndGuid(String linkPosition) throws Throwable {
+//        searchResultsPage.waitForPageToLoad();
+//        Document singleDocument = new Document();
+//        searchResultsPage.searchResultPosition(linkPosition).click();
+//        try {
+//            searchResultsPage.waitForPageToLoad();
+//            searchResultsPage.waitForPageToLoadAndJQueryProcessing();
+//        } catch (Exception e) {
+//            LOG.info("The document failed to load");
+//        }
+//        //Wait for this document appears in History. If it is to quickly the document could be missing
+//        Thread.sleep(5000);
+//        singleDocument.setTitle(standardDocumentPage.documentTitle().getText());
+//        singleDocument.setGuid(getDocumentGUID());
+//    }
+//
+//    private String getDocumentGUID() {
+//        return standardDocumentPage.documentMetaInfo().getAttribute("id").split("_")[3];
+//    }
 }

@@ -58,7 +58,7 @@ Feature: Annotations functionality
   Scenario:User should be able to see notes added icon in history
     Given PL+ user is logged in with following details
       | newSession | TRUE             |
-    When user navigates directly to document with guid "Ie6a01717518811e498db8b09b4f043e0"
+    When user navigates directly to document with guid "Ib5551f79e83211e398db8b09b4f043e0"
     Then adds current document to "root" folder
     When the user clicks on 'History' link on the header
     And the user clicks on 'Documents' tab on the History page
@@ -150,6 +150,6 @@ Feature: Annotations functionality
       | I33f1066be8cd11e398db8b09b4f043e0 |
       | Ib5551f79e83211e398db8b09b4f043e0 |
       | Ie6a01717518811e498db8b09b4f043e0 |
-#      | I1559faa0eef211e28578f7ccc38dcbee |
+      | I1559faa0eef211e28578f7ccc38dcbee |
     And user logs out
 
