@@ -47,6 +47,7 @@ Feature: Scenarios with the SHOULD bugs
   # 806688 REGRESSION:Ask Form:Fields are not manadtory
   @bug
   Scenario: ASK Form Validation when submitted without entering any field
+    Given PL+ user is logged in
     And the user access the ASK form directly via url
     And the user accepts ASK disclaimer terms
     When user submits the ASK form
@@ -56,6 +57,7 @@ Feature: Scenarios with the SHOULD bugs
 
   @bug
   Scenario Outline: ASK Form Validation when submitted without entering some fields
+    Given PL+ user is logged in
     And the user access the ASK form directly via url
     And the user accepts ASK disclaimer terms
     When user completes the following ASK form fields

@@ -15,7 +15,7 @@ public class PrintOptionsPage extends CommonDeliveryOptionsPage {
      * This is the print button for submitting the request
      */
      public WebElement printButton() {
-         return waitForExpectedElement(By.id("co_deliveryPrintButton"));
+         return waitForElementToBeClickable(waitForExpectedElement(By.id("co_deliveryPrintButton")));
      }
 
 }

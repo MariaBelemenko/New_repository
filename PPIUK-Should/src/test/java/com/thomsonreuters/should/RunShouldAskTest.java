@@ -3,6 +3,7 @@ package com.thomsonreuters.should;
 import cucumber.api.CucumberOptions;
 import cucumber.api.SnippetType;
 import cucumber.api.junit.Cucumber;
+import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
@@ -13,4 +14,11 @@ import org.junit.runner.RunWith;
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
 public class RunShouldAskTest {
+
+    @BeforeClass
+    public static void reporting() {
+        System.setProperty("username", "AskTestuser");
+        System.setProperty("password", "TestUser2015");
+    }
+
 }

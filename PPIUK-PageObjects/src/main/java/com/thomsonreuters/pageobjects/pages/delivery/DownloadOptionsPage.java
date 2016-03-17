@@ -30,11 +30,11 @@ public class DownloadOptionsPage extends CommonDeliveryOptionsPage {
      * This is the download button for submitting the request
      */
     public WebElement downloadButton() {
-		return waitForExpectedElement(By.id("co_deliveryDownloadButton"), 20);
+		return waitForElementToBeClickable(waitForExpectedElement(By.id("co_deliveryDownloadButton")));
     }
 
     public WebElement exportButton() {
-		return waitForExpectedElement(By.id("co_deliveryExportButton"), 20);
+		return waitForElementToBeClickable(waitForExpectedElement(By.id("co_deliveryExportButton")));
     }
 
     public WebElement confirmDownloadButton() {
