@@ -91,38 +91,6 @@ public class LinkingShouldBugsTest extends BaseStepDef {
         }
     }
 
-    @When("^for \"(.*?)\" I get all the links to other resource or specific section of other resource$")
-    public void forIgetallthelinkstootherresourceorspecificsectionofotherresource(String plcref) throws Throwable {
-        strDOCGUID = Linking.getGUIID(plcref);
-        navigationCobalt.navigate("http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&plcref=" + plcref);
-        NodeList nodes = Linking.returnXpathNodes(getDriver().getPageSource(), "//xlink:locator[not(starts-with(@xlink:href, '#')) and not(ancestor::atict:del)]");
-        for (int i = 0; i < nodes.getLength(); i++) {
-            Node n = nodes.item(i);
-            if (!n.getAttributes().getNamedItemNS(Linking.getXLINKURI(), "role").getTextContent().equalsIgnoreCase("PrimarySource")) {
-                xlinkValue++;
-            }
-        }
-        if (plcref.equals("7-516-0749")) {
-            NodeList anchornodes = Linking.returnXpathNodes(getDriver().getPageSource(), "//a");
-            for (int i = 0; i < anchornodes.getLength(); i++) {
-                Node n = anchornodes.item(i);
-
-                if (n.getAttributes().getNamedItem("href").getTextContent().contains(".practicallaw.com")) {
-                    xlinkValue++;
-                }
-            }
-        }
-        if (plcref.equals("a-008-4220")) {
-            xlinkValue = 5;
-        }
-        if (plcref.equals("1-580-0745")) {
-            NodeList nodesAskLinks = Linking.returnXpathNodes(getDriver().getPageSource(), "//simpleplcxlink[(starts-with(@xlink:href, 'http')) and not(ancestor::atict:del)]");
-            for (int i = 0; i < nodesAskLinks.getLength(); i++) {
-                Node n = nodesAskLinks.item(i);
-            }
-        }
-    }
-
     @When("for \"(.*?)\" I get the NORM relations$")
     public void forIgettheNORMrelations(String plcref) throws Throwable {
         strDOCGUID = Linking.getGUIID(plcref);
@@ -167,17 +135,6 @@ public class LinkingShouldBugsTest extends BaseStepDef {
         novus.setResponseTimeout(30000);
         novus.useLatestPit();
         return novus;
-    }
-
-    @When("^the user verifies that the results list page is displayed$")
-    public void theUserVerifiesThatTheResultsListPageIsDisplayed() throws Throwable {
-        Robot robot = new Robot();
-        robot.delay(5000);
-        try {
-            searchResultsPage.resultsListHeader().isDisplayed();
-            searchResultsPage.filterHeader().isDisplayed();
-        } catch (Exception e) {
-        }
     }
 
     @When("^the user opens the result in position \"(.*?)\"$")
