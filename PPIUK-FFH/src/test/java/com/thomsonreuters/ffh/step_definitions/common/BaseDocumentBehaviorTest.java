@@ -33,11 +33,9 @@ import com.thomsonreuters.pageobjects.utils.document.metadata.Jurisdiction;
 import com.thomsonreuters.pageobjects.utils.folders.FoldersUtils;
 import com.thomsonreuters.pageobjects.utils.form.CheckBoxOrRadioButton;
 import com.thomsonreuters.pageobjects.utils.legalUpdates.CalendarAndDate;
-
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -724,23 +722,17 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
         singleDocument.setGuid(getDocumentGUIDFromURL());
     }
 
-	private void linkContainsTextAndHrefAttribute(String position, String text, String url) throws Throwable {
-		researchOrganizerPage.waitForPageToLoad();
-		WebElement actualDocument = researchOrganizerPage.getLinkToDocumentAtRowPosition(position);
-		String currentText = actualDocument.getText();
-		String currentUrl = actualDocument.getAttribute("href");
-		text = foldersUtils.makeDocumentShorterForFoldersAndHistoryChecks(text);
-		SoftAssertions softAssertions = new SoftAssertions();
-		softAssertions.assertThat(currentUrl)
-				.withFailMessage("Current URL '" + currentUrl + "' does not contain expected '" + url + "'")
-				.contains(url);
-		softAssertions
-				.assertThat(currentText)
-				.withFailMessage(
-						"Current document title '" + currentText + "' does not contain expected text '" + text + "'")
-				.contains(text);
-		softAssertions.assertAll();
-	}
+    private void linkContainsTextAndHrefAttribute(String position, String text, String url) throws Throwable {
+        researchOrganizerPage.waitForPageToLoad();
+        WebElement actualDocument = researchOrganizerPage.getLinkToDocumentAtRowPosition(position);
+        String currentText = actualDocument.getText();
+        System.out.println("currentText: " + currentText);
+        String currentUrl = actualDocument.getAttribute("href");
+        System.out.println("currentUrl: " + currentUrl);
+        if (!currentUrl.contains(url) || !currentText.contains(text)) {
+            throw new RuntimeException("Current url or text is not correct!");
+        }
+    }
 
     private String getDocumentGUID() {
         return standardDocumentPage.documentMetaInfo().getAttribute("id").split("_")[3];
