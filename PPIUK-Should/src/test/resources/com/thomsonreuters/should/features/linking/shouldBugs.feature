@@ -24,8 +24,7 @@ Feature: Scenarios with the SHOULD bugs for Linking project
 #So better to run it manually.
 
   # SHOULD ISSUE: 855204:[REGRESSION] There are no links to primary source documents in the "Bye-laws" document in PL+ UK
-  # It's not a manual! Not all steps moved from the old framework. TODO Move necessary steps impl from old framework
-  @bug @wip
+  @bug
   Scenario Outline: For the sample doc verify the linking to other resource or specific section of other resource
     Given the "<PLC document>" of type "<PLC document TYPE>" exists on Novus platform
     And for "<PLC document>" I get all the links to other resource or specific section of other resource
