@@ -12,10 +12,9 @@ Feature: [702171][702170] - Scoped Search - Practice Area Search
     Then the user opens the result in position "<position>"
     And the user pauses for "3" seconds
     And the user verifies that the product detail contains the practice area "<practicearea>"
-    And the user verifies that the product detail contains the topic area "<topicarea>"
   Examples:
-    | query   | position | practicearea     | topicarea    |
-    | profile | 1        | Media & Telecoms | Social Media |
+    | query   | position | practicearea    |
+    | profile | 1        | Media & Telecoms|
 
   Scenario Outline: [702170]  If I search Know-How Content for a specific Practice Area then the returned search results are only for the specified Practice Area
     And the user selects the link to Media and Telecoms
