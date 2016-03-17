@@ -50,7 +50,6 @@ Ability to use operators when searching on PL+ for what's market
     | "income tax" | 1      |
     | "income tax" | 3      |
 
-  @bug
   Scenario Outline: [711536] Validate that use of AND retrieves both search terms, [711536] Validate that use of the /p connectors retrieves terms within the same sentence
     #815995
     When the user runs a free text search for the query "contract AND acceptance"

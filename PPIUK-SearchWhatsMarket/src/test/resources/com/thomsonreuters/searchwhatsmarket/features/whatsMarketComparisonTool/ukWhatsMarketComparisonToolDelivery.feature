@@ -5,7 +5,6 @@ Feature: ukWhatsMarketComparisonToolDelivery.feature
     Given PL+ user is logged in
     And the user selects the link entitled Whats Market UK Home
 
-  @bug
   Scenario Outline: [815247] Download whats market comparison report
       #850563 logged 26/01/15
     When the user runs a free text search for the query "law"
@@ -34,7 +33,6 @@ Feature: ukWhatsMarketComparisonToolDelivery.feature
     | Microsoft Word        |
     | Microsoft Excel (XLS) |
 
-  @bug
   Scenario Outline: [815247] Email whats market comparison report
       #850563 logged 26/01/15
     When the user runs a free text search for the query "law"

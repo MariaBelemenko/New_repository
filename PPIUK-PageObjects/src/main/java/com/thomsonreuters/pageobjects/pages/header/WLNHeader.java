@@ -94,7 +94,7 @@ public class WLNHeader extends AbstractPage {
     }
 
     public WebElement foldersLink() {
-        return waitForElementVisible(By.linkText("Folders"));
+        return waitForExpectedElement(By.linkText("Folders"),10);
     }
 
     public WebElement foldersArrowLink() {

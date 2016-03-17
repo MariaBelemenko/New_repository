@@ -18,6 +18,7 @@ Feature: ukWhatsMarketComparisonToolAddToFolder.feature
     And the user selects the compare button
     And the user verifies the presence of the heading Deal Comparison Report
     And the user ensures that the left hand column select is displayed
+    # If this test fails here it could be screen size if the icon is rendered off screen to the right
     And the user adds whats market deal comparison report to new "<folderName>" folder with parent folder "root"
     And the user clicks on 'Folders' link on the header
     Then the folder "<folderName>" appears in the "root" folder

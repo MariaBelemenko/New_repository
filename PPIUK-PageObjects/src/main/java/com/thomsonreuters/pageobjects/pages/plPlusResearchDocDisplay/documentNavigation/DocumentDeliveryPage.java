@@ -76,8 +76,10 @@ public class DocumentDeliveryPage extends DocumentNavigationPage {
      */
     public void clickOnAddToFolderLink() {
         // Check the folder icon is displayed then click it
-        waitForExpectedElement(By.xpath("//*[@id='co_docToolbarVerticalMenuRight']//*[@class='co_saveTo']//a"),30).isDisplayed();
-        waitForExpectedElement(By.xpath("//*[@id='co_docToolbarVerticalMenuRight']//*[@class='co_saveTo']//a")).click();
+        String XPath = "//*[@id='co_docToolbarVerticalMenuRight']//*[@class='co_saveTo']//a";
+        // Scroll right
+        getDriver.executeScript("window.scrollBy(100, 0)","");
+        waitForExpectedElement(By.xpath(XPath)).click();
     }
 
     /**
@@ -87,7 +89,7 @@ public class DocumentDeliveryPage extends DocumentNavigationPage {
      */
     private WebElement getAddToFolderLink() {
         try {
-            return retryingFindElement(ADD_TO_FOLDER_LOCATOR);
+            return waitForExpectedElement(ADD_TO_FOLDER_LOCATOR,10);
         } catch (TimeoutException pe) {
             LOG.info("context", pe);
             throw new PageOperationException("Exceeded Time to find the Add To Folder link.");

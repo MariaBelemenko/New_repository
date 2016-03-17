@@ -4,7 +4,6 @@ import com.google.common.base.Function;
 import com.thomsonreuters.driver.exception.PageOperationException;
 import com.thomsonreuters.driver.framework.AbstractPage;
 import org.apache.commons.lang.RandomStringUtils;
-import org.apache.xpath.operations.Bool;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
@@ -219,12 +218,13 @@ public class CommonMethods extends AbstractPage {
         executor.executeScript("arguments[0].click();", element);
     }
 
-    public void moveToElementUsingJS(WebElement element) {
-        getDriver().executeScript("arguments[0].scrollIntoView(true);", element);
+    public WebElement moveToElementUsingJS(WebElement element) {
+        driver.executeScript("arguments[0].scrollIntoView(true);", element);
+        return element;
     }
 
     public void moveToElementUsingJSThenClick(WebElement element) {
-        getDriver().executeScript("arguments[0].scrollIntoView(true);", element);
+        driver.executeScript("arguments[0].scrollIntoView(true);", element);
         element.click();
     }
 
