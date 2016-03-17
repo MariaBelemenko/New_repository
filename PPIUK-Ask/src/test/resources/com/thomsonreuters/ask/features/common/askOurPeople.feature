@@ -11,27 +11,27 @@ Feature: Ask Our People Widget
     And the user clicks link '<PracticeAreaLink>' on 'the Ask Landing' page
     Then the user verifies that Our people widget is correctly displayed
     And the user verifies that Head of PracticeArea Team for '<PracticeAreaLink>' in Our people widget is '<HeadOfPracticeArea>'
-  Examples:
-    | PracticeAreaLink           | HeadOfPracticeArea |
-    | Agriculture & Rural Land   | Katharine Paulson  |
-    | Commercial                 | Lisa Millar        |
-    | Construction               | Iain Murdoch       |
-    | Corporate                  | Lucy Ryland        |
-    | Dispute Resolution         | Raichel Hopkinson  |
-    | Employment                 | Sophie Capel       |
-    | Finance                    | Isabella May       |
-    | IP & IT                    | Roger Wesson       |
-    | Local Government           | Chris Knuckey      |
-    | Media & Telecoms           | Roger Wesson       |
-    | Planning                   | Caroline Cox       |
-    | Private Client             | Claire White       |
-    | Property                   | Nikki Martin       |
-    | Property Litigation        | Chloe Shanley      |
-    | Public Law                 | Chris Knuckey      |
-    | Restructuring & Insolvency | David Rawson       |
-    | Share Schemes & Incentives | Katharine Long     |
-    | Tax                        | Emma Nendick       |
-    | Data Protection            | Judith Rauhofer    |
+    Examples:
+      | PracticeAreaLink           | HeadOfPracticeArea |
+      | Agriculture & Rural Land   | Katharine Paulson  |
+      | Commercial                 | Lisa Millar        |
+      | Construction               | Iain Murdoch       |
+      | Corporate                  | Lucy Ryland        |
+      | Dispute Resolution         | Raichel Hopkinson  |
+      | Employment                 | Sophie Capel       |
+      | Finance                    | Lucy Cutler        |
+      | IP & IT                    | Roger Wesson       |
+      | Local Government           | Chris Knuckey      |
+      | Media & Telecoms           | Roger Wesson       |
+      | Planning                   | Caroline Cox       |
+      | Private Client             | Claire White       |
+      | Property                   | Nikki Martin       |
+      | Property Litigation        | Chloe Shanley      |
+      | Public Law                 | Chris Knuckey      |
+      | Restructuring & Insolvency | David Rawson       |
+      | Share Schemes & Incentives | Katharine Long     |
+      | Tax                        | Emma Nendick       |
+      | Data Protection            | Roger Wesson       |
 
   Scenario: Verify Our people widget in main Ask Landing Page contains one of the members mentioned at any time
     When the user is in page 'Browse Menu>Resources>Ask' with page Title 'Ask'
