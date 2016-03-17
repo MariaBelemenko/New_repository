@@ -73,12 +73,11 @@ public class AskOurPeopleTest extends BaseStepDef {
         assertThat("The Our People Widget-Content does not contain expected text", ourPeopleWidgetText, Matchers.containsString("Our quality starts with our people. Their job is to help you do yours"));
     }
 
-    @And("^the user verifies that Head of PracticeArea Team for '(.*)' in Our people widget is '(.*)'$")
-    public void the_user_verifies_that_Head_of_PracticeArea_Team_for_PA_in_Our_people_widget_contains_HeadOfPracticeArea_(String practiceArea, String headOfPaName) throws Throwable {
+    @And("^the user verifies that Head of PracticeArea Team for '(.*)' in Our people widget is '(.*)' and has a '(.*)' title$")
+    public void the_user_verifies_that_Head_of_PracticeArea_Team_for_PA_in_Our_people_widget_contains_HeadOfPracticeArea_(String practiceArea, String headOfPaName, String jobTitle) throws Throwable {
         String ourPeopleWidgetText = askCategoryPage.askOurPeopleWidget().getText().replaceAll("\\n", "");
         assertThat("The Our People Widget-Head of Practice Area does nt contain correct name", ourPeopleWidgetText, Matchers.containsString(headOfPaName));
-        assertThat("The Our People Widget-Head of Practice Area does nt contain correct text: Head of Practical Law " + practiceArea, ourPeopleWidgetText, Matchers.containsString("Head of Practical Law "
-                + practiceArea.replaceAll("Restructuring and Insolvency", "Restructuring & Insolvency").replaceAll("IP & IT", "IP&IT").replaceAll("Share Schemes & Incentives", "Share Schemes and Incentives")));
+        assertThat("The Our People Widget-Head of Practice Area does nt contain correct text: Head of Practical Law " + practiceArea, ourPeopleWidgetText, Matchers.containsString(jobTitle));
     }
 
     @And("^the user verifies that Our people widget contains one of the following as Head of PracticeArea along with Practice Area$")
