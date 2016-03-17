@@ -7,6 +7,8 @@ import com.thomsonreuters.pageobjects.pages.delivery.DownloadOptionsPage;
 import com.thomsonreuters.pageobjects.pages.delivery.EmailOptionsPage;
 import com.thomsonreuters.pageobjects.pages.delivery.PrintOptionsPage;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.DocumentDeliveryOptionsPage;
+import com.thomsonreuters.pageobjects.rest.DeliveryBaseUtils;
+import com.thomsonreuters.pageobjects.rest.model.request.delivery.initiateDelivery.InitiateDelivery;
 import com.thomsonreuters.pageobjects.utils.delivery.DeliveryFormField;
 import com.thomsonreuters.pageobjects.utils.email.EmailMessageUtils;
 import com.thomsonreuters.pageobjects.utils.email.Mailbox;
@@ -22,6 +24,7 @@ import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
 import javax.mail.Message;
+import javax.swing.text.BadLocationException;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
@@ -36,9 +39,8 @@ public class AskDeliveryTest extends BaseStepDef {
     private PrintOptionsPage print = new PrintOptionsPage();
     private DownloadOptionsPage download = new DownloadOptionsPage();
     private FormUtils formUtils = new FormUtils();
-    private WindowHandler windowHandler = new WindowHandler();
-    private FileActions fileActions = new FileActions();
     private EmailMessageUtils emailMessageUtils = new EmailMessageUtils();
+    private DeliveryBaseUtils deliveryBaseUtils = new DeliveryBaseUtils();
 
     private final static String DOWNLOADED_FILE_PATH = System.getProperty("user.home") + "/Downloads";
     private File downloadedFile = null;
@@ -90,29 +92,25 @@ public class AskDeliveryTest extends BaseStepDef {
     @When("^user (downloads|prints|exports) the document with name \"(.*?)\" and extension \"(.*?)\"$")
     public void userDownloadsTheDocument(String action, String name, String extension) throws Throwable {
         Thread.sleep(1000);
-        WebElement downloadOrConfirmationButton = null;
-        switch (action) {
-            case "downloads":
-                download.downloadButton().click();
-                download.waitForPageToLoad();
-                downloadOrConfirmationButton = download.confirmDownloadButton();
-                break;
-            case "exports":
-                download.exportButton().click();
-                download.waitForPageToLoadAndJQueryProcessing();
-                downloadOrConfirmationButton = download.confirmDownloadButton();
-                break;
-            default:
-                downloadOrConfirmationButton = print.printButton();
-                break;
+        if (action.equals("downloads")) {
+            download.downloadButton().click();
+            assertDocumentReadyToDownload();
+        } else if (action.equals("exports")) {
+            download.exportButton().click();
+            assertDocumentReadyToDownload();
+        } else { // print
+            print.printButton().click();
+            download.waitForPageToLoad();
+            // Minimize delivery window to prevent Download browser pop-up showing up
+            // seleniumKeyboard.sendEscape();
         }
-        if (extension.contains("pdf")) {
-            windowHandler.fileDownloadAutomatically(downloadOrConfirmationButton);
-        } else {
-            windowHandler.fileDownload(downloadOrConfirmationButton);
+
+        doDownloadUsingRestApi(extension, action.equals("prints"));
+
+        if (!action.equals("prints")) {
+            Assert.assertTrue("The file name is different: " + downloadedFile.getName() + ", while expected: " + name, downloadedFile
+                    .getName().toLowerCase().contains(name.toLowerCase()));
         }
-        downloadedFile = fileActions.findFile(name, extension, DOWNLOADED_FILE_PATH);
-        assertTrue("File was not downloaded", downloadedFile != null && downloadedFile.exists());
     }
 
     @Then("^the user should be able to see (Email|Print|Download) (basic|advanced) tab options as follows$")
@@ -154,6 +152,17 @@ public class AskDeliveryTest extends BaseStepDef {
         if (!download.trim().isEmpty()) {
             downloadedFile = emailMessageUtils.downloadAttachment(message);
         }
+    }
+
+    private void assertDocumentReadyToDownload() {
+        assertTrue("Download button absent", download.getDownloadButtonWhenDocReadyToDownload().isDisplayed());
+        assertTrue("Document is not ready to download", download.getReadyForDownloadWindow().getText().contains("ready"));
+    }
+
+    private void doDownloadUsingRestApi(String extension, boolean printable) throws BadLocationException {
+        InitiateDelivery.DocFormat docFormat = InitiateDelivery.DocFormat.getFormatIgnoreCase(extension.replace(".", ""));
+        assertTrue("Document not downloaded", deliveryBaseUtils.isDocDownloadedAndChecked(docFormat, printable));
+        downloadedFile = deliveryBaseUtils.getDownloadedDoc();
     }
 
 }
