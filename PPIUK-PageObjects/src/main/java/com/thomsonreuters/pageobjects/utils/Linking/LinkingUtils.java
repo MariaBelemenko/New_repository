@@ -3,6 +3,7 @@ package com.thomsonreuters.pageobjects.utils.Linking;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
+import com.thomsonreuters.driver.framework.WebDriverDiscovery;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.utils.document.content.Section;
 import com.thomsonreuters.pageobjects.utils.document.metadata.Jurisdiction;
@@ -205,8 +206,11 @@ public class LinkingUtils extends DefaultHandler {
         return getBrowserCookiesAsString(null);
     }
 
+    private WebDriverDiscovery webDriver = new WebDriverDiscovery();
+
     public String getBrowserCookiesAsString(Set<Cookie> ignoredCookies) {
-        Set<Cookie> cookies = removeCookiesFrom(navigationCobalt.getCookies(), ignoredCookies);
+        Set<Cookie> cookies = removeCookiesFrom(webDriver.manage().getCookies(), ignoredCookies);
+//        Set<Cookie> cookies = removeCookiesFrom(navigationCobalt.getCookies(), ignoredCookies);
         StringBuilder sb = new StringBuilder();
         int i = 1;
         int cookiesCount = cookies.size();
