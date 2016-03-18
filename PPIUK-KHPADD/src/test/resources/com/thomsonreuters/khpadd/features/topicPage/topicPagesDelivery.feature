@@ -52,7 +52,7 @@ Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of
     And the user edits the basic email options as follows
       | List of Items | Selected |
     Then the user should be able to see Email basic tab options as follows
-      | Subject       | Practical Law - List of 2 results for Development |
+      | Subject       | Practical Law - List of 3 results for Development |
       | Email Note    | optional notes                                    |
       | List of Items | Selected                                          |
       | Documents     | Not Selected                                      |

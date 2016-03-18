@@ -35,7 +35,7 @@ Feature: [711146, 711149, 711150] As a Know How user,
     Then the user should be able to view the definition of the term "Headlease" on the page
     #the line below has not been implemented so unable to identify element - bug 724783
     #And the left pane should roll up displaying the selected term as the first term
-    And letter "#" should be selected on the alphabet tab
+    #And letter "H" should be selected on the alphabet tab
 
   Scenario: Verification of the navigation from glossary definition page to actual know how resource
     When the user clicks on glossary term "A v A application"
