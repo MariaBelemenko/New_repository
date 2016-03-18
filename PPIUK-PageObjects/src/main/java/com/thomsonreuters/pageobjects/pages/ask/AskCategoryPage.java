@@ -135,11 +135,11 @@ public class AskCategoryPage extends AbstractPage {
     }
 
     public WebElement askOurPeoplePaHeadNameText() {
-        return waitForExpectedElement(By.xpath("//*[contains(text(),'Head of Practical Law')]/parent::div/h3"));
+        return waitForExpectedElement(By.xpath("//div[@class='co_featureBoxInner']//h3"));
     }
 
     public WebElement askOurPeopleHeadPlLawText() {
-        return waitForExpectedElement(By.xpath("//*[contains(text(),'Head of Practical Law')]/parent::div/p"));
+        return waitForExpectedElement(By.xpath("//div[@class='co_featureBoxInner']//p"));
     }
 
     public WebElement topicGroupHeader(String header) {

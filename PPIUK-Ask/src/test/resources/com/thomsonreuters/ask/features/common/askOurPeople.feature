@@ -45,7 +45,7 @@ Feature: Ask Our People Widget
       | Corporate                    | Lucy Ryland        |
       | Dispute Resolution           | Raichel Hopkinson  |
       | Employment                   | Sophie Capel       |
-      | Finance                      | Isabella May       |
+      | Finance                      | Lucy Cutler        |
       | IP&IT                        | Roger Wesson       |
       | Local Government             | Chris Knuckey      |
       | Media & Telecoms             | Roger Wesson       |
@@ -54,10 +54,10 @@ Feature: Ask Our People Widget
       | Property                     | Nikki Martin       |
       | Property Litigation          | Chloe Shanley      |
       | Public Law                   | Chris Knuckey      |
-      | Restructuring & Insolvency   | David Rawson       |
+      | Restructuring & Insolvency   | Rebecca Catterson  |
       | Share Schemes and Incentives | Katharine Long     |
       | Tax                          | Emma Nendick       |
-      | Data Protection              | Judith Rauhofer    |
+      | Data Protection              | Roger Wesson       |
       | BCI                          | Morag Rea          |
       | Family                       | Emma Wilkins       |
       | Arbitration                  | Saira Singh        |
