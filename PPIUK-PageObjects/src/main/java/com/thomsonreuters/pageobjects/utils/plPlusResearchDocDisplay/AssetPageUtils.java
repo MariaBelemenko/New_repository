@@ -55,7 +55,7 @@ public class AssetPageUtils {
 
     private String firstUrl;
     private String valueHrefAtribute;
-    private String winHandleFirst;
+    private static String winHandleFirst;
     private WebElement linkInLinkToThisCaseSection;
     private int numberOfLinksInContentSection;
 
@@ -197,7 +197,6 @@ public class AssetPageUtils {
     }
 
     public void goBackToThePreviousWindow() {
-    	System.out.println("1111111");
         assetDocumentPage.switchToWindow(winHandleFirst);
     }
 

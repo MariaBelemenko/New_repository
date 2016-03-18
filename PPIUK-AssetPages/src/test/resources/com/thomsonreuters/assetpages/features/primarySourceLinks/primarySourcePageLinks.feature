@@ -52,24 +52,17 @@ Feature: [790582] [816050] As a PL+ User I want to view hardcoded and celex link
       | I2f49c89c574211e598dc8b09b4f043e0 |
       | I662636d863a911e598dc8b09b4f043e0 |
 
+
   Scenario Outline: [816050] The westlaw uk link opens in a new tab
     When the user opens document with <GUID> guid
     Then the document opens correctly
-    Then the user sees the "Westlaw UK" link
     When the user clicks on this "Westlaw UK" link
-    And the number of open tabs equals "2"
+    Then the user go back to previous window
+    When the user clicks on this "Legislation.gov.uk" link
+    And the number of open tabs equals "3"
 
     Examples: 
       | GUID                              |
       | I8127783d52a011e598dc8b09b4f043e0 |
 
-  Scenario Outline: [816050] The justice link opens in a new tab
-    When the user opens document with <GUID> guid
-    Then the document opens correctly
-    Then the user sees the "http://www.justice.gov.uk" link
-    When the user clicks on this "http://www.justice.gov.uk" link
-    And the number of open tabs equals "2"
 
-    Examples: 
-      | GUID                              |
-      | I8127783d52a011e598dc8b09b4f043e0 |

@@ -17,8 +17,6 @@ import org.apache.pdfbox.pdmodel.interactive.form.PDField;
 import org.apache.pdfbox.util.PDFTextStripper;
 import org.apache.pdfbox.util.PDFTextStripperByArea;
 
-
-
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.io.File;
@@ -28,11 +26,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 public class PDFBoxUtil {
 
-
-	private Parser stripper;
 
 	public PDDocument readDocument(String urlToPdf) {
 		PDDocument document;
@@ -81,16 +76,20 @@ public class PDFBoxUtil {
 		}
 	}
 
-	public void editBirthDate(PDDocument document, String newBirthDate, String newBirthMonth, String newBirthYear) {
+	public void editBirthDate(PDDocument document, String newBirthDate,
+			String newBirthMonth, String newBirthYear) {
 		PDAcroForm acroForm = document.getDocumentCatalog().getAcroForm();
 		try {
-			PDChoiceField dateOfBirthDate = (PDChoiceField) acroForm.getFields().get(1);
+			PDChoiceField dateOfBirthDate = (PDChoiceField) acroForm
+					.getFields().get(1);
 			dateOfBirthDate.setValue(newBirthDate);
 
-			PDChoiceField dateOfBirthMonth = (PDChoiceField) acroForm.getFields().get(2);
+			PDChoiceField dateOfBirthMonth = (PDChoiceField) acroForm
+					.getFields().get(2);
 			dateOfBirthMonth.setValue(newBirthMonth);
 
-			PDChoiceField dateOfBirthYear = (PDChoiceField) acroForm.getFields().get(3);
+			PDChoiceField dateOfBirthYear = (PDChoiceField) acroForm
+					.getFields().get(3);
 			dateOfBirthYear.setValue(newBirthYear);
 		} catch (IOException e) {
 			throw new RuntimeException(e.getMessage());
@@ -121,9 +120,11 @@ public class PDFBoxUtil {
 	}
 
 	@SuppressWarnings("unchecked")
-	private Map<String, PDAction> extractLinks(PDDocument document) throws Exception {
+	private Map<String, PDAction> extractLinks(PDDocument document)
+			throws Exception {
 		Map<String, PDAction> links = new HashMap<String, PDAction>();
-		for (PDPage page : (List<PDPage>) document.getDocumentCatalog().getAllPages()) {
+		for (PDPage page : (List<PDPage>) document.getDocumentCatalog()
+				.getAllPages()) {
 			links.putAll(extractLinks(page));
 		}
 		return links;
@@ -154,7 +155,8 @@ public class PDFBoxUtil {
 				} else if (rotation == 90) {
 					// Do nothing.
 				}
-				Rectangle2D.Float awtRect = new Rectangle2D.Float(x, y, width, height);
+				Rectangle2D.Float awtRect = new Rectangle2D.Float(x, y, width,
+						height);
 				stripper.addRegion(String.valueOf(j), awtRect);
 			}
 		}
@@ -163,7 +165,8 @@ public class PDFBoxUtil {
 			PDAnnotation annotation = annotations.get(j);
 			if (annotation instanceof PDAnnotationLink) {
 				PDAnnotationLink link = (PDAnnotationLink) annotation;
-				String label = stripper.getTextForRegion(String.valueOf(j)).trim();
+				String label = stripper.getTextForRegion(String.valueOf(j))
+						.trim();
 				stripper.getFonts();
 				System.out.println("label: " + label);
 				links.put(label, link.getAction());
@@ -177,7 +180,8 @@ public class PDFBoxUtil {
 		PDDocument document = null;
 		try {
 			document = PDDocument.load(path);
-			for (Map.Entry<String, PDAction> entry : extractLinks(document).entrySet()) {
+			for (Map.Entry<String, PDAction> entry : extractLinks(document)
+					.entrySet()) {
 				if (entry.getValue() instanceof PDActionURI) { // public class
 																// PDActionURI
 																// extends
@@ -210,12 +214,16 @@ public class PDFBoxUtil {
 		return parsedText;
 	}
 
-	public float getFontSizeFromPdf(String path, String text, int index) throws IOException {
+	public float getFontSizeFromPdf(String path, String text, int index)
+			throws IOException {
+		Parser stripper = new Parser();
 		stripper.parse(path, text);
 		return stripper.getFontSize(index);
 	}
 
-	public Color getFontColorFromPdf(String path, String text, int index) throws IOException {
+	public Color getFontColorFromPdf(String path, String text, int index)
+			throws IOException {
+		Parser stripper = new Parser();
 		stripper.parse(path, text);
 		return stripper.getFontColor(index);
 	}
