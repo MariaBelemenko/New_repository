@@ -1,16 +1,23 @@
 package com.thomsonreuters.researchdocdisplay.step_definitions.document;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+
+import com.thomsonreuters.pageobjects.common.CommonMethods;
+import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.AssetDocumentPage;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.CaseDocumentPage;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.ProvisionPage;
+import com.thomsonreuters.pageobjects.rest.service.impl.RestServiceDeliveryImpl;
+import com.thomsonreuters.pageobjects.utils.pdf.PDFBoxUtil;
 import com.thomsonreuters.pageobjects.utils.plPlusResearchDocDisplay.AssetPageUtils;
 import com.thomsonreuters.pageobjects.utils.plPlusResearchDocDisplay.CaseDocumentPageUtils;
 import com.thomsonreuters.pageobjects.utils.plPlusResearchDocDisplay.ProvisionPageUtils;
 import com.thomsonreuters.researchdocdisplay.step_definitions.BaseStepDef;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class DocumentDetailsTest extends BaseStepDef {
 
@@ -19,6 +26,10 @@ public class DocumentDetailsTest extends BaseStepDef {
     private CaseDocumentPage caseDocumentPage = new CaseDocumentPage();
     private CaseDocumentPageUtils caseDocumentPageUtils = new CaseDocumentPageUtils();
     private AssetPageUtils assetPageUtils = new AssetPageUtils();
+    private AssetDocumentPage assetDocumentPage = new AssetDocumentPage();
+    private RestServiceDeliveryImpl restServiceDeliveryImpl = new RestServiceDeliveryImpl();
+    private CommonMethods commonMethods = new CommonMethods();
+    private PDFBoxUtil pdfBoxUtil = new PDFBoxUtil();
 
     @Then("^title displayed on opened document$")
     public void titleDisplayedOnOpenedDocument() throws Throwable {
@@ -133,4 +144,35 @@ public class DocumentDetailsTest extends BaseStepDef {
         assertTrue("The user doesn't see appellate committee", assetPageUtils.isTheFieldInMetadataDisplayed(appellateCommitteeText));
     }
 
+    @Then("^the pdf image is displayed$")
+    public void thePdfImageIsDisplayed() throws Throwable {
+    	assertTrue("User doesn't see pdf image on document",
+				caseDocumentPage.pdfImage().isDisplayed());
+    }
+
+    @Then("^the table of contents is displayed$")
+    public void theTableOfContentsIsDisplayed() throws Throwable {
+    	assertTrue("Teble of content is not displayed",
+				assetDocumentPage.tableOfContentSection().isDisplayed());
+    }
+
+    @Then("^delivery options are displayed$")
+    public void deliveryOptionsAreDisplayed() throws Throwable {
+    	assertTrue("The delivery options are not displayed",
+				caseDocumentPage.deliveryOptions().isDisplayed());
+    }
+
+    @Then("^the document contains the link for downloading$")
+    public void theDocumentContainsTheLinkForDownloading() throws Throwable {
+    	assertTrue("The document doesn't contain the link for downloading",
+				caseDocumentPage.documentInPdf().isDisplayed());
+    }
+
+    @Then("^the user downloads the \"([^\"]*)\" with \"([^\"]*)\"$")
+    public void theUserDownloadsTheWith(String document, String nameOfDownloadedDocument) throws Throwable {
+    	File downloadedFile = restServiceDeliveryImpl.getFileViaHttp(commonMethods.getElementByLinkText(document).getAttribute("href"), nameOfDownloadedDocument);
+	    assertFalse("downloaded document is empty", pdfBoxUtil.extractText(downloadedFile.getAbsolutePath()).isEmpty());
+    }
+
+    
 }

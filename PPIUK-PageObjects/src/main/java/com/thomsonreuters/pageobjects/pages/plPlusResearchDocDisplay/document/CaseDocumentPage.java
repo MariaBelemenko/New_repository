@@ -21,7 +21,6 @@ public class CaseDocumentPage extends DocumentDisplayAbstractPage {
     private static final By META_CONTENT = By.id("co_docContentMetaInfo");
     private static final By DELIVERY_OPTIONS = By.id("co_docToolbarVerticalMenuRight");
     private static final By DOCUMENT_IN_PDF = By.xpath(".//div[@id='co_docContentBody']//a[@type = 'application/pdf']");
-    private static final By FOOTNOTE_SECTION = By.xpath(".//div[@id='co_footnoteSection']/h2");
     private static final By SHOW_AND_HIDE_LINK = By.id("co_ExpandCollapseLegislationAnnotationSection");
     private static final By ANNOTATIONS_SECTION = By.id("co_AnnotationDocumentSource");
     private static final By CONTENT_COLUMN = By.id("co_docContentBody");
@@ -56,9 +55,17 @@ public class CaseDocumentPage extends DocumentDisplayAbstractPage {
         return retryingFindElement(DOCUMENT_IN_PDF);
     }
 
-    public WebElement footnoteSection() {
-        return retryingFindElement(FOOTNOTE_SECTION);
-    }
+    public WebElement footnotesSection(String section) {
+		return retryingFindElement(By.xpath("//div[@id='co_footnoteSection']/*[contains(text(), '" + section + "')]"));
+	}
+	
+	public WebElement footnotesNumber(String section) {
+		return retryingFindElement(By.xpath("//*[contains(text(), '" + section + "')]/following-sibling::*/*[@class='co_footnoteNumber']"));
+	}
+
+	public WebElement footnotesBody(String section) {
+		return retryingFindElement(By.xpath("//*[contains(text(), '" + section + "')]/following-sibling::*/*[@class='co_footnoteBody']"));
+	}
 
     public WebElement annotationsLink(String annotationsLinkText) {
         return retryingFindElement(By.linkText(annotationsLinkText));

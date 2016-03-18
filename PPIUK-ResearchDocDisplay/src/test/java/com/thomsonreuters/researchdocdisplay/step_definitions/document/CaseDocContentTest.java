@@ -40,4 +40,10 @@ public class CaseDocContentTest extends BaseStepDef {
 				assetDocumentPage.metaDataField(field).isDisplayed());
 	}
 
+    @Then("^the \"([^\"]*)\" section contains footnotes body with numbers$")
+    public void theSectionContainsFootnotesBodyWithNumbers(String section) throws Throwable {
+    	assertTrue("The footnotes header is not displayed", caseDocumentPage.footnotesSection(section).isDisplayed());
+		assertTrue("The footnotes boby is displayed", caseDocumentPage.footnotesBody(section).isDisplayed());
+		assertTrue("The footnotes numbers are displayed", caseDocumentPage.footnotesNumber(section).isDisplayed());
+    }
 }
