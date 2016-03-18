@@ -1,5 +1,6 @@
 package com.thomsonreuters.should.step_definitions.linking;
 
+import com.thomsonreuters.driver.framework.AbstractPage;
 import com.thomsonreuters.pageobjects.common.PageActions;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawUKCategoryPage;
@@ -50,8 +51,8 @@ public class LinkingShouldBugsTest extends BaseStepDef {
     @When("for \"(.*?)\" I get the related content from Fatwire XML$")
     public void forIgettherelatedcontentfromFatwireXML(String plcref) throws Throwable {
         plcRef = plcref;
-        getDriver().get("http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&plcref=" + plcref);
-        NodeList relationNodes = Linking.returnXpathNodes(getDriver().getPageSource(), "//resource[@owningPlcReference='" + plcref + "' or (@direction='two-way')]"); //not(starts-with(@owningPlcReference, 'D'))
+        AbstractPage.getDriver.get("http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&plcref=" + plcref);
+        NodeList relationNodes = Linking.returnXpathNodes(AbstractPage.getDriver.getPageSource(), "//resource[@owningPlcReference='" + plcref + "' or (@direction='two-way')]"); //not(starts-with(@owningPlcReference, 'D'))
         if (relationNodes != null) {
             plcTargetVal = new String[relationNodes.getLength()];
             plcTarget = new String[relationNodes.getLength()];

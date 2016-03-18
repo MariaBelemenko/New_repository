@@ -1,5 +1,6 @@
 package com.thomsonreuters.should.step_definitions.linking;
 
+import com.thomsonreuters.driver.framework.AbstractPage;
 import com.thomsonreuters.pageobjects.utils.Linking.LinkingUtils;
 import com.thomsonreuters.should.step_definitions.BaseStepDef;
 import cucumber.api.java.en.Given;
@@ -23,9 +24,9 @@ public class CLW029LinkingSteps extends BaseStepDef {
     @When("^for \"(.*?)\" I get all the links to other resource or specific section of other resource$")
     public void forIgetallthelinkstootherresourceorspecificsectionofotherresource(String plcref) throws Throwable {
         strDOCGUID = linkingUtils.getGUIID(plcref);
-        getDriver().get("http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&plcref=" + plcref);
+        AbstractPage.getDriver.get("http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&plcref=" + plcref);
 
-        NodeList nodes = linkingUtils.returnXpathNodes(getDriver().getPageSource(), "//xlink:locator[not(starts-with(@xlink:href, '#')) and not(ancestor::atict:del)]");
+        NodeList nodes = linkingUtils.returnXpathNodes(AbstractPage.getDriver.getPageSource(), "//xlink:locator[not(starts-with(@xlink:href, '#')) and not(ancestor::atict:del)]");
         for (int i = 0; i < nodes.getLength(); i++) {
             Node n = nodes.item(i);
 
@@ -37,7 +38,7 @@ public class CLW029LinkingSteps extends BaseStepDef {
 
 
         if (plcref.equals("7-516-0749")) {
-            NodeList anchornodes = linkingUtils.returnXpathNodes(getDriver().getPageSource(), "//a");
+            NodeList anchornodes = linkingUtils.returnXpathNodes(AbstractPage.getDriver.getPageSource(), "//a");
             for (int i = 0; i < anchornodes.getLength(); i++) {
                 Node n = anchornodes.item(i);
 
@@ -55,7 +56,7 @@ public class CLW029LinkingSteps extends BaseStepDef {
 
         if (plcref.equals("1-580-0745")) {
 
-            NodeList nodesAskLinks = linkingUtils.returnXpathNodes(getDriver().getPageSource(), "//simpleplcxlink[(starts-with(@xlink:href, 'http')) and not(ancestor::atict:del)]");
+            NodeList nodesAskLinks = linkingUtils.returnXpathNodes(AbstractPage.getDriver.getPageSource(), "//simpleplcxlink[(starts-with(@xlink:href, 'http')) and not(ancestor::atict:del)]");
             for (int i = 0; i < nodesAskLinks.getLength(); i++) {
                 Node n = nodesAskLinks.item(i);
 
@@ -64,7 +65,7 @@ public class CLW029LinkingSteps extends BaseStepDef {
 
             }
 /*============ commenting this as ALD is not marking them as cite.query now. so we can omit it
-            List<WebElement> links = getDriver().findElements(By.tagName("author"));
+            List<WebElement> links = AbstractPage.getDriver.findElements(By.tagName("author"));
 
             if (links.size() > 0) {
                 for (WebElement element : links) {
@@ -81,9 +82,9 @@ public class CLW029LinkingSteps extends BaseStepDef {
     @When("^for \"(.*?)\" I get all the Primary Source links$")
     public void forIgetallthePrimarySourcelinks(String plcref) throws Throwable {
         strDOCGUID = linkingUtils.getGUIID(plcref);
-        getDriver().get("http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&plcref=" + plcref);
+        AbstractPage.getDriver.get("http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&plcref=" + plcref);
 
-        NodeList nodes = linkingUtils.returnXpathNodes(getDriver().getPageSource(), "//xlink:locator[not(starts-with(@xlink:href, '#')) and not(ancestor::atict:del)]");
+        NodeList nodes = linkingUtils.returnXpathNodes(AbstractPage.getDriver.getPageSource(), "//xlink:locator[not(starts-with(@xlink:href, '#')) and not(ancestor::atict:del)]");
         for (int i = 0; i < nodes.getLength(); i++) {
             Node n = nodes.item(i);
 
@@ -101,9 +102,9 @@ public class CLW029LinkingSteps extends BaseStepDef {
     public void forcapturesallthelinkstootherresourceorspecificsectionofotherresource(String plcref) throws Throwable {
         strDOCGUID = linkingUtils.getGUIID(plcref);
         String URL = "http://legaltechtools.int.thomsonreuters.com/Velma/Novus/Document?guid=" + strDOCGUID;
-        getDriver().get(URL);
+        AbstractPage.getDriver.get(URL);
 
-        NodeList nodes = linkingUtils.returnXpathNodes(getDriver().getPageSource(), "//cite.query[ancestor::n-docbody]");
+        NodeList nodes = linkingUtils.returnXpathNodes(AbstractPage.getDriver.getPageSource(), "//cite.query[ancestor::n-docbody]");
         String wpinpointpage = null;
 
         for (int i = 0; i < nodes.getLength(); i++) {
@@ -160,9 +161,9 @@ public class CLW029LinkingSteps extends BaseStepDef {
     @When("^the user gets all the Whats Market links for \"(.*?)\"$")
     public void theusergetsalltheWhatsMarketlinksfor(String plcref) throws Throwable {
 
-        getDriver().get("http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&plcref=" + plcref);
+        AbstractPage.getDriver.get("http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&plcref=" + plcref);
 
-        NodeList nodes = linkingUtils.returnXpathNodes(getDriver().getPageSource(), "//simpleplcxlink[contains(@xlink:href, 'wm_action')]");
+        NodeList nodes = linkingUtils.returnXpathNodes(AbstractPage.getDriver.getPageSource(), "//simpleplcxlink[contains(@xlink:href, 'wm_action')]");
         for (int i = 0; i < nodes.getLength(); i++) {
             Node n = nodes.item(i);
             String xlinkrefval = null;
@@ -179,9 +180,9 @@ public class CLW029LinkingSteps extends BaseStepDef {
 
 
         String URL = "http://legaltechtools.int.thomsonreuters.com/Velma/Novus/Document?guid=" + GUIID;
-        getDriver().get(URL);
+        AbstractPage.getDriver.get(URL);
 
-        NodeList nodes = linkingUtils.returnXpathNodes(getDriver().getPageSource(), "//cite.query[ancestor::n-docbody]");
+        NodeList nodes = linkingUtils.returnXpathNodes(AbstractPage.getDriver.getPageSource(), "//cite.query[ancestor::n-docbody]");
         String wtargetPref = null;
 
         for (int i = 0; i < nodes.getLength(); i++) {
