@@ -10,12 +10,12 @@ import java.util.*;
 public class TopicPage extends AbstractPage {
 
     public Map<String, String> getEditorPicksAsMap() {
-        findElement(By.cssSelector("#coid_website_browseTopColumn"));
-        List<WebElement> editorPicks = findElements(By.cssSelector("#coid_website_browseTopColumn div[id^=ContentBlock]"));
+        waitForExpectedElement(By.cssSelector("#coid_website_browseTopColumn"));
+        List<WebElement> editorPicks = waitForExpectedElements(By.cssSelector("#coid_website_browseTopColumn div[id^=ContentBlock]"));
         Map<String, String> map = new LinkedHashMap<>();
         for (int i = 0; i < editorPicks.size(); i++) {
-            String resourceLink = findElement(By.cssSelector("#coid_website_browseTopColumn div#ContentBlock" + i + " h3>a")).getText().trim();
-            String metadata = findElement(By.cssSelector("#coid_website_browseTopColumn div#ContentBlock" + i + "  h4")).getText().trim();
+            String resourceLink = waitForExpectedElement(By.cssSelector("#coid_website_browseTopColumn div#ContentBlock" + i + " h3>a")).getText().trim();
+            String metadata = waitForExpectedElement(By.cssSelector("#coid_website_browseTopColumn div#ContentBlock" + i + "  h4")).getText().trim();
             map.put(resourceLink, metadata);
         }
         return map;
