@@ -254,7 +254,7 @@ public abstract class DocumentDisplayAbstractPage extends AbstractPage {
     }
 
     public WebElement documentMetaInfo(){
-        return waitForExpectedElement(By.xpath("//*[contains(@id,'co_document_metaInfo')]"),20);
+        return waitForElementExists(By.xpath("//*[contains(@id,'co_document_metaInfo')]"));
     }
 
     public WebElement contentBody() {
