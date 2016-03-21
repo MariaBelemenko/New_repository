@@ -1,6 +1,5 @@
 package com.thomsonreuters.pageobjects.rest.service.impl;
 
-import com.thomsonreuters.pageobjects.rest.auth.UDSCredentials;
 import com.thomsonreuters.pageobjects.rest.model.response.Folder;
 import com.thomsonreuters.pageobjects.rest.model.response.FolderCreationResponse;
 import com.thomsonreuters.pageobjects.rest.model.response.SuperDeleteResponse;
@@ -59,6 +58,7 @@ public class RestServiceFFHImpl extends RestServiceImpl implements RestService {
 		String userName = getUserName();
 		HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
 		String requestTo = getProtocol() + baseURL + "/" + "Foldering/v1/" + userName + "/user";
+		LOG.info("Super delete REQUEST '" + requestEntity.toString() + "', TO: " + requestTo);
 		HttpEntity<SuperDeleteResponse> response = getRestTemplate().exchange(requestTo, HttpMethod.DELETE, requestEntity, SuperDeleteResponse.class);
 		LOG.info("Super delete response '" + response.getBody() + "'");
 		return response.getBody();
@@ -88,12 +88,11 @@ public class RestServiceFFHImpl extends RestServiceImpl implements RestService {
 
 	@Override
 	public HttpHeaders configureHeaders() {
-		UDSCredentials credentials = getUDSCredentials();
 		HttpHeaders httpHeaders = new HttpHeaders();
 		String environment = System.getProperty("base.url");
 		httpHeaders.set("x-cobalt-host", "foldering.int.next." + environment + ".westlaw.com");
 		httpHeaders.set("Content-Type", "application/json; charset=UTF-8");
-		httpHeaders.set("Cookie", "Co_SessionToken=" + credentials.getCoSessionToken() + "; site=" + getSite());
+		httpHeaders.set("Cookie", webDriverDiscovery.getBrowserCookiesAsString());
 		return httpHeaders;
 	}
 	

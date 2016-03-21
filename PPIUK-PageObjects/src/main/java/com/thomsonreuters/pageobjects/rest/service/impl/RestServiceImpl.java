@@ -23,7 +23,7 @@ public abstract class RestServiceImpl implements RestService {
 
     protected static final org.slf4j.Logger LOG = LoggerFactory.getLogger(RestServiceImpl.class);
 
-    private WebDriverDiscovery webDriverDiscovery = new WebDriverDiscovery();
+    protected WebDriverDiscovery webDriverDiscovery = new WebDriverDiscovery();
     private RestTemplate restTemplate = new RestTemplate();
     protected OnepassLoginUtils onepassLoginUtils = new OnepassLoginUtils();
     private UDSService udsService = new UDSService();
@@ -43,7 +43,8 @@ public abstract class RestServiceImpl implements RestService {
             try {
                 super.handleError(response);
             } catch (HttpServerErrorException | HttpClientErrorException httpException) {
-                LOG.info("RESPONSE HANDLER (Client / Server error): " + httpException.getResponseBodyAsString());
+                LOG.info("RESPONSE HANDLER (Client / Server error). \nHeaders: "
+                        + httpException.getResponseHeaders().toString()+ "\nResponse: " + httpException.getResponseBodyAsString());
                 throw httpException;
             }
         }

@@ -50,6 +50,7 @@ public class UDSService {
         String sessionId = getForSessionInfoResponse.getSessionId();
         GetForWorkProductTokenResponse getForCoSessionTokenResponse = udsProxy.getForWorkProductToken(sessionId);
         String workProductToken = getForCoSessionTokenResponse.getWorkProductToken();
+        LOG.info("USER / CO_SESSIONTOKEN / SID: " + userName + " / " + coSessionToken + " / " + sessionId);
         return new UDSCredentials(coSessionToken, sessionId, userGuid, workProductToken);
     }
 
