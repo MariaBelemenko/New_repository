@@ -1,5 +1,5 @@
 @e2e @prod
-Feature: Ask featured Queries Widget
+Feature: [752395] Ask featured Queries Widget
   As a: PL+ user
   I want: the commonly asked question over Features Queries widget
   So that: I can quickly find questions and answers of my interest

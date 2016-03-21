@@ -1,4 +1,4 @@
-Feature: Check all the meta data is displayed on ASK resources
+Feature: [752115] Check all the meta data is displayed on ASK resources
 
   Scenario: Check correct metadata is displayed for "Ask Resource"
     Given PL+ user is logged in

@@ -1,4 +1,4 @@
-Feature: Ask Recent Queries Widget for KH Topic Page
+Feature: [778104] Ask Recent Queries Widget for KH Topic Page
   As a PL+ user
   I want the recently asked question over Recent Queries widget
   So that I can quickly find questions and answers of my interest

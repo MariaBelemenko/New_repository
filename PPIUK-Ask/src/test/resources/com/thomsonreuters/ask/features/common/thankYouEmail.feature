@@ -1,5 +1,5 @@
 @e2e
-Feature: Thank You Email
+Feature: [751656] Thank You Email
   As a user
   I want to receive a thank you / acknowledgement email after I submit a question
   So that I can confirm PL+ received my question

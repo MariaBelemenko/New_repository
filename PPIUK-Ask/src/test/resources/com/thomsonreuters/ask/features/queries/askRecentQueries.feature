@@ -1,4 +1,4 @@
-Feature: Ask Recent Queries Widget
+Feature: [752396] Ask Recent Queries Widget
   As a PL+ user
   I want the recently asked question over Recent Queries widget
   So that I can quickly find questions and answers of my interest

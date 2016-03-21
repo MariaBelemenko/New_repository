@@ -1,4 +1,4 @@
-Feature: When 2+ year old ASK resource or deleted ask resourced is accessed, appropriate error message is displayed
+Feature: [752405,752406,765480] When 2+ year old ASK resource or deleted ask resourced is accessed, appropriate error message is displayed
   As a user
   I want to see appropriate error message while accessing 2+ year old ASK resource or deleted ASK resource
   So that I can get access only to latest ASK resource only

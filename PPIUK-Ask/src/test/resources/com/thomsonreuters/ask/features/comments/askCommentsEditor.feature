@@ -1,4 +1,4 @@
-Feature: Delete/Edit comments by editor
+Feature: [752388,752389] Delete/Edit comments by editor
   As an Editor
   I want to edit existing comments
   So that the users don't see inappropiate comment

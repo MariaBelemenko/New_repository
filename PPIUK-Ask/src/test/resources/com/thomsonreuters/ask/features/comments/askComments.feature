@@ -1,4 +1,4 @@
-Feature: View comment, report this post, reply/add comment to a ask resource
+Feature: [752383,752385,752386] View comment, report this post, reply/add comment to a ask resource
 
   Background:
     Given PL+ user is logged in

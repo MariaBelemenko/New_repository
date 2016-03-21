@@ -1,5 +1,5 @@
 @wip @e2e
-Feature: [755567]Form Submission into Ask Mediator
+Feature: [755567] Form Submission into Ask Mediator
   As a: PL+ subscriber or Non-Subscriber
   I want to: submit my question to the Ask Mediator
   So that: editors are able to view and answer my question on the Ask system

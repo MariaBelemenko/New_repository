@@ -1,5 +1,5 @@
 @bug
-Feature:[751653] Ask Form Drop down list
+Feature: [751653] Ask Form Drop down list
   As a: PL+ user
   I want: to have drop down list Position/Answering Service correctly populated
   So that: I can quickly submit question with correct details
