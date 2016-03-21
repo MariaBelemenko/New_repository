@@ -90,7 +90,7 @@ public class AskOurPeopleTest extends BaseStepDef {
         }
         assertThat("The Our People Widget in main Ask Landing Page-Head of Practice Area does nt contain expected Practice Area Head name", askCategoryPage.askOurPeoplePaHeadNameText().getText(), isIn(paHeads));
         String headOfPlLawText = askCategoryPage.askOurPeopleHeadPlLawText().getText();
-        headOfPlLawText = headOfPlLawText.replaceAll("Head of Practical Law ", "");
+        headOfPlLawText = headOfPlLawText.replaceAll(".*Law\\s* ", "");
         assertThat("The Our People Widget in main Ask Landing Page-Head of Practical Law--- does nt contain expected Practice Area name", headOfPlLawText, isIn(paLinks));
     }
 
