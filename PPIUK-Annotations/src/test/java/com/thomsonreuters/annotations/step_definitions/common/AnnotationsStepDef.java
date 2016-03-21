@@ -2,6 +2,7 @@ package com.thomsonreuters.annotations.step_definitions.common;
 
 import com.thomsonreuters.annotations.step_definitions.BaseStepDef;
 import com.thomsonreuters.driver.exception.PageOperationException;
+import com.thomsonreuters.driver.framework.AbstractPage;
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.annotations.FormatType;
@@ -400,8 +401,8 @@ public class AnnotationsStepDef extends BaseStepDef {
     @Then("^hyperlinked url will be opened in new tab with title \"(.*?)\"$")
     public void hyperlinkedUrlWillBeOpenedInNewWindow(String windowName) throws Throwable {
         commonMethods.switchDriverToAnotherWindow(windowName);
-        getDriver().close();
-        getDriver().switchTo().window(mainWindow);
+        AbstractPage.getDriver.close();
+        AbstractPage.getDriver.switchTo().window(mainWindow);
     }
 
     @Then("^verify No link is added to annotation$")
