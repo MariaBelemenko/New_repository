@@ -52,9 +52,9 @@ public class CaseDocumentPageUtils extends AbstractPage {
             return false;
     }
 
-    public boolean isTheJudgementNavigationMenuIsDisabled(String judgmentText) {
+    public boolean isTheLinkPresent(String text) {
         try {
-            findElement(By.linkText(caseDocumentPage.judgmentText(judgmentText).getText()));
+            findElement(By.linkText(text));
             return true;
         } catch (NoSuchElementException ex) {
             return false;

@@ -16,16 +16,12 @@ public class CaseDocContentTest extends BaseStepDef {
     private CaseDocumentPageUtils caseDocumentPageUtils = new CaseDocumentPageUtils();
     private AssetDocumentPage assetDocumentPage = new AssetDocumentPage();
 
-    @Then("^the user see the \"(.*?)\" judgment menu$")
-    public void theUserSeeTheJudgmentMenu(String judgmentText) throws Throwable {
-        assertTrue("The user doesn't see judgment menu",
-                caseDocumentPage.isElementDisplayed(caseDocumentPage.judgmentText(judgmentText)));
-    }
-
-    @Then("^the \"(.*?)\" judgement navigation menu is disabled$")
-    public void theJudgementNavigationMenuIsDisabled(String judgmentText) throws Throwable {
-        assertFalse("The user doesn't see judgment menu",
-                caseDocumentPageUtils.isTheJudgementNavigationMenuIsDisabled(judgmentText));
+    @Then("^the \"([^\"]*)\" navigation menu is disabled$")
+    public void theNavigationMenuIsDisabled(String text) throws Throwable {
+    	 assertFalse("The " + text + " menu is enabled",
+                 caseDocumentPageUtils.isTheLinkPresent(text));
+    	 assertTrue(text + " is not dispalyed ",
+    			 caseDocumentPage.menuItem(text).isDisplayed());
     }
     
     @Then("^the metadata is displayed in the right hand side of the central column$")

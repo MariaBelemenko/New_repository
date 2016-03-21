@@ -102,8 +102,8 @@ public class CaseDocumentPage extends DocumentDisplayAbstractPage {
         return retryingFindElement(ALIAS_PARTY_NAMES);
     }
 
-    public WebElement judgmentText(String judgmentText) {
-        return retryingFindElement(By.xpath(".//ol[@class='kh_toc-list']/li[contains(text(),'" + judgmentText + "')]"));
+    public WebElement menuItem(String text) {
+        return retryingFindElement(By.xpath(".//*[@class='kh_toc-content']//*[contains(text(),'" + text + "')]"));
     }
 
     public WebElement dateText() {

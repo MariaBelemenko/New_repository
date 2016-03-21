@@ -1,4 +1,4 @@
-Feature: Date corresponds to the correct format
+Feature: Case document includes date in correct format, metadata, link for downloading pdf and footnotes
 
   Background: 
     Given PL+ user is logged in
@@ -62,8 +62,7 @@ Feature: Date corresponds to the correct format
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly
-    Then the user see the "Judgment" judgment menu
-    And the "Judgment" judgement navigation menu is disabled
+    Then the "Judgment" navigation menu is disabled
 
     Examples: 
       | GUID                              |
