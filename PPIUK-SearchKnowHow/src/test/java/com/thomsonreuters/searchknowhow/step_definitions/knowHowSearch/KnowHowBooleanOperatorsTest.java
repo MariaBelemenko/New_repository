@@ -7,6 +7,7 @@ import com.thomsonreuters.pageobjects.pages.search.KnowHowDocumentPage;
 import com.thomsonreuters.pageobjects.pages.search.WhatsMarketDocumentPage;
 import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
 import cucumber.api.java.en.Then;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -23,76 +24,19 @@ public class KnowHowBooleanOperatorsTest extends BaseStepDef {
     private WhatsMarketDocumentPage whatsMarketDocumentPage = new WhatsMarketDocumentPage();
 
     @Then("^the displayed document will have the terms \"([^\"]*)\" marked up as hits$")
-    public void theDisplayedDocumentWillHaveTheTermsMarkedUpAsHits(String searchTerms) throws Throwable {
-        if (!searchTerms.equals("") && !searchTerms.isEmpty()) {
-            /** Split each term using the space character */
-            String eachTerms[] = searchTerms.split(" ");
-            Boolean termFound;
-            String textFromElement;
-            for (int dataRow = 0; dataRow < eachTerms.length; dataRow++) {
-                String currentTerm = eachTerms[dataRow].toUpperCase();
-                /** remove any white spaces */
-                currentTerm = currentTerm.replaceAll("\\s+", "");
-                /** Ignore And and Or */
-                if ((!currentTerm.equals("AND")) && (!currentTerm.equals("&")) && (!currentTerm.equals("OR"))) {
-                    if (currentTerm.length() > 0) {
-                        termFound = false;
-                        /** If a single term is connected with a + plus sign split that into multiple terms, any of which will pass */
-                        String equivalentTerms[] = currentTerm.split("\\+");
-                        for (int dataRowTwo = 0; dataRowTwo < equivalentTerms.length; dataRowTwo++) {
-                            currentTerm = equivalentTerms[dataRowTwo];
-                            LOG.info(" ...Checking that the term '" + currentTerm + "' is marked up as a hit");
-                            List<WebElement> searchTermsFound = ppiGenericDocDisplay.ppiTermNavigationHitMarkupCheckTermsAsList();
-                            LOG.info("The number of marked up search terms found is: " + searchTermsFound.size());
-                            for (WebElement element : searchTermsFound) {
-                                textFromElement = element.getText().toUpperCase();
-                                if (Pattern.matches(wildcardToRegex("*" + currentTerm + "*"), textFromElement)) {
-                                    termFound = true;
-                                    break;
-                                }
-                            }
-                        }
-                        assertTrue("Term '" + currentTerm + "' was not found", termFound);
-                    }
-                }
-            }
-        }
+    public void theDisplayedDocumentWillHaveTheTermsMarkedUpAsHits(String searchTerms) throws Throwable {;
+        Assert.assertTrue("Term '" + searchTerms + "' was not found", commonMethods.theDisplayedDocumentWillHaveTheTermsMarkedUpAsHits(searchTerms));
+    }
+
+    @Then("^the displayed document will not have the terms \"([^\"]*)\" marked up as hits$")
+    public void theDisplayedDocumentWillNotHaveTheTermsMarkedUpAsHits(String searchTerms) throws Throwable {;
+        Assert.assertFalse("Term '" + searchTerms + "' was not found", commonMethods.theDisplayedDocumentWillHaveTheTermsMarkedUpAsHits(searchTerms));
     }
 
     @Then("^the displayed document will have any of the terms \"([^\"]*)\" marked up as hits$")
     public void theDisplayedDocumentWillHaveAnyOfTheTermsMarkedUpAsHits(String searchTerms) throws Throwable {
-        if (!searchTerms.equals("") && !searchTerms.isEmpty()) {
-            /** Split each term using the space character */
-            String eachTerms[] = searchTerms.split(" ");
-            Boolean termFound = false;
-            String textFromElement;
-            for (int dataRow = 0; dataRow < eachTerms.length; dataRow++) {
-                String currentTerm = eachTerms[dataRow].toUpperCase();
-                /** remove any white spaces */
-                currentTerm = currentTerm.replaceAll("\\s+", "");
-                /** Ignore And and Or */
-                if ((!currentTerm.equals("AND")) && (!currentTerm.equals("&")) && (!currentTerm.equals("OR"))) {
-                    if (currentTerm.length() > 0) {
-                        /** If a single term is connected with a + plus sign split that into multiple terms, any of which will pass */
-                        String equivalentTerms[] = currentTerm.split("\\+");
-                        for (int dataRowTwo = 0; dataRowTwo < equivalentTerms.length; dataRowTwo++) {
-                            currentTerm = equivalentTerms[dataRowTwo];
-                            LOG.info(" ...Checking that the term '" + currentTerm + "' is marked up as a hit");
-                            List<WebElement> searchTermsFound = ppiGenericDocDisplay.ppiTermNavigationHitMarkupCheckTermsAsList();
-                            LOG.info("The number of marked up search terms found is: " + searchTermsFound.size());
-                            for (WebElement element : searchTermsFound) {
-                                textFromElement = element.getText().toUpperCase();
-                                if (Pattern.matches(wildcardToRegex("*" + currentTerm + "*"), textFromElement)) {
-                                    termFound = true;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            assertTrue("No terms were matched", termFound);
-        }
+        Assert.assertTrue("Term '" + searchTerms + "' was not found", commonMethods.theDisplayedDocumentWillHaveAnyOfTheTermsMarkedUpAsHits(searchTerms));
+        commonMethods.theDisplayedDocumentWillHaveAnyOfTheTermsMarkedUpAsHits(searchTerms);
     }
 
     @Then("^the user verifies the search result contains the search terms \"(.*?)\" as a phrase within the full text$")
@@ -198,48 +142,6 @@ public class KnowHowBooleanOperatorsTest extends BaseStepDef {
     public void theUserVerifiesThatThereIsNoPluralwords(String term1) throws Throwable {
         String docText = getFullText();
         assertFalse(docText.contains(" " + term1 + " "));
-    }
-
-    /**
-     * Taken from  http://www.rgagnon.com/javadetails/java-0515.html
-     * This is to allow wildcard matches
-     */
-    public static String wildcardToRegex(String wildcard) {
-        String outputString;
-        StringBuffer s = new StringBuffer(wildcard.length());
-        s.append('^');
-        for (int i = 0, is = wildcard.length(); i < is; i++) {
-            char c = wildcard.charAt(i);
-            switch (c) {
-                case '*':
-                    s.append(".*");
-                    break;
-                case '?':
-                    s.append(".");
-                    break;
-                /** escape special regexp-characters */
-                case '(':
-                case ')':
-                case '[':
-                case ']':
-                case '$':
-                case '^':
-                case '.':
-                case '{':
-                case '}':
-                case '|':
-                case '\\':
-                    s.append("\\");
-                    s.append(c);
-                    break;
-                default:
-                    s.append(c);
-                    break;
-            }
-        }
-        s.append('$');
-        outputString = s.toString();
-        return (outputString);
     }
 
     private String getFullText() {

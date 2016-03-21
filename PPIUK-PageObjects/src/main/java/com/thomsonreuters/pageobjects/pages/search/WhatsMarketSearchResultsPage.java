@@ -212,14 +212,8 @@ public class WhatsMarketSearchResultsPage extends AbstractPage {
      * @param index
      */
     public void selectResultItemByIndex(String index) {
-        try {
-            waitForExpectedElement(By.cssSelector("#cobalt_result_whatsmarket_title" + index),8).click();
-        } catch (PageOperationException pe) {
-            LOG.info("context", pe);
-            throw new PageOperationException("Unable to find the result item by given index. #cobalt_result_whatsmarket_title" + index);
-        }
+        waitForExpectedElement(By.xpath("//span[@class='co_searchCount'][text()='" + index + ".']/following-sibling::a"),10).click();
     }
-
 
     /**
      * Object representing date on whats market result in search result list

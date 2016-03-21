@@ -888,7 +888,7 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the download delivery icon on the search results page
      */
     public WebElement downloadDeliveryIcon() {
-        return waitForExpectedElement(By.xpath("//a[@id='deliveryLinkRow1Download']/span"), 8);
+        return waitForExpectedElement(By.xpath("//a[@id='deliveryLinkRow1Download']/span"),5);
     }
 
     /**
@@ -958,7 +958,7 @@ public class SearchResultsPage extends AbstractPage {
      * object representing the option to select documents on download and email delivery pop up
      */
     public WebElement documentsOption() {
-        return waitForExpectedElement(By.id("co_deliveryWhatToDeliverDocumentOnly"));
+        return waitForExpectedElement(By.id("co_deliveryWhatToDeliverDocumentOnly"),5);
     }
 
     /**

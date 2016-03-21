@@ -67,9 +67,6 @@ public class WhatsMarketDeliveryTest extends BaseStepDef {
 
     @When("^the user verifies that the results list page is displayed$")
     public void theUserVerifiesThatTheResultsListPageIsDisplayed() throws Throwable {
-        /** A robot to allow a pause for the page to refresh */
-        Robot robot = new Robot();
-        robot.delay(5000);
         try {
             searchResultsPage.resultsListHeader().isDisplayed();
             searchResultsPage.filterHeader().isDisplayed();
@@ -89,27 +86,27 @@ public class WhatsMarketDeliveryTest extends BaseStepDef {
 
     @When("^the user verifies the presence of a pop up entitled Download Documents$")
     public void theUserVerifiesThePresenceOfAPopUpEntitledDownloadDocuments() throws Throwable {
-        assertTrue(searchResultsPage.downloadDocumentsPopUp().isDisplayed());
+        searchResultsPage.downloadDocumentsPopUp().isDisplayed();
     }
 
     @When("^the user verifies the presence of a basic tab$")
     public void theUserVerifiesThePresenceOfABasicTab() throws Throwable {
-        assertTrue(searchResultsPage.basicTab().isDisplayed());
+        searchResultsPage.basicTab().isDisplayed();
     }
 
     @When("^the user verifies that the basic option is selected by default$")
     public void theUserVerifiesThatTheBasicOptionIsSelectedByDefault() throws Throwable {
-        assertTrue(searchResultsPage.whatToDeliverHeader().isDisplayed());
+        searchResultsPage.whatToDeliverHeader().isDisplayed();
     }
 
     @When("^the user verifies the presence of an option entitled List of Items$")
     public void theUserVerifiesThePresenceOfAnOptionEntitledListOfItems() throws Throwable {
-        assertTrue(searchResultsPage.listOfItemsOption().isDisplayed());
+        searchResultsPage.listOfItemsOption().isDisplayed();
     }
 
     @When("^the user verifies the presence of an option on the pop up entitled Documents$")
     public void verifyPresenceOfOptionOnPopUpTitledDocuments() throws Throwable {
-        assertTrue(searchResultsPage.documentsOption().isDisplayed());
+        searchResultsPage.documentsOption().isDisplayed();
     }
 
     @When("^the user selects the list of items option$")
@@ -122,7 +119,7 @@ public class WhatsMarketDeliveryTest extends BaseStepDef {
 
     @When("^the user verifies the presence of a list of items dropdown option entitled Format$")
     public void theUserVerifiesThePresenceOfAListOfItemsDropdownOptionEntitledFormat() throws Throwable {
-        assertTrue(searchResultsPage.formatDropdownList().isDisplayed());
+        searchResultsPage.formatDropdownList().isDisplayed();
     }
 
     @When("^the user verifies the presence of a list of items format option entitled$")
@@ -137,12 +134,12 @@ public class WhatsMarketDeliveryTest extends BaseStepDef {
 
     @When("^the user verifies the presence of a Download option$")
     public void theUserVerifiesThePresenceOfADownloadOption() throws Throwable {
-        assertTrue(searchResultsPage.downloadButton().isDisplayed());
+        searchResultsPage.downloadButton().isDisplayed();
     }
 
     @When("^the user verifies the presence of a Cancel option$")
     public void theUserVerifiesThePresenceOfACancelOption() throws Throwable {
-        assertTrue(searchResultsPage.cancelButton().isDisplayed());
+        searchResultsPage.cancelButton().isDisplayed();
     }
 
     @When("^the user selects the Documents option$")
@@ -154,7 +151,7 @@ public class WhatsMarketDeliveryTest extends BaseStepDef {
 
     @When("^the user verifies the presence of a dropdown option entitled As$")
     public void theUserVerifiesThePresenceOfADropdownOptionEntitledAs() throws Throwable {
-        assertTrue(searchResultsPage.asDropdown().isDisplayed());
+        searchResultsPage.asDropdown().isDisplayed();
     }
 
     @When("^the user verifies the presence of an option entitled \"([^\"]*)\"$")
@@ -278,7 +275,7 @@ public class WhatsMarketDeliveryTest extends BaseStepDef {
 
     @When("^the user verifies the presence of a pop up entitled Email Documents$")
     public void theUserVerifiesThePresenceOfAPopUpEntitledEmailDocuments() throws Throwable {
-        assertTrue(searchResultsPage.emailDocumentsPopUp().isDisplayed());
+        searchResultsPage.emailDocumentsPopUp().isDisplayed();
     }
 
     @When("^the user is able to verify all fields and list of items are present$")

@@ -25,21 +25,20 @@ Ability to use operators when searching on PL+ for what's market
     | contract and acceptance | 1      | contract | acceptance |
     | contract and acceptance | 2      | contract | acceptance |
 
-  @bug
   Scenario Outline: [711536] Searching with a mix of and and or operators
     # http://tfsnpt.int.thomson.com:8080/tfs/Cobalt_Collection/Cobalt%20Product%20Backlog/_workItems/index#_a=editANDid=815995
     #815995
-    When the user runs a free text search for the query "(company or merger) AND (insolvency or administration)"
+    When the user runs a free text search for the query "(simon or edward) AND (certificate or bond)"
     And the user opens the whats market result in position "<result>"
     Then the result contains either of the results
-      | company AND insolvency     |
-      | company AND administration |
-      | merger AND administration  |
-      | merger AND insolvency      |
-  Examples:
-    | result |
-    | 1      |
-    | 2      |
+      | simon certificate*   |
+      | simon bond*          |
+      | edward* certificate* |
+      | edward* bond*        |
+    Examples:
+      | result |
+      | 1      |
+      | 2      |
 
   Scenario Outline: [711536] verify that a user can submit a phrase search
     When the user runs a free text search for the query "<query>"
@@ -51,6 +50,7 @@ Ability to use operators when searching on PL+ for what's market
     | "income tax" | 3      |
 
   Scenario Outline: [711536] Validate that use of AND retrieves both search terms, [711536] Validate that use of the /p connectors retrieves terms within the same sentence
+    # http://tfsnpt.int.thomson.com:8080/tfs/Cobalt_Collection/Cobalt%20Product%20Backlog/_workItems/index#_a=editANDid=815995
     #815995
     When the user runs a free text search for the query "contract AND acceptance"
     And the user opens the whats market result in position "<result>"

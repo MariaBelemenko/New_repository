@@ -5,6 +5,7 @@ import com.thomsonreuters.pageobjects.pages.search.*;
 import com.thomsonreuters.searchwhatsmarket.step_definitions.BaseStepDef;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 
 import java.util.List;
 
@@ -38,6 +39,16 @@ public class WhatsMarketBooleanOperatorsTest extends BaseStepDef {
         whatsMarketSearchResultsPage.selectResultItemByIndex(resultIndex);
     }
 
+    @Then("^the displayed document will have the terms \"([^\"]*)\" marked up as hits$")
+    public void theDisplayedDocumentWillHaveTheTermsMarkedUpAsHits(String searchTerms) throws Throwable {;
+        Assert.assertTrue("Term '" + searchTerms + "' was not found", commonMethods.theDisplayedDocumentWillHaveTheTermsMarkedUpAsHits(searchTerms));
+    }
+
+    @Then("^the displayed document will have any of the terms \"([^\"]*)\" marked up as hits$")
+    public void theDisplayedDocumentWillHaveAnyOfTheTermsMarkedUpAsHits(String searchTerms) throws Throwable {
+        Assert.assertTrue("Term '" + searchTerms + "' was not found", commonMethods.theDisplayedDocumentWillHaveAnyOfTheTermsMarkedUpAsHits(searchTerms));
+    }
+
     @Then("^the user verifies the search result contains the search terms \"(.*?)\" and also \"(.*?)\" within the full text$")
     public void theUserCanVerifyTheSearchResultContainsTheSearchTermsAndAlsoWithinTheFullText(String firstTerm, String secondTerm) throws Throwable {
         String docText = getFullText().toLowerCase();
@@ -47,21 +58,14 @@ public class WhatsMarketBooleanOperatorsTest extends BaseStepDef {
 
     @Then("^the result contains either of the results$")
     public void whatsMarketEitherOfTheResults(List<String> results) throws Throwable {
-        int count, actualCount = 0;
-        String resultParts[];
-        String docText = getFullText().toLowerCase();
+        Boolean matchFound = false;
         for (String result : results) {
-            resultParts = result.split("&");
-            count = 0;
-            for (String resultPart : resultParts) {
-                if (docText.contains(resultPart.toLowerCase().trim())) {
-                    if (++count == resultParts.length) {
-                        actualCount++;
-                    }
-                }
+            if (commonMethods.theDisplayedDocumentWillHaveTheTermsMarkedUpAsHits(result)) {
+                matchFound = true;
+                break;
             }
         }
-        assertTrue(actualCount > 0);
+        assertTrue(matchFound);
     }
 
     @Then("^the user verifies the search result contains the search terms \"(.*?)\" as a phrase within the full text$")
