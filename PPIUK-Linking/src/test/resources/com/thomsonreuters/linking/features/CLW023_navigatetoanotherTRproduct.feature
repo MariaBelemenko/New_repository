@@ -1,4 +1,4 @@
-Feature: When clicking on a link from a location to the product to another TR product, expect the page to open in a different browser tab
+Feature: [CLW023] When clicking on a link from a location to the product to another TR product, expect the page to open in a different browser tab
 
   Scenario Outline: For the sample docs verify Linking to another TR product
     Given the "<PLC document>" of type "<PLC document TYPE>" exists on Novus platform

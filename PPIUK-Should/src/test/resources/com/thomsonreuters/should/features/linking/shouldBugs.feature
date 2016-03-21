@@ -1,5 +1,6 @@
 Feature: Scenarios with the SHOULD bugs for Linking project
 
+  ###### FEATURE: CLW004a_relatedContentLinks.feature
   # COULD ISSUE: 852028:[REGRESSION] One link from related content is missed for the document "Judicial review procedure: a practical guide"
   # For plcRef 9-376-4010
   @bug
@@ -11,6 +12,7 @@ Feature: Scenarios with the SHOULD bugs for Linking project
       | PLC document TYPE | PLC document |
       | Practice Note     | 9-376-4010   |
 
+  ###### FEATURE: CLW004a_relatedContentLinks.feature
   # SHOULD ISSUE: 825928 RDDBUG: "Content referring..." section  shouldn't be displayed on document
   @manual @bug
   Scenario Outline: For the sample asset pages verify the related content
@@ -24,6 +26,7 @@ Feature: Scenarios with the SHOULD bugs for Linking project
 #The above scenario is part of asset pages project as well form the digital side. It is mpossibel to autoamte the content stuff
 #So better to run it manually.
 
+  ###### FEATURE: CLW029_Predefinethedefaultlocationinaresourcetobetakento.feature
   # SHOULD ISSUE: 855204:[REGRESSION] There are no links to primary source documents in the "Bye-laws" document in PL+ UK
   @bug
   Scenario Outline: For the sample doc verify the linking to other resource or specific section of other resource

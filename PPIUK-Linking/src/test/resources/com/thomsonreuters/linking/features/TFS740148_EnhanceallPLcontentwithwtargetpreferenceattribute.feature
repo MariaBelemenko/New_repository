@@ -1,4 +1,4 @@
-Feature: Enhance all PL content with w target attribute
+Feature: [740148] Enhance all PL content with w target attribute
 
   Scenario Outline: Verify the Cite query attribute for the W-target-preference value in the Novus XML version
     Given the "<PLC document>" of type "<PLC document TYPE>" exists on Novus platform

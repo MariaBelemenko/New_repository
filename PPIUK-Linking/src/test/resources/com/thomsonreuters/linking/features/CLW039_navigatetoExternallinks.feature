@@ -1,4 +1,4 @@
-Feature: Verify links to external urls for the Sample documents
+Feature: [CLW039] Verify links to external urls for the Sample documents
 
   Scenario Outline: For the sample Knowhow doc, Standard document, Country doc, Case Tracker, Whats Market doc verify the forward linking
     Given the "<PLC document>" of type "<PLC document TYPE>" exists on Novus platform

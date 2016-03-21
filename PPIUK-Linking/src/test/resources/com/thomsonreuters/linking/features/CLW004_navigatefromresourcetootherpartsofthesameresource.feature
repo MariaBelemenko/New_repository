@@ -1,4 +1,4 @@
-Feature: Verify links from resource to other parts of the same resource (jumplinks)
+Feature: [CLW004] Verify links from resource to other parts of the same resource (jumplinks)
 
   Scenario Outline: For the sample doc verify the jump linking
     Given the "<PLC document>" of type "<PLC document TYPE>" exists on Novus platform

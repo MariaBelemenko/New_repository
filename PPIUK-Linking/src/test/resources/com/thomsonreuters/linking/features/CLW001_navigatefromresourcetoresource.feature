@@ -1,5 +1,5 @@
 @wip
-Feature: Navigate from resource to resource and verify the different types of links
+Feature: [CLW001] Navigate from resource to resource and verify the different types of links
 
   Scenario Outline: For the sample doc verify the jump links, internal and external links,links to other plc docs
     Given the "<PLC document>" of type "<PLC document TYPE>" exists on Novus platform

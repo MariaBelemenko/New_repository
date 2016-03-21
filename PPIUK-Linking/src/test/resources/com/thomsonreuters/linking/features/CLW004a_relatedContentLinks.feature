@@ -1,4 +1,4 @@
-Feature: Verify the related content info
+Feature: [CLW004a] Verify the related content info
 
   Scenario Outline: For the sample docs verify the related content
     Given for "<PLC document>" I get the related content from Fatwire XML
