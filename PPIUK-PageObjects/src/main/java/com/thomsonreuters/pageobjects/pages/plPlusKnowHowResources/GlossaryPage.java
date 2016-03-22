@@ -23,7 +23,7 @@ public class GlossaryPage extends AbstractPage {
      * in the left hand pane)
      */
     public WebElement glossaryHeading() {
-        return findElement(By.id("co_docHeaderContainer"));
+        return waitForExpectedElement(By.id("co_docHeaderContainer"));
     }
 
     public List<WebElement> listOfTabbedAlphabets() {
