@@ -12,9 +12,12 @@ import java.util.List;
 
 public class Document {
 
+	// first 60 letters from document title
 	private String title;
+	// Full document title without FoldersUtils.makeDocumentShorterForFoldersAndHistoryChecks
+	private String fullTitle;
 	private String status;
-	private String resourceType;	
+	private String resourceType;
 	private String contentType;
 	private String guid;
 	private List<Product> products = new ArrayList<>();
@@ -26,7 +29,12 @@ public class Document {
 	}
 
 	public void setTitle(String documentTitle) {
+		this.fullTitle = documentTitle;
 		this.title = FoldersUtils.makeDocumentShorterForFoldersAndHistoryChecks(documentTitle);
+	}
+
+	public String getFullTitle() {
+		return fullTitle;
 	}
 
 	public String getStatus() {

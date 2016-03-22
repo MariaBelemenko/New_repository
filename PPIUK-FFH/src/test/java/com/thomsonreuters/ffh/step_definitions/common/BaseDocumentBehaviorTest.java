@@ -151,7 +151,7 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
         documentDeliveryPage.clickOnAddToFolderLink();
         String folderName = saveToFolder(folder);
         String message = searchResultsPage.folderingPopupMessage().getText();
-        assertEquals("Message is incorrect", singleDocument.getTitle() + " saved to '" + folderName + "'.", message);
+        assertEquals("Message is incorrect", singleDocument.getFullTitle() + " saved to '" + folderName + "'.", message);
     }
 
     @And("^the user adds current document to the root folder$")
