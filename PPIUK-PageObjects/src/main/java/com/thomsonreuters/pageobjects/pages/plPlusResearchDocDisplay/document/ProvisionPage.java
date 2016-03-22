@@ -63,11 +63,6 @@ public class ProvisionPage extends DocumentDisplayAbstractPage {
 			.xpath(".//div[@id='co_AnnotationDocumentSource']//h4");
 	private static final By PARAGRAPHS_TEXT = By.className("co_paragraph");
 
-	private static final By FOOTNOTE_REFERENCE = By.id("co_footnoteReference_1");
-	private static final By LIGHTBOX = By.className("co_footnoteHoverTitle");
-
-	private static final By LIGHTBOX_INTERNAL_LINK = By.id("co_link_N101EB");
-
 	protected WindowHandler windowHandler;
 
 	protected DateFormat dateFormat;
@@ -658,23 +653,6 @@ public class ProvisionPage extends DocumentDisplayAbstractPage {
 
 	public WebElement paragraphsText() {
 		return retryingFindElement(PARAGRAPHS_TEXT);
-	}
-
-	public WebElement footnoteReference() {
-		return retryingFindElement(FOOTNOTE_REFERENCE);
-	}
-
-	public WebElement lightbox() {
-		return retryingFindElement(LIGHTBOX);
-	}
-	
-	public WebElement lightboxText(String lightboxText) {
-		return findChildElement(lightbox(), By.xpath("//span[contains(text()," + "'" + lightboxText + "'" + ")]"));
-	}
-	
-
-	public WebElement lightboxInternalLink() {
-		return retryingFindElement(LIGHTBOX_INTERNAL_LINK);
 	}
 
 	public WebElement jumpLink(String jumpLinkText) {

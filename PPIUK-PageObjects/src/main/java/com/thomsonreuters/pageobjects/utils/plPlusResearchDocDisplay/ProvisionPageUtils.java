@@ -57,12 +57,6 @@ public class ProvisionPageUtils {
             return false;
     }
 
-    public String clickOnInternalLinkInLightbox() {
-        String firstUrl = provisionPage.getCurrentUrl();
-        provisionPage.lightboxInternalLink().click();
-        return firstUrl;
-    }
-
     public String clickOnLink(WebElement elementForClick) {
         String firstTitle = provisionPage.getPageTitle();
         elementForClick.click();
