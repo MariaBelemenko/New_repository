@@ -15,7 +15,7 @@ Feature: [705430] ukWhatsMarketChangeDetailsLevel.feature
     # Exclude "possible" from the results
     When the user runs a free text search for the query "merger million %possible"
     And the user is able to verify that the result in position "1" is whats market content because it contains one of the whats market resource types
-    Then the user can verify that the more detail icon is displayed
+    Then the user can verify that the "More" Detail icon is displayed
     And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
     And the user verifies the presence of the whats market facet "Secondary issues"
     And the user selects the whats market facet "Secondary issues"
@@ -32,7 +32,7 @@ Feature: [705430] ukWhatsMarketChangeDetailsLevel.feature
     When the user runs a free text search for the query "Possible offer for Kolar Gold Limited (strategic review including formal sale process)"
     And the user is able to verify that the result in position "1" is whats market content because it contains one of the whats market resource types
     Then the user can select the option to show most detail
-    And the user can verify that the most detail icon is displayed
+    And the user can verify that the "Most" Detail icon is displayed
     And the user is able to verify the presence of the resource title for the first result "1"
     And the user is able to verify the presence of a deal summary for the first result "1"
     And the user is able to verify the presence of a date of announcement for the first result "1"
@@ -43,7 +43,7 @@ Feature: [705430] ukWhatsMarketChangeDetailsLevel.feature
     When the user runs a free text search for the query "merger and 2014"
     And the user is able to verify that the result in position "1" is whats market content because it contains one of the whats market resource types
     Then the user can select the option to show less detail
-    And the user can verify that the less detail icon is displayed
+    And the user can verify that the "Less" Detail icon is displayed
     And the user is able to verify the presence of the resource title for the first result "1"
     And the user is able to verify that a deal summary for the first result is not displayed "1"
     And the user is able to verify that a date of announcement for the first result is not displayed "1"

@@ -15,17 +15,6 @@ public class WhatsMarketChangeDetailLevelTest extends BaseStepDef {
     private SearchResultsPage searchResultsPage = new SearchResultsPage();
     private WhatsMarketSearchResultsPage whatsMarketSearchResultsPage = new WhatsMarketSearchResultsPage();
 
-    @When("^the user can select the option to show more detail$")
-    public void theUserCanSelectTheOptionToShowMoreDetail() throws Throwable {
-        searchResultsPage.moreOrLessDetailAnchor().click();
-        searchResultsPage.moreDetailOption().click();
-    }
-
-    @Then("^the user can verify that the more detail icon is displayed$")
-    public void theUserCanVerifyThatTheMoreDetailIconForTermsInContextIsDisplayed() throws Throwable {
-        assertTrue(searchResultsPage.isSliderSelectorDisplayed(SearchResultsPage.SliderSelector.MORE));
-    }
-
     @When("^the user is able to verify the presence of the resource title for the first result \"([^\"]*)\"$")
     public void theUserIsAbleToVerifyThePresenceOfTheResourceTitleForTheFirstResult(String arg1) throws Throwable {
         whatsMarketSearchResultsPage.whatsMarketSearchResultTitle(arg1).isDisplayed();
@@ -54,14 +43,28 @@ public class WhatsMarketChangeDetailLevelTest extends BaseStepDef {
         assertFalse(isPresent);
     }
 
-    @Then("^the user can verify that the most detail icon is displayed$")
-    public void theUserCanVerifyThatTheMostDetailIconForTermsInContextIsDisplayed() throws Throwable {
-        assertTrue(searchResultsPage.isSliderSelectorDisplayed(SearchResultsPage.SliderSelector.MOST));
+    @When("^the user can select the option to show more detail$")
+    public void theUserCanSelectTheOptionToShowMoreDetail() throws Throwable {
+        searchResultsPage.moreOrLessDetailAnchor().click();
+        searchResultsPage.moreDetailOption().click();
     }
 
-    @When("^the user is able to verify the presence of a deal summary for the first result \"([^\"]*)\"$")
-    public void theUserIsAbleToVerifyThePresenceOfADealSummaryForTheFirstResult(String arg1) throws Throwable {
-        whatsMarketSearchResultsPage.resultSummary(arg1).isDisplayed();
+    @Then("^the user can verify that the \"(.*)\" Detail icon is displayed$")
+    public void theUserCanVerifyThatTheDetailIconForTermsInContextIsDisplayed(String option) throws Throwable {
+        // For More/Most/Less
+        // This has broken in the past from developers changing the case in the app
+        // The options on the app are Capital Case, i.e. "More Detail"
+        option = option.toUpperCase();
+
+        switch (option) {
+            case "MORE": assertTrue(searchResultsPage.isSliderSelectorDisplayed(SearchResultsPage.SliderSelector.MORE));
+                break;
+            case "MOST": assertTrue(searchResultsPage.isSliderSelectorDisplayed(SearchResultsPage.SliderSelector.MOST));
+                break;
+            case "LESS": assertTrue(searchResultsPage.isSliderSelectorDisplayed(SearchResultsPage.SliderSelector.LESS));
+                break;
+        }
+
     }
 
     @Then("^the user can select the option to show less detail$")
@@ -70,9 +73,9 @@ public class WhatsMarketChangeDetailLevelTest extends BaseStepDef {
         searchResultsPage.lessDetailOption().click();
     }
 
-    @Then("^the user can verify that the less detail icon is displayed$")
-    public void theUserCanVerifyThatTheLessDetailIconForTermsInContextIsDisplayed() throws Throwable {
-        assertTrue(searchResultsPage.isSliderSelectorDisplayed(SearchResultsPage.SliderSelector.LESS));
+    @When("^the user is able to verify the presence of a deal summary for the first result \"([^\"]*)\"$")
+    public void theUserIsAbleToVerifyThePresenceOfADealSummaryForTheFirstResult(String arg1) throws Throwable {
+        whatsMarketSearchResultsPage.resultSummary(arg1).isDisplayed();
     }
 
     @When("^the user is able to verify that a date of announcement for the first result is not displayed \"([^\"]*)\"$")
