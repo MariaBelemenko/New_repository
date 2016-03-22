@@ -2,6 +2,7 @@ Feature: Verify resources: Glossary/What's Market/Ask
 
   Scenario: Glossary and glossary search
     Given PL+ user is logged in
+    And the user come back on to Home page as logged in user
     When user navigates to a glossary page
     And searches for the term "garden leave" using the glossary search
     Then the user should be able to see a list of resulting glossary terms containing this search term "garden leave"
@@ -10,6 +11,7 @@ Feature: Verify resources: Glossary/What's Market/Ask
   Scenario: What's Market - compare deals
     Given PL+ user is logged in with following details
       | userName | Search2_AutoUser |
+    And the user come back on to Home page as logged in user
     When the user selects the link entitled Whats Market UK Home
     And has selected the link to the deal type "Administrations"
     And the user selects the checkbox associated with whats market result "1"
@@ -20,6 +22,7 @@ Feature: Verify resources: Glossary/What's Market/Ask
 
   Scenario: Verify browsing within Ask
     Given PL+ user is logged in
+    And the user come back on to Home page as logged in user
     When the user clicks on the resources tab on the home page
     And the user clicks on "Ask" link
     And user clicks on the "Construction" Practice Area Link

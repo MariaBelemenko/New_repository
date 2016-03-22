@@ -2,6 +2,7 @@ Feature: Verify email/print/download from document view
 
   Background:
     Given PL+ user is logged in
+    And the user come back on to Home page as logged in user
     When the user clicks on the resources tab on the home page
     And the user clicks on "Checklists" link
     And user clicks on the "IP & IT" Practice Area Link

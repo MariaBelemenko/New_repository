@@ -13,7 +13,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.hamcrest.core.Is;
-
+import java.lang.Thread;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -31,6 +31,7 @@ public class ProdLegalUpdatesTest extends BaseStepDef {
     private SearchResultsPage searchResultsPage = new SearchResultsPage();
     private LegalUpdatesPracticeAreaPage legalUpdatesPracticeAreaPage = new LegalUpdatesPracticeAreaPage();
     private WLNHeader wlnHeader = new WLNHeader();
+    Thread thread;
 
     private String carousalDocumentName;
 
@@ -129,7 +130,9 @@ public class ProdLegalUpdatesTest extends BaseStepDef {
 
     @When("^the user is able to verify that the search result in position \"(.*?)\" within the result list has the jurisdiction \"(.*?)\"$")
     public void theUserIsAbleToVerifyThatTheSearchResultInPositionWithinTheResultListHasTheJurisdictionJurisdiction(String arg1, String arg2) throws Throwable {
+    	thread.sleep(5000);
         String text = searchResultsPage.getWholeResultItemKnowHow(arg1);
+        thread.sleep(5000);
         assertTrue(text.contains(arg2));
     }
 

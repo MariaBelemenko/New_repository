@@ -9,7 +9,7 @@ Feature: Verify logging in and subscriptions
 
   Scenario: Non-logged in user(OpenWeb) can't access subscription resources
     Given PL+ user is not logged in
-    And PL+ user navigates to home page
+    And PL+ user navigates to login page
     When the user runs a free text search for the query "sales agency agreement"
     And the user can open the first know how search result "1"
     Then the user is provided with an option to sign-in or register for free trial
@@ -18,7 +18,7 @@ Feature: Verify logging in and subscriptions
     Given PL+ user is not logged in
     And PL+ user navigates to login page
     When a PPI user enter its username and password
-      | userName | danholland |
+      | userName | Oleg_Babak |
     And user selects Save my Username and Password checkbox
     And clicks on Sign in
     Then the user is navigated to the logged in view of the PL+ homepage
@@ -33,7 +33,7 @@ Feature: Verify logging in and subscriptions
     Given PL+ user is not logged in
     And PL+ user navigates to login page
     When a PPI user enter its username and password
-      | userName | danholland |
+      | userName | Oleg_Babak |
     When he selects the option to be remembered on this computer
     And he activates the super remember me cookie
     Then the user is navigated to the logged in view of the PL+ homepage

@@ -1,7 +1,8 @@
 Feature: Verify legal updates/current awareness
 
-  Scenario: Legal update carousal
+  Scenario: Legal update navigation
     Given PL+ user is logged in
+    And the user come back on to Home page as logged in user
     When user clicks on the "Corporate" Practice Area Link
     And the user clicks on the 'View all' link of the LU widget
     Then the user should be presented with a list of LU documents
@@ -20,6 +21,7 @@ Feature: Verify legal updates/current awareness
 
   Scenario: Search within legal updates
     Given PL+ user is logged in
+    And the user come back on to Home page as logged in user
     When a user navigate to a "Share acquisitions: private" Topic page from a "Corporate" Practice Area page
     And the user clicks on the 'View all' link of the LU widget
     Then the user should be presented with a list of LU documents
@@ -30,10 +32,11 @@ Feature: Verify legal updates/current awareness
 
   Scenario: Search results filter for legal updates
     Given PL+ user is logged in
+    And the user come back on to Home page as logged in user
     When a user is on the Legal Updates Home page
     And the user clicks on the 'View all' link of the LU widget
     Then the user verifies that the current PageTitle contains 'Legal updates | All'
     And the user should be presented with a list of LU documents
     When the user selects the know how parent facet "Northern Ireland"
-    And the user selects the know how option to apply filters
+  #  And the user selects the know how option to apply filters
     Then the user is able to verify that the search result in position "1" within the result list has the jurisdiction "Northern Ireland"

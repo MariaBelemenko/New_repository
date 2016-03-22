@@ -2,7 +2,7 @@ Feature: Verify asset pages and links to external pages(Bailii, Westlaw UK, legi
 
   Scenario: Bailii asset page links
     Given PL+ user is logged in
-    And the user come back on to Home page
+    And the user come back on to Home page as logged in user
     When the user runs a free text search for the query "Instructing an expert in financial remedy proceedings"
     When the user clicks link 'Instructing an expert in financial remedy proceedings' on 'search' page
     And the user clicks on "Kranidiotes v Paschali [2001] EWCA Civ 357" link
@@ -14,6 +14,7 @@ Feature: Verify asset pages and links to external pages(Bailii, Westlaw UK, legi
 
   Scenario: Westlaw/Legislation.gov asset page links
     Given PL+ user is logged in
+    And the user come back on to Home page as logged in user
     When the user runs a free text search for the query "section 110 liquidation"
     And the user can open the first know how search result "1"
     And the user clicks on "section 110" link
