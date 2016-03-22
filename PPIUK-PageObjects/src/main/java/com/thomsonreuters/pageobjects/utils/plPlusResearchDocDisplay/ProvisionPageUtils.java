@@ -63,40 +63,10 @@ public class ProvisionPageUtils {
         return firstUrl;
     }
 
-    public boolean isTheUserTakenToTheSelectedDocument(String firstUrl) {
-        provisionPage.waitForPageToLoad();
-        String secondUrl = provisionPage.getCurrentUrl();
-        if (!firstUrl.equals(secondUrl))
-            return true;
-        else
-            return false;
-    }
-
-    public boolean isTheNoteHaveANumberAndDescription() {
-        if (provisionPage.noteNumber().getText().equals("1") && provisionPage.noteDescription().isDisplayed())
-            return true;
-        else
-            return false;
-    }
-
-    public String clicksOnOneOfInternalLinks() {
-        String firstUrl = provisionPage.getCurrentUrl();
-        provisionPage.linkInNoteDescription().click();
-        return firstUrl;
-    }
-
     public String clickOnLink(WebElement elementForClick) {
         String firstTitle = provisionPage.getPageTitle();
         elementForClick.click();
         return firstTitle;
-    }
-
-    public boolean isUserTakenToThatPartOfTheDocument() {
-        if (provisionPage.isElementDisplayed(provisionPage.jurisdictionText()) == true
-                && provisionPage.jurisdictionLink().getText().equals(provisionPage.jurisdictionText().getText())) {
-            return true;
-        } else
-            return false;
     }
 
     public String clickOnJumpLink(String jumpLinkText) {

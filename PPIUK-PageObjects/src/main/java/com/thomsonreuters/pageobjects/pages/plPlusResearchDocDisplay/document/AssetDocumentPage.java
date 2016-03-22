@@ -163,9 +163,9 @@ public class AssetDocumentPage extends DocumentDisplayAbstractPage {
 		return retryingFindElement(By.xpath("//strong[contains(text()," + "'" + relatedAssetPageText + "'" + ")]"));
 	}
 
-	public WebElement linkInLegalApdatesSection(String linkText, String sectionName) {
+	public WebElement linkInLegalUpdatesSection(String linkText, String sectionName) {
 		return retryingFindElement(By.xpath(".//h2[contains(text(),'" + sectionName
-				+ "')]/following-sibling::ul//a[contains(text(), '" + linkText + "')]"));
+				+ "')]/following-sibling::*//a[contains(text(), '" + linkText + "')]"));
 	}
 
 	public WebElement tabInDownloadWindow(String tabName) {

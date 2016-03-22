@@ -33,7 +33,6 @@ public class GlobalPageLinksTest extends BaseStepDef {
     private GlobalCategoryPage globalCategoryPage = new GlobalCategoryPage();
     private GlobalPageUtils globalPageUtils = new GlobalPageUtils();
     private WLNHeader wlnHeader = new WLNHeader();
-    private CommonMethods commonMethods = new CommonMethods();
     private CaseDocumentPage caseDocumentPage = new CaseDocumentPage();
     private AssetDocumentPage assetDocumentPage = new AssetDocumentPage();
     private HomePage homePage = new HomePage();
@@ -116,7 +115,7 @@ public class GlobalPageLinksTest extends BaseStepDef {
 
     @When("^the user clicks on \"(.*?)\" in \"(.*?)\" section$")
     public void theUserClicksOnInSection(String link, String section) throws Throwable {
-        assetDocumentPage.linkInLegalApdatesSection(link, section).click();
+        assetDocumentPage.linkInLegalUpdatesSection(link, section).click();
     }
 
     @When("^the user logged in PLUS in the login screen$")

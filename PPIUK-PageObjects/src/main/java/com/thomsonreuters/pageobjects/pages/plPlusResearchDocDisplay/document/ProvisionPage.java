@@ -44,20 +44,13 @@ public class ProvisionPage extends DocumentDisplayAbstractPage {
 	public static final String LEGISLATION_DOC_TYPE_LOCATOR = "div.co_title+div";
 
 	private static final By MODIFICATION_LINK = By.linkText("Modifications");
-	private static final By JURISDICTION_LINK = By
-			.xpath(".//div[@id='kh_tocContainer']//a[@class='is-active']");
 
 	private static final By LINK_UNDER_MODIFICATIONS = By
 			.xpath(".//div[@id='co_docContentBody']/div/a[@class='co_link co_drag ui-draggable']");
 	private static final By JURISDICTION_TEXT = By
 			.xpath(".//*[@id='co_docContentBody']/div[@class='co_paragraph co_underline']/h2/strong");
 
-	private static final By INTERNAL_LINK = By
-			.xpath("//a[@class='co_link co_drag ui-draggable']");
-
 	private static final By DOC_CONTENT = By.className("co_footnoteSection");
-	private static final By NOTE_POINT = By
-			.xpath(".//div[@class = 'co_paragraph']");
 
 	private static final By TITLE_TEXT = By
 			.xpath(".//h1[@class='co_title noTOC']");
@@ -639,32 +632,12 @@ public class ProvisionPage extends DocumentDisplayAbstractPage {
 		return waitForExpectedElement(MODIFICATION_LINK);
 	}
 
-	public WebElement jurisdictionLink() {
-		return retryingFindElement(JURISDICTION_LINK);
-	}
-
 	public WebElement jurisdictionText() {
 		return retryingFindElement(JURISDICTION_TEXT);
 	}
 
-	public WebElement amendmentText(String amendmentsText) {
-		return findChildElement(docContent(), By.xpath("//h2[contains(text(),'" + amendmentsText+ "')]"));	
-	}
-
 	public WebElement docContent() {
 		return retryingFindElement(DOC_CONTENT);
-	}
-
-	public WebElement notePoint() {
-		return findChildElement(docContent(), NOTE_POINT);
-	}
-
-	public WebElement noteNumber() {
-		return findChildElement(notePoint(), By.className("co_footnoteNumber"));
-	}
-
-	public WebElement amendmentsLink(String amendmentsLink) {
-		return retryingFindElement(By.linkText(amendmentsLink));
 	}
 	
 	public WebElement titleText() {
@@ -726,14 +699,6 @@ public class ProvisionPage extends DocumentDisplayAbstractPage {
 	
 	public WebElement documentVersion() {
 		return findChildElement(documentMetaInfo(), DOCUMENT_VERSION);
-	}
-	
-	public WebElement noteDescription() {
-		return findChildElement(notePoint(), By.className("co_footnoteBody"));
-	}
-	
-	public WebElement linkInNoteDescription() {
-		return findChildElement(docContent(), INTERNAL_LINK);
 	}
 	
 	public void clickOnAnnotatedStatutesMenuLink(String linkName) {
