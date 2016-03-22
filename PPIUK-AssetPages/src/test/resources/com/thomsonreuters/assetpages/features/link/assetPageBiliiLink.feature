@@ -24,6 +24,6 @@ Feature: [790163] As a PL+ User that requested to turn on Bailii link I want to 
     Then the user does not see links to "Bailii" Bailii
   Examples:
     | GUID                              |
-    | Ieda8cc31f27711e498db8b09b4f043e0 |
-    | I984f1d486cf011e498db8b09b4f043e0 |
-    | I984ef7466cf011e498db8b09b4f043e0 |
+    | I0181f3945b6711e498db8b09b4f043e0 |
+    | I0d69e0776cf411e498db8b09b4f043e0 |
+    | I71d4a24c6cf311e498db8b09b4f043e0 |
