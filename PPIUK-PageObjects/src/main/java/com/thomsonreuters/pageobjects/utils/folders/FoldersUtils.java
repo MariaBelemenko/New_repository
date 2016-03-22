@@ -4,10 +4,7 @@ import com.thomsonreuters.driver.framework.AbstractPage;
 import com.thomsonreuters.pageobjects.common.DocumentColumn;
 import com.thomsonreuters.pageobjects.common.ExcelFileReader;
 import com.thomsonreuters.pageobjects.common.SortOptions;
-import com.thomsonreuters.pageobjects.pages.folders.NewGroupPopup;
-import com.thomsonreuters.pageobjects.pages.folders.ResearchOrganizerPage;
-import com.thomsonreuters.pageobjects.pages.folders.ShareFolderPopup;
-import com.thomsonreuters.pageobjects.pages.folders.ShareFolderRolesPopup;
+import com.thomsonreuters.pageobjects.pages.folders.*;
 import com.thomsonreuters.pageobjects.utils.legalUpdates.CalendarAndDate;
 import org.openqa.selenium.JavascriptExecutor;
 import org.slf4j.Logger;
@@ -27,6 +24,7 @@ public class FoldersUtils {
     private NewGroupPopup newGroupPopup = new NewGroupPopup();
     private ShareFolderRolesPopup shareFolderRolesPopup = new ShareFolderRolesPopup();
     private ShareFolderPopup shareFolderPopup = new ShareFolderPopup();
+    private RestoreFromTrashPopup restoreFromTrashPopup = new RestoreFromTrashPopup();
 
     public void openFolder(String folder) {
         researchOrganizerPage.rootFolderLinkLeftFrame().click();
@@ -160,11 +158,17 @@ public class FoldersUtils {
      * @param documentName
      * @return
      */
-    public String makeDocumentShorterForFoldersAndHistoryChecks(String documentName) {
+    public static String makeDocumentShorterForFoldersAndHistoryChecks(String documentName) {
         if (documentName.length() > EXPECTED_DOCUMENT_NAME_LENGTH) {
             documentName = documentName.substring(0, EXPECTED_DOCUMENT_NAME_LENGTH);
         }
         return documentName;
+    }
+
+    public void moveToOriginalFolder(String folderName) {
+        restoreFromTrashPopup.waitForPageToLoad();
+        restoreFromTrashPopup.selectFolder(folderName).click();
+        restoreFromTrashPopup.moveButton().click();
     }
 
 }

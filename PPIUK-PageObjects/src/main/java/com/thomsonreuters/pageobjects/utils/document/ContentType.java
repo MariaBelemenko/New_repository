@@ -1,7 +1,7 @@
 package com.thomsonreuters.pageobjects.utils.document;
 
 public enum ContentType {
-	
+
 	LEGAL_UPDATES("KnowHow", "Know-how", "Practical Law"),
 	CURRENT_AWARENESS("International - News", "News", "News"),
 	KNOW_HOW("KnowHow", "Know-how", "Practical Law"),
@@ -9,6 +9,7 @@ public enum ContentType {
 	CASES("Cases", "Cases", "Cases"),
 	INTERNATIONAL_CASES("International - Cases", "Cases", "Cases"),
 	LEGISLATION("International - Statutes", "Legislation", "Statutes"),
+	PRIMARY_SOURCES("PrimarySources", "Primary Sources", ""),
 	JOURNALS("International - Secondary Sources", "Journals", "Secondary Sources");
 
 	private String name;

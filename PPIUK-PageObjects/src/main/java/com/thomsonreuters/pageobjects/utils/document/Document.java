@@ -3,6 +3,7 @@ package com.thomsonreuters.pageobjects.utils.document;
 import com.thomsonreuters.pageobjects.utils.document.content.Section;
 import com.thomsonreuters.pageobjects.utils.document.metadata.Jurisdiction;
 import com.thomsonreuters.pageobjects.utils.document.metadata.Product;
+import com.thomsonreuters.pageobjects.utils.folders.FoldersUtils;
 
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class Document {
 	}
 
 	public void setTitle(String documentTitle) {
-		this.title = documentTitle;
+		this.title = FoldersUtils.makeDocumentShorterForFoldersAndHistoryChecks(documentTitle);
 	}
 
 	public String getStatus() {

@@ -461,18 +461,18 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
     public void selectDocumentAndRestore(String folderName) throws Throwable {
         researchOrganizerPage.getDocumentCheckbox(singleDocument.getTitle()).click();
         researchOrganizerPage.getSaveToFolderButton().click();
-        moveToFolderAndGetTargetFolderName("root", folderName);
+        foldersUtils.moveToOriginalFolder(folderName);
     }
 
     @Then("^the document should be removed from Trash and be moved to folder \"([^\"]*)\"$")
     public void docShouldBeInOriginalFolder(String folderName) throws Throwable {
         SoftAssertions softAssertions = new SoftAssertions();
-//        softAssertions.assertThat(researchOrganizerPage.isDocumentAbsent(singleDocument.getTitle())).isTrue()
-//                .withFailMessage("Document '" + singleDocument.getTitle() + "' present in the Trash");
-//        openFolder(folderName);
-//        softAssertions.assertThat(researchOrganizerPage.isDocumentExists(singleDocument.getTitle())).isTrue()
-//                .withFailMessage("Document '" + singleDocument.getTitle() + "' absent in original folder");
-//        softAssertions.assertAll();
+        softAssertions.assertThat(researchOrganizerPage.isDocumentAbsent(singleDocument.getTitle())).isTrue()
+                .withFailMessage("Document '" + singleDocument.getTitle() + "' present in the Trash");
+        foldersUtils.openFolder(folderName);
+        softAssertions.assertThat(researchOrganizerPage.isDocumentExists(singleDocument.getTitle())).isTrue()
+                .withFailMessage("Document '" + singleDocument.getTitle() + "' absent in original folder");
+        softAssertions.assertAll();
     }
 
     @Then("^the user store title and guid of primary source document$")
@@ -513,21 +513,21 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
         xmlSections.removeAll(documentSections);
         xmlProducts.removeAll(productsMetadata);
         xmlJurisdictions.removeAll(jurisdictionsMetadata);
-//        softAssertions.assertThat(xmlSections)
-//                .withFailMessage("Following sections from XML are absent on the page: " + xmlSections)
-//                .isEmpty();
-//        softAssertions.assertThat(xmlProducts)
-//                .withFailMessage("Following products from XML meta-data are absent on the page: " + xmlProducts)
-//                .isEmpty();
-//        softAssertions.assertThat(xmlJurisdictions)
-//                .withFailMessage("Following jurisdictions from XML meta-data are absent on the page: " + xmlJurisdictions)
-//                .isEmpty();
-//
-//        // Verify doc resource type
-//        // Sometimes resource type can be obtained with unnecessary space which should be removed by .trim() method
-//        softAssertions.assertThat(rhsPanel.resourceTypeText().getText().trim())
-//                .isEqualTo(docMetaData.getResourceType().trim());
-//        softAssertions.assertAll();
+        softAssertions.assertThat(xmlSections)
+                .withFailMessage("Following sections from XML are absent on the page: " + xmlSections)
+                .isEmpty();
+        softAssertions.assertThat(xmlProducts)
+                .withFailMessage("Following products from XML meta-data are absent on the page: " + xmlProducts)
+                .isEmpty();
+        softAssertions.assertThat(xmlJurisdictions)
+                .withFailMessage("Following jurisdictions from XML meta-data are absent on the page: " + xmlJurisdictions)
+                .isEmpty();
+
+        // Verify doc resource type
+        // Sometimes resource type can be obtained with unnecessary space which should be removed by .trim() method
+        softAssertions.assertThat(rhsPanel.resourceTypeText().getText().trim())
+                .isEqualTo(docMetaData.getResourceType().trim());
+        softAssertions.assertAll();
     }
 
     @Then("^the user downloads document in format '(.*)' with option '(.*)' and verifies that it contains '(.*)' and not contains '(.*)'$")
@@ -726,12 +726,18 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
         researchOrganizerPage.waitForPageToLoad();
         WebElement actualDocument = researchOrganizerPage.getLinkToDocumentAtRowPosition(position);
         String currentText = actualDocument.getText();
-        System.out.println("currentText: " + currentText);
         String currentUrl = actualDocument.getAttribute("href");
-        System.out.println("currentUrl: " + currentUrl);
-        if (!currentUrl.contains(url) || !currentText.contains(text)) {
-            throw new RuntimeException("Current url or text is not correct!");
-        }
+        text = FoldersUtils.makeDocumentShorterForFoldersAndHistoryChecks(text);
+        SoftAssertions softAssertions = new SoftAssertions();
+        softAssertions.assertThat(currentUrl)
+                .withFailMessage("Current URL '" + currentUrl + "' does not contain expected '" + url + "'")
+                .contains(url);
+        softAssertions
+                .assertThat(currentText)
+                .withFailMessage(
+                        "Current document title '" + currentText + "' does not contain expected text '" + text + "'")
+                .contains(text);
+        softAssertions.assertAll();
     }
 
     private String getDocumentGUID() {
@@ -785,35 +791,5 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
         }
         return "PRACTICAL LAW";
     }
-
-    /**
-     * Select target folder and click "Move" button to move document to it
-     *
-     * @param folderNames Folder names and target folder name should be passed latest. Root folder name shold be passed
-     *                    as first argument "root".
-     *                    Example1: there is need to select folder "root/Folder1/Subfolder2/TargetFolder" and in this case
-     *                    arguments should be: "root", "Folder1", "Subfolder2", "TargetFolder".
-     *                    <p/>
-     *                    Example2: there is need to select root folder only. In this case only one argument "root" is
-     *                    necessary.
-     *                    <p/>
-     *                    Example3: root folder already expanded and there is need to select folder "root/Folder1/Subfolder2/TargetFolder"
-     *                    and in this case arguments should be: "Folder1", "Subfolder2", "TargetFolder".
-     * @return Target folder name (for "root" only it will be as "USER's Research")
-     */
-    public String moveToFolderAndGetTargetFolderName(String... folderNames) {
-        String targetFolderName = folderNames[folderNames.length - 1];
-        restoreFromTrashPopup.waitForPageToLoad();
-        restoreFromTrashPopup.expandRootFolder();
-        if (folderNames.length == 1 && folderNames[0].equals("root")) {
-            restoreFromTrashPopup.clickMoveButton();
-            return restoreFromTrashPopup.getRootFolderName();
-        } else {
-            restoreFromTrashPopup.selectFolder(targetFolderName, false, folderNames);
-            restoreFromTrashPopup.clickMoveButton();
-            return targetFolderName;
-        }
-    }
-
 
 }
