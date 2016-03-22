@@ -1,5 +1,7 @@
 package com.thomsonreuters.ffh.step_definitions.common;
 
+import com.thomsonreuters.driver.framework.AbstractPage;
+import com.thomsonreuters.driver.framework.WebDriverDiscovery;
 import com.thomsonreuters.ffh.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.SeleniumKeyboard;
@@ -91,6 +93,7 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
         Thread.sleep(5000);
         searchResultsPage.waitForPageToLoad();
         Thread.sleep(5000);
+        AbstractPage.getDriver.executeScript("if (typeof jQuery != 'undefined') {$('#co_closeFeatureOverlay').click();}");
     }
 
     @Then("^the '(.+)' link contains the document title and guid$")
