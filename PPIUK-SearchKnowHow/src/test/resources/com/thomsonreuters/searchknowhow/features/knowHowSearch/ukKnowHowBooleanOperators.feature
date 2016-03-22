@@ -40,6 +40,7 @@ Feature: [702195] Ability to use operators when searching on PL+ (know how)
     #850541
     When the user runs a free text search for the query "(school OR schol) & (holiday OR vacation)"
     And the user selects the know how "Resource Type" facet "Practice Notes"
+    And the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is
     And the user selects the know how option to apply filters
     And the user opens the result in position "<result>"
     Then the displayed document will have the terms "school+schol holiday+vacation" marked up as hits
