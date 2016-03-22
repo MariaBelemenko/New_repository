@@ -52,8 +52,7 @@ public class WhatsMarketChangeDetailLevelTest extends BaseStepDef {
     @Then("^the user can verify that the \"(.*)\" Detail icon is displayed$")
     public void theUserCanVerifyThatTheDetailIconForTermsInContextIsDisplayed(String option) throws Throwable {
         // For More/Most/Less
-        // This has broken in the past from developers changing the case in the app
-        // The options on the app are Capital Case, i.e. "More Detail"
+        // The test has been made so it's not case sensitive as it's been changed app side a few times
         option = option.toUpperCase();
 
         switch (option) {

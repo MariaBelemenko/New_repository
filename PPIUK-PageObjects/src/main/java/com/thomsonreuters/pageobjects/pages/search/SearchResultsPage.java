@@ -395,10 +395,11 @@ public class SearchResultsPage extends AbstractPage {
         } else if (sliderSelector.equals(SliderSelector.MOST)) {
             text = "Most Detail";
         }
+        text = text.toUpperCase();
         try {
             String textReturned = waitForExpectedElement(By.id("detailSliderSelectorSelectedOption"),10).getText();
             System.out.println(" ...The text returned from the selector is: " + textReturned);
-            return textReturned.contains(text);
+            return textReturned.toUpperCase().contains(text);
         } catch (PageOperationException poe) {
             LOG.info("context", poe);
             return false;
