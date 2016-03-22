@@ -206,7 +206,7 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
         researchOrganizerPage.documentCheckbox(singleDocument.getGuid()).click();
         researchOrganizerPage.deleteButton().click();
         String message = searchResultsPage.folderingPopupMessage().getText();
-        String expectedMessage = singleDocument.getTitle() + " moved to Trash. Undo";
+        String expectedMessage = singleDocument.getFullTitle() + " moved to Trash. Undo";
         assertEquals("Message is incorrect", expectedMessage, message);
     }
 
