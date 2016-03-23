@@ -5,7 +5,7 @@ Feature: As a PL+ User I want to view and hide annotations
 
   Scenario Outline: [742433] The document contain hide annotations
     When the user opens document with <GUID> guid
-    When the user clicks on "View all" link
+    When the user clicks on "View Document" link
     Then the document opens correctly
     When the user clicks on "Annotated Statutes" link
     Then the user is taken to the "Annotated Statutes" part of the document

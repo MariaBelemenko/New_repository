@@ -52,13 +52,7 @@ public class ProvisionPage extends DocumentDisplayAbstractPage {
 
 	private static final By DOC_CONTENT = By.className("co_footnoteSection");
 
-	private static final By TITLE_TEXT = By
-			.xpath(".//h1[@class='co_title noTOC']");
-
 	private static final By DOCUMENT_META_INFO = By.id("co_docContentMetaInfo");
-	private static final By DOCUMENT_STATUS = By.xpath("//div");
-	private static final By EFFECTIVE_DATE_ON_DOCUMENT = By.xpath("//div[@class='co_paragraph']");
-	private static final By DOCUMENT_VERSION = By.xpath("//strong");
 	private static final By SECTION_TEXT = By
 			.xpath(".//div[@id='co_AnnotationDocumentSource']//h4");
 	private static final By PARAGRAPHS_TEXT = By.className("co_paragraph");
@@ -634,10 +628,6 @@ public class ProvisionPage extends DocumentDisplayAbstractPage {
 	public WebElement docContent() {
 		return retryingFindElement(DOC_CONTENT);
 	}
-	
-	public WebElement titleText() {
-		return retryingFindElement(TITLE_TEXT);
-	}
 
 	public WebElement annotatedStatutesLink(String linkName) {
 		return retryingFindElement(By.linkText(linkName));
@@ -665,18 +655,6 @@ public class ProvisionPage extends DocumentDisplayAbstractPage {
 	
 	public WebElement documentMetaInfo() {
 		return retryingFindElement(DOCUMENT_META_INFO);
-	}
-	
-	public WebElement documentStatus() {
-		return findChildElement(documentMetaInfo(), DOCUMENT_STATUS);
-	}
-	
-	public WebElement effectiveDate() {
-		return findChildElement(documentMetaInfo(), EFFECTIVE_DATE_ON_DOCUMENT);
-	}
-	
-	public WebElement documentVersion() {
-		return findChildElement(documentMetaInfo(), DOCUMENT_VERSION);
 	}
 	
 	public void clickOnAnnotatedStatutesMenuLink(String linkName) {

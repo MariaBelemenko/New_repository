@@ -31,26 +31,6 @@ public class DocumentDetailsTest extends BaseStepDef {
     private CommonMethods commonMethods = new CommonMethods();
     private PDFBoxUtil pdfBoxUtil = new PDFBoxUtil();
 
-    @Then("^title displayed on opened document$")
-    public void titleDisplayedOnOpenedDocument() throws Throwable {
-        assertTrue("The title is not displayed on document", provisionPageUtils.isTitleDisplayedOnOpenedDocument());
-    }
-
-    @Then("^the user see status$")
-    public void theUserSeeStatus() throws Throwable {
-        assertTrue("The status is not displayed on document", provisionPage.isElementDisplayed(provisionPage.documentStatus()));
-    }
-
-    @Then("^the user see effective date$")
-    public void theUserSeeEffectiveDate() throws Throwable {
-        assertTrue("The date is not displayed on document", provisionPage.isElementDisplayed(provisionPage.effectiveDate()));
-    }
-
-    @Then("^the user see version$")
-    public void theUserSeeVersion() throws Throwable {
-        assertTrue("The version is not displayed on document", provisionPage.isElementDisplayed(provisionPage.documentVersion()));
-    }
-
     @Then("^the \"(.*?)\" menu link is present$")
     public void theMenuLinkIsPresent(String annotatedStatusLink) throws Throwable {
         assertTrue("The annotated status link is not displayed on document",

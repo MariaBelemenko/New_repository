@@ -17,7 +17,7 @@ public class CaseDocumentTest extends BaseStepDef {
 
     @Then("^the party names are displayed$")
     public void thePartyNamesAreDisplayed() throws Throwable {
-    	assertTrue("The party names is not displayed", assetDocumentPage.partyNames().isDisplayed());
+    	assertTrue("The party names are not displayed", assetDocumentPage.partyNames().isDisplayed());
     }
     
     @Then("^the alias party names are displayed$")
@@ -33,5 +33,10 @@ public class CaseDocumentTest extends BaseStepDef {
 		assertTrue("The format of the date is not correct!",
 				caseDocumentPageUtils.isTheDateHasCorrectFormat(metaInfo[4], format));
 	}
+    
+    @Then("^the title is displayed on the document$")
+    public void theTitleIsDisplayedOnTheDocument() throws Throwable {
+    	 assertTrue("The title is not displayed", assetDocumentPage.partyNames().isDisplayed());
+    }
 
 }

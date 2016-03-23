@@ -14,7 +14,6 @@ public class ProvisionPageUtils {
 
     protected DateFormat dateFormat;
 
-    private static final String TITLE_END = " - Practical Law";
     protected static final Logger LOG = LoggerFactory.getLogger(AbstractPage.class);
 
     public boolean isTheAnnotatedStatutesMenuLinkIsPresent(String linkName) {
@@ -46,15 +45,6 @@ public class ProvisionPageUtils {
             LOG.info("context", poe);
             return false;
         }
-    }
-
-    public boolean isTitleDisplayedOnOpenedDocument() {
-        String[] title = provisionPage.titleText().getText().split("\n");
-        String resultTitle = title[1] + TITLE_END;
-        if (resultTitle.equals(provisionPage.getPageTitle()))
-            return true;
-        else
-            return false;
     }
 
     public String clickOnLink(WebElement elementForClick) {
