@@ -23,4 +23,4 @@ Feature: [790581] As a PL+ User that requested to turn on Legislation.gov.uk lin
     Then the user does not see links to "Legislation.gov.uk" Legislation
   Examples:
     | GUID                              |
-    | I8127783d52a011e598dc8b09b4f043e0 |
+    | I023b605f53d211e498db8b09b4f043e0 |
