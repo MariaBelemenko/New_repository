@@ -56,7 +56,7 @@ public class BaseFoldersBehaviourTest extends BaseStepDef {
             default:
         }
         researchOrganizerPage.waitForPageToLoad();
-        researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
+        foldersUtils.waitAjaxIfNecessary();
     }
 
     @When("^the user clicks on '(.+)' tab on the History page$")

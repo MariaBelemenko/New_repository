@@ -1,6 +1,7 @@
 package com.thomsonreuters.pageobjects.utils.folders;
 
 import com.thomsonreuters.driver.framework.AbstractPage;
+import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.DocumentColumn;
 import com.thomsonreuters.pageobjects.common.ExcelFileReader;
 import com.thomsonreuters.pageobjects.common.SortOptions;
@@ -25,13 +26,14 @@ public class FoldersUtils {
     private ShareFolderRolesPopup shareFolderRolesPopup = new ShareFolderRolesPopup();
     private ShareFolderPopup shareFolderPopup = new ShareFolderPopup();
     private RestoreFromTrashPopup restoreFromTrashPopup = new RestoreFromTrashPopup();
+    private CommonMethods commonMethods = new CommonMethods();
 
     public void openFolder(String folder) {
         researchOrganizerPage.rootFolderLinkLeftFrame().click();
         if (!folder.equals("root")) {
             researchOrganizerPage.folderLinkLeftFrame(folder).click();
         }
-        researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
+        waitAjaxIfNecessary();
     }
 
     public boolean doesFolderExist(String folder) {
@@ -169,6 +171,12 @@ public class FoldersUtils {
         restoreFromTrashPopup.waitForPageToLoad();
         restoreFromTrashPopup.selectFolder(folderName).click();
         restoreFromTrashPopup.moveButton().click();
+    }
+
+    public void waitAjaxIfNecessary() {
+        if (!commonMethods.getDriver().getCurrentUrl().contains("Glossary")) {
+            researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
+        }
     }
 
 }

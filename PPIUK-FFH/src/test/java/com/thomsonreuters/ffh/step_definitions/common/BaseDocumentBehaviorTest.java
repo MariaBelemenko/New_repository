@@ -239,13 +239,9 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
     @When("^the user opens the link to the glossary term \"([^\"]*)\" and store its title and guid$")
     public void openGlossaryTermAndStoreItsTitleAndGuid(String position) throws Throwable {
         singleDocument = new Document();
-        /** Wait for this document to load */
-        // TODO to remove
-        Thread.sleep(25000);
         glossaryPage.waitForPageToLoad();
-        glossaryPage.waitForPageToLoadAndJQueryProcessing();
         glossaryPage.glossaryTermLinkByPosition(position).click();
-        glossaryPage.waitForPageToLoadAndJQueryProcessing();
+        glossaryPage.glossaryHeading().click();
         singleDocument.setTitle(standardDocumentPage.documentTitle().getText());
         singleDocument.setGuid(getDocumentGUID());
         /** Wait for this document appears in History. If it is to quickly the document could be missing */
@@ -617,12 +613,12 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
     private String saveToFolder(String folder) {
         String folderName = null;
         saveToPopup.waitForPageToLoad();
-        saveToPopup.waitForPageToLoadAndJQueryProcessing();
+        foldersUtils.waitAjaxIfNecessary();
         if (folder.equals("root")) {
             saveToPopup.selectRootFolder().click();
             folderName = saveToPopup.selectRootFolder().getText();
         } else {
-            saveToPopup.waitForPageToLoadAndJQueryProcessing();
+            foldersUtils.waitAjaxIfNecessary();
             try {
                 saveToPopup.expandRootFolderWait().click();
                 saveToPopup.selectFolderWait(folder).click();

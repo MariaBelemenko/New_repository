@@ -10,6 +10,7 @@ Feature: [730616] FFH083 As a PPI User When I am in a document I want to have th
   Background:
     Given PL+ user is logged in
 
+  @pasha
   Scenario:
     When API cleans all folders and history and user relogs in
 
@@ -177,6 +178,7 @@ Feature: [730616] FFH083 As a PPI User When I am in a document I want to have th
     | guid                              |
     | Ieda8cc31f27711e498db8b09b4f043e0 |
 
+  @pasha
   Scenario Outline: [785298] add glossary document to folder
     When the user is on the glossary tool page
     And the user opens the link to the glossary term "<glossaryDocPosition>" and store its title and guid
