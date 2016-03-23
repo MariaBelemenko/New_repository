@@ -1,5 +1,6 @@
 package com.thomsonreuters.should.step_definitions.ffh;
 
+import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.folders.NewFolderPopup;
 import com.thomsonreuters.pageobjects.pages.folders.ResearchOrganizerPage;
@@ -30,6 +31,7 @@ public class AbilityToSeeFolderingSignsTest extends BaseStepDef {
     private StandardDocumentPage standardDocumentPage = new StandardDocumentPage();
     private DocumentDeliveryPage documentDeliveryPage = new DocumentDeliveryPage();
     private SaveToPopup saveToPopup = new SaveToPopup();
+    private CommonMethods commonMethods = new CommonMethods();
 
     private Document singleDocument;
 
@@ -135,7 +137,7 @@ public class AbilityToSeeFolderingSignsTest extends BaseStepDef {
     }
 
     private String getDocumentGUIDFromURL() {
-        String urlString[] = getDriver().getCurrentUrl().split("/Document/");
+        String urlString[] = commonMethods.getDriver().getCurrentUrl().split("/Document/");
         String guid[] = urlString[1].split("/");
         return guid[0];
     }

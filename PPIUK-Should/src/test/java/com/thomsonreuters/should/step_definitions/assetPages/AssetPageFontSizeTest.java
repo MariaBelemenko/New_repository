@@ -15,7 +15,7 @@ public class AssetPageFontSizeTest extends BaseStepDef {
     @Then("^the user sees link \"(.*?)\" in the \"(.*?)\" section$")
     public void theUserSeesLinkInTheSection(String linkText, String sectionName) throws Throwable {
         assertTrue("The user doesn't see link in section", assetDocumentPage.isElementDisplayed(assetDocumentPage
-                .linkInLegalApdatesSection(linkText, sectionName)));
+                .linkInLegalUpdatesSection(linkText, sectionName)));
     }
 
     @Then("^font size of \"(.*?)\" equals font size of \"(.*?)\"$")

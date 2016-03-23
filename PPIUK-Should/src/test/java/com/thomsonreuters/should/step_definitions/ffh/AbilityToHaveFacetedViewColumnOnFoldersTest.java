@@ -116,7 +116,7 @@ public class AbilityToHaveFacetedViewColumnOnFoldersTest extends BaseStepDef {
         String folderName = saveToFolder(folder);
         researchOrganizerPage.waitForPageToLoad();
         String message = searchResultsPage.folderingPopupMessage().getText();
-        assertEquals("Message is incorrect", singleDocument.getTitle() + " saved to '" + folderName + "'.", message);
+        assertEquals("Message is incorrect", singleDocument.getFullTitle() + " saved to '" + folderName + "'.", message);
     }
 
     @When("^the user come back on to Home page$")
@@ -231,7 +231,7 @@ public class AbilityToHaveFacetedViewColumnOnFoldersTest extends BaseStepDef {
     }
 
     private String getDocumentGUIDFromURL() {
-        String urlString[] = getDriver().getCurrentUrl().split("/Document/");
+        String urlString[] = comMethods.getDriver().getCurrentUrl().split("/Document/");
         String guid[] = urlString[1].split("/");
         return guid[0];
     }
