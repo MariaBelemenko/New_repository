@@ -53,9 +53,6 @@ public class ProvisionPage extends DocumentDisplayAbstractPage {
 	private static final By DOC_CONTENT = By.className("co_footnoteSection");
 
 	private static final By DOCUMENT_META_INFO = By.id("co_docContentMetaInfo");
-	private static final By SECTION_TEXT = By
-			.xpath(".//div[@id='co_AnnotationDocumentSource']//h4");
-	private static final By PARAGRAPHS_TEXT = By.className("co_paragraph");
 
 	protected WindowHandler windowHandler;
 
@@ -629,20 +626,8 @@ public class ProvisionPage extends DocumentDisplayAbstractPage {
 		return retryingFindElement(DOC_CONTENT);
 	}
 
-	public WebElement annotatedStatutesLink(String linkName) {
-		return retryingFindElement(By.linkText(linkName));
-	}
-
 	public WebElement annotatedStatuesText(String annotatedStatusText) {
 		return retryingFindElement(By.xpath("//h2[contains(text()," + "'" + annotatedStatusText + "'" + ")]"));
-	}
-
-	public WebElement sectionText() {
-		return retryingFindElement(SECTION_TEXT);
-	}
-
-	public WebElement paragraphsText() {
-		return retryingFindElement(PARAGRAPHS_TEXT);
 	}
 
 	public WebElement jumpLink(String jumpLinkText) {
@@ -657,9 +642,6 @@ public class ProvisionPage extends DocumentDisplayAbstractPage {
 		return retryingFindElement(DOCUMENT_META_INFO);
 	}
 	
-	public void clickOnAnnotatedStatutesMenuLink(String linkName) {
-		annotatedStatutesLink(linkName).click();
-	}
 	
 	public boolean isModificationsOnDocumentDispleyed() {
 		waitForPageToLoad();

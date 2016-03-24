@@ -22,4 +22,18 @@ public class LegislationDocumentPage extends DocumentDisplayAbstractPage {
 	public WebElement footnoteText(String text) {
 		return retryingFindElement(By.xpath(".//*[@class='co_footnoteHoverTitle']/*[text()='" + text + "']"));
 	}
+
+	public WebElement textInSection(String section, String text) {
+		return retryingFindElement(By.xpath(".//*[contains(text(), '" + section
+				+ "')]/following-sibling::*//*[contains(text(), '" + text + "')]"));
+	}
+
+	public List<WebElement> paragraphsInSection(String section) {
+		return retryingFindElements(By.xpath(".//*[contains(text(), '" + section
+				+ "')]/following-sibling::*//*[@class='co_paragraph']"));
+	}
+
+	public WebElement sectionInTheDocument(String section) {
+		return retryingFindElement(By.xpath(".//*[@id='co_docContentBody']//*[contains(text(), '" + section + ")]"));
+	}
 }

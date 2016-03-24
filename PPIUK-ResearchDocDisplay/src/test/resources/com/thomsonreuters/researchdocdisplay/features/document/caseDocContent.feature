@@ -16,20 +16,6 @@ Feature: Case document includes date in correct format, metadata, link for downl
       | IE8146150B21311E49FBB8F994A94F811 |
       | IA77ABBF0A43711E0BAE6C7A444C8F8F8 |
 
-  Scenario Outline: [742452] case document contains metadata
-    When the user opens document with <GUID> guid
-    Then the user click on View Document button
-    Then the document opens correctly
-    And the metadata is displayed in the right hand side of the central column
-    And the metadata contains "Where Reported"
-    And the metadata contains "Hearing Dates"
-    And the metadata contains "Counsel"
-
-    Examples: 
-      | GUID                              |
-      | I79273E60A8EF11E0888FEF03F0EFCF17 |
-      | I65D353E0B03111E1A9C0890F1F61FF5D |
-
   Scenario Outline: [742452] case document contains link for downloading pdf
     When the user opens document with <GUID> guid
     Then the user click on View Document button
@@ -57,6 +43,7 @@ Feature: Case document includes date in correct format, metadata, link for downl
       | IB774C9C0877511DC885DEC23ABB54428 |
       | I00004260E42911DA8FC2A0F0355337E9 |
       | I00006971E42911DA8FC2A0F0355337E9 |
+
 
   Scenario Outline: [742463] The case documents contain judgement navigation menu is disabled
     When the user opens document with <GUID> guid

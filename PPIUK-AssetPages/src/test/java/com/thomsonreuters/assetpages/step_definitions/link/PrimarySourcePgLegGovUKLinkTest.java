@@ -15,49 +15,45 @@ import static org.junit.Assert.assertTrue;
 
 public class PrimarySourcePgLegGovUKLinkTest extends BaseStepDef {
 
-    private PrimarySourceDocumentPage primarySourceDocumentPage = new PrimarySourceDocumentPage();
-    private AssetPageUtils assetPageUtils = new AssetPageUtils();
-    private DocumentRightPanelPage rightPanelPage = new DocumentRightPanelPage();
+	private PrimarySourceDocumentPage primarySourceDocumentPage = new PrimarySourceDocumentPage();
+	private AssetPageUtils assetPageUtils = new AssetPageUtils();
+	private DocumentRightPanelPage rightPanelPage = new DocumentRightPanelPage();
 
-    @Then("^the user see links to \"(.*?)\" Legislation$")
-    public void theUserSeeLinksToLegislation(String legislationLinkText) throws Throwable {
-        primarySourceDocumentPage.refreshPage();
-        primarySourceDocumentPage.waitForPageToLoad();
-        assertTrue("The primary source title doesn't displayed",
-                primarySourceDocumentPage.isElementDisplayed(primarySourceDocumentPage
-                        .legislationLink(legislationLinkText))
-        );
-    }
+	@Then("^the user see links to \"(.*?)\" Legislation$")
+	public void theUserSeeLinksToLegislation(String legislationLinkText) throws Throwable {
+		primarySourceDocumentPage.refreshPage();
+		primarySourceDocumentPage.waitForPageToLoad();
+		assertTrue("The primary source title doesn't displayed",
+				primarySourceDocumentPage.legislationLink(legislationLinkText).isDisplayed());
+	}
 
-    @When("^the user click on \"(.*?)\" Legislation link$")
-    public void theUserClickOnLegislationLink(String legislationLinkText) throws Throwable {
-        assetPageUtils.getBaseParameters();
-        primarySourceDocumentPage.legislationLink(legislationLinkText).click();
-    }
+	@When("^the user click on \"(.*?)\" Legislation link$")
+	public void theUserClickOnLegislationLink(String legislationLinkText) throws Throwable {
+		assetPageUtils.getBaseParameters();
+		primarySourceDocumentPage.legislationLink(legislationLinkText).click();
+	}
 
-    @Then("^the user does not see links to \"(.*?)\" Legislation$")
-    public void theUserDoesNotSeeLinksToLegislation(String legislationLinkText) throws Throwable {
-        try {
-            assertFalse("The user see links to Legislation",
-                    primarySourceDocumentPage.isElementDisplayed(primarySourceDocumentPage
-                            .legislationLink(legislationLinkText))
-            );
-        } catch (PageOperationException poe) {
-            LOG.info("context", poe);
-        }
-    }
+	@Then("^the user does not see links to \"(.*?)\" Legislation$")
+	public void theUserDoesNotSeeLinksToLegislation(String legislationLinkText) throws Throwable {
+		try {
+			assertFalse("The user see links to Legislation",
+					primarySourceDocumentPage.legislationLink(legislationLinkText).isDisplayed());
+		} catch (PageOperationException poe) {
+			LOG.info("context", poe);
+		}
+	}
 
-    @Then("^the number of open tabs equals \"(.*?)\"$")
-    public void theNumberOfOpenTabsEquals(String numberOfOpenedTubs) throws Throwable {
-    	primarySourceDocumentPage.waitForPageToLoad();
-        assertTrue("Incorrect number of opened tubs",
-                assetPageUtils.isTheNumberOfOpenedTubsEqueals(Integer.parseInt(numberOfOpenedTubs)));
-    }
+	@Then("^the number of open tabs equals \"(.*?)\"$")
+	public void theNumberOfOpenTabsEquals(String numberOfOpenedTubs) throws Throwable {
+		primarySourceDocumentPage.waitForPageToLoad();
+		assertTrue("Incorrect number of opened tubs",
+				assetPageUtils.isTheNumberOfOpenedTubsEqueals(Integer.parseInt(numberOfOpenedTubs)));
+	}
 
-    @Then("^resource type is displayed as \"(.*?)\" on right hand panel$")
-    public void documentTypeIsDisplayedAsArticles(String documentType) throws Throwable {
-        rightPanelPage.waitForPageToLoad();
-        assertThat(rightPanelPage.resourceTypeText().getText().trim(), Is.is(documentType));
-    }
+	@Then("^resource type is displayed as \"(.*?)\" on right hand panel$")
+	public void documentTypeIsDisplayedAsArticles(String documentType) throws Throwable {
+		rightPanelPage.waitForPageToLoad();
+		assertThat(rightPanelPage.resourceTypeText().getText().trim(), Is.is(documentType));
+	}
 
 }

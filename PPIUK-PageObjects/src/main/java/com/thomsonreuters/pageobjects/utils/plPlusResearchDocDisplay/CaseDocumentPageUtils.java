@@ -37,20 +37,6 @@ public class CaseDocumentPageUtils extends AbstractPage {
         }
     }
 
-    public boolean isTheUserSeeTheContentColumn() {
-        return caseDocumentPage.contentColumn().isDisplayed();
-    }
-
-    public boolean isTheUserSeeStatusIcon() {
-        return caseDocumentPage.statusIcon().isDisplayed();
-    }
-
-    public boolean isTheUserSeeStatusDescription() {
-        if (caseDocumentPage.statusDescription().getText().length() != 0)
-            return true;
-        else
-            return false;
-    }
 
     public boolean isTheLinkPresent(String text) {
         try {
