@@ -1,11 +1,11 @@
-Feature: PL+ WLUK user want to view the party names and aliases of the case participants
+Feature: [787455] PL+ WLUK user want to view the party names and aliases of the case participants
 
   Background: 
     Given PL+ user is logged in with following details
       | routing          | ASK |
       | mandatoryRouting | YES |
 
-  Scenario Outline: The case documents contain party names
+  Scenario Outline: [787455] The case documents contain party names
     When the user opens document with <GUID> guid
     Then the document opens correctly
     And the party names are displayed
@@ -17,7 +17,7 @@ Feature: PL+ WLUK user want to view the party names and aliases of the case part
       | I79273E60A8EF11E0888FEF03F0EFCF17 |
       | I65D353E0B03111E1A9C0890F1F61FF5D |
 
-  Scenario Outline: The case documents contain party names
+  Scenario Outline: [787455] The case documents contain party names
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly
