@@ -27,7 +27,7 @@ public class NavigateExternalLinksTest extends BaseStepDef {
         strDOCGUID = linking.getGUIID(plcref);
         xlinkValue = 0;
         navigationCobalt.navigate("http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&cid=" + plcref);
-        NodeList nodes = linking.returnXpathNodes(navigationCobalt.getPageSource(), "//simpleplcxlink[not(ancestor::atict:del)]");
+        NodeList nodes = linking.returnXpathNodes(navigationCobalt.getPageSource(), "//simpleplcxlink[not(ancestor::*[contains(name(), 'atict')])]");
         for (int i = 0; i < nodes.getLength(); i++) {
             Node n = nodes.item(i);
             xlinkValue++;
