@@ -60,6 +60,14 @@
                 <base.legacy.url>100</base.legacy.url>
             </properties>
         </profile>
+		
+		<profile>
+      		<id>HOTPROD</id>
+      		<properties>
+        		<base.url>hotprod</base.url>
+        		<base.legacy.url></base.legacy.url>
+      		</properties>
+    	</profile>   
                             
     	<profile>
       		<id>PROD</id>

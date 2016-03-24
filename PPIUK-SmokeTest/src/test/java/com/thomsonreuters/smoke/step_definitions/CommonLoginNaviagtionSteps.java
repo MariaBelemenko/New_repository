@@ -125,11 +125,12 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         onepassLogin.deleteAllCookies();
         navigationCobalt.navigateToPLUKPlus();
         plcHomePage.closeCookieConsentMessage();
-        resetCurrentUser();
-        if (!baseUrl.contains("prod")) {
-            theUserClicksOnSignOnLinkOnTheHeader();
+        resetCurrentUser();        
+  // Update the following code if OpenWeb will be turned off on Production     
+        if (!baseUrl.equals("hotprod")) {
+        theUserClicksOnSignOnLinkOnTheHeader();
         } else {
-            LOG.info("OpenWeb is OFF on production. User already on login page");
+            LOG.info("OpenWeb is OFF on HOT PROD. User already on login page");
         }
     }
 
@@ -268,6 +269,15 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
 
             if (plPlusUser.getLoginRequired().equals("YES")) {
                 login(plPlusUser);
+                //The next is statement is written for login issue that sometimes is reproduced by the tests but is not reproducible manually
+                boolean isOnePassScreenDisplazedTwice = false;
+                try {
+                	isOnePassScreenDisplazedTwice = onepassLogin.findElement(By.xpath("//span[contains(.,'Pass Sign In')]")).isDisplayed();
+                } catch (NoSuchElementException e) {
+                }
+                if (isOnePassScreenDisplazedTwice) {
+                	login(plPlusUser);	
+                }
             }
 
             if (plPlusUser.getProduct().equals(Product.WLN)) {
@@ -674,14 +684,20 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
          * Then just remove the below lines.
          */
         switch (baseUrl) {
+        	case "hotprod":
+        		LOG.info("HOT PROD Site is being tested.");
+        		break;
             case "prod":
                 LOG.info("Production Site is being tested.");
+                wlnHeader.signInLink().click();
                 break;
             case "prodA":
                 LOG.info("PROD A is being tested.");
+                wlnHeader.signInLink().click();
                 break;
             case "prodB":
                 LOG.info("PROD B is being tested.");
+                wlnHeader.signInLink().click();
                 break;
             default:
                 wlnHeader.signInLink().click();
@@ -689,8 +705,8 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         }
         /**
          * When you want to run any test against PROD with OW on then just uncomment the line below.
-         */
-//      wlnHeader.signInLink().click();
+         */      
+       // wlnHeader.signInLink().click();
     }
 
     private void hackToTRemovePortAndNavigateToOnePassPage() throws InterruptedException {
