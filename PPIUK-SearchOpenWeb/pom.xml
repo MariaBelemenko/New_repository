@@ -67,7 +67,23 @@
         		<base.url>prod</base.url>
         		<base.legacy.url></base.legacy.url>
       		</properties>
-    	</profile>    
+    	</profile>
+
+	    <profile>
+			<id>PRODA</id>
+			<properties>
+				<base.url>prodA</base.url>
+				<base.legacy.url></base.legacy.url>
+			</properties>
+		</profile> 
+
+		<profile>
+			<id>PRODB</id>
+			<properties>
+				<base.url>prodB</base.url>
+				<base.legacy.url></base.legacy.url>
+			</properties>
+		</profile>			
 
         <profile>
             <id>reporting</id>

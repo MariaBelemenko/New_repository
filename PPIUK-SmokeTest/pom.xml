@@ -68,12 +68,12 @@
         		<base.legacy.url></base.legacy.url>
       		</properties>
     	</profile>
-
-        <profile>
+    	
+    	<profile>
             <id>PRODA</id>
             <properties>
                 <base.url>prodA</base.url>
-                <base.legacy.url>d07</base.legacy.url>
+                <base.legacy.url></base.legacy.url>
             </properties>
         </profile>
 
@@ -81,9 +81,9 @@
             <id>PRODB</id>
             <properties>
                 <base.url>prodB</base.url>
-                <base.legacy.url>d07</base.legacy.url>
+                <base.legacy.url></base.legacy.url>
             </properties>
-        </profile>
+        </profile>    
 
         <profile>
             <id>reporting</id>
