@@ -107,7 +107,7 @@ public class AskResourcePage extends CommonResourcePage {
     }
 
     public WebElement overlayClickButton() {
-        return retryingFindElement(By.cssSelector(".co_overlayBox_optionsBottom ul li:nth-of-type(1) input"));
+        return waitForElementToBeClickable(waitForExpectedElement(By.cssSelector(".co_overlayBox_optionsBottom ul li:nth-of-type(1) input")));
     }
 
     public WebElement downloadInReadyForDownloadOverlayButton() {
