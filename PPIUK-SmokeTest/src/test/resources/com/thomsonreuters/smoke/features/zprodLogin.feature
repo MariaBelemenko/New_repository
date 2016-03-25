@@ -9,7 +9,7 @@ Feature: Verify logging in and subscriptions
 
   Scenario: Non-logged in user(OpenWeb) can't access subscription resources
     Given PL+ user is not logged in
-    And PL+ user navigates to login page
+    And PL+ user navigates to home page
     When the user runs a free text search for the query "sales agency agreement"
     And the user can open the first know how search result "1"
     Then the user is provided with an option to sign-in or register for free trial
