@@ -27,6 +27,7 @@ public class InlineLinkingTest extends BaseStepDef {
     private CommonMethods comMethods = new CommonMethods();
     private HomePage homePage = new HomePage();
     private SearchHomePage searchHomePage = new SearchHomePage();
+    private CommonMethods commonMethods = new CommonMethods();
 
     private String jumpLinkSection;
 
@@ -111,7 +112,6 @@ public class InlineLinkingTest extends BaseStepDef {
             Thread.sleep(2000);
         }
         while (windowsCount < 2 && counter > 0);
-        assertThat("The no of popupWindows opened is less than 2", getDriver().getWindowHandles().size(), greaterThanOrEqualTo(2));
+        assertThat("The no of popupWindows opened is less than 2", commonMethods.getWindowHandles().size(), greaterThanOrEqualTo(2));
     }
-
 }
