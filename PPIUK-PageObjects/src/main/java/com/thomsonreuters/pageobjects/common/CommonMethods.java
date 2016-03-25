@@ -5,7 +5,6 @@ import com.thomsonreuters.driver.exception.PageOperationException;
 import com.thomsonreuters.driver.framework.AbstractPage;
 import com.thomsonreuters.pageobjects.pages.generic.PPIGenericDocDisplay;
 import org.apache.commons.lang.RandomStringUtils;
-import org.apache.xpath.operations.Bool;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
@@ -160,9 +159,7 @@ public class CommonMethods extends AbstractPage {
 
     public String getAlertDialogMsg() {
         Alert alert = driver.switchTo().alert();
-        String alertText = alert.getText();
-        alert.accept();
-        return alertText;
+        return alert.getText();
     }
 
     public void acceptAlertDialogMsg() {
