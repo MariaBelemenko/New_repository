@@ -145,7 +145,7 @@ public class SearchResultsPage extends AbstractPage {
     }
 
     public WebElement firstResultAbstractText() {
-        return retryingFindElement(By.xpath("//div[@id='co_searchResults_summary_1']/ul/li"));
+        return waitForElementPresent(By.xpath("//div[@id='co_searchResults_summary_1']/ul/li"));
     }
 
     public boolean isFirstResultAbstractTextDisplayed() {
@@ -468,7 +468,7 @@ public class SearchResultsPage extends AbstractPage {
      * this is the first terms in context paragraph or snippet
      */
     public WebElement firstSnippetPara() {
-        return retryingFindElement(By.id("cobalt_result_knowhow_snippet_1_1"));
+        return waitForElementPresent(By.id("cobalt_result_knowhow_snippet_1_1"));
     }
 
     public boolean isFirstSnippetParaDisplayed() {
@@ -491,7 +491,7 @@ public class SearchResultsPage extends AbstractPage {
      * this is the second terms in context paragraph or snippet
      */
     public WebElement secondSnippetPara() {
-        return retryingFindElement(By.id("cobalt_result_knowhow_snippet_1_2"));
+        return waitForElementPresent(By.id("cobalt_result_knowhow_snippet_1_2"));
     }
 
     /**
