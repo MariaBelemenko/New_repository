@@ -31,7 +31,8 @@ import java.util.List;
 
 public class AssetPageUtils {
 
-    private ResearchOrganizerPage researchOrganizerPage;
+    private ResearchOrganizerPage researchOrganizerPage = new ResearchOrganizerPage();
+    private WebDriverDiscovery webDriverDiscovery = new WebDriverDiscovery();
 
     private static final String DOWNLOADED_FILE_PATH = System.getProperty("user.home") + "/Downloads";
     private static final String SEPARATOR = " ";
@@ -440,7 +441,7 @@ public class AssetPageUtils {
     	String secondUrl = assetDocumentPage.getCurrentUrl();
 		LOG.info("secondUrl" + secondUrl);
 		LOG.info("hrefAtribute" + hrefAtribute);
-		return !firstUrl.equals(secondUrl) && secondUrl.contains("https://a.uk.practicallaw");
+		return !firstUrl.equals(secondUrl) && secondUrl.contains(webDriverDiscovery.getCurrentRootAddress(true));
     }
 
     public boolean isTheDocumentContainLink(String linkText) {
