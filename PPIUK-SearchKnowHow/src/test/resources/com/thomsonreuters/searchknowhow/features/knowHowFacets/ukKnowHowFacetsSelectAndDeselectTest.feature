@@ -86,9 +86,9 @@ Feature: [714595][702169][702182][714594] ukKnowHowFacetsSelectAndDeselectTest.f
     And the user verifies that the know how facet is selected "Corporate"
     And the user gets the know how search result count and stores it as count "3"
     And the user verifies that the know how search result count "3" is less than "2"
-    And the user selects the know how child facet "Private equity and venture capital"
+    And the user selects the know how child facet "Private Equity and Venture Capital"
     And the user selects the option to apply filters
-    And the user verifies that the know how facet is selected "Private Equity And Venture Capital"
+    And the user verifies that the know how facet is selected "Private Equity and Venture Capital"
     And the user gets the know how search result count and stores it as count "4"
     And the user verifies that the know how search result count "4" is less than "3"
     And the user selects the know how parent facet "Wales"
