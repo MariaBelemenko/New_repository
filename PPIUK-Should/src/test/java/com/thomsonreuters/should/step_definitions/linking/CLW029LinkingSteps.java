@@ -25,8 +25,7 @@ public class CLW029LinkingSteps extends BaseStepDef {
     public void forIgetallthelinkstootherresourceorspecificsectionofotherresource(String plcref) throws Throwable {
         strDOCGUID = linkingUtils.getGUIID(plcref);
         AbstractPage.getDriver.get("http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&plcref=" + plcref);
-
-        NodeList nodes = linkingUtils.returnXpathNodes(AbstractPage.getDriver.getPageSource(), "//xlink:locator[not(starts-with(@xlink:href, '#')) and not(ancestor::atict:del)]");
+        NodeList nodes = linkingUtils.returnXpathNodes(AbstractPage.getDriver.getPageSource(), "//xlink:locator[not(starts-with(@xlink:href, '#')) and not(ancestor::*[contains(name(), 'atict:add')])]");
         for (int i = 0; i < nodes.getLength(); i++) {
             Node n = nodes.item(i);
 
@@ -84,7 +83,7 @@ public class CLW029LinkingSteps extends BaseStepDef {
         strDOCGUID = linkingUtils.getGUIID(plcref);
         AbstractPage.getDriver.get("http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&plcref=" + plcref);
 
-        NodeList nodes = linkingUtils.returnXpathNodes(AbstractPage.getDriver.getPageSource(), "//xlink:locator[not(starts-with(@xlink:href, '#')) and not(ancestor::atict:del)]");
+        NodeList nodes = linkingUtils.returnXpathNodes(AbstractPage.getDriver.getPageSource(), "//xlink:locator[not(starts-with(@xlink:href, '#')) and not(ancestor::*[contains(name(), 'atict:add')])]");
         for (int i = 0; i < nodes.getLength(); i++) {
             Node n = nodes.item(i);
 
