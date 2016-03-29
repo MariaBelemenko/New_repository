@@ -62,3 +62,7 @@ Feature: ukWhatsMarketSearch.feature - [702213][702225][731586][702218][702219]
       | 2 | Joint ventures |
       | 3 | Joint ventures |
 
+  Scenario: What's Market Topics Documents by selecting Practice Area page
+    When has selected the link to the What's Market homepage by selecting Practice Area page
+    And has selected the link to "Joint ventures"
+    And the user can open the first whats market search result "1"
