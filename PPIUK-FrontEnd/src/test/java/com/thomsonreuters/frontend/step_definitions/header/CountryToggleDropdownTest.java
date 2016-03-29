@@ -24,6 +24,7 @@ public class CountryToggleDropdownTest extends BaseStepDef {
     public void userShouldSeeUserIconLink(DataTable dataTable) throws Throwable {
         String baseUrl = System.getProperty("base.url");
         String newURL = null;
+
         Map<String, String> countries = dataTable.asMap(String.class, String.class);
         int row = 0;
         for (Map.Entry<String, String> entry : countries.entrySet()) {
@@ -32,6 +33,7 @@ public class CountryToggleDropdownTest extends BaseStepDef {
                         header.countryDropdownMenuLinks().get(row).getText().equalsIgnoreCase(entry.getKey()));
                 if (baseUrl.equalsIgnoreCase("qed")) {
                     newURL = entry.getValue().replace("demo", "qed");
+                    newURL = newURL.replace("a.uk","uk");
                 } else {
                     newURL = entry.getValue();
                 }
