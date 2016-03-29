@@ -64,7 +64,7 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user verifies that the option entitled Expanded Margin for Notes is no longer present
 
   Scenario Outline: [747921] email list of know how search results from basic tab in list format (various document formats)
-    When the user runs a free text search for the query "contract"
+    When the user searches for "contract"
     And the user selects the checkbox associated with result "1"
     And the user selects the checkbox associated with result "2"
     And the user selects the email delivery option

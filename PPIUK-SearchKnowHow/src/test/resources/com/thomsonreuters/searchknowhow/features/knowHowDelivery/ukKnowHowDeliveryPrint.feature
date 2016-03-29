@@ -5,7 +5,7 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     Given PL+ user is logged in
 
   Scenario: [702205] Basic search result print delivery pop up - layout
-    When the user runs a free text search for the query "contract"
+    When the user searches for "contract"
     And the user selects the checkbox associated with result "1"
     And the user selects the checkbox associated with result "2"
     And the user selects the print delivery option

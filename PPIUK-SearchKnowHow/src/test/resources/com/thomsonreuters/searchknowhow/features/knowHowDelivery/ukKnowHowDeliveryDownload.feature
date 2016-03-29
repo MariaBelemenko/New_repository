@@ -60,7 +60,7 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     And the user verifies that the option entitled Expanded Margin for Notes is no longer present
 
   Scenario: [747922] download list of know how search results from basic tab in list format (various document formats)
-    When the user runs a free text search for the query "contract for sale"
+    When the user searches for "contract for sale"
     And the user selects the checkbox associated with result "1"
     And the user selects the checkbox associated with result "2"
     And the user downloads as list_of_items and verifies the processed message for successful downloads
