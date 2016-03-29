@@ -1,5 +1,5 @@
-@wip @e2e @robot
-Feature: PA users can download a document in FirmStyle
+@robot @e2e
+Feature: [780806] FS3 Testing PL+ "PA" users can download a document in FirmStyle
 
   # This test uses JAVA Robot, therefore it could be run locally only
   Scenario Outline: Documents and FS

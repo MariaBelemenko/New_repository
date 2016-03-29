@@ -1,4 +1,4 @@
-Feature: As a User I want to view the download in FirmStyle option So that I know I can download the standard document in my Companies Firm Style
+Feature: [774402] FS1 As a PL+ User I want to view the download in FirmStyle option So that I know I can download the standard document in my Companies Firm Style
 
   Background:
     Given PL+ user is logged in with following details
