@@ -6,7 +6,7 @@ Feature: [851088][850058] As a User
     And the user navigates to the main PLCUK page
     When the user selects "International" tab and clicks on "China" link in "International subscriptions" section
     Then the Category Page opens correctly
-    And the user runs a free text search for the query "<query>"
+    When the user searches for "<query>"
     Then the "Practice Area" section includes only "China" topics
       | Anti-bribery and anti-corruption     |
       | Arbitration and dispute resolution   |
@@ -27,7 +27,8 @@ Feature: [851088][850058] As a User
     And the user can open the first know how search result "<number>" and get document guid
     Then the document opens correctly
     And the document belongs to "<topic>" topic
-  Examples:
-    | query | facet                                | number | topic                                      |
-    | tag   | Commercial contracts and boilerplate | 1      | China\Commercial contracts and boilerplate |
-    | tax   | Employment and benefits              | 2      | China\Employment and benefits              |
+
+    Examples: 
+      | query | facet                                | number | topic                                       |
+      | tag   | Commercial contracts and boilerplate | 1      | China\\Commercial contracts and boilerplate |
+      | tax   | Employment and benefits              | 2      | China\\Employment and benefits              |
