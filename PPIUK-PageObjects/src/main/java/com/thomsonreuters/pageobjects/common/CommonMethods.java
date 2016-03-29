@@ -19,6 +19,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.Date;
 
@@ -514,6 +515,16 @@ public class CommonMethods extends AbstractPage {
             LOG.info("context", e);
             return false;
         }
+    }
+
+    public List<String> getRegExpGroupValue(String regExp, String fullText){
+        Pattern p = Pattern.compile(regExp);
+        Matcher m = p.matcher(fullText);
+        List<String> list = new ArrayList<>();
+        while (m.find()){
+            list.add(m.group());
+        }
+        return list;
     }
 
     public boolean isCurrentDocumentFromKnowHow() {

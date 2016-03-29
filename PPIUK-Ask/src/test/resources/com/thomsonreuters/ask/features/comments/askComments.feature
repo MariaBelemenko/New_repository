@@ -11,9 +11,9 @@ Feature: [752383,752385,752386] View comment, report this post, reply/add commen
   @manual @bug
   Scenario: Report this post
     When user navigates directly to document with guid "Ie30b7a17ce4611e498db8b09b4f043e0"
-    And user clicks on 'Report this Post' link
-    Then Email is sent to pre-defined email address
-    And email needs to contain link to the comment being reported
+    And get mailto and subject from 'Report this Post' link
+    Then verify that mailto and subject fields are not empty
+    And verify that the view scrolled to reply text area
 
   Scenario: Add Reply - Validations
     And user navigates directly to document with guid "Ie30b7a17ce4611e498db8b09b4f043e0"
