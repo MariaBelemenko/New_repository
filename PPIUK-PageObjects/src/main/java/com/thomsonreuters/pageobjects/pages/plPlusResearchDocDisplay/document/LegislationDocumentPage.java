@@ -36,4 +36,9 @@ public class LegislationDocumentPage extends DocumentDisplayAbstractPage {
 	public WebElement sectionInTheDocument(String section) {
 		return retryingFindElement(By.xpath(".//*[@id='co_docContentBody']//*[contains(text(), '" + section + ")]"));
 	}
+
+	public List<WebElement> linksInSection(String section) {
+		return retryingFindElements(By.xpath(String.format(".//*[contains(text(), '%s')]/../following-sibling::a",
+				section)));
+	}
 }

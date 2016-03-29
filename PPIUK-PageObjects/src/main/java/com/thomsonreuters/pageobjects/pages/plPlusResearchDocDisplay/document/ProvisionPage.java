@@ -43,10 +43,6 @@ public class ProvisionPage extends DocumentDisplayAbstractPage {
 	private static final By SHOW_HIDE_BUTTON = By.cssSelector("");
 	public static final String LEGISLATION_DOC_TYPE_LOCATOR = "div.co_title+div";
 
-	private static final By MODIFICATION_LINK = By.linkText("Modifications");
-
-	private static final By LINK_UNDER_MODIFICATIONS = By
-			.xpath(".//div[@id='co_docContentBody']/div/a[@class='co_link co_drag ui-draggable']");
 	private static final By JURISDICTION_TEXT = By
 			.xpath(".//*[@id='co_docContentBody']/div[@class='co_paragraph co_underline']/h2/strong");
 
@@ -610,14 +606,6 @@ public class ProvisionPage extends DocumentDisplayAbstractPage {
 		return false;
 	}
 
-	public WebElement linkUnderModofocation() {
-		return waitForExpectedElement(LINK_UNDER_MODIFICATIONS);
-	}
-
-	public WebElement modificationLink() {
-		return waitForExpectedElement(MODIFICATION_LINK);
-	}
-
 	public WebElement jurisdictionText() {
 		return retryingFindElement(JURISDICTION_TEXT);
 	}
@@ -640,23 +628,6 @@ public class ProvisionPage extends DocumentDisplayAbstractPage {
 	
 	public WebElement documentMetaInfo() {
 		return retryingFindElement(DOCUMENT_META_INFO);
-	}
-	
-	
-	public boolean isModificationsOnDocumentDispleyed() {
-		waitForPageToLoad();
-		return isElementDisplayed(modificationLink());
-	}
-
-	public boolean isMdificationsContainLinksToOtherDocuments() {
-		modificationLink().click();
-		return isElementDisplayed(linkUnderModofocation());
-	}
-
-	public String clickOnLink() {
-		String firstTitle = getPageTitle();
-		linkUnderModofocation().click();
-		return firstTitle;
 	}
 	
 }
