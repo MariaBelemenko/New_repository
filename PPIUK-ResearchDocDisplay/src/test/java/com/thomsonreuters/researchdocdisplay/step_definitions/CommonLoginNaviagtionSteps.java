@@ -1,5 +1,7 @@
 package com.thomsonreuters.researchdocdisplay.step_definitions;
 
+import static com.thomsonreuters.pageobjects.utils.CobaltUser.isUserFirstUser;
+
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.ExcelFileReader;
 import com.thomsonreuters.pageobjects.common.PageActions;
@@ -31,7 +33,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import static com.thomsonreuters.pageobjects.utils.CobaltUser.isUserFirstUser;
 
 /**
  * Login and Navigation Steps.
@@ -49,7 +50,6 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
     private CobaltLogin cobaltLogin;
     private WLNHeader wlnHeader;
     private CommonMethods comMethods;
-    private PageActions pageActions;
     private PLCLegacyHeader plcLegacyHeader;
     private PLCLegacyLoginScreen plcLegacyLoginScreen;
     private OnePassLogoutPage onePassLogoutPage;
@@ -61,7 +61,6 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
     public CommonLoginNaviagtionSteps() {
         routingPage = new RoutingPage();
         onepassLoginUtils = new OnepassLoginUtils();
-        pageActions = new PageActions();
         comMethods = new CommonMethods();
         wlnHeader = new WLNHeader();
         navigationCobalt = new NavigationCobalt();
@@ -112,13 +111,6 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         onepassLogin.waitForPageToLoad();
     }
 
-    @Given("^PL\\+ ANZ user navigates to home page$")
-    public void plAnzUserNaviagatesToHomePage() throws Throwable {
-        getDriver().manage().deleteAllCookies();
-        navigationCobalt.navigateToPLANZPlus();
-        plcHomePage.closeCookieConsentMessage();
-        resetCurrentUser();
-    }
 
     @Given("^PL\\+ user navigates to login page$")
     public void plUserNavigatesToLoginPage() throws Throwable {
@@ -693,25 +685,6 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
 //      wlnHeader.signInLink().click();
     }
 
-    private void hackToTRemovePortAndNavigateToOnePassPage() throws InterruptedException {
-        String currentUrl;
-        int count = 10;
-        do {
-            Thread.sleep(1000);
-            currentUrl = plcHomePage.getCurrentUrl();
-            LOG.info("Current Url = " + currentUrl);
-            count--;
-        }
-        while ((!currentUrl.contains(":9001/") && !currentUrl.contains(":9517/")) && count > 0);
-        LOG.info("Current Url = " + currentUrl);
-        if (System.getProperty("base.url").equalsIgnoreCase("ci")) {
-            onepassLogin.navigate(currentUrl.replace(":9001/", "/"));
-        }
-        if (System.getProperty("base.url").equalsIgnoreCase("demo")) {
-            onepassLogin.navigate(currentUrl.replace(":9517/", "/"));
-        }
-    }
-
     /**
      * Sets Client id
      *
@@ -789,8 +762,6 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         }
     }
 
-    private void unlockUser(CobaltUser user) {
-    }
 
     /**
      * New session is created.
@@ -852,13 +823,6 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         userGoesToFolderSubFolder(folderName);
     }
 
-    private void userLoginAndOpenFolder(String userName, String folderName) throws Throwable {
-        List<CobaltUser> cobaltUsers = new ArrayList<>();
-        cobaltUsers.add(getCobaltUserForUserName(userName));
-        plUserIsLoggedInWithFollowingDetails(cobaltUsers);
-        userGoesToFolderSubFolder(folderName);
-    }
-
     private void userGoesToFolderSubFolder(String folderName) throws Throwable {
         userClicksOnHeaderLink("Folders");
         openFolder(folderName);
@@ -882,11 +846,8 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
     }
 
-    private String folderName;
-
     private void openFolder(String folderName) {
         foldersUtils.openFolder(folderName);
-        this.folderName = folderName;
     }
 
     @Given("^PL\\+ user '(.*)' navigates directly to document with guid '(.*)'$")

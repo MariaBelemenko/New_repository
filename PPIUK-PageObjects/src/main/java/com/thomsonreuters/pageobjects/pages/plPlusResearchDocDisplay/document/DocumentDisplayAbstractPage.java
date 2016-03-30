@@ -253,6 +253,10 @@ public abstract class DocumentDisplayAbstractPage extends AbstractPage {
         return waitForExpectedElement(By.xpath("//*[contains(@class,'co_title')]"),30);
     }
 
+	public WebElement documentTitlePanel() {
+		return waitForExpectedElement(By.id("co_docHeaderContainer"));
+	}
+
     public WebElement documentMetaInfo(){
         return waitForElementExists(By.xpath("//*[contains(@id,'co_document_metaInfo')]"));
     }
