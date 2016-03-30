@@ -20,9 +20,8 @@
     </properties>
 
     <modules>
-        <module>PPIUK-Annotations</module>
-        <module>PPIUK-URLs</module>
         <module>PPIUK-Adestra</module>
+        <module>PPIUK-Annotations</module>
         <module>PPIUK-Ask</module>
         <module>PPIUK-AssetPages</module>
         <module>PPIUK-FastDraft</module>
@@ -31,13 +30,19 @@
         <module>PPIUK-FrontEnd</module>
         <module>PPIUK-GlobalPages</module>
         <module>PPIUK-IPUsers</module>
+        <module>PPIUK-KHPADD</module>
         <module>PPIUK-LegalUpdate</module>
         <module>PPIUK-Linking</module>
         <module>PPIUK-Login</module>
         <module>PPIUK-PageCreation</module>
         <module>PPIUK-ResearchBrowse</module>
         <module>PPIUK-ResearchDocDisplay</module>
+        <module>PPIUK-SearchKnowHow</module>
         <module>PPIUK-SearchOpenWeb</module>
+        <module>PPIUK-SearchWhatsMarket</module>
+        <module>PPIUK-Should</module>
+        <module>PPIUK-SmokeTest</module>
+        <module>PPIUK-URLs</module>
     </modules>
 
     <build>
