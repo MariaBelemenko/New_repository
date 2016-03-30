@@ -38,7 +38,7 @@ Feature: As a PL+ User I want to view and hide annotations
 
   Scenario Outline: [742429] AnnotatedStatutes doesn't displayed on document
     When the user opens document with <GUID> guid
-    Then the user click on View Document button
+    When the user clicks on "View Document" link
     Then the document opens correctly
     And the "Annotated Statutes" link is not displayed
     And the "Annotated Statutes" section is not displayed

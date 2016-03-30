@@ -1,36 +1,24 @@
-package com.thomsonreuters.researchdocdisplay.step_definitions.annotation;
+package com.thomsonreuters.researchdocdisplay.step_definitions.legislation;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
+import org.assertj.core.api.SoftAssertions;
+import org.openqa.selenium.WebElement;
+
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.CaseDocumentPage;
-import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.StandardDocumentPage;
-import com.thomsonreuters.pageobjects.pages.urls.plcuk.KHDocumentPage;
+import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.LegislationDocumentPage;
 import com.thomsonreuters.pageobjects.utils.plPlusResearchDocDisplay.CaseDocumentPageUtils;
 import com.thomsonreuters.researchdocdisplay.step_definitions.BaseStepDef;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class DocDisplayAnnotationTest extends BaseStepDef {
+public class LegislationDocAnnotationsTest extends BaseStepDef {
 
-    private NavigationCobalt navigationCobalt = new NavigationCobalt();
-    private KHDocumentPage documentPagePLCUK = new KHDocumentPage();
     private CaseDocumentPageUtils caseDocumentPageUtils = new CaseDocumentPageUtils();
     private CaseDocumentPage caseDocumentPage = new CaseDocumentPage();
-    private StandardDocumentPage standardDocumentPage = new StandardDocumentPage();
-
-    @When("^the user opens document with (.+) guid$")
-    public void theUserOpensDocumentWithGuid(String guid) throws Throwable {
-        navigationCobalt.navigateToPLCUKPlusSpecificURL("/Document/" + guid + "/View/FullText.html");
-        navigationCobalt.waitForPageToLoad();
-    }
-
-    @Then("^the document opens correctly$")
-    public void theDocumentOpensCorrectly() throws Throwable {
-        assertTrue("Document not present", documentPagePLCUK.isDocumentBlockPresent());
-    }
+    private LegislationDocumentPage legislationDocumentPage = new LegislationDocumentPage();
 
 
     @Then("^show and hide link is displayed as part of annotations header$")
@@ -56,10 +44,22 @@ public class DocDisplayAnnotationTest extends BaseStepDef {
                 caseDocumentPageUtils.isAnnotationSectionIsDisplayed());
     }
 
-    @Then("^the user is taken to the \"(.*?)\" part of the document$")
-	public void theUserIsTakenToThePartOfTheDocument(String section) throws Throwable {
-		assertTrue("The user is not taken to the " + section + " part of document",
-				caseDocumentPage.isViewScrolledToElement(standardDocumentPage.headerOnTheDocument(section)));
-	}
+	@Then("^the \"([^\"]*)\" section contains paragraphs$")
+	public void theSectionContainsParagraphs(String section) throws Throwable {
+		SoftAssertions softly = new SoftAssertions();
+		softly.assertThat(legislationDocumentPage.paragraphsInSection(section).isEmpty())
+				.overridingErrorMessage("There is no paragraph in the " + section + " section").isFalse();
+		for (WebElement element : legislationDocumentPage.paragraphsInSection(section)) {
+			softly.assertThat(element.isDisplayed()).overridingErrorMessage("The paragraph is not displayed").isTrue();
 
+		}
+		softly.assertAll();
+
+	}
+	
+	@Then("^the \"([^\"]*)\" section contains \"([^\"]*)\"$")
+	public void theSectionContains(String section, String text) throws Throwable {
+		assertTrue("The " + section + " section doesn't contain " + text,
+				legislationDocumentPage.textInSection(section, text).isDisplayed());
+	}
 }

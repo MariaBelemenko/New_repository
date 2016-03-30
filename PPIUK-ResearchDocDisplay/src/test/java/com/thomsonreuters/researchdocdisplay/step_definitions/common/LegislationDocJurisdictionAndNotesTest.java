@@ -2,7 +2,6 @@ package com.thomsonreuters.researchdocdisplay.step_definitions.common;
 
 import org.assertj.core.api.SoftAssertions;
 
-import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.PageActions;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
@@ -16,7 +15,6 @@ import cucumber.api.java.en.When;
 public class LegislationDocJurisdictionAndNotesTest extends BaseStepDef {
 
 	protected PageActions pageActions = new PageActions();
-	private CommonMethods commonMethods = new CommonMethods();
 	private LegislationDocumentPage legislationDocumentPage = new LegislationDocumentPage();
 	private AssetDocumentPage assetDocumentPage = new AssetDocumentPage();
 	private WLNHeader header = new WLNHeader();
@@ -42,11 +40,6 @@ public class LegislationDocJurisdictionAndNotesTest extends BaseStepDef {
 	@When("^the user clicks on \"(.*?)\" in \"(.*?)\" section$")
 	public void theUserClicksOnInSection(String link, String section) throws Throwable {
 		assetDocumentPage.linkInLegalUpdatesSection(link, section).click();
-	}
-
-	@When("^the user clicks on \"(.*?)\" link$")
-	public void theUserClicksOnLink(String linkText) {
-		commonMethods.clickLink(linkText);
 	}
 
 	@Then("^the user selects \"(.*?)\"$")
