@@ -34,9 +34,5 @@ public class CaseDocumentTest extends BaseStepDef {
 				caseDocumentPageUtils.isTheDateHasCorrectFormat(metaInfo[4], format));
 	}
     
-    @Then("^the title is displayed on the document$")
-    public void theTitleIsDisplayedOnTheDocument() throws Throwable {
-    	 assertTrue("The title is not displayed", assetDocumentPage.partyNames().isDisplayed());
-    }
 
 }

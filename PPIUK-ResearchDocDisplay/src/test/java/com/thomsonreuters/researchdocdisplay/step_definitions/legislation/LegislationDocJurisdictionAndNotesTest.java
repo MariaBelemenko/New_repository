@@ -1,10 +1,8 @@
-package com.thomsonreuters.researchdocdisplay.step_definitions.common;
+package com.thomsonreuters.researchdocdisplay.step_definitions.legislation;
 
 import org.assertj.core.api.SoftAssertions;
 
 import com.thomsonreuters.pageobjects.common.PageActions;
-import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
-import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.AssetDocumentPage;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.LegislationDocumentPage;
 import com.thomsonreuters.researchdocdisplay.step_definitions.BaseStepDef;
@@ -17,8 +15,6 @@ public class LegislationDocJurisdictionAndNotesTest extends BaseStepDef {
 	protected PageActions pageActions = new PageActions();
 	private LegislationDocumentPage legislationDocumentPage = new LegislationDocumentPage();
 	private AssetDocumentPage assetDocumentPage = new AssetDocumentPage();
-	private WLNHeader header = new WLNHeader();
-	private NavigationCobalt navigationCobalt = new NavigationCobalt();
 
 	@Then("^the notes have numbers and description$")
 	public void theNotesHaveNumbersAndDescription() throws Throwable {
@@ -40,12 +36,6 @@ public class LegislationDocJurisdictionAndNotesTest extends BaseStepDef {
 	@When("^the user clicks on \"(.*?)\" in \"(.*?)\" section$")
 	public void theUserClicksOnInSection(String link, String section) throws Throwable {
 		assetDocumentPage.linkInLegalUpdatesSection(link, section).click();
-	}
-
-	@Then("^the user selects \"(.*?)\"$")
-	public void theUserSelects(String link) throws Throwable {
-		header.countryLink(link).click();
-		navigationCobalt.waitForPageToLoad();
 	}
 
 }

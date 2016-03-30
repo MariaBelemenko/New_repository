@@ -617,14 +617,6 @@ public class ProvisionPage extends DocumentDisplayAbstractPage {
 	public WebElement annotatedStatuesText(String annotatedStatusText) {
 		return retryingFindElement(By.xpath("//h2[contains(text()," + "'" + annotatedStatusText + "'" + ")]"));
 	}
-
-	public WebElement jumpLink(String jumpLinkText) {
-		return retryingFindElement(By.xpath(".//a[contains(text()," + "'" + jumpLinkText + "'" + ")]"));
-	}
-
-	public WebElement jumpLinkText(String jumpLinkText) {
-		return retryingFindElement(By.xpath(".//h2[contains(text()," + "'" + jumpLinkText + "'" + ")]"));
-	}
 	
 	public WebElement documentMetaInfo() {
 		return retryingFindElement(DOCUMENT_META_INFO);

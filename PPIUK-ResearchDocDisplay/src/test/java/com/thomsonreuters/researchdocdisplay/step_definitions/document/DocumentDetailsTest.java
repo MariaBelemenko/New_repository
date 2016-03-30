@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 
 import com.thomsonreuters.pageobjects.common.CommonMethods;
-import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.AssetDocumentPage;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.CaseDocumentPage;
 import com.thomsonreuters.pageobjects.rest.service.impl.RestServiceDeliveryImpl;
 import com.thomsonreuters.pageobjects.utils.pdf.PDFBoxUtil;
@@ -17,7 +16,6 @@ import cucumber.api.java.en.Then;
 public class DocumentDetailsTest extends BaseStepDef {
 
 	private CaseDocumentPage caseDocumentPage = new CaseDocumentPage();
-	private AssetDocumentPage assetDocumentPage = new AssetDocumentPage();
 	private RestServiceDeliveryImpl restServiceDeliveryImpl = new RestServiceDeliveryImpl();
 	private CommonMethods commonMethods = new CommonMethods();
 	private PDFBoxUtil pdfBoxUtil = new PDFBoxUtil();
@@ -26,11 +24,6 @@ public class DocumentDetailsTest extends BaseStepDef {
 	@Then("^the pdf image is displayed$")
 	public void thePdfImageIsDisplayed() throws Throwable {
 		assertTrue("User doesn't see pdf image on document", caseDocumentPage.pdfImage().isDisplayed());
-	}
-
-	@Then("^the table of contents is displayed$")
-	public void theTableOfContentsIsDisplayed() throws Throwable {
-		assertTrue("Teble of content is not displayed", assetDocumentPage.tableOfContentSection().isDisplayed());
 	}
 
 	@Then("^delivery options are displayed$")

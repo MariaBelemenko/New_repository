@@ -1,4 +1,4 @@
-package com.thomsonreuters.researchdocdisplay.step_definitions.provision;
+package com.thomsonreuters.researchdocdisplay.step_definitions.legislation;
 
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.WebElement;

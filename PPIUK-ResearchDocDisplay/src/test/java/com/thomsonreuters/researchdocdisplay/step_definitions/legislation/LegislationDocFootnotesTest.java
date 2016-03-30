@@ -1,4 +1,4 @@
-package com.thomsonreuters.researchdocdisplay.step_definitions.document;
+package com.thomsonreuters.researchdocdisplay.step_definitions.legislation;
 
 import static org.junit.Assert.assertTrue;
 
