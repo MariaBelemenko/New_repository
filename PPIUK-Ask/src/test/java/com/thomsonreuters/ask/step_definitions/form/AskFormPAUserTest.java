@@ -49,8 +49,8 @@ public class AskFormPAUserTest extends BaseStepDef {
     @Then("^ASK form is displayed in new window$")
     public void askFormIsDisplayedInNewWindow() throws Throwable {
         commonMethods.switchToOpenedWindow();
+        askWindowHandle = askFormPage.getWindowHandle();
         assertThat("Ask form is not displayed", askFormPage.askFormPageTitle().isDisplayed(), Is.is(true));
-        askWindowHandle = commonMethods.getDriver().getWindowHandle();
     }
 
 
@@ -62,7 +62,7 @@ public class AskFormPAUserTest extends BaseStepDef {
     @After(order = 100000, value = "@CloseAskWindow")
     public void closesASKWindow() throws Throwable {
         try {
-            if (askWindowHandle != null) {
+            if (askWindowHandle != null && !askWindowHandle.equals(mainWindowHandle)) {
                 askFormPage.close();
                 commonMethods.switchToMainWindow();
                 askWindowHandle = null;

@@ -54,6 +54,7 @@ public class ProdResourcesTest extends BaseStepDef {
     private FormUtils formUtils = new FormUtils();
 
     private String askWindowHandle;
+    private String mainWindowHandle;
 
     private static final String ASK_DISCLAIMER_TEXT = "Practical Law may have moderated questions and answers before publication. No answer to a question is legal advice and no lawyer-client relationship is created between the person asking the question and the person answering it. Where appropriate, you should consult your own lawyer for legal advice. Practical Law's employees are not practising solicitors or barristers. The Ask scope and rules apply.";
 
@@ -189,7 +190,7 @@ public class ProdResourcesTest extends BaseStepDef {
 
     @When("^the user clicks on 'Ask a question' link to ask a question$")
     public void theUserClicksASKILinkToAskAQuestion() throws Throwable {
-        String mainWindowHandle = getDriver().getWindowHandle();
+        mainWindowHandle = resourcePage.getWindowHandle();
         resourcePage.askAQuestion().click();
         resourcePage.waitForPageToLoad();
     }
@@ -197,8 +198,8 @@ public class ProdResourcesTest extends BaseStepDef {
     @Then("^ASK form is displayed in new window$")
     public void askFormIsDisplayedInNewWindow() throws Throwable {
         commonMethods.switchToOpenedWindow();
+        askWindowHandle = askFormPage.getWindowHandle();
         assertThat("Ask form is not displayed", askFormPage.askFormPageTitle().isDisplayed(), Is.is(true));
-        askWindowHandle = commonMethods.getDriver().getWindowHandle();
     }
 
     @When("^the user accepts ASK disclaimer terms$")
@@ -246,7 +247,7 @@ public class ProdResourcesTest extends BaseStepDef {
     @After(order = 100000, value = "@CloseAskWindow")
     public void closesASKWindow() throws Throwable {
         try {
-            if (askWindowHandle != null) {
+            if (askWindowHandle != null && !askWindowHandle.equals(mainWindowHandle)) {
                 askFormPage.close();
                 commonMethods.switchToMainWindow();
                 askWindowHandle = null;
