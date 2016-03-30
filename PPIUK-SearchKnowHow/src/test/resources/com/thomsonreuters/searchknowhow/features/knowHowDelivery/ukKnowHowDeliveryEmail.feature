@@ -5,7 +5,7 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     Given PL+ user is logged in
 
   Scenario: [747921] Basic search result email delivery pop up - layout
-    When the user runs a free text search for the query "contract"
+    When the user searches for "contract"
     And the user selects the checkbox associated with result "1"
     And the user selects the checkbox associated with result "2"
     And the user selects the email delivery option
@@ -92,7 +92,7 @@ Feature: [747922][747921][702205] ukKnowHowDelivery.feature
     | Microsoft Excel (CSV) |
 
   Scenario Outline: [747921] email list of know how search results from basic tab in document format (various document formats)
-    When the user runs a free text search for the query "contract"
+    When the user searches for "contract"
     And the user selects the checkbox associated with result "1"
     And the user selects the checkbox associated with result "2"
     And the user selects the email delivery option
