@@ -343,7 +343,7 @@ public class WLNHeader extends AbstractPage {
         waitForPageToLoad();
         waitForExpectedElement(By.xpath(USER_ICON_DROPDOWN));
         expandUserAvatarDropDown();
-        waitForExpectedElement(By.xpath("//a[text()='My FastDraft']")).click();
+        waitForExpectedElement(By.className("redirect-to-fastdraftlink")).click();
         waitForPageToLoad();
     }
 
@@ -351,7 +351,7 @@ public class WLNHeader extends AbstractPage {
         WebElement button = null;
         try {
             pageActions.mouseOver(getDriver.findElement(By.xpath(USER_ICON_DROPDOWN)));
-            button = findElement(By.xpath("//a[text()='My FastDraft']"));
+            button = findElement(By.className("redirect-to-fastdraftlink"));
             button.isDisplayed();
         } catch (NoSuchElementException e) {
             LOG.info("context", e);
