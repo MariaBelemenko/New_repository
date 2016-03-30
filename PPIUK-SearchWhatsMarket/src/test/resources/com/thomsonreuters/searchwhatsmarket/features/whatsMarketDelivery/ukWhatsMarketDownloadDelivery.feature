@@ -77,7 +77,6 @@ Feature: ukWhatsMarketDownloadDelivery.feature
     | PDF                   |
     | Microsoft Excel (CSV) |
 
-    @Download
   Scenario Outline: [747924] download list of WM search results from basic tab in document format (various document formats)
     When the user runs a free text search for the query "contract law"
     And the user selects the checkbox associated with whats market result "1"
