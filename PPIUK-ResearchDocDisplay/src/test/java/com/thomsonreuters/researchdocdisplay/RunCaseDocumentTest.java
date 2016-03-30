@@ -7,10 +7,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-htmlreport/ResearchDocDisplayProvisionReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunResearchDocDisplayProvisionTest.json"},
-        features = "src/test/resources/com/thomsonreuters/researchdocdisplay/features/provision",
+        plugin = {"pretty", "html:target/cucumber-htmlreport/CaseDocumentReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunCaseDocumentTest.json"},
+        features = "src/test/resources/com/thomsonreuters/researchdocdisplay/features/case",
         tags = {"~@wip", "~@manual"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
-public class RunResearchDocDisplayProvisionTest {
+public class RunCaseDocumentTest {
 }

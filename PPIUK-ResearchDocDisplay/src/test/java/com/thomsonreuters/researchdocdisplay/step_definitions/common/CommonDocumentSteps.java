@@ -81,5 +81,6 @@ public class CommonDocumentSteps extends BaseStepDef {
     public void theTitleIsDisplayedOnTheDocument() throws Throwable {
     	 assertTrue("The title is not displayed", assetDocumentPage.partyNames().isDisplayed());
     }
+   
 	
 }
