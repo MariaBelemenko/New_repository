@@ -17,8 +17,13 @@ public class RunSearchWhatsMarketComparisonToolTest {
 
     @BeforeClass
     public static void reporting() {
-        System.setProperty("username", "SearchWhatsMarketUser1");
-        System.setProperty("password", "Password1");
+        if (System.getProperty("username").equals("None")) {
+            System.setProperty("username", "SearchWhatsMarketUser1");
+            System.setProperty("password", "Password1");
+        }
+        else {
+            System.out.println("Username is pre-defined in the Run Command as: " + System.getProperty("username"));
+        }
     }
 
 }
