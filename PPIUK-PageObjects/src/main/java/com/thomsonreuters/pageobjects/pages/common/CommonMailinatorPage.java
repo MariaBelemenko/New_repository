@@ -20,12 +20,12 @@ public class CommonMailinatorPage extends AbstractPage {
     }
 
     public List displayedEmailList() {
-        List<WebElement> eList = findElements(By.cssSelector(".someviewport div[id*='row_public']"));
+        List<WebElement> eList = waitForExpectedElements(By.cssSelector(".someviewport div[id*='row_public']"),15);
         return eList;
     }
 
     public Integer displayedEmailCount() {
-        List<WebElement> eList = findElements(By.cssSelector(".someviewport div[id*='row_public']"));
+        List<WebElement> eList = waitForExpectedElements(By.cssSelector(".someviewport div[id*='row_public']"),15);
         return eList.size();
     }
 
