@@ -10,15 +10,20 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber-htmlreport/CPETHomePageReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunPageCreationHomePageTest.json"},
         features = "src/test/resources/com/thomsonreuters/pagecreation/features/homePage",
-		tags = {"~@wip", "~@manual"},
+        tags = {"~@wip", "~@manual"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
 public class RunPageCreationHomePageTest {
 
     @BeforeClass
     public static void reporting() {
-        System.setProperty("username", "CpetUser2");
-        System.setProperty("password", "Password1");
+        if (System.getProperty("username").equals("None")) {
+            System.setProperty("username", "CpetUser2");
+            System.setProperty("password", "Password1");
+        }
+        else {
+            System.out.println("Username is pre-defined in the Run Command as: " + System.getProperty("username"));
+        }
     }
 
 }
