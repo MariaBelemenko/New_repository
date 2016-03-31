@@ -18,8 +18,13 @@ public class RunSearchKnowHowScopedSearchTest {
 
     @BeforeClass
     public static void reporting() {
-        System.setProperty("username", "SearchKnowHowUser6");
-        System.setProperty("password", "Password1");
+        if (System.getProperty("username").equals("None")) {
+            System.setProperty("username", "SearchKnowHowUser6");
+            System.setProperty("password", "Password1");
+        }
+        else {
+            System.out.println("Username is pre-defined in the Run Command as: " + System.getProperty("username"));
+        }
     }
 
 }

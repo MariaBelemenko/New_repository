@@ -1,6 +1,5 @@
 package com.thomsonreuters.searchknowhow;
 
-import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
 import cucumber.api.CucumberOptions;
 import cucumber.api.SnippetType;
 import cucumber.api.junit.Cucumber;
@@ -18,8 +17,13 @@ public class RunSearchKnowHowFacetsTest {
 
     @BeforeClass
     public static void reporting() {
-        System.setProperty("username", "SearchKnowHowUser3");
-        System.setProperty("password", "Password1");
+        if (System.getProperty("username").equals("None")) {
+            System.setProperty("username", "SearchKnowHowUser3");
+            System.setProperty("password", "Password1");
+        }
+        else {
+            System.out.println("Username is pre-defined in the Run Command as: " + System.getProperty("username"));
+        }
     }
 
 }
