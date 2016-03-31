@@ -120,7 +120,7 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         navigationCobalt.navigateToPLUKPlus();
         plcHomePage.closeCookieConsentMessage();
         resetCurrentUser();
-        if (!baseUrl.contains("prod")) {
+        if (!baseUrl.contains("hotprod")) {
             theUserClicksOnSignOnLinkOnTheHeader();
         } else {
             LOG.info("OpenWeb is OFF on production. User already on login page");
@@ -668,14 +668,20 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
          * Then just remove the below lines.
          */
         switch (baseUrl) {
+            case "hotprod":
+                LOG.info("HOT PROD Site is being tested.");
+                break;
             case "prod":
                 LOG.info("Production Site is being tested.");
+                wlnHeader.signInLink().click();
                 break;
             case "prodA":
                 LOG.info("PROD A is being tested.");
+                wlnHeader.signInLink().click();
                 break;
             case "prodB":
                 LOG.info("PROD B is being tested.");
+                wlnHeader.signInLink().click();
                 break;
             default:
                 wlnHeader.signInLink().click();
