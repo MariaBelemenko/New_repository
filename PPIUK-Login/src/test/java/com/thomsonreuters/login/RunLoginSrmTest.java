@@ -14,13 +14,13 @@ public class RunLoginSrmTest {
 
 	@BeforeClass
 	public static void reporting() {
-        try {
-            Thread.sleep(21000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (System.getProperty("username").equals("None")) {
+            System.setProperty("username", "srm_user");
+            System.setProperty("password", "srmUSER2015");
         }
-		System.setProperty("username", "srm_user");
-		System.setProperty("password", "srmUSER2015");
+        else {
+            System.out.println("Username is pre-defined in the Run Command as: " + System.getProperty("username"));
+        }
 	}
 
 }

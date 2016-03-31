@@ -1,7 +1,5 @@
 package com.thomsonreuters.login.step_definitions;
 
-import static com.thomsonreuters.pageobjects.utils.CobaltUser.isUserFirstUser;
-
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.ExcelFileReader;
 import com.thomsonreuters.pageobjects.common.PageActions;
@@ -17,30 +15,23 @@ import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePag
 import com.thomsonreuters.pageobjects.pages.plcLegacy.PLCLegacyHeader;
 import com.thomsonreuters.pageobjects.pages.plcLegacy.PLCLegacyLoginScreen;
 import com.thomsonreuters.pageobjects.pages.search.SearchHomePage;
-import com.thomsonreuters.pageobjects.utils.CobaltUser;
-import com.thomsonreuters.pageobjects.utils.OnepassLoginUtils;
-import com.thomsonreuters.pageobjects.utils.Product;
-import com.thomsonreuters.pageobjects.utils.Routing;
-import com.thomsonreuters.pageobjects.utils.RoutingPage;
-import com.thomsonreuters.pageobjects.utils.User;
+import com.thomsonreuters.pageobjects.utils.*;
 import com.thomsonreuters.pageobjects.utils.folders.FoldersUtils;
 import cucumber.api.Transpose;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.Select;
+import org.springframework.util.StringUtils;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.springframework.util.StringUtils;
+
+import static com.thomsonreuters.pageobjects.utils.CobaltUser.isUserFirstUser;
 
 /**
  * Login and Navigation Steps.
@@ -135,7 +126,7 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         navigationCobalt.navigateToPLUKPlus();
         plcHomePage.closeCookieConsentMessage();
         resetCurrentUser();
-        if (!baseUrl.contains("prod")) {
+        if (!baseUrl.contains("hotprod")) {
             theUserClicksOnSignOnLinkOnTheHeader();
         } else {
             LOG.info("OpenWeb is OFF on production. User already on login page");
@@ -709,14 +700,20 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
          * Then just remove the below lines.
          */
         switch (baseUrl) {
+            case "hotprod":
+                LOG.info("HOT PROD Site is being tested.");
+                break;
             case "prod":
                 LOG.info("Production Site is being tested.");
+                wlnHeader.signInLink().click();
                 break;
             case "prodA":
                 LOG.info("PROD A is being tested.");
+                wlnHeader.signInLink().click();
                 break;
             case "prodB":
                 LOG.info("PROD B is being tested.");
+                wlnHeader.signInLink().click();
                 break;
             default:
                 wlnHeader.signInLink().click();

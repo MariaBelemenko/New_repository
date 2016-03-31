@@ -18,13 +18,13 @@ public class RunLoginLoginTest {
 
     @BeforeClass
     public static void reporting() {
-        try {
-            Thread.sleep(9000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (System.getProperty("username").equals("None")) {
+            System.setProperty("username", "LoginUser3");
+            System.setProperty("password", "Password2");
         }
-        System.setProperty("username", "LoginUser3");
-		System.setProperty("password", "Password2");
+        else {
+            System.out.println("Username is pre-defined in the Run Command as: " + System.getProperty("username"));
+        }
     }
 
 }

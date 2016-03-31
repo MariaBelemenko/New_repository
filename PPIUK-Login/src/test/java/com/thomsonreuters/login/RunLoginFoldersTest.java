@@ -17,13 +17,13 @@ public class RunLoginFoldersTest {
 
     @BeforeClass
     public static void reporting() {
-        try {
-            Thread.sleep(6000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (System.getProperty("username").equals("None")) {
+            System.setProperty("username", "LoginUser2");
+            System.setProperty("password", "Password1");
         }
-        System.setProperty("username", "LoginUser2");
-        System.setProperty("password", "Password1");
+        else {
+            System.out.println("Username is pre-defined in the Run Command as: " + System.getProperty("username"));
+        }
     }
 
 }
