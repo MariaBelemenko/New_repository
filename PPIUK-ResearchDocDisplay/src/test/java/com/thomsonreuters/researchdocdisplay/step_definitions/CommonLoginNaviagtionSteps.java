@@ -1,10 +1,7 @@
 package com.thomsonreuters.researchdocdisplay.step_definitions;
 
-import static com.thomsonreuters.pageobjects.utils.CobaltUser.isUserFirstUser;
-
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.ExcelFileReader;
-import com.thomsonreuters.pageobjects.common.PageActions;
 import com.thomsonreuters.pageobjects.otherPages.CobaltLogin;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.folders.ResearchOrganizerPage;
@@ -32,6 +29,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+
+import static com.thomsonreuters.pageobjects.utils.CobaltUser.isUserFirstUser;
 
 
 /**
@@ -118,7 +117,7 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         navigationCobalt.navigateToPLUKPlus();
         plcHomePage.closeCookieConsentMessage();
         resetCurrentUser();
-        if (!baseUrl.contains("prod")) {
+        if (!baseUrl.contains("hotprod")) {
             theUserClicksOnSignOnLinkOnTheHeader();
         } else {
             LOG.info("OpenWeb is OFF on production. User already on login page");
@@ -666,14 +665,20 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
          * Then just remove the below lines.
          */
         switch (baseUrl) {
+            case "hotprod":
+                LOG.info("HOT PROD Site is being tested.");
+                break;
             case "prod":
                 LOG.info("Production Site is being tested.");
+                wlnHeader.signInLink().click();
                 break;
             case "prodA":
                 LOG.info("PROD A is being tested.");
+                wlnHeader.signInLink().click();
                 break;
             case "prodB":
                 LOG.info("PROD B is being tested.");
+                wlnHeader.signInLink().click();
                 break;
             default:
                 wlnHeader.signInLink().click();
