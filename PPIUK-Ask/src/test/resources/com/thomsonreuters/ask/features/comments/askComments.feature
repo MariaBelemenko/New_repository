@@ -8,7 +8,8 @@ Feature: [752383,752385,752386] View comment, report this post, reply/add commen
     Then answer and comment are displayed with correct details
 
   # (Should) 857960:[REGRESSION] Ask: jump-link from "Report this post" message does not work properly
-  @bug
+  # Test ready and should be unwiped after release (after 11 April 2016)
+  @bug @wip
   Scenario: Report this post
     When user navigates directly to document with guid "Ie30b7a17ce4611e498db8b09b4f043e0"
     And get mailto and subject from 'Report this Post' link
