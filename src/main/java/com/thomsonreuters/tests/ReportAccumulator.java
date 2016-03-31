@@ -18,7 +18,6 @@ public final class ReportAccumulator {
     private static String reportJS = "report.js";
     private static String pngImageExtension = "png";
     private static String plPlusUKFolder = System.getProperty("user.dir");
-    ;
     private static File plplusukReportsFolder = null;
     private File mergedReport = null;
 
@@ -28,34 +27,27 @@ public final class ReportAccumulator {
         reportAccumulator.startReporting();
     }
 
-
     public void startReporting() throws Throwable {
         if (!plplusukReportsFolder.exists()) {
             plplusukReportsFolder.mkdirs();
         }
-
         LOG.info("Calling merge reports");
-
         List<String> modules = getModuleNames();
         Iterator<String> modulesList = modules.iterator();
-
         while (modulesList.hasNext()) {
             try {
                 String module = modulesList.next();
                 String moduleName = plPlusUKFolder + "\\" + module;
-
 //                System.out.println("startReporting :" + moduleName);
-
                 File moduleReportsFolder = new File(moduleName + "\\target\\cucumber-htmlreport\\");
 //                if (!moduleReportsFolder.isDirectory()) {
 //                    return;
 //                }
-
                 for (File file : moduleReportsFolder.listFiles()) {
                     try {
                         if (file.isDirectory()) {
                             if (new File(file, "index.html").exists()) {
-                                //LOG.info("Module -> " + module + " ::report location ::" + moduleReportsFolder + "\\" + file.getName());
+//                                LOG.info("Module -> " + module + " ::report location ::" + moduleReportsFolder + "\\" + file.getName());
                                 mergeReports(new File(moduleReportsFolder + "\\" + file.getName()));
                             }
                         }
@@ -63,7 +55,6 @@ public final class ReportAccumulator {
                         LOG.warn("Issue in accessing maven module sub folder details:" + e);
                     }
                 }
-
             } catch (Exception e) {
                 LOG.warn(e.getMessage());
             }
@@ -78,21 +69,17 @@ public final class ReportAccumulator {
      */
     private void mergeReports(File reportDirectory) throws Throwable {
         boolean isEmpty = false;
-
         Collection<File> existingReports = FileUtils.listFiles(reportDirectory, new String[]{"js"}, true);
-
         if (plplusukReportsFolder.listFiles().length == 0) {
             isEmpty = true;
         }
-
         Collection<File> images = FileUtils.listFiles(reportDirectory, new String[]{"png"}, true);
         if (images.size() > 0) {
             renameEmbededImages(new File(reportDirectory + "\\report.js"));
         }
-
         existingReports = FileUtils.listFiles(reportDirectory, new String[]{"js"}, true);
         for (File report : existingReports) {
-            //only address report files
+            /**Only address report files*/
             if (isEmpty || report.getName().equals(reportJS)) {
                 if (isEmpty) {
                     if (!report.getName().endsWith(pngImageExtension)) {
@@ -103,7 +90,7 @@ public final class ReportAccumulator {
                         copyFileUsingStream(new File(reportDirectory + "\\index.html"));
                         copyFileUsingStream(new File(reportDirectory + "\\style.css"));
                     }
-                    //otherwise merge this report into existing master report
+                    /**Otherwise merge this report into existing master report*/
                 } else {
                     mergeFiles(mergedReport, report);
                 }
@@ -118,7 +105,7 @@ public final class ReportAccumulator {
      * @param source
      */
     private void mergeFiles(File target, File source) throws Throwable {
-        //merge report files
+        /**Merge report files*/
         String targetReport = FileUtils.readFileToString(target);
         String sourceReport = FileUtils.readFileToString(source);
         target.setWritable(true);
@@ -136,7 +123,6 @@ public final class ReportAccumulator {
         try {
             File reportDirectory = reportFile.getParentFile();
             Collection<File> embeddedImages = FileUtils.listFiles(reportDirectory, new String[]{pngImageExtension}, true);
-
             String fileAsString = FileUtils.readFileToString(reportFile);
             Iterator<File> iterator = embeddedImages.iterator();
             while (iterator.hasNext()) {
@@ -147,19 +133,19 @@ public final class ReportAccumulator {
                     File newNamedImageFile = new File(plplusukReportsFolder.getPath() + "\\" + uniqueImageName);
                     image.setWritable(true);
                     if (image.renameTo(newNamedImageFile)) {
-                        //LOG.info("Image File renamed to avoid the file overriding issues.");
+//                        LOG.info("Image File renamed to avoid the file overriding issues.");
                         fileAsString = fileAsString.replace(curImageName, uniqueImageName);
                     } else {
-                        //LOG.warn("Sorry! the image file can't be renamed" + image.getName());
+//                        LOG.warn("Sorry! the image file can't be renamed" + image.getName());
                     }
                     Thread.sleep(2000);
                 } catch (Exception e) {
-                    //LOG.warn("Renaming image file is having difficulty.");
+//                    LOG.warn("Renaming image file is having difficulty.");
                 }
             }
             FileUtils.writeStringToFile(reportFile, fileAsString);
         } catch (Exception e) {
-            //LOG.warn("Issue in renameEnbeddedImages()");
+//            LOG.warn("Issue in renameEnbeddedImages()");
         }
     }
 
@@ -172,7 +158,7 @@ public final class ReportAccumulator {
         } catch (IOException e) {
         } catch (XmlPullParserException e) {
         }
-        //LOG.info("Modules :" + model.getModules());
+//        LOG.info("Modules :" + model.getModules());
         return model.getModules();
     }
 
@@ -201,4 +187,5 @@ public final class ReportAccumulator {
             os.close();
         }
     }
+
 }

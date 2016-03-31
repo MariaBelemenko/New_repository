@@ -35,6 +35,7 @@
         <module>PPIUK-Linking</module>
         <module>PPIUK-Login</module>
         <module>PPIUK-PageCreation</module>
+        <module>PPIUK-PageObjects</module>
         <module>PPIUK-ResearchBrowse</module>
         <module>PPIUK-ResearchDocDisplay</module>
         <module>PPIUK-SearchKnowHow</module>
