@@ -3,7 +3,6 @@ Feature: [799335] Redirecting to FastDraft popup
 
   Scenario:
     Given PL+ user is logged in with following details
-      | mandatoryRouting | YES                  |
     When the user goes My FastDraft
     Then the user sees Redirecting to FastDraft popup
     And the user sees Cancel Request button
@@ -12,7 +11,6 @@ Feature: [799335] Redirecting to FastDraft popup
 
   Scenario: 
     Given PL+ user is logged in with following details
-      | mandatoryRouting | YES                  |
     When the user come back on to Home page
     And the user opens "Family" link
     And the user opens Form E page
@@ -24,7 +22,6 @@ Feature: [799335] Redirecting to FastDraft popup
 
   Scenario: 
     Given PL+ user is logged in with following details
-      | mandatoryRouting | YES                  |
     When the user come back on to Home page
     And the user opens 'Resources' link
     And the user opens 'Standard documents and drafting notes' link
@@ -38,7 +35,6 @@ Feature: [799335] Redirecting to FastDraft popup
 
   Scenario: 
     Given PL+ user is logged in with following details
-      | mandatoryRouting | YES                  |
     When the user come back on to Home page
     And the user opens "Family" link
     And the user opens Form E page
