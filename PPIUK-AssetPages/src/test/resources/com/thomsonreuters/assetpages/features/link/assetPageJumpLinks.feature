@@ -9,7 +9,7 @@ Feature: [805745] As a PL+ User I want to select a Links to this case and jump t
     Then the document opens correctly
     Then the user see "Legal updates on this case" jump link in the left hand side navigation panel
     When the user clicks on "Legal updates on this case" jump link
-    Then the user is taken to the "Legal updates on this case" part of the document
+    Then the user is taken to selected part of the document
 
   Examples:
     | GUID                              |
