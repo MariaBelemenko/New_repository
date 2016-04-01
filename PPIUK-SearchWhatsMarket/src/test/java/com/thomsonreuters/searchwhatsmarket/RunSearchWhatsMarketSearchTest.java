@@ -18,7 +18,7 @@ public class RunSearchWhatsMarketSearchTest {
     @BeforeClass
     public static void reporting() {
         if (System.getProperty("username").equals("None")) {
-            System.setProperty("username", "SearchWhatsMarketUser8");
+            System.setProperty("username", "SearchWhatsMarketUser2");
             System.setProperty("password", "Password1");
         }
         else {
