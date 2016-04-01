@@ -4,14 +4,13 @@ Feature: [788452] [805752] [818597] As a PL+ User I want to select Content refer
   Background:
     Given PL+ user is logged in
 
-  @usmanh 
   Scenario Outline: [788452] [825918] The case documents contain jump links in the left hand side navigation panel
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then text added to the document
     Then the user see "Content referring to this case" jump link in the left hand side navigation panel
     When the user clicks on "Content referring to this case" jump link
-    Then the user is taken to the "Content referring to this case" part of the document
+    Then the user is taken to selected part of the document
   Examples:
     | GUID                              |
     | I984ef7606cf011e498db8b09b4f043e0 |

@@ -7,9 +7,9 @@ import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.Pr
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.StandardDocumentPage;
 import com.thomsonreuters.pageobjects.pages.urls.plcuk.KHDocumentPage;
 import com.thomsonreuters.pageobjects.utils.plPlusResearchDocDisplay.AssetPageUtils;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-
 import static org.junit.Assert.assertTrue;
 
 public class AssetPageStylesTest extends BaseStepDef {
@@ -110,5 +110,11 @@ public class AssetPageStylesTest extends BaseStepDef {
         assertTrue("The bullet doesn't has " + fontSize + "font size",
                 assetPageUtils.getFontSizeOfBullet(linkText).equals(fontSize));
     }
+    
+	@Then("^the user is taken to selected part of the document$")
+	public void theUserIsTakenToSelectedPartOfTheDocument() throws Throwable {
+		assertTrue("The user doesn't taken to the selected part of the document",
+				assetPageUtils.isTheUserTakenToSelectedPartOfTheDocument(linkText));
+	}
 
 }
