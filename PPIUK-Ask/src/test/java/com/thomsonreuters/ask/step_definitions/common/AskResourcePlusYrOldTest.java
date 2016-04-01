@@ -50,7 +50,7 @@ public class AskResourcePlusYrOldTest extends BaseStepDef {
         assertThat("Answer and Comment are not displayed", askResourcePage.numberOfComments() >= 2, Is.is(true));
         docNumber = 1;
         String href = askResourcePage.reportThisPostForNthComment(docNumber).getAttribute("href");
-        String pattern = "mailto:(.*).*(?=\\?).subject=(.*).*(?=&)";
+        String pattern = "((?<=mailto:).*(?=\\?)|(?<=subject\\=).*(?=&))";
         List<String> values = commonMethods.getRegExpGroupValue(pattern, href);
         if (!values.isEmpty()) {
             mailTo = values.get(0);
