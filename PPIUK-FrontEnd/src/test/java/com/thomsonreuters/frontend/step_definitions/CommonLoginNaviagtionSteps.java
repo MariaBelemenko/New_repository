@@ -129,10 +129,10 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         if (!baseUrl.contains("hotprod")) {
             theUserClicksOnSignOnLinkOnTheHeader();
         } else {
-            LOG.info("OpenWeb is OFF on production. User already on login page");
+            LOG.info("OpenWeb is OFF on HOT PROD. User already on login page");
         }
     }
-
+    
     @Given("^PL\\+ user is not logged in$")
     public void plUserIsNotLoggedIn() throws Throwable {
         if (!isUserFirstUser(currentUser)) {
@@ -674,9 +674,9 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
          * Then just remove the below lines.
          */
         switch (baseUrl) {
-            case "hotprod":
-                LOG.info("HOT PROD Site is being tested.");
-                break;
+        	case "hotprod":
+        		LOG.info("HOT PROD Site is being tested.");
+        		break;
             case "prod":
                 LOG.info("Production Site is being tested.");
                 wlnHeader.signInLink().click();
@@ -695,8 +695,8 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         }
         /**
          * When you want to run any test against PROD with OW on then just uncomment the line below.
-         */
-//      wlnHeader.signInLink().click();
+         */      
+       // wlnHeader.signInLink().click();
     }
 
     private void hackToTRemovePortAndNavigateToOnePassPage() throws InterruptedException {

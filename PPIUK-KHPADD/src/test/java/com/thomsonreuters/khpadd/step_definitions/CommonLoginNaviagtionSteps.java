@@ -121,7 +121,7 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         if (!baseUrl.contains("hotprod")) {
             theUserClicksOnSignOnLinkOnTheHeader();
         } else {
-            LOG.info("OpenWeb is OFF on production. User already on login page");
+            LOG.info("OpenWeb is OFF on HOT PROD. User already on login page");
         }
     }
 
@@ -711,8 +711,8 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         }
         /**
          * When you want to run any test against PROD with OW on then just uncomment the line below.
-         */
-//      wlnHeader.signInLink().click();
+         */      
+       // wlnHeader.signInLink().click();
     }
 
     private void hackToTRemovePortAndNavigateToOnePassPage() throws InterruptedException {
