@@ -4,6 +4,7 @@ import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.PageActions;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawUKCategoryPage;
+import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.pageCreation.HomePage;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.DocumentRightPanelPage;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePage;
@@ -30,6 +31,7 @@ import static org.junit.Assert.assertTrue;
 public class ProdAssetPagesTest extends BaseStepDef {
 
     private NavigationCobalt navigationCobalt = new NavigationCobalt();
+    private WLNHeader header = new WLNHeader();
     private CategoryPage categoryPage = new CategoryPage();
     private PracticalLawUKCategoryPage practicalLawUKCategoryPage = new PracticalLawUKCategoryPage();
     private PageActions pageActions = new PageActions();
@@ -51,6 +53,19 @@ public class ProdAssetPagesTest extends BaseStepDef {
             navigationCobalt.waitForPageToLoad();
         }
     }
+
+	@When("^the user come back on to Home page as logged in user$")
+	public void userComeBackOnToHomePageAsLoggedInUser() throws Throwable {
+		navigationCobalt.waitForPageToLoad();
+		if (!isHomePage()) {
+			navigationCobalt.navigateToHomePage();
+			navigationCobalt.waitForPageToLoad();
+		}
+        assertThat(header.favouritesLink().isDisplayed(), Is.is(true));
+        assertThat(header.foldersLink().isDisplayed(), Is.is(true));
+        assertThat(header.historyLink().isDisplayed(), Is.is(true));
+        assertThat(resourcePage.waitAndFindElement(By.linkText("Employment")).isDisplayed(), Is.is(true));
+	}
 
     @When("^the user runs a free text search for the query \"(.*)\"$")
     public void theUserRunsAFreeTextSearchForTheQuery(String query) throws Throwable {
