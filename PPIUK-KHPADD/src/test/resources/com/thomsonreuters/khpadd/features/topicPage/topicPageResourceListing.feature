@@ -46,7 +46,7 @@ Feature: [730196][764868][764877] Verify the topic page facet links, topic page 
     And following optional blocks are not displayed on the right hand side
       | International Resources |
       | Key forms and guidance  |
-    When PL+ user navigates to home page
+    When the user come back on to Home page as logged in user
     When the user navigates to practice area "Commercial" filtered by "Advertising and marketing" topic page
     And following optional blocks are displayed on the right hand side
       | Legal Updates           |

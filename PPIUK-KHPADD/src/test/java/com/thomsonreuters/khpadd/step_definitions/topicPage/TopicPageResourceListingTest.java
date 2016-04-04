@@ -39,7 +39,7 @@ public class TopicPageResourceListingTest extends BaseStepDef {
     @Then("^the number of resources displayed on the first page is (\\d+)$")
     public void theNumberOfResourcesDisplayedOnTheFirstPageIs(int maxNoOfResources) throws Throwable {
         resourcePage.waitForPageToLoad();
-        commonMethods.waitForElement(topicPage.resourceDocByTitle(), 5000);
+        commonMethods.waitForElement(topicPage.resourceDocByTitle(), 15000);
         Thread.sleep(100);
         int size = topicPage.totalResourcesOnFirstPage();
         assertThat(topicPage.totalResourcesOnFirstPage(), Is.is(maxNoOfResources));
