@@ -135,13 +135,9 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
 
     @Given("^PL\\+ user is not logged in$")
     public void plUserIsNotLoggedIn() throws Throwable {
-        if (!isUserFirstUser(currentUser)) {
-            newSession(currentUser);
-            navigationCobalt.navigateToPLUKPlus();
-            plcHomePage.closeCookieConsentMessage();
-        } else {
-            LOG.info("No need to create new session. Current user: " + currentUser + " is the first user");
-        }
+        newSession(currentUser);
+        navigationCobalt.navigateToPLUKPlus();
+        plcHomePage.closeCookieConsentMessage();
     }
 
     @Given("^PL\\+ user is logged in$")
@@ -805,7 +801,9 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
      * 3. Delete Cookies
      */
     private void newSession(CobaltUser user) throws IOException, InterruptedException {
-        signOff(user);
+        if (user.getUserName() != null) {
+            signOff(user);
+        }
         onepassLogin.deleteAllCookies();
         ExcelFileReader.unlockUser(currentUser.getUserName());
         resetCurrentUser();
