@@ -18,7 +18,7 @@ public class RunSearchKnowHowSearchTest {
     @BeforeClass
     public static void reporting() {
         if (System.getProperty("username").equals("None")) {
-            System.setProperty("username", "SearchKnowHowUser8");
+            System.setProperty("username", "SearchKnowHowUser2");
             System.setProperty("password", "Password1");
         }
         else {
