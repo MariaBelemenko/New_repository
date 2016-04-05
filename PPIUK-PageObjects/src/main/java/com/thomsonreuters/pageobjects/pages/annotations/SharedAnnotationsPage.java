@@ -275,7 +275,7 @@ public class SharedAnnotationsPage extends AbstractPage {
     public boolean isSavedAnnotationDisplayed(String input, ExpectedResult result) {
         try {
             if (result.equals(ExpectedResult.VISIBLE)) {
-                return waitForElementPresent(By.xpath("//div[@class='co_viewNoteText mce-content-body']/p[text()='" + input + "']")).isDisplayed();
+                return waitForExpectedElement(By.xpath("//div[@class='co_viewNoteText mce-content-body']/p[text()='" + input + "']"), 120).isDisplayed();
             } else if (result.equals(ExpectedResult.NOT_VISIBLE)) {
                 return findElement(By.xpath("//div[@class='co_viewNoteText mce-content-body']/p[text()='" + input + "']")).isDisplayed();
             }
