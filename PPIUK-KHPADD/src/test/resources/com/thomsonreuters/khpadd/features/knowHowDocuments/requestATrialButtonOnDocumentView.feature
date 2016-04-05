@@ -1,4 +1,3 @@
-@wip
 Feature: [848107] Ability to use request a free trial button on document view
 
   Scenario: As a user i want to use register or request a trial button on document view
