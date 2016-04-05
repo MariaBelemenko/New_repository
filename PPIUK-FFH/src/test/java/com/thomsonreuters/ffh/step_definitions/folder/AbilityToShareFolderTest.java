@@ -27,7 +27,7 @@ public class AbilityToShareFolderTest extends BaseStepDef {
     private NewFolderPopup newFolderPopup = new NewFolderPopup();
     private EmailMessageUtils emailMessageUtils = new EmailMessageUtils();
 
-    private String EMAIL_SUBJECT = "would like to share folders with you";
+    private String EMAIL_SUBJECT = "would like to share";
 
     @When("^the user '(.+)' share the folder \"([^\"]*)\" with the user '(.+)' via email$")
     public void shareFolderViaEmail(String owner, String folderName, String userNameToShare) throws Throwable {
@@ -46,9 +46,9 @@ public class AbilityToShareFolderTest extends BaseStepDef {
         String expectedUrl = country.toLowerCase() + ".practicallaw." + System.getProperty("base.url") + ".thomsonreuters.com";
 
         SoftAssertions softly = new SoftAssertions();
-//        softly.assertThat(emailMessageUtils.isEmailContainsText(message, expectedUrl))
-//                .overridingErrorMessage("Email does not contain expected link: %s", expectedUrl).isTrue();
-//        softly.assertAll();
+        softly.assertThat(emailMessageUtils.isEmailContainsText(message, expectedUrl))
+                .overridingErrorMessage("Email does not contain expected link: %s", expectedUrl).isTrue();
+        softly.assertAll();
     }
 
     @When("^the user unshare the folder \"([^\"]*)\"$")
@@ -164,15 +164,15 @@ public class AbilityToShareFolderTest extends BaseStepDef {
             researchOrganizerPage.createNewFolderButton().click();
             newFolderPopup.waitForPageToLoad();
             newFolderPopup.waitForPageToLoadAndJQueryProcessing();
-//            softly.assertThat(newFolderPopup.save().getAttribute("disabled").equals("true")).overridingErrorMessage("Save button is not disabled for user role <%s> and user is able to create new folder", userRole).isTrue();
-//            softly.assertThat(newFolderPopup.folderRoleInformation().getText().contains(userRole)).overridingErrorMessage("User role is incorrect in information message").isTrue();
+            softly.assertThat(newFolderPopup.save().getAttribute("disabled").equals("true")).overridingErrorMessage("Save button is not disabled for user role <%s> and user is able to create new folder", userRole).isTrue();
+            softly.assertThat(newFolderPopup.folderRoleInformation().getText().contains(userRole)).overridingErrorMessage("User role is incorrect in information message").isTrue();
             newFolderPopup.clickCancel().click();
         } else if ("able".equals(isUserAbleToCreateNewFolderAction)) {
             foldersUtils.openFolder(folderName);
             researchOrganizerPage.createNewFolderButton().click();
             newFolderPopup.waitForPageToLoad();
             newFolderPopup.waitForPageToLoadAndJQueryProcessing();
-//            softly.assertThat(newFolderPopup.folderRoleInformation().getText().contains(userRole)).overridingErrorMessage("User role is incorrect in information message").isTrue();
+            softly.assertThat(newFolderPopup.folderRoleInformation().getText().contains(userRole)).overridingErrorMessage("User role is incorrect in information message").isTrue();
             createNewFolder(newFolderName, folderName);
             checkFolderPresent(newFolderName, folderName);
         }
