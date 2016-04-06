@@ -23,7 +23,7 @@ public class RBCommonPage extends AbstractPage {
     }
 
     public WebElement practiceAreaLink(String practiceArea) {
-        return waitAndFindElement(By.linkText(practiceArea));
+        return waitForExpectedElement(By.linkText(practiceArea),10);
     }
 
     public WebElement searchResultHeading() {
