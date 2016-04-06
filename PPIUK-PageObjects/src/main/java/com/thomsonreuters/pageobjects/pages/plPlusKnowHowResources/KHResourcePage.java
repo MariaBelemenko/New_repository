@@ -104,7 +104,7 @@ public class KHResourcePage extends CommonResourcePage {
 
     public void selectShowAndHideDraftingNotesLink() {
         try {
-            waitForExpectedElement(By.cssSelector("#co_AnchorToggleDraftingNotesWidget")).click();
+            waitForExpectedElement(By.cssSelector("#co_AnchorToggleDraftingNotesWidget"), 10).click();
         } catch (TimeoutException te) {
             throw new PageOperationException("Exceeded time to find the Show And Hide Drafting Notes link" + te.getMessage());
         }
