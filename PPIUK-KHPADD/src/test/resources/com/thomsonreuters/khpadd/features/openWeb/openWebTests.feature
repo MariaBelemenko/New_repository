@@ -5,7 +5,7 @@ Feature: [744574] [748210] [748211] [756795] [756801] verify the anonymous login
     Given PL+ user is not logged in
     When the user navigates to the main PLCUK page
     Then the user is navigated to the PL+ homepage anonymous view
-    And user navigates directly to document with guid "I0b3ad4e3e01011e398db8b09b4f043e0"
+    And user navigates directly to document with guid "Idfa7d588e25211e398db8b09b4f043e0"
     Then the user is provided with an option to sign-in or register for free trial
     And he does not see in the document page any link related to delivery options (email, download, print)
 
@@ -29,7 +29,7 @@ Feature: [744574] [748210] [748211] [756795] [756801] verify the anonymous login
 
   Scenario: Verify the sign on button on the header from logged out view of a document
     Given PL+ user is not logged in
-    When user navigates directly to document with guid "I0b3ad4e3e01011e398db8b09b4f043e0"
+    When user navigates directly to document with guid "Idfa7d588e25211e398db8b09b4f043e0"
     Then the user is provided with an option to sign-in or register for free trial
     When the user clicks on Sign On link on the header
     And user logs in
