@@ -27,6 +27,7 @@ Feature: Searching, adding and deleting a good from the cart
 #    And he presses button 'Show the cart'
 #    Then ensure "Your shopping cart is empty, but it doesn't have to be." his cart is empty
 
+  @tagToIdentifyThatTheGoodHasBeenSearchedCorrectlyPositive
   Scenario Outline: Searching for a Good
     Given The user sets language to English
     And  he enters "<type>" in the searching field
@@ -37,6 +38,7 @@ Feature: Searching, adding and deleting a good from the cart
     |     type      |                                     name                                            |
     | iPhone s6     | Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus     |
 
+  @tagToIdentifyThatTheGoodHasBeenAddedToTheCartPositive
   Scenario Outline: Adding the Goods to the Cart
     Given he presses on an image of the good
     When he sets good's color to "<color>"
@@ -51,6 +53,7 @@ Feature: Searching, adding and deleting a good from the cart
        | Black  | For Apple iPhone 6  |         No              | Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus |
        | Silver | For Apple iPhone 6s |         No              | Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus |
 
+  @tagToIdentifyThatTheGoodHasBeenSuccessfullyDeletedFromTheCartPositive
   Scenario Outline: Deleting the Good from the Cart
     Given he presses button 'Save for future'
     When he edits "<login>" into the field 'Login'
@@ -65,12 +68,14 @@ Feature: Searching, adding and deleting a good from the cart
        |          login           |  password   |                                         save for future                                                   |                       cart content                      |
        | MariaBelemenko@gmail.com | maria311089 | Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus has been saved for later. | US $6.99 |
 
+  @tagToIdentifyThatTheGoodHasBeenSearchedCorrectlyNegative
   Scenario: Searching for a Good (negative scenario)
     Given The user sets language to English
     And  he enters "iPhone s6" in the searching field
     When he presses a button 'Search'
     Then ensure "Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5" has not been searched
 
+  @tagToIdentifyThatTheGoodHasBeenAddedToTheCartNegative
    Scenario: Adding the Goods to the Cart (negative scenario)
     Given he presses on an image of the good
     When he sets good's color to "Black"
@@ -80,6 +85,7 @@ Feature: Searching, adding and deleting a good from the cart
     And he presses button 'Cart' to see it's content
     Then ensure "Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5" is not in the cart
 
+    @tagToIdentifyThatTheGoodHasBeenSuccessfullyDeletedFromTheCartNegative
     Scenario: Deleting the Good from the Cart (negative scenario)
      Given he presses button 'Save for future'
      And ensure "Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus has been saved for later." has been successfully removed to 'Saved goods'

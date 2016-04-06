@@ -1018,3 +1018,636 @@
 2016-04-01 14:00:23,658 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
 2016-04-01 14:00:24,743 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
 2016-04-01 14:00:24,864 INFO search.DeleteFromTheCartSteps [main] The cart doesn't consist anything
+2016-04-06 13:37:26,366 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 13:37:29,778 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 13:37:34,603 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 13:37:34,723 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 13:37:43,700 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 13:37:46,297 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 13:37:46,605 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 13:37:47,148 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 13:37:47,649 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 13:37:50,964 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 13:37:51,089 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 13:37:51,530 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 13:37:53,312 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 13:37:53,911 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 13:37:54,196 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 13:37:54,591 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 13:37:57,301 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 13:37:57,435 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 13:37:57,904 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 13:38:10,073 INFO search.DeleteFromTheCartSteps [main] Login of the user has been edited
+2016-04-06 13:38:10,395 INFO search.DeleteFromTheCartSteps [main] Password of the user has been edited
+2016-04-06 13:38:13,713 INFO search.DeleteFromTheCartSteps [main] Personal information of the user has been submitted
+2016-04-06 13:38:26,445 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 13:38:26,574 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 13:38:31,489 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 13:38:31,638 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 13:38:43,326 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 13:38:46,414 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 13:38:46,595 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 13:38:47,039 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 13:38:47,375 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 13:38:47,777 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 13:38:49,377 INFO search.AddToCartSteps [main] The good is not in the cart!
+2016-04-06 13:38:51,511 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 13:38:51,590 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 13:38:52,700 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 13:38:53,661 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 13:38:53,738 INFO search.DeleteFromTheCartSteps [main] The cart doesn't consist anything
+2016-04-06 13:43:01,193 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 13:43:03,605 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 13:43:09,650 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 13:43:09,741 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 13:43:19,033 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 13:43:21,285 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 13:43:21,907 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 13:43:22,310 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 13:43:22,826 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 13:43:25,796 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 13:43:25,921 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 13:43:26,331 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 13:43:27,981 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 13:43:28,136 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 13:43:28,831 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 13:43:29,241 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 13:43:31,677 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 13:43:31,815 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 13:43:32,305 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 13:43:36,559 INFO search.DeleteFromTheCartSteps [main] Login of the user has been edited
+2016-04-06 13:43:37,743 INFO search.DeleteFromTheCartSteps [main] Password of the user has been edited
+2016-04-06 13:43:39,859 INFO search.DeleteFromTheCartSteps [main] Personal information of the user has been submitted
+2016-04-06 13:43:41,165 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 13:43:41,580 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 13:43:44,506 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 13:43:44,600 INFO search.DeleteFromTheCartSteps [main] The cart is empty
+2016-04-06 13:43:49,372 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 13:43:49,493 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 13:43:54,174 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 13:43:54,301 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 13:44:02,641 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 13:44:05,170 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 13:44:05,345 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 13:44:05,664 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 13:44:06,099 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 13:44:06,568 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 13:44:07,605 INFO search.AddToCartSteps [main] The good is not in the cart!
+2016-04-06 13:44:09,473 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 13:44:09,544 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 13:44:10,530 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 13:44:11,721 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 13:44:11,808 INFO search.DeleteFromTheCartSteps [main] The cart doesn't consist anything
+2016-04-06 13:48:20,142 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 13:48:22,862 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 13:48:28,804 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 13:48:28,878 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 13:48:37,529 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 13:48:39,899 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 13:48:40,115 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 13:48:40,820 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 13:48:41,560 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 13:48:44,923 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 13:48:45,055 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 13:48:45,464 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 13:48:47,271 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 13:48:47,427 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 13:48:48,106 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 13:48:48,578 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 13:48:51,351 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 13:48:51,486 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 13:48:51,957 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 13:48:56,551 INFO search.DeleteFromTheCartSteps [main] Login of the user has been edited
+2016-04-06 13:48:57,417 INFO search.DeleteFromTheCartSteps [main] Password of the user has been edited
+2016-04-06 13:48:59,898 INFO search.DeleteFromTheCartSteps [main] Personal information of the user has been submitted
+2016-04-06 13:49:02,141 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 13:49:02,417 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 13:49:03,048 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 13:49:04,446 INFO search.DeleteFromTheCartSteps [main] The cart is empty
+2016-04-06 13:49:05,337 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 13:49:05,494 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 13:49:09,499 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 13:49:09,632 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 13:49:18,286 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 13:49:20,546 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 13:49:21,097 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 13:49:21,453 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 13:49:21,889 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 13:49:22,244 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 13:49:23,656 INFO search.AddToCartSteps [main] The good is not in the cart!
+2016-04-06 13:49:25,677 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 13:49:25,750 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 13:49:27,064 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 13:49:28,057 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 13:49:28,128 INFO search.DeleteFromTheCartSteps [main] The cart doesn't consist anything
+2016-04-06 13:56:30,537 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 13:56:32,845 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 13:56:40,005 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 13:56:40,087 INFO search.SearchSteps [main] The good has been searched correctly
+2016-04-06 13:56:53,970 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 13:56:56,435 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 13:56:57,610 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 13:56:59,980 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 13:57:00,413 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 13:57:02,688 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 13:57:04,128 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 13:57:04,638 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 13:57:06,507 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 13:57:06,715 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 13:57:07,415 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 13:57:07,802 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 13:57:09,916 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 13:57:11,233 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 13:57:11,723 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 13:57:15,911 INFO search.DeleteFromTheCartSteps [main] Login of the user has been edited
+2016-04-06 13:57:17,289 INFO search.DeleteFromTheCartSteps [main] Password of the user has been edited
+2016-04-06 13:57:19,553 INFO search.DeleteFromTheCartSteps [main] Personal information of the user has been submitted
+2016-04-06 13:57:21,607 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 13:57:21,908 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 13:57:23,761 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 13:57:23,841 INFO search.DeleteFromTheCartSteps [main] The cart is empty
+2016-04-06 13:57:24,852 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 13:57:24,997 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 13:57:25,851 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 13:57:27,756 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 13:57:28,655 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 13:57:31,296 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 13:57:31,928 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 13:57:32,206 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 13:57:32,661 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 13:57:34,865 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 13:57:36,029 INFO search.AddToCartSteps [main] The good is not in the cart!
+2016-04-06 13:57:38,155 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 13:57:38,240 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 13:57:39,811 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 13:57:41,198 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 13:57:41,276 INFO search.DeleteFromTheCartSteps [main] The cart doesn't consist anything
+2016-04-06 14:09:04,804 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 14:09:07,483 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 14:09:08,466 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 14:09:21,808 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:09:24,603 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:09:25,057 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:09:26,161 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:09:26,600 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:09:29,792 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:09:29,929 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:09:30,331 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:09:32,137 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:09:32,348 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:09:32,919 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:09:33,316 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:09:35,874 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:09:36,008 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:09:36,466 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 14:09:40,405 INFO search.DeleteFromTheCartSteps [main] Login of the user has been edited
+2016-04-06 14:09:40,512 INFO search.DeleteFromTheCartSteps [main] Password of the user has been edited
+2016-04-06 14:09:43,299 INFO search.DeleteFromTheCartSteps [main] Personal information of the user has been submitted
+2016-04-06 14:09:44,679 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 14:09:46,426 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 14:09:47,815 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 14:09:47,896 INFO search.DeleteFromTheCartSteps [main] The cart is empty
+2016-04-06 14:09:49,038 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 14:09:49,161 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 14:09:54,209 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 14:09:54,280 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 14:10:02,732 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:10:05,072 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:10:05,658 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:10:05,901 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:10:06,376 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:10:06,736 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:10:07,675 INFO search.AddToCartSteps [main] The good is not in the cart!
+2016-04-06 14:10:09,568 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 14:10:09,651 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 14:10:10,710 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 14:10:11,786 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 14:10:11,868 INFO search.DeleteFromTheCartSteps [main] The cart doesn't consist anything
+2016-04-06 14:14:23,137 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 14:14:25,737 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 14:14:33,729 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 14:14:42,380 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:14:45,992 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:14:46,301 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:14:48,596 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:14:49,013 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:14:52,723 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:14:52,844 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:14:53,266 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:14:56,057 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:14:56,639 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:14:56,837 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:14:59,252 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:15:00,325 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:15:00,737 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:15:01,331 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 14:15:06,770 INFO search.DeleteFromTheCartSteps [main] Login of the user has been edited
+2016-04-06 14:15:06,861 INFO search.DeleteFromTheCartSteps [main] Password of the user has been edited
+2016-04-06 14:15:10,074 INFO search.DeleteFromTheCartSteps [main] Personal information of the user has been submitted
+2016-04-06 14:15:11,987 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 14:15:12,363 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 14:15:16,453 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 14:15:16,534 INFO search.DeleteFromTheCartSteps [main] The cart is empty
+2016-04-06 14:15:17,582 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 14:15:17,761 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 14:15:22,497 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 14:15:31,697 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:15:35,700 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:15:35,879 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:15:36,404 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:15:36,840 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:15:37,193 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:15:38,361 INFO search.AddToCartSteps [main] The good is not in the cart!
+2016-04-06 14:15:40,479 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 14:15:40,559 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 14:15:42,109 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 14:15:43,205 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 14:15:43,276 INFO search.DeleteFromTheCartSteps [main] The cart doesn't consist anything
+2016-04-06 14:30:13,519 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 14:30:16,059 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 14:30:25,009 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 14:30:30,647 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 14:30:38,604 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:30:40,817 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:30:41,335 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:30:44,263 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:30:44,661 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:30:48,095 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:30:48,222 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:30:48,819 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:30:51,008 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:30:51,247 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:30:52,597 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:30:53,113 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:30:55,796 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:30:55,930 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:30:56,396 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 14:31:00,744 INFO search.DeleteFromTheCartSteps [main] Login of the user has been edited
+2016-04-06 14:31:02,315 INFO search.DeleteFromTheCartSteps [main] Password of the user has been edited
+2016-04-06 14:31:04,529 INFO search.DeleteFromTheCartSteps [main] Personal information of the user has been submitted
+2016-04-06 14:31:06,453 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 14:31:08,615 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 14:31:10,319 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 14:31:10,402 INFO search.DeleteFromTheCartSteps [main] The cart is empty
+2016-04-06 14:31:11,468 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 14:31:11,601 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 14:31:16,573 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 14:31:24,970 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:31:27,553 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:31:28,097 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:31:28,456 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:31:28,924 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:31:29,275 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:31:30,356 INFO search.AddToCartSteps [main] The good is not in the cart!
+2016-04-06 14:31:32,436 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 14:31:32,507 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 14:31:33,888 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 14:31:35,271 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 14:31:35,339 INFO search.DeleteFromTheCartSteps [main] The cart doesn't consist anything
+2016-04-06 14:35:23,587 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 14:36:53,519 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 14:36:55,894 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 14:37:02,315 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 14:37:06,423 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 14:37:14,880 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:37:17,507 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:37:17,900 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:37:18,397 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:37:18,841 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:37:22,029 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:37:22,161 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:37:22,550 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:37:24,221 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:37:24,372 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:37:25,339 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:37:25,716 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:37:28,822 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:37:28,985 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:37:29,463 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 14:37:33,145 INFO search.DeleteFromTheCartSteps [main] Login of the user has been edited
+2016-04-06 14:37:33,253 INFO search.DeleteFromTheCartSteps [main] Password of the user has been edited
+2016-04-06 14:37:34,162 INFO search.DeleteFromTheCartSteps [main] Personal information of the user has been submitted
+2016-04-06 14:37:37,997 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 14:37:38,295 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 14:37:39,039 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 14:37:43,132 INFO search.DeleteFromTheCartSteps [main] The cart is empty
+2016-04-06 14:37:44,302 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 14:37:44,432 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 14:37:49,251 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 14:37:58,420 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:38:00,844 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:38:01,018 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:38:01,333 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:38:01,750 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:38:02,313 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:38:03,431 INFO search.AddToCartSteps [main] The good is not in the cart!
+2016-04-06 14:38:05,369 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 14:38:05,464 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 14:38:06,880 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 14:38:07,904 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 14:38:07,995 INFO search.DeleteFromTheCartSteps [main] The cart doesn't consist anything
+2016-04-06 14:39:06,346 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 14:39:09,314 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 14:39:15,236 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 14:39:15,313 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 14:39:26,528 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:39:29,095 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:39:29,778 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:39:34,039 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:39:34,469 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:39:38,003 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:39:38,129 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:39:38,704 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:39:41,929 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:39:42,160 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:39:42,635 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:39:43,011 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:39:45,888 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:39:46,023 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:39:46,556 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 14:39:50,799 INFO search.DeleteFromTheCartSteps [main] Login of the user has been edited
+2016-04-06 14:39:51,988 INFO search.DeleteFromTheCartSteps [main] Password of the user has been edited
+2016-04-06 14:39:54,588 INFO search.DeleteFromTheCartSteps [main] Personal information of the user has been submitted
+2016-04-06 14:39:56,223 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 14:39:56,589 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 14:39:59,727 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 14:39:59,816 INFO search.DeleteFromTheCartSteps [main] The cart is empty
+2016-04-06 14:40:00,825 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 14:40:00,988 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 14:40:05,186 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 14:40:14,490 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:40:17,415 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:40:17,967 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:40:18,431 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:40:18,751 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:40:19,013 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:40:20,142 INFO search.AddToCartSteps [main] The good is not in the cart!
+2016-04-06 14:40:22,255 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 14:40:22,328 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 14:40:23,595 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 14:40:24,812 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 14:40:24,877 INFO search.DeleteFromTheCartSteps [main] The cart doesn't consist anything
+2016-04-06 14:45:37,404 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 14:45:39,771 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 14:45:45,470 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 14:45:45,547 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 14:45:54,975 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:45:57,416 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:45:57,659 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:45:58,316 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:45:58,728 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:46:02,571 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:46:02,707 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:46:03,121 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:46:05,724 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:46:05,880 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:46:06,726 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:46:07,119 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:46:09,834 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:46:09,968 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:46:10,443 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 14:46:16,314 INFO search.DeleteFromTheCartSteps [main] Login of the user has been edited
+2016-04-06 14:46:16,422 INFO search.DeleteFromTheCartSteps [main] Password of the user has been edited
+2016-04-06 14:46:18,590 INFO search.DeleteFromTheCartSteps [main] Personal information of the user has been submitted
+2016-04-06 14:46:20,355 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 14:46:20,656 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 14:46:21,206 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 14:46:22,462 INFO search.DeleteFromTheCartSteps [main] The cart is empty
+2016-04-06 14:46:23,447 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 14:46:23,584 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 14:46:28,548 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 14:46:37,004 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:46:39,740 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:46:40,055 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:46:40,423 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:46:40,918 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:46:41,311 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:46:42,367 INFO search.AddToCartSteps [main] The good is not in the cart!
+2016-04-06 14:46:44,095 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 14:46:44,178 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 14:46:45,254 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 14:46:46,467 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 14:46:46,549 INFO search.DeleteFromTheCartSteps [main] The cart doesn't consist anything
+2016-04-06 14:48:41,555 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 14:48:43,837 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 14:48:52,987 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 14:48:57,967 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 14:49:05,962 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:49:11,353 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:49:11,740 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:49:18,129 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:49:18,543 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:49:22,091 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:49:23,699 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:49:26,501 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:49:27,100 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:49:27,332 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:49:28,388 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:49:28,786 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:49:31,217 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:49:32,762 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:49:33,289 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 14:49:37,367 INFO search.DeleteFromTheCartSteps [main] Login of the user has been edited
+2016-04-06 14:49:38,392 INFO search.DeleteFromTheCartSteps [main] Password of the user has been edited
+2016-04-06 14:49:40,972 INFO search.DeleteFromTheCartSteps [main] Personal information of the user has been submitted
+2016-04-06 14:49:43,192 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 14:49:43,343 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 14:49:44,000 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 14:49:45,598 INFO search.DeleteFromTheCartSteps [main] The cart is empty
+2016-04-06 14:49:46,630 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 14:49:46,752 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 14:49:51,946 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 14:50:03,621 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:50:06,595 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:50:06,792 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:50:07,136 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:50:07,544 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:50:07,926 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:50:09,511 INFO search.AddToCartSteps [main] The good is not in the cart!
+2016-04-06 14:50:11,425 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 14:50:11,819 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 14:50:13,182 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 14:50:14,766 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 14:50:15,166 INFO search.DeleteFromTheCartSteps [main] The cart doesn't consist anything
+2016-04-06 14:52:38,480 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 14:52:41,039 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 14:52:47,642 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 14:52:53,353 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 14:53:01,902 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:53:08,617 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:53:08,920 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:53:10,163 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:53:10,606 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:53:13,195 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:53:14,610 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:53:15,010 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:53:19,050 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:53:19,556 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:53:20,592 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:53:20,978 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:53:24,560 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:53:25,047 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:56:45,715 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 14:56:48,254 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 14:56:49,191 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 14:56:53,421 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 14:57:02,014 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:57:04,719 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:57:05,410 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:57:08,279 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:57:08,690 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:57:12,042 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:57:12,165 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:57:12,591 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:57:14,191 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:57:14,464 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:57:15,443 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:57:15,689 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:57:18,981 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:57:19,117 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 14:57:19,586 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 14:57:23,477 INFO search.DeleteFromTheCartSteps [main] Login of the user has been edited
+2016-04-06 14:57:24,942 INFO search.DeleteFromTheCartSteps [main] Password of the user has been edited
+2016-04-06 14:57:27,276 INFO search.DeleteFromTheCartSteps [main] Personal information of the user has been submitted
+2016-04-06 14:57:29,077 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 14:57:29,354 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 14:57:29,854 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 14:57:31,766 INFO search.DeleteFromTheCartSteps [main] The cart is empty
+2016-04-06 14:57:32,886 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 14:57:33,022 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 14:57:37,636 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 14:57:50,297 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 14:57:52,869 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 14:57:53,050 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 14:57:53,519 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 14:57:53,969 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 14:57:54,350 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 14:57:55,653 INFO search.AddToCartSteps [main] The good is not in the cart!
+2016-04-06 14:57:57,445 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 14:57:57,520 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 14:57:58,863 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 14:58:00,265 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 14:58:00,337 INFO search.DeleteFromTheCartSteps [main] The cart doesn't consist anything
+2016-04-06 15:48:34,895 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 15:48:37,147 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 15:48:43,814 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 15:48:43,951 INFO search.SearchSteps [main] The good has been searched correctly
+2016-04-06 15:48:52,359 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 15:48:54,727 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 15:48:55,418 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 15:48:55,893 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 15:48:56,611 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 15:48:59,339 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 15:48:59,481 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 15:48:59,894 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 15:49:01,889 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 15:49:02,107 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 15:49:02,692 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 15:49:03,183 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 15:49:05,528 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 15:49:05,671 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 15:49:06,130 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 15:49:10,998 INFO search.DeleteFromTheCartSteps [main] Login of the user has been edited
+2016-04-06 15:49:11,107 INFO search.DeleteFromTheCartSteps [main] Password of the user has been edited
+2016-04-06 15:49:13,404 INFO search.DeleteFromTheCartSteps [main] Personal information of the user has been submitted
+2016-04-06 15:49:15,182 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 15:49:15,546 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 15:49:17,659 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 15:49:18,727 INFO search.DeleteFromTheCartSteps [main] The cart is empty
+2016-04-06 15:49:19,752 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 15:49:19,901 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 15:49:23,996 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 15:49:24,125 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 15:49:32,543 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 15:49:34,827 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 15:49:35,318 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 15:49:35,665 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 15:49:36,114 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 15:49:36,485 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 15:49:37,683 INFO search.AddToCartSteps [main] The good is not in the cart!
+2016-04-06 15:49:39,640 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 15:49:39,717 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 15:49:40,775 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 15:49:41,667 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 15:49:41,760 INFO search.DeleteFromTheCartSteps [main] The cart doesn't consist anything
+2016-04-06 16:01:26,969 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 16:01:29,568 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 16:01:30,566 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 16:01:34,938 INFO search.SearchSteps [main] The good has been searched correctly
+2016-04-06 16:01:44,383 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 16:01:46,436 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 16:01:46,946 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 16:01:47,462 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 16:01:47,931 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 16:01:51,302 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 16:01:51,538 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 16:01:51,942 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 16:01:53,461 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 16:01:54,390 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 16:01:54,698 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 16:01:55,073 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 16:01:58,061 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 16:01:58,199 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 16:01:58,724 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 16:02:02,591 INFO search.DeleteFromTheCartSteps [main] Login of the user has been edited
+2016-04-06 16:02:02,692 INFO search.DeleteFromTheCartSteps [main] Password of the user has been edited
+2016-04-06 16:02:05,510 INFO search.DeleteFromTheCartSteps [main] Personal information of the user has been submitted
+2016-04-06 16:02:07,061 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 16:02:07,462 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 16:02:09,461 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 16:02:10,966 INFO search.DeleteFromTheCartSteps [main] The cart is empty
+2016-04-06 16:02:12,014 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 16:02:12,144 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 16:02:20,924 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 16:02:21,068 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 16:02:29,888 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 16:02:32,347 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 16:02:32,543 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 16:02:32,879 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 16:02:33,309 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 16:02:33,865 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 16:02:36,926 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 16:02:37,002 INFO search.DeleteFromTheCartSteps [main] The good has been successfully removed to 'Saved goods'
+2016-04-06 16:02:37,950 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 16:02:39,009 INFO search.DeleteFromTheCartSteps [main] Button 'Sho the cart' has been pressed
+2016-04-06 16:02:39,077 INFO search.DeleteFromTheCartSteps [main] The cart doesn't consist anything
+2016-04-06 16:45:41,368 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 16:45:44,195 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 16:45:50,006 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 16:45:50,199 INFO search.SearchSteps [main] The good has been searched correctly
+2016-04-06 16:46:06,573 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 16:46:10,742 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 16:46:11,185 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 16:46:12,678 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 16:46:13,109 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 16:46:16,132 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 16:46:16,257 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 16:46:16,691 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 16:46:20,270 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 16:46:20,424 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 16:46:21,266 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 16:46:21,616 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 16:46:24,772 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 16:46:24,904 INFO search.AddToCartSteps [main] The good is in the cart!
+2016-04-06 16:46:25,378 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 16:46:29,516 INFO search.DeleteFromTheCartSteps [main] Login of the user has been edited
+2016-04-06 16:46:30,136 INFO search.DeleteFromTheCartSteps [main] Password of the user has been edited
+2016-04-06 16:46:32,716 INFO search.DeleteFromTheCartSteps [main] Personal information of the user has been submitted
+2016-04-06 16:46:35,002 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 16:46:37,200 INFO search.DeleteFromTheCartSteps [main] Button 'Show the cart' has been pressed
+2016-04-06 16:46:37,288 INFO search.DeleteFromTheCartSteps [main] The cart is empty
+2016-04-06 16:46:39,480 INFO search.SearchSteps [main] Language has been set to English
+2016-04-06 16:46:39,602 INFO search.SearchSteps [main] Name of the good has been added to the search field
+2016-04-06 16:46:44,595 INFO search.SearchSteps [main] Button 'Search' has been pressed
+2016-04-06 16:46:44,721 INFO search.SearchSteps [main] The good has not been searched correctly
+2016-04-06 16:46:53,061 INFO search.AddToCartSteps [main] Image of the good has been pressed
+2016-04-06 16:46:57,029 INFO search.AddToCartSteps [main] Color of the good has been chosen
+2016-04-06 16:46:57,188 INFO search.AddToCartSteps [main] Model of the good has been chosen
+2016-04-06 16:46:57,515 INFO search.AddToCartSteps [main] Screen protector has been chosen
+2016-04-06 16:46:57,906 INFO search.AddToCartSteps [main] Button 'Add to cart' has been pressed
+2016-04-06 16:46:58,284 INFO search.AddToCartSteps [main] Button 'Cart' has been pressed
+2016-04-06 16:46:59,498 INFO search.AddToCartSteps [main] The good is not in the cart!
+2016-04-06 16:47:02,479 INFO search.DeleteFromTheCartSteps [main] Button 'Save for future' has been pressed
+2016-04-06 16:47:03,599 INFO search.DeleteFromTheCartSteps [main] Button 'Delete from the cart' has been pressed
+2016-04-06 16:47:04,648 INFO search.DeleteFromTheCartSteps [main] Button 'Show the cart' has been pressed
+2016-04-06 16:47:04,723 INFO search.DeleteFromTheCartSteps [main] The cart doesn't consist anything

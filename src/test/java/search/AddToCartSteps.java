@@ -1,5 +1,6 @@
 package search;
 
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -21,6 +22,7 @@ public class AddToCartSteps extends BaseSelenium {
     private static final Logger logger = LogManager.getLogger(AddToCartSteps.class.getName());
     private WorkWithTheCart good = new WorkWithTheCart(driver);
     private File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+    private int signOfPass = 0;
 
     @Given("^he presses on an image of the good$")
     public void iShowDetailsOfTheGood() {
@@ -62,6 +64,13 @@ public class AddToCartSteps extends BaseSelenium {
     public void iCheckTheCart(String expectPhrase) throws IOException {
         Assert.assertEquals(good.getNameOfTheGood(), expectPhrase);
         if (good.getNameOfTheGood().equals(expectPhrase)) {
+            signOfPass = 1;
+        }
+    }
+
+    @After("@tagToIdentifyThatTheGoodHasBeenAddedToTheCartPositive")
+    public void iTakeScreenshotInCaseOfFailurePositive() throws IOException {
+        if (signOfPass == 1) {
             logger.info("The good is in the cart!");
         } else {
             logger.info("The good is not in the cart!");
@@ -73,9 +82,16 @@ public class AddToCartSteps extends BaseSelenium {
     public void iCheckTheCartNegative(String expectPhrase) throws IOException {
         Assert.assertNotEquals(good.getNameOfTheGood(), expectPhrase);
         if (good.getNameOfTheGood().equals(expectPhrase)) {
-            FileUtils.copyFile(srcFile, new File("target/screenshots/cartWithTheGood_negative.png"));
-        } else {
+            signOfPass = 2;
+        }
+    }
+
+    @After("@tagToIdentifyThatTheGoodHasBeenAddedToTheCartNegative")
+    public void iTakeScreenshotInCaseOfFailureNegative() throws IOException {
+        if (signOfPass != 2) {
             logger.info("The good is not in the cart!");
+        } else {
+            FileUtils.copyFile(srcFile, new File("target/screenshots/cartWithTheGood_negative.png"));
         }
     }
 }
