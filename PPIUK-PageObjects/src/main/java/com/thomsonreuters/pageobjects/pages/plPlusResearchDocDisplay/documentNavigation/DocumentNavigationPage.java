@@ -20,6 +20,7 @@ import java.util.List;
  * This page object is to identify the Document navigation elements and depicts the document navigation functionality.
  * <p/>
  */
+
 public class DocumentNavigationPage extends DocumentDisplayAbstractPage {
 
     private static final org.slf4j.Logger logger = LoggerFactory.getLogger(DocumentNavigationPage.class);
@@ -37,6 +38,7 @@ public class DocumentNavigationPage extends DocumentDisplayAbstractPage {
     private static final By PRIMARY_LINKS_LOCATOR = By.cssSelector(""); //TODO: Need to add the css Selector
     private static final By CHILD_LINKS_LOCATOR = By.cssSelector("#docRelatedInfo .subSelected"); //TODO: Need to add the locator
     private static final By SECONDARY_ELEMENTS_UNDERNEATH_PRIMARY_LOCATOR = By.cssSelector(""); //TODO: Need to add the locator
+
 
     CommonMethods commonMethods;
 
@@ -122,6 +124,9 @@ public class DocumentNavigationPage extends DocumentDisplayAbstractPage {
             return waitFluentForElement(LEFT_CAROSAL_TEXT_LOCATOR).getText();
         } catch (TimeoutException nse) {
             LOG.warn("Unable to find the document name in left carosal link", nse);
+            //The next catch was made because of strange NPE on Production site in previous try block
+        } catch  (NullPointerException npe) {           	           
+        	return findElement(LEFT_CAROSAL_TEXT_LOCATOR).getAttribute("textContent");
         }
         return StringUtils.EMPTY;
     }
@@ -138,6 +143,9 @@ public class DocumentNavigationPage extends DocumentDisplayAbstractPage {
             return waitFluentForElement(RIGHT_CAROSAL_TEXT_LOCATOR).getText();
         } catch (TimeoutException nse) {
             logger.warn("Unable to find the document name in right carosal link", nse);
+        //The next catch was made because of strange NPE on Production site in previous try block
+        } catch  (NullPointerException npe) {        	
+        	return findElement(RIGHT_CAROSAL_TEXT_LOCATOR).getAttribute("textContent");
         }
         return StringUtils.EMPTY;
     }
