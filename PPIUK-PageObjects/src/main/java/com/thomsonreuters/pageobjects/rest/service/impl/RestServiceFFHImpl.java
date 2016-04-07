@@ -1,5 +1,6 @@
 package com.thomsonreuters.pageobjects.rest.service.impl;
 
+import com.thomsonreuters.pageobjects.rest.auth.UDSCredentials;
 import com.thomsonreuters.pageobjects.rest.model.response.Folder;
 import com.thomsonreuters.pageobjects.rest.model.response.FolderCreationResponse;
 import com.thomsonreuters.pageobjects.rest.model.response.SuperDeleteResponse;
@@ -63,7 +64,7 @@ public class RestServiceFFHImpl extends RestServiceImpl implements RestService {
 		LOG.info("Super delete response '" + response.getBody() + "'");
 		return response.getBody();
 	}
-	
+
 	/**
 	 * This method delete all folders and history for user DELETE request to
 	 * Foldering/v1/{USERNAME}/user
@@ -88,14 +89,15 @@ public class RestServiceFFHImpl extends RestServiceImpl implements RestService {
 
 	@Override
 	public HttpHeaders configureHeaders() {
+		UDSCredentials credentials = getUDSCredentials();
 		HttpHeaders httpHeaders = new HttpHeaders();
 		String environment = System.getProperty("base.url");
 		httpHeaders.set("x-cobalt-host", "foldering.int.next." + environment + ".westlaw.com");
 		httpHeaders.set("Content-Type", "application/json; charset=UTF-8");
-		httpHeaders.set("Cookie", webDriverDiscovery.getBrowserCookiesAsString());
+		httpHeaders.set("Cookie", "Co_SessionToken=" + credentials.getCoSessionToken() + "; site=" + getSite());
 		return httpHeaders;
 	}
-	
+
 	public String getCurrentSession() {
 		return super.getCurrentSession();
 	}

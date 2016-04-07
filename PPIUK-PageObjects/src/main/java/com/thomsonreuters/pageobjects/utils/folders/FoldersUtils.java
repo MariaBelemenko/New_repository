@@ -173,6 +173,7 @@ public class FoldersUtils {
         restoreFromTrashPopup.moveButton().click();
     }
 
+    // TODO 1. Move to AbstractPage. 2. Make waitForPageToLoadAndJQueryProcessing() more flexible / parametrized
     public void waitAjaxIfNecessary() {
         if (!commonMethods.getDriver().getCurrentUrl().contains("Glossary")) {
             researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
