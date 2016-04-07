@@ -7,18 +7,18 @@ Feature: Verify email/print/download from document view
     And the user clicks on "Checklists" link
     And user clicks on the "IP & IT" Practice Area Link
     And the user clicks on "Industrial designs licence" link
+    
+  Scenario: Print document
+    When the user clicks 'print' widget on the document page
+    Then the user verifies that 'Print' Window is displayed
+    When the user clicks 'Print' on 'print' overlay
+    Then the user verifies that 'Preparing For Print' is displayed on the overlay
 
   Scenario: Send document via email
     When the user clicks 'email' widget on the document page
     Then the user verifies that 'Email' Window is displayed
     When the user clicks 'Email' on 'email' overlay
     And the user verifies that 'Ready For Email' is displayed on the overlay
-
-  Scenario: Print document
-    When the user clicks 'print' widget on the document page
-    Then the user verifies that 'Print' Window is displayed
-    When the user clicks 'Print' on 'print' overlay
-    Then the user verifies that 'Preparing For Print' is displayed on the overlay
 
   Scenario: Download document
     When the user clicks 'download' widget on the document page
