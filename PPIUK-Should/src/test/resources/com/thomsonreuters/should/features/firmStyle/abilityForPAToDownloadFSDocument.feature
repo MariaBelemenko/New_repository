@@ -36,7 +36,7 @@ Feature: [780805] FS4 Testing Restrict on basis FAC
     And the user opens <documentNameURL> url on plcuk website
     Then "signon" page is displayed
     Given PL+ user is logged in with following details after IP login
-      | userName | FSTestUser1 |
+      | userName | FSTestUser2 |
     Then the file "<documentName>" should be downloaded to the users machine
     And the file "<documentName>" should be removed
     And "showDownloadPage" page is displayed
@@ -54,7 +54,7 @@ Feature: [780805] FS4 Testing Restrict on basis FAC
   @bug
   Scenario Outline: Deny document
     Given PL+ user is logged in with following details
-      | userName         | FSTestUser1       |
+      | userName         | FSTestUser2       |
       | routing          | FIRM_STYLE_NO_FAC |
       | mandatoryRouting | YES               |
     And the user come back on to Home page
@@ -74,7 +74,7 @@ Feature: [780805] FS4 Testing Restrict on basis FAC
   @bug
   Scenario Outline: Deny clause
     Given PL+ user is logged in with following details
-      | userName         | FSTestUser1       |
+      | userName         | FSTestUser2       |
       | routing          | FIRM_STYLE_NO_FAC |
       | mandatoryRouting | YES               |
     And the user come back on to Home page
