@@ -2,8 +2,7 @@
 Feature: [789816] As a PL+ User I want to view celex links on the case asset page
 
   Background:
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
 
   #809166 [REGRESSION]-RDDBUG: celex links looks like hard coded links
   Scenario Outline: [789816] The case assert documents contains celex links

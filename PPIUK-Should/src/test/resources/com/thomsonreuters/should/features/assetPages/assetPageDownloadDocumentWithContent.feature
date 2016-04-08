@@ -4,8 +4,7 @@ Feature: As a PL+ User I want to download pdf document
 
 # 852164:[REGRESSION] Deivered case page document does not contain the related information
   Scenario Outline: [798569] [818357] The user download pdf document and view Content referring to this case in downloaded document
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly

@@ -3,8 +3,7 @@ Feature: As a PL+ User I want to select a menu item and jump to that part of the
 
   # 825936: RDDBUG: "Links to this primary source" jump link doesn't work correctly
   Scenario Outline: [790161] The case documents contain Links to this case jump link in the left hand side navigation panel
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly
