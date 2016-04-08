@@ -14,7 +14,7 @@ Feature: [730588, 730584] Verify Title and Related Content on the sticky bar
     Given PL+ user is logged in
     When user navigates directly to document with guid "I020627b21cb611e38578f7ccc38dcbee"
     Then the document title "Financing an offer for a public company: the certain funds requirement" is displayed on the sticky bar
-    And scrolled heading "Does the certain funds requirement apply to all offers under the Code?" is displayed on the sticky bar
+    And scrolled heading "What is a pre-conditional offer?" is displayed on the sticky bar
 
   Scenario: Related Content Link on the sticky bar
     Given PL+ user is logged in
