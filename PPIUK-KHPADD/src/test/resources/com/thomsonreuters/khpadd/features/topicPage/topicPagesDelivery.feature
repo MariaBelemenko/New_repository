@@ -95,6 +95,10 @@ Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of
     Given PL+ user is logged in
     When the user navigates to practice area "Corporate" filtered by "Asset acquisitions" topic page
     And clicks on the facet group "Standard Documents and Clauses"
+    #adding the precondition for annotations checkbox visibility
+    When the user clicks on the resource link "Asset purchase agreement short form" under Practice Notes resource type
+    And user added new annotation
+    And the user clicks Back button in browser '1' times
     When the user selects the following Topic page resources
       | Asset purchase agreement short form |
     When the user selects "Email" delivery option on Topics Page
@@ -105,6 +109,7 @@ Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of
       | Only Drafting Notes         | Not Selected                                        |
       | Document and Drafting Notes | Not Selected                                        |
       | Table of Contents           | Selected                                            |
+      | Annotations                 | Not Selected                                        |
     Then user closes the delivery box by clicking on the cancel button
     When the user selects the following Topic page resources
       | Assignment of rights in software            |
