@@ -23,7 +23,8 @@ public class RBCommonPage extends AbstractPage {
     }
 
     public WebElement practiceAreaLink(String practiceArea) {
-        return waitForExpectedElement(By.linkText(practiceArea), 15);
+    	String path = String.format("//div[@id = 'coid_categoryBoxTabPanel1']//a[contains(.,'%s')]", practiceArea);
+        return waitForExpectedElement(By.xpath(path), 30);
     }
 
     public WebElement searchResultHeading() {
