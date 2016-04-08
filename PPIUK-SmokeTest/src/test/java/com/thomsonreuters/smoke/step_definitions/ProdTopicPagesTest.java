@@ -47,8 +47,8 @@ public class ProdTopicPagesTest extends BaseStepDef {
     public void onlyChecklistsAreDisplayedOnTopicPage(String resourceType) throws Throwable {
         topicPage.waitForPageToLoadAndJQueryProcessing();
         assertTrue(topicPage.resultsByResourceType(resourceType).isDisplayed());
-        List<WebElement> otherResourceTypes = getDriver().findElements(By.xpath("//div[@id='cobalt_search_knowhowtopicuk_results']/div[2]"));
-        assertTrue(otherResourceTypes.isEmpty());
+        List<WebElement> otherResourceTypes = topicPage.findElements(By.xpath("//div[contains(@id, 'cobalt_search_knowHowTopicPlc_')]"));
+        assertTrue(otherResourceTypes.size() == 2);     	
     }
 
 }
