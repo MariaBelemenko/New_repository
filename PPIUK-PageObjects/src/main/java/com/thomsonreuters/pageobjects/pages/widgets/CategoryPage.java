@@ -68,6 +68,7 @@ public class CategoryPage extends AbstractPage {
 	private static final String SUB_PANEL_HEADING = "h3.co_genericBoxHeader";
 	private static final String SUB_PANEL_CONTENT = "div.co_genericBoxContent";
 	private static final String ADD_TO_FAVORITES = "//*[@id='co_foldering_categoryPage' and @class='co_website_browsePageAddToFavorites']";
+	private static final String EDIT_FAVORITES = "//*[@id='co_foldering_categoryPage' and @class='co_website_browsePageEditFavorites']";
 	private static final String MAKE_THIS_MY_START_PAGE = "//*[@id='coid_website_browsePageSelectAsHomepage']/a[@class='co_website_browsePageAddHomepage']";
 	private static final String REMOVE_THIS_MY_START_PAGE = "//*[@id='coid_website_browsePageSelectAsHomepage']/a[@class='co_website_browsePageRemoveAsHomepage']";
 
@@ -139,6 +140,15 @@ public class CategoryPage extends AbstractPage {
         addToFavouritesPopup.save().click();
 		waitForPageToLoad();
 	}
+	
+	public void removeFromFavourites(String groupName) {
+		LOG.info("Remove the Category page from '" + groupName + "' favourites group");
+		waitForExpectedElement(By.xpath(EDIT_FAVORITES)).click();
+		waitForPageToLoad();
+		deSelectFavouritesGroup(groupName);
+        addToFavouritesPopup.save().click();
+		waitForPageToLoad();
+	}
 
 	public void selectFavouritesGroup(String groupName) {
 		if (!addToFavouritesPopup.isGroupPresent(groupName)) {
@@ -151,6 +161,14 @@ public class CategoryPage extends AbstractPage {
 		}
 		WebElement groupCheckbox = addToFavouritesPopup.groupCheckbox(groupName);
 		if (!groupCheckbox.isSelected()) {
+			groupCheckbox.click();
+		}
+		addToFavouritesPopup.waitForPageToLoad();
+	}
+	
+	public void deSelectFavouritesGroup(String groupName) {
+		WebElement groupCheckbox = addToFavouritesPopup.groupCheckbox(groupName);
+		if (groupCheckbox.isSelected()) {
 			groupCheckbox.click();
 		}
 		addToFavouritesPopup.waitForPageToLoad();
@@ -212,6 +230,11 @@ public class CategoryPage extends AbstractPage {
 			return false;
 		}
     }
+    
+	public boolean checkPageIsInFavourites() {
+		waitForPageToLoad();
+		return isElementPresent(By.xpath(EDIT_FAVORITES));
+	}
 
 	public WebElement makeThisMyStartPageLink() {
 		return comMethods.waitForExpectedElement(By.xpath(MAKE_THIS_MY_START_PAGE), 10);

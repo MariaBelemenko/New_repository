@@ -1,5 +1,7 @@
 package com.thomsonreuters.ffh.step_definitions.favourites;
 
+import org.junit.Assert;
+
 import com.thomsonreuters.ffh.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.common.PageActions;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
@@ -162,6 +164,24 @@ public class AbilityNotToSeeFavouritesFromOthersSystemsTest extends BaseStepDef 
     public void openTab(String linkName) throws Throwable {
         categoryPage.openTab(linkName);
     }
+    
+    @Then("^the star icon is filled$")
+    public void theStarIconIsFilled() throws Throwable {
+        Assert.assertTrue("The favoutites icon is hollow", categoryPage.checkPageIsInFavourites());
+    }
+    
+    @Then("^the star icon is hollow$")
+    public void theStarIconIsHollow() throws Throwable {
+    	Assert.assertTrue("The favoutites icon is filled", categoryPage.addToFavouritesLinkPresent());
+    }
+
+    @When("^the user removes page from favourites group '(.+)' from catagory page$")
+    public void theUserRemovesPageFromFavouritesGroupPl(String groupName) throws Throwable {
+        categoryPage.removeFromFavourites(groupName);
+    }
+
+
+    
 
     public boolean isHomePage() {
         if (!(categoryPage.getCurrentUrl().contains("/Search/Home.html")
