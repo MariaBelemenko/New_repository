@@ -121,8 +121,7 @@ Feature: [735042] FFH029 As a PPI User I want to see a  Title, Content, Date/Tim
     | Ask   |
 
   Scenario Outline: [799682] As a PL+ User I want to see that the primary source documents saves in the history
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
+    Given PL+ user is logged in
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly

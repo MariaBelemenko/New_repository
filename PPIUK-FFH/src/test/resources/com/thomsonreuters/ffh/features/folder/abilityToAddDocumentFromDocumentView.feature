@@ -123,9 +123,6 @@ Feature: [730616] FFH083 As a PPI User When I am in a document I want to have th
   # 835031 History, Recent history and Folders: Asset pages info display needs amending
   @bug
   Scenario Outline: [799682] As a PL+ User I want to see that the primary source documents saves in the history
-    Given PL+ user is logged in with following details
-      | userName | Asset_page_one |
-    And API cleans all folders and history and user relogs in
     When the user opens document with <GUID> guid
     Then the user click on View Document button
     Then the document opens correctly
