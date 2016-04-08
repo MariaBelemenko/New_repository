@@ -10,6 +10,8 @@ import com.thomsonreuters.searchwhatsmarket.step_definitions.BaseStepDef;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
+import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -67,11 +69,10 @@ public class WhatsMarketDeliveryTest extends BaseStepDef {
 
     @When("^the user verifies that the results list page is displayed$")
     public void theUserVerifiesThatTheResultsListPageIsDisplayed() throws Throwable {
-        try {
-            searchResultsPage.resultsListHeader().isDisplayed();
-            searchResultsPage.filterHeader().isDisplayed();
-        } catch (Exception e) {
-        }
+		SoftAssertions softly = new SoftAssertions();
+     softly.assertThat(searchResultsPage.resultsListHeader().isDisplayed()).isTrue();
+     softly.assertThat(searchResultsPage.filterHeader().isDisplayed()).isTrue();
+     softly.assertAll();
     }
 
     @When("^the user selects the checkbox associated with whats market result \"([^\"]*)\"$")

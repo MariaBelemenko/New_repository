@@ -36,14 +36,14 @@ public class SearchResultsPage extends AbstractPage {
      * The header above the results list
      */
     public WebElement resultsListHeader() {
-        return waitForExpectedElement(By.xpath("div[@class='co_search_result_heading_content']"), 30);
+        return waitForExpectedElement(By.xpath("//div[@class='co_search_result_heading_content']"), 30);
     }
 
     /**
      * The header above the results filter
      */
     public WebElement filterHeader() {
-        return waitForExpectedElement(By.xpath("div[@id='co_narrowResultsBox']"), 30);
+        return waitForExpectedElement(By.xpath("//div[@id='co_narrowResultsBox']"), 30);
     }
 
     /**
