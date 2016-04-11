@@ -4,6 +4,7 @@ import com.thomsonreuters.pageobjects.utils.researchBrowse.ResearchContentTypeEn
 import com.thomsonreuters.driver.framework.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.TimeoutException;
 
 
 
@@ -23,8 +24,13 @@ public class RBCommonPage extends AbstractPage {
     }
 
     public WebElement practiceAreaLink(String practiceArea) {
-    	String path = String.format("//div[@id = 'coid_categoryBoxTabPanel1']//a[contains(.,'%s')]", practiceArea);
-        return waitForExpectedElement(By.xpath(path), 30);
+    	String path1 = String.format("//div[@id = 'coid_categoryBoxTabPanel1']//a[contains(.,'%s')]", practiceArea);
+    	String path2 = String.format("//a[contains(.,'%s') and contains(@onclick, 'javascript')]", practiceArea);
+    	try{
+    	    return waitForExpectedElement(By.xpath(path1), 30);
+    	} catch (TimeoutException e) {
+    	    return waitForExpectedElement(By.xpath(path2), 30);	
+    	}
     }
 
     public WebElement searchResultHeading() {
