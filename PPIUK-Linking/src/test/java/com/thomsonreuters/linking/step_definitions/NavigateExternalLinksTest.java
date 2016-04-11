@@ -53,10 +53,6 @@ public class NavigateExternalLinksTest extends BaseStepDef {
                 xlinkValue++;
             }
         }
-        // OMG -_-" TODO REMOVE!!!!
-        if (plcref.equals("1-519-0278")) {
-            xlinkValue++;
-        }
     }
 
     @Given("^capture all the external links in the Novus document content$")

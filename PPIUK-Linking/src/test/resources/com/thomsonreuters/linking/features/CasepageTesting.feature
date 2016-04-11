@@ -23,4 +23,5 @@ Feature: Case page test scenario
     | 1-518-6182   | I2537ea4963f011e598dc8b09b4f043e0 |
     | 0-529-5285   | I81ff7b128bdb11e498db8b09b4f043e0 |
     #There is a asset pages bug on this - 9th Nov 2015
-    | 3-503-8567   | Ib07a7b8853cf11e498db8b09b4f043e0 |
+    # Commented in according to Editorial comments. Test should be run by editorial request
+    #| 3-503-8567   | Ib07a7b8853cf11e498db8b09b4f043e0 |
