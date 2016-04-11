@@ -97,41 +97,35 @@ formatter.scenarioOutline({
       "value": "#    Then ensure \"Your shopping cart is empty, but it doesn\u0027t have to be.\" his cart is empty"
     }
   ],
-  "line": 31,
+  "line": 30,
   "name": "Searching for a Good",
   "description": "",
   "id": "searching,-adding-and-deleting-a-good-from-the-cart;searching-for-a-good",
   "type": "scenario_outline",
-  "keyword": "Scenario Outline",
-  "tags": [
-    {
-      "line": 30,
-      "name": "@tagToIdentifyThatTheGoodHasBeenSearchedCorrectlyPositive"
-    }
-  ]
+  "keyword": "Scenario Outline"
 });
 formatter.step({
-  "line": 32,
+  "line": 31,
   "name": "The user sets language to English",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 33,
+  "line": 32,
   "name": "he enters \"\u003ctype\u003e\" in the searching field",
   "keyword": "And "
 });
 formatter.step({
-  "line": 34,
+  "line": 33,
   "name": "he presses a button \u0027Search\u0027",
   "keyword": "When "
 });
 formatter.step({
-  "line": 35,
+  "line": 34,
   "name": "ensure \"\u003cname\u003e\" has been searched correctly",
   "keyword": "Then "
 });
 formatter.examples({
-  "line": 37,
+  "line": 36,
   "name": "",
   "description": "",
   "id": "searching,-adding-and-deleting-a-good-from-the-cart;searching-for-a-good;",
@@ -141,7 +135,7 @@ formatter.examples({
         "type",
         "name"
       ],
-      "line": 38,
+      "line": 37,
       "id": "searching,-adding-and-deleting-a-good-from-the-cart;searching-for-a-good;;1"
     },
     {
@@ -149,33 +143,27 @@ formatter.examples({
         "iPhone s6",
         "Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus"
       ],
-      "line": 39,
+      "line": 38,
       "id": "searching,-adding-and-deleting-a-good-from-the-cart;searching-for-a-good;;2"
     }
   ],
   "keyword": "Examples"
 });
 formatter.scenario({
-  "line": 39,
+  "line": 38,
   "name": "Searching for a Good",
   "description": "",
   "id": "searching,-adding-and-deleting-a-good-from-the-cart;searching-for-a-good;;2",
   "type": "scenario",
-  "keyword": "Scenario Outline",
-  "tags": [
-    {
-      "line": 30,
-      "name": "@tagToIdentifyThatTheGoodHasBeenSearchedCorrectlyPositive"
-    }
-  ]
+  "keyword": "Scenario Outline"
 });
 formatter.step({
-  "line": 32,
+  "line": 31,
   "name": "The user sets language to English",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 33,
+  "line": 32,
   "name": "he enters \"iPhone s6\" in the searching field",
   "matchedColumns": [
     0
@@ -183,12 +171,12 @@ formatter.step({
   "keyword": "And "
 });
 formatter.step({
-  "line": 34,
+  "line": 33,
   "name": "he presses a button \u0027Search\u0027",
   "keyword": "When "
 });
 formatter.step({
-  "line": 35,
+  "line": 34,
   "name": "ensure \"Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus\" has been searched correctly",
   "matchedColumns": [
     1
@@ -199,7 +187,7 @@ formatter.match({
   "location": "SearchSteps.iSetLanguage()"
 });
 formatter.result({
-  "duration": 11426266369,
+  "duration": 1752213257,
   "status": "passed"
 });
 formatter.match({
@@ -212,14 +200,14 @@ formatter.match({
   "location": "SearchSteps.iSetSearchRequest(String)"
 });
 formatter.result({
-  "duration": 2822048119,
+  "duration": 3245431489,
   "status": "passed"
 });
 formatter.match({
   "location": "SearchSteps.iSearchRequest()"
 });
 formatter.result({
-  "duration": 5801786983,
+  "duration": 4122308738,
   "status": "passed"
 });
 formatter.match({
@@ -232,64 +220,58 @@ formatter.match({
   "location": "SearchSteps.iCheckSearchRequest(String)"
 });
 formatter.result({
-  "duration": 191067462,
+  "duration": 72059230,
   "status": "passed"
 });
 formatter.after({
-  "duration": 394759,
+  "duration": 170083,
   "status": "passed"
 });
 formatter.scenarioOutline({
-  "line": 42,
+  "line": 40,
   "name": "Adding the Goods to the Cart",
   "description": "",
   "id": "searching,-adding-and-deleting-a-good-from-the-cart;adding-the-goods-to-the-cart",
   "type": "scenario_outline",
-  "keyword": "Scenario Outline",
-  "tags": [
-    {
-      "line": 41,
-      "name": "@tagToIdentifyThatTheGoodHasBeenAddedToTheCartPositive"
-    }
-  ]
+  "keyword": "Scenario Outline"
 });
 formatter.step({
-  "line": 43,
+  "line": 41,
   "name": "he presses on an image of the good",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 44,
+  "line": 42,
   "name": "he sets good\u0027s color to \"\u003ccolor\u003e\"",
   "keyword": "When "
 });
 formatter.step({
-  "line": 45,
+  "line": 43,
   "name": "he sets good\u0027s model to \"\u003cmodel\u003e\"",
   "keyword": "And "
 });
 formatter.step({
-  "line": 46,
+  "line": 44,
   "name": "he sets good\u0027s glass screen protector to \"\u003cScreen protector\u003e\"",
   "keyword": "And "
 });
 formatter.step({
-  "line": 47,
+  "line": 45,
   "name": "he presses a button \u0027Add to cart\u0027",
   "keyword": "And "
 });
 formatter.step({
-  "line": 48,
+  "line": 46,
   "name": "he presses button \u0027Cart\u0027 to see it\u0027s content",
   "keyword": "And "
 });
 formatter.step({
-  "line": 49,
+  "line": 47,
   "name": "ensure \"\u003cname\u003e\" is in the cart",
   "keyword": "Then "
 });
 formatter.examples({
-  "line": 51,
+  "line": 49,
   "name": "",
   "description": "",
   "id": "searching,-adding-and-deleting-a-good-from-the-cart;adding-the-goods-to-the-cart;",
@@ -301,7 +283,7 @@ formatter.examples({
         "Screen protector",
         "name"
       ],
-      "line": 52,
+      "line": 50,
       "id": "searching,-adding-and-deleting-a-good-from-the-cart;adding-the-goods-to-the-cart;;1"
     },
     {
@@ -311,7 +293,7 @@ formatter.examples({
         "No",
         "Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus"
       ],
-      "line": 53,
+      "line": 51,
       "id": "searching,-adding-and-deleting-a-good-from-the-cart;adding-the-goods-to-the-cart;;2"
     },
     {
@@ -321,33 +303,27 @@ formatter.examples({
         "No",
         "Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus"
       ],
-      "line": 54,
+      "line": 52,
       "id": "searching,-adding-and-deleting-a-good-from-the-cart;adding-the-goods-to-the-cart;;3"
     }
   ],
   "keyword": "Examples"
 });
 formatter.scenario({
-  "line": 53,
+  "line": 51,
   "name": "Adding the Goods to the Cart",
   "description": "",
   "id": "searching,-adding-and-deleting-a-good-from-the-cart;adding-the-goods-to-the-cart;;2",
   "type": "scenario",
-  "keyword": "Scenario Outline",
-  "tags": [
-    {
-      "line": 41,
-      "name": "@tagToIdentifyThatTheGoodHasBeenAddedToTheCartPositive"
-    }
-  ]
+  "keyword": "Scenario Outline"
 });
 formatter.step({
-  "line": 43,
+  "line": 41,
   "name": "he presses on an image of the good",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 44,
+  "line": 42,
   "name": "he sets good\u0027s color to \"Black\"",
   "matchedColumns": [
     0
@@ -355,7 +331,7 @@ formatter.step({
   "keyword": "When "
 });
 formatter.step({
-  "line": 45,
+  "line": 43,
   "name": "he sets good\u0027s model to \"For Apple iPhone 6\"",
   "matchedColumns": [
     1
@@ -363,7 +339,7 @@ formatter.step({
   "keyword": "And "
 });
 formatter.step({
-  "line": 46,
+  "line": 44,
   "name": "he sets good\u0027s glass screen protector to \"No\"",
   "matchedColumns": [
     2
@@ -371,17 +347,17 @@ formatter.step({
   "keyword": "And "
 });
 formatter.step({
-  "line": 47,
+  "line": 45,
   "name": "he presses a button \u0027Add to cart\u0027",
   "keyword": "And "
 });
 formatter.step({
-  "line": 48,
+  "line": 46,
   "name": "he presses button \u0027Cart\u0027 to see it\u0027s content",
   "keyword": "And "
 });
 formatter.step({
-  "line": 49,
+  "line": 47,
   "name": "ensure \"Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus\" is in the cart",
   "matchedColumns": [
     3
@@ -392,7 +368,7 @@ formatter.match({
   "location": "AddToCartSteps.iShowDetailsOfTheGood()"
 });
 formatter.result({
-  "duration": 16354381770,
+  "duration": 3926944773,
   "status": "passed"
 });
 formatter.match({
@@ -405,7 +381,7 @@ formatter.match({
   "location": "AddToCartSteps.iChooseColor(String)"
 });
 formatter.result({
-  "duration": 4167924027,
+  "duration": 2151079235,
   "status": "passed"
 });
 formatter.match({
@@ -418,7 +394,7 @@ formatter.match({
   "location": "AddToCartSteps.iChooseModel(String)"
 });
 formatter.result({
-  "duration": 441470183,
+  "duration": 260214646,
   "status": "passed"
 });
 formatter.match({
@@ -431,21 +407,21 @@ formatter.match({
   "location": "AddToCartSteps.iChooseGlassScreenProtector(String)"
 });
 formatter.result({
-  "duration": 1489944674,
+  "duration": 472091287,
   "status": "passed"
 });
 formatter.match({
   "location": "AddToCartSteps.iAddGoodToTheCart()"
 });
 formatter.result({
-  "duration": 429551477,
+  "duration": 692811505,
   "status": "passed"
 });
 formatter.match({
   "location": "AddToCartSteps.iShowCartContent()"
 });
 formatter.result({
-  "duration": 3022633889,
+  "duration": 4429379994,
   "status": "passed"
 });
 formatter.match({
@@ -458,34 +434,28 @@ formatter.match({
   "location": "AddToCartSteps.iCheckTheCart(String)"
 });
 formatter.result({
-  "duration": 123553208,
+  "duration": 64853832,
   "status": "passed"
 });
 formatter.after({
-  "duration": 338764,
+  "duration": 39896,
   "status": "passed"
 });
 formatter.scenario({
-  "line": 54,
+  "line": 52,
   "name": "Adding the Goods to the Cart",
   "description": "",
   "id": "searching,-adding-and-deleting-a-good-from-the-cart;adding-the-goods-to-the-cart;;3",
   "type": "scenario",
-  "keyword": "Scenario Outline",
-  "tags": [
-    {
-      "line": 41,
-      "name": "@tagToIdentifyThatTheGoodHasBeenAddedToTheCartPositive"
-    }
-  ]
+  "keyword": "Scenario Outline"
 });
 formatter.step({
-  "line": 43,
+  "line": 41,
   "name": "he presses on an image of the good",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 44,
+  "line": 42,
   "name": "he sets good\u0027s color to \"Silver\"",
   "matchedColumns": [
     0
@@ -493,7 +463,7 @@ formatter.step({
   "keyword": "When "
 });
 formatter.step({
-  "line": 45,
+  "line": 43,
   "name": "he sets good\u0027s model to \"For Apple iPhone 6s\"",
   "matchedColumns": [
     1
@@ -501,7 +471,7 @@ formatter.step({
   "keyword": "And "
 });
 formatter.step({
-  "line": 46,
+  "line": 44,
   "name": "he sets good\u0027s glass screen protector to \"No\"",
   "matchedColumns": [
     2
@@ -509,17 +479,17 @@ formatter.step({
   "keyword": "And "
 });
 formatter.step({
-  "line": 47,
+  "line": 45,
   "name": "he presses a button \u0027Add to cart\u0027",
   "keyword": "And "
 });
 formatter.step({
-  "line": 48,
+  "line": 46,
   "name": "he presses button \u0027Cart\u0027 to see it\u0027s content",
   "keyword": "And "
 });
 formatter.step({
-  "line": 49,
+  "line": 47,
   "name": "ensure \"Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus\" is in the cart",
   "matchedColumns": [
     3
@@ -530,7 +500,7 @@ formatter.match({
   "location": "AddToCartSteps.iShowDetailsOfTheGood()"
 });
 formatter.result({
-  "duration": 430169512,
+  "duration": 156874980,
   "status": "passed"
 });
 formatter.match({
@@ -543,7 +513,7 @@ formatter.match({
   "location": "AddToCartSteps.iChooseColor(String)"
 });
 formatter.result({
-  "duration": 3578621921,
+  "duration": 2022973003,
   "status": "passed"
 });
 formatter.match({
@@ -556,7 +526,7 @@ formatter.match({
   "location": "AddToCartSteps.iChooseModel(String)"
 });
 formatter.result({
-  "duration": 153210512,
+  "duration": 105826157,
   "status": "passed"
 });
 formatter.match({
@@ -569,21 +539,21 @@ formatter.match({
   "location": "AddToCartSteps.iChooseGlassScreenProtector(String)"
 });
 formatter.result({
-  "duration": 841242566,
+  "duration": 210444240,
   "status": "passed"
 });
 formatter.match({
   "location": "AddToCartSteps.iAddGoodToTheCart()"
 });
 formatter.result({
-  "duration": 348598974,
+  "duration": 531354103,
   "status": "passed"
 });
 formatter.match({
   "location": "AddToCartSteps.iShowCartContent()"
 });
 formatter.result({
-  "duration": 3154415086,
+  "duration": 1568355042,
   "status": "passed"
 });
 formatter.match({
@@ -596,69 +566,63 @@ formatter.match({
   "location": "AddToCartSteps.iCheckTheCart(String)"
 });
 formatter.result({
-  "duration": 128643776,
+  "duration": 1165963182,
   "status": "passed"
 });
 formatter.after({
-  "duration": 315667,
+  "duration": 37447,
   "status": "passed"
 });
 formatter.scenarioOutline({
-  "line": 57,
+  "line": 54,
   "name": "Deleting the Good from the Cart",
   "description": "",
   "id": "searching,-adding-and-deleting-a-good-from-the-cart;deleting-the-good-from-the-cart",
   "type": "scenario_outline",
-  "keyword": "Scenario Outline",
-  "tags": [
-    {
-      "line": 56,
-      "name": "@tagToIdentifyThatTheGoodHasBeenSuccessfullyDeletedFromTheCartPositive"
-    }
-  ]
+  "keyword": "Scenario Outline"
 });
 formatter.step({
-  "line": 58,
+  "line": 55,
   "name": "he presses button \u0027Save for future\u0027",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 59,
+  "line": 56,
   "name": "he edits \"\u003clogin\u003e\" into the field \u0027Login\u0027",
   "keyword": "When "
 });
 formatter.step({
-  "line": 60,
+  "line": 57,
   "name": "he edits \"\u003cpassword\u003e\" into the field \u0027Password\u0027",
   "keyword": "And "
 });
 formatter.step({
-  "line": 61,
+  "line": 58,
   "name": "he submits his personal information",
   "keyword": "And "
 });
 formatter.step({
-  "line": 62,
+  "line": 59,
   "name": "ensure \"\u003csave for future\u003e\" has been successfully removed to \u0027Saved goods\u0027",
   "keyword": "And "
 });
 formatter.step({
-  "line": 63,
+  "line": 60,
   "name": "he presses button \u0027Delete the good from the cart\u0027",
   "keyword": "And "
 });
 formatter.step({
-  "line": 64,
+  "line": 61,
   "name": "he presses button \u0027Show the cart\u0027",
   "keyword": "And "
 });
 formatter.step({
-  "line": 65,
+  "line": 62,
   "name": "ensure \"\u003ccart content\u003e\" his cart is empty",
   "keyword": "Then "
 });
 formatter.examples({
-  "line": 67,
+  "line": 64,
   "name": "",
   "description": "",
   "id": "searching,-adding-and-deleting-a-good-from-the-cart;deleting-the-good-from-the-cart;",
@@ -670,7 +634,7 @@ formatter.examples({
         "save for future",
         "cart content"
       ],
-      "line": 68,
+      "line": 65,
       "id": "searching,-adding-and-deleting-a-good-from-the-cart;deleting-the-good-from-the-cart;;1"
     },
     {
@@ -678,35 +642,29 @@ formatter.examples({
         "MariaBelemenko@gmail.com",
         "maria311089",
         "Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus has been saved for later.",
-        "US $6.99"
+        "US $7.99"
       ],
-      "line": 69,
+      "line": 66,
       "id": "searching,-adding-and-deleting-a-good-from-the-cart;deleting-the-good-from-the-cart;;2"
     }
   ],
   "keyword": "Examples"
 });
 formatter.scenario({
-  "line": 69,
+  "line": 66,
   "name": "Deleting the Good from the Cart",
   "description": "",
   "id": "searching,-adding-and-deleting-a-good-from-the-cart;deleting-the-good-from-the-cart;;2",
   "type": "scenario",
-  "keyword": "Scenario Outline",
-  "tags": [
-    {
-      "line": 56,
-      "name": "@tagToIdentifyThatTheGoodHasBeenSuccessfullyDeletedFromTheCartPositive"
-    }
-  ]
+  "keyword": "Scenario Outline"
 });
 formatter.step({
-  "line": 58,
+  "line": 55,
   "name": "he presses button \u0027Save for future\u0027",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 59,
+  "line": 56,
   "name": "he edits \"MariaBelemenko@gmail.com\" into the field \u0027Login\u0027",
   "matchedColumns": [
     0
@@ -714,7 +672,7 @@ formatter.step({
   "keyword": "When "
 });
 formatter.step({
-  "line": 60,
+  "line": 57,
   "name": "he edits \"maria311089\" into the field \u0027Password\u0027",
   "matchedColumns": [
     1
@@ -722,12 +680,12 @@ formatter.step({
   "keyword": "And "
 });
 formatter.step({
-  "line": 61,
+  "line": 58,
   "name": "he submits his personal information",
   "keyword": "And "
 });
 formatter.step({
-  "line": 62,
+  "line": 59,
   "name": "ensure \"Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus has been saved for later.\" has been successfully removed to \u0027Saved goods\u0027",
   "matchedColumns": [
     2
@@ -735,18 +693,18 @@ formatter.step({
   "keyword": "And "
 });
 formatter.step({
-  "line": 63,
+  "line": 60,
   "name": "he presses button \u0027Delete the good from the cart\u0027",
   "keyword": "And "
 });
 formatter.step({
-  "line": 64,
+  "line": 61,
   "name": "he presses button \u0027Show the cart\u0027",
   "keyword": "And "
 });
 formatter.step({
-  "line": 65,
-  "name": "ensure \"US $6.99\" his cart is empty",
+  "line": 62,
+  "name": "ensure \"US $7.99\" his cart is empty",
   "matchedColumns": [
     3
   ],
@@ -756,7 +714,7 @@ formatter.match({
   "location": "DeleteFromTheCartSteps.iSaveForFuture()"
 });
 formatter.result({
-  "duration": 465483976,
+  "duration": 128173425,
   "status": "passed"
 });
 formatter.match({
@@ -769,7 +727,7 @@ formatter.match({
   "location": "DeleteFromTheCartSteps.iEditLogin(String)"
 });
 formatter.result({
-  "duration": 4137663385,
+  "duration": 5241056246,
   "status": "passed"
 });
 formatter.match({
@@ -782,14 +740,14 @@ formatter.match({
   "location": "DeleteFromTheCartSteps.iEditPassword(String)"
 });
 formatter.result({
-  "duration": 618743485,
+  "duration": 105818107,
   "status": "passed"
 });
 formatter.match({
   "location": "DeleteFromTheCartSteps.iSubmitPersonalInformation()"
 });
 formatter.result({
-  "duration": 2576138930,
+  "duration": 2020754584,
   "status": "passed"
 });
 formatter.match({
@@ -802,71 +760,65 @@ formatter.match({
   "location": "DeleteFromTheCartSteps.iCheckRemovedForFuture(String)"
 });
 formatter.result({
-  "duration": 1853700217,
+  "duration": 1515855620,
   "status": "passed"
 });
 formatter.match({
   "location": "DeleteFromTheCartSteps.iDeleteFromTheCart()"
 });
 formatter.result({
-  "duration": 430743102,
+  "duration": 412344822,
   "status": "passed"
 });
 formatter.match({
   "location": "DeleteFromTheCartSteps.iShowCart()"
 });
 formatter.result({
-  "duration": 2197444847,
+  "duration": 1423120548,
   "status": "passed"
 });
 formatter.match({
   "arguments": [
     {
-      "val": "US $6.99",
+      "val": "US $7.99",
       "offset": 8
     }
   ],
   "location": "DeleteFromTheCartSteps.iCheckTheCartWithDeletedGood(String)"
 });
 formatter.result({
-  "duration": 86205805,
+  "duration": 84205414,
   "status": "passed"
 });
 formatter.after({
-  "duration": 339815,
+  "duration": 35696,
   "status": "passed"
 });
 formatter.scenario({
-  "line": 72,
+  "line": 68,
   "name": "Searching for a Good (negative scenario)",
   "description": "",
   "id": "searching,-adding-and-deleting-a-good-from-the-cart;searching-for-a-good-(negative-scenario)",
   "type": "scenario",
-  "keyword": "Scenario",
-  "tags": [
-    {
-      "line": 71,
-      "name": "@tagToIdentifyThatTheGoodHasBeenSearchedCorrectlyNegative"
-    }
-  ]
+  "keyword": "Scenario"
 });
 formatter.step({
-  "line": 73,
+  "line": 69,
   "name": "The user sets language to English",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 74,
+  "line": 70,
   "name": "he enters \"iPhone s6\" in the searching field",
   "keyword": "And "
 });
 formatter.step({
-  "line": 75,
+  "line": 71,
   "name": "he presses a button \u0027Search\u0027",
   "keyword": "When "
 });
 formatter.step({
-  "line": 76,
+  "line": 72,
   "name": "ensure \"Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5\" has not been searched",
   "keyword": "Then "
 });
@@ -874,7 +826,7 @@ formatter.match({
   "location": "SearchSteps.iSetLanguage()"
 });
 formatter.result({
-  "duration": 2187490486,
+  "duration": 2375758590,
   "status": "passed"
 });
 formatter.match({
@@ -887,14 +839,14 @@ formatter.match({
   "location": "SearchSteps.iSetSearchRequest(String)"
 });
 formatter.result({
-  "duration": 120142114,
+  "duration": 110853383,
   "status": "passed"
 });
 formatter.match({
   "location": "SearchSteps.iSearchRequest()"
 });
 formatter.result({
-  "duration": 4991925642,
+  "duration": 4010497504,
   "status": "passed"
 });
 formatter.match({
@@ -907,59 +859,53 @@ formatter.match({
   "location": "SearchSteps.iCheckSearchRequestNegative(String)"
 });
 formatter.result({
-  "duration": 124571251,
+  "duration": 70493494,
   "status": "passed"
 });
 formatter.after({
-  "duration": 325116,
+  "duration": 35696,
   "status": "passed"
 });
 formatter.scenario({
-  "line": 79,
+  "line": 74,
   "name": "Adding the Goods to the Cart (negative scenario)",
   "description": "",
   "id": "searching,-adding-and-deleting-a-good-from-the-cart;adding-the-goods-to-the-cart-(negative-scenario)",
   "type": "scenario",
-  "keyword": "Scenario",
-  "tags": [
-    {
-      "line": 78,
-      "name": "@tagToIdentifyThatTheGoodHasBeenAddedToTheCartNegative"
-    }
-  ]
+  "keyword": "Scenario"
 });
 formatter.step({
-  "line": 80,
+  "line": 75,
   "name": "he presses on an image of the good",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 81,
+  "line": 76,
   "name": "he sets good\u0027s color to \"Black\"",
   "keyword": "When "
 });
 formatter.step({
-  "line": 82,
+  "line": 77,
   "name": "he sets good\u0027s model to \"For Apple iPhone 6\"",
   "keyword": "And "
 });
 formatter.step({
-  "line": 83,
+  "line": 78,
   "name": "he sets good\u0027s glass screen protector to \"No\"",
   "keyword": "And "
 });
 formatter.step({
-  "line": 84,
+  "line": 79,
   "name": "he presses a button \u0027Add to cart\u0027",
   "keyword": "And "
 });
 formatter.step({
-  "line": 85,
+  "line": 80,
   "name": "he presses button \u0027Cart\u0027 to see it\u0027s content",
   "keyword": "And "
 });
 formatter.step({
-  "line": 86,
+  "line": 81,
   "name": "ensure \"Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5\" is not in the cart",
   "keyword": "Then "
 });
@@ -967,7 +913,7 @@ formatter.match({
   "location": "AddToCartSteps.iShowDetailsOfTheGood()"
 });
 formatter.result({
-  "duration": 8333702778,
+  "duration": 1049631471,
   "status": "passed"
 });
 formatter.match({
@@ -980,7 +926,7 @@ formatter.match({
   "location": "AddToCartSteps.iChooseColor(String)"
 });
 formatter.result({
-  "duration": 3967424350,
+  "duration": 2187624171,
   "status": "passed"
 });
 formatter.match({
@@ -993,7 +939,7 @@ formatter.match({
   "location": "AddToCartSteps.iChooseModel(String)"
 });
 formatter.result({
-  "duration": 158508959,
+  "duration": 640725390,
   "status": "passed"
 });
 formatter.match({
@@ -1006,21 +952,21 @@ formatter.match({
   "location": "AddToCartSteps.iChooseGlassScreenProtector(String)"
 });
 formatter.result({
-  "duration": 326221959,
+  "duration": 352966518,
   "status": "passed"
 });
 formatter.match({
   "location": "AddToCartSteps.iAddGoodToTheCart()"
 });
 formatter.result({
-  "duration": 390706580,
+  "duration": 508729665,
   "status": "passed"
 });
 formatter.match({
   "location": "AddToCartSteps.iShowCartContent()"
 });
 formatter.result({
-  "duration": 377196939,
+  "duration": 373118465,
   "status": "passed"
 });
 formatter.match({
@@ -1033,49 +979,43 @@ formatter.match({
   "location": "AddToCartSteps.iCheckTheCartNegative(String)"
 });
 formatter.result({
-  "duration": 1212399836,
+  "duration": 1080295971,
   "status": "passed"
 });
 formatter.after({
-  "duration": 341565,
+  "duration": 42346,
   "status": "passed"
 });
 formatter.scenario({
-  "line": 89,
+  "line": 83,
   "name": "Deleting the Good from the Cart (negative scenario)",
   "description": "",
   "id": "searching,-adding-and-deleting-a-good-from-the-cart;deleting-the-good-from-the-cart-(negative-scenario)",
   "type": "scenario",
-  "keyword": "Scenario",
-  "tags": [
-    {
-      "line": 88,
-      "name": "@tagToIdentifyThatTheGoodHasBeenSuccessfullyDeletedFromTheCartNegative"
-    }
-  ]
+  "keyword": "Scenario"
 });
 formatter.step({
-  "line": 90,
+  "line": 84,
   "name": "he presses button \u0027Save for future\u0027",
   "keyword": "Given "
 });
 formatter.step({
-  "line": 91,
+  "line": 85,
   "name": "ensure \"Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus has been saved for later.\" has been successfully removed to \u0027Saved goods\u0027",
   "keyword": "And "
 });
 formatter.step({
-  "line": 92,
+  "line": 86,
   "name": "he presses button \u0027Delete the good from the cart\u0027",
   "keyword": "And "
 });
 formatter.step({
-  "line": 93,
+  "line": 87,
   "name": "he presses button \u0027Show the cart\u0027",
   "keyword": "And "
 });
 formatter.step({
-  "line": 94,
+  "line": 88,
   "name": "ensure \"Your cart is not empty\" his cart doesn\u0027t consist anything",
   "keyword": "Then "
 });
@@ -1083,7 +1023,7 @@ formatter.match({
   "location": "DeleteFromTheCartSteps.iSaveForFuture()"
 });
 formatter.result({
-  "duration": 2976863214,
+  "duration": 1500711301,
   "status": "passed"
 });
 formatter.match({
@@ -1096,21 +1036,21 @@ formatter.match({
   "location": "DeleteFromTheCartSteps.iCheckRemovedForFuture(String)"
 });
 formatter.result({
-  "duration": 83989136,
+  "duration": 42542611,
   "status": "passed"
 });
 formatter.match({
   "location": "DeleteFromTheCartSteps.iDeleteFromTheCart()"
 });
 formatter.result({
-  "duration": 1034908857,
+  "duration": 1025648124,
   "status": "passed"
 });
 formatter.match({
   "location": "DeleteFromTheCartSteps.iShowCart()"
 });
 formatter.result({
-  "duration": 1047447349,
+  "duration": 1274628592,
   "status": "passed"
 });
 formatter.match({
@@ -1123,11 +1063,11 @@ formatter.match({
   "location": "DeleteFromTheCartSteps.iCheckTheCartWithDeletedGoodNegative(String)"
 });
 formatter.result({
-  "duration": 72127823,
+  "duration": 33530702,
   "status": "passed"
 });
 formatter.after({
-  "duration": 365012,
+  "duration": 61244,
   "status": "passed"
 });
 });

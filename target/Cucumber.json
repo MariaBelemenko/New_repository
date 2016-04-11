@@ -3,18 +3,18 @@
     "line": 1,
     "elements": [
       {
-        "line": 39,
+        "line": 38,
         "name": "Searching for a Good",
         "description": "",
         "id": "searching,-adding-and-deleting-a-good-from-the-cart;searching-for-a-good;;2",
         "after": [
           {
             "result": {
-              "duration": 394759,
+              "duration": 170083,
               "status": "passed"
             },
             "match": {
-              "location": "SearchSteps.iTakeScreenshotInCaseOfFailurePositive()"
+              "location": "TakingScreenshots.takeScreenshotInCaseOfFailure(Scenario)"
             }
           }
         ],
@@ -23,10 +23,10 @@
         "steps": [
           {
             "result": {
-              "duration": 11426266369,
+              "duration": 1752213257,
               "status": "passed"
             },
-            "line": 32,
+            "line": 31,
             "name": "The user sets language to English",
             "match": {
               "location": "SearchSteps.iSetLanguage()"
@@ -35,10 +35,10 @@
           },
           {
             "result": {
-              "duration": 2822048119,
+              "duration": 3245431489,
               "status": "passed"
             },
-            "line": 33,
+            "line": 32,
             "name": "he enters \"iPhone s6\" in the searching field",
             "match": {
               "arguments": [
@@ -56,10 +56,10 @@
           },
           {
             "result": {
-              "duration": 5801786983,
+              "duration": 4122308738,
               "status": "passed"
             },
-            "line": 34,
+            "line": 33,
             "name": "he presses a button \u0027Search\u0027",
             "match": {
               "location": "SearchSteps.iSearchRequest()"
@@ -68,10 +68,10 @@
           },
           {
             "result": {
-              "duration": 191067462,
+              "duration": 72059230,
               "status": "passed"
             },
-            "line": 35,
+            "line": 34,
             "name": "ensure \"Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus\" has been searched correctly",
             "match": {
               "arguments": [
@@ -87,27 +87,21 @@
             ],
             "keyword": "Then "
           }
-        ],
-        "tags": [
-          {
-            "line": 30,
-            "name": "@tagToIdentifyThatTheGoodHasBeenSearchedCorrectlyPositive"
-          }
         ]
       },
       {
-        "line": 53,
+        "line": 51,
         "name": "Adding the Goods to the Cart",
         "description": "",
         "id": "searching,-adding-and-deleting-a-good-from-the-cart;adding-the-goods-to-the-cart;;2",
         "after": [
           {
             "result": {
-              "duration": 338764,
+              "duration": 39896,
               "status": "passed"
             },
             "match": {
-              "location": "AddToCartSteps.iTakeScreenshotInCaseOfFailurePositive()"
+              "location": "TakingScreenshots.takeScreenshotInCaseOfFailure(Scenario)"
             }
           }
         ],
@@ -116,10 +110,10 @@
         "steps": [
           {
             "result": {
-              "duration": 16354381770,
+              "duration": 3926944773,
               "status": "passed"
             },
-            "line": 43,
+            "line": 41,
             "name": "he presses on an image of the good",
             "match": {
               "location": "AddToCartSteps.iShowDetailsOfTheGood()"
@@ -128,10 +122,10 @@
           },
           {
             "result": {
-              "duration": 4167924027,
+              "duration": 2151079235,
               "status": "passed"
             },
-            "line": 44,
+            "line": 42,
             "name": "he sets good\u0027s color to \"Black\"",
             "match": {
               "arguments": [
@@ -149,10 +143,10 @@
           },
           {
             "result": {
-              "duration": 441470183,
+              "duration": 260214646,
               "status": "passed"
             },
-            "line": 45,
+            "line": 43,
             "name": "he sets good\u0027s model to \"For Apple iPhone 6\"",
             "match": {
               "arguments": [
@@ -170,10 +164,10 @@
           },
           {
             "result": {
-              "duration": 1489944674,
+              "duration": 472091287,
               "status": "passed"
             },
-            "line": 46,
+            "line": 44,
             "name": "he sets good\u0027s glass screen protector to \"No\"",
             "match": {
               "arguments": [
@@ -191,10 +185,10 @@
           },
           {
             "result": {
-              "duration": 429551477,
+              "duration": 692811505,
               "status": "passed"
             },
-            "line": 47,
+            "line": 45,
             "name": "he presses a button \u0027Add to cart\u0027",
             "match": {
               "location": "AddToCartSteps.iAddGoodToTheCart()"
@@ -203,10 +197,10 @@
           },
           {
             "result": {
-              "duration": 3022633889,
+              "duration": 4429379994,
               "status": "passed"
             },
-            "line": 48,
+            "line": 46,
             "name": "he presses button \u0027Cart\u0027 to see it\u0027s content",
             "match": {
               "location": "AddToCartSteps.iShowCartContent()"
@@ -215,10 +209,10 @@
           },
           {
             "result": {
-              "duration": 123553208,
+              "duration": 64853832,
               "status": "passed"
             },
-            "line": 49,
+            "line": 47,
             "name": "ensure \"Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus\" is in the cart",
             "match": {
               "arguments": [
@@ -234,27 +228,21 @@
             ],
             "keyword": "Then "
           }
-        ],
-        "tags": [
-          {
-            "line": 41,
-            "name": "@tagToIdentifyThatTheGoodHasBeenAddedToTheCartPositive"
-          }
         ]
       },
       {
-        "line": 54,
+        "line": 52,
         "name": "Adding the Goods to the Cart",
         "description": "",
         "id": "searching,-adding-and-deleting-a-good-from-the-cart;adding-the-goods-to-the-cart;;3",
         "after": [
           {
             "result": {
-              "duration": 315667,
+              "duration": 37447,
               "status": "passed"
             },
             "match": {
-              "location": "AddToCartSteps.iTakeScreenshotInCaseOfFailurePositive()"
+              "location": "TakingScreenshots.takeScreenshotInCaseOfFailure(Scenario)"
             }
           }
         ],
@@ -263,10 +251,10 @@
         "steps": [
           {
             "result": {
-              "duration": 430169512,
+              "duration": 156874980,
               "status": "passed"
             },
-            "line": 43,
+            "line": 41,
             "name": "he presses on an image of the good",
             "match": {
               "location": "AddToCartSteps.iShowDetailsOfTheGood()"
@@ -275,10 +263,10 @@
           },
           {
             "result": {
-              "duration": 3578621921,
+              "duration": 2022973003,
               "status": "passed"
             },
-            "line": 44,
+            "line": 42,
             "name": "he sets good\u0027s color to \"Silver\"",
             "match": {
               "arguments": [
@@ -296,10 +284,10 @@
           },
           {
             "result": {
-              "duration": 153210512,
+              "duration": 105826157,
               "status": "passed"
             },
-            "line": 45,
+            "line": 43,
             "name": "he sets good\u0027s model to \"For Apple iPhone 6s\"",
             "match": {
               "arguments": [
@@ -317,10 +305,10 @@
           },
           {
             "result": {
-              "duration": 841242566,
+              "duration": 210444240,
               "status": "passed"
             },
-            "line": 46,
+            "line": 44,
             "name": "he sets good\u0027s glass screen protector to \"No\"",
             "match": {
               "arguments": [
@@ -338,10 +326,10 @@
           },
           {
             "result": {
-              "duration": 348598974,
+              "duration": 531354103,
               "status": "passed"
             },
-            "line": 47,
+            "line": 45,
             "name": "he presses a button \u0027Add to cart\u0027",
             "match": {
               "location": "AddToCartSteps.iAddGoodToTheCart()"
@@ -350,10 +338,10 @@
           },
           {
             "result": {
-              "duration": 3154415086,
+              "duration": 1568355042,
               "status": "passed"
             },
-            "line": 48,
+            "line": 46,
             "name": "he presses button \u0027Cart\u0027 to see it\u0027s content",
             "match": {
               "location": "AddToCartSteps.iShowCartContent()"
@@ -362,10 +350,10 @@
           },
           {
             "result": {
-              "duration": 128643776,
+              "duration": 1165963182,
               "status": "passed"
             },
-            "line": 49,
+            "line": 47,
             "name": "ensure \"Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus\" is in the cart",
             "match": {
               "arguments": [
@@ -381,27 +369,21 @@
             ],
             "keyword": "Then "
           }
-        ],
-        "tags": [
-          {
-            "line": 41,
-            "name": "@tagToIdentifyThatTheGoodHasBeenAddedToTheCartPositive"
-          }
         ]
       },
       {
-        "line": 69,
+        "line": 66,
         "name": "Deleting the Good from the Cart",
         "description": "",
         "id": "searching,-adding-and-deleting-a-good-from-the-cart;deleting-the-good-from-the-cart;;2",
         "after": [
           {
             "result": {
-              "duration": 339815,
+              "duration": 35696,
               "status": "passed"
             },
             "match": {
-              "location": "DeleteFromTheCartSteps.iTakeScreenshotInCaseOfFailurePositive()"
+              "location": "TakingScreenshots.takeScreenshotInCaseOfFailure(Scenario)"
             }
           }
         ],
@@ -410,10 +392,10 @@
         "steps": [
           {
             "result": {
-              "duration": 465483976,
+              "duration": 128173425,
               "status": "passed"
             },
-            "line": 58,
+            "line": 55,
             "name": "he presses button \u0027Save for future\u0027",
             "match": {
               "location": "DeleteFromTheCartSteps.iSaveForFuture()"
@@ -422,10 +404,10 @@
           },
           {
             "result": {
-              "duration": 4137663385,
+              "duration": 5241056246,
               "status": "passed"
             },
-            "line": 59,
+            "line": 56,
             "name": "he edits \"MariaBelemenko@gmail.com\" into the field \u0027Login\u0027",
             "match": {
               "arguments": [
@@ -443,10 +425,10 @@
           },
           {
             "result": {
-              "duration": 618743485,
+              "duration": 105818107,
               "status": "passed"
             },
-            "line": 60,
+            "line": 57,
             "name": "he edits \"maria311089\" into the field \u0027Password\u0027",
             "match": {
               "arguments": [
@@ -464,10 +446,10 @@
           },
           {
             "result": {
-              "duration": 2576138930,
+              "duration": 2020754584,
               "status": "passed"
             },
-            "line": 61,
+            "line": 58,
             "name": "he submits his personal information",
             "match": {
               "location": "DeleteFromTheCartSteps.iSubmitPersonalInformation()"
@@ -476,10 +458,10 @@
           },
           {
             "result": {
-              "duration": 1853700217,
+              "duration": 1515855620,
               "status": "passed"
             },
-            "line": 62,
+            "line": 59,
             "name": "ensure \"Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus has been saved for later.\" has been successfully removed to \u0027Saved goods\u0027",
             "match": {
               "arguments": [
@@ -497,10 +479,10 @@
           },
           {
             "result": {
-              "duration": 430743102,
+              "duration": 412344822,
               "status": "passed"
             },
-            "line": 63,
+            "line": 60,
             "name": "he presses button \u0027Delete the good from the cart\u0027",
             "match": {
               "location": "DeleteFromTheCartSteps.iDeleteFromTheCart()"
@@ -509,10 +491,10 @@
           },
           {
             "result": {
-              "duration": 2197444847,
+              "duration": 1423120548,
               "status": "passed"
             },
-            "line": 64,
+            "line": 61,
             "name": "he presses button \u0027Show the cart\u0027",
             "match": {
               "location": "DeleteFromTheCartSteps.iShowCart()"
@@ -521,15 +503,15 @@
           },
           {
             "result": {
-              "duration": 86205805,
+              "duration": 84205414,
               "status": "passed"
             },
-            "line": 65,
-            "name": "ensure \"US $6.99\" his cart is empty",
+            "line": 62,
+            "name": "ensure \"US $7.99\" his cart is empty",
             "match": {
               "arguments": [
                 {
-                  "val": "US $6.99",
+                  "val": "US $7.99",
                   "offset": 8
                 }
               ],
@@ -540,27 +522,21 @@
             ],
             "keyword": "Then "
           }
-        ],
-        "tags": [
-          {
-            "line": 56,
-            "name": "@tagToIdentifyThatTheGoodHasBeenSuccessfullyDeletedFromTheCartPositive"
-          }
         ]
       },
       {
-        "line": 72,
+        "line": 68,
         "name": "Searching for a Good (negative scenario)",
         "description": "",
         "id": "searching,-adding-and-deleting-a-good-from-the-cart;searching-for-a-good-(negative-scenario)",
         "after": [
           {
             "result": {
-              "duration": 325116,
+              "duration": 35696,
               "status": "passed"
             },
             "match": {
-              "location": "SearchSteps.iTakeScreenshotInCaseOfFailureNegative()"
+              "location": "TakingScreenshots.takeScreenshotInCaseOfFailure(Scenario)"
             }
           }
         ],
@@ -569,10 +545,10 @@
         "steps": [
           {
             "result": {
-              "duration": 2187490486,
+              "duration": 2375758590,
               "status": "passed"
             },
-            "line": 73,
+            "line": 69,
             "name": "The user sets language to English",
             "match": {
               "location": "SearchSteps.iSetLanguage()"
@@ -581,10 +557,10 @@
           },
           {
             "result": {
-              "duration": 120142114,
+              "duration": 110853383,
               "status": "passed"
             },
-            "line": 74,
+            "line": 70,
             "name": "he enters \"iPhone s6\" in the searching field",
             "match": {
               "arguments": [
@@ -599,10 +575,10 @@
           },
           {
             "result": {
-              "duration": 4991925642,
+              "duration": 4010497504,
               "status": "passed"
             },
-            "line": 75,
+            "line": 71,
             "name": "he presses a button \u0027Search\u0027",
             "match": {
               "location": "SearchSteps.iSearchRequest()"
@@ -611,10 +587,10 @@
           },
           {
             "result": {
-              "duration": 124571251,
+              "duration": 70493494,
               "status": "passed"
             },
-            "line": 76,
+            "line": 72,
             "name": "ensure \"Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5\" has not been searched",
             "match": {
               "arguments": [
@@ -627,27 +603,21 @@
             },
             "keyword": "Then "
           }
-        ],
-        "tags": [
-          {
-            "line": 71,
-            "name": "@tagToIdentifyThatTheGoodHasBeenSearchedCorrectlyNegative"
-          }
         ]
       },
       {
-        "line": 79,
+        "line": 74,
         "name": "Adding the Goods to the Cart (negative scenario)",
         "description": "",
         "id": "searching,-adding-and-deleting-a-good-from-the-cart;adding-the-goods-to-the-cart-(negative-scenario)",
         "after": [
           {
             "result": {
-              "duration": 341565,
+              "duration": 42346,
               "status": "passed"
             },
             "match": {
-              "location": "AddToCartSteps.iTakeScreenshotInCaseOfFailureNegative()"
+              "location": "TakingScreenshots.takeScreenshotInCaseOfFailure(Scenario)"
             }
           }
         ],
@@ -656,10 +626,10 @@
         "steps": [
           {
             "result": {
-              "duration": 8333702778,
+              "duration": 1049631471,
               "status": "passed"
             },
-            "line": 80,
+            "line": 75,
             "name": "he presses on an image of the good",
             "match": {
               "location": "AddToCartSteps.iShowDetailsOfTheGood()"
@@ -668,10 +638,10 @@
           },
           {
             "result": {
-              "duration": 3967424350,
+              "duration": 2187624171,
               "status": "passed"
             },
-            "line": 81,
+            "line": 76,
             "name": "he sets good\u0027s color to \"Black\"",
             "match": {
               "arguments": [
@@ -686,10 +656,10 @@
           },
           {
             "result": {
-              "duration": 158508959,
+              "duration": 640725390,
               "status": "passed"
             },
-            "line": 82,
+            "line": 77,
             "name": "he sets good\u0027s model to \"For Apple iPhone 6\"",
             "match": {
               "arguments": [
@@ -704,10 +674,10 @@
           },
           {
             "result": {
-              "duration": 326221959,
+              "duration": 352966518,
               "status": "passed"
             },
-            "line": 83,
+            "line": 78,
             "name": "he sets good\u0027s glass screen protector to \"No\"",
             "match": {
               "arguments": [
@@ -722,10 +692,10 @@
           },
           {
             "result": {
-              "duration": 390706580,
+              "duration": 508729665,
               "status": "passed"
             },
-            "line": 84,
+            "line": 79,
             "name": "he presses a button \u0027Add to cart\u0027",
             "match": {
               "location": "AddToCartSteps.iAddGoodToTheCart()"
@@ -734,10 +704,10 @@
           },
           {
             "result": {
-              "duration": 377196939,
+              "duration": 373118465,
               "status": "passed"
             },
-            "line": 85,
+            "line": 80,
             "name": "he presses button \u0027Cart\u0027 to see it\u0027s content",
             "match": {
               "location": "AddToCartSteps.iShowCartContent()"
@@ -746,10 +716,10 @@
           },
           {
             "result": {
-              "duration": 1212399836,
+              "duration": 1080295971,
               "status": "passed"
             },
-            "line": 86,
+            "line": 81,
             "name": "ensure \"Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5\" is not in the cart",
             "match": {
               "arguments": [
@@ -762,27 +732,21 @@
             },
             "keyword": "Then "
           }
-        ],
-        "tags": [
-          {
-            "line": 78,
-            "name": "@tagToIdentifyThatTheGoodHasBeenAddedToTheCartNegative"
-          }
         ]
       },
       {
-        "line": 89,
+        "line": 83,
         "name": "Deleting the Good from the Cart (negative scenario)",
         "description": "",
         "id": "searching,-adding-and-deleting-a-good-from-the-cart;deleting-the-good-from-the-cart-(negative-scenario)",
         "after": [
           {
             "result": {
-              "duration": 365012,
+              "duration": 61244,
               "status": "passed"
             },
             "match": {
-              "location": "DeleteFromTheCartSteps.iTakeScreenshotInCaseOfFailureNegative()"
+              "location": "TakingScreenshots.takeScreenshotInCaseOfFailure(Scenario)"
             }
           }
         ],
@@ -791,10 +755,10 @@
         "steps": [
           {
             "result": {
-              "duration": 2976863214,
+              "duration": 1500711301,
               "status": "passed"
             },
-            "line": 90,
+            "line": 84,
             "name": "he presses button \u0027Save for future\u0027",
             "match": {
               "location": "DeleteFromTheCartSteps.iSaveForFuture()"
@@ -803,10 +767,10 @@
           },
           {
             "result": {
-              "duration": 83989136,
+              "duration": 42542611,
               "status": "passed"
             },
-            "line": 91,
+            "line": 85,
             "name": "ensure \"Luxury Aluminum Ultra-thin Mirror Metal Case Cover for iPhone 5/ 5s/ 6/ 6+ Plus has been saved for later.\" has been successfully removed to \u0027Saved goods\u0027",
             "match": {
               "arguments": [
@@ -821,10 +785,10 @@
           },
           {
             "result": {
-              "duration": 1034908857,
+              "duration": 1025648124,
               "status": "passed"
             },
-            "line": 92,
+            "line": 86,
             "name": "he presses button \u0027Delete the good from the cart\u0027",
             "match": {
               "location": "DeleteFromTheCartSteps.iDeleteFromTheCart()"
@@ -833,10 +797,10 @@
           },
           {
             "result": {
-              "duration": 1047447349,
+              "duration": 1274628592,
               "status": "passed"
             },
-            "line": 93,
+            "line": 87,
             "name": "he presses button \u0027Show the cart\u0027",
             "match": {
               "location": "DeleteFromTheCartSteps.iShowCart()"
@@ -845,10 +809,10 @@
           },
           {
             "result": {
-              "duration": 72127823,
+              "duration": 33530702,
               "status": "passed"
             },
-            "line": 94,
+            "line": 88,
             "name": "ensure \"Your cart is not empty\" his cart doesn\u0027t consist anything",
             "match": {
               "arguments": [
@@ -860,12 +824,6 @@
               "location": "DeleteFromTheCartSteps.iCheckTheCartWithDeletedGoodNegative(String)"
             },
             "keyword": "Then "
-          }
-        ],
-        "tags": [
-          {
-            "line": 88,
-            "name": "@tagToIdentifyThatTheGoodHasBeenSuccessfullyDeletedFromTheCartNegative"
           }
         ]
       }

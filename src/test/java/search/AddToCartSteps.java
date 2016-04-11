@@ -1,19 +1,12 @@
 package search;
 
-import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Created by Mariya_Belemenko on 3/29/2016.
@@ -21,8 +14,6 @@ import java.io.IOException;
 public class AddToCartSteps extends BaseSelenium {
     private static final Logger logger = LogManager.getLogger(AddToCartSteps.class.getName());
     private WorkWithTheCart good = new WorkWithTheCart(driver);
-    private File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-    private int signOfPass = 0;
 
     @Given("^he presses on an image of the good$")
     public void iShowDetailsOfTheGood() {
@@ -61,37 +52,12 @@ public class AddToCartSteps extends BaseSelenium {
     }
 
     @Then("^ensure \"([^\"]*)\" is in the cart$")
-    public void iCheckTheCart(String expectPhrase) throws IOException {
+    public void iCheckTheCart(String expectPhrase) {
         Assert.assertEquals(good.getNameOfTheGood(), expectPhrase);
-        if (good.getNameOfTheGood().equals(expectPhrase)) {
-            signOfPass = 1;
-        }
-    }
-
-    @After("@tagToIdentifyThatTheGoodHasBeenAddedToTheCartPositive")
-    public void iTakeScreenshotInCaseOfFailurePositive() throws IOException {
-        if (signOfPass == 1) {
-            logger.info("The good is in the cart!");
-        } else {
-            logger.info("The good is not in the cart!");
-            FileUtils.copyFile(srcFile, new File("target/screenshots/cartWithTheGood_positive.png"));
-        }
     }
 
     @Then("^ensure \"([^\"]*)\" is not in the cart$")
-    public void iCheckTheCartNegative(String expectPhrase) throws IOException {
+    public void iCheckTheCartNegative(String expectPhrase) {
         Assert.assertNotEquals(good.getNameOfTheGood(), expectPhrase);
-        if (good.getNameOfTheGood().equals(expectPhrase)) {
-            signOfPass = 2;
-        }
-    }
-
-    @After("@tagToIdentifyThatTheGoodHasBeenAddedToTheCartNegative")
-    public void iTakeScreenshotInCaseOfFailureNegative() throws IOException {
-        if (signOfPass != 2) {
-            logger.info("The good is not in the cart!");
-        } else {
-            FileUtils.copyFile(srcFile, new File("target/screenshots/cartWithTheGood_negative.png"));
-        }
     }
 }
