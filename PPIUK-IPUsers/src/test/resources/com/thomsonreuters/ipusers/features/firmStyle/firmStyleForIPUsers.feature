@@ -1,4 +1,4 @@
-@ip @robot
+@robot
 Feature: [780804] FS4 Testing IP users download FS document
   [780805] FS4 Testing Restrict on basis FAC
   [803549] Testing Firm Style direct link

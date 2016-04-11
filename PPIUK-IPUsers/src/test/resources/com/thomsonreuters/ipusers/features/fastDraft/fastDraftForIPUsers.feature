@@ -1,4 +1,3 @@
-@wip@ip
 @e2e
 Feature: [780906] FD5 Testing FD IP users
   [792122] FD17 Testing Form E for IP and OpenWeb users
@@ -6,7 +5,6 @@ Feature: [780906] FD5 Testing FD IP users
 # To be run on QED ONLY
 # This test could be run only on IP mashine which has an access to FS QED d100-infra.dev.practicallaw.com
 # At the moment the issue with accessebility d100 from Iryna Smolina VDI is in progress
-# Court, Jonathan P. (Legal) <Jonathan.Court@thomsonreuters.com> could help to test this manually
 
   Scenario: 
     Given PL+ user is logged in with following details
@@ -25,10 +23,6 @@ Feature: [780906] FD5 Testing FD IP users
     And the user sees Upload button with Upload message
     And the user starts here Form E
     Then the user is redirected to question page for "<document>"
-    And the user goes View Draft
-    And the user exports Form E as editable PDF with changes
-    Then draft file with extension ".pdf" should download to the users machine
-    And the file should be removed
     When the user clicks save new document with project name "Form Exx" and document name "Form Exx"
     And the user goes My projects
     Then the project "<projectName>" presents
@@ -61,10 +55,6 @@ Feature: [780906] FD5 Testing FD IP users
     And the draft message for PA presents
     When the user clicks Start Drafting button
     Then the user is redirected to question page for "<document>"
-    When the user goes View Draft
-    And the user clicks Word document and saves .doc file
-    Then draft file with extension ".doc" should download to the users machine
-    And the file should be removed
     When the user clicks save new document with project name "<projectName>" and document name "<documentName>"
     And the user goes My projects
     Then the project "<projectName>" presents
