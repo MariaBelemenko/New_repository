@@ -146,6 +146,7 @@
                     </includes>
                     <systemPropertyVariables>
                         <base.url>${base.url}</base.url>
+                        <base.legacy.url>${base.legacy.url}</base.legacy.url>
                         <driverType>${driverType}</driverType>
                         <!--<webdriver.chrome.driver>${chromeDriverPath}</webdriver.chrome.driver>-->
                         <!--<webdriver.ie.driver>${ieDriverPath}</webdriver.ie.driver>-->

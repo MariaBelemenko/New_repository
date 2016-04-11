@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber-htmlreport/AskRewriteReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunAskRewriteTest.json"},
-        features = "src/test/resources/com/thomsonreuters/askRewrite/features",
+        features = "src/test/resources/com/thomsonreuters/askRewrite/features/usmanTesting",
         tags = {"~@wip", "~@manual"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
