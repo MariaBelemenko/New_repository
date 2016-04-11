@@ -8,6 +8,7 @@ import java.io.File;
 import java.util.List;
 
 import com.thomsonreuters.pageobjects.common.FileActions;
+import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.StandardDocumentPage;
 import com.thomsonreuters.pageobjects.pages.widgets.CategoryPage;
 import com.thomsonreuters.should.step_definitions.BaseStepDef;
@@ -22,6 +23,7 @@ public class AbilityForPAToDownloadFSDocumentTest extends BaseStepDef {
 
     private CategoryPage categoryPage = new CategoryPage();
     private StandardDocumentPage standardDocumentPage = new StandardDocumentPage();
+    private NavigationCobalt navigationCobalt = new NavigationCobalt();
     private FileActions fileActions = new FileActions();
     
     private final static String DOWNLOADED_FILE_PATH = System.getProperty("user.home") + "/Downloads";
@@ -36,6 +38,12 @@ public class AbilityForPAToDownloadFSDocumentTest extends BaseStepDef {
                 file.delete();
             }
         }
+    }
+    
+    @When("^the user opens (.+) url on plcuk website$")
+    public void theUserOpensUrlOnPLCUKSite(String url) throws Throwable {
+        navigationCobalt.navigateToPLCUKPlusSpecificURL(url);
+        navigationCobalt.waitForPageToLoadAndJQueryProcessingWithCustomTimeOut(90);
     }
     
     @Then("^the file \"([^\"]*)\" should be downloaded to the users machine$")
