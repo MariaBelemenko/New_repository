@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.thomsonreuters.pageobjects.common.FileActions;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
+import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.PracticalLawToolsPage;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.StandardDocumentPage;
 import com.thomsonreuters.pageobjects.pages.widgets.CategoryPage;
 import com.thomsonreuters.should.step_definitions.BaseStepDef;
@@ -18,6 +19,7 @@ import cucumber.api.java.en.When;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
+import org.assertj.core.api.SoftAssertions;
 
 public class AbilityForPAToDownloadFSDocumentTest extends BaseStepDef {
 
@@ -25,6 +27,7 @@ public class AbilityForPAToDownloadFSDocumentTest extends BaseStepDef {
     private StandardDocumentPage standardDocumentPage = new StandardDocumentPage();
     private NavigationCobalt navigationCobalt = new NavigationCobalt();
     private FileActions fileActions = new FileActions();
+    private PracticalLawToolsPage practicalLawToolsPage = new PracticalLawToolsPage();
     
     private final static String DOWNLOADED_FILE_PATH = System.getProperty("user.home") + "/Downloads";
     private File downloadedFile = null;
@@ -93,4 +96,20 @@ public class AbilityForPAToDownloadFSDocumentTest extends BaseStepDef {
 		standardDocumentPage.homePage().click();
 		standardDocumentPage.waitForPageToLoad();
 	}
+	
+    @Then("^Firm Style Tools page is displayed$")
+    public void checkToolsPageDisplayed() throws Throwable {
+        practicalLawToolsPage.waitForPageToLoad();
+        String learnMoreLink = "/About/PracticalLawTools";
+        String currentUrl = getDriver().getCurrentUrl();
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(currentUrl.contains(learnMoreLink))
+                .overridingErrorMessage(
+                        "Expected current URL contains link '" + learnMoreLink + "', current is '" + currentUrl + "'")
+                .isTrue();
+        softly.assertThat(practicalLawToolsPage.isFirmStyleTabActive())
+                .overridingErrorMessage("Firmstyle tab is not active").isTrue();
+        softly.assertAll();
+    }
+    
 }
