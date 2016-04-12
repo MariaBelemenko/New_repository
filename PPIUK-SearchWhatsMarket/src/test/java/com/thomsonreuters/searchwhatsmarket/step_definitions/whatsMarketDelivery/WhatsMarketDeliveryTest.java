@@ -70,9 +70,8 @@ public class WhatsMarketDeliveryTest extends BaseStepDef {
     @When("^the user verifies that the results list page is displayed$")
     public void theUserVerifiesThatTheResultsListPageIsDisplayed() throws Throwable {
 		SoftAssertions softly = new SoftAssertions();
-     softly.assertThat(searchResultsPage.resultsListHeader().isDisplayed()).isTrue();
-     softly.assertThat(searchResultsPage.filterHeader().isDisplayed()).isTrue();
-     softly.assertAll();
+        softly.assertThat(searchResultsPage.resultsListHeader().isDisplayed()).isTrue();
+        softly.assertAll();
     }
 
     @When("^the user selects the checkbox associated with whats market result \"([^\"]*)\"$")
