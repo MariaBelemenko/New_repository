@@ -18,6 +18,7 @@ import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.WhatsMarketSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.widgets.CategoryPage;
+import com.thomsonreuters.pageobjects.rest.FolderBaseUtils;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -52,6 +53,7 @@ public class FrontEndCommonSteps extends BaseStepDef {
     private OnePassLogoutPage onePassLogoutPage = new OnePassLogoutPage();
     private AskResourcePage askResourcePage = new AskResourcePage();
     private PracticalLawUKCategoryPage practicalLawUKCategoryPage = new PracticalLawUKCategoryPage();
+    private FolderBaseUtils folderBaseUtils = new FolderBaseUtils();
 
     private String favGroupName = null;
 
@@ -431,6 +433,11 @@ public class FrontEndCommonSteps extends BaseStepDef {
         } else {
             practicalLawUKCategoryPage.freeTextField().sendKeys(Keys.ENTER);
         }
+    }
+
+    @When("^the user deletes the start page$")
+    public void deleteStartPage() {
+        folderBaseUtils.deleteStartPage();
     }
 
 }

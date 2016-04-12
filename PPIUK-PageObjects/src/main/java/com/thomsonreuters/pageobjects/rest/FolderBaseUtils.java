@@ -14,7 +14,11 @@ public class FolderBaseUtils {
     public void doSuperDelete() {
         restService.deleteDoSuperDelete();
     }
-    
+
+    public void deleteStartPage() {
+        restService.deleteStartPage();
+    }
+
     @Deprecated
     public void wlnDoSuperDelete() {
         restService.wlnDeleteDoSuperDelete();

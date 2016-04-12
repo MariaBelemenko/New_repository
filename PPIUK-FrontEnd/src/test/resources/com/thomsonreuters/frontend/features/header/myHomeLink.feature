@@ -3,6 +3,7 @@ Feature: As a PL+ user I want the My Home link or button to appear if the user h
 
   Scenario: User verifies My Home link gets appeared and funcitonal.
     Given PL+ user is logged in
+    And the user deletes the start page
     When the user clicks link 'Commercial' on 'the home' page
     Then the user verifies that the current PageTitle contains 'Commercial'
     And user clicks the Home Icon to make it as Start Page

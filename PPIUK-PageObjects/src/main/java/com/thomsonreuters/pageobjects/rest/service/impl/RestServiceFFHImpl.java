@@ -3,6 +3,7 @@ package com.thomsonreuters.pageobjects.rest.service.impl;
 import com.thomsonreuters.pageobjects.rest.auth.UDSCredentials;
 import com.thomsonreuters.pageobjects.rest.model.response.Folder;
 import com.thomsonreuters.pageobjects.rest.model.response.FolderCreationResponse;
+import com.thomsonreuters.pageobjects.rest.model.response.StartPageDeleteResponse;
 import com.thomsonreuters.pageobjects.rest.model.response.SuperDeleteResponse;
 import com.thomsonreuters.pageobjects.rest.service.RestService;
 import org.springframework.http.HttpEntity;
@@ -64,6 +65,23 @@ public class RestServiceFFHImpl extends RestServiceImpl implements RestService {
 		LOG.info("Super delete response '" + response.getBody() + "'");
 		return response.getBody();
 	}
+
+    /**
+     * Delete category page that was marked as start for the user
+     *
+     * @return StartPageDeleteResponse
+     */
+	public StartPageDeleteResponse deleteStartPage() {
+        HttpHeaders httpHeaders = configureHeaders();
+        String baseURL = getCurrentBaseUrl();
+        String userName = getUserName();
+        HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
+        String requestTo = getProtocol() + baseURL + "/" + "Foldering/v1/" + userName + "/categoryPage/startPage";
+        LOG.info("Delete start page REQUEST '" + requestEntity.toString() + "', TO: " + requestTo);
+        HttpEntity<StartPageDeleteResponse> response = getRestTemplate().exchange(requestTo, HttpMethod.DELETE, requestEntity, StartPageDeleteResponse.class);
+        LOG.info("Delete start page RESPONSE '" + response.getBody() + "'");
+        return response.getBody();
+    }
 
 	/**
 	 * This method delete all folders and history for user DELETE request to
