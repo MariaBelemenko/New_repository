@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>Search and Browse Phase 2</groupId>
-    <artifactId>Search and Browse Phase 2</artifactId>
+    <groupId>ppiuk-searchandbrowse</groupId>
+    <artifactId>ppiuk-searchandbrowse</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <description>Search and Browse Phase 2</description>
+    <description>PPI UK Search and Browse Phase 2</description>
 
     <properties>
         <surefire.fork.count>10</surefire.fork.count>
