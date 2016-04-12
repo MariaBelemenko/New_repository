@@ -10,7 +10,7 @@ Feature: [780906] FD5 Testing FD IP users
     Given PL+ user is logged in with following details
       | routing          | FAST_DRAFT_IP_USERS |
       | mandatoryRouting | YES                 |
-    When the user navigates to the main PLCUK page
+    When the user come back on to Home page
     And the user opens "Family" link
     And the user opens Form E page
     Then the user sees Log in as single user button with Sign On message
@@ -38,7 +38,7 @@ Feature: [780906] FD5 Testing FD IP users
       | routing          | FAST_DRAFT_IP_USERS |
       | mandatoryRouting | YES                 |
     Then My FastDraft link absents in the header
-    When the user navigates to the main PLCUK page
+    When the user come back on to Home page
     And the user opens 'Resources' link
     And the user opens 'Standard documents and drafting notes' link
     And the user opens "<practiceArea>" link

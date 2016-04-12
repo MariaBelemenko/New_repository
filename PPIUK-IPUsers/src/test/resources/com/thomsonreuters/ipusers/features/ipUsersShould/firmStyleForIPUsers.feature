@@ -6,7 +6,7 @@ Feature: [780805] FS4 Testing Restrict on basis FAC
     Given PL+ user is logged in with following details
       | routing          | FIRM_STYLE_IP_USERS_NO_FAC |
       | mandatoryRouting | YES                        |
-    When the user navigates to the main PLCUK page
+    When the user come back on to Home page
     And the user opens 'Resources' link
     And the user opens 'Standard documents and drafting notes' link
     And the user opens "<practiceArea>" link
@@ -24,7 +24,7 @@ Feature: [780805] FS4 Testing Restrict on basis FAC
     Given PL+ user is logged in with following details
       | routing          | FIRM_STYLE_IP_USERS_NO_FAC |
       | mandatoryRouting | YES                        |
-    When the user navigates to the main PLCUK page
+    When the user come back on to Home page
     And the user opens 'Resources' link
     And the user opens 'Standard clauses and drafting notes' link
     And the user opens "<practiceArea>" link

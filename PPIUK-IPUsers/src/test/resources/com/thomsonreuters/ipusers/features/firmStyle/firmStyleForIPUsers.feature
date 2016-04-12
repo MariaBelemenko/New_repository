@@ -12,7 +12,7 @@ Feature: [780804] FS4 Testing IP users download FS document
     Given PL+ user is logged in with following details
       | routing          | FIRM_STYLE_IP_USERS |
       | mandatoryRouting | YES                 |
-    When the user navigates to the main PLCUK page
+    When the user come back on to Home page
     And the user deletes all files with name ".fs" and extension ".doc" from Downloads
     And the user opens 'Resources' link
     And the user opens 'Standard documents and drafting notes' link
@@ -34,7 +34,7 @@ Feature: [780804] FS4 Testing IP users download FS document
     Given PL+ user is logged in with following details
       | routing          | FIRM_STYLE_IP_USERS |
       | mandatoryRouting | YES                 |
-    When the user navigates to the main PLCUK page
+    When the user come back on to Home page
     And the user deletes all files with name ".fs" and extension ".doc" from Downloads
     And the user opens 'Resources' link
     And the user opens 'Standard clauses and drafting notes' link
