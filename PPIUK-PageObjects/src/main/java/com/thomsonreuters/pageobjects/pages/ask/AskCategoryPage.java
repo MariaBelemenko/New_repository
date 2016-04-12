@@ -161,4 +161,9 @@ public class AskCategoryPage extends AbstractPage {
         }
         return links;
     }
+
+    public WebElement getFeaturedQuery(String queryLinkText) {
+        return waitForExpectedElement(By.xpath("//div[contains(@class, 'expandedState')]//a[contains(., '" + queryLinkText + "')]"));
+    }
 }
+

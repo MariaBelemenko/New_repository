@@ -31,7 +31,7 @@ public class AskQueriesTest extends BaseStepDef {
 
     @And("^the ask featured queries section have question '(.*)'$")
     public void theAskFeaturedQueriesSectionHaveQuestion(String text) throws Throwable {
-        assertThat("Featured question is Not displayed", askCategoryPage.askFeaturedQueriesQuestText().getText().replaceAll("\\n", ""), containsString(text.replaceAll("\\\\n", "")));
+        assertThat("Featured question is Not displayed", askCategoryPage.getFeaturedQuery(text).isDisplayed());
     }
 
     @Then("^features queries is selected by default$")
