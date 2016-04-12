@@ -35,15 +35,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.thomsonreuters.framework</groupId>
-            <artifactId>TR-Test-Automation-Framework</artifactId>
-            <version>1.5</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.thomsonreuters.driver</groupId>
             <artifactId>TR-Test-Automation-Driver</artifactId>
             <version>2.17</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.thomsonreuters.dependencies</groupId>
+            <artifactId>Test-Automation-Dependencies</artifactId>
+            <version>1.0</version>
         </dependency>
     </dependencies>
 </project>
