@@ -1,10 +1,8 @@
 package com.thomsonreuters.askRewrite.pages;
 
-
 import com.thomsonreuters.driver.framework.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.springframework.stereotype.Component;
 
 public class PLCHomePageUK extends AbstractPage {
 

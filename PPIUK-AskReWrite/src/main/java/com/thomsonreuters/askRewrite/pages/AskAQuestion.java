@@ -1,12 +1,10 @@
 package com.thomsonreuters.askRewrite.pages;
 
-
 import com.thomsonreuters.driver.framework.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
-
 
 public class AskAQuestion extends AbstractPage {
 
@@ -47,15 +45,12 @@ public class AskAQuestion extends AbstractPage {
     }
 
     public WebElement closeButton() {
-//       return waitForExpectedElement(By.cssSelector("div[id='#askForm'] button"));
         return waitForExpectedElement(By.cssSelector("button"));
     }
-
 
     public List<WebElement> errorFields() {
         return waitForExpectedElements(By.cssSelector("fieldset[class='plc-form'] span[class='msg-error']"));
     }
-
 
     public WebElement jurisdictionListBox() {
         return waitForExpectedElement(By.id("jurisdiction"));
@@ -73,7 +68,6 @@ public class AskAQuestion extends AbstractPage {
         return waitForExpectedElement(By.id("answeringService"));
     }
 
-
     public WebElement askDisclaimerCheckbox() {
         return waitForExpectedElement(By.id("disclaimerRead1"));
     }
@@ -89,4 +83,5 @@ public class AskAQuestion extends AbstractPage {
     public WebElement askCloseButton() {
         return waitForExpectedElement(By.xpath("//button"));
     }
+
 }
