@@ -1,6 +1,7 @@
 package com.thomsonreuters.searchknowhow.step_definitions.knowHowFacets;
 
 import com.thomsonreuters.pageobjects.common.CommonMethods;
+import com.thomsonreuters.pageobjects.common.PageActions;
 import com.thomsonreuters.pageobjects.common.SortOptions;
 import com.thomsonreuters.pageobjects.pages.search.CasesSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
@@ -15,6 +16,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import junit.framework.Assert;
+import org.openqa.selenium.Keys;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -35,6 +37,7 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
     public Map<String,String> facetsInputMap;
     Integer[] resultArray = new Integer[10];
     private int facetsDocsCount = 0;
+    private PageActions pageActions = new PageActions();
 
     @Then("^the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is$")
     public void theUserIsAbleToCheckWhetherTheOptionToApplyFiltersIsDisplayedAndIfNotToEnsureThatItIs() {
@@ -280,7 +283,7 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
     @When("^the user searches for \"(.*?)\"$")
     public void searchFor(String searchQuery) {
         searchHomePage.enterSearchText(searchQuery);
-        searchHomePage.searchButton().click();
+        pageActions.keyPress(Keys.ENTER);
         searchHomePage.waitForPageToLoad();
         searchHomePage.waitForPageToLoadAndJQueryProcessing();
     }
