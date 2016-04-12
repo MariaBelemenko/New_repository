@@ -34,7 +34,7 @@ Feature: [706631][702181][702209][702202][713886][702199]
     | query    |
     | taxation |
 
-  Scenario:[702209] user verifies when perform a search then search results are returned and displayed with pagination
+  Scenario: [702209] user verifies when perform a search then search results are returned and displayed with pagination
     And the user runs a free text search for the query "contract"
     And the user is able to verify the presence of page number "2"
     And the user is able to select the link to the next page
@@ -58,6 +58,22 @@ Feature: [706631][702181][702209][702202][713886][702199]
   Examples:
     | query    | rank | highlightedTerm |
     | contract | 1    | contract        |
+#@wip need be removed after release (9 may)
+@wip
+  Scenario Outline:[800157] As a PL+ user, I will able to deselect highlighting of a search term on the document page.
+    When the user runs a free text search for the query "<query>"
+  	When the user clicks on "<query>" link
+    Then the user is able to verify that the search term "<highlightedTerm>" is highlighted in opened document
+    And the highlight checkbox is selected
+    When the user deselect highlight checkbox
+    Then the user is able to verify that the search term "<highlightedTerm>" is not highlighted in opened document
+    When the user clicks on "<link>" link
+    And the user navigates back
+    Then the highlight checkbox is deselected
+    And the user is able to verify that the search term "<highlightedTerm>" is not highlighted in opened document
+  Examples:
+    | query    							 |highlightedTerm 		| link |
+    | Private client legislation tracker |legislation        	|Practical Law Tax legislation trackers|  
 
   Scenario Outline:[713886] Verify text displayed following an unsuccessful search
     When the user runs a free text search for the query "<query>"

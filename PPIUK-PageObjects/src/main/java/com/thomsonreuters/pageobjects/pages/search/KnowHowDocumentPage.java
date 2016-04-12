@@ -106,5 +106,19 @@ public class KnowHowDocumentPage extends CommonDocumentPage {
     public WebElement tableOfContentLeftHandTable() {
         return waitForExpectedElement(By.xpath("//div[@class='kh_toc-header']"), 15);
     }
+    
+    public boolean isSearchTermHighlighted(String highlightedTerm) {
+        return isElementPresent(By.xpath("//div[(@id='co_document')]//span[text()='" + highlightedTerm + "' and @class='co_searchTerm']"));
+    }
+    
+    public WebElement highlightedOptionCheckbox() {
+    	return waitForExpectedElement(By.xpath("//input[@id='co_showHideSearchTerm']"));
+    }    
+    
+    public boolean isHighlightedOptionCheckboxSelected(){
+    	return highlightedOptionCheckbox().isSelected();
+    }
+    
+
 
 }

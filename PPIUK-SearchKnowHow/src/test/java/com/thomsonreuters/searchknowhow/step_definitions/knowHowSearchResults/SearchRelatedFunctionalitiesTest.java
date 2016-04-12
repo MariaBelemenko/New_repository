@@ -1,11 +1,14 @@
 package com.thomsonreuters.searchknowhow.step_definitions.knowHowSearchResults;
 
+import com.thomsonreuters.pageobjects.common.CommonMethods;
+import com.thomsonreuters.pageobjects.pages.search.KnowHowDocumentPage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
 import java.text.SimpleDateFormat;
@@ -18,6 +21,8 @@ public class SearchRelatedFunctionalitiesTest extends BaseStepDef {
 
     private KnowHowSearchResultsPage knowHowSearchResultsPage = new KnowHowSearchResultsPage();
     private SearchResultsPage searchResultsPage = new SearchResultsPage();
+    private KnowHowDocumentPage knowHowDocumentPage = new KnowHowDocumentPage();
+    private CommonMethods commonMethods = new CommonMethods();
 
     @When("^the user is able to verify that sample results contain a date in the \"([^\"]*)\" format$")
     public void theUserIsAbleToVerifyThatSampleResultsContainADateInTheDDMMMYYYYFormat(String dateformat) throws Throwable {
@@ -67,6 +72,18 @@ public class SearchRelatedFunctionalitiesTest extends BaseStepDef {
         searchResultsPage.highlightedSearchTerm(rank, highlightedTerm).isDisplayed();
     }
 
+    @Then("^the user is able to verify that the search term \"([^\"]*)\" is highlighted in opened document$")
+    public void theUserIsAbleToVerifyThatTheSearchTermIsHighlighted(String highlightedTerm) throws Throwable {
+    	knowHowDocumentPage.waitForPageToLoadAndJQueryProcessing();
+    	assertTrue("There are no highliighted search terms in document",knowHowDocumentPage.isSearchTermHighlighted(highlightedTerm));
+    }
+    
+    @Then("^the user is able to verify that the search term \"([^\"]*)\" is not highlighted in opened document$")
+    public void theUserIsAbleToVerifyThatTheSearchTermIsNotHighlightedInOpenedDocument(String highlightedTerm) throws Throwable {
+    	knowHowDocumentPage.waitForPageToLoadAndJQueryProcessing();
+    	Assert.assertFalse("Search terms are highlighted in document",knowHowDocumentPage.isSearchTermHighlighted(highlightedTerm));
+    }
+    
     @When("^the user can verify the presence of the text No Documents Found$")
     public void theUserCanVerifyThePresenceOfTheTextNoDocumentsFound() throws Throwable {
         searchResultsPage.noDocumentsFoundText().isDisplayed();
@@ -93,5 +110,34 @@ public class SearchRelatedFunctionalitiesTest extends BaseStepDef {
     public void theUserIsAbleToVerifyThatTheFreeTextFieldNowContainsTheTerm(String arg1) throws Throwable {
         assertTrue(searchResultsPage.freeTextSearchField().getAttribute("value").equals(arg1));
     }
+    
+    @When("^the user clicks on \"(.*?)\" link$")
+    public void theUserClicksOnLink(String linkText) {
+        commonMethods.clickLink(linkText);
+        commonMethods.waitForPageToLoadAndJQueryProcessing();
+    }
+
+    @Then("^the highlight checkbox is selected$")
+    public void highlightCheckboxIsSelected() throws Throwable {
+        assertTrue("Highlight checkbox is not selected",knowHowDocumentPage.isHighlightedOptionCheckboxSelected());
+    }
+    
+    @Then("^the highlight checkbox is deselected$")
+    public void highlightCheckboxIsDeselected() throws Throwable {
+    	Assert.assertFalse("Highlight checkbox is selected",knowHowDocumentPage.isHighlightedOptionCheckboxSelected());
+    }
+
+    @When("^the user deselect highlight checkbox$")
+    public void userSelectHighlightCheckbox() throws Throwable {
+    	knowHowDocumentPage.highlightedOptionCheckbox().click();
+    }
+
+
+
+    @When("^the user navigates back$")
+    public void theUserNavigatesBack() throws Throwable {
+    	searchResultsPage.browserGoBack();
+    }
+
 
 }
