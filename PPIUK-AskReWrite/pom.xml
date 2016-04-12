@@ -38,10 +38,37 @@
         </profile>
 
         <profile>
+            <id>D100</id>
+            <properties>
+                <base.legacy.url>100</base.legacy.url>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>D102</id>
+            <properties>
+                <base.legacy.url>102</base.legacy.url>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>D120</id>
+            <properties>
+                <base.legacy.url>120</base.legacy.url>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>D07</id>
+            <properties>
+                <base.legacy.url>07</base.legacy.url>
+            </properties>
+        </profile>
+
+        <profile>
             <id>CI</id>
             <properties>
                 <base.url>ci</base.url>
-                <base.legacy.url>102</base.legacy.url>
             </properties>
         </profile>
 
@@ -57,7 +84,6 @@
             <id>QED</id>
             <properties>
                 <base.url>qed</base.url>
-                <base.legacy.url>120</base.legacy.url>
             </properties>
         </profile>
 
@@ -65,7 +91,6 @@
             <id>HOTPROD</id>
             <properties>
                 <base.url>hotprod</base.url>
-                <base.legacy.url></base.legacy.url>
             </properties>
         </profile>
 
@@ -73,7 +98,6 @@
             <id>PROD</id>
             <properties>
                 <base.url>prod</base.url>
-                <base.legacy.url></base.legacy.url>
             </properties>
         </profile>
 
@@ -81,7 +105,6 @@
             <id>PRODA</id>
             <properties>
                 <base.url>prodA</base.url>
-                <base.legacy.url></base.legacy.url>
             </properties>
         </profile>
 
@@ -89,7 +112,6 @@
             <id>PRODB</id>
             <properties>
                 <base.url>prodB</base.url>
-                <base.legacy.url></base.legacy.url>
             </properties>
         </profile>
 
