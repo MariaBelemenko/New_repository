@@ -2,7 +2,7 @@ Feature: [706076;706104;779830] As a User, I want to see a new view in the PLCUK
 
   Scenario: [706093;706104] See a header on the legal update results page.
     Given PL+ user is logged in
-    And a user is on a legal updates results page "/Browse/Home/Resources/LegalUpdates/UKMediaTelecomsLegalUpdates"
+    And a user is on a legal updates results page "/LegalUpdates/Practice/1-509-3753"
     Then the user should be able to see a header on the page
     And the header should contain the '3' UI features listed in the description
       | //ol[@id='co_navigationPages'] |
