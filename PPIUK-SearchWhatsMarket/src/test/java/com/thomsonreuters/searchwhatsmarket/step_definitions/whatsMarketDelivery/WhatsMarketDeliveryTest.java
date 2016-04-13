@@ -70,6 +70,7 @@ public class WhatsMarketDeliveryTest extends BaseStepDef {
     @When("^the user verifies that the results list page is displayed$")
     public void theUserVerifiesThatTheResultsListPageIsDisplayed() throws Throwable {
 		SoftAssertions softly = new SoftAssertions();
+        searchResultsPage.waitForPageToLoadAndJQueryProcessing();
         softly.assertThat(searchResultsPage.resultsListHeader().isDisplayed()).isTrue();
         softly.assertAll();
     }

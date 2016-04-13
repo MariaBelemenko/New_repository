@@ -12,6 +12,7 @@ import com.thomsonreuters.pageobjects.pages.search.WhatsMarketSearchResultsPage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -97,16 +98,10 @@ public class OpenWebAndSubscriptionTest extends BaseStepDef {
 
     @When("^the user verifies that the results list page is displayed$")
     public void theUserVerifiesThatTheResultsListPageIsDisplayed() throws Throwable {
-        /**A robot to allow a pause for the page to refresh*/
-        Robot robot = new Robot();
-        /**Wait 5 seconds*/
-        robot.delay(5000);
-        try {
-            searchResultsPage.resultsListHeader().isDisplayed();
-            searchResultsPage.filterHeader().isDisplayed();
-        } catch (Exception e) {
-            LOG.error("Search results page is NOT displayed. Something has gone wrong!");
-        }
+        SoftAssertions softly = new SoftAssertions();
+        searchResultsPage.waitForPageToLoadAndJQueryProcessing();
+        softly.assertThat(searchResultsPage.resultsListHeader().isDisplayed()).isTrue();
+        softly.assertAll();
     }
 
     @Then("^the user can open the first know how search result \"(.*)\"$")
