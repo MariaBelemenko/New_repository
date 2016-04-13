@@ -170,7 +170,7 @@ public class WLNHeader extends AbstractPage {
     }
 
     public WebElement browseMenuButton() {
-        return waitForExpectedElement(By.id("browseMenu"));
+        return waitForExpectedElement(By.id("browseMenu"),10);
     }
 
     public WebElement browseMenuPopup() {

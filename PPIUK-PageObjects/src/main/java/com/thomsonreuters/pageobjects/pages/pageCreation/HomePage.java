@@ -9,6 +9,21 @@ import java.util.List;
 
 public class HomePage extends AbstractPage {
 
+    public WebElement browseMenuPopUp() {
+
+        return waitForExpectedElement(By.xpath("//div[@class='browseMenu_container']"),5);
+    }
+
+    public WebElement browseMenuLink(String linkText) {
+
+        return waitForExpectedElement(By.xpath("//span[@class='co_floatLeft'][text()='" + linkText + "']/parent::a"),10);
+    }
+
+    public WebElement menuColumnLink(String linkText) {
+
+        return waitForExpectedElement(By.xpath("//div[@id='menu-item-children']//a[text()='" + linkText + "']"),10);
+    }
+
     public WebElement practiceAreasTab() {
         return findElement(By.id("coid_categoryTab1_main_0"));
     }
@@ -74,10 +89,6 @@ public class HomePage extends AbstractPage {
         return paWebLinks;
     }
 
-    private List<WebElement> getPracticeAreasWebElementLinksInBrowseMenu() {
-        return mergeTwoWebElementList(By.cssSelector("div[id='Practice areas0'] ul li a"), By.cssSelector("div[id='Practice areas1'] ul li a"));
-    }
-
     public List<String> getPracticeAreasLinks() {
         return getOnlyLinkNamesFromWebElementList(getPracticeAreasWebElementLinks());
     }
@@ -90,10 +101,26 @@ public class HomePage extends AbstractPage {
         return getOnlyLinkNamesFromWebElementList(getPracticeAreasWebElementLinksInBrowseMenu());
     }
 
+    public List<String> getLinksInBrowseMenu(String subMenuLink) {
+        return getOnlyLinkNamesFromWebElementList(getWebElementLinksInBrowseMenu(subMenuLink));
+    }
+    private List<WebElement> getPracticeAreasWebElementLinksInBrowseMenu() {
+        //return mergeTwoWebElementList(By.cssSelector("div[id='Practice areas0'] ul li a"), By.cssSelector("div[id='Practice areas1'] ul li a"));
+        return waitForExpectedElements(By.xpath("//li[@id='Practice areas']//a"),10);
+    }
+
+    private List<WebElement> getWebElementLinksInBrowseMenu(String subMenuLink) {
+        //return mergeTwoWebElementList(By.cssSelector("div[id='Practice areas0'] ul li a"), By.cssSelector("div[id='Practice areas1'] ul li a"));
+        return waitForExpectedElements(By.xpath("//li[@id='" + subMenuLink + "']//a"),10);
+    }
+
     private List<String> getOnlyLinkNamesFromWebElementList(List<WebElement> elementList) {
+        String currentLink;
         List<String> links = new ArrayList<String>();
         for (WebElement webElementLink : elementList) {
-            links.add(webElementLink.getText());
+            currentLink = webElementLink.getText();
+            //System.out.println("The menu contains the link: " + currentLink);
+            links.add(currentLink);
         }
         return links;
     }

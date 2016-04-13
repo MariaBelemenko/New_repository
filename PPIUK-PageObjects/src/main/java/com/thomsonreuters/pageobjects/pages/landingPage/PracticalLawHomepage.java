@@ -29,8 +29,8 @@ public class PracticalLawHomepage extends AbstractPage {
         return waitForExpectedElement(By.linkText("United Kingdom"));
     }
 
-    public WebElement practiceAreaLink(String practicearea) {
-        return waitForExpectedElement(By.xpath("//div[@id='coid_website_browseMainColumn']/div[2]//a[contains(text(),'" + practicearea + "')]"));
+    public WebElement practiceAreaLink(String practiceArea) {
+        return waitForExpectedElement(By.xpath("//div[@id='coid_website_browseMainColumn']/div[2]//a[contains(text(),'" + practiceArea + "')]"));
     }
 
     public WebElement legalUpdatesContentLink() {

@@ -2,17 +2,21 @@ package com.thomsonreuters.pagecreation.step_definitions.homePage;
 
 import com.thomsonreuters.pagecreation.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.common.CommonMethods;
+import com.thomsonreuters.pageobjects.common.PageActions;
 import com.thomsonreuters.pageobjects.otherPages.GlossaryPage;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.otherPages.PLCLegacyBooksPage;
+import com.thomsonreuters.pageobjects.pages.generic.PPIGenericDocDisplay;
 import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawHomepage;
 import com.thomsonreuters.pageobjects.pages.pageCreation.HomePage;
+import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.pageobjects.utils.document.StandardDocumentUtils;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.assertj.core.api.BooleanArrayAssert;
 import org.assertj.core.api.SoftAssertions;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.By;
@@ -26,15 +30,15 @@ import static org.junit.Assert.assertTrue;
 
 public class HomePageSteps extends BaseStepDef{
 
-    private HomePage homePage;
-    private NavigationCobalt navigationCobalt;
-    private PracticalLawHomepage plcHomePage;
-    private WLNHeader wlnHeader;
-    private CommonMethods comMethods;
-    private StandardDocumentUtils standardDocumentUtils;
-    private GlossaryPage glossaryPage;
-    private PLCLegacyBooksPage plcLegacyBooksPage;
-    private RemoteWebDriver getDriver;
+    private NavigationCobalt navigationCobalt = new NavigationCobalt();
+    private PracticalLawHomepage plcHomePage = new PracticalLawHomepage();
+    private HomePage homePage = new HomePage();
+    private WLNHeader wlnHeader = new WLNHeader();
+    private StandardDocumentUtils standardDocumentUtils = new StandardDocumentUtils();
+    private PageActions pageActions = new PageActions();
+    private CommonMethods commonMethods = new CommonMethods();
+    private PPIGenericDocDisplay ppiGenericDocDisplay = new PPIGenericDocDisplay();
+    //private RemoteWebDriver getDriver;
 
     public HomePageSteps() {
         wlnHeader = new WLNHeader();
@@ -176,12 +180,41 @@ public class HomePageSteps extends BaseStepDef{
         }
     }
 
+    @Then("^the user clicks through the \"(.*?)\" links that are displayed in the 'Browse Menu' on the Home Page$")
+    public void theUserClicksThroughThePracticeAreasLinksThatAreDisplayedInTheBrowseMenuOnTheHomePage(String subMenuLink, List<String> links) throws Throwable {
+        Boolean isMenuDisplayed = false;
+        String pageTitle = "";
+        try{
+            homePage.browseMenuPopUp().isDisplayed();
+            isMenuDisplayed = true;
+        }catch (Exception e){}
+
+        if (!isMenuDisplayed) {
+            wlnHeader.browseMenuButton().click();
+        }
+
+        homePage.browseMenuLink(subMenuLink).click();
+
+        List<String> linksRetrieved = homePage.getLinksInBrowseMenu(subMenuLink);
+        System.out.println("...Found " + Integer.toString(homePage.getLinksInBrowseMenu(subMenuLink).size()) + " links");
+        for (String link : links) {
+            System.out.println("The current link being checked is: " + link);
+            assertTrue("The '" + subMenuLink + "' link " + link + " is NOT displayed in Browse Menu", linksRetrieved.contains(link));
+            homePage.browseMenuLink(subMenuLink).click();
+            homePage.menuColumnLink(link).click();
+            pageTitle = ppiGenericDocDisplay.searchPageLabel().getText();
+            assertTrue(link.toLowerCase().contains(pageTitle.toLowerCase()));
+            commonMethods.browserGoBack();
+            wlnHeader.browseMenuButton().click();
+        }
+    }
+
     @When("^the user '(is|is not)' presented with the cookie consent message$")
     public void theUserIsPresentedWithTheCookieConsentMessage(String arg1) throws Throwable {
         if (arg1.equalsIgnoreCase("is")) {
             assertTrue(plcHomePage.cookieConsentMessage().isDisplayed());
         } else if (arg1.equalsIgnoreCase("is not")) {
-            List<WebElement> cookieMessage = getDriver.findElements(By.id("CookieConsentMessage"));
+            List<WebElement> cookieMessage = getDriver().findElements(By.id("CookieConsentMessage"));
             assertTrue(cookieMessage.isEmpty());
         }
     }
