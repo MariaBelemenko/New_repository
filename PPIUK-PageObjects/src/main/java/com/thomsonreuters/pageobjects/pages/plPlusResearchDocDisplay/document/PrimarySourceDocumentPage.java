@@ -21,7 +21,7 @@ public class PrimarySourceDocumentPage extends DocumentDisplayAbstractPage {
 	}
 
 	public WebElement legislationLink(String legislationLinkText) {
-		return retryingFindElement(By.linkText(legislationLinkText));
+		return waitForExpectedElement(By.linkText(legislationLinkText));
 	}
 
 	public WebElement justiceLink(String justiceLinkText) {

@@ -8,6 +8,7 @@ import com.thomsonreuters.pageobjects.utils.plPlusResearchDocDisplay.AssetPageUt
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.hamcrest.core.Is;
+import org.openqa.selenium.NoSuchElementException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertFalse;
@@ -38,7 +39,7 @@ public class PrimarySourcePgLegGovUKLinkTest extends BaseStepDef {
 		try {
 			assertFalse("The user see links to Legislation",
 					primarySourceDocumentPage.legislationLink(legislationLinkText).isDisplayed());
-		} catch (PageOperationException poe) {
+		} catch (PageOperationException | NoSuchElementException poe) {
 			LOG.info("context", poe);
 		}
 	}
