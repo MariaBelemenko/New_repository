@@ -152,11 +152,6 @@ public class ProdAssetPagesTest extends BaseStepDef {
                 assetPageUtils.isTheUserTakenToTheSelectedResource(linkText));
     }
 
-    @Then("^the user can open the first know how search result \"(.*)\"$")
-    public void theUserCanOpenTheFirstKnowHowSearchResult(String arg1) throws Throwable {
-        knowHowSearchResultsPage.knowHowSearchResultTitle(arg1).click();
-    }
-
     @Then("^the user see link to \"(.*?)\" Westlaw UK$")
     public void theUserSeeLinkToWestlawUK(String westlawUkLinkText) throws Throwable {
         assertTrue("The user doesn't see link to westlawUk",
