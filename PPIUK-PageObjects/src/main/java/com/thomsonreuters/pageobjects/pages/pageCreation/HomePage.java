@@ -263,4 +263,15 @@ public class HomePage extends AbstractPage {
     public WebElement legacyPLCountryTitle(String country) {
         return waitAndFindElement(By.xpath("//div[@class='page-heading']//h1[normalize-space(text())='" + country + "']"));
     }
+
+    /**
+     * Get link from currently active tab (Practice Area, Resource, ...)
+     *
+     * @param linkText Link text
+     * @return Element with expected link
+     */
+    public WebElement getActiveTabLink(String linkText) {
+        return waitForExpectedElement(
+                By.xpath("//div[contains(@class, 'categoryBoxTabContents')]//div[contains(@class, 'Show')]//a[contains(., '" + linkText + "')]"));
+    }
 }

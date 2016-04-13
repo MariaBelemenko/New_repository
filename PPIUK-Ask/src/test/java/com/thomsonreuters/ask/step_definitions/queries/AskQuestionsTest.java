@@ -15,10 +15,10 @@ public class AskQuestionsTest extends BaseStepDef {
 
     @When("^the user clicks category link '(.*)'and topic link '(.*)' on '(.*)' page$")
     public void theUserClicksCategoryAndTopicLinkOnPage(String link, String topicLink, String page) throws Throwable {
-        homePage.waitForExpectedElement(By.linkText(link)).click();
+        homePage.getActiveTabLink(link).click();
         homePage.waitForPageToLoad();
         assertTrue("The Expected Category Page Title " + link + " is  NOT displayed", wlnHeader.pageHeaderLabel().getText().toLowerCase().contains(link.toLowerCase()));
-        homePage.waitForExpectedElement(By.linkText(topicLink)).click();
+        homePage.getActiveTabLink(topicLink).click();
         homePage.waitForPageToLoad();
         assertTrue("The Expected Topic Page Title " + topicLink + " is  NOT displayed", wlnHeader.pageHeaderLabel().getText().toLowerCase().contains(topicLink.toLowerCase()));
     }
