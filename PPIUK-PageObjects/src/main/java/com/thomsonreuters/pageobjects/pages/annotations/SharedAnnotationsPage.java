@@ -158,7 +158,7 @@ public class SharedAnnotationsPage extends AbstractPage {
      */
     public boolean isSharingIconVisible(String input) {
         try {
-            return waitForElementPresent(By.xpath("//div[@class='co_viewNoteText mce-content-body']/p[text()='" + input + "']/../../div[@class='co_noteHeader']/div/div[contains(@class,'icon_people')]")).isDisplayed();
+            return waitForElementPresent(By.xpath("//div[@class='co_viewNoteText mce-content-body']/p[text()='" + input + "']/../../div[@class='co_noteHeader']")).isDisplayed();
         } catch (TimeoutException te) {
             return false;
         }
