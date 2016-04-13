@@ -2,14 +2,16 @@
 Feature: [780906] FD5 Testing FD IP users
   [792122] FD17 Testing Form E for IP and OpenWeb users
 
-# To be run on QED ONLY
-# This test could be run only on IP mashine which has an access to FS QED d100-infra.dev.practicallaw.com
-# At the moment the issue with accessebility d100 from Iryna Smolina VDI is in progress
-
-  Scenario: 
+  # To be run on QED ONLY
+  # This test could be run only on IP mashine which has an access to FS QED d100-infra.dev.practicallaw.com
+  # At the moment the issue with accessebility d100 from Iryna Smolina VDI is in progress
+  
+  Background: 
     Given PL+ user is logged in with following details
       | routing          | FAST_DRAFT_IP_USERS |
       | mandatoryRouting | YES                 |
+
+  Scenario: 
     When the user come back on to Home page
     And the user opens "Family" link
     And the user opens Form E page
@@ -31,15 +33,11 @@ Feature: [780906] FD5 Testing FD IP users
     When the user goes My projects
     And the user deletes the project "<projectName>"
     Then the project "<projectName>" is absent
-    And user relogs in
 
   Scenario Outline: 
-    Given PL+ user is logged in with following details
-      | routing          | FAST_DRAFT_IP_USERS |
-      | mandatoryRouting | YES                 |
-    Then My FastDraft link absents in the header
     When the user come back on to Home page
-    And the user opens 'Resources' link
+    Then My FastDraft link absents in the header
+    When the user opens 'Resources' link
     And the user opens 'Standard documents and drafting notes' link
     And the user opens "<practiceArea>" link
     Then the user sees the FastDraft logo for "<document>" document
@@ -63,7 +61,6 @@ Feature: [780906] FD5 Testing FD IP users
     When the user goes My projects
     And the user deletes the project "<projectName>"
     Then the project "<projectName>" is absent
-    And user relogs in
 
     Examples: 
       | practiceArea | document                                                | ref        | projectName | documentName |
