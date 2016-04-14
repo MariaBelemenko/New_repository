@@ -24,8 +24,14 @@ public class RestServiceLinkingImpl extends RestServiceImpl implements RestServi
 
     protected static final org.slf4j.Logger LOG = LoggerFactory.getLogger(RestServiceLinkingImpl.class);
 
-    public String getGuid(String oldDocId) {
-        String requestTo = ENTITYID_TOOL + oldDocId.trim();
+    /**
+     * Get document GUID for the PL+ UK for the PLC Ref
+     *
+     * @param plcRef Document plcRef
+     * @return String that contains document GUID
+     */
+    public String getGuid(String plcRef) {
+        String requestTo = ENTITYID_TOOL + plcRef.trim();
         EntityIdResponse response = getResponseFor(requestTo, "application/json", EntityIdResponse.class);
         try {
             return response.getResponses().get(0).getEntityIdentities().get(0).getDocGuid();
@@ -35,6 +41,13 @@ public class RestServiceLinkingImpl extends RestServiceImpl implements RestServi
         }
     }
 
+    /**
+     * Get XML document structure from the FatWire
+     * WARNING! There is an editorial tool used that may get document with non-published changes
+     *
+     * @param plcRef Document plcRef
+     * @return String that contains XML Document
+     */
     public String getXmlDocumentFromFatwire(String plcRef) {
         return getResponseFor(FATWIRE_TOOL + plcRef, HEADER_ACCEPT_HTML_XML);
     }
