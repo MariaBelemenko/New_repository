@@ -5,13 +5,10 @@ Feature: [780906] FD5 Testing FD IP users
   # To be run on QED ONLY
   # This test could be run only on IP mashine which has an access to FS QED d100-infra.dev.practicallaw.com
   # At the moment the issue with accessebility d100 from Iryna Smolina VDI is in progress
-  
-  Background: 
+  Scenario: 
     Given PL+ user is logged in with following details
       | routing          | FAST_DRAFT_IP_USERS |
       | mandatoryRouting | YES                 |
-
-  Scenario: 
     When the user come back on to Home page
     And the user opens "Family" link
     And the user opens Form E page
@@ -35,6 +32,9 @@ Feature: [780906] FD5 Testing FD IP users
     Then the project "<projectName>" is absent
 
   Scenario Outline: 
+    Given PL+ user is logged in with following details
+      | routing          | FAST_DRAFT_IP_USERS |
+      | mandatoryRouting | YES                 |
     When the user come back on to Home page
     Then My FastDraft link absents in the header
     When the user opens 'Resources' link
