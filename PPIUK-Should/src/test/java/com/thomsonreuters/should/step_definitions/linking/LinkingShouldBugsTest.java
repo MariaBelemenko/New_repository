@@ -8,7 +8,7 @@ import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.TopicPage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowDocumentPage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
-import com.thomsonreuters.pageobjects.utils.Linking.LinkingUtils;
+import com.thomsonreuters.pageobjects.rest.LinkingBaseUtils;
 import com.thomsonreuters.should.step_definitions.BaseStepDef;
 import com.westgroup.novus.productapi.Novus;
 import com.westgroup.novus.productapi.NovusException;
@@ -19,15 +19,13 @@ import cucumber.api.java.en.When;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import java.awt.*;
-
 import static com.thoughtworks.selenium.SeleneseTestNgHelper.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class LinkingShouldBugsTest extends BaseStepDef {
 
-    private LinkingUtils Linking = new LinkingUtils();
+    private LinkingBaseUtils Linking = new LinkingBaseUtils();
     private NavigationCobalt navigationCobalt = new NavigationCobalt();
     private PracticalLawUKCategoryPage practicalLawUKCategoryPage = new PracticalLawUKCategoryPage();
     private PageActions pageActions = new PageActions();
@@ -62,7 +60,7 @@ public class LinkingShouldBugsTest extends BaseStepDef {
                 String attributeValue = currentNode.getAttributes().getNamedItem("plcReference").getNodeValue();
                 String value = currentNode.getTextContent();
                 if (!attributeValue.startsWith("D")) {
-                    plcTargetVal[i] = Linking.getGUIID(attributeValue);
+                    plcTargetVal[i] = Linking.getGuid(attributeValue);
                     plcTitleVal[i] = value;
                     plcTarget[i] = attributeValue;
                     if (!plcTitleVal[i].startsWith("DO NOT PUBLISH")) {
@@ -84,7 +82,7 @@ public class LinkingShouldBugsTest extends BaseStepDef {
     @Given("^the \"(.*?)\" of type \"(.*?)\" exists on Novus platform$")
     public void theexistsonNovus(String plcref, String plcdoctype) throws Throwable {
         plcRef = plcref;
-        strDOCGUID = Linking.getGUIID(plcref);
+        strDOCGUID = Linking.getGuid(plcref);
         if (strDOCGUID.isEmpty()) {
             assertFalse("Doc GUIID for the plc ref :" + plcref + "not found", false);
         } else {
@@ -94,7 +92,7 @@ public class LinkingShouldBugsTest extends BaseStepDef {
 
     @When("for \"(.*?)\" I get the NORM relations$")
     public void forIgettheNORMrelations(String plcref) throws Throwable {
-        strDOCGUID = Linking.getGUIID(plcref);
+        strDOCGUID = Linking.getGuid(plcref);
         if (strDOCGUID.length() > 0) {
             String guids = strDOCGUID;
             Relationship[] relationships = getRelationships(guids);

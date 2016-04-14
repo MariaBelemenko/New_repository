@@ -1,7 +1,7 @@
 package com.thomsonreuters.linking.step_definitions;
 
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
-import com.thomsonreuters.pageobjects.utils.Linking.LinkingUtils;
+import com.thomsonreuters.pageobjects.rest.LinkingBaseUtils;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
 
 public class EnhanceIIPLConentWithTargetPreferenceAttributeTest extends BaseStepDef {
 
-    private LinkingUtils Linking = new LinkingUtils();
+    private LinkingBaseUtils Linking = new LinkingBaseUtils();
     private NavigationCobalt navigationCobalt = new NavigationCobalt();
 
     String strDOCGUID = null;
@@ -22,7 +22,7 @@ public class EnhanceIIPLConentWithTargetPreferenceAttributeTest extends BaseStep
 
     @When("^I verify the cite.query attribute for the w-target-preference for \"(.*?)\"$")
     public void Iverifythecitequeryattributeforthewtargetpreferencefor(String plcref) throws Throwable {
-        strDOCGUID = Linking.getGUIID(plcref);
+        strDOCGUID = Linking.getGuid(plcref);
         navigationCobalt.navigate("http://legaltechtools.int.thomsonreuters.com/Velma/Novus/Document?guid=" + strDOCGUID);
         List<WebElement> links = navigationCobalt.findElements(By.tagName("cite.query"));
         if (links.size() > 0) {
@@ -31,8 +31,7 @@ public class EnhanceIIPLConentWithTargetPreferenceAttributeTest extends BaseStep
                 wreftype = element.getAttribute("w-ref-type");
                 if (wreftype.equals("PC") || wreftype.equals("GM") || wreftype.equals("GE") || wreftype.equals("QS") || wreftype.equals("QC") || wreftype.equals("UF")) {
                     xlinkHrefValue = element.getAttribute("w-target-preference");
-                    if (xlinkHrefValue.startsWith("plcref:")) {
-                    } else {
+                    if (!xlinkHrefValue.startsWith("plcref:")) {
                         ivalue = false;
                         break;
                     }

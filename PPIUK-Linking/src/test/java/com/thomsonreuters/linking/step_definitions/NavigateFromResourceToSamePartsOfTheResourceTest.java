@@ -1,7 +1,7 @@
 package com.thomsonreuters.linking.step_definitions;
 
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
-import com.thomsonreuters.pageobjects.utils.Linking.LinkingUtils;
+import com.thomsonreuters.pageobjects.rest.LinkingBaseUtils;
 import cucumber.api.java.en.Given;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 
 public class NavigateFromResourceToSamePartsOfTheResourceTest extends BaseStepDef {
 
-    private LinkingUtils linking = new LinkingUtils();
+    private LinkingBaseUtils linking = new LinkingBaseUtils();
     private NavigationCobalt navigationCobalt = new NavigationCobalt();
 
     String plcRef = null;
@@ -29,17 +29,13 @@ public class NavigateFromResourceToSamePartsOfTheResourceTest extends BaseStepDe
     @Given("^the \"(.*?)\" of type \"(.*?)\" exists on Novus platform$")
     public void theexistsonNovus(String plcref, String plcdoctype) throws Throwable {
         plcRef = plcref;
-        strDOCGUID = linking.getGUIID(plcref);
-        if (strDOCGUID.isEmpty()) {
-            assertFalse("Doc GUIID for the plc ref :" + plcref + "not found", false);
-        } else {
-            assertTrue(true);
-        }
+        strDOCGUID = linking.getGuid(plcref);
+        assertTrue("Doc GUIID for the plc ref :" + plcref + " not found", !strDOCGUID.isEmpty());
     }
 
     @Given("^for \"(.*?)\" I get all the jump links from the Fatwire xml$")
     public void forPLCdocumentIgetallthejumplinksfromtheFatwirexml(String plcref) throws Throwable {
-        strDOCGUID = linking.getGUIID(plcref);
+        strDOCGUID = linking.getGuid(plcref);
         if (strDOCGUID.isEmpty())
             assertFalse("Doc GUIID for the plc ref :" + plcref + "not found", false);
         else {

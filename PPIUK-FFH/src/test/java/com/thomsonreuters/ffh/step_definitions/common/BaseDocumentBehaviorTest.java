@@ -1,7 +1,6 @@
 package com.thomsonreuters.ffh.step_definitions.common;
 
 import com.thomsonreuters.driver.framework.AbstractPage;
-import com.thomsonreuters.driver.framework.WebDriverDiscovery;
 import com.thomsonreuters.ffh.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.SeleniumKeyboard;
@@ -25,8 +24,8 @@ import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.urls.plcuk.KHDocumentPage;
 import com.thomsonreuters.pageobjects.rest.DeliveryBaseUtils;
 import com.thomsonreuters.pageobjects.rest.DocumentBaseUtils;
+import com.thomsonreuters.pageobjects.rest.LinkingBaseUtils;
 import com.thomsonreuters.pageobjects.rest.model.request.delivery.initiateDelivery.InitiateDelivery;
-import com.thomsonreuters.pageobjects.utils.Linking.LinkingUtils;
 import com.thomsonreuters.pageobjects.utils.Product;
 import com.thomsonreuters.pageobjects.utils.document.ContentType;
 import com.thomsonreuters.pageobjects.utils.document.Document;
@@ -61,7 +60,7 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
     private StandardDocumentPage standardDocumentPage = new StandardDocumentPage();
     private AssetDocumentPage assetDocumentPage = new AssetDocumentPage();
     private GlossaryPage glossaryPage = new GlossaryPage();
-    private LinkingUtils linkingUtils = new LinkingUtils();
+    private LinkingBaseUtils linkingUtils = new LinkingBaseUtils();
     private CommonResourcePage commonResourcePage = new CommonResourcePage();
     private DocumentRightPanelPage rhsPanel = new DocumentRightPanelPage();
     private DownloadOptionsPage downloadOptionsDialog = new DownloadOptionsPage();

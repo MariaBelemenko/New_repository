@@ -1,6 +1,6 @@
 package com.thomsonreuters.pageobjects.utils.document;
 
-import com.thomsonreuters.pageobjects.utils.Linking.LinkingUtils;
+import com.thomsonreuters.pageobjects.rest.LinkingBaseUtils;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.openqa.selenium.WebElement;
@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 public class StandardDocumentUtils {
 
-    private LinkingUtils linkingUtils;
+    private LinkingBaseUtils linkingUtils = new LinkingBaseUtils();
 
     private static final Logger LOG = LoggerFactory.getLogger(StandardDocumentUtils.class);
 

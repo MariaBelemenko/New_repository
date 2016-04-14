@@ -1,7 +1,6 @@
 package com.thomsonreuters.linking.step_definitions;
 
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
-import com.thomsonreuters.pageobjects.utils.Linking.LinkingUtils;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
@@ -13,7 +12,6 @@ import static org.junit.Assert.assertEquals;
 
 public class NavigateToAnotherTRProductTest  extends BaseStepDef {
 
-    private LinkingUtils Linking = new LinkingUtils();
     private NavigationCobalt navigationCobalt = new NavigationCobalt();
 
     int wpinpointval = 0;

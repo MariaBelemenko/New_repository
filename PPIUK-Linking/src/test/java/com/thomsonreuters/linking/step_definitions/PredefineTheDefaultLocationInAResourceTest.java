@@ -1,7 +1,7 @@
 package com.thomsonreuters.linking.step_definitions;
 
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
-import com.thomsonreuters.pageobjects.utils.Linking.LinkingUtils;
+import com.thomsonreuters.pageobjects.rest.LinkingBaseUtils;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import org.w3c.dom.NamedNodeMap;
@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class PredefineTheDefaultLocationInAResourceTest extends BaseStepDef {
 
-    private LinkingUtils Linking = new LinkingUtils();
+    private LinkingBaseUtils Linking = new LinkingBaseUtils();
     private NavigationCobalt navigationCobalt = new NavigationCobalt();
 
     String strDOCGUID = null;
@@ -23,7 +23,7 @@ public class PredefineTheDefaultLocationInAResourceTest extends BaseStepDef {
 
     @When("^for \"(.*?)\" I get all the links to other resource or specific section of other resource$")
     public void forIgetallthelinkstootherresourceorspecificsectionofotherresource(String plcref) throws Throwable {
-        strDOCGUID = Linking.getGUIID(plcref);
+        strDOCGUID = Linking.getGuid(plcref);
         navigationCobalt.navigate("http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&plcref=" + plcref);
 
         NodeList nodes = Linking.returnXpathNodes(navigationCobalt.getPageSource(), "//xlink:locator[not(starts-with(@xlink:href, '#')) and not(ancestor::atict:del)]");
@@ -56,7 +56,7 @@ public class PredefineTheDefaultLocationInAResourceTest extends BaseStepDef {
 
     @When("^for \"(.*?)\" I get all the Primary Source links$")
     public void forIgetallthePrimarySourcelinks(String plcref) throws Throwable {
-        strDOCGUID = Linking.getGUIID(plcref);
+        strDOCGUID = Linking.getGuid(plcref);
         navigationCobalt.navigate("http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&plcref=" + plcref);
         NodeList nodes = Linking.returnXpathNodes(navigationCobalt.getPageSource(), "//xlink:locator[not(starts-with(@xlink:href, '#')) and not(ancestor::atict:del)]");
         for (int i = 0; i < nodes.getLength(); i++) {
@@ -69,7 +69,7 @@ public class PredefineTheDefaultLocationInAResourceTest extends BaseStepDef {
 
     @Given("^for \"(.*?)\" captures all the links to other resource or specific section of other resource$")
     public void forcapturesallthelinkstootherresourceorspecificsectionofotherresource(String plcref) throws Throwable {
-        strDOCGUID = Linking.getGUIID(plcref);
+        strDOCGUID = Linking.getGuid(plcref);
         String URL = "http://legaltechtools.int.thomsonreuters.com/Velma/Novus/Document?guid=" + strDOCGUID;
         navigationCobalt.navigate(URL);
         NodeList nodes = Linking.returnXpathNodes(navigationCobalt.getPageSource(), "//cite.query[ancestor::n-docbody]");

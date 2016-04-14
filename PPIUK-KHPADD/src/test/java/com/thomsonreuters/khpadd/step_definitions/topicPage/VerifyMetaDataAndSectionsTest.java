@@ -6,7 +6,7 @@ import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.CommonResourc
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.DocumentRightPanelPage;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.StandardDocumentPage;
 import com.thomsonreuters.pageobjects.pages.widgets.CategoryPage;
-import com.thomsonreuters.pageobjects.utils.Linking.LinkingUtils;
+import com.thomsonreuters.pageobjects.rest.LinkingBaseUtils;
 import com.thomsonreuters.pageobjects.utils.document.Document;
 import com.thomsonreuters.pageobjects.utils.document.content.Section;
 import com.thomsonreuters.pageobjects.utils.document.metadata.Jurisdiction;
@@ -20,7 +20,7 @@ import java.util.List;
 public class VerifyMetaDataAndSectionsTest extends BaseStepDef {
 
     private CategoryPage categoryPage = new CategoryPage();
-    private LinkingUtils linkingUtils = new LinkingUtils();
+    private LinkingBaseUtils linkingUtils = new LinkingBaseUtils();
     private CommonResourcePage commonResourcePage = new CommonResourcePage();
     private StandardDocumentPage standardDocumentPage = new StandardDocumentPage();
     private CommonMethods comMethods = new CommonMethods();

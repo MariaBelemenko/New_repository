@@ -1,7 +1,7 @@
 package com.thomsonreuters.linking.step_definitions;
 
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
-import com.thomsonreuters.pageobjects.utils.Linking.LinkingUtils;
+import com.thomsonreuters.pageobjects.rest.LinkingBaseUtils;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 public class NavigateExternalLinksTest extends BaseStepDef {
 
-    private LinkingUtils linking = new LinkingUtils();
+    private LinkingBaseUtils linking = new LinkingBaseUtils();
     private NavigationCobalt navigationCobalt = new NavigationCobalt();
 
     String strDOCGUID = null;
@@ -24,7 +24,7 @@ public class NavigateExternalLinksTest extends BaseStepDef {
 
     @Given("^for \"(.*?)\" I get all the external links in PLC XML$")
     public void forIgetalltheexternallinks(String plcref) throws Throwable {
-        strDOCGUID = linking.getGUIID(plcref);
+        strDOCGUID = linking.getGuid(plcref);
         xlinkValue = 0;
         navigationCobalt.navigate("http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&cid=" + plcref);
         NodeList nodes = linking.returnXpathNodes(navigationCobalt.getPageSource(), "//simpleplcxlink[not(ancestor::*[contains(name(), 'atict')])]");

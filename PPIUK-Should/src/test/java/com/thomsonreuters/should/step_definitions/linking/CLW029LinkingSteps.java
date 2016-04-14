@@ -1,7 +1,7 @@
 package com.thomsonreuters.should.step_definitions.linking;
 
 import com.thomsonreuters.driver.framework.AbstractPage;
-import com.thomsonreuters.pageobjects.utils.Linking.LinkingUtils;
+import com.thomsonreuters.pageobjects.rest.LinkingBaseUtils;
 import com.thomsonreuters.should.step_definitions.BaseStepDef;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
@@ -19,11 +19,11 @@ public class CLW029LinkingSteps extends BaseStepDef {
     int plcWMnum = 0;
     int NWMnum = 0;
 
-    private LinkingUtils linkingUtils = new LinkingUtils();
+    private LinkingBaseUtils linkingUtils = new LinkingBaseUtils();
 
     @When("^for \"(.*?)\" I get all the links to other resource or specific section of other resource$")
     public void forIgetallthelinkstootherresourceorspecificsectionofotherresource(String plcref) throws Throwable {
-        strDOCGUID = linkingUtils.getGUIID(plcref);
+        strDOCGUID = linkingUtils.getGuid(plcref);
         AbstractPage.getDriver.get("http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&plcref=" + plcref);
         NodeList nodes = linkingUtils.returnXpathNodes(AbstractPage.getDriver.getPageSource(), "//xlink:locator[not(starts-with(@xlink:href, '#')) and not(ancestor::*[contains(name(), 'atict:add')])]");
         for (int i = 0; i < nodes.getLength(); i++) {
@@ -80,7 +80,7 @@ public class CLW029LinkingSteps extends BaseStepDef {
 
     @When("^for \"(.*?)\" I get all the Primary Source links$")
     public void forIgetallthePrimarySourcelinks(String plcref) throws Throwable {
-        strDOCGUID = linkingUtils.getGUIID(plcref);
+        strDOCGUID = linkingUtils.getGuid(plcref);
         AbstractPage.getDriver.get("http://us.p02edi.practicallaw.com/cs/Satellite/?pagename=XMLWrapper&childpagename=PLC/PLC_Doc_C/XmlDataViewExt&plcref=" + plcref);
 
         NodeList nodes = linkingUtils.returnXpathNodes(AbstractPage.getDriver.getPageSource(), "//xlink:locator[not(starts-with(@xlink:href, '#')) and not(ancestor::*[contains(name(), 'atict:add')])]");
@@ -99,7 +99,7 @@ public class CLW029LinkingSteps extends BaseStepDef {
 
     @Given("^for \"(.*?)\" captures all the links to other resource or specific section of other resource$")
     public void forcapturesallthelinkstootherresourceorspecificsectionofotherresource(String plcref) throws Throwable {
-        strDOCGUID = linkingUtils.getGUIID(plcref);
+        strDOCGUID = linkingUtils.getGuid(plcref);
         String URL = "http://legaltechtools.int.thomsonreuters.com/Velma/Novus/Document?guid=" + strDOCGUID;
         AbstractPage.getDriver.get(URL);
 

@@ -1,21 +1,20 @@
 package com.thomsonreuters.linking.step_definitions;
 
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
-import com.thomsonreuters.pageobjects.utils.Linking.LinkingUtils;
-import cucumber.api.java.en.When;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-
+import com.thomsonreuters.pageobjects.rest.LinkingBaseUtils;
 import com.westgroup.novus.productapi.Novus;
 import com.westgroup.novus.productapi.NovusException;
 import com.westgroup.novus.productapi.Relationship;
 import com.westgroup.novus.productapi.RelationshipManager;
+import cucumber.api.java.en.When;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import static org.junit.Assert.assertEquals;
 
 public class RelatedContentLinkTest extends BaseStepDef {
 
-    private LinkingUtils Linking = new LinkingUtils();
+    private LinkingBaseUtils Linking = new LinkingBaseUtils();
     private NavigationCobalt navigationCobalt = new NavigationCobalt();
 
     String plcRef = null;
@@ -42,7 +41,7 @@ public class RelatedContentLinkTest extends BaseStepDef {
                 String attributeValue = currentNode.getAttributes().getNamedItem("plcReference").getNodeValue();
                 String value = currentNode.getTextContent();
                 if (!attributeValue.startsWith("D")) {
-                    plcTargetVal[i] = Linking.getGUIID(attributeValue);
+                    plcTargetVal[i] = Linking.getGuid(attributeValue);
                     plcTitleVal[i] = value;
                     plcTarget[i] = attributeValue;
                     if (!plcTitleVal[i].startsWith("DO NOT PUBLISH")) {
@@ -58,7 +57,7 @@ public class RelatedContentLinkTest extends BaseStepDef {
 
     @When("for \"(.*?)\" I get the NORM relations$")
     public void forIgettheNORMrelations(String plcref) throws Throwable {
-        strDOCGUID = Linking.getGUIID(plcref);
+        strDOCGUID = Linking.getGuid(plcref);
         if (strDOCGUID.length() > 0) {
             String guids = strDOCGUID;
             Relationship[] relationships = getRelationships(guids);

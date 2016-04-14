@@ -1,7 +1,7 @@
 package com.thomsonreuters.linking.step_definitions;
 
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
-import com.thomsonreuters.pageobjects.utils.Linking.LinkingUtils;
+import com.thomsonreuters.pageobjects.rest.LinkingBaseUtils;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.openqa.selenium.By;
@@ -17,7 +17,7 @@ import static org.junit.Assert.assertEquals;
 public class CasePageLinkingTest extends BaseStepDef {
 
     private NavigationCobalt navigationCobalt = new NavigationCobalt();
-    private LinkingUtils linking = new LinkingUtils();
+    private LinkingBaseUtils linking = new LinkingBaseUtils();
 
     String strDOCGUID = null;
     int xlinkValue = 0;
