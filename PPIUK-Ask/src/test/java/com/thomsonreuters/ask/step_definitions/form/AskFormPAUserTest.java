@@ -10,6 +10,7 @@ import com.thomsonreuters.pageobjects.utils.form.FormUtils;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.assertj.core.api.SoftAssertions;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.NoSuchWindowException;
 
@@ -99,10 +100,15 @@ public class AskFormPAUserTest extends BaseStepDef {
         } else {
             tempRequiredFields = requiredFields;
         }
+        SoftAssertions softAssertions = new SoftAssertions();
         for (String requiredField : tempRequiredFields) {
             AskFormField askFormField = AskFormField.getByFieldDisplayName(requiredField);
-            assertThat("Required field '" + requiredField + "' is not marked with error message", askFormPage.findElement(askFormField.getErrorBy()).getText().trim(), Is.is(askFormField.getErrorMessage()));
+            softAssertions
+                    .assertThat(askFormPage.getFieldErrorLabel(askFormField).getText().trim())
+                    .withFailMessage("Required field '" + requiredField + "' is not marked with error message")
+                    .isEqualTo(askFormField.getErrorMessage());
         }
+        softAssertions.assertAll();
     }
 
 }

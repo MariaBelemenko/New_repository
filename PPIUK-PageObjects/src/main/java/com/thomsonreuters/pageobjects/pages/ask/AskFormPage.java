@@ -1,6 +1,7 @@
 package com.thomsonreuters.pageobjects.pages.ask;
 
 import com.thomsonreuters.driver.framework.AbstractPage;
+import com.thomsonreuters.pageobjects.utils.ask.AskFormField;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -34,4 +35,11 @@ public class AskFormPage extends AbstractPage {
         return waitForExpectedElement(By.id("disclaimer-text"));
     }
 
+    public WebElement getContactDetailsLabel() {
+        return waitForExpectedElement(By.xpath("//div[@id='form']//span[text()='(all fields are required)']"));
+    }
+
+    public WebElement getFieldErrorLabel(AskFormField askFormField) {
+        return findElement(askFormField.getErrorBy());
+    }
 }

@@ -19,6 +19,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
+import org.assertj.core.api.SoftAssertions;
 import org.hamcrest.core.Is;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
@@ -30,6 +31,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class AskDeliveryTest extends BaseStepDef {
@@ -81,11 +83,8 @@ public class AskDeliveryTest extends BaseStepDef {
     @Then("^the user edits the (basic|advanced) (email|print|download) options as follows$")
     public void theUserEditsTheBasicEmailOptionsAsFollows(String tabType, String deliveryType, DataTable dataTable) throws Throwable {
         for (Map.Entry<String, String> entry : dataTable.asMap(String.class, String.class).entrySet()) {
-            try {
-                formUtils.editValue(DeliveryFormField.getByFieldDisplayName(entry.getKey()), entry.getValue());
-            } catch (Exception e) {
-                throw new Exception("Could not find or modify field '" + entry.getKey() + "'", e);
-            }
+            assertEntryExists(entry);
+            formUtils.editValue(DeliveryFormField.getByFieldDisplayName(entry.getKey()), entry.getValue());
         }
     }
 
@@ -117,12 +116,8 @@ public class AskDeliveryTest extends BaseStepDef {
     public void theUserShouldBeAbleToSeeEmailBasicTabOptionsAsFollows(String deliveryType, String tabType, DataTable dataTable)
             throws Throwable {
         for (Map.Entry<String, String> entry : dataTable.asMap(String.class, String.class).entrySet()) {
-            String value;
-            try {
-                value = formUtils.getValue(DeliveryFormField.getByFieldDisplayName(entry.getKey())).trim();
-            } catch (Exception e) {
-                throw new Exception("Could not find or modify field '" + entry.getKey() + "'", e);
-            }
+            assertEntryExists(entry);
+            String value = formUtils.getValue(DeliveryFormField.getByFieldDisplayName(entry.getKey())).trim();
             assertThat(value, Is.is(entry.getValue().trim()));
         }
     }
@@ -155,8 +150,16 @@ public class AskDeliveryTest extends BaseStepDef {
     }
 
     private void assertDocumentReadyToDownload() {
-        assertTrue("Download button absent", download.getDownloadButtonWhenDocReadyToDownload().isDisplayed());
-        assertTrue("Document is not ready to download", download.getReadyForDownloadWindow().getText().contains("ready"));
+        SoftAssertions softAssertions = new SoftAssertions();
+        softAssertions
+                .assertThat(download.getDownloadButtonWhenDocReadyToDownload().isDisplayed())
+                .withFailMessage("Download button absent")
+                .isTrue();
+        softAssertions
+                .assertThat(download.getReadyForDownloadWindow().getText())
+                .withFailMessage("Document is not ready to download")
+                .contains("ready");
+        softAssertions.assertAll();
     }
 
     private void doDownloadUsingRestApi(String extension, boolean printable) throws BadLocationException {
@@ -165,4 +168,8 @@ public class AskDeliveryTest extends BaseStepDef {
         downloadedFile = deliveryBaseUtils.getDownloadedDoc();
     }
 
+    private void assertEntryExists(Map.Entry entry) {
+        String key = (String) entry.getKey();
+        assertNotNull("Could not find or modify field '" + key + "'", DeliveryFormField.getByFieldDisplayName(key));
+    }
 }

@@ -17,6 +17,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.TransformerUtils;
+import org.assertj.core.api.SoftAssertions;
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.Keys;
@@ -70,11 +71,19 @@ public class AskDeliveryFromTopicPagesTest extends BaseStepDef {
 
     @And("^the user verifies that all ask queries on the topic Page have at least (\\d+) reply/replies'$")
     public void theUserVerifiesThatAllAskQueriesOnTheTopicPageHaveAtLeastReplyReplies(int noOfReplies) throws Throwable {
-        List<WebElement> repies = askCategoryPage.askQueriesInTopicPageReplyOnly();
-        for (WebElement reply : repies) {
-            assertThat("The no of replies in the queries are NOT expected", Integer.parseInt(reply.getText().replaceAll("[\\D]", "")), greaterThanOrEqualTo(noOfReplies));
-            assertThat("The reply text in the queries are NOT expected", reply.getText(), Matchers.containsString("repl"));
+        SoftAssertions softAssertions = new SoftAssertions();
+        List<WebElement> replies = askCategoryPage.askQueriesInTopicPageReplyOnly();
+        for (WebElement reply : replies) {
+            softAssertions
+                    .assertThat(Integer.parseInt(reply.getText().replaceAll("[\\D]", "")))
+                    .withFailMessage("The no of replies in the queries are NOT expected")
+                    .isGreaterThanOrEqualTo(noOfReplies);
+            softAssertions
+                    .assertThat(reply.getText())
+                    .withFailMessage("The reply text in the queries are NOT expected")
+                    .contains("repl");
         }
+        softAssertions.assertAll();
     }
 
     @And("^the user selects ask question No (\\d+) on the Ask Topic page$")
@@ -114,11 +123,9 @@ public class AskDeliveryFromTopicPagesTest extends BaseStepDef {
 
     @Then("^the user verifies that '(Ready For Email|Ready For Download|Preparing For Print|Preparing For Email|Preparing For Download)' is displayed on the overlay$")
     public void theUserVerifiesThatReadyForEmailIsDisplayOnOverlay(String header) throws Throwable {
-        if (header.contains("Ready")) {
-            assertTrue("The " + header + " is NOT displayed", askResourcePage.readyMessageOverlayHeader().isDisplayed());
-        } else {
-            assertTrue("The " + header + " is NOT displayed", askResourcePage.prepareMessageOverlayHeader().isDisplayed());
-        }
+        WebElement overlayHeader = (header.contains("Ready")) ? askResourcePage.readyMessageOverlayHeader()
+                : askResourcePage.prepareMessageOverlayHeader();
+        assertTrue("The " + header + " is NOT displayed", overlayHeader.isDisplayed());
     }
 
     @When("^the user clicks download on ready to download overlay$")
@@ -181,6 +188,7 @@ public class AskDeliveryFromTopicPagesTest extends BaseStepDef {
             try {
                 formatter.parse(date);
             } catch (ParseException e) {
+                LOG.info("Parse exception", e);
                 correctFormat = false;
                 break;
             }
@@ -207,22 +215,17 @@ public class AskDeliveryFromTopicPagesTest extends BaseStepDef {
             try {
                 dateList.add(formatter.parse(date));
             } catch (ParseException e) {
-                e.printStackTrace();
+                LOG.info("Parse exception", e);
             }
         }
         return dateList;
     }
 
     private void theUserVerifiesThatTheResultsListPageIsDisplayed() throws Throwable {
-        // A robot to allow a pause for the page to refresh
-        Robot robot = new Robot();
-        // Wait 5 seconds
-        robot.delay(5000);
-        try {
-            searchResultsPage.resultsListHeader().isDisplayed();
-            searchResultsPage.filterHeader().isDisplayed();
-        } catch (Exception e) {
-        }
+        searchResultsPage.waitForPageToLoadAndJQueryProcessing();
+        SoftAssertions softAssertions = new SoftAssertions();
+        softAssertions.assertThat(searchResultsPage.resultsListHeader().isDisplayed()).isTrue();
+        softAssertions.assertAll();
     }
 
 }

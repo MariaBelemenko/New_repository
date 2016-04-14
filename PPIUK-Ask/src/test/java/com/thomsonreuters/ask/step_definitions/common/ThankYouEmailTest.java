@@ -41,9 +41,7 @@ public class ThankYouEmailTest extends BaseStepDef {
     @When("^A thank you page should appear with option to close the window$")
     public void thankYouPage() throws Throwable {
         askFormPage.waitForPageToLoad();
-        if (!askFormPage.getPageSource().contains("Thank you for submitting a question or comment to Ask.")) {
-            throw new RuntimeException("Thank you page is absent!");
-        }
+        assertTrue("Thank you page is absent!", askFormPage.getPageSource().contains("Thank you for submitting a question or comment to Ask."));
     }
 
     @Then("^'(.+)' should receive Thanks You email from '(.+)' in specified email inbox$")

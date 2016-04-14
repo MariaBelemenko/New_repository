@@ -111,7 +111,7 @@ public class AskPracticeAreaTest extends BaseStepDef {
             try {
                 dateList.add(formatter.parse(date));
             } catch (ParseException e) {
-                e.printStackTrace();
+                LOG.info("Parse error.", e);
             }
         }
         return dateList;

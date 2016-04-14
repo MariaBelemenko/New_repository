@@ -8,6 +8,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.TransformerUtils;
+import org.assertj.core.api.SoftAssertions;
 import org.hamcrest.Matchers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -68,11 +69,19 @@ public class AskQueriesTest extends BaseStepDef {
     @And("^the user verifies that all queries have at least (\\d+) reply/replies'$")
     public void theUserVerifiesThatAllQueriesHaveAtLeastReplyReplies(int noOfReplies) throws Throwable {
         List<WebElement> queries = askCategoryPage.getCommentLabelsForRecentQueries();
+        SoftAssertions softAssertions = new SoftAssertions();
         for (WebElement query : queries) {
             String text = query.getText();
-            assertThat("The no of replies in the queries are NOT expected", text, Matchers.containsString(Integer.toString(noOfReplies)));
-            assertThat("The reply text in the queries are NOT expected", text, Matchers.containsString("repl"));
+            softAssertions
+                    .assertThat(text)
+                    .withFailMessage("The no of replies in the queries are NOT expected")
+                    .contains(Integer.toString(noOfReplies));
+            softAssertions
+                    .assertThat(text)
+                    .withFailMessage("The reply text in the queries are NOT expected")
+                    .contains("repl");
         }
+        softAssertions.assertAll();
     }
 
     private boolean isAllDateElementsInCorrectFormat(List<WebElement> dateElements, String dateFormat, String removeText) {

@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class AskDocumentMetadataTest extends BaseStepDef {
 
@@ -26,14 +27,11 @@ public class AskDocumentMetadataTest extends BaseStepDef {
 
     @Given("^resource status \"(.*?)\" is displayed on the document right hand panel$")
     public void resourceStatusIsDisplayed(String expectedStatus) throws Throwable {
-        try {
-            assertThat(rightPanelPage.documentStatus().getText().trim().replaceAll("\\n", ""), Is.is(expectedStatus.replaceAll("\\\\n", "")));
-        } catch (NoSuchElementException npe) {
-            if (expectedStatus.equalsIgnoreCase("No Status")) {
-                LOG.debug("No Status is displayed for this resource type");
-            } else {
-                throw npe;
-            }
+        if (expectedStatus.equalsIgnoreCase("No Status")) {
+            LOG.debug("No Status is displayed for this resource type");
+        } else {
+            assertTrue("Status '" + expectedStatus + "' is not present",
+                    rightPanelPage.documentStatus().getText().trim().replaceAll("\\n|\\s+", "").equals(expectedStatus.replaceAll("\\s+", "")));
         }
     }
 
