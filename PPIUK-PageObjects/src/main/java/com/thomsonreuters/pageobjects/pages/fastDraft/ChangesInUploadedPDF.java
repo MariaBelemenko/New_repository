@@ -10,7 +10,7 @@ public class ChangesInUploadedPDF extends AbstractPage {
 	private static final String ERROR = "PDF Upload error : The form you selected does not belong to the project you tried to load it into. Please select the correct form and try again";
 	private static final String TYPE_ERROR = "PDF Upload error : The selected file is not the correct type (PDF). Please try again ensuring you select a PDF file";
 
-    private CommonMethods comMethods;
+    private CommonMethods comMethods = new CommonMethods();;
 
 	public void checkChangesInUploadedPDFDisplayed() {
 		WebElement changesInUploadedPDF = null;
