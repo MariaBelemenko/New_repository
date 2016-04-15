@@ -179,7 +179,7 @@ public class HomePageSteps extends BaseStepDef{
             assertTrue("The 'Practice areas' link " + link + " is NOT displayed in Browse Menu", linksRetrieved.contains(link));
         }
     }
-
+     //Steps added by Ian and Sandy
     @Then("^the user clicks through the \"(.*?)\" links that are displayed in the 'Browse Menu' on the Home Page$")
     public void theUserClicksThroughThePracticeAreasLinksThatAreDisplayedInTheBrowseMenuOnTheHomePage(String subMenuLink, List<String> links) throws Throwable {
         Boolean isMenuDisplayed = false;
@@ -203,9 +203,45 @@ public class HomePageSteps extends BaseStepDef{
             homePage.browseMenuLink(subMenuLink).click();
             homePage.menuColumnLink(link).click();
             pageTitle = ppiGenericDocDisplay.searchPageLabel().getText();
-            assertTrue(link.toLowerCase().contains(pageTitle.toLowerCase()));
+            Boolean testPass = false;
+            if (link.toLowerCase().contains(pageTitle.toLowerCase())) {
+                testPass = true;
+            }
+            if (pageTitle.toLowerCase().contains(link.toLowerCase())) {
+                testPass = true;
+            }
+            System.out.println("The link text is "+link+" and the page title is "+pageTitle);
+            assertTrue(testPass);
             commonMethods.browserGoBack();
             wlnHeader.browseMenuButton().click();
+        }
+    }
+
+    //Steps added by Ian and Sandy
+    @Then("^the user clicks through the \"(.*?)\" links that are displayed on the Home Page$")
+    public void theUserClicksThroughThePracticeAreasLinksThatAreDisplayedOnTheHomePage(String subMenuLink, List<String> links) throws Throwable {
+        String pageTitle = "";
+
+        homePage.homepageTabHeadingLink(subMenuLink).click();
+
+        List<String> linksRetrieved = homePage.getLinksInHomepageMainMenu();
+        System.out.println("...Found " + Integer.toString(homePage.getLinksInHomepageMainMenu().size()) + " links");
+        for (String link : links) {
+            System.out.println("The current link being checked is: " + link);
+            assertTrue("The '" + subMenuLink + "' link " + link + " is NOT displayed in Browse Menu", linksRetrieved.contains(link));
+            homePage.homepageTabLink(link).click();
+            pageTitle = ppiGenericDocDisplay.searchPageLabel().getText();
+            Boolean testPass = false;
+            if (link.toLowerCase().contains(pageTitle.toLowerCase())) {
+                testPass = true;
+            }
+            if (pageTitle.toLowerCase().contains(link.toLowerCase())) {
+                testPass = true;
+            }
+            System.out.println("The link text is "+link+" and the page title is "+pageTitle);
+            assertTrue(testPass);
+            commonMethods.browserGoBack();
+            homePage.homepageTabHeadingLink(subMenuLink).click();
         }
     }
 
