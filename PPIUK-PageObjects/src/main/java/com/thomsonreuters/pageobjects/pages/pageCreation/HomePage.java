@@ -16,12 +16,22 @@ public class HomePage extends AbstractPage {
 
     public WebElement browseMenuLink(String linkText) {
 
-        return waitForExpectedElement(By.xpath("//span[@class='co_floatLeft'][text()='" + linkText + "']/parent::a"),10);
+        return waitForExpectedElement(By.xpath("//span[@class='co_floatLeft'][text()=\"" + linkText + "\"]/parent::a"),10);
     }
 
     public WebElement menuColumnLink(String linkText) {
 
         return waitForExpectedElement(By.xpath("//div[@id='menu-item-children']//a[text()='" + linkText + "']"),10);
+    }
+
+    public WebElement homepageTabHeadingLink(String linkText) {
+
+        return waitForExpectedElement(By.xpath("//a[@class='co_tabLink'][text()='" + linkText + "']"),10);
+    }
+
+    public WebElement homepageTabLink(String linkText) {
+
+        return waitForExpectedElement(By.xpath("//div[contains(@id,'categoryBoxTab')]//a[text()=\"" + linkText + "\"]"),10);
     }
 
     public WebElement practiceAreasTab() {
@@ -112,6 +122,14 @@ public class HomePage extends AbstractPage {
     private List<WebElement> getWebElementLinksInBrowseMenu(String subMenuLink) {
         //return mergeTwoWebElementList(By.cssSelector("div[id='Practice areas0'] ul li a"), By.cssSelector("div[id='Practice areas1'] ul li a"));
         return waitForExpectedElements(By.xpath("//li[@id='" + subMenuLink + "']//a"),10);
+    }
+
+    public List<String> getLinksInHomepageMainMenu() {
+        return getOnlyLinkNamesFromWebElementList(getWebElementLinksInHomepageMainMenu());
+    }
+
+    private List<WebElement> getWebElementLinksInHomepageMainMenu() {
+        return waitForExpectedElements(By.xpath("//div[contains(@class,'co_tabShow')]//a"),10);
     }
 
     private List<String> getOnlyLinkNamesFromWebElementList(List<WebElement> elementList) {
