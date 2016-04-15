@@ -9,6 +9,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertFalse;
@@ -39,7 +40,7 @@ public class PrimarySourcePgLegGovUKLinkTest extends BaseStepDef {
 		try {
 			assertFalse("The user see links to Legislation",
 					primarySourceDocumentPage.legislationLink(legislationLinkText).isDisplayed());
-		} catch (PageOperationException | NoSuchElementException poe) {
+		} catch (PageOperationException | NoSuchElementException | TimeoutException poe) {
 			LOG.info("context", poe);
 		}
 	}
