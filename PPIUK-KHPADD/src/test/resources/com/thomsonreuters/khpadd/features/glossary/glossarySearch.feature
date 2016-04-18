@@ -37,7 +37,6 @@ Feature: [685245, 685246] As a Know How user,
       | Collaborative research agreement                  |
       | Keyword search                                    |
       | Pensions Investment Research Consultants (PIRC)   |
-      | Procedural Law Research Institution               |
       | Reasonable search                                 |
       | Research Recommendations Electronic Voting (RREV) |
       | Search engine                                     |
@@ -47,7 +46,7 @@ Feature: [685245, 685246] As a Know How user,
 
   Scenario: Verify number of search results
     When searches for the term "res" using the glossary search
-    Then the total should be displayed as "178 matches"
+    Then the total should be displayed as "175 matches"
 
   @manual
   Scenario: Verify exiting out of the search results
