@@ -3,6 +3,7 @@ Feature: [702171][702170] - Scoped Search - Practice Area Search
   Background: Log on to test site
     Given PL+ user is logged in
 
+  #860453:REGRESSION - topic information missing from know how resources
   @e2e @prod
   Scenario Outline: [702171] As a PL+ user conducting a search from a subject area (topic) page (and therefore the search is already scoped), I will only see results coded to that subject area and its parent practice area.
     And the user selects the link to Media and Telecoms
