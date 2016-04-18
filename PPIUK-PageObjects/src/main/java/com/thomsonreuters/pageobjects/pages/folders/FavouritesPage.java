@@ -101,7 +101,7 @@ public class FavouritesPage extends AbstractPage {
 	}
     
     public WebElement pageInFavourite(String pageName) {
-        return waitForExpectedElement(By.xpath("(//*[@id='coid_website_favoritesWidget']//*[contains(@title,'" + pageName + "')])[1]"));
+        return waitForExpectedElement(By.xpath("((//*[@id='coid_website_favoritesWidget']//*[contains(@title,'" + pageName + "')])[1]/ancestor::li)[last()]/label"));
     }
     
     public List<WebElement> pagesInFavouriteFroup() {
@@ -111,6 +111,7 @@ public class FavouritesPage extends AbstractPage {
     public WebElement deletePageFromFavourite(String pageName) {
         return waitForExpectedElement(By.xpath("((//*[contains(@title,'" + pageName + "')])[1]/ancestor::li)[last()]//*[@class='co_favoriteDel']"));
     }
+
     public List<WebElement> favouriteGroupNames() {
         return waitForExpectedElements(By.xpath("//h3//label[contains(@for,'checkbox-')]//span"));
     }

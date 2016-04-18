@@ -43,6 +43,7 @@ public class ProdFFHTest extends BaseStepDef {
     private List<String> guids;
     private List<String> titles;
     private int documentCount;
+    private int counterForDeletionOfFavouritePage;
 
     @When("^the user clicks on '(.+)' link on the header$")
     public void theUserClicksOnLinkOnTheHeader(String linkName) throws Throwable {
@@ -151,7 +152,7 @@ public class ProdFFHTest extends BaseStepDef {
     public void deleteFavoritePage(String pageName) throws Throwable {
         favouritesPage.organize().click();
         pageActions.mouseOver(favouritesPage.pageInFavourite(pageName));
-        favouritesPage.deletePageFromFavourite(pageName).click();
+        pageActions.mouseOverAndClickElement(favouritesPage.deletePageFromFavourite(pageName));
         favouritesPage.doneOrganizing().click();
     }
 
@@ -195,7 +196,7 @@ public class ProdFFHTest extends BaseStepDef {
     @Then("^the '(.+)' link contains text \"([^\"]*)\" and url '(.+)'$")
     public void linkContainsTextAndHref(String position, String text, String url) throws Throwable {
         linkContainsTextAndHrefAttribute(position, text, url);
-    }
+    }   
 
     private void deleteFolderIfExists(String folderName) {
         if (foldersUtils.doesFolderExist(folderName)) {
