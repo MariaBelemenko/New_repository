@@ -26,6 +26,7 @@ public abstract class DocumentDisplayAbstractPage extends AbstractPage {
     private static final By RESOURCE_TYPE = By.xpath(".//div[@class='co_documentType']/span");
     private static final By END_OF_DOCUMENT = By.id("co_endOfDocument");
     private static final By CONTENT_BODY = By.id("co_docContentBody");
+    private static final By DELIVERY_OPTIONS = By.id("co_docToolbarVerticalMenuRight");
 
     /**
      * This boolean method verifies the document header with the given name is present or not.
@@ -269,4 +270,27 @@ public abstract class DocumentDisplayAbstractPage extends AbstractPage {
         return findChildElement(contentBody(), END_OF_DOCUMENT);
     }
 
+    public WebElement author() {
+        return waitForExpectedElement(By.cssSelector("#co_docHeaderContainer .co_productname"));
+    }
+
+    public WebElement jurisdictionLabel() {
+        return waitForExpectedElement(By.cssSelector("#co_docContentMetaInfoJurisdictions b"));
+    }
+
+    public WebElement resourceTypeText(){
+        return waitForExpectedElement(By.cssSelector("#co_docContentMetaInfo div.co_documentType>span"));
+    }
+
+    public WebElement getResourceId() {
+        return waitForExpectedElement(By.className("co_documentId"));
+    }
+
+    public WebElement deliveryOptions() {
+        return retryingFindElement(DELIVERY_OPTIONS);
+    }
+
+    public WebElement returnToSearchLink() {
+        return waitForExpectedElement(By.xpath("//span[@class='kh_icon icon-reply-arrow']"));
+    }
 }

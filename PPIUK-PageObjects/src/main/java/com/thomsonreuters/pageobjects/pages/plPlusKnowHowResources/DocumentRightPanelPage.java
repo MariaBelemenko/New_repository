@@ -1,7 +1,7 @@
 package com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources;
 
 import com.thomsonreuters.driver.exception.PageOperationException;
-import com.thomsonreuters.driver.framework.AbstractPage;
+import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.DocumentDisplayAbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class DocumentRightPanelPage extends AbstractPage {
+public class DocumentRightPanelPage extends DocumentDisplayAbstractPage {
 
     public WebElement documentStatus() {
         try {
@@ -52,10 +52,6 @@ public class DocumentRightPanelPage extends AbstractPage {
    // private List<WebElement> jurisdictionSection() {
    //     return findElements(By.id("co_docContentMetaInfoJurisdictions"));
    // }
-    public WebElement jurisdictionLabel() {
-        return findElement(By.cssSelector("#co_docContentMetaInfoJurisdictions b"));
-    }
-
     public WebElement relatedContentLink() {
         return waitForExpectedElement(By.id("co_docContentMetaInfo")).findElement(By.linkText("Related Content"));
     }
@@ -64,13 +60,6 @@ public class DocumentRightPanelPage extends AbstractPage {
         return findElements(By.id("co_docContentMetaInfoJurisdictionsAllButton")).size() > 0;
     }
 
-    public WebElement resourceTypeText(){
-        try {
-            return waitForExpectedElement(By.cssSelector("#co_docContentMetaInfo div.co_documentType>span"));
-        } catch (Exception e) {
-            return waitForExpectedElement(By.cssSelector("#co_docContentMetaInfo div.co_documentType>span"));
-        }
-    }
     public boolean isSectionDisplayed(String navigationLink) {
         String id = getNavigationLinkID(navigationLink);
         double resourceHeightPosition = 0;

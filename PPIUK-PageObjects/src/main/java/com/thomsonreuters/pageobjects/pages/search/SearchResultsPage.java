@@ -3,11 +3,9 @@ package com.thomsonreuters.pageobjects.pages.search;
 import com.thomsonreuters.driver.exception.PageOperationException;
 import com.thomsonreuters.driver.framework.AbstractPage;
 import com.thomsonreuters.pageobjects.common.ListFunctions;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import java.util.*;
+
 import org.apache.commons.lang.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -1296,5 +1294,29 @@ public class SearchResultsPage extends AbstractPage {
 
     public WebElement selectAllCheckbox() {
         return waitForExpectedElement(By.xpath("//input[@id='co_searchHeader_selectAll']"));
+    }
+
+    public List<WebElement> getLinksToPages(){
+        return findElements(By.xpath("//*[@id='co_navigationFooter']/li"));
+    }
+
+    public void clickOnDocumentInGroupByIndex(int positionNumber, String groupName){
+        waitForElementToBeClickableAndReturnElement(By.xpath("//*[@class='co_search_header' and text()='" + groupName + "']/following-sibling::ol/li[" + positionNumber + "]/div[@class='co_searchContent']/h3/a")).click();
+    }
+
+    public List<WebElement> getCurrentCategoryLinks(String groupName){
+        return waitForElementsToBeClickableAndReturnElement(By.xpath("//*[@class='co_search_header' and text()='" + groupName + "']/following-sibling::ol/li"));
+    }
+
+    public WebElement searchPageLabel() {
+        return waitForExpectedElement((By.xpath("//h1[@id='co_browsePageLabel']")));
+    }
+
+    public List<WebElement> getTopicPageFacetsAsList() {
+        return waitForElementsClickable(By.cssSelector("#ukplc_topic_facet_links li a"));
+    }
+
+    public List<WebElement> getSearchFacets (){
+        return findElements(By.id("co_website_searchFacets"));
     }
 }

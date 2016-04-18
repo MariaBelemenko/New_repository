@@ -240,10 +240,6 @@ public class StandardDocumentPage extends DocumentDisplayAbstractPage {
         return waitForExpectedElement(By.id("co_docContentBody"));
     }
 
-    public WebElement getResourceId() {
-        return waitForExpectedElement(By.className("co_documentId"));
-    }
-
     public WebElement getCopyright() {
         return waitForExpectedElement(By.className("co_endOfDocCopyright"));
     }

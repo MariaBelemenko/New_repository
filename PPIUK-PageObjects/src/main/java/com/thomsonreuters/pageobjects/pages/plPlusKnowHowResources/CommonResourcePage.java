@@ -1,6 +1,6 @@
 package com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources;
 
-import com.thomsonreuters.driver.framework.AbstractPage;
+import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.DocumentDisplayAbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -11,14 +11,10 @@ import java.util.List;
  * This class will contain the pageobjects objects for KH and ASK resources
  */
 
-public class CommonResourcePage extends AbstractPage {
+public class CommonResourcePage extends DocumentDisplayAbstractPage {
 
     public WebElement title() {
         return waitForExpectedElement(By.cssSelector("#co_docHeaderContainer .co_title"));
-    }
-
-    public WebElement author() {
-        return findElement(By.cssSelector("#co_docHeaderContainer .co_productname"));
     }
 
     public WebElement contentBody() {

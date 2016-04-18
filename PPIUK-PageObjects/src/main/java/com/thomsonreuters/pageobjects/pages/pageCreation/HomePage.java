@@ -292,4 +292,8 @@ public class HomePage extends AbstractPage {
         return waitForExpectedElement(
                 By.xpath("//div[contains(@class, 'categoryBoxTabContents')]//div[contains(@class, 'Show')]//a[contains(., '" + linkText + "')]"));
     }
+
+    public List<WebElement> getTopicLinksList(){
+        return waitForExpectedElements(By.xpath("//*[@id='coid_categoryBoxTabPanel1']//a"));
+    }
 }

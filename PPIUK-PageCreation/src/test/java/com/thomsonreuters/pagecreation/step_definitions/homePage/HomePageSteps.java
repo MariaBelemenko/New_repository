@@ -3,9 +3,7 @@ package com.thomsonreuters.pagecreation.step_definitions.homePage;
 import com.thomsonreuters.pagecreation.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.PageActions;
-import com.thomsonreuters.pageobjects.otherPages.GlossaryPage;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
-import com.thomsonreuters.pageobjects.otherPages.PLCLegacyBooksPage;
 import com.thomsonreuters.pageobjects.pages.generic.PPIGenericDocDisplay;
 import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawHomepage;
@@ -16,17 +14,17 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.assertj.core.api.BooleanArrayAssert;
 import org.assertj.core.api.SoftAssertions;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 public class HomePageSteps extends BaseStepDef{
 
@@ -38,6 +36,7 @@ public class HomePageSteps extends BaseStepDef{
     private PageActions pageActions = new PageActions();
     private CommonMethods commonMethods = new CommonMethods();
     private PPIGenericDocDisplay ppiGenericDocDisplay = new PPIGenericDocDisplay();
+    private SearchResultsPage searchResultsPage = new SearchResultsPage();
     //private RemoteWebDriver getDriver;
 
     public HomePageSteps() {
@@ -140,14 +139,25 @@ public class HomePageSteps extends BaseStepDef{
         assertTrue("The link " + link + " is NOT displayed on " + page, homePage.waitForExpectedElement(By.linkText(link)).isDisplayed());
     }
 
-    @When("^the user clicks category link '(.*)'and topic link '(.*)' on '(.*)' page$")
-    public void the_user_clicks_Category_and_topic_link_on__page(String link, String topicLink, String page) throws Throwable {
-        homePage.waitForExpectedElement(By.linkText(link)).click();
+    @When("^the user selects practice area page '(.*)'$")
+    public void theUserSelectsTopicPage(String link) throws Throwable {
+        if(link.equalsIgnoreCase("Any")){
+            List<WebElement> linkList = homePage.getTopicLinksList();
+            assertFalse(linkList.isEmpty());
+            linkList.get(ThreadLocalRandom.current().nextInt(0, linkList.size())).click(); //click random link
+        }
+        else {
+            homePage.selectLinkPresentOnTab(link);
+        }
         homePage.waitForPageToLoad();
-        assertTrue("The Expected Category Page Title " + link + " is  NOT displayed", wlnHeader.pageHeaderLabel().getText().toLowerCase().contains(link.toLowerCase()));
-        homePage.waitForExpectedElement(By.linkText(topicLink)).click();
-        homePage.waitForPageToLoad();
-        assertTrue("The Expected Topic Page Title " + topicLink + " is  NOT displayed", wlnHeader.pageHeaderLabel().getText().toLowerCase().contains(topicLink.toLowerCase()));
+    }
+
+    @When("^the user click on the topic link '(.*)'$")
+    public void theUserClickOnTheTopicLink(String link) throws Throwable {
+        theUserSelectsTopicPage(link);
+        if(searchResultsPage.getSearchFacets().isEmpty()){
+            theUserClickOnTheTopicLink("Any");
+        }
     }
 
     @Then("^the user verifies that the current PageTitle contains '(.*)'$")

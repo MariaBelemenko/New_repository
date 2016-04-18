@@ -1,6 +1,6 @@
 package com.thomsonreuters.pageobjects.pages.search;
 
-import com.thomsonreuters.driver.framework.AbstractPage;
+import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.DocumentDisplayAbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
@@ -9,10 +9,7 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
-
-
-public class WhatsMarketComparisonReportPage extends AbstractPage {
+public class WhatsMarketComparisonReportPage extends DocumentDisplayAbstractPage {
 
     /**
      * this is the Deal Comparison Report heading
@@ -358,10 +355,6 @@ public class WhatsMarketComparisonReportPage extends AbstractPage {
 
     public WebElement leftHandColumnSelect() {
         return waitForExpectedElement(By.xpath("//div[@class='kh_toc-content']"), 35);
-    }
-
-    public WebElement returnToSearchLink() {
-        return waitForExpectedElement(By.xpath("//span[@class='kh_icon icon-reply-arrow']"), 10);
     }
 
     /**
