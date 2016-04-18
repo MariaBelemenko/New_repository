@@ -24,7 +24,7 @@ Feature: [770524] FD10 Download Fast Draft Project (Document)
 
   Scenario Outline: Standard Document and FS
     Given PL+ user is logged in with following details
-      | userName         | FSTestUser2           |
+      | userName         | FStyleUser           |
       | routing          | FAST_DRAFT_FIRM_STYLE |
       | mandatoryRouting | YES                   |
     When the user come back on to Home page
@@ -93,7 +93,7 @@ Feature: [770524] FD10 Download Fast Draft Project (Document)
 
   Scenario:
     Given PL+ user is logged in with following details
-      | userName         | FSTestUser2           |
+      | userName         | FStyleUser           |
       | routing          | FAST_DRAFT_FIRM_STYLE |
       | mandatoryRouting | YES                   |
     When the user goes My FastDraft

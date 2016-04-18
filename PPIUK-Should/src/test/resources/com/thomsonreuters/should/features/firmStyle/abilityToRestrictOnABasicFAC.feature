@@ -5,7 +5,7 @@ Feature: [780805] FS4 Testing Restrict on basis FAC
   @bug
   Scenario Outline: Deny document
     Given PL+ user is logged in with following details
-      | userName         | FSTestUser2       |
+      | userName         | FStyleUser       |
       | routing          | FIRM_STYLE_NO_FAC |
       | mandatoryRouting | YES               |
     And the user come back on to Home page
@@ -25,7 +25,7 @@ Feature: [780805] FS4 Testing Restrict on basis FAC
   @bug
   Scenario Outline: Deny clause
     Given PL+ user is logged in with following details
-      | userName         | FSTestUser2       |
+      | userName         | FStyleUser       |
       | routing          | FIRM_STYLE_NO_FAC |
       | mandatoryRouting | YES               |
     And the user come back on to Home page
