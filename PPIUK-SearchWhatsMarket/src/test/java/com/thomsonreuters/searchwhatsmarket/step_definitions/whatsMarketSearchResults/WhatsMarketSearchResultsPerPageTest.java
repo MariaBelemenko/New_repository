@@ -7,6 +7,7 @@ import com.thomsonreuters.searchwhatsmarket.step_definitions.BaseStepDef;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
 import java.awt.*;
@@ -74,12 +75,14 @@ public class WhatsMarketSearchResultsPerPageTest extends BaseStepDef {
         while (waitForNewPage) {
             try {
                 searchResultsPage.nonSelectedPage(pageToClick).click();
-            } catch (Exception e) {
+            } catch (NoSuchElementException e) {
+                LOG.info("Non-selected page is absent", e);
             }
             try {
                 searchResultsPage.currentSelectedPage(pageToClick).isDisplayed();
                 waitForNewPage = false;
-            } catch (Exception e) {
+            } catch (NoSuchElementException e) {
+                LOG.info("Currently selected page is absent", e);
                 waitForNewPage = true;
             }
             if (waitForNewPage) {
@@ -115,8 +118,8 @@ public class WhatsMarketSearchResultsPerPageTest extends BaseStepDef {
             try {
                 searchResultsPage.currentSelectedPage(pageToClick).isDisplayed();
                 waitForNewPage = false;
-            }
-            catch (Exception e) {
+            } catch (NoSuchElementException e) {
+                LOG.info("Currently selected page is absent", e);
                 waitForNewPage = true;
             }
             if (waitForNewPage) {
@@ -141,12 +144,14 @@ public class WhatsMarketSearchResultsPerPageTest extends BaseStepDef {
             try {
                 searchResultsPage.firstPageNavigationArrow().click();
             }
-            catch (Exception e) {
+            catch (NoSuchElementException e) {
+                LOG.info("'First page' navigation arrow is absent", e);
             }
             try {
                 resultCheck = searchResultsPage.theFirstSearchResult().getText();
             }
-            catch (Exception e) {
+            catch (NoSuchElementException e) {
+                LOG.info("There are no search results", e);
                 resultCheck = numberOfFirstResult;
             }
             if (!resultCheck.equals(numberOfFirstResult)) {
@@ -173,12 +178,14 @@ public class WhatsMarketSearchResultsPerPageTest extends BaseStepDef {
             try {
                 searchResultsPage.lastPageNavigationArrow().click();
             }
-            catch (Exception e) {
+            catch (NoSuchElementException e) {
+                LOG.info("'Last page' navigation arrow is absent", e);
             }
             try {
                 resultCheck = searchResultsPage.theFirstSearchResult().getText();
             }
-            catch (Exception e) {
+            catch (NoSuchElementException e) {
+                LOG.info("There are no search results", e);
                 resultCheck = numberOfFirstResult;
             }
             if (!resultCheck.equals(numberOfFirstResult)) {
@@ -206,7 +213,8 @@ public class WhatsMarketSearchResultsPerPageTest extends BaseStepDef {
                 searchResultsPage.currentSelectedPage(pageToClick).isDisplayed();
                 waitForNewPage = false;
             }
-            catch (Exception e) {
+            catch (NoSuchElementException e) {
+                LOG.info("Current selected page is absent", e);
                 waitForNewPage = true;
             }
             if (waitForNewPage) {
@@ -227,7 +235,7 @@ public class WhatsMarketSearchResultsPerPageTest extends BaseStepDef {
             isPresent = true;
         }
         catch (Exception e) {
-            LOG.info("context", e);
+            LOG.info("'Next page' navigation arrow is absent", e);
         }
         assertFalse(isPresent);
     }
@@ -240,7 +248,7 @@ public class WhatsMarketSearchResultsPerPageTest extends BaseStepDef {
             isPresent = true;
         }
         catch (Exception e) {
-            LOG.info("context", e);
+            LOG.info("'Last page' navigation arrow is absent", e);
         }
         assertFalse(isPresent);
     }
@@ -253,7 +261,7 @@ public class WhatsMarketSearchResultsPerPageTest extends BaseStepDef {
             isPresent = true;
         }
         catch (Exception e) {
-            LOG.info("context", e);
+            LOG.info("'Previous page' navigation arrow is absent", e);
         }
         assertFalse(isPresent);
     }
@@ -266,7 +274,7 @@ public class WhatsMarketSearchResultsPerPageTest extends BaseStepDef {
             isPresent = true;
         }
         catch (Exception e) {
-            LOG.info("context", e);
+            LOG.info("'First page' navigation arrow is absent", e);
         }
         assertFalse(isPresent);
     }

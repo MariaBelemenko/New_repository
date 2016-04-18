@@ -121,9 +121,9 @@ public class WhatsMarketComparisonToolTest extends BaseStepDef {
     @When("^the user verifies that the report profile dropdown (does|does not) include the profile entitled \"([^\"]*)\"$")
     public void theUserVerifiesThatTheReportProfileDropdownIncludesTheProfileEntitled(String doesDoesNot, String arg1) throws Throwable {
         if (doesDoesNot.equalsIgnoreCase("does")) {
-            assertThat(whatsMarketComparisonReportPage.isReportProfileDropdownOptionDisplayed(arg1), Is.is(true));
+            assertTrue(whatsMarketComparisonReportPage.isReportProfileDropdownOptionDisplayed(arg1));
         } else if (doesDoesNot.equalsIgnoreCase("does not")) {
-            assertThat(whatsMarketComparisonReportPage.isReportProfileDropdownOptionDisplayed(arg1), Is.is(false));
+            assertFalse(whatsMarketComparisonReportPage.isReportProfileDropdownOptionDisplayed(arg1));
         }
     }
 
@@ -221,6 +221,7 @@ public class WhatsMarketComparisonToolTest extends BaseStepDef {
             whatsMarketComparisonReportPage.organizeColumnsLightBox().isDisplayed();
             popupPresent = true;
         } catch (TimeoutException e) {
+            LOG.info("'Orginize Columns' popup is absent", e);
         }
         assertFalse(popupPresent);
     }
@@ -275,6 +276,7 @@ public class WhatsMarketComparisonToolTest extends BaseStepDef {
         try {
             whatsMarketComparisonReportPage.firstDealComparisonTermsCheckedOn().isDisplayed();
         } catch (Exception e) {
+            LOG.info("The first 'Deal Comparison Terms' checkbox is absent", e);
             checkboxDisplayed = false;
         }
         assertFalse(checkboxDisplayed);
@@ -320,9 +322,9 @@ public class WhatsMarketComparisonToolTest extends BaseStepDef {
     @Then("^the folder \"([^\"]*)\" appears in the \"([^\"]*)\" folder$")
     public void checkFolderPresent(String folderName, String parentFolder) throws Throwable {
         researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
-        if (!researchOrganizerPage.isFolderPresentInLeftFrame(folderName, parentFolder)) {
-            throw new RuntimeException("Folder '" + folderName + "' is absent in '" + parentFolder + "'");
-        }
+        assertTrue("Folder '" + folderName + "' is absent in '" + parentFolder + "'",
+                researchOrganizerPage.isFolderPresentInLeftFrame(folderName, parentFolder));
+
     }
 
     @Then("^the user verifies the whats market deal comparison report is present in the \"(.*?)\" folder$")
@@ -387,13 +389,11 @@ public class WhatsMarketComparisonToolTest extends BaseStepDef {
     }
 
     @Then("^the user verifies that '(Ready For Email|Ready For Download|Preparing For Print|Preparing For Email|Preparing For Download)' is displayed on the overlay$")
-    public void the_user_verifies_that_Ready_For_Email_is_display_on_overlay(String header) throws Throwable {
-        if (header.contains("Ready")) {
-            Thread.sleep(1000);
-            assertThat("The " + header + " is NOT displayed", askResourcePage.readyMessageOverlayHeader().getText(), containsString(header));
-        } else {
-            assertThat("The " + header + " is NOT displayed", askResourcePage.prepareMessageOverlayHeader().getText(), containsString(header));
-        }
+    public void theUserVerifiesThatReadyForEmailIsDisplayOnOverlay(String header) throws Throwable {
+            WebElement overlayHeader = (header.contains("Ready")) ? askResourcePage.readyMessageOverlayHeader()
+                : askResourcePage.prepareMessageOverlayHeader();
+        assertTrue("The " + header + " is NOT displayed", overlayHeader.isDisplayed());
+
     }
 
     @When("^the user verifies 'Download' button is displayed on Ready For Download overlay$")
