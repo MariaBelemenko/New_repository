@@ -20,8 +20,8 @@ public class HomePage extends AbstractPage {
     }
 
     public WebElement menuColumnLink(String linkText) {
-
-        return waitForExpectedElement(By.xpath("//div[@id='menu-item-children']//a[text()='" + linkText + "']"),10);
+        // \" to deal with What's Market having an apostrophe
+        return waitForExpectedElement(By.xpath("//div[@id='menu-item-children']//a[text()=\"" + linkText + "\"]"),10);
     }
 
     public WebElement homepageTabHeadingLink(String linkText) {
