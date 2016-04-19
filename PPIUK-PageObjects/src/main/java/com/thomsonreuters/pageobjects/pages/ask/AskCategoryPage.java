@@ -3,6 +3,7 @@ package com.thomsonreuters.pageobjects.pages.ask;
 import com.thomsonreuters.driver.framework.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
 
@@ -95,7 +96,7 @@ public class AskCategoryPage extends AbstractPage {
     public List<WebElement> recentQueriesDatesOnly() {
         try {
             return waitForExpectedElements(By.xpath("//span[@class='co_date_message']/../../span[@class='co_date']"));
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException | TimeoutException e) {
             return waitForExpectedElements(By.cssSelector(".co_date"));
         }
     }
