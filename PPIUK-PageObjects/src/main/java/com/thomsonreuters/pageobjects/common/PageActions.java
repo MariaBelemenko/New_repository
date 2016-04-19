@@ -1,11 +1,11 @@
 package com.thomsonreuters.pageobjects.common;
 
+import com.thomsonreuters.driver.framework.AbstractPage;
 import com.thomsonreuters.driver.framework.WebDriverDiscovery;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.By;
-import com.thomsonreuters.driver.framework.AbstractPage;
 
 public class PageActions {
 	
@@ -39,7 +39,7 @@ public class PageActions {
 	
 	public void mouseOverAndClickElement(WebElement element) {
 		new Actions(webDriverDiscovery.getRemoteWebDriver()).moveToElement(element).build().perform();		
-		JavascriptExecutor js = (JavascriptExecutor)driver; 
+		JavascriptExecutor js = (JavascriptExecutor)webDriverDiscovery.getRemoteWebDriver();
 		js.executeScript("arguments[0].click();", element); 
 	}
 
