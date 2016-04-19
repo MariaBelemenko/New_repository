@@ -25,8 +25,8 @@ public class HomePage extends AbstractPage {
     }
 
     public WebElement homepageTabHeadingLink(String linkText) {
-
-        return waitForExpectedElement(By.xpath("//a[@class='co_tabLink'][text()='" + linkText + "']"),10);
+        // \" to deal with What's Market having an apostrophe
+        return waitForExpectedElement(By.xpath("//a[@class='co_tabLink'][text()=\"'" + linkText + "\"']"),10);
     }
 
     public WebElement homepageTabLink(String linkText) {
