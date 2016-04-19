@@ -1042,6 +1042,10 @@ public class SharedAnnotationsPage extends AbstractPage {
         tinyMceEditor.setTinyMCeContent(content);
     }
 
+    public List<WebElement> getSharedGroupLinks(){
+        return waitForExpectedElements(By.xpath("//li[@class='co_contacts_addedContactsGroup']/a"));
+    }
+
     /**
      * Annotations metadata
      */

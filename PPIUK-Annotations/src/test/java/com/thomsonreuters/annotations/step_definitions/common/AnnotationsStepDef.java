@@ -559,8 +559,11 @@ public class AnnotationsStepDef extends BaseStepDef {
             sharedAnnotationsPage.addGroup(groupName, getUserNameStartswithLastName(contact));
         }
         sharedAnnotationsPage.selectGroup(groupName);
+        assertFalse("User's group was not selected", sharedAnnotationsPage.getSharedGroupLinks().isEmpty());
+        assertTrue("Selected group is not correct", sharedAnnotationsPage.getSharedGroupLinks().get(0).getText().contains(groupName));
         sharedAnnotationsPage.selectInsertButtonOnContactsPage();
         sharedAnnotationsPage.saveAnnotation();
+        assertTrue(sharedAnnotationsPage.isSavedAnnotationDisplayed(input, SharedAnnotationsPage.ExpectedResult.VISIBLE));
     }
 
     @When("^\"(.*?)\" clicks the link$")
