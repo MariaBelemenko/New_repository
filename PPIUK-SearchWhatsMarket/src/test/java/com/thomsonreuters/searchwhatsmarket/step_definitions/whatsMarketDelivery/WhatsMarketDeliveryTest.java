@@ -14,6 +14,7 @@ import cucumber.api.java.en.When;
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
@@ -243,7 +244,7 @@ public class WhatsMarketDeliveryTest extends BaseStepDef {
         try {
             searchResultsPage.expandedMarginCheckbox().isDisplayed();
             isPresent = true;
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException | TimeoutException e) {
         LOG.info("'Expanded Margin' Checkbox is absent", e);
     }
         assertFalse(isPresent);

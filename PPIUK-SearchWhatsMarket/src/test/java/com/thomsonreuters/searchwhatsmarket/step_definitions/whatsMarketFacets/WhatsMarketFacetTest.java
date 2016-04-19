@@ -9,6 +9,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 
 import java.util.List;
 import java.util.Map;
@@ -92,7 +93,7 @@ public class WhatsMarketFacetTest extends BaseStepDef {
             if (knowHowSearchResultsPage.selectMultipleFiltersButton().isDisplayed()) {
                 isPresent = true;
             }
-        } catch (NoSuchElementException e) {
+        } catch (NoSuchElementException | TimeoutException e) {
             LOG.info("'Select Multiple Filters' button is absent", e);
         }
         if (isPresent = true) {
