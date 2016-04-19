@@ -1,5 +1,6 @@
 Feature: [CLW039] Verify links to external urls for the Sample documents
 
+  # 8-107-4251 - not available on PLC Legacy
   Scenario Outline: For the sample Knowhow doc, Standard document, Country doc, Case Tracker, Whats Market doc verify the forward linking
     Given the "<PLC document>" of type "<PLC document TYPE>" exists on Novus platform
     And for "<PLC document>" I get all the external links in PLC XML
@@ -11,7 +12,7 @@ Feature: [CLW039] Verify links to external urls for the Sample documents
     | Legal Update             | 9-606-5528   |
     | External resource        | 7-516-0749   |
     | Standard Document        | 6-376-3125   |
-    | Drafting Note            | 7-376-3200   |
+    | Drafting Note            | 8-107-4251   |
     | Standard Clause          | 7-517-2182   |
     | Ask document             | a-008-4220   |
     | Practice Note - Overview | 1-519-0278   |
