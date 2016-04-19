@@ -4,7 +4,7 @@ Feature: [803549] Testing Firm Style direct link
   # This test uses JAVA Robot, therefore it could be run locally only
   # 833984 [REGRESSION] Download FS document starting from Open Web user is broken
   @bug
-  Scenario Outline: Open Web Drect link House Style
+  Scenario Outline: Open Web Direct link House Style
     Given PL+ user is logged in with following details
       | routing          | OPEN_WEB |
       | mandatoryRouting | YES      |
@@ -27,7 +27,7 @@ Feature: [803549] Testing Firm Style direct link
     | Private Client | Master Will with drafting notes         | 5-381-4187.fs.doc | /5-381-4187.fs.doc |
 
   @bug
-  Scenario Outline: Open Web Drect link Firm Style
+  Scenario Outline: Open Web Direct link Firm Style
     Given PL+ user is logged in with following details
       | routing          | OPEN_WEB |
       | mandatoryRouting | YES      |
