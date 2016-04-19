@@ -1,5 +1,5 @@
 @e2e
-Feature: [748592] FFH049 As a PPI User I want to be able to see my start page in Favourites so I can I am aware about which is my start page.
+Feature: [748592][863523] FFH049 As a PPI User I want to be able to see my start page in Favourites so I can I am aware about which is my start page.
 
   Background:
     Given PL+ user is logged in with following details
@@ -28,3 +28,4 @@ Feature: [748592] FFH049 As a PPI User I want to be able to see my start page in
   Examples:
     | parent  | page      |
     | IP & IT | Copyright |
+    |Commercial|Outsourcing|    
