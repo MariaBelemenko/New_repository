@@ -8,8 +8,8 @@ Feature: [803549] Testing Firm Style direct link
     Given PL+ user is logged in with following details
       | routing          | OPEN_WEB |
       | mandatoryRouting | YES      |
-    When the user deletes all files with name ".fs" and extension ".doc" from Downloads
-    And the user opens <documentNameURL> url on plcuk website
+    When the user opens <documentNameURL> url on plcuk website
+    And the user deletes all files with name ".fs" and extension ".doc" from Downloads
     Then "signon" page is displayed
     Given PL+ user is logged in with following details after IP login
       | userName | FDTestUser2 |
@@ -31,8 +31,8 @@ Feature: [803549] Testing Firm Style direct link
     Given PL+ user is logged in with following details
       | routing          | OPEN_WEB |
       | mandatoryRouting | YES      |
-    When the user deletes all files with name ".fs" and extension ".doc" from Downloads
-    And the user opens <documentNameURL> url on plcuk website
+    When the user opens <documentNameURL> url on plcuk website
+    And the user deletes all files with name ".fs" and extension ".doc" from Downloads
     Then "signon" page is displayed
     Given PL+ user is logged in with following details after IP login
       | userName | FStyleUser |
