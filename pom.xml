@@ -11,8 +11,13 @@
     <description>PPI UK Tests</description>
 
     <properties>
-        <surefire.fork.count>5</surefire.fork.count>
+        <surefire.fork.count>10</surefire.fork.count>
         <driverType>firefox</driverType>
+        <chromeDriverPath>${basedir}\src\main\resources\drivers\chromedriver.exe</chromeDriverPath>
+        <ieDriverPath>${basedir}\src\main\resources\drivers\IEDriverServer.exe</ieDriverPath>
+        <browserStackLocal>${basedir}\src\main\resources\BrowserStackLocal.exe</browserStackLocal>
+        <sonar.projectName>PLPlus UK Tests</sonar.projectName>
+        <sonar.language>java</sonar.language>
         <newSession>false</newSession>
         <jenkinsStyleReports>true</jenkinsStyleReports>
         <routing>false</routing>

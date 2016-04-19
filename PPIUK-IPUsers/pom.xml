@@ -11,8 +11,13 @@
     <description>PPI UK - Annotations project</description>
 
     <properties>
-        <surefire.fork.count>5</surefire.fork.count>
+        <surefire.fork.count>10</surefire.fork.count>
         <driverType>firefox</driverType>
+        <chromeDriverPath>${basedir}\src\main\resources\drivers\chromedriver.exe</chromeDriverPath>
+        <ieDriverPath>${basedir}\src\main\resources\drivers\IEDriverServer.exe</ieDriverPath>
+        <browserStackLocal>${basedir}\src\main\resources\BrowserStackLocal.exe</browserStackLocal>
+        <sonar.projectName>PLPlus UK - IP Users</sonar.projectName>
+        <sonar.language>java</sonar.language>
         <newSession>false</newSession>
         <jenkinsStyleReports>true</jenkinsStyleReports>
         <routing>false</routing>
@@ -149,8 +154,12 @@
                         <base.url>${base.url}</base.url>
                         <driverType>${driverType}</driverType>
                         <webdriver.chrome.driver>${chromeDriverPath}</webdriver.chrome.driver>
+                        <webdriver.ie.driver>${ieDriverPath}</webdriver.ie.driver>
+                        <browserStackLocal>${browserStackLocal}</browserStackLocal>
                         <newSession>${newSession}</newSession>
                         <username>None</username>
+                        <project>PLPlusUK-IPUsers</project>
+                        <projectName>IP Users</projectName>
                         <jenkinsStyleReports>${jenkinsStyleReports}</jenkinsStyleReports>
                         <cobalt.users.xls.path>${cobalt.users.xls.path}</cobalt.users.xls.path>
                         <routing>${routing}</routing>

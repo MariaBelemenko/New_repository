@@ -8,11 +8,16 @@
     <artifactId>ppiuk-research</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <description>PPI UK Research Phase2</description>
+    <description>PPI UK - Research Project for PPI Phase2</description>
 
     <properties>
         <surefire.fork.count>10</surefire.fork.count>
         <driverType>firefox</driverType>
+        <chromeDriverPath>${basedir}\src\main\resources\drivers\chromedriver.exe</chromeDriverPath>
+        <ieDriverPath>${basedir}\src\main\resources\drivers\IEDriverServer.exe</ieDriverPath>
+        <browserStackLocal>${basedir}\src\main\resources\BrowserStackLocal.exe</browserStackLocal>
+        <sonar.projectName>PLPlus UK - Research</sonar.projectName>
+        <sonar.language>java</sonar.language>
         <newSession>false</newSession>
         <jenkinsStyleReports>true</jenkinsStyleReports>
         <routing>false</routing>
@@ -123,11 +128,13 @@
                     <systemPropertyVariables>
                         <base.url>${base.url}</base.url>
                         <driverType>${driverType}</driverType>
-                        <!--<webdriver.chrome.driver>${chromeDriverPath}</webdriver.chrome.driver>-->
-                        <!--<webdriver.ie.driver>${ieDriverPath}</webdriver.ie.driver>-->
-                        <!--<browserStackLocal>${browserStackLocal}</browserStackLocal>-->
+                        <webdriver.chrome.driver>${chromeDriverPath}</webdriver.chrome.driver>
+                        <webdriver.ie.driver>${ieDriverPath}</webdriver.ie.driver>
+                        <browserStackLocal>${browserStackLocal}</browserStackLocal>
                         <newSession>${newSession}</newSession>
                         <username>None</username>
+                        <project>PLPlusUK-Research</project>
+                        <projectName>Research</projectName>
                         <jenkinsStyleReports>${jenkinsStyleReports}</jenkinsStyleReports>
                         <cobalt.users.xls.path>${cobalt.users.xls.path}</cobalt.users.xls.path>
                         <routing>${routing}</routing>

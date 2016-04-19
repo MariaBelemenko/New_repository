@@ -13,6 +13,11 @@
     <properties>
         <surefire.fork.count>10</surefire.fork.count>
         <driverType>firefox</driverType>
+        <chromeDriverPath>${basedir}\src\main\resources\drivers\chromedriver.exe</chromeDriverPath>
+        <ieDriverPath>${basedir}\src\main\resources\drivers\IEDriverServer.exe</ieDriverPath>
+        <browserStackLocal>${basedir}\src\main\resources\BrowserStackLocal.exe</browserStackLocal>
+        <sonar.projectName>PLPlus UK - Search Whats Market</sonar.projectName>
+        <sonar.language>java</sonar.language>
         <newSession>false</newSession>
         <jenkinsStyleReports>true</jenkinsStyleReports>
         <routing>false</routing>
@@ -149,11 +154,13 @@
                     <systemPropertyVariables>
                         <base.url>${base.url}</base.url>
                         <driverType>${driverType}</driverType>
-                        <!--<webdriver.chrome.driver>${chromeDriverPath}</webdriver.chrome.driver>-->
-                        <!--<webdriver.ie.driver>${ieDriverPath}</webdriver.ie.driver>-->
-                        <!--<browserStackLocal>${browserStackLocal}</browserStackLocal>-->
+                        <webdriver.chrome.driver>${chromeDriverPath}</webdriver.chrome.driver>
+                        <webdriver.ie.driver>${ieDriverPath}</webdriver.ie.driver>
+                        <browserStackLocal>${browserStackLocal}</browserStackLocal>
                         <newSession>${newSession}</newSession>
                         <username>None</username>
+                        <project>PLPlusUK-SearchWhatsMarket</project>
+                        <projectName>Search Whats Market</projectName>
                         <jenkinsStyleReports>${jenkinsStyleReports}</jenkinsStyleReports>
                         <cobalt.users.xls.path>${cobalt.users.xls.path}</cobalt.users.xls.path>
                         <routing>${routing}</routing>
