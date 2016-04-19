@@ -255,6 +255,25 @@ public class HomePageSteps extends BaseStepDef{
         }
     }
 
+    @Then("^The user clicks link to \"(.*?)\"$")
+    public void theUserClicksLinkToEUReferendum(String homepageMenuLink) throws Throwable {
+        //homePage.homepageLink(homepageMenuLink).click();
+    }
+
+    @And("^The user verifies the resource page title is \"(.*?)\"$")
+    public void theUserVerifiesTheResourcePageIsCorrect (String pageTitle) throws Throwable {
+        String displayedTitle = ppiGenericDocDisplay.titleNoToc().getText();
+        assertTrue(displayedTitle.equals(pageTitle));
+        commonMethods.browserGoBack();
+    }
+
+    @And("^The user verifies the glossary page title is \"(.*?)\"$")
+    public void theUserVerifiesTheGlossaryPageIsCorrect (String pageTitle) throws Throwable {
+        String displayedTitle = ppiGenericDocDisplay.glossaryHeader().getText();
+        assertTrue(displayedTitle.equals(pageTitle));
+        commonMethods.browserGoBack();
+    }
+
     @When("^the user '(is|is not)' presented with the cookie consent message$")
     public void theUserIsPresentedWithTheCookieConsentMessage(String arg1) throws Throwable {
         if (arg1.equalsIgnoreCase("is")) {

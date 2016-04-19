@@ -1,4 +1,4 @@
-@sandystest2
+@sandystest2 @wip
 
 Feature: PL+ Home Page Browse
   In Order to view Practice areas, Resources and International links
@@ -43,7 +43,8 @@ Feature: PL+ Home Page Browse
       | For charity lawyers             |
       | For company secretaries         |
       | For in-house lawyers            |
-      #| EU referendum in the UK         |
+    Then The user clicks link to "EU referendum in the UK"
+    And The user verifies the resource page title is "EU Referendum"
 
 
   #@e2e @prod
@@ -60,6 +61,8 @@ Feature: PL+ Home Page Browse
       | PLC Magazine                             |
       #| Bloomsbury books online                  |
       | Global guides                            |
+    Then The user clicks link to "Glossary"
+    And The user verifies the glossary page title is "Glossary"
 
       #@e2e @prod
   Scenario: Verify that 'International' link is displayed in central box on the home page
