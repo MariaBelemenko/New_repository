@@ -34,11 +34,13 @@ Feature: [839420] As a PL+ User, I am able to search for an individual country i
       | Cyprus                   |
       | Czech Republic           |
       | Denmark                  |
+      | Dominican Republic       |
       | Egypt                    |
       | Estonia                  |
       | Finland                  |
       | France                   |
       | Germany                  |
+      | Ghana                    |
       | Gibraltar                |
       | Greece                   |
       | Hong Kong - PRC          |
