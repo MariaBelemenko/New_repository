@@ -4,6 +4,7 @@ import com.thomsonreuters.login.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.onePass.OnePassLogoutPage;
+import com.thomsonreuters.pageobjects.pages.login.OnepassLogin;
 import com.thomsonreuters.pageobjects.utils.CobaltUser;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -15,6 +16,8 @@ public class AbilityToSignOffAndRemoveSRMOptionTest extends BaseStepDef {
     private WLNHeader wlnHeader = new WLNHeader();
     private OnePassLogoutPage onePassLogoutPage = new OnePassLogoutPage();
     private NavigationCobalt navigationCobalt = new NavigationCobalt();
+    private OnepassLogin onepassLoginPage = new OnepassLogin();
+    private String baseUrl = System.getProperty("base.url");
 
     @When("^this logged in user clicks on Sign off$")
     public void thisLoggedInUserClicksOnSignOff() throws Throwable {
@@ -48,7 +51,11 @@ public class AbilityToSignOffAndRemoveSRMOptionTest extends BaseStepDef {
 
     @Then("^he should be logged out from system$")
     public void heWillBePromptedToEnterHisUsernameAndPasswordAgain() throws Throwable {
-        assertTrue("User was not logged out", wlnHeader.isSignInLinkPresent());
+        if (baseUrl.equals("hotprod")) {
+        	assertTrue("User was not logged out", onepassLoginPage.updateExistingOnePassProfileLink().isDisplayed());
+        } else {
+        	assertTrue("User was not logged out", wlnHeader.isSignInLinkPresent());
+        }        
     }
 
 }
