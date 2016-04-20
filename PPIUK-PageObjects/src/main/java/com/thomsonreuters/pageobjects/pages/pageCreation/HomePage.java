@@ -290,7 +290,8 @@ public class HomePage extends AbstractPage {
      */
     public WebElement getActiveTabLink(String linkText) {
         return waitForExpectedElement(
-                By.xpath("//div[contains(@class, 'categoryBoxTabContents')]//div[contains(@class, 'Show')]//a[contains(., '" + linkText + "')]"));
+                By.xpath("//div[contains(@class, 'categoryBoxTabContents')]//div[contains(@class, 'Show')]//a[contains(., '" + linkText + "')] | " +
+                        "//div[contains(@id, 'categoryBoxTabContents')]//a[contains(., '" + linkText + "')]"));
     }
 
     public List<WebElement> getTopicLinksList(){
