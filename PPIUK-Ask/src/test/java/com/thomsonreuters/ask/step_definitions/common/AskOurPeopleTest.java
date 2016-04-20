@@ -53,13 +53,8 @@ public class AskOurPeopleTest extends BaseStepDef {
             if (page.contains("Browse")) {
                 homePage.findChildElement(homePage.getPracticeAreasBrowseMenuContainer(), By.linkText((link))).click();
             } else {
-                try {
-                    homePage.waitForExpectedElement(By.linkText(link), 2).click();
-                } catch (Exception e) {
-                    homePage.waitForExpectedElement(By.partialLinkText(link), 5).click();
-                }
+                homePage.getActiveTabLink(link).click();
             }
-            Thread.sleep(2000);
             homePage.waitForPageToLoad();
         }
     }

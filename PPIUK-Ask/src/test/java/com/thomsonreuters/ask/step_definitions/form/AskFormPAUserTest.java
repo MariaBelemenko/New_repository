@@ -60,7 +60,7 @@ public class AskFormPAUserTest extends BaseStepDef {
         closesASKWindow();
     }
 
-    @After(order = 100000, value = "@CloseAskWindow")
+    @After(order = 1, value = "@CloseAskWindow")
     public void closesASKWindow() throws Throwable {
         try {
             if (askWindowHandle != null && !askWindowHandle.equals(mainWindowHandle)) {
