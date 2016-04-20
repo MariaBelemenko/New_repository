@@ -24,12 +24,14 @@ import cucumber.api.java.en.When;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import org.springframework.util.StringUtils;
-
+import com.thomsonreuters.pageobjects.pages.widgets.CategoryPage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import org.hamcrest.core.Is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import static com.thomsonreuters.pageobjects.utils.CobaltUser.isUserFirstUser;
 
@@ -57,6 +59,7 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
     private FoldersUtils foldersUtils;
     private SearchHomePage searchHomePage;
     private KHResourcePage resourcePage;
+    private CategoryPage categoryPage;
 
     public CommonLoginNaviagtionSteps() {
         routingPage = new RoutingPage();
@@ -76,6 +79,7 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         foldersUtils = new FoldersUtils();
         searchHomePage = new SearchHomePage();
         resourcePage = new KHResourcePage();
+        categoryPage = new CategoryPage();
     }
 
     @Given("^user is logged in to WLN$")
@@ -84,6 +88,19 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         user.setProduct(Product.WLN);
         loginUser(user);
     }
+    
+	@When("^the user come back on to Home page as logged in user$")
+	public void userComeBackOnToHomePageAsLoggedInUser() throws Throwable {
+		navigationCobalt.waitForPageToLoad();
+		if (!isHomePage()) {
+			navigationCobalt.navigateToHomePage();
+			navigationCobalt.waitForPageToLoad();
+		}
+        assertThat(wlnHeader.favouritesLink().isDisplayed(), Is.is(true));
+        assertThat(wlnHeader.foldersLink().isDisplayed(), Is.is(true));
+        assertThat(wlnHeader.historyLink().isDisplayed(), Is.is(true));
+        assertThat(resourcePage.waitAndFindElement(By.linkText("Employment")).isDisplayed(), Is.is(true));
+	}
 
     @Given("^WLN user is logged in with following details$")
     public void WLNLoginWithDetails(@Transpose List<CobaltUser> plPlusUserList) throws Throwable {
@@ -910,5 +927,11 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         List<CobaltUser> cobaltUsers = new ArrayList<>();
         cobaltUsers.add(getCobaltUserForUserName(userName));
         return cobaltUsers;
+    }
+    
+    private boolean isHomePage() {
+        return categoryPage.getCurrentUrl().contains("/Search/Home.html")
+                || categoryPage.getCurrentUrl().contains("/Search/BrowseRoot.html")
+                || categoryPage.getCurrentUrl().contains("Home/Home");
     }
 }

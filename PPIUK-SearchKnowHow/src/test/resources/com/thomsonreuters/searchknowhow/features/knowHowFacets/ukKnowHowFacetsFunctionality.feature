@@ -18,6 +18,7 @@ Feature: ukKnowHowFacetsFunctionality.feature - [713885] [702173] [710581] [7286
 
   Background: Log on to test site
     Given PL+ user is logged in
+    And the user come back on to Home page as logged in user
 
   @e2e @prod
   Scenario: [713885] Verify that when two or more facets are selected across facet groups then results are updated using the "and" operator
