@@ -153,3 +153,23 @@ Feature: Annotations functionality
       | I1559faa0eef211e28578f7ccc38dcbee |
     And user logs out
 
+    @manual
+    Scenario: Verifying the Text formatting in doc-level annotations text field
+      Given PL+ user is logged in
+      When user navigates directly to document with guid "I33f1066be8cd11e398db8b09b4f043e0"
+      And user click on new Annotations link
+      Then annotations textbox will be displayed with tinymce editor
+      When user enters sample text in annotation text box
+      And click on the textbox using left mouse button
+      Then verify that entered text/formatting is not deleted from annotations text box
+
+  @manual
+  Scenario: Verifying the Text formatting in inline notes text field
+    Given PL+ user is logged in
+    When user navigates directly to document with guid "I33f1066be8cd11e398db8b09b4f043e0"
+    And  highlight some text in the document
+    And create an inline notes via choosing annotations color
+    And user enters sample text in inline notes text box
+    And click on the textbox using left mouse button
+    Then verify that entered text/formatting is not deleted from inline notes text box
+
