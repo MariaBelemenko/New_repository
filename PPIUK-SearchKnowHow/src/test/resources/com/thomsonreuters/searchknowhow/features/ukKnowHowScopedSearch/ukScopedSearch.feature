@@ -1,7 +1,9 @@
 Feature: [702171][702170] - Scoped Search - Practice Area Search
 
-  Background: Log on to test site
-    Given PL+ user is logged in
+  Background: Log on to test site with user having routing set to view the product details
+    Given PL+ user is logged in with following details
+      | userName | SearchKnowHowUser6 |
+    And the user is on the home page 
 
   @e2e @prod
   Scenario Outline: [702171] As a PL+ user conducting a search from a subject area (topic) page (and therefore the search is already scoped), I will only see results coded to that subject area and its parent practice area.
