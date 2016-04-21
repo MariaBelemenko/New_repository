@@ -29,4 +29,12 @@ public class PPIGenericDocDisplay extends AbstractPage {
         return waitForExpectedElement((By.xpath("//div[@id='co_rightColumn']")),20);
     }
 
+
+    public WebElement titleNoToc()  {
+        return waitForExpectedElement( (By.xpath("//h1[@class='co_title noTOC']")),10);
+    }
+
+    public WebElement glossaryHeader() {
+        return waitForExpectedElement((By.xpath("//div[@id='co_docHeaderContainer']")));
+    }
 }
