@@ -166,5 +166,15 @@ public class AskCategoryPage extends AbstractPage {
     public WebElement getFeaturedQuery(String queryLinkText) {
         return waitForExpectedElement(By.xpath("//div[contains(@class, 'expandedState')]//a[contains(., '" + queryLinkText + "')]"));
     }
+
+    /**
+     * Get link for tab name
+     *
+     * @param tabName Tab name ("Topics", "Resources", ...)
+     * @return WebElement with tab link
+     */
+    public WebElement getCategoryPageTab(String tabName) {
+        return waitForExpectedElement(By.xpath("//li[contains(@id, 'categoryTab')]//a[contains(., '" + tabName + "')]"));
+    }
 }
 

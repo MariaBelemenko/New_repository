@@ -51,6 +51,8 @@ public class AskQueriesTest extends BaseStepDef {
             askCategoryPage.recentQueriesTab().click();
         } else if (tab.toLowerCase().contains("featured")) {
             askCategoryPage.featuredQueriesTab().click();
+        } else {
+            askCategoryPage.getCategoryPageTab(tab).click();
         }
         askCategoryPage.waitForPageToLoad();
     }

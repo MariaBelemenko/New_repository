@@ -5,6 +5,7 @@ import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.ask.AskCategoryPage;
 import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.pageCreation.HomePage;
+import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -28,6 +29,7 @@ public class AskOurPeopleTest extends BaseStepDef {
     private WLNHeader wlnHeader = new WLNHeader();
     private HomePage homePage = new HomePage();
     private AskCategoryPage askCategoryPage = new AskCategoryPage();
+    private SearchResultsPage searchResultsPage = new SearchResultsPage();
 
     @And("^the user is in page '(.*)' with page Title '(.*)'$")
     public void theUserIsInPageResourcecsBooksOnlineWithPageTitle(String pages, String expectedTitle) throws Throwable {
@@ -52,6 +54,8 @@ public class AskOurPeopleTest extends BaseStepDef {
         if (!link.equals("")) {
             if (page.contains("Browse")) {
                 homePage.findChildElement(homePage.getPracticeAreasBrowseMenuContainer(), By.linkText((link))).click();
+            } else if (page.contains("result")) {
+                searchResultsPage.getResultItemByTitle(link).click();
             } else {
                 homePage.getActiveTabLink(link).click();
             }
