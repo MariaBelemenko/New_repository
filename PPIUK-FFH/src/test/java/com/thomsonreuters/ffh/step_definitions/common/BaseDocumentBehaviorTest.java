@@ -171,7 +171,7 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
         saveToNewFolder(folder, parentFolder);
         researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
         String message = searchResultsPage.folderingPopupMessage().getText();
-        assertEquals("Message is incorrect", singleDocument.getTitle() + " saved to '" + folder + "'.", message);
+        assertEquals("Message is incorrect", singleDocument.getFullTitle() + " saved to '" + folder + "'.", message);
     }
 
     @When("^the user deletes the document with the guid \"([^\"]*)\" from the current folder$")
