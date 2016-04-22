@@ -57,6 +57,7 @@ Feature: [730581, 738469, 738519, 767108] Verify Jurisdictions functionality
       | South Korea          |
       | Sweden               |
       | Switzerland          |
+      | Taiwan               |
       | The Netherlands      |
       | United Arab Emirates |
       | United Kingdom       |
