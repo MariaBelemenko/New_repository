@@ -6,7 +6,7 @@ Feature: [851088][850058] As a User
     And the user navigates to the main PLCUK page
     When the user selects "International" tab and clicks on "China" link in "International subscriptions" section
     Then the Category Page opens correctly
-    When the user searches for "<query>"
+    When the user runs a free text search for the query "<query>"
     Then the "Practice Area" section includes only "China" topics
       | Anti-bribery and anti-corruption     |
       | Arbitration and dispute resolution   |
