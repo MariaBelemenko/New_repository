@@ -29,7 +29,7 @@ public class PrimarySourceDocumentPage extends DocumentDisplayAbstractPage {
 	}
 
 	public WebElement contentRefferingSection(String contentText) {
-		return retryingFindElement(By.xpath(".//h2[contains(text()," + "'" + contentText + "'" + ")]"));
+		return retryingFindElement(By.xpath(".//h2[contains(text(), '" + contentText + "')]"));
 	}
 
 	public WebElement jurisdictionOfCourt() {
@@ -41,11 +41,11 @@ public class PrimarySourceDocumentPage extends DocumentDisplayAbstractPage {
 	}
 
 	public WebElement linkInLinksToThisCaseSection(String linkText) {
-		return findElement(By.xpath(".//a[contains(text()," + "'" + linkText + "'" + ")]"));
+		return findElement(By.xpath(".//a[contains(text(), '" + linkText + "')]"));
 	}
 
 	public WebElement parentOflinkInLinksToThisCaseSection(String linkText) {
-		return findElement(By.xpath(".//a[contains(text()," + "'" + linkText + "'" + ")]/.."));
+		return waitForExpectedElement(By.xpath(".//a[contains(text(), '" + linkText + "')]/.."));
 	}
 
 	public WebElement specificProvisionCoverageSection() {
@@ -54,7 +54,7 @@ public class PrimarySourceDocumentPage extends DocumentDisplayAbstractPage {
 
 	public WebElement specificProvisionCoverageText(String provisionSectionText) {
 		return findChildElement(specificProvisionCoverageSection(),
-				By.xpath("//h2[contains(text()," + "'" + provisionSectionText + "'" + ")]"));
+				By.xpath("//h2[contains(text(), '" + provisionSectionText + "')]"));
 	}
 
 	public WebElement linkInSpecificProvisionCoverageSection(String provisionSectionTextlinkText) {
@@ -67,7 +67,7 @@ public class PrimarySourceDocumentPage extends DocumentDisplayAbstractPage {
 
 	public WebElement contentRefferingToThisCase(String contentRefferingText) {
 		return findChildElement(relatedContent(),
-				By.xpath(".//h2[contains(text()," + "'" + contentRefferingText + "'" + ")]"));
+				By.xpath(".//h2[contains(text(), '" + contentRefferingText + "')]"));
 	}
 
 	public WebElement showMoreLink(String showMoreLinkText) {

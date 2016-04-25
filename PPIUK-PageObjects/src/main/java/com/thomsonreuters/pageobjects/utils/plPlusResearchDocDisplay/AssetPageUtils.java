@@ -457,28 +457,19 @@ public class AssetPageUtils {
     }
 
     public boolean isTheLinkDisplayedAccodingWithClassNameAndHrefAtribute(String linkText) {
-        boolean result = false;
         try {
             WebElement parentLink = primarySourceDocumentPage.parentOflinkInLinksToThisCaseSection(linkText);
             String className = parentLink.getAttribute("class");
             String hrefOfTheLink = linkInLinkToThisCaseSection.getAttribute("href");
             LOG.info("className: " + className);
             LOG.info("hrefOfTheLink: " + hrefOfTheLink);
-            if (linkInLinkToThisCaseSection.isDisplayed() == true) {
-                if (className.isEmpty() || className.equals("") && hrefOfTheLink.contains("http")) {
-                    result = true;
-                } else {
-                    result = false;
-                }
+            if (linkInLinkToThisCaseSection.isDisplayed()) {
+                return (className == null ||
+                        className.trim().isEmpty()) &&
+                        hrefOfTheLink.contains("http");
+            } else {
+                return className != null && className.equals("co_hideState") && hrefOfTheLink.contains("uk.practicallaw");
             }
-            if (linkInLinkToThisCaseSection.isDisplayed() == false) {
-                if (className.equals("co_hideState") && hrefOfTheLink.contains("uk.practicallaw")) {
-                    result = true;
-                } else {
-                    result = false;
-                }
-            }
-            return result;
         } catch (NoSuchElementException ex) {
             LOG.info("context", ex);
             return false;
