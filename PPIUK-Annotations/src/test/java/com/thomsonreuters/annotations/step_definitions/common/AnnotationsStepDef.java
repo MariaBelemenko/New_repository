@@ -430,6 +430,10 @@ public class AnnotationsStepDef extends BaseStepDef {
 
     @Then("^shared annotation should be displayed$")
     public void sharedAnnotaitonIsDisplayedToViewer() throws Throwable {
+        if (!sharedAnnotationsPage.isAnnotationsDisplayed()){
+            deliveryPage.clickOnLink(DocumentDeliveryPage.Links.SHOW_HIDE_ANNOTATIONS);
+        }
+        LOG.info("Annotation contains text: " + input);
         assertTrue(sharedAnnotationsPage.isSavedAnnotationDisplayed(input, SharedAnnotationsPage.ExpectedResult.VISIBLE));
     }
 
