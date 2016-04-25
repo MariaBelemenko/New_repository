@@ -11,6 +11,7 @@ import com.thomsonreuters.pageobjects.utils.pdf.PDFBoxUtil;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.slf4j.LoggerFactory;
@@ -470,7 +471,7 @@ public class AssetPageUtils {
             } else {
                 return className != null && className.equals("co_hideState") && hrefOfTheLink.contains("uk.practicallaw");
             }
-        } catch (NoSuchElementException ex) {
+        } catch (NoSuchElementException | TimeoutException ex) {
             LOG.info("context", ex);
             return false;
         }
