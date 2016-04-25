@@ -19,7 +19,7 @@ public class RunFirmStyleLinkTest {
     public static void reporting() {
         if (System.getProperty("username").equals("None")) {
             System.setProperty("username", "FStyleUser");
-            System.setProperty("password", "Password!");
+            System.setProperty("password", "Password1!");
         }
         else {
             System.out.println("Username is pre-defined in the Run Command as: " + System.getProperty("username"));
