@@ -40,6 +40,11 @@ public class WhatsMarketDeliveryTest extends BaseStepDef {
         homePageUtils.clickThePracticalLawHomepageLogo();
     }
 
+    @When("^the_user_clicks_on_the_browser_back_button$")
+    public void theUserClicksOnTheBrowserBackButtone() throws Throwable {
+        commonMethods.browserGoBack();
+    }
+
     @When("^the user selects the link entitled Whats Market UK Home$")
     public void theUserSelectsTheLinkEntitledWhatsMarketUkHome() throws Throwable {
         homePage.selectResourceTab();
