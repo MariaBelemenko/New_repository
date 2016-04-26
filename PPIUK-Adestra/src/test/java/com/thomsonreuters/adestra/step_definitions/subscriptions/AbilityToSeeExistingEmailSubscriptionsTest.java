@@ -47,6 +47,7 @@ public class AbilityToSeeExistingEmailSubscriptionsTest extends BaseStepDef {
         int result = 0;
         for (SubscriptionParameters service : existingSubscriptions) {
             if (!subscriptionPreferencePage.getSpecifiedCheckBox(service.getCommonName(), service.getProductFrequency(), service.getCategoryName()).isSelected()) {
+                LOG.info(service.getCategoryName() + "/" + service.getCommonName() + "/" + service.getProductFrequency() + " checkbox is unavailable");
                 result++;
             }
         }
