@@ -22,7 +22,7 @@ public class OnePassLogoutPage extends AbstractPage {
 	}
 	
     public WebElement signOffPageSignOnButton() {
-        return waitForElementVisible(By.id("coid_website_signBackOnButton"));
+        return waitForElementToBeClickable(waitForExpectedElement(By.id("coid_website_signBackOnButton")));
     }
     
     public WebElement resumeAsCurrentUserLink() {

@@ -32,6 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import static com.thomsonreuters.pageobjects.utils.CobaltUser.isUserFirstUser;
+import static junit.framework.TestCase.assertTrue;
 
 /**
  * Login and Navigation Steps.
@@ -789,6 +790,10 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
             }
             if (element != null) {
                 element.click();
+                // EXPERIMENTAL: wait for user will be fully logged out and his session will be closed correctly to
+                // prevent CONCURRENT_USERS issue
+                wlnHeader.waitForPageToLoad();
+                assertTrue("Sign out screen was not appeared", onePassLogoutPage.signOffPageSignOnButton().isDisplayed());
             }
         } catch (NoSuchElementException | ElementNotVisibleException | TimeoutException nse) {
             LOG.error("Sign-Off link not found");
