@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.List;
 import java.util.ArrayList;
 
+import com.thomsonreuters.pageobjects.pages.onePass.OnePassSignInPage;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.slf4j.LoggerFactory;
@@ -52,10 +53,17 @@ public class ProdGlobalPagesTest extends BaseStepDef {
     private CommonMethods commonMethods = new CommonMethods();
     private ResearchOrganizerPage researchOrganizerPage = new ResearchOrganizerPage();
     private SearchResultsPage searchResultsPage = new SearchResultsPage();
+    private OnePassSignInPage onePassSignInPage = new OnePassSignInPage();
     
     private static final String XML_TAG = "plc.facet.practice.area";    
 	private static String guid;
     private List<String> initialListOfCountries;	
+
+    @Then("^the one pass login button is displayed$")
+    public void theOnePassLoginButtonIsDisplayed() throws Throwable {
+        onePassSignInPage.continueButton().isDisplayed();
+    }
+
 
 
     @Then("^the document opens correctly$")
@@ -146,6 +154,7 @@ public class ProdGlobalPagesTest extends BaseStepDef {
     public void theUserIsTakenToTheWebSiteInTheSameWindowAndTab(String webSite) throws Throwable {
         globalCategoryPage.waitForPageToLoad();
         SoftAssertions softly = new SoftAssertions();
+        theOnePassLoginButtonIsDisplayed();
         String url = globalCategoryPage.getCurrentUrl();
         LOG.info("Current Url" + globalCategoryPage.getCurrentUrl());
         softly.assertThat(globalCategoryPage.getCurrentUrl().contains(webSite))
