@@ -449,7 +449,7 @@ public class AnnotationsStepDef extends BaseStepDef {
 
     @Then("^annotation text with url is displayed$")
     public void sharedAnnotaitonTextWithUrlIsDisplayed() throws Throwable {
-        assertTrue(sharedAnnotationsPage.isSavedAnnotationDisplayed(input, SharedAnnotationsPage.ExpectedResult.VISIBLE));
+        sharedAnnotaitonIsDisplayedToViewer();
         assertTrue(sharedAnnotationsPage.isSavedAnnotationTextDisplayedWithLink(input));
     }
 
