@@ -154,7 +154,6 @@ public class ProdGlobalPagesTest extends BaseStepDef {
     public void theUserIsTakenToTheWebSiteInTheSameWindowAndTab(String webSite) throws Throwable {
         globalCategoryPage.waitForPageToLoad();
         SoftAssertions softly = new SoftAssertions();
-        theOnePassLoginButtonIsDisplayed();
         String url = globalCategoryPage.getCurrentUrl();
         LOG.info("Current Url" + globalCategoryPage.getCurrentUrl());
         softly.assertThat(globalCategoryPage.getCurrentUrl().contains(webSite))
