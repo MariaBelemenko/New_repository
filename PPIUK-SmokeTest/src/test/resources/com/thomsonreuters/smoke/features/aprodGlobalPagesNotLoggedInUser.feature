@@ -11,7 +11,7 @@ Feature: Verify Global pages - Not logged in user
   Examples:
     | link   | webSite                                                         |
     | UK     | thomsonreuters.com/Search/Home                                  |
-    | US     |  thomsonreuters.com/?productid=CBT&viewproductid=PLCUS          |
+    | US     | thomsonreuters.com/?productid=CBT&viewproductid=PLCUS           |
     | China  | thomsonreuters.com/Browse/Home/Global/China                     |
     | Canada | ca.practicallaw.com                                             |
     | Global | thomsonreuters.com/Browse/Home/Global                           |
