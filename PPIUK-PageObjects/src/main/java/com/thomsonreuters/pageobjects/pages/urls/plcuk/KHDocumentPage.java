@@ -21,7 +21,7 @@ public class KHDocumentPage extends AbstractPage implements DocumentPage {
             return true;
         } else if (!findElements(By.id("co_linkOutBox")).isEmpty()) {
             return true;
-        } else if (!findElements(By.className("co_title noTOC")).isEmpty()) {
+        } else if (!findElements(By.cssSelector(".co_title.noTOC")).isEmpty()) {
             return true;
         }
         return false;
