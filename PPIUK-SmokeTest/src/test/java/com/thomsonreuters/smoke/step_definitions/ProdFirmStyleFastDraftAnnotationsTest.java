@@ -46,7 +46,7 @@ public class ProdFirmStyleFastDraftAnnotationsTest extends BaseStepDef {
     }
 
     @Then("^the user clicks Start Drafting button$")
-    public void clickStartDraftingButton() throws Throwable {
+    public void clickStDraftingButton() throws Throwable {
         standardDocumentPage.startDraftingButton().click();
         standardDocumentPage.waitForPageToLoad();
     }
@@ -71,5 +71,18 @@ public class ProdFirmStyleFastDraftAnnotationsTest extends BaseStepDef {
     public void userCancelsNewAnnotation() throws Throwable {
         sharedAnnotationsPage.cancelSavingAnnotation();
     }
+
+    @Then("^the user is able to check whether the option to apply filters is displayed and if not to ensure that it is$")
+    public void theUserIsAbleToCheckWhetherTheOptionToApplyFiltersIsDisplayedAndIfNotToEnsureThatItIs() {
+        try {
+            if (knowHowSearchResultsPage.selectMultipleFiltersButton().isDisplayed()) {
+                knowHowSearchResultsPage.clickOnSelectMultipleFilters();
+            }
+        } catch (Exception e) {
+        }
+    }
+
+
+
 
 }
