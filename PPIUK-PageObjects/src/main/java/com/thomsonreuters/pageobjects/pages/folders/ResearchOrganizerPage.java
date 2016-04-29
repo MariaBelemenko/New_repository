@@ -209,22 +209,7 @@ public class ResearchOrganizerPage extends AbstractPage {
 	}
 	
     public WebElement facetedViewSelectContentType(String contentType) {
-        String labelName = "'" + contentType + "'";
-        if (contentType.contains("'")) {
-            contentType = "\"" + contentType + "\"";
-            labelName = contentType;
-        }
-        WebElement checkBox = null;
-        try {
-            checkBox = findElement(By.xpath("//*[@id='Content TypesOverflow']//label[text()=" + labelName + "]/../descendant-or-self::input[@type='checkbox']"));
-            checkBox.isDisplayed();
-        } catch (NoSuchElementException e) {
-            LOG.info("context", e);
-            checkBox = waitForExpectedElement(By.xpath("//*[@id='facet_div_Content Types']//label[text()=" + labelName + "]/../descendant-or-self::input[@type='checkbox']"));
-            return checkBox;
-        }
-        waitForExpectedElement(By.xpath("//*[@id='clientanchor' and text()='Content Types']")).click();
-        return checkBox;
+        return waitForExpectedElement(By.xpath("//h4[contains(., 'Content')]/following-sibling::ul/li[contains(., \"" + contentType + "\")]/input"));
     }
 
     public WebElement folderInLeftFrame(String folderName) {
