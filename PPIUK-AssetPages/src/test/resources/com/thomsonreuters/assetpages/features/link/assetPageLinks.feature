@@ -1,4 +1,4 @@
-Feature: [789814] As a PL+ User I want to view links to�Bailii on the case asset page
+Feature: [789814] As a PL+ User I want to view links to Bailii on the case asset page
   [788351] As a PL+ User I want to view links to legal updates on the case asset page
   [789815] As a PL+ User I want to view hardcoded links on the case asset page
   [789816] As a PL+ User I want to view celex links on the case asset page
@@ -7,7 +7,7 @@ Feature: [789814] As a PL+ User I want to view links to�Bailii on the case ass
   Background:
     Given PL+ user is logged in
 
-  Scenario Outline: [789814] The case assert documents contains links to�Bailii
+  Scenario Outline: [789814] The case assert documents contains links to Bailii
     When the user opens document with <GUID> guid
     Then the document opens correctly
     Then the user see links to "Bailii" Bailii
