@@ -2,6 +2,7 @@ package com.thomsonreuters.khpadd.step_definitions.glossary;
 
 import com.thomsonreuters.khpadd.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.GlossaryPage;
+import com.thomsonreuters.pageobjects.utils.search.SearchUtils;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -17,6 +18,8 @@ import static org.junit.Assert.assertTrue;
 public class GlossarySearchTest extends BaseStepDef {
 
     private GlossaryPage glossaryPage = new GlossaryPage();
+
+    private SearchUtils searchUtil = new SearchUtils();
 
     @Then("^the user should be able to see the Search text box on the right hand side of the page$")
     public void theUserShouldBeAbleToSeeTheSearchTextBoxOnTheRightHandSideOfThePage() throws Throwable {
@@ -56,6 +59,7 @@ public class GlossarySearchTest extends BaseStepDef {
         Thread.sleep(3000);
         for (WebElement element : glossaryPage.glossaryTermsWithSearchTermList()) {
             assertTrue(term + " not found in " + element.getText().trim(), element.getText().trim().toLowerCase().contains(term));
+            assertTrue(term + " not highlighted in " + element.getText().trim(), searchUtil.isSearchWordHighlightedInGlossaryPage(element,term));
         }
     }
 

@@ -3,6 +3,7 @@ package com.thomsonreuters.pageobjects.utils.search;
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchSearch.BaseResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import java.util.List;
 
@@ -12,6 +13,8 @@ import java.util.List;
  */
 
 public class SearchUtils {
+
+    private static final String GLOSSARY_SEARCH_HIGHLIGHT_COLOR = "rgba(249, 249, 193, 1)";
 
     private KnowHowSearchResultsPage knowHowSearchResultsPage = new KnowHowSearchResultsPage();
 
@@ -40,6 +43,22 @@ public class SearchUtils {
      */
     public int getSearchResultsCountAsInt() {
         return commonMethods.getIntFromString(knowHowSearchResultsPage.waitKnowHowSearchResultCount().getText());
+    }
+
+    /**
+     * Check that user query in result element is highlighted. Method check that all <span> elements in result element contain search query
+     * and are highlighted using css-style.
+     * Method checks results with case ignoring
+     * @param element One of result elements {@link com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.GlossaryPage#glossaryTermsWithSearchTermList()}.
+     * @param term String with user query which should be highlighted in every result
+     * @return True if check passed. Otherwise - false.
+     */
+    public boolean isSearchWordHighlightedInGlossaryPage(WebElement element, String term) {
+        for (WebElement spanElement : element.findElements(By.xpath("./span"))) {
+            if((!spanElement.getText().trim().toLowerCase().contains(term))&&(!GLOSSARY_SEARCH_HIGHLIGHT_COLOR.equals(spanElement.getCssValue("background-color"))))
+                return false;
+        }
+        return true;
     }
 
     //////////////////
