@@ -136,7 +136,8 @@ public class GlPageSearchContentTest extends BaseStepDef {
     @Then("^the results is refined to only include that \"(.*?)\" jurisdiction$")
     public void theResultsIsRefinedToOnlyIncludeThatJurisdiction(String jurisdiction) throws Throwable {
         SoftAssertions softly = new SoftAssertions();
-        for (int i = 0; i < globalCategoryPage.jurisdictionsInTheReturnedSearchResults().size(); i++) {
+        int numberOfNormallyReturnedJurisdictions = 5;
+        for (int i = 0; i < numberOfNormallyReturnedJurisdictions; i++) {
             softly.assertThat(
                     globalCategoryPage.jurisdictionsInTheReturnedSearchResults().get(i).getText()
                             .contains(jurisdiction)
