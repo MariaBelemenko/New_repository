@@ -1,9 +1,22 @@
 Feature: Verify Should bugs for KHPADD (Bug# 786498) - Foldering icon not getting enabled when a resource at the bottom of the list is being selected on Topic page
   (Bug# 833268 - Regression - Subject field in Email dialog box is missing the text "Practical Law")
   (Bug# 847775 - Regression - Application error when trying to access a resource of type Case Study)
+  (Bug# 861858 - Glossary: Related content is incorrectly appearing)
 
   Background:
     Given PL+ user is logged in
+    
+#@wip need be removed after release (9 may)    
+@wip
+  Scenario Outline: (BUG# 861858)Verify  the related content in pop-up window that appears for Glossary term
+    And user navigates directly to document with guid "<doc>"
+    And clicks on document link "<link>"
+    Then user verifies related content in popup window  
+      |Interim applications under the CPR: an overview |
+      |Stakeholder claims and applications: Flowchart|
+  Examples:
+    |doc								|link|
+    |I28015ee5699c11e498db8b09b4f043e0	|master|	  
 
   @bug
   Scenario:(BUG# 786498)Verify the delivery icons functionality on the topic page based on other resources selection

@@ -75,6 +75,13 @@ public class GlossaryPage extends AbstractPage {
     public WebElement glossaryModalTitle() {
         return waitForExpectedElement(By.cssSelector("div#co_glossaryLightBox h1.co_title"), 10);
     }
+    
+    /**
+     * This is a list of the related content in a glossary pop up box
+     */
+    public List<WebElement> popupRelatedContent() {
+        return waitForExpectedElements(By.xpath("//div[@id='co_glossaryLightBox']//div[@id='co_relatedContent']//a[contains(@href,'FullText')]"));
+    }
 
     public boolean isGlossaryModalTitleDisplayed() {
         try {

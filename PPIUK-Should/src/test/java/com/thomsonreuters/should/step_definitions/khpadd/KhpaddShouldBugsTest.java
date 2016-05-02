@@ -1,5 +1,6 @@
 package com.thomsonreuters.should.step_definitions.khpadd;
 
+import com.thomsonreuters.pageobjects.otherPages.GlossaryPage;
 import com.thomsonreuters.pageobjects.pages.delivery.EmailOptionsPage;
 import com.thomsonreuters.pageobjects.pages.pageCreation.HomePage;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.DocumentRightPanelPage;
@@ -18,6 +19,7 @@ import org.hamcrest.core.Is;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +38,19 @@ public class KhpaddShouldBugsTest extends BaseStepDef {
     private FormUtils formUtils = new FormUtils();
     private DocumentRightPanelPage rightPanelPage = new DocumentRightPanelPage();
     private DocumentNavigationPage documentNavigationPage = new DocumentNavigationPage();
+    private GlossaryPage glossaryPage = new GlossaryPage();
 
+    
+    @When("^user verifies related content in popup window$")
+    public void theUserVerifyRelatedContent(List<String> resources) throws Throwable {
+       List<WebElement> relatedContent = glossaryPage.popupRelatedContent();
+       List<String> relatedContentText = new ArrayList<>();
+       for (WebElement webElement : relatedContent) {
+    	   relatedContentText.add(webElement.getText());
+       }
+       assertTrue("related content is incorrect", resources.equals(relatedContentText));
+    }
+    
     @When("^the user navigates to practice area \"(.*?)\" filtered by \"(.*?)\" topic page$")
     public void theUserNavigatesToPracticeAreaFilteredByTopicPage(String practiceArea, String topicName) throws Throwable {
         homePage.selectLinkPresentOnTab(practiceArea);
