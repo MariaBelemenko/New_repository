@@ -6,7 +6,7 @@ Feature: [780806] FS3 Testing PL+ "PA" users can download a document in FirmStyl
 # This test uses JAVA Robot, therefore it could be run locally only
   Scenario Outline: Check FS and House Style
     Given PL+ user is logged in with following details
-      | userName         | FStyleUser |
+      | userName         | FSTestUser2 |
       | routing          | FIRM_STYLE  |
       | mandatoryRouting | YES         |
     When the user come back on to Home page
@@ -51,7 +51,7 @@ Feature: [780806] FS3 Testing PL+ "PA" users can download a document in FirmStyl
     And the user clicks Word document and saves .doc file
     Then draft file with extension "<extension>" should download to the users machine
     Given PL+ user is logged in with following details
-      | userName         | FStyleUser           |
+      | userName         | FSTestUser2           |
       | routing          | FAST_DRAFT_FIRM_STYLE |
       | mandatoryRouting | YES                   |
     When the user come back on to Home page

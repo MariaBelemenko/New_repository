@@ -18,7 +18,7 @@ public class RunFirmStyleLinkTest {
     @BeforeClass
     public static void reporting() {
         if (System.getProperty("username").equals("None")) {
-            System.setProperty("username", "FStyleUser");
+            System.setProperty("username", "FSTestUser2");
             System.setProperty("password", "Password1!");
         }
         else {

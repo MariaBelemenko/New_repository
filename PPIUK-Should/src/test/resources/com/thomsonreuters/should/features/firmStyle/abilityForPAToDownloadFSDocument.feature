@@ -35,7 +35,7 @@ Feature: [803549] Testing Firm Style direct link
     And the user deletes all files with name ".fs" and extension ".doc" from Downloads
     Then "signon" page is displayed
     Given PL+ user is logged in with following details after IP login
-      | userName | FStyleUser |
+      | userName | FSTestUser2 |
     Then the file "<documentName>" should be downloaded to the users machine
     And the file "<documentName>" should be removed
     And "showDownloadPage" page is displayed

@@ -2,7 +2,7 @@ Feature: [774402] FS1 As a PL+ User I want to view the download in FirmStyle opt
 
   Background:
     Given PL+ user is logged in with following details
-      | userName         | FStyleUser |
+      | userName         | FSTestUser2 |
       | routing          | FIRM_STYLE  |
       | mandatoryRouting | YES         |
 

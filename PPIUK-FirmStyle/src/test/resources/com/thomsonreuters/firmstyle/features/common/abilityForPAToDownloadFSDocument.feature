@@ -4,7 +4,7 @@ Feature: [780806] FS3 Testing PL+ "PA" users can download a document in FirmStyl
   # This test uses JAVA Robot, therefore it could be run locally only
   Scenario Outline: Documents and FS
     Given PL+ user is logged in with following details
-      | userName         | FStyleUser |
+      | userName         | FSTestUser2 |
       | routing          | FIRM_STYLE  |
       | mandatoryRouting | YES         |
     When the user come back on to Home page
@@ -26,7 +26,7 @@ Feature: [780806] FS3 Testing PL+ "PA" users can download a document in FirmStyl
 
   Scenario Outline: Clause and FS
     Given PL+ user is logged in with following details
-      | userName         | FStyleUser |
+      | userName         | FSTestUser2 |
       | routing          | FIRM_STYLE  |
       | mandatoryRouting | YES         |
     And the user come back on to Home page
