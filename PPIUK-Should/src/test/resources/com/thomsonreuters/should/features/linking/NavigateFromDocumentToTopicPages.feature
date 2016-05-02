@@ -1,5 +1,7 @@
 Feature: [816738] Navigate from Also Found In section within documents to topic pages
 
+  # 860453:REGRESSION - topic information missing from know how resources
+  @bug
   Scenario Outline: Links to related Topics within Also Found in section of documents
     Given PL+ user is logged in
     When the user runs a free text search for the query "<query>"

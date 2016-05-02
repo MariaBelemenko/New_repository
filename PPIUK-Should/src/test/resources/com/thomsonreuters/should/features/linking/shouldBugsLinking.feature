@@ -1,8 +1,7 @@
 Feature: Scenarios with the SHOULD bugs for Linking project
 
   ###### FEATURE: CLW004a_relatedContentLinks.feature
-  # COULD ISSUE: 852028:[REGRESSION] One link from related content is missed for the document "Judicial review procedure: a practical guide"
-  # For plcRef 9-376-4010
+  # SHOULD ISSUE: 884054:[HS][REGRESSION] Link to related content is missed in the several documents
   @bug
   Scenario Outline: For the sample docs verify the related content
     Given for "<PLC document>" I get the related content from Fatwire XML
@@ -11,6 +10,7 @@ Feature: Scenarios with the SHOULD bugs for Linking project
     Examples:
       | PLC document TYPE | PLC document |
       | Practice Note     | 9-376-4010   |
+      | Standard Document | 6-376-3125   |
 
   ###### FEATURE: CLW004a_relatedContentLinks.feature
   # SHOULD ISSUE: 825928 RDDBUG: "Content referring..." section  shouldn't be displayed on document

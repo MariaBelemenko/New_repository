@@ -16,4 +16,3 @@ Feature: [CLW004a] Verify the related content info
     | External resource             | 7-516-0749   |
     | Binary Content                | 3-525-2190   |
     | US practice note double coded | 6-502-0189   |
-    | Standard Document             | 6-376-3125   |
