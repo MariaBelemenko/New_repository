@@ -72,19 +72,9 @@ public class GlossarySearchTest extends BaseStepDef {
     public void clickingOnListedResultDisplaysTheCorrespondingDefinitionOnTheRightHandPage(int index) throws Throwable {
         WebElement element = glossaryPage.glossaryTermsWithSearchTermList().get(index - 1);
         element.click();
-        element.click();
         glossaryPage.waitForPageToLoad();
-        boolean found = false;
-        int counter = 10;
-        do {
-            found = glossaryPage.glossaryHeading().getText().trim().contains(element.getText().trim());
-            counter--;
-            Thread.sleep(2000);
-        }
-        while (!found && counter > 0);
-        if (!found) {
-            throw new AssertionError("Glossary Heading does not match. Expected: " + element.getText().trim() + "\n But was: " + glossaryPage.glossaryHeading().getText().trim());
-        }
+        boolean found = glossaryPage.glossaryHeading().getText().trim().contains(element.getText().trim());
+        assertTrue("Glossary Heading does not match. Expected: " + element.getText().trim() + "\n But was: " + glossaryPage.glossaryHeading().getText().trim(), found);
     }
 
     @Then("^no alphabets are selected while the search is active$")
