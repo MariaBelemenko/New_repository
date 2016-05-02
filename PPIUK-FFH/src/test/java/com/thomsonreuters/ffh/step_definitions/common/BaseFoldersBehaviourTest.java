@@ -185,11 +185,11 @@ public class BaseFoldersBehaviourTest extends BaseStepDef {
     @Then("^user should see the selected folder page with multiple documents$")
     public void checkThatFolderOpenedAndItContainsTwoOrMoreDocs() {
         SoftAssertions softAssertions = new SoftAssertions();
-//        softAssertions.assertThat(researchOrganizerPage.getOpenedFolderTitle()).isEqualTo(folderName)
-//                .withFailMessage("Selected folder does not opened");
-//        softAssertions.assertThat(researchOrganizerPage.getDocumentsDataInColumn(DocumentColumn.TITLE).size()).isGreaterThan(1)
-//                .withFailMessage("Selected folder '" + folderName + "' does not contains multiple document");
-//        softAssertions.assertAll();
+        softAssertions.assertThat(researchOrganizerPage.getOpenedFolderTitle()).isEqualTo(folderName)
+                .withFailMessage("Selected folder does not opened");
+        softAssertions.assertThat(researchOrganizerPage.getDocumentsDataInColumn(DocumentColumn.TITLE).size()).isGreaterThan(1)
+                .withFailMessage("Selected folder '" + folderName + "' does not contains multiple document");
+        softAssertions.assertAll();
     }
 
     @When("^the user clicks on the '([^\"]*)' column$")
