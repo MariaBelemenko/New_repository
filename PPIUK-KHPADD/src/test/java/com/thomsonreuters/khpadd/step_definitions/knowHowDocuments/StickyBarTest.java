@@ -1,7 +1,6 @@
 package com.thomsonreuters.khpadd.step_definitions.knowHowDocuments;
 
 import com.thomsonreuters.khpadd.step_definitions.BaseStepDef;
-import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.CommonResourcePage;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePage;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -10,16 +9,16 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class StickyBarTest extends BaseStepDef {
 
     private KHResourcePage resourcePage = new KHResourcePage();
-    private CommonResourcePage commonResourcePage = new CommonResourcePage();
 
     @Then("^the document title \"(.*?)\" is displayed on the sticky bar$")
     public void theDocumentTitleIsDisplayedOnTheStickyBar(String expectedTitle) throws Throwable {
         resourcePage.scrollDown(10);
-        commonResourcePage.stickyBarTitle(expectedTitle).isDisplayed();
+        resourcePage.stickyBarTitle(expectedTitle).isDisplayed();
     }
 
     @Given("^user scroll down the resource to heading \"(.*?)\"$")
@@ -39,6 +38,7 @@ public class StickyBarTest extends BaseStepDef {
     @Then("^clicking on 'Related Content' link on sticky bar jumps to Related Content section$")
     public void clickingOnRelatedContentLinkOnStickyBarJumpsToRelatedContentSection() throws Throwable {
         resourcePage.relatedContentLinkOnStickyBar().click();
+        assertTrue("Related content heading is not in the visible area", resourcePage.isRelatedContentHeadingDisplayed());
     }
 
     private void scrollToElement(WebElement element) {

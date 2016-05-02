@@ -293,4 +293,8 @@ public abstract class DocumentDisplayAbstractPage extends AbstractPage {
     public WebElement returnToSearchLink() {
         return waitForExpectedElement(By.xpath("//span[@class='kh_icon icon-reply-arrow']"));
     }
+
+    public boolean isRelatedContentHeadingDisplayed() {
+        return waitForViewScrollingToElement(By.xpath("//div[@id='co_relatedContent']//h2[text()='Related Content']"));
+    }
 }
