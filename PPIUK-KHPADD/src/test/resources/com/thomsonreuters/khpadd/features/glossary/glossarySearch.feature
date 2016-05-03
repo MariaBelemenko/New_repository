@@ -46,7 +46,7 @@ Feature: [685245, 685246] As a Know How user,
 
   Scenario: Verify number of search results
     When searches for the term "res" using the glossary search
-    Then the total should be displayed as "175 matches"
+    Then the total should be displayed as "174 matches"
 
   @manual
   Scenario: Verify exiting out of the search results
