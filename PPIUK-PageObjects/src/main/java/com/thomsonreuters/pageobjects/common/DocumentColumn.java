@@ -25,7 +25,7 @@ public enum DocumentColumn {
                 return oneDocCol;
             }
         }
-        return null;
+        throw new UnsupportedOperationException("There is no column with name '" + name + "'.");
     }
 
 }

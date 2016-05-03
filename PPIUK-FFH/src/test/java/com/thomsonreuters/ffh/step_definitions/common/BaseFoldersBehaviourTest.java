@@ -185,10 +185,13 @@ public class BaseFoldersBehaviourTest extends BaseStepDef {
     @Then("^user should see the selected folder page with multiple documents$")
     public void checkThatFolderOpenedAndItContainsTwoOrMoreDocs() {
         SoftAssertions softAssertions = new SoftAssertions();
-        softAssertions.assertThat(researchOrganizerPage.getOpenedFolderTitle()).isEqualTo(folderName)
-                .withFailMessage("Selected folder does not opened");
-        softAssertions.assertThat(researchOrganizerPage.getDocumentsDataInColumn(DocumentColumn.TITLE).size()).isGreaterThan(1)
-                .withFailMessage("Selected folder '" + folderName + "' does not contains multiple document");
+        String openedFolderTitle = researchOrganizerPage.getOpenedFolderTitle().getText().trim();
+        softAssertions.assertThat(openedFolderTitle)
+                .withFailMessage("Selected folder does not opened. Expected '" + folderName + "', but was '" + openedFolderTitle + "'.")
+                .isEqualTo(folderName);
+        softAssertions.assertThat(researchOrganizerPage.getDocumentsDataInColumn(DocumentColumn.TITLE).size())
+                .withFailMessage("Selected folder '" + folderName + "' does not contains multiple document")
+                .isGreaterThan(1);
         softAssertions.assertAll();
     }
 

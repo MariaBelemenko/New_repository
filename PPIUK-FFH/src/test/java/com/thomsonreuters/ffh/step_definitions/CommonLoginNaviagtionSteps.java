@@ -850,51 +850,6 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         userLogsInWithUsername();
     }
 
-    @Given("^PL\\+ user '(.*)' opens '(.*)' folder$")
-    public void plUserLoginAndOpenFolder(String userName, String folderName) throws Throwable {
-        List<CobaltUser> cobaltUsers = new ArrayList<>();
-        cobaltUsers.add(getCobaltUserForUserName(userName));
-        plUserIsLoggedInWithFollowingDetails(cobaltUsers);
-        userGoesToFolderSubFolder(folderName);
-    }
-
-    private void userLoginAndOpenFolder(String userName, String folderName) throws Throwable {
-        List<CobaltUser> cobaltUsers = new ArrayList<>();
-        cobaltUsers.add(getCobaltUserForUserName(userName));
-        plUserIsLoggedInWithFollowingDetails(cobaltUsers);
-        userGoesToFolderSubFolder(folderName);
-    }
-
-    private void userGoesToFolderSubFolder(String folderName) throws Throwable {
-        userClicksOnHeaderLink("Folders");
-        openFolder(folderName);
-    }
-
-    private void userClicksOnHeaderLink(String linkName) throws Throwable {
-        researchOrganizerPage.waitForPageToLoad();
-        switch (linkName) {
-            case "Folders":
-                wlnHeader.foldersLink().click();
-                break;
-            case "History":
-                wlnHeader.historyLink().click();
-                break;
-            case "Favourites":
-                wlnHeader.favouritesLink().click();
-                break;
-            default:
-        }
-        researchOrganizerPage.waitForPageToLoad();
-        researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
-    }
-
-    private String folderName;
-
-    private void openFolder(String folderName) {
-        foldersUtils.openFolder(folderName);
-        this.folderName = folderName;
-    }
-
     @Given("^PL\\+ user '(.*)' navigates directly to document with guid '(.*)'$")
     public void plUserLoginAndNavigateToDoc(String userName, String docGuid) throws Throwable {
         plUserIsLoggedInWithFollowingDetails(getCobaltUserForUserNameAsList(userName));

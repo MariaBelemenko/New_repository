@@ -1,16 +1,15 @@
 package com.thomsonreuters.pageobjects.pages.folders;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.thomsonreuters.driver.exception.PageOperationException;
+import com.thomsonreuters.driver.framework.AbstractPage;
+import com.thomsonreuters.pageobjects.common.DocumentColumn;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
-import com.thomsonreuters.driver.exception.PageOperationException;
-import com.thomsonreuters.driver.framework.AbstractPage;
-import com.thomsonreuters.pageobjects.common.DocumentColumn;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ResearchOrganizerPage extends AbstractPage {
 
@@ -448,8 +447,8 @@ public class ResearchOrganizerPage extends AbstractPage {
      * Get title of opened folder
      * @return Selected folder title
      */
-    public String getOpenedFolderTitle() {
-        return waitForElementPresent(By.cssSelector(".co_folderTitle")).getText();
+    public WebElement getOpenedFolderTitle() {
+        return waitForExpectedElement(By.cssSelector(".co_folderTitle"));
     }
 
     /**
