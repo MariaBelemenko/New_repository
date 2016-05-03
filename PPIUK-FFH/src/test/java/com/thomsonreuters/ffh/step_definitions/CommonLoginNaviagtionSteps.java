@@ -2,10 +2,8 @@ package com.thomsonreuters.ffh.step_definitions;
 
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.ExcelFileReader;
-import com.thomsonreuters.pageobjects.common.PageActions;
 import com.thomsonreuters.pageobjects.otherPages.CobaltLogin;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
-import com.thomsonreuters.pageobjects.pages.folders.ResearchOrganizerPage;
 import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawHomepage;
 import com.thomsonreuters.pageobjects.pages.login.OnepassLogin;
@@ -16,7 +14,6 @@ import com.thomsonreuters.pageobjects.pages.plcLegacy.PLCLegacyHeader;
 import com.thomsonreuters.pageobjects.pages.plcLegacy.PLCLegacyLoginScreen;
 import com.thomsonreuters.pageobjects.pages.search.SearchHomePage;
 import com.thomsonreuters.pageobjects.utils.*;
-import com.thomsonreuters.pageobjects.utils.folders.FoldersUtils;
 import cucumber.api.Transpose;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -49,19 +46,15 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
     private CobaltLogin cobaltLogin;
     private WLNHeader wlnHeader;
     private CommonMethods comMethods;
-    private PageActions pageActions;
     private PLCLegacyHeader plcLegacyHeader;
     private PLCLegacyLoginScreen plcLegacyLoginScreen;
     private OnePassLogoutPage onePassLogoutPage;
-    private ResearchOrganizerPage researchOrganizerPage;
-    private FoldersUtils foldersUtils;
     private SearchHomePage searchHomePage;
     private KHResourcePage resourcePage;
 
     public CommonLoginNaviagtionSteps() {
         routingPage = new RoutingPage();
         onepassLoginUtils = new OnepassLoginUtils();
-        pageActions = new PageActions();
         comMethods = new CommonMethods();
         wlnHeader = new WLNHeader();
         navigationCobalt = new NavigationCobalt();
@@ -72,8 +65,6 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         plcLegacyHeader = new PLCLegacyHeader();
         plcLegacyLoginScreen = new PLCLegacyLoginScreen();
         onePassLogoutPage = new OnePassLogoutPage();
-        researchOrganizerPage = new ResearchOrganizerPage();
-        foldersUtils = new FoldersUtils();
         searchHomePage = new SearchHomePage();
         resourcePage = new KHResourcePage();
     }
