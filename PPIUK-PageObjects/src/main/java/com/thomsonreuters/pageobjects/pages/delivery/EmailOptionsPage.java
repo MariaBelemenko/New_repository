@@ -52,7 +52,7 @@ public class EmailOptionsPage extends CommonDeliveryOptionsPage {
     }
 
     public WebElement waitForSuccessDeliveryMessage(String text) {
-        return waitAndFindElement(By.xpath("//div[@id='co_deliveryWaitMessageTitle'][text()=\"" + text + "\"]"));
+        return waitForElementPresent(By.xpath("//div[@id='co_deliveryWaitMessageTitle'][text()=\"" + text + "\"]"));
     }
 
     public WebElement expandedMarginForNotes() {
