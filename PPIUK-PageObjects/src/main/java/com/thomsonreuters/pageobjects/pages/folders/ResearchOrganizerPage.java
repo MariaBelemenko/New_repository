@@ -128,7 +128,7 @@ public class ResearchOrganizerPage extends AbstractPage {
     }
 
     public int getRootFolderCountInRecentFoldersDropdown() {
-        return waitForExpectedElements(By.xpath("//*[@id='co_recentFolders']//a[contains(text(),'s Research')]")).size();
+        return waitForExpectedElements(By.xpath("//*[@id='co_recentFoldersContainer']//a[contains(text(),'s Research')]")).size();
     }
 
     public WebElement linkToSearchInRecentDropdown(String search) {
