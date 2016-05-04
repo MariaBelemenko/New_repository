@@ -13,7 +13,7 @@ import static org.junit.Assert.assertTrue;
         * Created by U0162413 on 19/04/2016.
  */
 
-public class cpetPracticeAreaLegalUpdatesRSSPhilHarper extends BaseStepDef {
+public class cpetPracticeAreaLegalUpdatesRSS extends BaseStepDef {
     PLRssWidget PLRSS = new PLRssWidget();
     PracticeAreaLandingPage PLPracticeAreas = new PracticeAreaLandingPage();
     private CommonMethods commonMethods = new CommonMethods();
