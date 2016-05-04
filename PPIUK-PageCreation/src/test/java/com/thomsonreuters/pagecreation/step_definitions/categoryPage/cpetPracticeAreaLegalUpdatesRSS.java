@@ -57,24 +57,36 @@ public class cpetPracticeAreaLegalUpdatesRSS extends BaseStepDef {
             PLRSS.RSSItem("3").isDisplayed();
             PLRSS.RSSItem("4").isDisplayed();
         } else PLRSS.RSSItemUsingHeading(LegalUpdateHeading, "0").isDisplayed();
+
+
     }
 
     @And("^verifies Each Legal Update below the heading \"(.*?)\" has a Date$")
     public void verifiesEachLegalUpdatehasaDate(String LegalUpdateHeading) throws Throwable {
         if (LegalUpdateHeading.length() == 0) {
             PLRSS.RSSItemUsingHeadingAndAssocDate(LegalUpdateHeading, "0").isDisplayed();
-            assertTrue(PLRSS.RSSItemUsingHeadingAndAssocDate(LegalUpdateHeading, "0").getText().length() > 4);
             PLRSS.RSSItemUsingHeadingAndAssocDate(LegalUpdateHeading, "1").isDisplayed();
             PLRSS.RSSItemUsingHeadingAndAssocDate(LegalUpdateHeading, "2").isDisplayed();
             PLRSS.RSSItemUsingHeadingAndAssocDate(LegalUpdateHeading, "3").isDisplayed();
             PLRSS.RSSItemUsingHeadingAndAssocDate(LegalUpdateHeading, "4").isDisplayed();
+            assertTrue(PLRSS.RSSItemUsingHeadingAndAssocDate(LegalUpdateHeading, "0").getText().length() > 4);
+            assertTrue(PLRSS.RSSItemUsingHeadingAndAssocDate(LegalUpdateHeading, "1").getText().length() > 4);
+            assertTrue(PLRSS.RSSItemUsingHeadingAndAssocDate(LegalUpdateHeading, "2").getText().length() > 4);
+            assertTrue(PLRSS.RSSItemUsingHeadingAndAssocDate(LegalUpdateHeading, "3").getText().length() > 4);
+            assertTrue(PLRSS.RSSItemUsingHeadingAndAssocDate(LegalUpdateHeading, "4").getText().length() > 4);
         } else {
             PLRSS.RSSItemAndAssocDate("0").isDisplayed();
             PLRSS.RSSItemAndAssocDate("1").isDisplayed();
             PLRSS.RSSItemAndAssocDate("2").isDisplayed();
             PLRSS.RSSItemAndAssocDate("3").isDisplayed();
             PLRSS.RSSItemAndAssocDate("4").isDisplayed();
+            assertTrue(PLRSS.RSSItemAndAssocDate("0").getText().length() > 4);
+            assertTrue(PLRSS.RSSItemAndAssocDate("1").getText().length() > 4);
+            assertTrue(PLRSS.RSSItemAndAssocDate("2").getText().length() > 4);
+            assertTrue(PLRSS.RSSItemAndAssocDate("3").getText().length() > 4);
+            assertTrue(PLRSS.RSSItemAndAssocDate("4").getText().length() > 4);
         }
+
     }
 
     @Then("^confirms the View All link at the foot of the RSS feed \"(.*?)\" is displayed$")
