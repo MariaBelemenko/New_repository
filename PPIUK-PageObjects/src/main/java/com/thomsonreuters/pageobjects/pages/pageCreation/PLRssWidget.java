@@ -4,6 +4,8 @@ import com.thomsonreuters.driver.framework.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 /**
  * Created by Phil Harper on 19/04/2016. This is the PO class for RSS Legal Update "RSS widgets" that are
  * sometimes included on PL pages, most notably on Practice Area Home Pages.
@@ -25,9 +27,9 @@ public class PLRssWidget extends AbstractPage {
         return waitForExpectedElement(By.xpath
                 ("//h3[@class='co_genericBoxHeader'][contains(.,'Legal updates')]"));
     }
-    public WebElement LegalUpdatesWholewidget() {
-        return waitForExpectedElement(By.xpath
-                ("//div[@id='coid_website_browseRightColumn']//div[@class='co_genericBoxContent']//ol"));
+    public List<WebElement> LegalUpdatesWholewidget() {
+        return waitForExpectedElements(By.xpath
+                ("//div[@id='coid_website_browseRightColumn']//div[@class='co_genericBoxContent']//ol/li"));
     }
 
     public WebElement RSSLegalUpdateRSSIcon() {
