@@ -2,12 +2,12 @@ package com.thomsonreuters.fastdraft.step_definitions.common;
 
 import com.thomsonreuters.fastdraft.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.common.FileActions;
-import com.thomsonreuters.pageobjects.common.WindowHandler;
 import com.thomsonreuters.pageobjects.pages.fastDraft.ChangesInUploadedPDF;
 import com.thomsonreuters.pageobjects.pages.fastDraft.DraftViewPage;
 import com.thomsonreuters.pageobjects.pages.fastDraft.FormEPage;
 import com.thomsonreuters.pageobjects.pages.widgets.CategoryPage;
 import com.thomsonreuters.pageobjects.utils.fastDraft.FastDraftUtils;
+import com.thomsonreuters.pageobjects.common.FdDeliveryDocument;
 import com.thomsonreuters.pageobjects.utils.pdf.PDFBoxUtil;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -16,8 +16,6 @@ import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.openqa.selenium.WebElement;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,12 +24,11 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-public class WorkWithFormETest extends BaseStepDef {
+public class ExportFastDraftTest extends BaseStepDef {
 
     private CategoryPage categoryPage = new CategoryPage();
     private FormEPage formEpage = new FormEPage();
     private DraftViewPage draftViewPage = new DraftViewPage();
-    private WindowHandler windowHandler = new WindowHandler();
     private PDFBoxUtil pdfBoxUtil = new PDFBoxUtil();
     private FileActions fileActions = new FileActions();
     private FastDraftUtils fastDraftUtils = new FastDraftUtils();
@@ -39,7 +36,7 @@ public class WorkWithFormETest extends BaseStepDef {
 
     private final static String DOWNLOADED_FILE_PATH = System.getProperty("user.home") + "/Downloads";
     private File downloadedFile = null;
-    private static final String DRAFT = "draft";
+    private FdDeliveryDocument fdDeliveryDocument;
 
     @When("^the user deletes all files with name \"([^\"]*)\" and extension \"([^\"]*)\" from Downloads$")
     public void deleteFilesFormDownloads(String name, String extension) throws Throwable {
@@ -64,25 +61,19 @@ public class WorkWithFormETest extends BaseStepDef {
         formEpage.waitForPageToLoad();
     }
 
-    @When("^the user exports Form E as editable PDF with changes$")
+    @Then("^the user exports Form E as editable PDF with changes$")
     public void exportEditablePDFWithChanges() throws Throwable {
-        Thread.sleep(10000);
         draftViewPage.export().click();
-        windowHandler.fileDownloadAutomatically(draftViewPage.exportEditablePDF());
+        // Just ensure that we have ability to export fast draft document
+        assertTrue("Export as editable PDF menu is not clickable", draftViewPage.exportEditablePDF().isDisplayed());
+        fdDeliveryDocument = FdDeliveryDocument.PDF_FORM_EDITABLE;
+        downloadFastDraft();
     }
 
     @Then("^draft file with extension \"([^\"]*)\" should download to the users machine$")
     public void fileShouldDownloadToTheUsersMachine(String extension) throws Throwable {
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_ESCAPE);
-        robot.keyRelease(KeyEvent.VK_ESCAPE);
-        downloadedFile = fileActions.findFile(DRAFT, extension, DOWNLOADED_FILE_PATH);
-        assertTrue("File was not downloaded", downloadedFile != null && downloadedFile.exists());
+        assertTrue("File was not downloaded",
+                downloadedFile != null && downloadedFile.exists() && downloadedFile.getName().endsWith(extension));
     }
 
     @When("^the user updates PFD with new name \"([^\"]*)\", new date \"([^\"]*)\", new month \"([^\"]*)\" and new year \"([^\"]*)\" in Date of birth$")
@@ -151,6 +142,28 @@ public class WorkWithFormETest extends BaseStepDef {
         fileActions.deleteFile(downloadedFile);
     }
 
+    @When("^the user clicks Word document and saves .doc file$")
+    public void clickWordDocument() throws Throwable {
+        // Just ensure that we have ability to export fast draft document
+        assertTrue("Export as editable PDF menu is not clickable", draftViewPage.wordDocument().isDisplayed());
+        fdDeliveryDocument = FdDeliveryDocument.WORD_FORM;
+        downloadFastDraft();
+    }
+
+    @When("^the user exports Form E as editable PDF$")
+    public void exportEditablePDF() throws Throwable {
+        exportEditablePDFWithChanges();
+    }
+
+    @When("^the user exports Form E as printable PDF$")
+    public void exportPrintablePDF() throws Throwable {
+        draftViewPage.export().click();
+        // Just ensure that we have ability to export fast draft document
+        assertTrue("Export as editable PDF menu is not clickable", draftViewPage.exportPrintablePDF().isDisplayed());
+        fdDeliveryDocument = FdDeliveryDocument.PDF_FORM_PRINTABLE;
+        downloadFastDraft();
+    }
+
     private void createTestFile(String path) {
         try {
             PrintWriter writer = new PrintWriter(path, "UTF-8");
@@ -162,4 +175,11 @@ public class WorkWithFormETest extends BaseStepDef {
         }
     }
 
+    /**
+     * Download export version of fast draft document.
+     * WARNING! Export type should be set by steps. {@link this#fdDeliveryDocument}
+     */
+    private void downloadFastDraft() {
+        downloadedFile = fastDraftUtils.downloadFdAndGetFile(fdDeliveryDocument);
+    }
 }

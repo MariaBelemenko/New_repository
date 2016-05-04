@@ -1,7 +1,5 @@
-@robot
 Feature: [777181] As a PL+ "PA" user I want to upload a Form E document using a Form E template So that I can upload my changes to FastDraft
 
-# This test uses JAVA Robot, therefore it could be run locally only
   Scenario:
     Given PL+ user is logged in with following details
       | routing          | FAST_DRAFT |

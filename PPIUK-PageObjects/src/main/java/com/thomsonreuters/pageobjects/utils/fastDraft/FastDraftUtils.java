@@ -1,10 +1,13 @@
 package com.thomsonreuters.pageobjects.utils.fastDraft;
 
 import com.thomsonreuters.pageobjects.common.CommonMethods;
-import com.thomsonreuters.pageobjects.common.WindowHandler;
+import com.thomsonreuters.pageobjects.common.FdDeliveryDocument;
 import com.thomsonreuters.pageobjects.pages.fastDraft.*;
+import com.thomsonreuters.pageobjects.rest.service.impl.RestServiceDeliveryImpl;
 import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
+
+import java.io.File;
 
 public class FastDraftUtils {
 
@@ -13,7 +16,6 @@ public class FastDraftUtils {
     private QuestionPage questionPage = new QuestionPage();
     private ProjectPage projectPage = new ProjectPage();
     private SaveProjectPopup saveProjectPopup = new SaveProjectPopup();
-    private WindowHandler windowHandler = new WindowHandler();
     private FormEPage formEpage = new FormEPage();
     private NewDocumentPage newDocumentPage = new NewDocumentPage();
     private NewDocumentPopup newDocumentPopup = new NewDocumentPopup();
@@ -24,6 +26,10 @@ public class FastDraftUtils {
     private Header header = new Header();
     private NewProjectPopup newProjectPopup = new NewProjectPopup();
     private CommonMethods comMethods = new CommonMethods();
+    private RestServiceDeliveryImpl deliveryService = new RestServiceDeliveryImpl();
+
+    private static final String BASE_DELIVERY_FD_URL = "http://d" + System.getProperty("base.legacy.url") + "-infra.dev.practicallaw.com:8080/da/draft/download?view=";
+    private static final String DELIVERY_FILE_NAME = "draft";
 
     public void saveNewProjectFromQuestionPage(String projectName, String documentName) {
         questionPage.saveProject().click();
@@ -43,8 +49,7 @@ public class FastDraftUtils {
 
     public void uploadFormEFromFD(String documentName, String path) throws Throwable {
         projectPage.uploadFormE(documentName).click();
-        projectPage.selectUploadFormE().click();
-        windowHandler.fileUpload(path);
+        projectPage.selectUploadFormE().sendKeys(path);
         projectPage.upload().click();
         projectPage.waitForPageToLoad();
     }
@@ -56,8 +61,7 @@ public class FastDraftUtils {
 
     public void uploadFormEFromFormEPage(String path) throws Throwable {
         clickUploadFormEFromFormEPage();
-        projectPage.selectUploadFormE().click();
-        windowHandler.fileUpload(path);
+        projectPage.selectUploadFormE().sendKeys(path);
         projectPage.upload().click();
         projectPage.waitForPageToLoad();
     }
@@ -229,6 +233,17 @@ public class FastDraftUtils {
         addressBookPage.removeContact(contact).click();
         addressBookPage.removeContactConfirmation().click();
         addressBookPage.waitForPageToLoad();
+    }
+
+    /**
+     * Download fast draft (Export option on the site)
+     *
+     * @param fdDeliveryDocument Kind of downloaded document {@link FdDeliveryDocument}
+     * @return Downloaded file
+     */
+    public File downloadFdAndGetFile(FdDeliveryDocument fdDeliveryDocument) {
+        return deliveryService.getFileViaHttp(BASE_DELIVERY_FD_URL + fdDeliveryDocument.getName(),
+                DELIVERY_FILE_NAME + fdDeliveryDocument.getExtension());
     }
 
 }

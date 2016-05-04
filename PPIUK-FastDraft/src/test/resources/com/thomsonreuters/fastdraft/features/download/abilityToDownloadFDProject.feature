@@ -1,7 +1,6 @@
-@robot @e2e
+@e2e
 Feature: [770524] FD10 Download Fast Draft Project (Document)
 
-#  Robot Tests can only be run LOCALLY
   Scenario Outline: Standard Document and No FS
     Given PL+ user is logged in with following details
       | routing          | FAST_DRAFT |

@@ -14,19 +14,19 @@ public class DraftViewPage extends AbstractPage {
     }
 
     public WebElement wordDocument() {
-        return comMethods.waitForElementToBeVisible(By.xpath("//a[text()=' Word document']"), 10000);
+        return waitForElementToBeClickable(waitForExpectedElement(By.xpath("//a[text()=' Word document']")));
     }
 
     public WebElement export() {
-        return comMethods.waitForElementToBeVisible(By.xpath("//*[text()=' Export ']"), 10000);
+        return waitForExpectedElement(By.xpath("//*[text()=' Export ']"));
     }
 
     public WebElement exportEditablePDF() {
-        return waitForExpectedElement(By.xpath("//a[text()='Export as editable form (PDF)']"));
+        return waitForElementToBeClickable(waitForExpectedElement(By.xpath("//a[text()='Export as editable form (PDF)']")));
     }
 
     public WebElement exportPrintablePDF() {
-        return waitForExpectedElement(By.xpath("//a[text()='Export as printable form (PDF)']"));
+        return waitForElementToBeClickable(waitForExpectedElement(By.xpath("//a[text()='Export as printable form (PDF)']")));
     }
 
 }
