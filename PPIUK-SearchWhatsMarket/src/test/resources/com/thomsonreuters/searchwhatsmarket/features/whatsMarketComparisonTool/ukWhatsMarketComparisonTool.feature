@@ -67,6 +67,7 @@ Feature: ukWhatsMarketComparisonTool.feature
     And the user verifies the presence of a pop up entitled 'Save Report Profile'
     And the user enters text into the profile name field "test"
     And the user selects the save option on the pop up
+    And the user verifies the absence of a pop up entitled 'Save Report Profile' after saving
     And the user selects the report profile dropdown
     And the user verifies that the report profile dropdown does include the profile entitled "test"
     And the user selects the report profile entitled "test"
@@ -468,6 +469,7 @@ Feature: ukWhatsMarketComparisonTool.feature
     And the user verifies the presence of a pop up entitled 'Save Report Profile'
     And the user enters text into the profile name field "test"
     And the user selects the save option on the pop up
+    And the user verifies the absence of a pop up entitled 'Save Report Profile' after saving
     And the user selects the report profile dropdown
     And the user verifies that the report profile dropdown does include the profile entitled "test"
     And the user selects the home node icon

@@ -203,6 +203,14 @@ public class WhatsMarketComparisonReportPage extends DocumentDisplayAbstractPage
         return waitForExpectedElement(By.xpath("//div[@id='co_deliveryLightbox']//h3[text()='Save Report Profile']"));
     }
 
+    /*
+         object representing the "Save Report Profile" pop up
+    */
+
+    public boolean isSaveReportProfilePopUpPresent() {
+        return isElementPresent(By.id("co_deliveryLightbox"));
+    }
+
     /**
      * object representing the heading "Delete Report Profile" on the create new profile pop up box
      */

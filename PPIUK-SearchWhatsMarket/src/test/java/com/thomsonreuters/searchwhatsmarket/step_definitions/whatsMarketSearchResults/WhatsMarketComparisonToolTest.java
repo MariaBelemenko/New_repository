@@ -90,9 +90,9 @@ public class WhatsMarketComparisonToolTest extends BaseStepDef {
         whatsMarketComparisonReportPage.saveReportProfile().click();
     }
 
-    @When("^the user verifies the presence of a pop up entitled 'Save Report Profile'$")
+    @Then("^the user verifies the presence of a pop up entitled 'Save Report Profile'$")
     public void theUserVerifiesThePresenceOfAPopUpEntitledSaveReportProfile() throws Throwable {
-        whatsMarketComparisonReportPage.newProfilePopUpHeader().isDisplayed();
+        assertTrue("There is no pop up", whatsMarketComparisonReportPage.newProfilePopUpHeader().isDisplayed());
     }
 
     @When("^the user enters text into the profile name field \"([^\"]*)\"$")
@@ -104,6 +104,11 @@ public class WhatsMarketComparisonToolTest extends BaseStepDef {
     public void theUserSelectsTheSaveOptionOnThePopUp() throws Throwable {
         whatsMarketComparisonReportPage.saveOptionOnPopUp().click();
         whatsMarketComparisonReportPage.waitForPageToLoadAndJQueryProcessing();
+    }
+
+    @Then("^the user verifies the absence of a pop up entitled 'Save Report Profile' after saving$")
+    public void theUserVerifiesTheAbsenceOfPopUpEntitledSaveReportProfileAfterSaving() throws Throwable {
+        assertFalse("Pop up is still displayed", whatsMarketComparisonReportPage.isSaveReportProfilePopUpPresent());
     }
 
     @When("^the user selects the report profile dropdown$")
