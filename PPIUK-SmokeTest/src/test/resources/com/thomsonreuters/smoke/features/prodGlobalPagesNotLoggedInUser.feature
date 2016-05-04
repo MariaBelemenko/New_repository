@@ -1,9 +1,8 @@
 Feature: Verify Global pages - Not logged in user
 
   Scenario Outline: verify that not logged user can open US, UK, Canada, China, Global links in the same window
-   Given PL+ user is logged in with following details
-      | routing       | OPEN_WEB_SEARCH |
-      | loginRequired | NO              |
+    Given PL+ user is not logged in
+    And the user navigates to the main PLCUK page
     When user hovers over the country toggle dropdown
     And the user selects "<link>"
     Then the user is taken to the "<webSite>" web site in the same window and tab
