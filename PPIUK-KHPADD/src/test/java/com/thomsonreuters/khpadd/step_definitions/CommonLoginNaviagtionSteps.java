@@ -693,12 +693,11 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
      */
     protected void handleOpenWebFlow() throws InterruptedException {
         /**
-         * The below lines ensure that PROD is being hit thinking OW is turned OFF.
-         *
-         * When you are ready and you want to make PROD work when OW is on,
-         * Then just remove the below lines.
+         * The below commented lines ensure that HOTPROD is being hit thinking OW is turned OFF.
+         *       
+         * Please uncomment and update the lines if OW will be turned OFF on any of the sites.
          */
-        switch (baseUrl) {
+   /*     switch (baseUrl) {
             case "hotprod":
                 LOG.info("HOT PROD Site is being tested.");
                 break;
@@ -715,22 +714,10 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
                 wlnHeader.signInLink().click();
                 break;
             default:
-                // Don't click the sign in link if already signed in
-                boolean alreadyLoggedIn = false;
-                try {
-                    wlnHeader.userAvatarIcon().isDisplayed();
-                    alreadyLoggedIn = true;
-                } catch (Exception e) {
-                }
-                if (!alreadyLoggedIn) {
-                    wlnHeader.signInLink().click();
-                }
+                wlnHeader.signInLink().click();
                 break;
-        }
-        /**
-         * When you want to run any test against PROD with OW on then just uncomment the line below.
-         */      
-       // wlnHeader.signInLink().click();
+        } */
+        wlnHeader.signInLink().click();
     }
 
     private void hackToTRemovePortAndNavigateToOnePassPage() throws InterruptedException {
