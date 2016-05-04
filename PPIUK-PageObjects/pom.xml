@@ -36,8 +36,8 @@
     <dependencies>
         <dependency>
             <groupId>com.thomsonreuters.driver</groupId>
-            <artifactId>TR-Test-Automation-Driver</artifactId>
-            <version>2.19</version>
+            <artifactId>Test-Automation-Framework</artifactId>
+            <version>1.0</version>
         </dependency>
 
         <dependency>
