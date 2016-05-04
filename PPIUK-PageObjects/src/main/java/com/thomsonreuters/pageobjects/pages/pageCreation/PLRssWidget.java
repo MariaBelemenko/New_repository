@@ -25,6 +25,10 @@ public class PLRssWidget extends AbstractPage {
         return waitForExpectedElement(By.xpath
                 ("//h3[@class='co_genericBoxHeader'][contains(.,'Legal updates')]"));
     }
+    public WebElement LegalUpdatesWholewidget() {
+        return waitForExpectedElement(By.xpath
+                ("//div[@id='coid_website_browseRightColumn']//div[@class='co_genericBoxContent']//ol"));
+    }
 
     public WebElement RSSLegalUpdateRSSIcon() {
         return waitForExpectedElement(By.xpath
