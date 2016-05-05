@@ -29,7 +29,7 @@ public class PLRssWidget extends AbstractPage {
     }
     public List<WebElement> LegalUpdatesWholewidget() {
         return waitForExpectedElements(By.xpath
-                ("//div[@id='coid_website_browseRightColumn']//div[@class='co_genericBoxContent']//ol/li"));
+                ("//h3[@class='co_genericBoxHeader'][contains(.,'Legal updates')]/following-sibling::*//li"));
     }
 
     public WebElement RSSLegalUpdateRSSIcon() {
