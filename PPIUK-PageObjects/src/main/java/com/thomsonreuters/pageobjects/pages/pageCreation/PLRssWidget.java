@@ -16,7 +16,7 @@ import java.util.List;
 public class PLRssWidget extends AbstractPage {
 
     public WebElement RSSItem(String RSSNumber) {
-        return waitForExpectedElement(By.xpath("//a[text()='RSS']/ancestor::h3/following-sibling::div//div[@id='ContentBlock" + RSSNumber +"']"),15);
+        return waitForExpectedElement(By.xpath("//a[text()='RSS']/ancestor::h3/following-sibling::div//div[@id='ContentBlock" + RSSNumber + "']"),15);
         }
 
     public WebElement RSSItemCB0() {
@@ -27,9 +27,15 @@ public class PLRssWidget extends AbstractPage {
         return waitForExpectedElement(By.xpath
                 ("//h3[@class='co_genericBoxHeader'][contains(.,'Legal updates')]"));
     }
-    public List<WebElement> LegalUpdatesWholewidget() {
+    public List<WebElement> LegalUpdatesWholewidget(String LegalUpdateHeading) {
+        String Heading;
+        if(LegalUpdateHeading.length()==0) {
+            Heading="Legal updates";
+        }else{
+            Heading=LegalUpdateHeading;
+        }
         return waitForExpectedElements(By.xpath
-                ("//h3[@class='co_genericBoxHeader'][contains(.,'Legal updates')]/following-sibling::*//li"));
+                ("//h3[@class='co_genericBoxHeader'][contains(.,'" + Heading + "')]/following-sibling::*//li"));
     }
 
     public WebElement RSSLegalUpdateRSSIcon() {
