@@ -51,11 +51,12 @@ public class AbilityToSignOffAndRemoveSRMOptionTest extends BaseStepDef {
 
     @Then("^he should be logged out from system$")
     public void heWillBePromptedToEnterHisUsernameAndPasswordAgain() throws Throwable {
-        if (baseUrl.equals("hotprod")) {
+    /** The commented out code should be updated and used in case Open WEb will be turned OFF on some environment */
+     /*   if (baseUrl.equals("hotprod")) {
         	assertTrue("User was not logged out", onepassLoginPage.updateExistingOnePassProfileLink().isDisplayed());
-        } else {
+        } else { */
         	assertTrue("User was not logged out", wlnHeader.isSignInLinkPresent());
-        }        
+     //   }        
     }
 
 }
