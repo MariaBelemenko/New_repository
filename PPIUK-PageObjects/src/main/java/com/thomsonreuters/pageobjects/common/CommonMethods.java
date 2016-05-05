@@ -10,7 +10,9 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.internal.Coordinates;
 import org.openqa.selenium.internal.Locatable;
+import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.UselessFileDetector;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.slf4j.LoggerFactory;
@@ -30,6 +32,7 @@ public class CommonMethods extends AbstractPage {
     protected static final org.slf4j.Logger LOG = LoggerFactory.getLogger(CommonMethods.class);
 
     private RemoteWebDriver driver;
+    private boolean isGrid = System.getProperty("driverType", "").equalsIgnoreCase("seleniumGrid");
 
     public CommonMethods() {
         this.driver = getDriver;
@@ -727,5 +730,36 @@ public class CommonMethods extends AbstractPage {
             }
         }
         return true;
+    }
+
+    /**
+     * Enable ability to push local file to the remote selenium grid node
+     */
+    public void enableLocalFileDetector() {
+        setFileDetector(true);
+    }
+
+    /**
+     * Disable ability to push local file to the remote selenium grid node
+     */
+    public void disableLocalFileDetector() {
+        setFileDetector(false);
+    }
+
+    /**
+     * Make RemoteWebDriver on selenium grid node able to work with local files
+     * TODO @toFramework - this ability should be part of the core framework
+     *
+     *
+     * @param isLocalFileDetector True - if there is necessary to push local files to remote selenium grid node, otherwise - false.
+     */
+    private void setFileDetector(boolean isLocalFileDetector) {
+        if (isGrid) {
+            if (isLocalFileDetector && driver.getFileDetector() instanceof UselessFileDetector) {
+                driver.setFileDetector(new LocalFileDetector());
+            } else if (!isLocalFileDetector && !(driver.getFileDetector() instanceof UselessFileDetector)) {
+                driver.setFileDetector(new UselessFileDetector());
+            }
+        }
     }
 }

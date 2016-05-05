@@ -31,6 +31,10 @@ public class FastDraftUtils {
     private static final String BASE_DELIVERY_FD_URL = "http://d" + System.getProperty("base.legacy.url") + "-infra.dev.practicallaw.com:8080/da/draft/download?view=";
     private static final String DELIVERY_FILE_NAME = "draft";
 
+    public FastDraftUtils() {
+        comMethods.enableLocalFileDetector();
+    }
+
     public void saveNewProjectFromQuestionPage(String projectName, String documentName) {
         questionPage.saveProject().click();
         questionPage.waitForPageToLoad();
