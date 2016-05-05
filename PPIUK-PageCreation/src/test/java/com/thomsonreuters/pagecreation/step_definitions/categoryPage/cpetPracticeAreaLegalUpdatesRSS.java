@@ -6,6 +6,10 @@ import com.thomsonreuters.pageobjects.pages.landingPage.PracticeAreaLandingPage;
 import com.thomsonreuters.pageobjects.pages.pageCreation.PLRssWidget;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 
@@ -56,13 +60,17 @@ public class cpetPracticeAreaLegalUpdatesRSS extends BaseStepDef {
             PLRSS.RSSItem("2").isDisplayed();
             PLRSS.RSSItem("3").isDisplayed();
             PLRSS.RSSItem("4").isDisplayed();
-        } else PLRSS.RSSItemUsingHeading(LegalUpdateHeading, "0").isDisplayed();
 
+        } else {
+            PLRSS.RSSItemUsingHeading(LegalUpdateHeading, "0").isDisplayed();
+        }
+        assertEquals(5, PLRSS.LegalUpdatesWholewidget(LegalUpdateHeading).size());
 
     }
 
     @And("^verifies Each Legal Update below the heading \"(.*?)\" has a Date$")
     public void verifiesEachLegalUpdatehasaDate(String LegalUpdateHeading) throws Throwable {
+
         if (LegalUpdateHeading.length() == 0) {
             PLRSS.RSSItemUsingHeadingAndAssocDate(LegalUpdateHeading, "0").isDisplayed();
             PLRSS.RSSItemUsingHeadingAndAssocDate(LegalUpdateHeading, "1").isDisplayed();
