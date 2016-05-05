@@ -18,11 +18,11 @@ public class PPIGenericDocDisplay extends AbstractPage {
     }
 
     public WebElement categoryTab() {
-        return waitForExpectedElement((By.xpath("//ul[@class='co_tabs co_categoryTabs']")),20);
+        return waitForExpectedElement((By.xpath("//ul[@class='co_tabs co_categoryTabs']")),30);
     }
 
     public WebElement searchPageLabel() {
-        return waitForExpectedElement((By.xpath("//h1[@id='co_browsePageLabel']")),20);
+        return waitForExpectedElement((By.xpath("//h1[@id='co_browsePageLabel']")),30);
     }
 
     public WebElement rightColumn() {
@@ -31,10 +31,14 @@ public class PPIGenericDocDisplay extends AbstractPage {
 
 
     public WebElement titleNoToc()  {
-        return waitForExpectedElement( (By.xpath("//h1[@class='co_title noTOC']")),10);
+        return waitForExpectedElement( (By.xpath("//h1[@class='co_title noTOC']")),30);
     }
 
     public WebElement glossaryHeader() {
-        return waitForExpectedElement((By.xpath("//div[@id='co_docHeaderContainer']")));
+        return waitForExpectedElement((By.xpath("//div[@id='co_docHeaderContainer']")),30);
+    }
+
+    public WebElement plGlobalHeader () {
+        return waitForExpectedElement((By.xpath("//h1")),30);
     }
 }

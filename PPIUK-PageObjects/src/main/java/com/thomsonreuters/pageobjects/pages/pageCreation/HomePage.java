@@ -11,27 +11,27 @@ public class HomePage extends AbstractPage {
 
     public WebElement browseMenuPopUp() {
 
-        return waitForExpectedElement(By.xpath("//div[@class='browseMenu_container']"),5);
+        return waitForExpectedElement(By.xpath("//div[@class='browseMenu_container']"),20);
     }
 
     public WebElement browseMenuLink(String linkText) {
 
-        return waitForExpectedElement(By.xpath("//span[@class='co_floatLeft'][text()=\"" + linkText + "\"]/parent::a"),10);
+        return waitForExpectedElement(By.xpath("//span[@class='co_floatLeft'][text()=\"" + linkText + "\"]/parent::a"),30);
     }
 
     public WebElement menuColumnLink(String linkText) {
         // \" to deal with What's Market having an apostrophe
-        return waitForExpectedElement(By.xpath("//div[@id='menu-item-children']//a[text()=\"" + linkText + "\"]"),10);
+        return waitForExpectedElement(By.xpath("//div[@class='menu-item-children co_2Column']//a[text()=\"" + linkText + "\"]"),30);
     }
 
     public WebElement homepageTabHeadingLink(String linkText) {
         // \" to deal with What's Market having an apostrophe
-        return waitForExpectedElement(By.xpath("//a[@class='co_tabLink'][text()=\"" + linkText + "\"]"),10);
+        return waitForExpectedElement(By.xpath("//a[@class='co_tabLink'][text()=\"" + linkText + "\"]"),30);
     }
 
     public WebElement homepageTabLink(String linkText) {
 
-        return waitForExpectedElement(By.xpath("//div[contains(@id,'categoryBoxTab')]//a[text()=\"" + linkText + "\"]"),10);
+        return waitForExpectedElement(By.xpath("//div[contains(@id,'categoryBoxTabPanel')][contains(@class,'co_tabShow')]//a[text()=\"" + linkText + "\"]"),30);
     }
 
     public WebElement practiceAreasTab() {
@@ -116,12 +116,12 @@ public class HomePage extends AbstractPage {
     }
     private List<WebElement> getPracticeAreasWebElementLinksInBrowseMenu() {
         //return mergeTwoWebElementList(By.cssSelector("div[id='Practice areas0'] ul li a"), By.cssSelector("div[id='Practice areas1'] ul li a"));
-        return waitForExpectedElements(By.xpath("//li[@id='Practice areas']//a"),10);
+        return waitForExpectedElements(By.xpath("//li[@id='Practice areas']//a"),30);
     }
 
     private List<WebElement> getWebElementLinksInBrowseMenu(String subMenuLink) {
         //return mergeTwoWebElementList(By.cssSelector("div[id='Practice areas0'] ul li a"), By.cssSelector("div[id='Practice areas1'] ul li a"));
-        return waitForExpectedElements(By.xpath("//li[@id='" + subMenuLink + "']//a"),10);
+        return waitForExpectedElements(By.xpath("//li[@id='" + subMenuLink + "']//a"),30);
     }
 
     public List<String> getLinksInHomepageMainMenu() {
@@ -129,7 +129,7 @@ public class HomePage extends AbstractPage {
     }
 
     private List<WebElement> getWebElementLinksInHomepageMainMenu() {
-        return waitForExpectedElements(By.xpath("//div[contains(@class,'co_tabShow')]//a"),10);
+        return waitForExpectedElements(By.xpath("//div[contains(@class,'co_tabShow')]//a"),30);
     }
 
     private List<String> getOnlyLinkNamesFromWebElementList(List<WebElement> elementList) {
@@ -141,6 +141,18 @@ public class HomePage extends AbstractPage {
             links.add(currentLink);
         }
         return links;
+    }
+
+    public WebElement homepageLink(String homepageMenuLink) {
+        return waitForExpectedElement(By.xpath("//div[contains(@class,'co_tabShow')]//li//a[text()=\""+homepageMenuLink+"\"]"),30);
+    }
+
+    public WebElement tabLinkAfterHeader (String headingText,String linkText) {
+        return waitForExpectedElement(By.xpath("//h3[contains(.,'" + headingText + "')]/parent::div/parent::div//a[text()=\""+linkText+"\"]"),30);
+    }
+
+   public WebElement browseTabLinkAfterHeader (String headingText,String linkText) {
+        return waitForExpectedElement(By.xpath("//ul[@id='browseMenu_list']//div[@class='menuBarSectionDisplayName'][text()=\"" + headingText + "\"]/following-sibling::div//a[text()=\"" + linkText + "\"]"),30);
     }
 
     public WebElement legalUpdatesContentLink() {

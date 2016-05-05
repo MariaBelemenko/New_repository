@@ -189,11 +189,66 @@ public class HomePageSteps extends BaseStepDef{
             assertTrue("The 'Practice areas' link " + link + " is NOT displayed in Browse Menu", linksRetrieved.contains(link));
         }
     }
-     //Steps added by Ian and Sandy
+     //Steps added by Ian and Sandy - The steps below are for checking the links in all of the tabs under the Browse Menu
     @Then("^the user clicks through the \"(.*?)\" links that are displayed in the 'Browse Menu' on the Home Page$")
-    public void theUserClicksThroughThePracticeAreasLinksThatAreDisplayedInTheBrowseMenuOnTheHomePage(String subMenuLink, List<String> links) throws Throwable {
+    public void theUserClicksThroughTheTabLinksThatAreDisplayedInTheBrowseMenuOnTheHomePage(String subMenuLink, List<String> links) throws Throwable {
         Boolean isMenuDisplayed = false;
         String pageTitle = "";
+        String linkToClick = "";
+        String headerToFind = "";
+        String stringToSplit[] ;
+
+
+        homePage.browseMenuLink(subMenuLink).click();
+        List<String> linksRetrieved = homePage.getLinksInBrowseMenu(subMenuLink);
+
+        try{
+            homePage.browseMenuPopUp().isDisplayed();
+            isMenuDisplayed = true;
+        }catch (Exception e){}
+
+        if (!isMenuDisplayed) {
+            wlnHeader.browseMenuButton().click();
+        }
+
+        //System.out.println("...Found " + Integer.toString(homePage.getLinksInBrowseMenu(subMenuLink).size()) + " links");
+
+        for (String link : links) {
+
+            //System.out.println("The current link being checked is: " + link);
+
+            if (!link.contains(" ~ ")) {
+                homePage.menuColumnLink(link).click();
+            } else {
+                stringToSplit=link.split(" ~ ");
+                headerToFind=stringToSplit[0];
+                linkToClick=stringToSplit[1] ;
+                link=linkToClick;
+                homePage.browseTabLinkAfterHeader(headerToFind,linkToClick).click();
+            }
+            assertTrue("The '" + subMenuLink + "' link " + link + " is NOT displayed in Browse Menu", linksRetrieved.contains(link));
+            //homePage.browseMenuLink(subMenuLink).click();
+            //homePage.menuColumnLink(link).click();
+            pageTitle = ppiGenericDocDisplay.searchPageLabel().getText();
+            Boolean testPass = false;
+            if (link.toLowerCase().contains(pageTitle.toLowerCase())) {
+                testPass = true;
+            }
+            if (pageTitle.toLowerCase().contains(link.toLowerCase())) {
+                testPass = true;
+            }
+            //System.out.println("The link text is "+link+" and the page title is "+pageTitle);
+            assertTrue(testPass);
+            commonMethods.browserGoBack();
+            wlnHeader.browseMenuButton().click();
+            homePage.browseMenuLink(subMenuLink).click();
+        }
+    }
+
+    @Then ("The user clicks the Browse button tab link \"(.*?)\"$")
+    public void theUserClicksTheBrowseButtonTabLink (String subMenuLink) throws Throwable {
+        Boolean isMenuDisplayed = false;
+
         try{
             homePage.browseMenuPopUp().isDisplayed();
             isMenuDisplayed = true;
@@ -204,42 +259,55 @@ public class HomePageSteps extends BaseStepDef{
         }
 
         homePage.browseMenuLink(subMenuLink).click();
+    }
 
-        List<String> linksRetrieved = homePage.getLinksInBrowseMenu(subMenuLink);
-        System.out.println("...Found " + Integer.toString(homePage.getLinksInBrowseMenu(subMenuLink).size()) + " links");
-        for (String link : links) {
-            System.out.println("The current link being checked is: " + link);
-            assertTrue("The '" + subMenuLink + "' link " + link + " is NOT displayed in Browse Menu", linksRetrieved.contains(link));
-            homePage.browseMenuLink(subMenuLink).click();
+    @Then ("The user clicks the Browse link \"(.*?)\"$")
+    public void theUserClicksTheBrowseLink (String link) throws Throwable {
+        String linkToClick = "";
+        String headerToFind = "";
+        String stringToSplit[] ;
+
+        //System.out.println("The current link being checked is: " + link);
+
+        if (!link.contains(" ~ ")) {
             homePage.menuColumnLink(link).click();
-            pageTitle = ppiGenericDocDisplay.searchPageLabel().getText();
-            Boolean testPass = false;
-            if (link.toLowerCase().contains(pageTitle.toLowerCase())) {
-                testPass = true;
-            }
-            if (pageTitle.toLowerCase().contains(link.toLowerCase())) {
-                testPass = true;
-            }
-            System.out.println("The link text is "+link+" and the page title is "+pageTitle);
-            assertTrue(testPass);
-            commonMethods.browserGoBack();
-            wlnHeader.browseMenuButton().click();
+        } else {
+            stringToSplit=link.split(" ~ ");
+            headerToFind=stringToSplit[0];
+            linkToClick=stringToSplit[1] ;
+
+            //System.out.println("The link text is "+linkToClick);
+
+            homePage.browseTabLinkAfterHeader(headerToFind,linkToClick).click();
         }
     }
 
-    //Steps added by Ian and Sandy
+
+    //Steps added by Ian and Sandy - The steps below are for checking the links in all of the tabs on the PL+ Home Page
     @Then("^the user clicks through the \"(.*?)\" links that are displayed on the Home Page$")
-    public void theUserClicksThroughThePracticeAreasLinksThatAreDisplayedOnTheHomePage(String subMenuLink, List<String> links) throws Throwable {
+    public void theUserClicksThroughTheTabLinksThatAreDisplayedOnTheHomePage(String subMenuLink, List<String> links) throws Throwable {
         String pageTitle = "";
+        String linkToClick = "";
+        String headerToFind = "";
+        String stringToSplit[] ;
 
         homePage.homepageTabHeadingLink(subMenuLink).click();
 
         List<String> linksRetrieved = homePage.getLinksInHomepageMainMenu();
-        System.out.println("...Found " + Integer.toString(homePage.getLinksInHomepageMainMenu().size()) + " links");
+        //System.out.println("...Found " + Integer.toString(homePage.getLinksInHomepageMainMenu().size()) + " links");
         for (String link : links) {
-            System.out.println("The current link being checked is: " + link);
+            //System.out.println("The current link being checked is: " + link);
+
+            if (!link.contains(" ~ ")) {
+                homePage.homepageTabLink(link).click();
+            } else {
+                stringToSplit=link.split(" ~ ");
+                headerToFind=stringToSplit[0];
+                linkToClick=stringToSplit[1] ;
+                link=linkToClick;
+                homePage.tabLinkAfterHeader(headerToFind,linkToClick).click();
+            }
             assertTrue("The '" + subMenuLink + "' link " + link + " is NOT displayed in Browse Menu", linksRetrieved.contains(link));
-            homePage.homepageTabLink(link).click();
             pageTitle = ppiGenericDocDisplay.searchPageLabel().getText();
             Boolean testPass = false;
             if (link.toLowerCase().contains(pageTitle.toLowerCase())) {
@@ -248,31 +316,82 @@ public class HomePageSteps extends BaseStepDef{
             if (pageTitle.toLowerCase().contains(link.toLowerCase())) {
                 testPass = true;
             }
-            System.out.println("The link text is "+link+" and the page title is "+pageTitle);
+            //System.out.println("The link text is "+link+" and the page title is "+pageTitle);
             assertTrue(testPass);
             commonMethods.browserGoBack();
+            homePage.homepageTabHeadingLink(subMenuLink).isDisplayed();
             homePage.homepageTabHeadingLink(subMenuLink).click();
         }
     }
 
-    @Then("^The user clicks link to \"(.*?)\"$")
-    public void theUserClicksLinkToEUReferendum(String homepageMenuLink) throws Throwable {
-        //homePage.homepageLink(homepageMenuLink).click();
+    //Steps added by Ian and Sandy
+    @Then("^The user clicks the Home page tab link \"(.*?)\"$")
+    public void theUserClicksTheHomePageTabLink (String tabLink) throws Throwable {
+        homePage.homepageTabHeadingLink(tabLink).click();
     }
 
-   // @And("^The user verifies the resource page title is \"(.*?)\"$")
-    //public void theUserVerifiesTheResourcePageIsCorrect (String pageTitle) throws Throwable {
-      //  String displayedTitle = ppiGenericDocDisplay.titleNoToc().getText();
-        //assertTrue(displayedTitle.equals(pageTitle));
-        //commonMethods.browserGoBack();
-    //}
 
-    //@And("^The user verifies the glossary page title is \"(.*?)\"$")
-    //public void theUserVerifiesTheGlossaryPageIsCorrect (String pageTitle) throws Throwable {
-      //  String displayedTitle = ppiGenericDocDisplay.glossaryHeader().getText();
-        //assertTrue(displayedTitle.equals(pageTitle));
-        //commonMethods.browserGoBack();
-   // }
+    //Steps added by Ian and Sandy
+    @Then("^The user clicks link to \"(.*?)\"$")
+    public void theUserClicksLinkTo(String link) throws Throwable {
+        String linkToClick = "";
+        String headerToFind = "";
+        String stringToSplit[] ;
+
+        //System.out.println("The current link being checked is: " + link);
+
+        if (!link.contains(" ~ ")) {
+            homePage.homepageTabLink(link).click();
+        } else {
+            stringToSplit=link.split(" ~ ");
+            headerToFind=stringToSplit[0];
+            linkToClick=stringToSplit[1] ;
+
+            //System.out.println("The link text is "+linkToClick);
+
+            homePage.tabLinkAfterHeader(headerToFind,linkToClick).click();
+        }
+    }
+
+    //Steps added by Ian and Sandy
+   @And("^The user verifies the resource page title is \"(.*?)\"$")
+    public void theUserVerifiesTheResourcePageIsCorrect (String pageTitle) throws Throwable {
+        String displayedTitle = ppiGenericDocDisplay.titleNoToc().getText();
+        assertTrue(displayedTitle.equals(pageTitle));
+       //System.out.println("The page title is "+pageTitle);
+        commonMethods.browserGoBack();
+       wlnHeader.browseMenuButton().click();
+    }
+
+    //Steps added by Ian and Sandy
+    @And("^The user verifies the glossary page title is \"(.*?)\"$")
+    public void theUserVerifiesTheGlossaryPageIsCorrect (String pageTitle) throws Throwable {
+        String displayedTitle = ppiGenericDocDisplay.glossaryHeader().getText();
+        assertTrue(displayedTitle.contains(pageTitle));
+        //System.out.println("The page title is "+pageTitle);
+        commonMethods.browserGoBack();
+        wlnHeader.browseMenuButton().click();
+    }
+
+    //Steps added by Ian and Sandy
+    @And("^The user verifies the PL page title is \"(.*?)\"$")
+    public void theUserVerifiesThePLPageIsCorrect (String pageTitle) throws Throwable {
+        String displayedTitle = ppiGenericDocDisplay.plGlobalHeader().getText();
+        assertTrue(displayedTitle.contains(pageTitle));
+        //System.out.println("The page title is "+pageTitle);
+        commonMethods.browserGoBack();
+        wlnHeader.browseMenuButton().click();
+    }
+
+    //Steps added by Ian and Sandy
+    @And("^The user verifies the search page title is \"(.*?)\"$")
+    public void theUserVerifiesTheSearchPageIsCorrect (String pageTitle) throws Throwable {
+        String displayedTitle = ppiGenericDocDisplay.searchPageLabel().getText();
+        assertTrue(displayedTitle.contains(pageTitle));
+        //System.out.println("The page title is "+pageTitle);
+        commonMethods.browserGoBack();
+        wlnHeader.browseMenuButton().click();
+    }
 
     @When("^the user '(is|is not)' presented with the cookie consent message$")
     public void theUserIsPresentedWithTheCookieConsentMessage(String arg1) throws Throwable {
