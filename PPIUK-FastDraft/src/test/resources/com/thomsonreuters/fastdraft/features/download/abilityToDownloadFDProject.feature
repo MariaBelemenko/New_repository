@@ -6,7 +6,6 @@ Feature: [770524] FD10 Download Fast Draft Project (Document)
       | routing          | FAST_DRAFT |
       | mandatoryRouting | YES        |
     When the user come back on to Home page
-    And the user deletes all files with name "draft" and extension "<extension>" from Downloads
     And the user opens 'Resources' link
     And the user opens 'Standard documents and drafting notes' link
     And the user opens "<practiceArea>" link
@@ -27,7 +26,6 @@ Feature: [770524] FD10 Download Fast Draft Project (Document)
       | routing          | FAST_DRAFT_FIRM_STYLE |
       | mandatoryRouting | YES                   |
     When the user come back on to Home page
-    And the user deletes all files with name "draft" and extension "<extension>" from Downloads
     And the user opens 'Resources' link
     And the user opens 'Standard documents and drafting notes' link
     And the user opens "<practiceArea>" link
@@ -47,7 +45,6 @@ Feature: [770524] FD10 Download Fast Draft Project (Document)
       | routing          | FAST_DRAFT |
       | mandatoryRouting | YES        |
     When the user come back on to Home page
-    And the user deletes all files with name "draft" and extension "<extension>" from Downloads
     And the user come back on to Home page
     And the user opens "<practiceArea>" link
     And the user opens Form E page
@@ -66,7 +63,6 @@ Feature: [770524] FD10 Download Fast Draft Project (Document)
       | routing          | FAST_DRAFT |
       | mandatoryRouting | YES        |
     When the user come back on to Home page
-    And the user deletes all files with name "draft" and extension "<extension>" from Downloads
     And the user come back on to Home page
     And the user opens "<practiceArea>" link
     And the user opens Form E page

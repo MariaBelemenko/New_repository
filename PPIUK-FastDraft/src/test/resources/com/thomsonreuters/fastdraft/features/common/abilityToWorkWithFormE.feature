@@ -15,7 +15,6 @@ Feature: [777181] As a PL+ "PA" user I want to upload a Form E document using a 
       | routing          | FAST_DRAFT |
       | mandatoryRouting | YES        |
     When the user come back on to Home page
-    And the user deletes all files with name "draft" and extension ".pdf" from Downloads
     #Upload form FD document page from FD page
     And the user opens "Family" link
     And the user opens Form E page

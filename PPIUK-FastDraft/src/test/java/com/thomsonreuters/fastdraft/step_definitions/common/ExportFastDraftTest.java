@@ -1,18 +1,16 @@
 package com.thomsonreuters.fastdraft.step_definitions.common;
 
 import com.thomsonreuters.fastdraft.step_definitions.BaseStepDef;
+import com.thomsonreuters.pageobjects.common.FdDeliveryDocument;
 import com.thomsonreuters.pageobjects.common.FileActions;
 import com.thomsonreuters.pageobjects.pages.fastDraft.ChangesInUploadedPDF;
 import com.thomsonreuters.pageobjects.pages.fastDraft.DraftViewPage;
 import com.thomsonreuters.pageobjects.pages.fastDraft.FormEPage;
 import com.thomsonreuters.pageobjects.pages.widgets.CategoryPage;
 import com.thomsonreuters.pageobjects.utils.fastDraft.FastDraftUtils;
-import com.thomsonreuters.pageobjects.common.FdDeliveryDocument;
 import com.thomsonreuters.pageobjects.utils.pdf.PDFBoxUtil;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.openqa.selenium.WebElement;
 
@@ -20,7 +18,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.FileSystems;
-import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
@@ -34,20 +31,9 @@ public class ExportFastDraftTest extends BaseStepDef {
     private FastDraftUtils fastDraftUtils = new FastDraftUtils();
     private ChangesInUploadedPDF changesInUploadedPDF = new ChangesInUploadedPDF();
 
-    private final static String DOWNLOADED_FILE_PATH = System.getProperty("user.home") + "/Downloads";
+    private final static String DOWNLOADED_FILE_PATH = System.getProperty("basedir") + "/target";
     private File downloadedFile = null;
     private FdDeliveryDocument fdDeliveryDocument;
-
-    @When("^the user deletes all files with name \"([^\"]*)\" and extension \"([^\"]*)\" from Downloads$")
-    public void deleteFilesFormDownloads(String name, String extension) throws Throwable {
-        File dir = new File(DOWNLOADED_FILE_PATH);
-        List<File> files = (List<File>) FileUtils.listFiles(dir, TrueFileFilter.INSTANCE, null);
-        for (File file : files) {
-            if (file.getName().contains(name) && file.getName().contains(extension)) {
-                file.delete();
-            }
-        }
-    }
 
     @When("^the user opens Form E page$")
     public void openFormE() throws Throwable {
