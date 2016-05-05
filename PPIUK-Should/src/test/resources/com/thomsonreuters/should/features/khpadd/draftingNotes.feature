@@ -3,7 +3,8 @@ Feature: [867665][863530][878470] drafting notes should bugs
 [863530]Standard docs and clauses - drafting notes need to remain sticky
 [878470]Jumplinks-Related Content bar hides the jumplink in document after clicking
 		
-@bug @katsiaryna
+#@wip need be removed after release (9 may)    
+@wip@bug
   Scenario Outline: Open drafting note in new tab
     Given PL+ user is logged in
     When user navigates directly to document with guid "<guid>"
@@ -18,7 +19,8 @@ Feature: [867665][863530][878470] drafting notes should bugs
     |guid								|link							|text									|anchor |
     |I33f105f1e8cd11e398db8b09b4f043e0	|Drafting note, Clause 2.1	 	|Assignment of Construction Documents	|a967852|
 
- @katsiaryna
+#@wip need be removed after release (9 may)    
+@wip
   Scenario Outline: drafting notes need to remain sticky
     Given PL+ user is logged in
     When user navigates directly to document with guid "<guid>"
