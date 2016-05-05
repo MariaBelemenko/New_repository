@@ -27,6 +27,10 @@ public class CommonResourcePage extends DocumentDisplayAbstractPage {
 
 
     // Sticky Bar
+    public WebElement stickyBar() {
+        return waitForExpectedElement(By.xpath("//div[@id='co_docContentHeader']"));
+    }
+    
     public WebElement titleOnStickyBar() {
         return waitForExpectedElement(By.cssSelector("#co_docContentHeader.is-sticky #co_docHeaderContainer .co_title"));
     }

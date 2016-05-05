@@ -2,9 +2,10 @@ package com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources;
 
 import com.thomsonreuters.driver.exception.PageOperationException;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
-
+import org.openqa.selenium.interactions.Actions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +63,14 @@ public class KHResourcePage extends CommonResourcePage {
     public WebElement showHideIndividualCasesLink(String linkName) {
         return findElement(By.linkText(linkName));
     }
+    
+    public void openLinkInNewTab(String linkName){
+        Actions newTab= new Actions(getDriver);
+        WebElement link = getDriver.findElement(By.linkText(linkName));
+        //Open the link in new tab
+        newTab.contextClick(link).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build().perform();
+    }
+
 
     public List<WebElement> visibleEmbeddedResources() {
         List<WebElement> allResources = findElements(By.cssSelector(".co_embeddedResource"));
@@ -197,6 +206,10 @@ public class KHResourcePage extends CommonResourcePage {
 
     public WebElement expandedDraftingNoteTitle(String title) {
         return waitForExpectedElement(By.xpath("//div[contains(@class,'kh_box is-active')]//h2[text()='"+title+"']"));
+    }
+
+    public WebElement jumplink(String anchor) {
+        return waitForExpectedElement(By.xpath("//div[@id='co_anchor_"+anchor+"']"));
     }
 
     public WebElement showHidePopupSelectedOption() {
