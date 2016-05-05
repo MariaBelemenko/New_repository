@@ -183,7 +183,15 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         if ("false".equalsIgnoreCase(System.getProperty(ROUTING)) && (StringUtils.isEmpty(mandatoryRouting) || mandatoryRouting.equals("NO"))) {
             plPlusUser.setRouting(Routing.NONE);
         }
-        loginUser(CobaltUser.updateMissingFields(plPlusUserList.get(0)));
+        // added for understanding area of test problems (code or test data)
+        CobaltUser user =  CobaltUser.updateMissingFields(plPlusUserList.get(0));
+        if(user!=null){
+            LOG.info("Try to login using following credential: username - " + user.getUserName() + ", password - "+getPasswordForPlPlusUser(user.getUserName()));
+        }
+        else{
+            LOG.warn("Trying to login with  Cobalt user object equals null");
+        }
+        loginUser(user);
     }
 
     @When("^user is navigated to routing$")
