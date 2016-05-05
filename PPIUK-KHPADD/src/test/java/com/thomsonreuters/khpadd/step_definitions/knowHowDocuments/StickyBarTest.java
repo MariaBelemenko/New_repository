@@ -17,7 +17,7 @@ public class StickyBarTest extends BaseStepDef {
 
     @Then("^the document title \"(.*?)\" is displayed on the sticky bar$")
     public void theDocumentTitleIsDisplayedOnTheStickyBar(String expectedTitle) throws Throwable {
-        resourcePage.scrollDown(10);
+        resourcePage.scrollDown(11);
         resourcePage.stickyBarTitle(expectedTitle).isDisplayed();
     }
 
