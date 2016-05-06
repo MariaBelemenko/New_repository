@@ -2,6 +2,8 @@ package cucumber.runtime.io;
 
 import gherkin.deps.com.google.gson.Gson;
 import gherkin.util.FixJava;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -12,6 +14,8 @@ import java.util.Map;
 /**
  * Created by Pavel_Ardenka on 22/03/2016.
  * Used for experimental purposes only
+ * TODO: remove this if any strange issues related to cucumber appear.
+ * TODO: remove this if https://github.com/cucumber/cucumber-jvm/pull/978 be accepted and cucumber version be updated in TAF with that fix
  */
 public class URLOutputStream extends OutputStream {
 
@@ -20,9 +24,11 @@ public class URLOutputStream extends OutputStream {
     private final int expectedResponseCode;
     private final OutputStream out;
     private final HttpURLConnection urlConnection;
+    protected static final Logger LOG = LoggerFactory.getLogger(URLOutputStream.class);
 
     public URLOutputStream(URL url) throws IOException {
         this(url, "PUT", Collections.<String, String>emptyMap(), 200);
+        LOG.info("WARNING! Experimental overriden URLOutputStream in use (with 'Failed to create directory' error fix)");
     }
 
     public URLOutputStream(URL url, String method, Map<String, String> headers, int expectedResponseCode) throws IOException {
