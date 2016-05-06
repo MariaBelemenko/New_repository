@@ -28,7 +28,7 @@ public class URLOutputStream extends OutputStream {
 
     public URLOutputStream(URL url) throws IOException {
         this(url, "PUT", Collections.<String, String>emptyMap(), 200);
-        LOG.info("WARNING! Experimental overriden URLOutputStream in use (with 'Failed to create directory' error fix)");
+        LOG.info("WARNING! Experimental overridden URLOutputStream in use (with 'Failed to create directory' error fix)");
     }
 
     public URLOutputStream(URL url, String method, Map<String, String> headers, int expectedResponseCode) throws IOException {
