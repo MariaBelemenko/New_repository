@@ -78,5 +78,12 @@ public class CountryQAToolPage extends AbstractPage {
         return waitForExpectedElement(By.xpath("//div[@id='co_docContentBody']//strong[contains(text(),'Professional qualifications')]"));
     }
 
+    /**
+     * Object on the comparison tool results page representing the non selected Jurisdictions
+     */
+
+    public WebElement countryNameLink(String name) {
+        return waitForExpectedElement(By.xpath("//div[@id='co_jurisdictionSelection']//self::input[@value='" + name + "']"));
+    }
 
 }
