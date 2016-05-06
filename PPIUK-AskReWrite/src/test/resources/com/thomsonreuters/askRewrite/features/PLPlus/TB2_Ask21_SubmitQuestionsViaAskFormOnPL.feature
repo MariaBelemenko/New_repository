@@ -1,4 +1,4 @@
-
+@wip
 Feature: Ask-21 - submit questions to Practical Law via the Ask form on the PL website
 
 As any external user
@@ -7,8 +7,7 @@ I can submit questions to Practical Law via the Ask form on the PL website (pote
   Scenario: submitted via legacy PL.com by a logged in user (including IP authenticated)
 
     Given a user logs into PLwebsite with the below credentials
-
-
+    |askrewritepluser2|Password2|d102 one pass user|
     Given a logged in user has filled out the Ask form correctly on PL+
     When they submit the form
     Then a new question is created in the Ask Editorial System
@@ -18,7 +17,9 @@ I can submit questions to Practical Law via the Ask form on the PL website (pote
 
   Scenario: submitted via legacy PL.com by an IP authenticated user
 
+
     Given a logged in user has filled out the Ask form correctly on PL+
+      |askrewritepluser3|my machine- 10.222.8.137|
     When they submit the form
     Then a new question is created in the Ask Editorial System
     Then it includes all data submitted on the form (and other data passed by the mediator)
