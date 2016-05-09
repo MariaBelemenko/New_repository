@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.thomsonreuters.driver:TR-Test-Automation-Driver:2.9">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/thomsonreuters/driver/TR-Test-Automation-Driver/2.9/TR-Test-Automation-Driver-2.9.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/thomsonreuters/driver/TR-Test-Automation-Driver/2.9/TR-Test-Automation-Driver-2.9-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/thomsonreuters/driver/TR-Test-Automation-Driver/2.9/TR-Test-Automation-Driver-2.9-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
