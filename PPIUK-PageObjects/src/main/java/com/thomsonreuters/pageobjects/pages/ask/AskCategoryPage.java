@@ -59,7 +59,7 @@ public class AskCategoryPage extends AbstractPage {
         }else if (index ==999){
             return waitForExpectedElement(By.cssSelector("a[class='co_next']"));
         }
-        return waitForExpectedElement(By.cssSelector("a[class*='pageNumber-"+index+"']"));
+        return waitForExpectedElement(By.cssSelector("a[class*='pageNumber-" + index + "']"));
     }
 
     public WebElement activePage() {
@@ -100,6 +100,20 @@ public class AskCategoryPage extends AbstractPage {
             return waitForExpectedElements(By.cssSelector(".co_date"));
         }
     }
+    public List<WebElement> FQdatelist() {
+        return waitForExpectedElements(By.xpath("//div[@id='coid_categoryBoxTabPanel1']//span[@class='co_date']"));
+    }
+
+    public List<WebElement> FQCommentslist() {
+        return waitForExpectedElements(By.xpath("//div[@id='coid_categoryBoxTabPanel1']//span[@class='co_comments_count']"));
+    }
+    public List<WebElement> RQdatelist() {
+        return waitForExpectedElements(By.xpath("//div[@id='coid_categoryBoxTabPanel2']//span[@class='co_date']"));
+    }
+
+    public List<WebElement> RQCommentslist() {
+        return waitForExpectedElements(By.xpath("//div[@id='coid_categoryBoxTabPanel2']//span[@class='co_comments_count']"));
+    }
 
     public List<WebElement> askQueriesInTopicPageDatesOnly() {
         return waitForExpectedElements(By.cssSelector("#cobalt_search_knowhowAskUK_results > ol li div:nth-of-type(1) div[id*='co_searchResults_citation'] .co_search_detailLevel_1 span:nth-of-type(1)"));
@@ -111,6 +125,12 @@ public class AskCategoryPage extends AbstractPage {
 
     public List<WebElement> featuredQueries() {
         return waitForExpectedElements(By.cssSelector("div[id*='coid_categoryBoxTab1SubPanel1'] div .co_genericBoxContent div[id*='ContentBlock']"));
+
+
+    }
+
+    public List<WebElement> recentQueriesPanel() {
+        return waitForExpectedElements(By.xpath("//div[@id='coid_categoryBoxTabPanel2']//div[@class='co_genericBoxContent']//li"));
 
 
     }
