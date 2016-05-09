@@ -1,4 +1,5 @@
-Feature: [702195] Ability to use operators when searching on PL+ (know how)
+Feature: [702195] ukKnowHowBooleanOperators.feature
+Ability to use operators when searching on PL+ (know how)
 
   Background:
     Given PL+ user is logged in
