@@ -1,7 +1,6 @@
 @wip
 Feature: To verify the Ask pages for all the ASK Practice area pages and the topic links in them.
-
-  @radtest2
+    
   Scenario Outline: Scenario to verify the ASK Practice area pages
     Given PL+ user is logged in
     And The user clicks the Home page tab link "Resources"
@@ -17,7 +16,6 @@ Feature: To verify the Ask pages for all the ASK Practice area pages and the top
     When the user clicks on 'Ask a question' link to ask a question
     And ASK form is displayed in new window
     And user closes the ASK window
-
 
     Examples:
     |practiceArea                     |FeaturedItems             |HeadOfPracticeArea | Title                                              |
@@ -44,15 +42,3 @@ Feature: To verify the Ask pages for all the ASK Practice area pages and the top
     | Tax                             |5                         |Emma Nendick       | Head of Practical Law Tax                          |
 # Family and Pension Jim asked to leave for for now as they are yet to be finished by CPET pages team
 
-
-    Scenario Outline:Scenario to verify the topic links on ASK Practice area pages
-      Given PL+ user is logged in
-      And The user clicks the Home page tab link "Resources"
-      And clicks on "Ask" link
-      When clicks on "<practiceArea>"
-      And browse queries by topic
-      Then the topic links should open the corretc page
-
-      Examples:
-        |practiceArea|MainTopiclink|Topiclink|
-        |            |             |         |
