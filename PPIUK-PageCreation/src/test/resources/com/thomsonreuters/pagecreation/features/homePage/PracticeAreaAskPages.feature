@@ -1,6 +1,6 @@
 @wip
-Feature: To verify the Ask pages for all the ASK Practice area pages and the topic links in them.
-    
+Feature: To verify the Ask pages for all the ASK Practice area pages for Heading, Disclaimer Text, Featured and Recent queries, Our team and Ask button.
+
   Scenario Outline: Scenario to verify the ASK Practice area pages
     Given PL+ user is logged in
     And The user clicks the Home page tab link "Resources"
