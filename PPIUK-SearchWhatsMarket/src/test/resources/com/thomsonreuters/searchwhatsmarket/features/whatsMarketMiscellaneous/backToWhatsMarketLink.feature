@@ -1,4 +1,5 @@
-Feature: Verify Back to What's Market homepage link from search results page
+Feature: [no story] backToWhatsMarketLink.feature
+  Verify Back to What's Market homepage link from search results page
 
   Background: Log on to test site with user having routing set to view the product details
     Given PL+ user is logged in
