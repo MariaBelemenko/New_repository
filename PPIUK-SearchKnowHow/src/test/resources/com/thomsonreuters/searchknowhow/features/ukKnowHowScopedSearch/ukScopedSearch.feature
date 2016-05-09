@@ -1,4 +1,4 @@
-Feature: [702171][702170] - Scoped Search - Practice Area Search
+Feature: [702171][702170] - ukScopedSearch.feature
 
   Background: Log on to test site with user having routing set to view the product details
     Given PL+ user is logged in with following details
