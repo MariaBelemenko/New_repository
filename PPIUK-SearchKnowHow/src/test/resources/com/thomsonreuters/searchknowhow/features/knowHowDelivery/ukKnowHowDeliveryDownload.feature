@@ -1,4 +1,4 @@
-Feature: [747922][747921][702205] ukKnowHowDelivery.feature
+Feature: [747922][747921][702205] ukKnowHowDeliveryDownload.feature
   Delivery of know how search results in list and full text format via print, save and email
 
   Background: Log on to test site
