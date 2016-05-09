@@ -1,4 +1,4 @@
-Feature: [706631][702181][702209][702202][713886][702199]
+Feature: [706631][702181][702209][702202][713886][702199] ukKnowHowSearchRelatedFunctionalities.feature
   1) ukKnowHowDateFormat.feature
   2) ukKnowHowMetadataS2-67.feature - Have the ability to view relevant metadata for Know How search results.
   3) ukKnowHowPaginationNextPageS2-27.feature - As a PL+ user when I perform a search then search results are returned and displayed with pagination
@@ -73,7 +73,7 @@ Feature: [706631][702181][702209][702202][713886][702199]
     And the user is able to verify that the search term "<highlightedTerm>" is not highlighted in opened document
   Examples:
     | query    							 |highlightedTerm 		| link |
-    | Private client legislation tracker |legislation        	|Practical Law Tax legislation trackers|  
+    | Private client legislation tracker |legislation        	|Practical Law Tax legislation trackers|
 
   Scenario Outline:[713886] Verify text displayed following an unsuccessful search
     When the user runs a free text search for the query "<query>"
