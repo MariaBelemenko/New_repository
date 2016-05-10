@@ -18,8 +18,8 @@ public class RunFirmStyleLinkTest {
     @BeforeClass
     public static void reporting() {
         if (System.getProperty("username").equals("None")) {
-            System.setProperty("username", "FSTestUser2");
-            System.setProperty("password", "Password123!");
+            System.setProperty("username", "Ali.Syed"); //FSTestUser2  - User is blocked. Temporarily using my username/password
+            System.setProperty("password", "London@789");//Password123!
         }
         else {
             System.out.println("Username is pre-defined in the Run Command as: " + System.getProperty("username"));
