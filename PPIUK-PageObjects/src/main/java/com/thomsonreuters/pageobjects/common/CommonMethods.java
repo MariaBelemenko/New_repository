@@ -530,6 +530,9 @@ public class CommonMethods extends AbstractPage {
         return list;
     }
 
+    public String getCurrentURL() {
+        return driver.getCurrentUrl();
+    }
     public boolean isCurrentDocumentFromKnowHow() {
         return driver.getCurrentUrl().contains("KNOWHOW");
     }
