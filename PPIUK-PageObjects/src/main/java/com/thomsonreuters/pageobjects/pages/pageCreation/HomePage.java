@@ -309,4 +309,12 @@ public class HomePage extends AbstractPage {
     public List<WebElement> getTopicLinksList(){
         return waitForExpectedElements(By.xpath("//*[@id='coid_categoryBoxTabPanel1']//a"));
     }
+
+    // created by Phil Harper
+    public WebElement PracticeAreaViaBrowse (String PracticeArea){
+        return waitForExpectedElement(By.xpath("//a[@class='menu-item-link'][contains(.,'" + PracticeArea + "')]"));
+
+    }
+
+
 }
