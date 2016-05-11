@@ -10,4 +10,16 @@ public class AskPracticeAreaPage extends DocumentDisplayAbstractPage {
         return waitForExpectedElement(By.id("coid_ask"));
     }
 
+    public WebElement askTopicLink(String link) {
+       // return waitForExpectedElement(By.xpath("//div[@class='co_featureBoxInner']//li/a[text()=\"" + link + "\"]"));
+        return waitForExpectedElement(By.xpath("//ul/li/a[text()=\"" + link + "\"]"));
+    }
+
+    public WebElement askTopicLinkHeading() {
+        return waitForExpectedElement(By.xpath("//h1"));
+    }
+    public WebElement askSubTopicLink(String link) {
+        return waitForExpectedElement(By.xpath("//div[@class='co_genericBoxContent']//div[@class='co_browseContent']//li/a[text()=\"" + link + "\"]"));
+    }
+
 }
