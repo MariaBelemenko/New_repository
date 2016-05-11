@@ -19,7 +19,10 @@ public class AskPracticeAreaPage extends DocumentDisplayAbstractPage {
         return waitForExpectedElement(By.xpath("//h1"));
     }
     public WebElement askSubTopicLink(String link) {
-        return waitForExpectedElement(By.xpath("//div[@class='co_genericBoxContent']//div[@class='co_browseContent']//li/a[text()=\"" + link + "\"]"));
+       // return waitForExpectedElement(By.xpath("//div[@class='co_genericBoxContent']//div[@class='co_browseContent']//li/a[text()=\"" + link + "\"]"));
+        //normalize function is used to remove spaces
+      return waitForExpectedElement(By.xpath("//ul/li/a[normalize-space(.)=\""+link+"\"]"));
+
     }
 
 }
