@@ -1,4 +1,4 @@
-@sandystest1 @wip
+@sandystest1 @wip   @CPET
 
 Feature: PL+ Home Page Browse
   In Order to view Practice areas, Resources and International links
