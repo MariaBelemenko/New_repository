@@ -155,6 +155,22 @@ public class HomePage extends AbstractPage {
         return waitForExpectedElement(By.xpath("//ul[@id='browseMenu_list']//div[@class='menuBarSectionDisplayName'][text()=\"" + headingText + "\"]/following-sibling::div//a[text()=\"" + linkText + "\"]"),30);
     }
 
+    public List <WebElement> recentHistory () {
+        return waitForExpectedElements(By.xpath("//div[@id='co_recentDocuments']//ul//li"),5);
+    }
+
+    public WebElement recentHistoryHeader (){
+        return waitForExpectedElement(By.xpath("//div/span[@class='center co_title ng-binding'][text()='Recent history']"));
+    }
+
+    public WebElement recentHistoryNoBrowse () {
+        return waitForExpectedElement(By.xpath("//div[@class='recentlyViewedNoDocs ng-isolate-scope']"));
+    }
+
+    public WebElement recentHistoryNoBrowseText () {
+        return waitForExpectedElement(By.xpath("//div[@class='recentlyViewedNoDocs ng-isolate-scope']/span[@class='ng-binding'][text()='You have not browsed content recently.']"));
+    }
+
     public WebElement legalUpdatesContentLink() {
         return waitForExpectedElement(By.id("coid_legal_updates"));
     }
