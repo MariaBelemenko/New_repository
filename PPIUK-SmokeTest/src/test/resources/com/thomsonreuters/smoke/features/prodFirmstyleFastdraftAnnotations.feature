@@ -1,7 +1,8 @@
 Feature: Verify Firmstyle, Fastdraft, and Annotations
 
   Scenario: Downloading a standard document in Firmstyle
-    Given PL+ user is logged in
+    Given PL+ user is logged in with following details
+      | userName         | FSTestUser2 |
     And the user come back on to Home page as logged in user
     When the user runs a free text search for the query "deed"
     And the user selects the know how parent facet "Standard Documents and Clauses"
