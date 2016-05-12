@@ -88,9 +88,7 @@ Feature: PL+ Home Page Browse
     Then The user clicks the Browse button tab link "International"
     Then The user clicks the Browse link "US"
     And The user verifies the PL page title is "Practical Law"
-    #Then The user clicks the Browse button tab link "International"
-    #Then The user clicks the Browse link "Global guides"
-    #And The user verifies the search page title is "Global guides"
+
 
   Scenario: Verify that 'Resources' links are displayed in pop up window 'Browse Menu' on the Home Page
     Given the user clicks through the "Resources" links that are displayed in the 'Browse Menu' on the Home Page
@@ -109,4 +107,7 @@ Feature: PL+ Home Page Browse
     Then The user clicks the Browse button tab link "Resources"
     Then The user clicks the Browse link "Glossary"
     And The user verifies the glossary page title is "Glossary"
+
+
+
 

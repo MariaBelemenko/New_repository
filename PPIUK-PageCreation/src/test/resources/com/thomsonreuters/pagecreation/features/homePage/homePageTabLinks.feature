@@ -1,4 +1,4 @@
-@sandystest2 @wip
+@sandystest2 @wip @CPET
 
 Feature: PL+ Home Page Browse
   In Order to view Practice areas, Resources and International links
@@ -105,3 +105,8 @@ Feature: PL+ Home Page Browse
     Then The user clicks the Home page tab link "International"
     Then The user clicks link to "US"
     And The user verifies the PL page title is "Practical Law"
+
+
+  Scenario: Verify that the 'Recent History' box is present on the Home Page and that either the
+  'browse more' message is there or there is at least one article link
+    Given PL+ user is logged in

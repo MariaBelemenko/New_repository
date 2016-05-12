@@ -393,6 +393,34 @@ public class HomePageSteps extends BaseStepDef{
         wlnHeader.browseMenuButton().click();
     }
 
+    //Steps added Sandy
+    @Then("^The user can see the Recent History box$")
+    public void theUserCanSeeTheRecentHistoryBox () throws Throwable {
+      assertTrue(homePage.recentHistoryHeader().isDisplayed());
+
+    }
+
+    //Steps added Sandy
+    @And("^The user can see content in the Recent History box$")
+    public void theUserCanSeeContentInTheRecentHistoryBox () throws Throwable {
+
+        Boolean testPass = false;
+        try {
+            int historyLinks = homePage.recentHistory().size();
+            if (historyLinks != 0 && historyLinks <= 8) {
+                //System.out.println("The number of links is " + historyLinks);
+                testPass = true;
+            }
+        }catch (Exception e){
+
+            homePage.recentHistoryNoBrowse().isDisplayed();
+            homePage.recentHistoryNoBrowseText().isDisplayed();
+            testPass = true;
+        }
+        assertTrue(testPass);
+    }
+
+
     @When("^the user '(is|is not)' presented with the cookie consent message$")
     public void theUserIsPresentedWithTheCookieConsentMessage(String arg1) throws Throwable {
         if (arg1.equalsIgnoreCase("is")) {
