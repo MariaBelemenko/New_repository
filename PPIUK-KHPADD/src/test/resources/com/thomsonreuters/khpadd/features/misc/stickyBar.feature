@@ -10,7 +10,6 @@ Feature: [730588, 730584] Verify Title and Related Content on the sticky bar
     And user scroll down the resource by offset 20
     Then the document title "Financing an offer for a public company: the certain funds requirement" is displayed on the sticky bar
 
-    @new
   Scenario: As a user scrolls to each heading, that heading will appear in the sticky bar underneath the document title
     Given PL+ user is logged in
     When user navigates directly to document with guid "I020627b21cb611e38578f7ccc38dcbee"
