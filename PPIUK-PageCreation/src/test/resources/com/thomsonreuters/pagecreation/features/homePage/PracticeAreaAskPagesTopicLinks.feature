@@ -254,9 +254,7 @@ Feature: To verify all the topic links for all the Practice area ASK pages
       | Islamic finance                    | 3-201-5201?sv=3-201-3706 |
       | Lending: general                   | 1-103-2033?sv=3-201-3706 |
       | Project finance                    | 3-201-5282?sv=3-201-3706 |
-      #topic name is changed now need clarification from jim
       | Real estate finance and investment | 9-103-2086?sv=3-201-3706 |
-      #not there now need clarification from Jim
       | Regulation: finance                | 4-103-1094?sv=3-201-3706 |
       | Security and quasi security        | 6-103-1106?sv=3-201-3706 |
       | Structured finance                 | 8-103-1105?sv=3-201-3706 |
@@ -364,8 +362,7 @@ Feature: To verify all the topic links for all the Practice area ASK pages
       | Appeals: planning                                            | 0-607-5287?sv=4-606-9425 |
       | Conservation areas                                           | 1-607-5705?sv=4-606-9425 |
       | Enforcement: planning                                        | 1-607-5625?sv=4-606-9425 |
-      #possible bug in the next row
-     # | Environment impact assessments                               | 1-607-5625?sv=4-606-9425 |
+      | Environment impact assessments                               | 1-200-2228?sv=4-606-9425 |
       | Judicial review                                              | 5-384-0921?sv=4-606-9425 |
       | Listed buildings                                             | 7-607-5665?sv=4-606-9425 |
       | Local government ombudsman: planning                         | 6-607-5289?sv=4-606-9425 |
@@ -418,7 +415,6 @@ Feature: To verify all the topic links for all the Practice area ASK pages
       | Charity transactions: land and buildings                                | 2-607-3145?sv=7-103-1771 |
       | Common land, town and village greens                                    | 2-200-1662?sv=7-103-1771 |
       | Commonhold                                                              | 6-103-1309?sv=7-103-1771 |
-    #  | Contaminated land                                                       | error                    | Need clarification from JIM
       | Contracts and transfers: land and buildings                             | 4-103-1310?sv=7-103-1771 |
       | Conveyancing procedure                                                  | 8-103-2082?sv=7-103-1771 |
       | Corporate support: land and buildings                                   | 2-103-1311?sv=7-103-1771 |
@@ -427,8 +423,7 @@ Feature: To verify all the topic links for all the Practice area ASK pages
       | Energy and buildings                                                    | 9-206-1006?sv=7-103-1771 |
       | Estate management and licences                                          | 0-607-3325?sv=7-103-1771 |
       | Execution formalities                                                   | 0-607-3486?sv=7-103-1771 |
-      #this below row throws error  check later
-      #| Financial and corporate crime                                           | 7-103-1182?sv=7-103-1771 |Need clarification from JIM
+      | Financial and corporate crime                                           | 7-103-1182?sv=7-103-1771 |
       | Governance and powers: local government                                 | 4-384-2020?sv=7-103-1771 |
       | Guarantees: land and buildings                                          | 0-607-3306?sv=7-103-1771 |
       | Insurance                                                               | 2-103-1132?sv=7-103-1771 |
@@ -438,9 +433,8 @@ Feature: To verify all the topic links for all the Practice area ASK pages
       | Options, pre-emptions and overage                                       | 8-607-3406?sv=7-103-1771 |
       | Property: restructuring and insolvency                                  | 1-103-1316?sv=7-103-1771 |
       | Real estate finance and investment                                      | 9-103-2086?sv=7-103-1771 |
-      | Real estate finance and investment                                      | 9-103-2086?sv=7-103-1771 |
       | Residential tenancies                                                   | 8-607-3345?sv=7-103-1771 |
-    #  | Restructuring and insolvency transactions                               | error                    |Need clarification from JIM
+      | Restructuring and insolvency transactions                               | 1-103-1316?sv=7-103-1771 |
       | Statutory liabilities: land and buildings                               | 8-103-1327?sv=7-103-1771 |
       | Sustainability                                                          | 4-607-3465?sv=7-103-1771 |
       | Taxation: land and buildings                                            | 8-103-1394?sv=7-103-1771 |
