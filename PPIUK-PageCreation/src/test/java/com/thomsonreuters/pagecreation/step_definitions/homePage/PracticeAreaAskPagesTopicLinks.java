@@ -2,30 +2,13 @@ package com.thomsonreuters.pagecreation.step_definitions.homePage;
 
 import com.thomsonreuters.pagecreation.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.common.CommonMethods;
-import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
-import com.thomsonreuters.pageobjects.pages.ask.AskCategoryPage;
-import com.thomsonreuters.pageobjects.pages.ask.AskFormPage;
 import com.thomsonreuters.pageobjects.pages.pageCreation.AskPracticeAreaPage;
-import com.thomsonreuters.pageobjects.pages.pageCreation.PLRssWidget;
-import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePage;
 import cucumber.api.DataTable;
-import cucumber.api.java.After;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import org.hamcrest.Matchers;
-import org.hamcrest.core.Is;
-import org.junit.Assert;
-import org.openqa.selenium.NoSuchWindowException;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.comparesEqualTo;
-import static org.junit.Assert.assertTrue;
 
 
 public class PracticeAreaAskPagesTopicLinks extends BaseStepDef {
@@ -48,6 +31,7 @@ public class PracticeAreaAskPagesTopicLinks extends BaseStepDef {
             AskPracticeArea.askTopicLink(topicLink.get(i)).click();
             String topicHeader=AskPracticeArea.askTopicLinkHeading().getText();
 
+            //conditions where the topic link on Ask:PA page is different to the topic page heading
             if(topicLink.get(i).equals("Cross-border acquisitions")) {
                 topicLink.set(i, "Cross-border: Acquisitions");
             }else if(topicLink.get(i).equals("Public mergers & acquisitions")) {
@@ -93,8 +77,7 @@ public class PracticeAreaAskPagesTopicLinks extends BaseStepDef {
             }else if(topicLink.get(i).equals("Buybacks and other returns of value")) {
                 topicLink.set(i, "Returns of value");
             }
-
-
+            
             assertThat("Actual topicpage heading is : " + AskPracticeArea.askTopicLinkHeading().getText() + " Expected heading is : " + topicLink.get(i).toLowerCase(), topicHeader.toLowerCase().contains(topicLink.get(i).toLowerCase()));
             assertThat("The ASK Topic URL does not contain PLC ref for topic "+topicLink.get(i) +" as expected. Expected : "+topicRef.get(i) + " . Actual:" + commonMethods.getCurrentURL(),commonMethods.getCurrentURL().contains(topicRef.get(i)));
             commonMethods.browserGoBack();
