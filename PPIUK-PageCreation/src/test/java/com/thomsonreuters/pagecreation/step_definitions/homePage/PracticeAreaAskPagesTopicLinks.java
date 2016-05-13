@@ -69,7 +69,7 @@ public class PracticeAreaAskPagesTopicLinks extends BaseStepDef {
             }else if(topicLink.get(i).equals("Direct payment schemes: agriculture and rural land")) {
                 topicLink.set(i, "Direct payment schemes: agriculture & rural land");
             }else if(topicLink.get(i).equals("Financial and corporate crime")) {
-                topicLink.set(i, "Financial Crime ");
+                topicLink.set(i, "Financial Crime");
             }else if(topicLink.get(i).equals("Employment status and self-employment")) {
                 topicLink.set(i, "Employment Status and Independent Contractors");
             }else if(topicLink.get(i).equals("Development and construction")) {
