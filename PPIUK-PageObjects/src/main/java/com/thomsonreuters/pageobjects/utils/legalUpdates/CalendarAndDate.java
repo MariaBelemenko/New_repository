@@ -121,5 +121,16 @@ public class CalendarAndDate {
 		DateFormat sdrf = new SimpleDateFormat(dateFormat);
 		return sdrf.format(date);
 	}
-
+    public static String getAddSubToChosenMonth(String selectedMonth, int number) throws ParseException {
+        Date date = new SimpleDateFormat("MMM", Locale.ENGLISH).parse(selectedMonth);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return convertMonthFromIntToStringRepresentation(cal.get(Calendar.MONTH)+number);
+    }
+    public static int convertTextMonthToIntMonth(String month) throws ParseException {
+        Date date = new SimpleDateFormat("MMM", Locale.ENGLISH).parse(month);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.MONTH);
+    }
 }
