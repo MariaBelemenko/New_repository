@@ -2,6 +2,7 @@ package com.thomsonreuters.calendar.step_definitions;
 
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.PageActions;
+import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.ask.AskResourcePage;
 import com.thomsonreuters.pageobjects.pages.folders.CreateGroupPopup;
 import com.thomsonreuters.pageobjects.pages.folders.FavouritesPage;
@@ -53,6 +54,7 @@ public class CalendarCommonSteps extends BaseStepDef {
     private AskResourcePage askResourcePage = new AskResourcePage();
     private PracticalLawUKCategoryPage practicalLawUKCategoryPage = new PracticalLawUKCategoryPage();
     private FolderBaseUtils folderBaseUtils = new FolderBaseUtils();
+    private NavigationCobalt navigationCobalt= new NavigationCobalt();
 
     private String favGroupName = null;
 
@@ -437,6 +439,19 @@ public class CalendarCommonSteps extends BaseStepDef {
     @When("^the user deletes the start page$")
     public void deleteStartPage() {
    //     folderBaseUtils.deleteStartPage();
+    }
+    @When("^the user navigates to practice area \"(.*)\"$")
+    public void the_user_navigates_to_Practice_area(String PAName) throws Throwable {
+        header.browseMenuButton().click();
+        assertTrue("Browse Menu not displayed..!", header.browseMenuPopup().isDisplayed());
+        commonMethods.clickLink(PAName);
+        assertTrue(PAName + " not displayed..!", header.pageHeaderLabel().getText().contains(PAName));
+     }
+    @When("^the user opens \"(.+)\" url on plcuk website$")
+    public void theUserOpensUrlOnPLCUKSite(String url) throws Throwable {
+        navigationCobalt.navigateToPLCUKPlusSpecificURL(url);
+        navigationCobalt.waitForPageToLoadAndJQueryProcessingWithCustomTimeOut(90);
+
     }
 
 }
