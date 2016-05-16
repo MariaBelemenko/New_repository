@@ -5,7 +5,8 @@ Feature: PL+ Home Page Browse
   As a User I want to select the relevant resources on the homepage via the tabs
 
   Scenario: Verify default link is 'Practice areas' on the Home Page
-    Given PL+ user is logged in
+    Given PL+ user is logged in with following details
+      | userName   | CPETuser3 |
     Then user can view three tabs: Practice Areas, Resources and International
     And the user verifies that default Tab is 'Practice areas'
 

@@ -5,7 +5,8 @@ Feature: PL+ Home Page Browse
   As a User I want to select the relevant resources on the homepage via the Browse Menu
 
   Scenario: Verify default link is 'Practice areas' in menu 'Browse Menu' on the Home Page
-    Given PL+ user is logged in
+    Given PL+ user is logged in with following details
+      | userName   | CPETuser3 |
     When the user clicks button 'Browse Menu' on the Home Page
     Then user can view three links: Practice Areas, Resources and International
     And the user verifies that default Link is 'Practice areas'
