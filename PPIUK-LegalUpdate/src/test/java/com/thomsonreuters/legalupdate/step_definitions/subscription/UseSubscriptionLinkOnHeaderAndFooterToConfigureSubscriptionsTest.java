@@ -7,6 +7,7 @@ import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static org.junit.Assert.assertTrue;
 
@@ -32,8 +33,8 @@ public class UseSubscriptionLinkOnHeaderAndFooterToConfigureSubscriptionsTest ex
                 if (!legalUpdatesResultsPage.subscriptionPreferencesWidget().findElement(By.xpath(elementLocator)).isDisplayed()) {
                     result++;
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (NoSuchElementException e) {
+                LOG.info("Can't find element on legal updates results page: ", e);
                 result++;
             }
         }

@@ -100,7 +100,7 @@ public class AdestraService implements AdestraServiceInterface {
         return preferences;
     }
 
-    public Map<Integer, PreferenceList> getSubscriptionListsById() throws Exception {
+    public Map<Integer, PreferenceList> getSubscriptionListsById()throws MalformedURLException, XmlRpcException{
         Map<Integer, PreferenceList> subscriptionListsById = new HashMap<Integer, PreferenceList>();
         PreferenceList[] allSubscriptionLists = getAllLists();
         for (PreferenceList subscriptionList : allSubscriptionLists) {

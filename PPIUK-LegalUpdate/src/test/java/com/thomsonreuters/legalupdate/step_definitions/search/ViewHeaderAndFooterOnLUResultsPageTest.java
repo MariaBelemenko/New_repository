@@ -1,5 +1,6 @@
 package com.thomsonreuters.legalupdate.step_definitions.search;
 
+import com.thomsonreuters.driver.exception.PageOperationException;
 import com.thomsonreuters.legalupdate.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.pages.legalUpdates.LegalUpdatesResultsPage;
 import cucumber.api.java.en.Then;
@@ -25,8 +26,8 @@ public class ViewHeaderAndFooterOnLUResultsPageTest extends BaseStepDef {
                 if (!legalUpdatesResultsPage.findElementOnResultsPageHeader(elementLocator).isDisplayed()) {
                     result++;
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (PageOperationException e) {
+                LOG.info("Unable to find the element with the selector '" + elementLocator + "' in the search header toolbar", e);
                 result++;
             }
         }
@@ -46,8 +47,8 @@ public class ViewHeaderAndFooterOnLUResultsPageTest extends BaseStepDef {
                 if (!legalUpdatesResultsPage.findElementOnResultsPageFooter(elementLocator).isDisplayed()) {
                     result++;
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (PageOperationException e) {
+                LOG.info("Unable to find the element with the selector '" + elementLocator + "' in the search header toolbar", e);
                 result++;
             }
         }
