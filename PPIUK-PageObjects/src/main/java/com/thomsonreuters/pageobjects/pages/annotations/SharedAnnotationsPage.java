@@ -941,11 +941,7 @@ public class SharedAnnotationsPage extends AbstractPage {
      */
     public void selectGroup(String group) {
         try {
-            for (WebElement result : retryingFindElements(By.cssSelector("#coid_contacts_groupsListItems a[role='checkbox']"))) {
-                if (group.equals(result.getText())) {
-                    result.click();
-                }
-            }
+            waitForElementToBeClickableAndReturnElement(By.xpath(String.format("//*[@id='coid_contacts_groupsListItems']//a[@role='checkbox' and text()='%s']", group))).click();
         } catch (PageOperationException te) {
             throw new PageOperationException("Unable to find the group in contacts list: " + group);
         } catch (StaleElementReferenceException sle) {
