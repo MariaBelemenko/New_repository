@@ -20,6 +20,7 @@ Feature: [770524] FD10 Download Fast Draft Project (Document)
     | practiceArea | document                                     | extension |
     | Employment   | Settlement agreement: employment (long form) | .doc      |
 
+  @wip
   Scenario Outline: Standard Document and FS
     Given PL+ user is logged in with following details
       | userName         | FSTestUser2           |
@@ -86,6 +87,7 @@ Feature: [770524] FD10 Download Fast Draft Project (Document)
     Then there are no Fast Draft projects
     And user relogs in
 
+  @wip
   Scenario:
     Given PL+ user is logged in with following details
       | userName         | FSTestUser2           |
