@@ -28,5 +28,4 @@ Feature: [730589 730956] As a website user,
     And clicking on external link "<link>" opens in new window
   Examples:
     | guid                              | link                                                           |
-    | I2dfab1961cb111e38578f7ccc38dcbee | My Yahoo                                                       |
     | Ie5e3dc57900c11e498db8b09b4f043e0 | https://www.gov.uk/government/organisations/hm-revenue-customs |
