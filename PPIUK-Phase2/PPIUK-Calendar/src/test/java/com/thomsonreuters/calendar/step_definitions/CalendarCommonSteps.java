@@ -45,18 +45,11 @@ public class CalendarCommonSteps extends BaseStepDef {
     private LegalUpdatesResultsPage legalUpdatesResultsPage = new LegalUpdatesResultsPage();
     private CategoryPage categoryPage = new CategoryPage();
     private KHResourcePage resourcePage = new KHResourcePage();
-    private FavouritesPage favouritesPage = new FavouritesPage();
-    private CreateGroupPopup createGroupPopup = new CreateGroupPopup();
     private TopicPage topicPage = new TopicPage();
-    private WhatsMarketSearchResultsPage whatsMarketSearchResultsPage = new WhatsMarketSearchResultsPage();
     private PageActions pageActions = new PageActions();
     private OnePassLogoutPage onePassLogoutPage = new OnePassLogoutPage();
-    private AskResourcePage askResourcePage = new AskResourcePage();
     private PracticalLawUKCategoryPage practicalLawUKCategoryPage = new PracticalLawUKCategoryPage();
-    private FolderBaseUtils folderBaseUtils = new FolderBaseUtils();
     private NavigationCobalt navigationCobalt= new NavigationCobalt();
-
-    private String favGroupName = null;
 
     @When("^the user clicks on \"(.*?)\" link$")
     public void theUserClicksOnLink(String linkText) {
@@ -88,24 +81,11 @@ public class CalendarCommonSteps extends BaseStepDef {
         onePassLogoutPage.signOffPageSignOnButton().click();
     }
 
-    @Then("^user should see footer$")
-    public void userShouldSeeFooter() throws Throwable {
-        commonMethods.scrollUpOrDown(1300);
-        assertTrue("Footer is not displayed..!", footer.footerWidget().isDisplayed());
-    }
-
     @When("^user clicks the \"(.*?)\" link$")
     public void userClicksTheUnitedKingdomLink(String linkText) throws Throwable {
         commonMethods.waitElementByLinkText(linkText);
         commonMethods.clickLink(linkText);
         header.waitForPageToLoad();
-    }
-
-    @Then("^user clicks the Twitter link$")
-    public void userclickstheTwitterLink() throws Throwable {
-        commonMethods.scrollUpOrDown(1550);
-        WebElement element = footer.twitterArrowLink();
-        commonMethods.clickElementUsingJS(element);
     }
 
     @Then("^the user selects the \"(.*?)\" from per page dropdown$")
@@ -120,18 +100,6 @@ public class CalendarCommonSteps extends BaseStepDef {
             }
             assertTrue("Count is not right..!", commonMethods.isTextPresent(knowHowSearchResultsPage.searchResultByCountLabel(), perPageNo));
         }
-    }
-
-    @Then("^user verifies the navigation to \"(.*?)\" not present$")
-    public void userVerifiesTheNotPresent(String linkText) throws Throwable {
-        boolean notPresent = true;
-        for (WebElement link : knowHowSearchResultsPage.searchPaginationItemLinks()) {
-            if (link.getText().trim().equalsIgnoreCase(linkText)) {
-                notPresent = false;
-                break;
-            }
-        }
-        assertTrue(linkText + " not present..!", notPresent);
     }
 
     @Then("^user verifies the \"(.*?)\" present$")
@@ -235,56 +203,6 @@ public class CalendarCommonSteps extends BaseStepDef {
         }
     }
 
-    @When("^user clicks on \"(.*?)\" button$")
-    public void userClicksOnButton(String buttonText) throws Throwable {
-        if (buttonText.equalsIgnoreCase("organize")) {
-            favouritesPage.organize().click();
-        } else if (buttonText.equalsIgnoreCase("done")) {
-            favouritesPage.doneOrganizing().click();
-        } else if (buttonText.equalsIgnoreCase("Cancel")) {
-            favouritesPage.favGroupCancelButton(favGroupName).click();
-        }
-    }
-
-    @Then("^user should see \"Done\" button$")
-    public void userShouldSeeButton() throws Throwable {
-        assertTrue("Done Button not displayed..!", commonMethods.isElementDisplayed(favouritesPage.doneOrganizing()));
-    }
-
-    @When("^user creates new favourites group '(.+)'$")
-    public void UsercreateNewFavoriteGroup(String groupName) throws Throwable {
-        favouritesPage.waitForPageToLoadAndJQueryProcessing();
-        if (favouritesPage.checkFavouriteGroupIsPresent(groupName)) {
-            favouritesPage.organize().click();
-            commonMethods.mouseOver(favouritesPage.favouriteGroup(groupName));
-            favouritesPage.deleteFavouriteGroupButton(groupName).click();
-            favouritesPage.doneOrganizing().click();
-        }
-        favouritesPage.addGroupLink().click();
-        createGroupPopup.groupName().sendKeys(groupName);
-        createGroupPopup.save().click();
-        createGroupPopup.waitForPageToLoad();
-        favGroupName = groupName;
-        commonMethods.waitForElementToBeVisible(favouritesPage.favouriteByGroup(groupName), 3000);
-    }
-
-    @When("^user hovers over the group '(.+)'$")
-    public void UsercHoversOveTheGroup(String groupName) throws Throwable {
-        commonMethods.mouseOver(favouritesPage.favouriteGroup(groupName));
-    }
-
-    @When("^user should see the aligned \"Save\" and \"Cancel\" button for group \'(.*)\'$")
-    public void UsercShouldSeeTheSavveAndCancelButtons(String groupName) throws Throwable {
-        assertTrue("Save Button not displayed..!", commonMethods.isElementDisplayed(favouritesPage.renameFavouriteOKGroupButton(groupName)));
-        assertTrue("Cancel Button not displayed..!", commonMethods.isElementDisplayed(favouritesPage.renameGroupCancelButton(groupName)));
-    }
-
-    @When("^user should see the group '(.+)'$")
-    public void UserShouldSeeTheGroup(String groupName) throws Throwable {
-        commonMethods.waitForElement(favouritesPage.favouriteByGroup(groupName), 3000);
-        assertTrue(groupName + " not displayed..!", favouritesPage.checkFavouriteGroupIsPresent(groupName));
-    }
-
     @When("^the user navigates to \"(.*)\" resource Page$")
     public void the_user_navigates_to_whats_Market_Page(String resourceType) throws Throwable {
         header.browseMenuButton().click();
@@ -328,96 +246,6 @@ public class CalendarCommonSteps extends BaseStepDef {
         }
     }
 
-    @Then("^user should see the following metadata in the deal \"(.*?)\"$")
-    public void userShouldsethePageNo(String dealTitle, DataTable dataTable) throws Throwable {
-        Map<String, String> table = dataTable.asMap(String.class, String.class);
-        int record=0,count = 0;
-        boolean flag = false;
-        searchResultsPage.moreOrLessDetailAnchor().click();
-        searchResultsPage.mostDetailOption().click();
-        commonMethods.waitForExpectedElement(whatsMarketSearchResultsPage.searchResultsByTitleLink(1));
-        while (!flag) {
-            for (WebElement actualDealTitleLink : whatsMarketSearchResultsPage.searchResultsTitleLinks()) {
-                if (actualDealTitleLink.getText().contains(dealTitle)) {
-                    flag = true;
-                    break;
-                }
-                record++;
-            }++record;
-            count++;
-            if (!flag) {
-                commonMethods.waitForExpectedElement(searchResultsPage.selectNextPageByLink()).click();
-            }
-            if(count>=10){
-                break;
-            }
-        }
-
-        for (Map.Entry<String, String> rowEntry : table.entrySet()) {
-            if (rowEntry.getKey().equalsIgnoreCase("Announcement Date")) {
-                assertTrue(rowEntry.getValue() + " not displayed..!", whatsMarketSearchResultsPage.resultDate(String.valueOf(record)).getText().contains(rowEntry.getValue()));
-            } else if (rowEntry.getKey().equalsIgnoreCase("Deal Type")) {
-                assertTrue(rowEntry.getValue() + " not displayed..!", whatsMarketSearchResultsPage.resultDealType(String.valueOf(record), rowEntry.getValue()).getText().contains(rowEntry.getValue()));
-            } else if (rowEntry.getKey().equalsIgnoreCase("Deal Value")) {
-                assertTrue(rowEntry.getValue() + " not displayed..!", whatsMarketSearchResultsPage.resultValue(String.valueOf(record)).getText().contains(rowEntry.getValue()));
-            } else if (rowEntry.getKey().equalsIgnoreCase("Deal Summary")) {
-                assertTrue(rowEntry.getValue() + " not displayed..!", whatsMarketSearchResultsPage.resultSummary(String.valueOf(record)).getText().contains(rowEntry.getValue()));
-            }
-        }
-    }
-
-    @Then("^the user should see the \"Add reply\" link next to question$")
-    public void theUserShouldSeeTheAddReplyLinkNextToQuestion() throws Throwable {
-        Is.is(askResourcePage.addReplyNextToHeaderLink().isDisplayed());
-    }
-
-    @When("^user should see the stricken through group '(.+)'$")
-    public void userShouldSeeTheStrickenThroughGroup(String groupName) throws Throwable {
-        assertTrue(groupName + " not stricken through..!", favouritesPage.favouriteStrickenThroughGroup(groupName).isDisplayed());
-    }
-
-    @When("^user should see the stricken through group link '(.+)'$")
-    public void userShouldSeeTheStrickenThroughGroupLink(String groupName) throws Throwable {
-        assertTrue(groupName + " not stricken through..!", favouritesPage.favouriteStrickenThroughGroup(groupName).isDisplayed());
-    }
-
-    @When("^user hovers over the fav group '(.*)' link '(.*)'$")
-    public void UsercHoversOveTheGroupLink(String groupName, String linkText) throws Throwable {
-        commonMethods.mouseOver(favouritesPage.favouriteGroupLink(groupName, linkText));
-    }
-
-    @When("^user should see the stricken through link '(.*)' of group '(.*)'$")
-    public void UserShouldSeeTheStrickenThroughLink(String linkText, String groupName) throws Throwable {
-        assertTrue(linkText + " not stricken through..!", favouritesPage.favouriteStrickenThroughGroupLink(groupName, linkText).isDisplayed());
-    }
-
-    @When("^user adds practice area '(.*)' to favourite group '(.*)'$")
-    public void userAddsPAToFavouriteGroup(String paLinkText, String groupName) throws Throwable {
-        header.companyLogo().click();
-        commonMethods.waitElementByLinkText(paLinkText).click();
-        categoryPage.addToFavourites(groupName);
-    }
-
-    @When("^user drags page '(.*)' down to page '(.*)'$")
-    public void UserDragsPage01DownToPage02(String firstPage, String secondPage) throws Throwable {
-        pageActions.dragAndDrop(favouritesPage.pageInFavourite(firstPage), favouritesPage.pageInFavourite(secondPage));
-    }
-
-    @When("^user drags group '(.*)' down to group '(.*)'$")
-    public void UserDragsGroup01DownToGroup02(String firstGroup, String secondGroup) throws Throwable {
-        pageActions.dragAndDrop(favouritesPage.favouriteGroup(firstGroup), favouritesPage.favouriteGroup(secondGroup));
-    }
-
-
-    @When("^the user should see the group '(.*)' comes first than group '(.*)'$")
-    public void UserShouldSeeTheGroup01ComesFirstThanGroup02(String firstGroup, String secondGroup) throws Throwable {
-        commonMethods.waitForElementToBeVisible(favouritesPage.favouriteByGroup(firstGroup), 3000);
-        assertTrue(firstGroup + " not visible as a first group..!",
-                favouritesPage.favouriteGroupNames().get(0).getText().trim().contains(firstGroup));
-        assertTrue(secondGroup + " not visible as a first group..!",
-                favouritesPage.favouriteGroupNames().get(1).getText().trim().contains(secondGroup));
-    }
-
     @Then("^the footer is displayed below the end of the document$")
     public void theFooterIsDisplayedBelowTheEndOfTheDocument() {
         boolean footerBelowDoc = resourcePage.compareElementsLocationByHeight(standardDocumentPage.endOfDocument(), footer.footerWidget()) < 0;
@@ -436,10 +264,6 @@ public class CalendarCommonSteps extends BaseStepDef {
         }
     }
 
-    @When("^the user deletes the start page$")
-    public void deleteStartPage() {
-   //     folderBaseUtils.deleteStartPage();
-    }
     @When("^the user navigates to practice area \"(.*)\"$")
     public void the_user_navigates_to_Practice_area(String PAName) throws Throwable {
         header.browseMenuButton().click();
@@ -447,6 +271,7 @@ public class CalendarCommonSteps extends BaseStepDef {
         commonMethods.clickLink(PAName);
         assertTrue(PAName + " not displayed..!", header.pageHeaderLabel().getText().contains(PAName));
      }
+
     @When("^the user opens \"(.+)\" url on plcuk website$")
     public void theUserOpensUrlOnPLCUKSite(String url) throws Throwable {
         navigationCobalt.navigateToPLCUKPlusSpecificURL(url);
