@@ -1,9 +1,15 @@
 package com.thomsonreuters.khpadd.step_definitions.knowHowDocuments;
 
 import com.thomsonreuters.khpadd.step_definitions.BaseStepDef;
+import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.CommonResourcePage;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePage;
+import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.CaseDocumentPage;
+import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.StandardDocumentPage;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
 import org.hamcrest.core.Is;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -14,6 +20,8 @@ import static org.junit.Assert.assertTrue;
 public class StickyBarTest extends BaseStepDef {
 
     private KHResourcePage resourcePage = new KHResourcePage();
+    private StandardDocumentPage standartDocumentPage = new StandardDocumentPage();
+    private CaseDocumentPage caseDocumentPage = new CaseDocumentPage();
 
     @Then("^the document title \"(.*?)\" is displayed on the sticky bar$")
     public void theDocumentTitleIsDisplayedOnTheStickyBar(String expectedTitle) throws Throwable {
@@ -43,6 +51,25 @@ public class StickyBarTest extends BaseStepDef {
 
     private void scrollToElement(WebElement element) {
         ((JavascriptExecutor) resourcePage).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+    
+    @When("^clicks on document link \"(.*?)\"$")
+    public void clicksOnDocumentLink(String documentLink) throws Throwable {
+    	resourcePage.embeddedResourceLink(documentLink).click();
+    	resourcePage.waitForPageToLoad();
+    }
+    
+    @Then("^user verifies if page is scrolled to heading \"(.*)\"$")
+    public void pageScrolledToHeading(String heading) throws Throwable {
+    	resourcePage.waitForPageToLoadAndJQueryProcessing();
+    	//thread sleep was added to ensure that page is loaded fully
+    	Thread.sleep(3000);
+    	assertTrue("Page is not scrolled to target text", standartDocumentPage.isDocumentSectionDisplayed(heading));
+    }
+    
+    @When("^user clics on link \"(.*)\" in ToC$")
+    public void clicsOnLink(String link) {
+    	caseDocumentPage.menuItem(link).click();
     }
 
 }

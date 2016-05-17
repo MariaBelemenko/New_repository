@@ -22,3 +22,29 @@ Feature: [730588, 730584] Verify Title and Related Content on the sticky bar
     And user scroll down the resource by offset 15
     Then 'Related Content' link is displayed on the sticky bar
     And clicking on 'Related Content' link on sticky bar jumps to Related Content section
+    
+  #@wip need be removed after release (9 may)    
+  @wip  
+  Scenario Outline: (bug#867652)When user clicks internal link he is taken to the correct section in the document and the banner title displays the correct headings
+    Given PL+ user is logged in
+    When user navigates directly to document with guid "<guid>"
+   	And clicks on the Show/Hide Drafting Notes option on the delivery toolbar
+    And user clicks on the 'Show All' option
+    And clicks on document link "<link>"
+    Then user verifies if page is scrolled to heading "<heading>"
+    And  scrolled heading "<heading>" is displayed on the sticky bar
+   Examples:
+    | guid                              |link             													| heading|
+    | I33f105f1e8cd11e398db8b09b4f043e0	|Practice note, Execution of deeds and documents: Execution of deeds|Execution of deeds|
+ 
+  #@wip need be removed after release (9 may)    
+  @wip
+  Scenario Outline: (bug#867652)When user clics on item in ToC he is taken to the correct section in the document and the banner title displays the correct headings
+    Given PL+ user is logged in
+    When user navigates directly to document with guid "<guid>"
+    And user clics on link "<heading>" in ToC
+    Then user verifies if page is scrolled to heading "<heading>"
+    And  scrolled heading "<heading>" is displayed on the sticky bar
+   Examples:
+    | guid                              |heading             					|
+    | I2a05f3d71cb811e38578f7ccc38dcbee	|When do you need a written contract?	|
