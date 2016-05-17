@@ -126,12 +126,12 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         navigationCobalt.navigateToPLUKPlus();
         plcHomePage.closeCookieConsentMessage();
         resetCurrentUser();        
-  // Update the following code if OpenWeb will be turned off on Production     
-        if (!baseUrl.equals("hotprod")) {
+  /* Uncomment and update the following code if OpenWeb will be turned off on any environment        
+        if (!baseUrl.equals("hotprod")) {*/
         theUserClicksOnSignOnLinkOnTheHeader();
-        } else {
+   /*     } else {
             LOG.info("OpenWeb is OFF on HOT PROD. User already on login page");
-        }
+        }*/
     }
 
     @Given("^PL\\+ user is not logged in$")
