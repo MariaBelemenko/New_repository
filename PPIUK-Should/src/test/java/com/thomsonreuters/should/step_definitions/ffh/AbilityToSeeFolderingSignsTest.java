@@ -71,7 +71,6 @@ public class AbilityToSeeFolderingSignsTest extends BaseStepDef {
     @And("^the user adds current document to new \"([^\"]*)\" folder with parent folder \"([^\"]*)\"$")
     public void addDocumentToFolderFromDocumentView(String folder, String parentFolder) throws Throwable {
         documentDeliveryPage.clickOnAddToFolderLink();
-        Thread.sleep(1000);
         saveToNewFolder(folder, parentFolder);
         researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
         String message = searchResultsPage.folderingPopupMessage().getText();

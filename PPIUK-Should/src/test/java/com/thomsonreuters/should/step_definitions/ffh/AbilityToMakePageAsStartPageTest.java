@@ -6,6 +6,8 @@ import com.thomsonreuters.should.step_definitions.BaseStepDef;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import static org.junit.Assert.*;
+
 public class AbilityToMakePageAsStartPageTest extends BaseStepDef {
 
     private CategoryPage categoryPage = new CategoryPage();
@@ -19,7 +21,8 @@ public class AbilityToMakePageAsStartPageTest extends BaseStepDef {
     @Then("^the user checks that '(.+)' link presents in favourites group '(.+)' on Favourites page$")
     public void checkPagePresentsInFavouritesOnFavouritesPage(String linkName, String groupName) throws Throwable {
         favouritesPage.waitForPageToLoad();
-        favouritesPage.checkCategoryPagePresents(linkName, groupName);
+		assertTrue("Favourite page is absent in group '" + groupName + "'",
+				favouritesPage.isFavouritePageInGroupPresent(linkName, groupName));
     }
 
     @When("^the user clicks '(.+)' link on Favourites page$")
@@ -41,7 +44,8 @@ public class AbilityToMakePageAsStartPageTest extends BaseStepDef {
     @Then("^the user checks that '(.+)' link is not in favourites group '(.+)' on Favourites page$")
     public void checkPageIsNotInFavouritesOnFavouritesPage(String linkName, String groupName) throws Throwable {
         favouritesPage.waitForPageToLoad();
-        favouritesPage.checkCategoryPageIsAbsent(linkName, groupName);
+		assertFalse("Favourite page is present in group '" + groupName + "'",
+				favouritesPage.isFavouritePageInGroupPresent(linkName, groupName));
     }
 
 }

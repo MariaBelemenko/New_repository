@@ -11,12 +11,13 @@ import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawUKCategoryPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.pageobjects.utils.folders.FoldersUtils;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -25,7 +26,7 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.springframework.test.util.AssertionErrors.assertTrue;
 
 public class BaseFoldersBehaviourTest extends BaseStepDef {
@@ -54,7 +55,11 @@ public class BaseFoldersBehaviourTest extends BaseStepDef {
                 header.favouritesLink().click();
                 break;
             default:
-        }
+			throw new UnsupportedOperationException(
+					"The linkname '"
+							+ linkName
+							+ "' is undefined. Only Folders, History and Favourites page were identified. Please add your page with expected result");
+		}
         researchOrganizerPage.waitForPageToLoad();
         foldersUtils.waitAjaxIfNecessary();
     }
@@ -75,6 +80,10 @@ public class BaseFoldersBehaviourTest extends BaseStepDef {
                 researchOrganizerPage.historyTab().click();
                 break;
             default:
+			throw new UnsupportedOperationException(
+					"The tabName '"
+							+ tabName
+							+ "' is undefined. Only Folders and History page were identified. Please add your page with expected result");	
         }
         researchOrganizerPage.waitForPageToLoad();
     }
@@ -93,6 +102,10 @@ public class BaseFoldersBehaviourTest extends BaseStepDef {
                         actualHistoryClassAttributeValue);
                 break;
             default:
+			throw new UnsupportedOperationException(
+					"The pageName '"
+							+ pageName
+							+ "' is undefined. Only Folders and History page were identified. Please add your page with expected result");
         }
     }
 
@@ -152,16 +165,12 @@ public class BaseFoldersBehaviourTest extends BaseStepDef {
     }
 
     @Then("^there is no the \"([^\"]*)\" folder in recent folders drop down$")
-    public void checkFolderAbsentInRecentFoldersDropdown(String folderName) throws Throwable {
-        researchOrganizerPage.waitForPageToLoad();
-        comMethods.mouseOver(researchOrganizerPage.recentFoldersDropdown());
-        try {
-            researchOrganizerPage.linkToFolderInRecentDropdown(folderName).isDisplayed();
-        } catch (NoSuchElementException e) {
-            return;
-        }
-        throw new RuntimeException("Folder '" + folderName + "' is present in recent folders drop down");
-    }
+	public void checkFolderAbsentInRecentFoldersDropdown(String folderName) throws Throwable {
+		researchOrganizerPage.waitForPageToLoad();
+		comMethods.mouseOver(researchOrganizerPage.recentFoldersDropdown());
+		assertFalse("Folder '" + folderName + "' is present in recent folders drop down",
+				researchOrganizerPage.isLinkToFolderInRecentDropdownPresent(folderName));
+	}
 
     @Then("^all the folders listed$")
     public void checkThatFoldersPresent(List<String> folderNames) {
@@ -225,7 +234,7 @@ public class BaseFoldersBehaviourTest extends BaseStepDef {
     public void theUserRunsAFreeTextSearchForTheQuery(String query) throws Throwable {
         StringSelection stringSelection = new StringSelection(query);
         Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
-        practicalLawUKCategoryPage.searchButton().isDisplayed();
+        assertTrue("Search button is absent", practicalLawUKCategoryPage.searchButton().isDisplayed());
         practicalLawUKCategoryPage.freeTextField().clear();
         if (query.contains("(") || query.contains(")") || query.contains("&")) {
             clpbrd.setContents(stringSelection, null);

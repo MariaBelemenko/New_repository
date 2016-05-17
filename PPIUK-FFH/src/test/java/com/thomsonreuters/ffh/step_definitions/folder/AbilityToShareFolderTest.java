@@ -28,6 +28,8 @@ public class AbilityToShareFolderTest extends BaseStepDef {
     private EmailMessageUtils emailMessageUtils = new EmailMessageUtils();
 
     private String EMAIL_SUBJECT = "would like to share";
+    private int TIME_INTERVAL = 120;
+    private int TIMEOUT_SEC = 10;
 
     @When("^the user '(.+)' share the folder \"([^\"]*)\" with the user '(.+)' via email$")
     public void shareFolderViaEmail(String owner, String folderName, String userNameToShare) throws Throwable {
@@ -42,7 +44,7 @@ public class AbilityToShareFolderTest extends BaseStepDef {
     @Then("^invitation email is received at \"(.*?)\" with link to PL(AU|UK)$")
     public void emailIsReceivedWithLink(String email, String country) throws Throwable {
         Mailbox mailbox = MailboxFactory.getMailboxByEmail(email);
-        Message message = mailbox.waitForMessageWithTitle(EMAIL_SUBJECT, 120, 10);
+        Message message = mailbox.waitForMessageWithTitle(EMAIL_SUBJECT, TIME_INTERVAL, TIMEOUT_SEC);
         String expectedUrl = country.toLowerCase() + ".practicallaw." + System.getProperty("base.url") + ".thomsonreuters.com";
 
         SoftAssertions softly = new SoftAssertions();

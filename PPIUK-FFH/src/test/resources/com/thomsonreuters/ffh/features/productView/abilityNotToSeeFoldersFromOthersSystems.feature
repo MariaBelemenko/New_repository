@@ -5,8 +5,6 @@ Feature: As a PPI User I do not want to see Folders from other products in my Fo
   Scenario Outline:
     Given WLN user is logged in with following details
       | userName | FFHUser4 |
-      | routing          | FOLDERS |
-      | mandatoryRouting | YES     |
     When API cleans all folders and history
     And user relogs in
     Given PL+ user is logged in with following details
@@ -20,8 +18,6 @@ Feature: As a PPI User I do not want to see Folders from other products in my Fo
     And all documents present in the "<plFolder>" folder
     Given WLN user is logged in with following details
       | userName | FFHUser4 |
-      | routing          | FOLDERS |
-      | mandatoryRouting | YES     |
     When the user clicks on 'Folders' link on the header
     Then the folder "<plFolder>" with parent folder "<parentFolder>" is absent
     And the user checks Faceting is absent
@@ -44,8 +40,6 @@ Feature: As a PPI User I do not want to see Folders from other products in my Fo
     And user relogs in
     Given WLN user is logged in with following details
       | userName         | FFHUser4 |
-      | routing          | FOLDERS  |
-      | mandatoryRouting | YES      |
     When API cleans all folders and history and user relogs in
     And the user come back on to WLN Home page
     And the user runs a free text search for the query "<query>"

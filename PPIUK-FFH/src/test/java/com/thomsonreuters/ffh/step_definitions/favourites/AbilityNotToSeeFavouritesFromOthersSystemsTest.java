@@ -1,5 +1,7 @@
 package com.thomsonreuters.ffh.step_definitions.favourites;
 
+import static org.junit.Assert.*;
+
 import org.junit.Assert;
 
 import com.thomsonreuters.ffh.step_definitions.BaseStepDef;
@@ -9,6 +11,7 @@ import com.thomsonreuters.pageobjects.pages.folders.CreateGroupPopup;
 import com.thomsonreuters.pageobjects.pages.folders.FavouritesPage;
 import com.thomsonreuters.pageobjects.pages.widgets.CategoryPage;
 import com.thomsonreuters.pageobjects.pages.widgets.WLNFavoritesWidget;
+
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -53,7 +56,7 @@ public class AbilityNotToSeeFavouritesFromOthersSystemsTest extends BaseStepDef 
         categoryPage.makeThisMyStartPage();
     }
 
-    @Then("^the user clicks the Start Page to remove it from Start Page$")
+    @When("^the user clicks the Start Page to remove it from Start Page$")
     public void userClicksTheHomeIcontoRemoveItasStartPage() throws Throwable {
         categoryPage.removeThisAsMyStartPage();
     }
@@ -71,12 +74,11 @@ public class AbilityNotToSeeFavouritesFromOthersSystemsTest extends BaseStepDef 
 
     @Then("^the favourites group '(.+)' presents on Favourites page$")
     public void checkFavoriteGroupPresents(String groupName) throws Throwable {
-        favouritesPage.favouriteGroup(groupName);
+        assertTrue("Favourites group is absent", favouritesPage.favouriteGroup(groupName).isDisplayed());
     }
 
     @Then("^the favourites group '(.+)' is absent on Favourites page$")
     public void checkFavoriteGroupAbsent(String groupName) throws Throwable {
-        Thread.sleep(500);
         favouritesPage.checkFavouriteGroupIsAbsent(groupName);
     }
 
@@ -102,7 +104,6 @@ public class AbilityNotToSeeFavouritesFromOthersSystemsTest extends BaseStepDef 
 
     @When("^the user deletes the favourites page '(.+)'$")
     public void deleteFavoritePage(String pageName) throws Throwable {
-        Thread.sleep(1000);
         favouritesPage.organize().click();
         pageActions.mouseOver(favouritesPage.pageInFavourite(pageName));
         favouritesPage.deletePageFromFavourite(pageName).click();
@@ -123,7 +124,8 @@ public class AbilityNotToSeeFavouritesFromOthersSystemsTest extends BaseStepDef 
     @Then("^the user checks that '(.+)' link presents in favourites group '(.+)' on Favourites page$")
     public void checkPagePresentsInFavouritesOnFavouritesPage(String linkName, String groupName) throws Throwable {
         favouritesPage.waitForPageToLoad();
-        favouritesPage.checkCategoryPagePresents(linkName, groupName);
+        assertTrue("Favourite page is absent in group '" + groupName + "'",
+				favouritesPage.isFavouritePageInGroupPresent(linkName, groupName));
     }
 
     @When("^the user clicks '(.+)' link on Favourites page$")
@@ -147,7 +149,8 @@ public class AbilityNotToSeeFavouritesFromOthersSystemsTest extends BaseStepDef 
     @Then("^the user checks that '(.+)' link is not in favourites group '(.+)' on Favourites page$")
     public void checkPageIsNotInFavouritesOnFavouritesPage(String linkName, String groupName) throws Throwable {
         favouritesPage.waitForPageToLoad();
-        favouritesPage.checkCategoryPageIsAbsent(linkName, groupName);
+		assertFalse("Favourite page is present in group '" + groupName + "'",
+				favouritesPage.isFavouritePageInGroupPresent(linkName, groupName));
     }
 
     @When("^the user opens '(.+)' link$")
@@ -179,9 +182,6 @@ public class AbilityNotToSeeFavouritesFromOthersSystemsTest extends BaseStepDef 
     public void theUserRemovesPageFromFavouritesGroupPl(String groupName) throws Throwable {
         categoryPage.removeFromFavourites(groupName);
     }
-
-
-    
 
     public boolean isHomePage() {
         if (!(categoryPage.getCurrentUrl().contains("/Search/Home.html")

@@ -13,6 +13,7 @@ import com.thomsonreuters.pageobjects.pages.folders.NewFolderPopup;
 import com.thomsonreuters.pageobjects.pages.folders.ResearchOrganizerPage;
 import com.thomsonreuters.pageobjects.pages.folders.SaveToPopup;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
+import com.thomsonreuters.pageobjects.utils.document.Document;
 import com.thomsonreuters.pageobjects.utils.folders.FoldersUtils;
 
 import cucumber.api.java.en.Then;
@@ -26,8 +27,7 @@ public class AbilityToAddDocumentsToFolderTest extends BaseStepDef {
     private FoldersUtils foldersUtils = new FoldersUtils();
     private NewFolderPopup newFolderPopup = new NewFolderPopup();
 
-    private List<String> guids;
-    private List<String> titles;
+    private List<Document> documents;
     private int documentCount;
 
     @When("^the user selects '(.+)' documents, stores its titles and guids and saves to \"([^\"]*)\" folder$")
@@ -41,7 +41,7 @@ public class AbilityToAddDocumentsToFolderTest extends BaseStepDef {
 		if (Integer.valueOf(count) > 1) {
 			assertEquals("Message is incorrect", count + " of " + count + " items saved to '" + folderName + "'.", message);
 		} else {
-			assertEquals("Message is incorrect", titles.get(0) + " saved to '" + folderName + "'.", message);
+			assertEquals("Message is incorrect", documents.get(0).getTitle() + " saved to '" + folderName + "'.", message);
 		}
     }
 
@@ -57,7 +57,7 @@ public class AbilityToAddDocumentsToFolderTest extends BaseStepDef {
 		if (Integer.valueOf(count) > 1) {
 			assertEquals("Message is incorrect", count + " of " + count + " items saved to '" + folder + "'.", message);
 		} else {
-			assertEquals("Message is incorrect", titles.get(0) + " saved to '" + folder + "'.", message);
+			assertEquals("Message is incorrect", documents.get(0).getTitle() + " saved to '" + folder + "'.", message);
 		}
     }
 
@@ -70,17 +70,18 @@ public class AbilityToAddDocumentsToFolderTest extends BaseStepDef {
 
     private void selectDocuments(String count) {
         documentCount = Integer.parseInt(count);
-        guids = new ArrayList<String>();
-        titles = new ArrayList<String>();
+        documents = new ArrayList<Document>();
         searchResultsPage.waitForPageToLoad();
         for (int i = 1; i <= documentCount; i++) {
+        	Document doc = new Document();
             searchResultsPage.searchResultPositionCheckbox(i).click();
             WebElement document = searchResultsPage.searchResultPosition(String.valueOf(i));
             String guid = document.getAttribute("docguid");
             String documentName = document.getText();
             LOG.info("Document guid is '" + guid + "'. Document name is '" + documentName + "'");
-            guids.add(guid);
-            titles.add(documentName);
+            doc.setTitle(documentName);
+            doc.setGuid(guid);
+            documents.add(doc);
         }
     }
 
@@ -90,8 +91,8 @@ public class AbilityToAddDocumentsToFolderTest extends BaseStepDef {
         foldersUtils.openFolder(folder);
         researchOrganizerPage.waitForPageToLoad();
         for (int i = 1; i <= documentCount; i++) {
-            String guid = guids.get(i - 1);
-            String documentName = titles.get(i - 1);
+            String guid = documents.get(i - 1).getGuid();
+            String documentName = documents.get(i - 1).getTitle();
             LOG.info("Check document with name '" + documentName + "' presents");
             try {
                 researchOrganizerPage.linkToDocument(guid, documentName).isDisplayed();

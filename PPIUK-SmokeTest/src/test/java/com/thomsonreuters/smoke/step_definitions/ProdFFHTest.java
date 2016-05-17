@@ -12,9 +12,11 @@ import com.thomsonreuters.pageobjects.utils.Product;
 import com.thomsonreuters.pageobjects.utils.document.Document;
 import com.thomsonreuters.pageobjects.utils.folders.FoldersUtils;
 import com.thomsonreuters.pageobjects.utils.legalUpdates.CalendarAndDate;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -22,6 +24,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class ProdFFHTest extends BaseStepDef {
 
@@ -48,18 +51,22 @@ public class ProdFFHTest extends BaseStepDef {
     @When("^the user clicks on '(.+)' link on the header$")
     public void theUserClicksOnLinkOnTheHeader(String linkName) throws Throwable {
         researchOrganizerPage.waitForPageToLoad();
-        switch (linkName) {
-            case "Folders":
-                header.foldersLink().click();
-                break;
-            case "History":
-                header.historyLink().click();
-                break;
-            case "Favourites":
-                header.favouritesLink().click();
-                break;
-            default:
-        }
+		switch (linkName) {
+		case "Folders":
+			header.foldersLink().click();
+			break;
+		case "History":
+			header.historyLink().click();
+			break;
+		case "Favourites":
+			header.favouritesLink().click();
+			break;
+		default:
+			throw new UnsupportedOperationException(
+					"The linkname '"
+							+ linkName
+							+ "' is undefined. Only Folders, History and Favourites page were identified. Please add your page with expected result");
+		}
         researchOrganizerPage.waitForPageToLoad();
         researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
     }
@@ -85,19 +92,23 @@ public class ProdFFHTest extends BaseStepDef {
 
     @Then("^'(.+)' page opens$")
     public void pageOpens(String pageName) throws Throwable {
-        switch (pageName) {
-            case "Folders":
-                String actualFoldersClassAttributeValue = researchOrganizerPage.foldersTab().getAttribute("class");
-                assertEquals("Folders tab is not active", researchOrganizerPage.getExpectedClassAttributeValueForTabs(),
-                        actualFoldersClassAttributeValue);
-                break;
-            case "History":
-                String actualHistoryClassAttributeValue = researchOrganizerPage.historyTab().getAttribute("class");
-                assertEquals("History tab is not active", researchOrganizerPage.getExpectedClassAttributeValueForTabs(),
-                        actualHistoryClassAttributeValue);
-                break;
-            default:
-        }
+		switch (pageName) {
+		case "Folders":
+			String actualFoldersClassAttributeValue = researchOrganizerPage.foldersTab().getAttribute("class");
+			assertEquals("Folders tab is not active", researchOrganizerPage.getExpectedClassAttributeValueForTabs(),
+					actualFoldersClassAttributeValue);
+			break;
+		case "History":
+			String actualHistoryClassAttributeValue = researchOrganizerPage.historyTab().getAttribute("class");
+			assertEquals("History tab is not active", researchOrganizerPage.getExpectedClassAttributeValueForTabs(),
+					actualHistoryClassAttributeValue);
+			break;
+		default:
+			throw new UnsupportedOperationException(
+					"The pageName '"
+							+ pageName
+							+ "' is undefined. Only Folders and History page were identified. Please add your page with expected result");
+		}
     }
 
     @Then("^the folder \"([^\"]*)\" appears in the \"([^\"]*)\" folder$")
@@ -136,7 +147,8 @@ public class ProdFFHTest extends BaseStepDef {
     @Then("^the user checks that '(.+)' link presents in favourites group '(.+)' on Favourites page$")
     public void checkPagePresentsInFavouritesOnFavouritesPage(String linkName, String groupName) throws Throwable {
         favouritesPage.waitForPageToLoad();
-        favouritesPage.checkCategoryPagePresents(linkName, groupName);
+        assertTrue("Favourite page is absent in group '" + groupName + "'",
+				favouritesPage.isFavouritePageInGroupPresent(linkName, groupName));
     }
 
     @When("^the user deletes the favourites group '(.+)'$")

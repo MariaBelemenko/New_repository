@@ -10,7 +10,6 @@ import com.thomsonreuters.pageobjects.pages.delivery.DownloadOptionsPage;
 import com.thomsonreuters.pageobjects.pages.delivery.PrintOptionsPage;
 import com.thomsonreuters.pageobjects.pages.folders.NewFolderPopup;
 import com.thomsonreuters.pageobjects.pages.folders.ResearchOrganizerPage;
-import com.thomsonreuters.pageobjects.pages.folders.RestoreFromTrashPopup;
 import com.thomsonreuters.pageobjects.pages.folders.SaveToPopup;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawHomepage;
 import com.thomsonreuters.pageobjects.pages.landingPage.ResourcesPage;
@@ -34,9 +33,11 @@ import com.thomsonreuters.pageobjects.utils.document.metadata.Jurisdiction;
 import com.thomsonreuters.pageobjects.utils.folders.FoldersUtils;
 import com.thomsonreuters.pageobjects.utils.form.CheckBoxOrRadioButton;
 import com.thomsonreuters.pageobjects.utils.legalUpdates.CalendarAndDate;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
 import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -70,7 +71,6 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
     private Document singleDocument = new Document();
     private SaveToPopup saveToPopup = new SaveToPopup();
     private NewFolderPopup newFolderPopup = new NewFolderPopup();
-    private RestoreFromTrashPopup restoreFromTrashPopup = new RestoreFromTrashPopup();
     private NavigationCobalt navigationCobalt = new NavigationCobalt();
     private KHDocumentPage documentPagePLCUK = new KHDocumentPage();
     private PracticalLawHomepage practicalLawHomepage = new PracticalLawHomepage();
@@ -167,7 +167,6 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
     @And("^the user adds current document to new \"([^\"]*)\" folder with parent folder \"([^\"]*)\"$")
     public void addDocumentToFolderFromDocumentView(String folder, String parentFolder) throws Throwable {
         documentDeliveryPage.clickOnAddToFolderLink();
-        Thread.sleep(1000);
         saveToNewFolder(folder, parentFolder);
         researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
         String message = searchResultsPage.folderingPopupMessage().getText();
@@ -227,12 +226,7 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
     public void checkFolderIsEmpty(String folder) throws Throwable {
         foldersUtils.openFolder(folder);
         researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
-        try {
-            researchOrganizerPage.linkToDocument().isDisplayed();
-        } catch (NoSuchElementException e) {
-            return;
-        }
-        throw new RuntimeException("There is a document in the folder");
+        assertFalse("There is a document in the folder", researchOrganizerPage.isLinkToDocumenttPresent());
     }
 
     @When("^the user opens the link to the glossary term \"([^\"]*)\" and store its title and guid$")
@@ -243,8 +237,6 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
         glossaryPage.glossaryHeading().click();
         singleDocument.setTitle(standardDocumentPage.documentTitle().getText());
         singleDocument.setGuid(getDocumentGUID());
-        /** Wait for this document appears in History. If it is to quickly the document could be missing */
-        Thread.sleep(20000);
     }
 
     @Then("^the document Content type is correct$")
@@ -371,26 +363,19 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
 
     @Then("^there is no the document title and guid in recently used documents drop down$")
     public void checkDocumentAbsentInRecenltyUsedDropDown() throws Throwable {
-        researchOrganizerPage.waitForPageToLoad();
-        comMethods.mouseOver(researchOrganizerPage.recentHistoryDropdown());
-        try {
-            researchOrganizerPage.linkToDocumentInRecentDropdown(singleDocument.getGuid(), singleDocument.getTitle()).isDisplayed();
-        } catch (NoSuchElementException e) {
-            return;
-        }
-        throw new RuntimeException("Document '" + singleDocument.getTitle() + "' is present in recently used documents drop down");
-    }
+		researchOrganizerPage.waitForPageToLoad();
+		comMethods.mouseOver(researchOrganizerPage.recentHistoryDropdown());
+		assertFalse(
+				"Document '" + singleDocument.getTitle() + "' is present in recently used documents drop down",
+				researchOrganizerPage.isLinkToDocumentInRecentDropdownPresent(singleDocument.getGuid(),
+						singleDocument.getTitle()));
+	}
 
     @Then("^there is no the '(.+)' in recently used searches drop down$")
     public void checkSearchAbsentInRecenltyUsedDropDown(String search) throws Throwable {
         researchOrganizerPage.waitForPageToLoad();
         comMethods.mouseOver(researchOrganizerPage.recentHistoryDropdown());
-        try {
-            researchOrganizerPage.linkToSearchInRecentDropdown(search).isDisplayed();
-        } catch (NoSuchElementException e) {
-            return;
-        }
-        throw new RuntimeException("Search '" + search + "' is present in recently used documents drop down");
+        assertFalse("Search '" + search + "' is present in recently used documents drop down", researchOrganizerPage.isLinkToSearchInRecentDropdownPresent(search));
     }
 
     @When("^user clicks on '([^\"]*)' user folder with multiple documents in it$")
@@ -714,7 +699,7 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
         singleDocument = new Document();
         searchResultsPage.searchResultPosition(linkPosition).click();
         /** The following page object documentTitle is being used to ensure the document has rendered */
-        standardDocumentPage.documentTitle().isDisplayed();
+        assertTrue("Document title is absent", standardDocumentPage.documentTitle().isDisplayed());
         /** Now store the title and guid */
         singleDocument.setTitle(standardDocumentPage.documentTitle().getText());
         singleDocument.setGuid(getDocumentGUIDFromURL());

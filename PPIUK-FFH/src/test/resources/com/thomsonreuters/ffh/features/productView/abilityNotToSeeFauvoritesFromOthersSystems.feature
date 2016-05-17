@@ -6,7 +6,6 @@ Feature: As a PPI User I do not want to see Favourites from other systems in my 
     When API cleans all folders and history
     Given WLN user is logged in with following details
       | userName         | FFHUser4 |
-      | routing          | FOLDERS  |
       | mandatoryRouting | YES      |
     When API cleans all folders and history and user relogs in
     #And the user come back on to WLN Home page

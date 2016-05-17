@@ -175,11 +175,6 @@
             <version>1a.0.1</version>
         </dependency>
       
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-server-standalone</artifactId>
-            <version>2.47.0</version>
-        </dependency>
     </dependencies>
 
 </project>
