@@ -105,17 +105,17 @@ public class ResearchOrganizerPage extends AbstractPage {
         return findElement(By.xpath("//*[contains(@href,'" + documentGuid + "')]/ancestor::td/following-sibling::td[1]/span[text()=" + text + "]"));
     }
 
-    public WebElement linkToDocumentInRecentDropdown(String documentGuid, String title) {
+    public boolean isLinkToDocumentInRecentDropdownPresent(String documentGuid, String title) {
         String text = "'" + title + "'";
         if (title.contains("'")) {
             title = "\"" + title + "\"";
             text = title;
         }
-        return findElement(By.xpath("//*[@id='co_recentHistoryContainer']//*[contains(@href, '" + documentGuid + "') and text()=" + text + "]"));
+        return isElementPresent(By.xpath("//*[@id='co_recentHistoryContainer']//*[contains(@href, '" + documentGuid + "') and text()=" + text + "]"));
     }
 
-    public WebElement linkToFolderInRecentDropdown(String folderName) {
-        return findElement(By.xpath("//*[@id='co_recentFoldersContainer']//*[text()='" + folderName + "']"));
+    public boolean isLinkToFolderInRecentDropdownPresent(String folderName) {
+        return isElementPresent(By.xpath("//*[@id='co_recentFoldersContainer']//*[text()='" + folderName + "']"));
     }
 
     public WebElement recentHistoryDropdown() {
@@ -130,8 +130,8 @@ public class ResearchOrganizerPage extends AbstractPage {
         return waitForExpectedElements(By.xpath("//*[@id='co_recentFoldersContainer']//a[contains(text(),'s Research')]")).size();
     }
 
-    public WebElement linkToSearchInRecentDropdown(String search) {
-        return findElement(By.xpath("//*[@id='co_recentHistoryContainer']//*[contains(@href, '" + search + "')]"));
+    public boolean isLinkToSearchInRecentDropdownPresent(String search) {
+        return isElementPresent(By.xpath("//*[@id='co_recentHistoryContainer']//*[contains(@href, '" + search + "')]"));
     }
 
     public int getDocumentCountInFolders() {
@@ -158,8 +158,8 @@ public class ResearchOrganizerPage extends AbstractPage {
         return waitForExpectedElement(By.xpath("//*[contains(@href,'" + documentGuid + "')]/ancestor::td/following-sibling::td[2]/span")).getText();
     }
 
-    public WebElement linkToDocument() {
-        return findElement(By.xpath("//*[contains(@href, '/Document/') and @name]"));
+    public boolean isLinkToDocumenttPresent() {
+    	return isElementPresent(By.xpath("//*[contains(@href, '/Document/') and @name]"));
     }
 
     public WebElement documentCheckbox(String documentGuid) {

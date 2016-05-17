@@ -37,17 +37,15 @@ public class FoldersUtils {
     }
 
     public boolean doesFolderExist(String folder) {
-        boolean folderExists = false;
-        researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
-        researchOrganizerPage.rootFolderLinkLeftFrame().click();
-        try {
-            researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
-            researchOrganizerPage.folderLinkLeftFrame(folder).click();
-            folderExists = true;
-        } catch (Exception e) {
-        }
-
-        return folderExists;
+		researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
+		researchOrganizerPage.rootFolderLinkLeftFrame().click();
+		try {
+			researchOrganizerPage.waitForPageToLoadAndJQueryProcessing();
+			researchOrganizerPage.folderLinkLeftFrame(folder).click();
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
     }
 
     public void shareFolder(String folderName) {

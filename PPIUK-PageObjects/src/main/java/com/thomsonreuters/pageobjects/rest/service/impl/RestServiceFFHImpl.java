@@ -85,6 +85,10 @@ public class RestServiceFFHImpl extends RestServiceImpl implements RestService {
 
 	/**
 	 * This method delete all folders and history for user DELETE request to
+	 * 
+	 * This method uses cookies from browser, instead of USD. 
+	 * This cookies would not work for IE browser. Could be used for debug purposes.
+	 * 
 	 * Foldering/v1/{USERNAME}/user
 	 *
 	 * @return json object
@@ -119,4 +123,5 @@ public class RestServiceFFHImpl extends RestServiceImpl implements RestService {
 	public String getCurrentSession() {
 		return super.getCurrentSession();
 	}
+	
 }

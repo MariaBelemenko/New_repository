@@ -1,58 +1,36 @@
 package com.thomsonreuters.pageobjects.pages.folders;
 
-import com.thomsonreuters.pageobjects.common.PageActions;
 import com.thomsonreuters.driver.framework.AbstractPage;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 
-
-
 import java.util.List;
-
 
 public class FavouritesPage extends AbstractPage {
 
-    private PageActions pageActions;
-
-    public void checkCategoryPageIsAbsent(String pageName, String groupName) {
+	public boolean isFavouritePageInGroupPresent(String pageName, String groupName){
         String text = "'" + pageName + "'";
         if (pageName.contains("'")) {
         	pageName = "\"" + pageName + "\"";
             text = pageName;
         }
-        String locator = "//span[text()='" + groupName + "']/ancestor::li//a[contains(@title, " + text + ")]";
-        if (groupName.contains("Frequently")) {
-            locator = "//*[@id='co_frequentlyUsed_listRoot']//a[contains(@title, " + text + ")]";
-        }
-		if (groupName.contains("Start")) {
+        String locator = null;
+		switch(groupName){
+		case("Frequently Used Items"):
+			locator = "//*[@id='co_frequentlyUsed_listRoot']//a[contains(@title, " + text + ")]";
+			break;
+		case("My Start Page"):
 			locator = "//*[@id='co_startPages_listRoot']//a[contains(@title, " + text + ")]";
+			break;
+		default:
+			locator = "//span[text()='" + groupName + "']/ancestor::li//a[contains(@title, " + text + ")]";
 		}
-        try {
-            findElement(By.xpath(locator));
-        } catch (NoSuchElementException e) {
-            LOG.info("context", e);
-            return;
-        }
-        throw new RuntimeException("The page '" + pageName + "' is present in '" + groupName + "' group");
+    	return isElementPresent(By.xpath(locator));
     }
 
-	public void checkCategoryPagePresents(String pageName, String groupName) {
-		String text = "'" + pageName + "'";
-		if (pageName.contains("'")) {
-			pageName = "\"" + pageName + "\"";
-			text = pageName;
-		}
-		String locator = "//span[text()='" + groupName + "']/ancestor::li//a[contains(@title, " + text + ")]";
-		if (groupName.contains("Frequently")) {
-			locator = "//*[@id='co_frequentlyUsed_listRoot']//a[contains(@title, " + text + ")]";
-		}
-		if (groupName.contains("Start")) {
-			locator = "//*[@id='co_startPages_listRoot']//a[contains(@title, " + text + ")]";
-		}
-		waitForExpectedElement(By.xpath(locator));
-	}
 
     public WebElement openPage(String pageName) {
     	return waitForExpectedElement(By.xpath("//a[contains(@title, '" + pageName + "')]"));
