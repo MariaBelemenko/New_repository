@@ -1,7 +1,7 @@
 Feature: As a KH user,
   I want to view the "View Related Content" link for each type of resource page
 
-  @e2e @prod
+  @e2e @prod @e2eprod
   Scenario: User checks the "View Related Content" link appearance and functionality, Verify Link to the Related Document
     Given PL+ user is logged in
     And the user searches for term "Disability discrimination"
@@ -12,6 +12,7 @@ Feature: As a KH user,
     Then document title is displayed as "Discrimination and harassment: a quick guide"
     And resource type is displayed as "Practice note: overview" on right hand panel
 
+  @e2eprod
   Scenario: User checks the "Related Content" button appearance and functionality on Sticky header
     Given PL+ user is logged in
     And the user searches for term "Disability discrimination"
@@ -21,7 +22,7 @@ Feature: As a KH user,
     When the user clicks on "Related Content" button
     Then the user should see the related content section displayed
 
-  @e2e @prod
+  @e2e @prod @e2eprod
   Scenario: Verify Link to the External Resource document under Related Document
     Given PL+ user is logged in
     And the user searches for term "Construction Industry"
