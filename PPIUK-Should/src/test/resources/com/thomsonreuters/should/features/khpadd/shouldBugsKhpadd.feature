@@ -1,6 +1,5 @@
 Feature: Verify Should bugs for KHPADD (Bug# 786498) - Foldering icon not getting enabled when a resource at the bottom of the list is being selected on Topic page
   (Bug# 833268 - Regression - Subject field in Email dialog box is missing the text "Practical Law")
-  (Bug# 847775 - Regression - Application error when trying to access a resource of type Case Study)
   (Bug# 861858 - Glossary: Related content is incorrectly appearing)
 
   Background:
@@ -48,8 +47,7 @@ Feature: Verify Should bugs for KHPADD (Bug# 786498) - Foldering icon not gettin
       | Table of Contents           | Selected                                            |
     Then user closes the delivery box by clicking on the cancel button
 
-  @bug
-  Scenario Outline:(bug# 847775) Check correct metadata is displayed for "<document Description>"
+  Scenario Outline: Check correct metadata is displayed for "<document Description>"
     Given PL+ user is logged in
     When user navigates directly to document with guid "<guid>"
     Then document title is displayed as "<title>"
@@ -63,7 +61,7 @@ Feature: Verify Should bugs for KHPADD (Bug# 786498) - Foldering icon not gettin
     And plc reference is displayed as "<plc ref>"
   Examples:
     | guid                              | title                                                                         | author                                   | resource status          | jurisdictions    | resource history | related content | documentType | plc ref    |
-    | I3351aa2ee8da11e398db8b09b4f043e0 | Case study: Andrew Garard - Making the move from in-house to private practice | Author: William Long, PLC Law Department | Published on 24-Jul-2007 | No jurisdictions | Not displayed    | displayed       | Case Study   | 0-373-7988 |
+    | I3351aa2ee8da11e398db8b09b4f043e0 | Case study: Andrew Garard - Making the move from in-house to private practice | Author: William Long, PLC Law Department | Published on 24-Jul-2007 | No jurisdictions | Not displayed    | displayed       | Articles   | 0-373-7988 |
 
   #848618 - Impossible to link to relevant Topic page from 'Also found in' section by OW user
   @bug
