@@ -1,6 +1,6 @@
 Feature: Check meta data (title, Author,status, jurisdictions, resource history link, related content link and document type) for different Know How resources
 
-  @e2e @prod
+  @e2e @prod @e2eprod
   Scenario Outline: Check correct metadata is displayed for "<document Description>"
     Given PL+ user is logged in
     When user navigates directly to document with guid "<guid>"
