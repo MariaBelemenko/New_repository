@@ -91,3 +91,4 @@ Feature: [751653] PL+ user ASK form submission and Validations
     | question | firstName | lastName  | organisationType | position  | jurisdiction | answeringService | fields              |
     | q1       | Rakesh    |           | Public Sector    | Solicitor | UK           | Arbitration      | Last Name           |
     |          |           | Avasarala | Public Sector    | Solicitor | UK           | Arbitration      | Question,First Name |
+    | q4       | Rakesh    | Avasarala |                  |           | UK           | Arbitration      | Position          |

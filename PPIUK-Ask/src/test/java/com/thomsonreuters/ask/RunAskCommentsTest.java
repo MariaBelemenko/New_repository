@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber-htmlreport/AskCommentsReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunAskCommentsTest.json"},
         features = "src/test/resources/com/thomsonreuters/ask/features/comments",
-        tags = {"~@wip", "~@manual"},
+        tags = {"~@wip", "~@manual", "~@should"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
 public class RunAskCommentsTest {
