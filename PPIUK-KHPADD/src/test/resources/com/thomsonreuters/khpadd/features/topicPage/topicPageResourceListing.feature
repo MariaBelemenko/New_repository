@@ -4,7 +4,7 @@ Feature: [730196][764868][764877] Verify the topic page facet links, topic page 
     Given PL+ user is logged in
     And the user clicks on close button on the cookie consent message
 
-  @e2e @prod
+  @e2e @prod @e2eprod
   Scenario:[730553][769006] Verify if 100 resources are displayed on the topic page per page
     When the user navigates to practice area "Finance" filtered by "Security and quasi security" topic page
     Then the user is presented with a topic page with title "Security and Quasi Security"
@@ -40,7 +40,7 @@ Feature: [730196][764868][764877] Verify the topic page facet links, topic page 
       | Country Q&A                    |
       | Glossary                       |
 
-  @e2e @prod
+  @e2e @prod @e2eprod
   Scenario: [770720][730571] Verify display of Optional blocks where widgets have not / have been created
     When the user navigates to practice area "Employment" filtered by "Contracts of employment" topic page
     And following optional blocks are not displayed on the right hand side
@@ -66,7 +66,7 @@ Feature: [730196][764868][764877] Verify the topic page facet links, topic page 
     And the user deletes the favourites group 'Favourite Topics'
     Then the favourites group 'Favourite Topics' is absent on Favourites page
 
-  @e2e @prod
+  @e2e @prod @e2eprod
   Scenario: [764883] verify the documents within a particular resource type are alphabetically sorted
     When the user navigates to practice area "Property" filtered by "Development" topic page
     And clicks on the facet group "Practice Notes"
