@@ -6,6 +6,7 @@ import com.thomsonreuters.pageobjects.common.WindowHandler;
 import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.StandardDocumentPage;
 import com.thomsonreuters.pageobjects.pages.widgets.CategoryPage;
+import com.thomsonreuters.pageobjects.rest.DeliveryBaseUtils;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.apache.commons.io.FileUtils;
@@ -25,6 +26,7 @@ public class PADownloadFSDocumentTest extends BaseStepDef {
     private WindowHandler windowHandler = new WindowHandler();
     private StandardDocumentPage standardDocumentPage = new StandardDocumentPage();
     private FileActions fileActions = new FileActions();
+    private DeliveryBaseUtils deliveryBaseUtils = new DeliveryBaseUtils();
 
     private final static String DOWNLOADED_FILE_PATH = System.getProperty("user.home") + "/Downloads";
 
@@ -62,21 +64,11 @@ public class PADownloadFSDocumentTest extends BaseStepDef {
 
     @When("the user clicks Firm Style link and download a document")
     public void clickFirmStyleAndDownloadDocument() throws Throwable {
-        windowHandler.fileDownload(standardDocumentPage.firmStyle());
+        downloadFirmStyle();
     }
 
     @Then("^the file \"([^\"]*)\" should be downloaded to the users machine$")
     public void fileShouldDownloadToTheUsersMachine(String name) throws Throwable {
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_ESCAPE);
-        robot.keyRelease(KeyEvent.VK_ESCAPE);
-
-        downloadedFile = fileActions.findFile(name, DOWNLOADED_FILE_PATH);
         assertTrue("File was not downloaded", downloadedFile != null && downloadedFile.exists());
     }
 
@@ -98,6 +90,10 @@ public class PADownloadFSDocumentTest extends BaseStepDef {
             return false;
         }
         return true;
+    }
+
+    private void downloadFirmStyle() {
+        downloadedFile = deliveryBaseUtils.downloadFsDocument();
     }
 
 }

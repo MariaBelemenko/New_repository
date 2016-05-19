@@ -4,6 +4,7 @@ import com.google.common.base.Function;
 import com.thomsonreuters.driver.framework.AbstractPage;
 import com.thomsonreuters.driver.framework.WebDriverDiscovery;
 import com.thomsonreuters.pageobjects.common.CommonMethods;
+import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.StandardDocumentPage;
 import com.thomsonreuters.pageobjects.rest.model.request.delivery.initiateDelivery.InitiateDelivery;
 import com.thomsonreuters.pageobjects.rest.model.response.delivery.initiateDelivery.InitiateDeliveryResponse;
 import com.thomsonreuters.pageobjects.rest.model.response.delivery.status.StatusResponse;
@@ -23,6 +24,7 @@ public class DeliveryBaseUtils {
     private RestServiceDeliveryImpl deliveryService = new RestServiceDeliveryImpl();
     private WebDriverDiscovery webDriverDiscovery = new WebDriverDiscovery();
     private CommonMethods commonMethods = new CommonMethods();
+    private StandardDocumentPage standardDocumentPage = new StandardDocumentPage();
 
     private static final Logger LOG = LoggerFactory.getLogger(DeliveryBaseUtils.class);
     private File downloadedDoc;
@@ -108,6 +110,25 @@ public class DeliveryBaseUtils {
                 "return $('.kh_standardDocumentAttachment a').attr('href') + '&imageFileName=' + " + fileNameScript + ";");
         String fileName = (String) webDriverDiscovery.getRemoteWebDriver().executeScript(
                 "return " + fileNameScript + ";");
+        return deliveryService.getFileViaHttp(fileUrl, fileName);
+    }
+
+    /**
+     * Download document as Firm Style
+     * WARNING:
+     * 1. User should have an ability to use firm style (e.g., FirmStyle == Grant option on the routing page)
+     * 2. Test should be on the document view page for properly work of this method
+     *
+     * Just FYI: FS url can be obtained by JS "return Cobalt.Url.Absolute(Cobalt.Url.Page.GetDocumentInFirmStyle({" +
+     *                                        "legacyId: documentTabView.documentData.LegacyId, " +
+     *                                        "documentGuid: documentTabView.ViewData.DocumentGuid})) + \"&cookie=true\"";
+     *
+     * @return File with downloaded Firm Style document
+     */
+    public File downloadFsDocument() {
+        String plcRefScript = "return documentTabView.documentData.LegacyId;";
+        String fileUrl = standardDocumentPage.firmStyle().getAttribute("href");
+        String fileName = webDriverDiscovery.getRemoteWebDriver().executeScript(plcRefScript) + ".fs.doc";
         return deliveryService.getFileViaHttp(fileUrl, fileName);
     }
 
