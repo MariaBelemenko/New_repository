@@ -1,4 +1,4 @@
-@e2e @prod
+@e2e @prod @e2eprod
 Feature: E2E Inline Linking
 
   Background:
