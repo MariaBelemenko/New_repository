@@ -20,7 +20,7 @@ import java.util.Map;
 
 public class ScreenShotHook extends BaseStepDef {
 
-    protected static final Logger LOG = LoggerFactory.getLogger(ScreenShotHook.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ScreenShotHook.class);
 
     private RestServiceFFHImpl restServiceFFHImpl = new RestServiceFFHImpl();
     private PageActions pageActions = new PageActions();
@@ -58,7 +58,7 @@ public class ScreenShotHook extends BaseStepDef {
                     resetCurrentUser();
                 }
             } catch (WebDriverException | IOException e) {
-                LOG.error(e.getMessage());
+                LOG.error("Error taking screenshot", e);
             }
         }
     }
@@ -75,7 +75,7 @@ public class ScreenShotHook extends BaseStepDef {
             LOG.info(logText);
             scenario.write(logText);
         } catch (HttpClientErrorException | HttpServerErrorException ex) {
-            LOG.info("Error occurred at attempt to obtain Session Id of current user. Maybe he is not authorized now. Exception: ", ex);
+            LOG.error("Error occurred at attempt to obtain Session Id of current user. Maybe he is not authorized now. Exception: ", ex);
         }
     }
 
@@ -108,7 +108,7 @@ public class ScreenShotHook extends BaseStepDef {
                 LOG.error("Current user's product is null");
             }
         } catch (NoSuchElementException | ElementNotVisibleException nse) {
-            LOG.error("Sign-Off link not found");
+            LOG.error("Sign-Off link not found", nse);
         } finally {
             deleteCookies();
             ExcelFileReader.unlockUser(currentUser.getUserName());
@@ -116,6 +116,7 @@ public class ScreenShotHook extends BaseStepDef {
     }
 
     public boolean newSession() {
+        LOG.info("Returning a new session");
         return System.getProperty("newSession").equalsIgnoreCase("true");
     }
 }
