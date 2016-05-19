@@ -34,7 +34,7 @@ Feature: [792545][792551][792565][792547][702177][792476][792527][792536] uk Sco
     And the user can open the first know how search result "1"
     And the user verifies that the product detail contains PLC Magazine "PLC Magazine (UK)"
 
-  @e2e @prod
+  @e2e @prod @e2eprod
   Scenario: [792476] - Scoped search on HomePage
     Then the user can verify that the scoped search dropdown states "All Content"
     When the user can display the scoped search dropdown menu options
@@ -116,7 +116,7 @@ Feature: [792545][792551][792565][792547][702177][792476][792527][792536] uk Sco
     And the user can open the first know how search result "1"
     And the user verifies that the product detail contains the practice area "PLC UK Commercial"
 
-  @e2e @prod
+  @e2e @prod @e2eprod
   Scenario: [702177][792527] - Scoped search on PA Page
     When has selected the homepage practice area link to "Corporate"
     Then the user can verify that the scoped search dropdown states "Corporate"
@@ -167,7 +167,7 @@ Feature: [792545][792551][792565][792547][702177][792476][792527][792536] uk Sco
     And the user can open the first know how search result "3"
     And the user verifies that the product detail contains the practice area "Finance"
 
-  @e2e @prod
+  @e2e @prod @e2eprod
   Scenario: [792536] - Scoped search on Topic Page
     When the user navigates to practice area "Employment" filtered by "Contracts of employment" topic page
     Then the user can verify that the scoped search dropdown states "Contracts of Employment"
