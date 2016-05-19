@@ -8,12 +8,12 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-htmlreport/FFHFavouritesReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunFFHFavouritesTest.json"},
-        features = "src/test/resources/com/thomsonreuters/ffh/features/favourites",
+        plugin = {"pretty", "html:target/cucumber-htmlreport/FFHShouldReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunFFHShouldTest.json"},
+        features = "src/test/resources/com/thomsonreuters/ffh/features/should",
         tags = {"~@wip", "~@manual", "~@should"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
-public class RunFFHFavouritesTest {
+public class RunFFHShouldTest {
 
     @BeforeClass
     public static void reporting() {
