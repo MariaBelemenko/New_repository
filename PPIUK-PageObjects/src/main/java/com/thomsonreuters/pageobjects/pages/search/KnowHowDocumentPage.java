@@ -86,17 +86,17 @@ public class KnowHowDocumentPage extends CommonDocumentPage {
     }
 
     /**
-     * This object represents the heading "Also Found In" on document display
+     * This object represents the heading "Topic" on document display, Related content section
      */
-    public WebElement alsoFoundInHeader() {
-        return waitForExpectedElement(By.xpath("//div[@id='co_endOfDocument']//div[contains(text(),'Also Found In')]"), 10);
+    public WebElement getRelatedContentTopicsHeader() {
+        return waitForExpectedElement(By.xpath("//div[@id='co_relatedContent']//h3[contains(., 'Topics')]"));
     }
 
     /**
-     * This object represents the topic links within the "Also Found In" section on document display
+     * This object represents the topic links within the "Topics" section on document display, Related Content section
      */
     public WebElement topicPageLink(String topic) {
-        return waitForExpectedElement(By.xpath("//div[@class='co_topics']//li//a[starts-with(text(),'" + topic + "')]"), 10);
+        return waitForExpectedElement(By.xpath("//li[@ng-show='hasTopics']//a[contains(., '" + topic + "')]"));
     }
 
     public WebElement topicPageLinkByURL(String topicURL) {

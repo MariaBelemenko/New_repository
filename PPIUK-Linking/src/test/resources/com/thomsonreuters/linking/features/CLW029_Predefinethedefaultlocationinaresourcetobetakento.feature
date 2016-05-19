@@ -14,6 +14,7 @@ Feature: [CLW029] Verify navigate from resource to other resource or specific se
     | Case Tracker             | 8-102-3365   |
     | External resource        | 7-516-0749   |
     | Ask document             | a-008-4220   |
+    | Practice Note - Overview | 1-519-0278   |
 
   Scenario Outline: For the Sample Practice Note verify the What's Market Links
     Given the "<WhatsMarketPLCref>" of type "PracticeNote" exists on Novus platform

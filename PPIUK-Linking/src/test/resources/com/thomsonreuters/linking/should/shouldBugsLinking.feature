@@ -1,0 +1,28 @@
+@should
+Feature: Scenarios with the SHOULD bugs for Linking project
+
+  ###### FEATURE: CLW004a_relatedContentLinks.feature
+  # SHOULD ISSUE: 884054:[HS][REGRESSION] Link to related content is missed in the several documents
+  @bug
+  Scenario Outline: For the sample docs verify the related content
+    Given for "<PLC document>" I get the related content from Fatwire XML
+    When for "<PLC document>" I get the NORM relations
+    Then the related Content number should be equal
+    Examples:
+      | PLC document TYPE | PLC document |
+      | Practice Note     | 9-376-4010   |
+      | Standard Document | 6-376-3125   |
+
+  ###### FEATURE: CLW004a_relatedContentLinks.feature
+  # SHOULD ISSUE: 825928 RDDBUG: "Content referring..." section  shouldn't be displayed on document
+  @manual @bug
+  Scenario Outline: For the sample asset pages verify the related content
+    Given for "<PLC document>" I get the related content from Fatwire XML
+    When for "<DocFamilyGUID>" I get the asset NORM relations
+    Then the related Content number should be equal
+    Examples:
+      | PLC document TYPE               | PLC document | DocFamilyGUID                     |
+      | Case page                       | D-000-0937   | I5FD3F180880E11E0A5CFF51A80F15F60 |
+      | Legislation Primary Source page | 4-505-6037   | IF2C7B27007CA11E5B038B5D277F7EA62 |
+#The above scenario is part of asset pages project as well form the digital side. It is mpossibel to autoamte the content stuff
+#So better to run it manually.

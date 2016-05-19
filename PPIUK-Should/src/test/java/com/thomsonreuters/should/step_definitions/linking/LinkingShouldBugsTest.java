@@ -143,7 +143,7 @@ public class LinkingShouldBugsTest extends BaseStepDef {
 
     @When("^the user verifies the presence of the Also Found In heading$")
     public void theUserVerifiesThePresenceOfTheAlsoFoundInHeading() throws Throwable {
-        knowHowDocumentPage.alsoFoundInHeader().isDisplayed();
+        knowHowDocumentPage.getRelatedContentTopicsHeader().isDisplayed();
     }
 
     @When("^the user verifies the presence of a link entitled \"(.*)\"$")

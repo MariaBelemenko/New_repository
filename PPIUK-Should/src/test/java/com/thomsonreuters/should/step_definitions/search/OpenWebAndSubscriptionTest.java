@@ -24,7 +24,7 @@ public class OpenWebAndSubscriptionTest extends BaseStepDef {
 
     @And("^the user can verify that the document contains the header Also Found In$")
     public void theUserCanVerifyThatTheDocumentContainsTheHeaderAlsoFoundIn() throws Throwable {
-        knowHowDocumentPage.alsoFoundInHeader().isDisplayed();
+        knowHowDocumentPage.getRelatedContentTopicsHeader().isDisplayed();
     }
 
 }
