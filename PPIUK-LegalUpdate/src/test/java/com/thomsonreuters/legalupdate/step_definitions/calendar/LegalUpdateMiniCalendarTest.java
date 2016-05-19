@@ -108,7 +108,8 @@ public class LegalUpdateMiniCalendarTest extends BaseStepDef {
         for (String date : calendarWidget.dateOptionsList()) {
             try {
                 Integer.valueOf(date.split(" ")[1]);
-            } catch (NumberFormatException nfe) {
+            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+                LOG.info("Month number can not be obtained from the date: " + date, e);
                 result++;
             }
         }

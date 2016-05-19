@@ -18,6 +18,7 @@ public class RemoveAlertFunctionalityFromSubscriptionsTest extends BaseStepDef {
         try {
             subscriptionPreferencesWidget.findElement(By.xpath("//div[@id='nameBox']//descendant::input[@id='addToExisting']"));
         } catch (NoSuchElementException nse) {
+            LOG.info("Unable to find the element: " , nse);
             isDisplayed = false;
         }
         assertFalse("Add to existing checkbox is displayed", isDisplayed);
@@ -29,6 +30,7 @@ public class RemoveAlertFunctionalityFromSubscriptionsTest extends BaseStepDef {
         try {
             subscriptionPreferencesWidget.findElement(By.xpath("//div[@id='nameBox']//descendant::select[@id='existingUpdates']"));
         } catch (NoSuchElementException nse) {
+            LOG.info("Unable to find the element: " , nse);
             isDisplayed = false;
         }
         assertFalse("Select existing update dropdown is displayed", isDisplayed);
