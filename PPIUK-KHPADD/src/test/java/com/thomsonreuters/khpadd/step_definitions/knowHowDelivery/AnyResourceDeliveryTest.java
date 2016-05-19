@@ -27,7 +27,7 @@ public class AnyResourceDeliveryTest extends BaseStepDef {
 
     @When("user added new annotation")
     public void userAddedNewAnnotation() throws Throwable {
-        if(!sharedAnnotationsPage.isAnnotationsDisplayed()) {
+        if(!sharedAnnotationsPage.isAnnotationDisplayed()) {
             deliveryPage.clickOnLink(DocumentDeliveryPage.Links.NEW_ANNOTATION);
             input = "input" + System.currentTimeMillis();
             sharedAnnotationsPage.amendInput(input);
