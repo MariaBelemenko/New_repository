@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber-htmlreport/AssetPagesDownloadReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunAssetPagesDownloadTest.json"},
         features = "src/test/resources/com/thomsonreuters/assetpages/features/download",
-        tags = {"~@wip", "~@manual"},
+        tags = {"~@wip", "~@manual", "~@should"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
 public class RunAssetPagesDownloadTest {
