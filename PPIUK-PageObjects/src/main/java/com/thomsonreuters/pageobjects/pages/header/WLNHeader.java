@@ -471,4 +471,15 @@ public class WLNHeader extends AbstractPage {
         return By.id("co_userSettingsTabPanels");
     }
 
+    public WebElement compartmentToggleDropDown() {
+        return waitForExpectedElement(By.xpath("//div[@id='navigation_left']//a[@title='Open compartments']"));
+    }
+
+    public WebElement compartmentToggleDropDownLink(String prod) {
+        return waitForExpectedElement(By.xpath("//div[@id='navigation_left']//a[contains(@href,'"+prod+"')]"));
+    }
+
+    public WebElement practicalLawLogo() {
+        return waitForExpectedElement(By.xpath("//a[@id='logo']//img[@alt='Practical Law']"));
+    }
 }

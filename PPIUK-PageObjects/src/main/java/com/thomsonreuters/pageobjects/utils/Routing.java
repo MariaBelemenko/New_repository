@@ -40,7 +40,8 @@ public enum Routing {
     WLN_ANNOTATIONS, 
     FOLDERS,
     ANZ_IAC,
-    GLOBAL_PAGE;
+    GLOBAL_PAGE,
+    SITE_STRUCTURE;
 
 
 }
