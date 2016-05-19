@@ -5,7 +5,7 @@ Feature: [702171][702170] - ukScopedSearch.feature
       | userName | SearchKnowHowUser6 |
     And the user is on the home page 
 
-  @e2e @prod
+  @e2e @prod @e2eprod
   Scenario Outline: [702171] As a PL+ user conducting a search from a subject area (topic) page (and therefore the search is already scoped), I will only see results coded to that subject area and its parent practice area.
     And the user selects the link to Media and Telecoms
     And the user selects the link to Social Media
