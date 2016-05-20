@@ -28,6 +28,7 @@ public class ProdFirmStyleFastDraftAnnotationsTest extends BaseStepDef {
     @When("^the user selects the know how option to apply filters$")
     public void theUserSelectsTheKnowHowOptionToApplyFilters() throws Throwable {
         globalCategoryPage.executeScript("scroll(250,0);");
+        theUserIsAbleToCheckWhetherTheOptionToApplyFiltersIsDisplayedAndIfNotToEnsureThatItIs();
         knowHowSearchResultsPage.applyFiltersButton().click();
         knowHowSearchResultsPage.waitForSearchResults();
     }
