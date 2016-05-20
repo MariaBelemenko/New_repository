@@ -43,3 +43,76 @@ And Displayed inline notes are hidden
 When user deletes All annotations
 And the user verifies the annotations count under link
 Then Annotations count should be displayed as zero
+
+@manual
+Scenario Outline: Share inline notes to reviewer with the rich text style text
+  Given PL+ user is logged in with following details
+    | userName | librarian1 |
+  And user navigates directly to document with guid "I63cd7ba5e68b11e398db8b09b4f043e0"
+  When user has created the inline notes with "<style>"
+  Then inline notes saved with the "<style>"
+  And user has shared the inline notes with another contact "librarian3"
+  And user logs out
+  Given PL+ user is logged in with following details
+    | userName | librarian3 |
+  When user navigates directly to document with guid "I63cd7ba5e68b11e398db8b09b4f043e0"
+  Then the inline notes should be displayed in the "<style>" format
+  Examples:
+    | style         |
+    | bold          |
+    | italic        |
+    | underline     |
+    | strikethrough |
+
+@manual
+Scenario: Verify Undo/Redo options
+  Given PL+ user is logged in with following details
+    | userName | librarian1 |
+  When user navigates directly to document with guid "I3351a7b0e8da11e398db8b09b4f043e0"
+  And the user has accessed annotations text box
+  Then verify the UNDO and REDO is disabled
+  And enter the sample text
+  Then verify the "UNDO" is enabled
+  And verify the "REDO" is disabled
+  When selecting "UNDO"
+  Then entered text will be removed
+  And verify the "REDO" is enabled
+  And verify the "UNDO" is disabled
+  When selecting "REDO"
+  Then removed text will be displayed
+  And verify the "REDO" is disabled
+  And verify the "UNDO" is enabled
+
+@manual
+Scenario: Create Inline Notes on PL+ document And Verify PL+ Inline Notes are not accessible in WLN
+  Given PL+ user is logged in with following details
+    | userName   | librarian1 |
+    | newSession | TRUE       |
+  When user navigates directly to document with guid "I33f12c20e8cd11e398db8b09b4f043e0"
+  And user added new Inline Notes
+  Then verify saved Inline Notes text will be displayed with metadata
+  Given WLN user is logged in with following details
+    | userName         | librarian1      |
+    | product          | WLN             |
+    | routing          | WLN_ANNOTATIONS |
+    | mandatoryRouting | YES             |
+    | newSession       | TRUE            |
+  And user navigates directly to WLN document with guid "I33f12c20e8cd11e398db8b09b4f043e0"
+  Then user should not be able to see the Inline Notes created in PLC site
+
+@manual
+Scenario: Create Inline Notes on WLN document And Verify WLN Inline Notes are not accessible in PL+
+  Given WLN user is logged in with following details
+    | userName         | librarian1      |
+    | product          | WLN             |
+    | routing          | WLN_ANNOTATIONS |
+    | mandatoryRouting | YES             |
+    | newSession       | TRUE            |
+  And user navigates directly to WLN document with guid "Ic9d547982b9f11e598dc8b09b4f043e0"
+  And user added WLN new Inline Notes
+  Then verify saved Inline Notes text will be displayed with metadata in WLN
+  Given PL+ user is logged in with following details
+    | userName   | librarian1 |
+    | newSession | TRUE       |
+  When user navigates directly to document with guid "Ic9d547982b9f11e598dc8b09b4f043e0"
+  Then user should not be able to see the Inline Notes created in WLN site

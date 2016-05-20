@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
         plugin = {"pretty", "html:target/cucumber-htmlreport/AnnotationsFACReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunAnnotationsFACTest.json"},
         features = "src/test/resources/com/thomsonreuters/annotations/features/sharing",
         monochrome = true,
-        tags = {"~@wip", "~@manual"},
+        tags = {"~@wip", "~@manual", "~@should"},
         snippets = SnippetType.CAMELCASE)
 public class RunAnnotationsFACTest {
     private static final Logger LOG = LoggerFactory.getLogger(RunAnnotationsFACTest.class);
