@@ -20,7 +20,7 @@ Feature: [816738] Navigate from Topics sections (previously Also Found In) secti
     | Consumer credit resources | Consumer Credit       |
 
   #848618 - Impossible to link to relevant Topic page from 'Also found in' section by OW user
-  @bug@katsiaryna
+  @bug
   Scenario Outline: (bug#848618)[846363] Also Found in section available for OW users
     Given PL+ user is not logged in
     When user navigates directly to document with guid "<guid>"
