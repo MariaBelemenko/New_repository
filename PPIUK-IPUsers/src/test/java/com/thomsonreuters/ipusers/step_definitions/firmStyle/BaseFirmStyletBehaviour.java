@@ -5,6 +5,7 @@ import com.thomsonreuters.pageobjects.common.FileActions;
 import com.thomsonreuters.pageobjects.common.WindowHandler;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.PracticalLawToolsPage;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.StandardDocumentPage;
+import com.thomsonreuters.pageobjects.rest.DeliveryBaseUtils;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.assertj.core.api.SoftAssertions;
@@ -22,6 +23,7 @@ public class BaseFirmStyletBehaviour extends BaseStepDef {
     private WindowHandler windowHandler;
     private FileActions fileActions;
     private PracticalLawToolsPage practicalLawToolsPage;
+    private DeliveryBaseUtils deliveryBaseUtils;
 
     private final static String DOWNLOADED_FILE_PATH = System.getProperty("user.home") + "/Downloads";
     private File downloadedFile = null;
@@ -31,6 +33,7 @@ public class BaseFirmStyletBehaviour extends BaseStepDef {
         windowHandler = new WindowHandler();
         fileActions = new FileActions();
         practicalLawToolsPage = new PracticalLawToolsPage();
+        deliveryBaseUtils = new DeliveryBaseUtils();
     }
 
     @Then("^the user sees the Firm Style link$")
@@ -75,21 +78,11 @@ public class BaseFirmStyletBehaviour extends BaseStepDef {
 
     @When("the user clicks Firm Style link and download a document")
     public void clickFirmStyleAndDownloadDocument() throws Throwable {
-        windowHandler.fileDownload(standardDocumentPage.firmStyle());
+        downloadFirmStyle();
     }
 
     @Then("^the file \"([^\"]*)\" should be downloaded to the users machine$")
     public void fileShouldDownloadToTheUsersMachine(String name) throws Throwable {
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_ESCAPE);
-        robot.keyRelease(KeyEvent.VK_ESCAPE);
-
-        downloadedFile = fileActions.findFile(name, DOWNLOADED_FILE_PATH);
         assertTrue("File was not downloaded", downloadedFile != null && downloadedFile.exists());
     }
 
@@ -107,6 +100,10 @@ public class BaseFirmStyletBehaviour extends BaseStepDef {
     public void clickHomePage() throws Throwable {
         standardDocumentPage.homePage().click();
         standardDocumentPage.waitForPageToLoad();
+    }
+
+    private void downloadFirmStyle() {
+        downloadedFile = deliveryBaseUtils.downloadFsDocument();
     }
 
 }
