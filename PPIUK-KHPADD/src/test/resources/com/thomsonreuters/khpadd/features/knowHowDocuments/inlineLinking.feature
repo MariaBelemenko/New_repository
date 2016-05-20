@@ -19,7 +19,7 @@ Feature: E2E Inline Linking
     When the user clicks on 'Documenting an asset purchase' link in 'Step 2: Intra-group asset transfer from Holdco to Topco' section of the document
     Then scrolled heading "Documenting an asset purchase" is displayed on the sticky bar
     When the user clicks Back button in browser '1' times
-    Then scrolled heading "Step 3: General meeting to approve the section 110 scheme" is displayed on the sticky bar
+    Then scrolled heading "Step 2: Intra-group asset transfer from Holdco to Topco" is displayed on the sticky bar
 
   Scenario: Verify Link to the External Document in new Tab
     When the user searches for "Tax fraud and evasion"
