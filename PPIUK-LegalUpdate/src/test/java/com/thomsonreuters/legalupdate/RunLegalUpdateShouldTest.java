@@ -8,17 +8,17 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-htmlreport/LUSubscriptionReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunLegalUpdateSubscriptionTest.json"},
-        features = "src/test/resources/com/thomsonreuters/legalupdate/features/subscription",
+        plugin = {"pretty", "html:target/cucumber-htmlreport/LUWidgetReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunLegalUpdateWidgetTest.json"},
+        features = "src/test/resources/com/thomsonreuters/legalupdate/features/should",
         tags = {"~@wip", "~@manual", "~@should"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
-public class RunLegalUpdateSubscriptionTest {
+public class RunLegalUpdateShouldTest {
 
     @BeforeClass
     public static void reporting() {
         if (System.getProperty("username").equals("None")) {
-            System.setProperty("username", "LegalUpdateUser7");
+            System.setProperty("username", "LegalUpdateUser8");
             System.setProperty("password", "Password1");
         }
         else {

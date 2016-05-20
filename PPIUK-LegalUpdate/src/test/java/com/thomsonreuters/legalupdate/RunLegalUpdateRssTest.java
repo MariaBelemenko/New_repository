@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber-htmlreport/LURSSReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunLegalUpdateRssTest.json"},
         features = "src/test/resources/com/thomsonreuters/legalupdate/features/rss",
-        tags = {"~@wip", "~@manual"},
+        tags = {"~@wip", "~@manual", "~@should"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
 public class RunLegalUpdateRssTest {
