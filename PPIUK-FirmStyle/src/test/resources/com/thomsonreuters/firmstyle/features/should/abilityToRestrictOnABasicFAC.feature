@@ -1,4 +1,4 @@
-@e2e
+@e2e @should
 Feature: [780805] FS4 Testing Restrict on basis FAC
 
   # 830028 [REGRESSION] Wrong path to Firm Style maketing page

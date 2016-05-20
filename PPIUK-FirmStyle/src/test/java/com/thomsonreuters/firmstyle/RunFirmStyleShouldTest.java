@@ -8,12 +8,12 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-htmlreport/ResearchBrowseLinkReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunFirmStyleLinkTest.json"},
-        features = "src/test/resources/com/thomsonreuters/firmstyle/features/link",
+        plugin = {"pretty", "html:target/cucumber-htmlreport/FirmStyleShouldReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunFirmStyleShouldTest.json"},
+        features = "src/test/resources/com/thomsonreuters/firmstyle/features/common",
         tags = {"~@wip", "~@manual", "~@robot", "~@should"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
-public class RunFirmStyleLinkTest {
+public class RunFirmStyleShouldTest {
 
     @BeforeClass
     public static void reporting() {
@@ -27,3 +27,4 @@ public class RunFirmStyleLinkTest {
     }
 
 }
+

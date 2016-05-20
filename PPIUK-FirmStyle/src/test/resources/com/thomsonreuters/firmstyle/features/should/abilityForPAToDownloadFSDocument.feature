@@ -1,4 +1,4 @@
-@e2e
+@e2e @should
 Feature: [803549] Testing Firm Style direct link
 
   # This test uses JAVA Robot, therefore it could be run locally only
