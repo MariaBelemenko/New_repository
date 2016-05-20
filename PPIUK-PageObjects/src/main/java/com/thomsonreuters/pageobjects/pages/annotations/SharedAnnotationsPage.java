@@ -47,7 +47,12 @@ public class SharedAnnotationsPage extends AbstractPage {
      * @return boolean
      */
     public boolean isTextBoxDisplayed() {
-        return isElementDisplayed(retryingFindElement(IFRAME_LOCATOR));
+        try {
+            return waitForExpectedElement(IFRAME_LOCATOR, TIMEOUT_5_SECONDS).isDisplayed();
+
+        } catch (TimeoutException te) {
+            return false;
+        }
     }
 
     /**
@@ -66,7 +71,11 @@ public class SharedAnnotationsPage extends AbstractPage {
      * @return boolean
      */
     private boolean isWarningMessagePresent() {
-        return getWarningMessageOKButton().isDisplayed();
+        try {
+            return getWarningMessageOKButton().isDisplayed();
+        } catch (TimeoutException te) {
+            return false;
+        }
     }
 
     /**
@@ -88,7 +97,11 @@ public class SharedAnnotationsPage extends AbstractPage {
      * @param input
      */
     public void insertInputInWLNAnnotationTextBox(String input) {
-        retryingFindElement(By.cssSelector(".co_noteArea")).sendKeys(input);
+        try {
+            retryingFindElement(By.cssSelector(".co_noteArea")).sendKeys(input);
+        } catch (PageOperationException te) {
+            throw new PageOperationException("Exceeded time to find the Annotations text box in WLN" + te.getMessage());
+        }
     }
 
     /**
@@ -147,7 +160,11 @@ public class SharedAnnotationsPage extends AbstractPage {
      * @return boolean
      */
     public boolean isSharingIconVisible(String input) {
-        return isElementPresent(By.xpath("//div[@class='co_viewNoteText mce-content-body']/p[text()='" + input + "']/../../div[@class='co_noteHeader']"));
+        try {
+            return waitForElementPresent(By.xpath("//div[@class='co_viewNoteText mce-content-body']/p[text()='" + input + "']/../../div[@class='co_noteHeader']")).isDisplayed();
+        } catch (TimeoutException te) {
+            return false;
+        }
     }
 
     /**
@@ -156,13 +173,12 @@ public class SharedAnnotationsPage extends AbstractPage {
      *
      * @return boolean
      */
-    public boolean isAnnotationDisplayed() {
-        return isElementDisplayed(retryingFindElement(By.cssSelector(".co_viewNoteText.mce-content-body")));
-    }
-
-    public boolean isWidgetPresent(By pathToElementToBeDisplayed) {
-        LOG.info("The widget is displayed");
-        return retryingFindElement(pathToElementToBeDisplayed).isDisplayed();
+    public boolean isAnnotationsDisplayed() {
+        try {
+            return waitForExpectedElement(By.cssSelector(".co_viewNoteText.mce-content-body"), TIMEOUT_5_SECONDS).isDisplayed();
+        } catch (TimeoutException te) {
+            return false;
+        }
     }
 
     /**
@@ -172,7 +188,11 @@ public class SharedAnnotationsPage extends AbstractPage {
      * @return boolean
      */
     public boolean isAnnotationsCountDisplayed() {
-        return isWidgetPresent(By.id("co_ToggleAnnotationCount"));
+        try {
+            return retryingFindElement(By.id("co_ToggleAnnotationCount")).isDisplayed();
+        } catch (PageOperationException poe) {
+            return false;
+        }
     }
 
     /**
@@ -184,8 +204,8 @@ public class SharedAnnotationsPage extends AbstractPage {
         try {
             return Integer.parseInt(retryingFindElement(By.id("co_ToggleAnnotationCount")).getText());
         } catch (PageOperationException | NumberFormatException poe) {
-            return 0;
         }
+        return 0;
     }
 
     /**
@@ -206,8 +226,8 @@ public class SharedAnnotationsPage extends AbstractPage {
         try {
             return retryingFindElements(By.cssSelector("span.co_noteHolderActive>div.co_hideState+a[title='Minimize']")).size();
         } catch (PageOperationException poe) {
-            return 0;
         }
+        return 0;
     }
 
     /**
@@ -263,7 +283,6 @@ public class SharedAnnotationsPage extends AbstractPage {
                 return findElement(pathToAnnotation).isDisplayed();
             }
         } catch (TimeoutException | NoSuchElementException te) {
-            return false;
         } catch (StaleElementReferenceException sle) {
             isSavedAnnotationDisplayed(input, result);
         }
@@ -298,7 +317,11 @@ public class SharedAnnotationsPage extends AbstractPage {
      */
 
     public boolean isSavedAnnotationTextDisplayedAsLink(String input) {
-        return isElementPresent(By.xpath("//div[@class='co_viewNoteText mce-content-body']/p/a[text()='" + input + "']"));
+        try {
+            return waitForElementPresent(By.xpath("//div[@class='co_viewNoteText mce-content-body']/p/a[text()='" + input + "']")).isDisplayed();
+        } catch (TimeoutException te) {
+            return false;
+        }
     }
 
     /**
@@ -309,7 +332,11 @@ public class SharedAnnotationsPage extends AbstractPage {
      * @return boolean
      */
     public boolean isSavedAnnotationTextDisplayedWithLink(String textOrUrl) {
-        return isElementPresent(By.xpath("//div[@class='co_viewNoteText mce-content-body']/p[contains(text(),'" + textOrUrl + "')]"));
+        try {
+            return waitForElementPresent(By.xpath("//div[@class='co_viewNoteText mce-content-body']/p[contains(text(),'" + textOrUrl + "')]")).isDisplayed();
+        } catch (TimeoutException te) {
+            return false;
+        }
     }
 
     /**
@@ -425,9 +452,8 @@ public class SharedAnnotationsPage extends AbstractPage {
             getDeleteElement();
             return true;
         } catch (PageOperationException te) {
-            LOG.info("The given annotation icon is not displayed", te);
-            return false;
         }
+        return false;
     }
 
     /**
@@ -471,7 +497,6 @@ public class SharedAnnotationsPage extends AbstractPage {
                         try {
                             waitForElementInvisible(By.id(element.getAttribute("id")));
                         } catch (StaleElementReferenceException sle) {
-                            deleteAnnotation(user);
                         }
                     }
                 }
@@ -520,8 +545,8 @@ public class SharedAnnotationsPage extends AbstractPage {
         try {
             return retryingFindElement(By.cssSelector(".co_notes .co_infoBox_message")).getText().contains(message);
         } catch (PageOperationException te) {
-            return false;
         }
+        return false;
     }
 
     /**
@@ -531,7 +556,11 @@ public class SharedAnnotationsPage extends AbstractPage {
      * @return boolean
      */
     public boolean isUndoButtonDisplayed() {
-        return isWidgetPresent(By.className("co_notes_undoLink"));
+        try {
+            return retryingFindElement(By.className("co_notes_undoLink")).isDisplayed();
+        } catch (PageOperationException te) {
+        }
+        return false;
     }
 
     /**
@@ -541,25 +570,33 @@ public class SharedAnnotationsPage extends AbstractPage {
      * @return boolean
      */
     public boolean isCloseButtonDisplayed() {
-        return isWidgetPresent(By.className("co_notes_closeLink"));
-    }
-
-    public void retryFindElement(By pathToSearchingElement) {
-        retryingFindElement(pathToSearchingElement).click();
+        try {
+            return retryingFindElement(By.className("co_notes_closeLink")).isDisplayed();
+        } catch (PageOperationException te) {
+        }
+        return false;
     }
 
     /**
      * Clicking on undo delete button to undo the deleted annotation.
      */
     public void undoDelete() {
-        retryFindElement(By.className("co_notes_undoLink"));
+        try {
+            retryingFindElement(By.className("co_notes_undoLink")).click();
+        } catch (PageOperationException te) {
+            throw new PageOperationException("Unable to select undo icon on: " + te.getMessage());
+        }
     }
 
     /**
      * Closes down the delete successful message.
      */
     public void closeDeleteMessage() {
-        retryFindElement(By.className("co_notes_closeLink"));
+        try {
+            retryingFindElement(By.className("co_notes_closeLink")).click();
+        } catch (PageOperationException te) {
+            throw new PageOperationException("Unable to select close icon on: " + te.getMessage());
+        }
     }
 
     /**
@@ -569,7 +606,11 @@ public class SharedAnnotationsPage extends AbstractPage {
      * @return boolean
      */
     public boolean isContactsLinkDisplayed() {
-        return isWidgetPresent(By.cssSelector("#sharedNotesHyperlink #contactsId"));
+        try {
+            return retryingFindElement(By.cssSelector("#sharedNotesHyperlink #contactsId")).isDisplayed();
+        } catch (PageOperationException te) {
+        }
+        return false;
     }
 
     /**
@@ -579,14 +620,22 @@ public class SharedAnnotationsPage extends AbstractPage {
      * @return boolean
      */
     public boolean isPreviousContactsLinkDisplayed() {
-        return isWidgetPresent(By.cssSelector("#sharedNotesHyperlink #previousId"));
+        try {
+            return retryingFindElement(By.cssSelector("#sharedNotesHyperlink #previousId")).isDisplayed();
+        } catch (PageOperationException te) {
+        }
+        return false;
     }
 
     /**
      * Clicks on contacts link present under the annotation.
      */
     public void clickOnContactsLink() {
-        retryFindElement(By.cssSelector("#sharedNotesHyperlink #contactsId"));
+        try {
+            retryingFindElement(By.cssSelector("#sharedNotesHyperlink #contactsId")).click();
+        } catch (PageOperationException te) {
+            throw new PageOperationException("Unable to clickon Contacts link. " + te.getMessage());
+        }
     }
 
     /**
@@ -596,17 +645,11 @@ public class SharedAnnotationsPage extends AbstractPage {
      * @return boolean
      */
     public boolean isContactsGroupsPageDisplayed() {
-        return isWidgetPresent(By.cssSelector("#sharedNotesHyperlink #previousId"));
-    }
-
-    public void searchElement(By pathToSearchingElement, String name) {
         try {
-            WebElement element = waitFluentForElement(pathToSearchingElement);
-            element.clear();
-            element.sendKeys(name);
-        } catch (TimeoutException te) {
-            throw new PageOperationException("Exceeded time to find the search box. " + te.getMessage());
+            return retryingFindElement(By.cssSelector("#sharedNotesHyperlink #previousId")).isDisplayed();
+        } catch (PageOperationException te) {
         }
+        return false;
     }
 
     /**
@@ -615,14 +658,13 @@ public class SharedAnnotationsPage extends AbstractPage {
      * @param contact
      */
     public void searchContact(String contact) {
-        searchElement(By.id("coid_contacts_people_searchBoxInput_contacts"), contact);
-    }
-
-    /**
-     * Search for the given contact in the contacts and groups popup page.
-     */
-    public void waitForContact() {
-        waitForExpectedElement(By.id("coid_contacts_people_searchBoxInput_contacts"));
+        try {
+            WebElement element = waitFluentForElement(By.id("coid_contacts_people_searchBoxInput_contacts"));
+            element.clear();
+            element.sendKeys(contact);
+        } catch (TimeoutException te) {
+            throw new PageOperationException("Exceeded time to find the search box. " + te.getMessage());
+        }
     }
 
     /**
@@ -634,21 +676,6 @@ public class SharedAnnotationsPage extends AbstractPage {
         return tinyMceEditor.getText();
     }
 
-    public boolean isElementFoundInSearch(By pathToSearchingElement, String elementName) {
-        try {
-            for (WebElement result : retryingFindElements(pathToSearchingElement)) {
-                if (elementName.equals(result.getText())) {
-                    return true;
-                }
-            }
-        } catch (PageOperationException te) {
-            LOG.error("The element wasn't found in search", te);
-        } catch (StaleElementReferenceException sle) {
-            isContactFoundInSearch(elementName);
-        }
-        return false;
-    }
-
     /**
      * Verifies that given contact has found or not in  Contacts And Groups popup page.
      * Returns true if given contact found otherwise false
@@ -657,7 +684,17 @@ public class SharedAnnotationsPage extends AbstractPage {
      * @return boolean
      */
     public boolean isContactFoundInSearch(String contact) {
-        return isElementFoundInSearch(By.cssSelector("#coid_contacts_peopleListItems_contacts a[role='checkbox']"), contact);
+        try {
+            for (WebElement result : retryingFindElements(By.cssSelector("#coid_contacts_peopleListItems_contacts a[role='checkbox']"))) {
+                if (contact.equals(result.getText())) {
+                    return true;
+                }
+            }
+        } catch (PageOperationException te) {
+        } catch(StaleElementReferenceException sle){
+            isContactFoundInSearch(contact);
+        }
+        return false;
     }
 
     /**
@@ -666,14 +703,13 @@ public class SharedAnnotationsPage extends AbstractPage {
      * @param group
      */
     public void searchGroup(String group) {
-        searchElement(By.id("coid_contacts_groups_searchBoxInput"), group);
-    }
-
-    /**
-     * Search for the given group in the Groups list.
-     */
-    public void waitForGroup() {
-        waitForExpectedElement(By.id("coid_contacts_groups_searchBoxInput"));
+        try {
+            WebElement element = waitFluentForElement(By.id("coid_contacts_groups_searchBoxInput"));
+            element.clear();
+            element.sendKeys(group);
+        } catch (TimeoutException te) {
+            throw new PageOperationException("Exceeded time to find the search box. " + te.getMessage());
+        }
     }
 
     /**
@@ -684,7 +720,17 @@ public class SharedAnnotationsPage extends AbstractPage {
      * @return boolean
      */
     public boolean isGroupFoundInSearch(String group) {
-        return isElementFoundInSearch(By.cssSelector("#coid_contacts_groupsListItems a[role='checkbox']"), group);
+        try {
+            for (WebElement result : retryingFindElements(By.cssSelector("#coid_contacts_groupsListItems a[role='checkbox']"))) {
+                if (group.equals(result.getText())) {
+                    return true;
+                }
+            }
+        } catch (PageOperationException te) {
+        } catch (StaleElementReferenceException ste) {
+            isGroupFoundInSearch(group);
+        }
+        return false;
     }
 
     /**
@@ -751,9 +797,8 @@ public class SharedAnnotationsPage extends AbstractPage {
         try {
             return waitForExpectedElement(formatType.getStyleLocator()).findElement(By.xpath(".//../..")).getAttribute("class").contains("mce-active");
         } catch (TimeoutException te) {
-            LOG.info("Exceeded time to wait Formats menu style in tinymce editor", te);
-            return false;
         }
+        return false;
     }
 
     /**
@@ -905,11 +950,7 @@ public class SharedAnnotationsPage extends AbstractPage {
      */
     public void selectGroup(String group) {
         try {
-            for (WebElement result : retryingFindElements(By.cssSelector("#coid_contacts_groupsListItems a[role='checkbox']"))) {
-                if (group.equals(result.getText())) {
-                    result.click();
-                }
-            }
+            waitForElementToBeClickableAndReturnElement(By.xpath(String.format("//*[@id='coid_contacts_groupsListItems']//a[@role='checkbox' and text()='%s']", group))).click();
         } catch (PageOperationException te) {
             throw new PageOperationException("Unable to find the group in contacts list: " + group);
         } catch (StaleElementReferenceException sle) {

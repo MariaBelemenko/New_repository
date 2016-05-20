@@ -483,7 +483,7 @@ public class AnnotationsStepDef extends BaseStepDef {
 
     @Then("^shared annotation should be displayed$")
     public void sharedAnnotationIsDisplayedToViewer() throws Throwable {
-        if (!sharedAnnotationsPage.isAnnotationDisplayed()) {
+        if (!sharedAnnotationsPage.isAnnotationsDisplayed()) {
             deliveryPage.clickOnLink(DocumentDeliveryPage.Links.SHOW_HIDE_ANNOTATIONS);
         }
         LOG.info("Annotation contains text: " + input);
@@ -556,7 +556,7 @@ public class AnnotationsStepDef extends BaseStepDef {
 
     @When("^search for Contact \"(.*?)\"$")
     public void searchForContact(String contact) throws Throwable {
-        sharedAnnotationsPage.waitForContact();
+        sharedAnnotationsPage.searchContact(getUserFullName(contact));
         LOG.info("Contact " + contact + " has been found");
     }
 
@@ -614,7 +614,7 @@ public class AnnotationsStepDef extends BaseStepDef {
     @When("^user has shared the annotations with another contact \"(.*?)\"$")
     public void userHasSharedTheAnnotationsWithAnotherContact(String contact) throws Throwable {
         sharedAnnotationsPage.clickOnContactsLink();
-        sharedAnnotationsPage.waitForContact();
+        sharedAnnotationsPage.searchContact(getUserFullName(contact));
         sharedAnnotationsPage.selectContact(getUserNameStartswithLastName(contact));
         sharedAnnotationsPage.selectInsertButtonOnContactsPage();
         sharedAnnotationsPage.scrollToTinyMceEditor();
@@ -628,7 +628,7 @@ public class AnnotationsStepDef extends BaseStepDef {
     @When("^user has shared the annotations with new group and \"(.*?)\" as member$")
     public void userHasSharedTheAnnotationsWithAnotherGroup(String contact) throws Throwable {
         sharedAnnotationsPage.clickOnContactsLink();
-        sharedAnnotationsPage.waitForGroup();
+        sharedAnnotationsPage.searchGroup(groupName);
         if (!sharedAnnotationsPage.isGroupFoundInSearch(groupName)) {
             sharedAnnotationsPage.addGroup(groupName, getUserNameStartswithLastName(contact));
         }
@@ -1021,13 +1021,13 @@ public class AnnotationsStepDef extends BaseStepDef {
 
     @Then("^Hidden annotations are displayed$")
     public void hiddenAnnotationsAreDisplayed() throws Throwable {
-        assertTrue(sharedAnnotationsPage.isAnnotationDisplayed());
+        assertTrue(sharedAnnotationsPage.isAnnotationsDisplayed());
         LOG.info("Hidden annotations are displayed");
     }
 
     @Then("^Displayed annotations are hidden$")
     public void displayedAnnotationsAreHidden() throws Throwable {
-        assertFalse(sharedAnnotationsPage.isAnnotationDisplayed());
+        assertFalse(sharedAnnotationsPage.isAnnotationsDisplayed());
         LOG.info("Displayed annotations are hidden");
     }
 
