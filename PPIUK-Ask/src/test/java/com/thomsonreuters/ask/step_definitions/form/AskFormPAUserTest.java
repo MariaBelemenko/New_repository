@@ -7,15 +7,18 @@ import com.thomsonreuters.pageobjects.pages.ask.AskFormPage;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePage;
 import com.thomsonreuters.pageobjects.utils.ask.AskFormField;
 import com.thomsonreuters.pageobjects.utils.form.FormUtils;
+import cucumber.api.DataTable;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.assertj.core.api.SoftAssertions;
 import org.hamcrest.core.Is;
 import org.openqa.selenium.NoSuchWindowException;
+import org.openqa.selenium.WebElement;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.IsNot.not;
@@ -109,6 +112,18 @@ public class AskFormPAUserTest extends BaseStepDef {
                     .isEqualTo(askFormField.getErrorMessage());
         }
         softAssertions.assertAll();
+    }
+
+    @Then("^user verifies that when (.*) is selected corresponding (.*) dropdownlist have valid values$")
+    public void userVerifiesThatWhenOrganisationTypeIsSelectedCorrespondingPositionDroplistHaveValidValues(String baseDropDown, String childDropDown, DataTable dataTable) throws Throwable {
+        for (Map<String, String> map : dataTable.asMaps(String.class, String.class)) {
+            String baseDropDownValue = map.get(baseDropDown);
+            String childDropDownValues = map.get(childDropDown);
+            WebElement basedropdownList = askFormPage.waitForElementPresent(AskFormField.getByFieldDisplayName(baseDropDown).getBy());
+            askFormPage.selectDropDownByVisibleText(basedropdownList, baseDropDownValue);
+            WebElement childdropdownList = askFormPage.waitForElementPresent(AskFormField.getByFieldDisplayName(childDropDown).getBy());
+            assertThat(childDropDown + " drop down list for " + baseDropDownValue + ",does  NOT contain expected values :" + childDropDownValues, childdropdownList.getText().replaceAll("\\n", ","), Is.is(childDropDownValues));
+        }
     }
 
 }
