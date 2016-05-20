@@ -137,11 +137,11 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
     public void plUserIsNotLoggedIn() throws Throwable {
         if (!isUserFirstUser(currentUser)) {
             newSession(currentUser);
-            navigationCobalt.navigateToPLUKPlus();
-            plcHomePage.closeCookieConsentMessage();
         } else {
             LOG.info("No need to create new session. Current user: " + currentUser + " is the first user");
         }
+        navigationCobalt.navigateToPLUKPlus();
+        plcHomePage.closeCookieConsentMessage();
     }
 
     @Given("^PL\\+ user is logged in$")

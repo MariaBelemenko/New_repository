@@ -1,11 +1,14 @@
 package com.thomsonreuters.linking.step_definitions;
 
 import com.thomsonreuters.pageobjects.common.PageActions;
+import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawUKCategoryPage;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.TopicPage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowDocumentPage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
+
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.Keys;
@@ -25,6 +28,9 @@ public class NavigateFromDocToTopicPgTest extends BaseStepDef {
     private KnowHowSearchResultsPage knowHowSearchResultsPage = new KnowHowSearchResultsPage();
     private KnowHowDocumentPage knowHowDocumentPage = new KnowHowDocumentPage();
     private TopicPage topicPage = new TopicPage();
+    private NavigationCobalt navigationCobalt = new NavigationCobalt();
+    
+    int CUSTOM_DRIVER_WAIT_TIME = 120;
 
     @When("^the user runs a free text search for the query \"(.*)\"$")
     public void theUserRunsAFreeTextSearchForTheQuery(String query) throws Throwable {
@@ -86,6 +92,12 @@ public class NavigateFromDocToTopicPgTest extends BaseStepDef {
     @When("^the user verifies that the topic page entitled \"(.*)\" is displayed to the user$")
     public void theUserVerifiesThatTheTopicPageEntitledIsDisplayedToTheUser(String topic) throws Throwable {
         assertTrue("Topic page title does not contains '" + topic + "'", topicPage.topicPageTitle().getText().contains("topic"));
+    }
+    
+    @Given("^user navigates directly to document with guid \"(.*?)\"$")
+    public void userNavigatesDirectlyToDocumentWithGuid(String guid) throws Throwable {
+        navigationCobalt.navigateToWLNSpecificResourcePage("/Document/" + guid + "/View/FullText.html");
+        topicPage.waitForPageToLoadAndJQueryProcessingWithCustomTimeOut(CUSTOM_DRIVER_WAIT_TIME);
     }
 
 }

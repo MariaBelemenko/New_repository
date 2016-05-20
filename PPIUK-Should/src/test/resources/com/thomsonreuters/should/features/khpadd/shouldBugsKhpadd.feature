@@ -18,7 +18,7 @@ Feature: Verify Should bugs for KHPADD (Bug# 786498) - Foldering icon not gettin
     |I28015ee5699c11e498db8b09b4f043e0	|master|	  
 
   @bug
-  Scenario:(BUG# 786498)Verify the delivery icons functionality on the topic page based on other resources selection
+  Scenario: (BUG# 786498)Verify the delivery icons functionality on the topic page based on other resources selection
     When the user navigates to practice area "Employment" filtered by "Contracts of employment" topic page
     And the user selects the following Topic page resources
       | Change of control clauses |
@@ -32,7 +32,7 @@ Feature: Verify Should bugs for KHPADD (Bug# 786498) - Foldering icon not gettin
       | Save to Folder |
 
   @bug
-  Scenario:(bug# 833268) [781128] Verify delivery of single or 2 standard documents from the Topic Page
+  Scenario: (bug# 833268) [781128] Verify delivery of single or 2 standard documents from the Topic Page
     When the user navigates to practice area "Corporate" filtered by "Asset acquisitions" topic page
     And clicks on the facet group "Standard Documents and Clauses"
     When the user selects the following Topic page resources
@@ -63,10 +63,3 @@ Feature: Verify Should bugs for KHPADD (Bug# 786498) - Foldering icon not gettin
     | guid                              | title                                                                         | author                                   | resource status          | jurisdictions    | resource history | related content | documentType | plc ref    |
     | I3351aa2ee8da11e398db8b09b4f043e0 | Case study: Andrew Garard - Making the move from in-house to private practice | Author: William Long, PLC Law Department | Published on 24-Jul-2007 | No jurisdictions | Not displayed    | displayed       | Articles   | 0-373-7988 |
 
-  #848618 - Impossible to link to relevant Topic page from 'Also found in' section by OW user
-  @bug
-  Scenario: (bug#848618)[846363] Also Found in section available for OW users
-    Given PL+ user is not logged in
-    When user navigates directly to document with guid "I59a19233e04611e398db8b09b4f043e0"
-    Then the user sees Also found in section
-    And Also Found In section includes link to the relevant Topic page
