@@ -27,12 +27,10 @@ public class AnyResourceDeliveryTest extends BaseStepDef {
 
     @When("user added new annotation")
     public void userAddedNewAnnotation() throws Throwable {
-        if(!sharedAnnotationsPage.isAnnotationDisplayed()) {
-            deliveryPage.clickOnLink(DocumentDeliveryPage.Links.NEW_ANNOTATION);
-            input = "input" + System.currentTimeMillis();
-            sharedAnnotationsPage.amendInput(input);
-            sharedAnnotationsPage.saveAnnotation();
-        }
+        deliveryPage.clickOnLink(DocumentDeliveryPage.Links.NEW_ANNOTATION);
+        input = "input" + System.currentTimeMillis();
+        sharedAnnotationsPage.amendInput(input);
+        sharedAnnotationsPage.saveAnnotation();
     }
 
     @Then("^the user clicks on (Email|Print|Download) advanced tab$")
