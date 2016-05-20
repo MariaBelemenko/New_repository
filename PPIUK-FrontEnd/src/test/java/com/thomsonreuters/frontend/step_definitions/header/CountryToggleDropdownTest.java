@@ -33,12 +33,16 @@ public class CountryToggleDropdownTest extends BaseStepDef {
                         header.countryDropdownMenuLinks().get(row).getText().equalsIgnoreCase(entry.getKey()));
                 if (baseUrl.equalsIgnoreCase("qed")) {
                     newURL = entry.getValue().replace("demo", "qed");
-                    newURL = newURL.replace("a.uk","uk");
+                //    newURL = newURL.replace("a.uk","uk");
                 } else {
                     newURL = entry.getValue();
                 }
+                String actualURL=header.countryDropdownMenuLinks().get(row).getAttribute("href").replace("%20","");
+                System.out.println("entry key :"+entry.getValue());
+                System.out.println("Actual Value :"+ actualURL);
+
                 assertTrue(newURL + " link not present..!",
-                        header.countryDropdownMenuLinks().get(row).getAttribute("href").equalsIgnoreCase(newURL));
+                        actualURL.equalsIgnoreCase(newURL));
                 row++;
             }
         }
