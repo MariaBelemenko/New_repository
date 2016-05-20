@@ -1,5 +1,5 @@
-@bug
-Feature: [780805] FS4 Testing Restrict on basis FAC
+@bug @should
+Feature: Should [780805] FS4 Testing Restrict on basis FAC
 
   # 830028 [REGRESSION] Wrong path to Firm Style maketing page
   Scenario Outline: Deny document
