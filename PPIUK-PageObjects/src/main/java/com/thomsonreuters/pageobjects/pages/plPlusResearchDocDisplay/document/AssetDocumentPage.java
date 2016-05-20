@@ -151,7 +151,7 @@ public class AssetDocumentPage extends DocumentDisplayAbstractPage {
 	}
 
 	public WebElement contentToAppendTab(String contentToAppendText) {
-		return retryingFindElement(By.linkText(contentToAppendText));
+		return waitForElementToBeClickable(waitForExpectedElement(By.linkText(contentToAppendText)));
 	}
 
 	public WebElement relatedAssetPageCheckBox(String relatedAssetPageText) {

@@ -7,6 +7,7 @@ import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.As
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.documentNavigation.DocumentDeliveryPage;
 import com.thomsonreuters.pageobjects.rest.DeliveryBaseUtils;
 import com.thomsonreuters.pageobjects.rest.model.request.delivery.initiateDelivery.InitiateDelivery;
+import com.thomsonreuters.pageobjects.utils.form.CheckBoxOrRadioButton;
 import com.thomsonreuters.pageobjects.utils.plPlusResearchDocDisplay.AssetPageUtils;
 
 import cucumber.api.java.en.Then;
@@ -278,6 +279,17 @@ public class AssetPageDownloadPDFTest extends BaseStepDef {
     private void assertDocumentReadyToDownload() {
         assertTrue("Download button absent", downloadOptionsDialog.getDownloadButtonWhenDocReadyToDownload().isDisplayed());
         assertTrue("Document is not ready to download", downloadOptionsDialog.getReadyForDownloadWindow().getText().contains("ready"));
+    }
+
+    @Then("^document download with content references$")
+    public void documentDownloadWithContentReferences() throws Throwable {
+        deliveryOptionsSetTableOfContents("selected");
+        downloadDocumentInExtension("Pdf");
+    }
+
+    @When("^the user sets Table of Contents option to '(selected|unselected)' state$")
+    public void deliveryOptionsSetTableOfContents(String state) throws Throwable {
+        new CheckBoxOrRadioButton().editValue(assetDocumentPage.inputCheckboxTableOfContent(), state);
     }
 
 }
