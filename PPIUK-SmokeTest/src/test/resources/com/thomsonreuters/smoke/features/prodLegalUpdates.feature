@@ -1,3 +1,4 @@
+
 Feature: Verify legal updates/current awareness
 
   Scenario: Legal update navigation
@@ -37,6 +38,7 @@ Feature: Verify legal updates/current awareness
     And the user clicks on the 'View all' link of the LU widget
     Then the user verifies that the current PageTitle contains 'Legal updates | All'
     And the user should be presented with a list of LU documents
+    And the user is able to check whether the option to apply filters is displayed and if not to ensure that it is
     When the user selects the know how parent facet "Northern Ireland"
-  #  And the user selects the know how option to apply filters
+    And the user selects the know how option to apply filters
     Then the user is able to verify that the search result in position "1" within the result list has the jurisdiction "Northern Ireland"
