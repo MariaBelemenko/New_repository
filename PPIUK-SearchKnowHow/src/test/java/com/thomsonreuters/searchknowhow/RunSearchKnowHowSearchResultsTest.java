@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber-htmlreport/SearchKnowHowSearchResultsReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunSearchKnowHowSearchResultsTest.json"},
         features = "src/test/resources/com/thomsonreuters/searchknowhow/features/knowHowSearchResults",
-        tags = {"~@wip", "~@manual"},
+        tags = {"~@wip", "~@manual", "~@should"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
 public class RunSearchKnowHowSearchResultsTest {

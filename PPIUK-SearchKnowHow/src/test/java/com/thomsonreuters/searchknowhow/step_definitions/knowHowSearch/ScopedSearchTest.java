@@ -32,7 +32,7 @@ public class ScopedSearchTest extends BaseStepDef {
 
     @When("^the user verifies that the product detail contains the topic area \"([^\"]*)\"$")
     public void theUserVerifiesThatTheProductDetailContainsTheTopicArea(String arg1) throws Throwable {
-        assertTrue(knowHowDocumentPage.topicInformation(arg1).isDisplayed());
+        assertTrue(knowHowDocumentPage.topicPageLink(arg1).isDisplayed());
     }
 
     @Given("^has selected the link to the What's Market homepage$")

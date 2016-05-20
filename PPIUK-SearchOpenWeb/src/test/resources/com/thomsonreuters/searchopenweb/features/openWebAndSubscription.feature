@@ -43,4 +43,4 @@ Feature: Testing Open Web And Subscriptions
     And the user pauses for "3" seconds
     Then the user is able to verify that a page of search results is displayed
     And the user can open the first know how search result "1"
-
+    And the user verifies the presence of the Topics heading in Related Content section

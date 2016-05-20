@@ -14,6 +14,7 @@ Feature: [702171][702170] - ukScopedSearch.feature
     Then the user opens the result in position "<position>"
     And the user pauses for "3" seconds
     And the user verifies that the product detail contains the practice area "<practicearea>"
+
   Examples:
     | query   | position | practicearea    |
     | profile | 1        | Media & Telecoms|

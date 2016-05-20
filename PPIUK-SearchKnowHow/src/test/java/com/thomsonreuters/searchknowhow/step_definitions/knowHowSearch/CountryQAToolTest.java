@@ -8,6 +8,8 @@ import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import static org.junit.Assert.assertTrue;
+
 public class CountryQAToolTest extends BaseStepDef {
 
     private PracticalLawHomepage practicalLawHomepage = new PracticalLawHomepage();
@@ -41,6 +43,12 @@ public class CountryQAToolTest extends BaseStepDef {
     public void theUserIsAbleToViewAPhotographAndBiographyOfTheAuthor() throws Throwable {
         countryQAToolPage.authorPhoto().isDisplayed();
         countryQAToolPage.authorBio().isDisplayed();
+    }
+
+    @When("^the user clicks link for \"(.*?)\"$")
+    public void theUserClicksLinkForCountry(String country) throws Throwable {
+        countryQAToolPage.countryNameLink(country).click();
+        assertTrue("Element is not selected",countryQAToolPage.countryNameLink(country).getAttribute("class").equals("selectedButton"));
     }
 
 }

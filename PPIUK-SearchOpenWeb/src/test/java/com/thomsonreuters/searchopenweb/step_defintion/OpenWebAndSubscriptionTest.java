@@ -23,6 +23,8 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 
 public class OpenWebAndSubscriptionTest extends BaseStepDef {
 
@@ -144,9 +146,9 @@ public class OpenWebAndSubscriptionTest extends BaseStepDef {
         robot.delay(timeToWait);
     }
 
-    @When("^the user can verify that the document contains the header Also Found In$")
+    @Then("^the user verifies the presence of the Topics heading in Related Content section$")
     public void theUserCanVerifyThatTheDocumentContainsTheHeaderAlsoFoundIn() throws Throwable {
-        knowHowDocumentPage.getRelatedContentTopicsHeader().isDisplayed();
+        assertTrue("Topics section is absent in related content", knowHowDocumentPage.getRelatedContentTopicsHeader().isDisplayed());
     }
 
 }
