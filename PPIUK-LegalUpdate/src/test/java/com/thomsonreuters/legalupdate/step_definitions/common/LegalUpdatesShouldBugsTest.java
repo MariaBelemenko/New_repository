@@ -27,35 +27,10 @@ public class LegalUpdatesShouldBugsTest extends BaseStepDef {
     private List<String> updatesTitles;
     private List<String> updatesDates;
 
-    @Given("^a user navigate to a \"(.*?)\" Topic page from a \"(.*?)\" Practice Area page$")
-    public void aUserNavigateToATopicPageFromAPracticeAreaPage(String topicName, String paName) throws Throwable {
-        homepage.selectLinkPresentOnTab(paName);
-        homepage.waitForPageToLoad();
-        legalUpdatesTopicPage.topicsLink(topicName).click();
-        legalUpdatesTopicPage.waitForPageToLoad();
-    }
-
-    @Given("^the user is presented with the Legal Updates widget$")
-    public void theUserIsPresentedWithTheLegalUpdatesWidget() throws Throwable {
-        assertTrue("Legal Updates Widget is not displayed", legalUpdatesPracticeAreaPage.legalUpdatesWidget().isDisplayed());
-    }
-
     @Given("^the user should see (\\d+) updates on a \"(.*?)\" widget$")
     public void theUserShouldSeeUpdatesOnAWidget(int titlesCount, String widgetName) throws Throwable {
         updatesTitles = luWidget.getAll5UpdatesTitles(widgetName);
         assertTrue("Titles count is more or less than 5. Actual titles count: " + updatesTitles.size(), updatesTitles.size() == titlesCount);
-    }
-
-    @Given("^\"(.*?)\" widget should display publication dates of documents$")
-    public void widgetShouldDisplayPublicationDatesOfDocuments(String widgetName) throws Throwable {
-        int result = 0;
-        updatesDates = luWidget.getAllDatesFromWidget(widgetName);
-        for (String date : updatesDates) {
-            if (date.isEmpty()) {
-                result++;
-            }
-        }
-        assertTrue("Some dates from widget are not visible", updatesTitles.size() == updatesDates.size() && result == 0);
     }
 
     @When("^the user clicks on the 'View all' link of the \"(.*?)\" widget$")
