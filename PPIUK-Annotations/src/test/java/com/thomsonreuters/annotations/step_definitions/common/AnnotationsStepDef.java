@@ -599,6 +599,17 @@ public class AnnotationsStepDef extends BaseStepDef {
         LOG.info("The user has created the annotation with " + style);
     }
 
+    @When("^user shared the annotations with another contact \"(.*?)\"$")
+    public void userSharedTheAnnotationsWithAnotherContact(String contact) throws Throwable {
+        sharedAnnotationsPage.clickOnContactsLink();
+        sharedAnnotationsPage.searchContact(getUserFullName(contact));
+        sharedAnnotationsPage.selectContact(getUserNameStartswithLastName(contact));
+        sharedAnnotationsPage.selectInsertButtonOnContactsPage();
+        sharedAnnotationsPage.scrollToTinyMceEditor();
+        sharedAnnotationsPage.saveAnnotation();
+        assertTrue("Application having page loading issue", sharedAnnotationsPage.isMetaDataDispalyed(input));
+    }
+
     @Then("^annotations saved with the \"(.*?)\"$")
     public void annotationsSavedWithThe(String style) throws Throwable {
         assertTrue(sharedAnnotationsPage.isAnnoatationsTextDisplayedWithCharacterStyle(getFormatType(style), input));
