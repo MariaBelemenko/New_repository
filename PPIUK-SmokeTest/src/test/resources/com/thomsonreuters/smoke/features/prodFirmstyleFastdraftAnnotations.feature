@@ -6,7 +6,7 @@ Feature: Verify Firmstyle, Fastdraft, and Annotations
     And the user come back on to Home page as logged in user
     When the user runs a free text search for the query "deed"
     And the user selects the know how parent facet "Standard Documents and Clauses"
- #   And the user selects the know how option to apply filters
+    And the user selects the know how option to apply filters
     And the user can open the first know how search result "1"
     And the user clicks Firm Style link
     Then Firm Style download box appiars
