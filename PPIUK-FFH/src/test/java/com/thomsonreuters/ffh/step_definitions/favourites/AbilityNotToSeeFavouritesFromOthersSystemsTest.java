@@ -107,6 +107,7 @@ public class AbilityNotToSeeFavouritesFromOthersSystemsTest extends BaseStepDef 
         favouritesPage.organize().click();
         pageActions.mouseOver(favouritesPage.pageInFavourite(pageName));
         favouritesPage.deletePageFromFavourite(pageName).click();
+        favouritesPage.waitForPageToLoadAndJQueryProcessing();
         favouritesPage.doneOrganizing().click();
     }
 
