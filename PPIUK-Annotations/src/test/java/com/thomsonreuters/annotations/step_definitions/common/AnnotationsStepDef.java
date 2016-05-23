@@ -622,6 +622,13 @@ public class AnnotationsStepDef extends BaseStepDef {
         LOG.info("The annotations text is displayed in the " + style + " format");
     }
 
+    @When("^highlight the text with cursor$")
+    public void highlightTextWithCursor() throws Throwable {
+        input = "input" + System.currentTimeMillis();
+        sharedAnnotationsPage.amendInput(input);
+        sharedAnnotationsPage.selectText();
+    }
+
     @When("^user has shared the annotations with another contact \"(.*?)\"$")
     public void userHasSharedTheAnnotationsWithAnotherContact(String contact) throws Throwable {
         sharedAnnotationsPage.clickOnContactsLink();
@@ -648,8 +655,8 @@ public class AnnotationsStepDef extends BaseStepDef {
         assertTrue("Selected group is not correct", sharedAnnotationsPage.getSharedGroupLinks().get(0).getText().contains(groupName));
         sharedAnnotationsPage.selectInsertButtonOnContactsPage();
         sharedAnnotationsPage.saveAnnotation();
-        assertTrue(sharedAnnotationsPage.isSavedAnnotationDisplayed(input, SharedAnnotationsPage.ExpectedResult.VISIBLE));
-        LOG.info("Yhe user has shared annotations with a new group and " + contact + " as a member");
+        assertTrue(sharedAnnotationsPage.isSavedAnnotationDisplayedInWLN(input));
+        LOG.info("The user has shared annotations with a new group and " + contact + " as a member");
     }
 
     @When("^\"(.*?)\" clicks the link$")

@@ -297,7 +297,7 @@ public class SharedAnnotationsPage extends AbstractPage {
      */
     public boolean isSavedAnnotationDisplayedInWLN(String input) {
         try {
-            for (WebElement element : retryingFindElements(By.cssSelector(".co_viewNoteText"))) {
+            for (WebElement element : waitForExpectedElements(By.cssSelector(".co_viewNoteText"))) {
                 if (element.getText().contains(input)) {
                     return true;
                 }
