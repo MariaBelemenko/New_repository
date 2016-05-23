@@ -91,7 +91,7 @@ public class NavigateFromDocToTopicPgTest extends BaseStepDef {
 
     @When("^the user verifies that the topic page entitled \"(.*)\" is displayed to the user$")
     public void theUserVerifiesThatTheTopicPageEntitledIsDisplayedToTheUser(String topic) throws Throwable {
-        assertTrue("Topic page title does not contains '" + topic + "'", topicPage.topicPageTitle().getText().contains("topic"));
+        assertTrue("Topic page title does not contains '" + topic + "'", topicPage.topicPageTitle().getText().contains(topic));
     }
     
     @Given("^user navigates directly to document with guid \"(.*?)\"$")
