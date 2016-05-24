@@ -19,7 +19,7 @@ public class RunFirmStyleShouldTest {
     public static void reporting() {
         if (System.getProperty("username").equals("None")) {
             System.setProperty("username", "FSTestUser2");
-            System.setProperty("password", "Password123456!");
+            System.setProperty("password", "Password12345!");
         }
         else {
             System.out.println("Username is pre-defined in the Run Command as: " + System.getProperty("username"));
