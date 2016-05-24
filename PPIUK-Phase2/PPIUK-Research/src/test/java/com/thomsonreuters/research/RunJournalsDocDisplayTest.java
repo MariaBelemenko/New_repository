@@ -1,5 +1,6 @@
 package com.thomsonreuters.research;
 
+import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 import cucumber.api.CucumberOptions;
@@ -14,5 +15,15 @@ import cucumber.api.junit.Cucumber;
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
 public class RunJournalsDocDisplayTest {
+	 @BeforeClass
+	    public static void reporting() {
+	        if (System.getProperty("username").equals("None")) {
+	            System.setProperty("username", "PLResearchUser5");
+	            System.setProperty("password", "Password1");
+	        }
+	        else {
+	            System.out.println("Username is pre-defined in the Run Command as: " + System.getProperty("username"));
+	        }
+	    }
 
 }

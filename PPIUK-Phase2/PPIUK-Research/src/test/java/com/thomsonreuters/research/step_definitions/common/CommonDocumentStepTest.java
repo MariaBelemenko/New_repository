@@ -16,8 +16,8 @@ public class CommonDocumentStepTest {
 	private KHDocumentPage documentPagePLCUK = new KHDocumentPage();
 	private CommonMethods commonMethods = new CommonMethods();
 	private AssetDocumentPage assetDocumentPage = new AssetDocumentPage();
-	
-	@When("^the user opens document with guid (.+)$")
+
+	@When("^the user opens document with guid \"([^\"]*)\"$")
 	public void theUserOpensDocumentWithGuid(String guid) throws Throwable {
 		navigationCobalt.navigateToPLCUKPlusSpecificURL("/Document/" + guid + "/View/FullText.html");
 		navigationCobalt.waitForPageToLoad();
@@ -27,8 +27,7 @@ public class CommonDocumentStepTest {
 	public void theDocumentBlockIsDisplayed() throws Throwable {
 		assertTrue("Document not present", documentPagePLCUK.isDocumentBlockPresent());
 	}
-	
-	
+
 	@When("^the user clicks on link \"([^\"]*)\"$")
 	public void theUserClicksOnLink(String link) throws Throwable {
 		commonMethods.clickLink(link);
@@ -36,6 +35,6 @@ public class CommonDocumentStepTest {
 
 	@Then("^the title is displayed in the document$")
 	public void theTitleIsDisplayedInTheDocument() throws Throwable {
-		assertTrue("The title is not displayed", assetDocumentPage.partyNames().isDisplayed());
+		assertTrue("The title is not displayed", assetDocumentPage.documentTitle().isDisplayed());
 	}
 }

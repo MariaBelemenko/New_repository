@@ -4,11 +4,7 @@ import com.thomsonreuters.pageobjects.common.PageActions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-
-
-
 public class JournalDocumentPage extends DocumentDisplayAbstractPage {
-
 
 	PageActions pageActions;
 
@@ -43,10 +39,30 @@ public class JournalDocumentPage extends DocumentDisplayAbstractPage {
 	}
 
 	public WebElement linkInFootnoteBodyInFootnotesSection(String number) {
-		return findChildElement(fullFootnoteInFootnotesSection(number), By.xpath(".//div[@class='co_footnoteBody']/div/a"));
+		return findChildElement(fullFootnoteInFootnotesSection(number),
+				By.xpath(".//div[@class='co_footnoteBody']/div/a"));
 	}
 
 	public WebElement footnoteNumberInDocument(String number) {
 		return waitFluentForElement(By.xpath(".//sup[@id='sourcefn" + number + "']/a"));
 	}
+
+	public WebElement documentSubsection(String subsection) {
+		return retryingFindElement(By.xpath(".//*[@id='co_docContentBody']//*[contains(text(), '" + subsection + "')]"));
+	}
+
+	public WebElement valueOfSubsection(String subsection) {
+		return retryingFindElement(By.xpath(".//*[@id='co_docContentBody']//*[contains(text(), '" + subsection
+				+ "')]/.."));
+	}
+
+	public WebElement providedByWlukIcon() {
+		return retryingFindElement(By.xpath(".//*[@id='co_docContentHeader']//img"));
+	}
+
+	public WebElement linkInSubsection(String linkText, String subsection) {
+		return retryingFindElement(By.xpath(".//*[contains(text(), '" + subsection
+				+ "')]/following-sibling::*//a[contains(text(), '" + linkText + "')]"));
+	}
+
 }
