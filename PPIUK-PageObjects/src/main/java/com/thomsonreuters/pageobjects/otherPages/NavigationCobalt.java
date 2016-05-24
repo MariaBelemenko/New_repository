@@ -16,6 +16,7 @@ public class NavigationCobalt extends AbstractPage {
 
     public static final By HOME_PAGE_CSS_SELECTOR = By.xpath("//*[@id='header_lower_logo']//a");
     public static final By WLN_HOME_PAGE_CSS_SELECTOR = By.id("coid_website_logo");
+    private static final String PLUK_FULL_BASE_URL = System.getProperty("plukFullBaseUrl", "");
 
     String baseUrl = System.getProperty("base.url");
     String baseLegacyUrl = System.getProperty("base.legacy.url");
@@ -57,7 +58,36 @@ public class NavigationCobalt extends AbstractPage {
         getDriver.get(getPlcukProductBase() + baseUrl + getPlcukDomain() + "/Glossary/UKPracticallaw");
     }
 
+    /**
+     * @deprecated use {@link #navigateToPLUKPlus(String)}
+     * @param page
+     */
+    @Deprecated
     public void navigateToWLNSpecificResourcePage(String page) {
+        navigateToPLUKPlus(page);
+    }
+    
+    public void navigateToANZSpecificResourcePage(String page) {
+        getDriver.get(getPlcauProductBase() + baseUrl + getPlcukDomain() + page);
+    }
+
+    /**
+     * Navigate to PL+ UK home page
+     */
+    public void navigateToPLUKPlus() {
+        navigateToPLUKPlus("");
+    }
+
+    /**
+     * Navigate to PL+ UK page
+     *
+     * @param page Page URI without domain name
+     */
+    public void navigateToPLUKPlus(String page) {
+        if (!PLUK_FULL_BASE_URL.trim().isEmpty()) {
+            getDriver.get(PLUK_FULL_BASE_URL + page);
+            return;
+        }
         switch (baseUrl) {
             case "prod":
                 getDriver.get(getPlcukProductBase() + getPlcukProdDomain() + page);
@@ -76,32 +106,6 @@ public class NavigationCobalt extends AbstractPage {
                 break;
             default:
                 getDriver.get(getPlcukProductBase() + baseUrl + getPlcukDomain() + page);
-        }
-    }
-    
-    public void navigateToANZSpecificResourcePage(String page) {
-        getDriver.get(getPlcauProductBase() + baseUrl + getPlcukDomain() + page);
-    }
-
-    public void navigateToPLUKPlus() {
-        switch (baseUrl) {
-            case "prod":
-                getDriver.get(getPlcukProductBase() + getPlcukProdDomain());
-                break;
-            case "prodA":
-                getDriver.get(getUkProdA() + getPlcukProdDomain());
-                break;
-            case "prodB":
-                getDriver.get(getUkProdB() + getPlcukProdDomain());
-                break;
-            case "qedA":
-                getDriver.get(getUkQedA() + baseUrl + getPlcukDomain());
-                break;
-            case "qedB":
-                getDriver.get(getUkQedB() + baseUrl + getPlcukDomain());
-                break;
-            default:
-                getDriver.get(getPlcukProductBase() + baseUrl + getPlcukDomain());
                 break;
         }
     }
@@ -119,26 +123,13 @@ public class NavigationCobalt extends AbstractPage {
         waitForPageToLoad();
     }
 
-    public void navigateToPLCUKPlusSpecificURL(String sitePage) {
-        switch (baseUrl) {
-            case "prod":
-                getDriver.get(getPlcukProductBase() + getPlcukProdDomain() + sitePage);
-                break;
-            case "prodA":
-                getDriver.get(getUkProdA() + getPlcukProdDomain() + sitePage);
-                break;
-            case "prodB":
-                getDriver.get(getUkProdB() + getPlcukProdDomain() + sitePage);
-                break;
-            case "qedA":
-                getDriver.get(getUkQedA() + baseUrl + getPlcukDomain() + sitePage);
-                break;
-            case "qedB":
-                getDriver.get(getUkQedB() + baseUrl + getPlcukDomain() + sitePage);
-                break;
-            default:
-                getDriver.get(getPlcukProductBase() + baseUrl + getPlcukDomain() + sitePage);
-        }
+    /**
+     * @deprecated use {@link #navigateToPLUKPlus(String)}
+     * @param page
+     */
+    @Deprecated
+    public void navigateToPLCUKPlusSpecificURL(String page) {
+        navigateToPLUKPlus(page);
     }
 
 	public void navigateToPLCANZSpecificURL(String sitePage) {
