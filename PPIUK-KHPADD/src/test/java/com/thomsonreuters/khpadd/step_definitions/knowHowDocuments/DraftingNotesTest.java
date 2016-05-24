@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.hamcrest.core.Is;
 
+import com.thomsonreuters.driver.framework.AbstractPage;
 import com.thomsonreuters.khpadd.step_definitions.BaseStepDef;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.DraftingNotes;
 import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePage;
@@ -106,5 +107,43 @@ public class DraftingNotesTest extends BaseStepDef {
 		assertTrue("The user doesn't taken to the selected resource",
 				assetPageUtils.isTheUserTakenToTheSelectedResource(linkText));
 	}
+    
+    @And("^user opens link \"(.*)\" in new tab$")
+    public void openLinkInNewTab(String linktext) throws Throwable {
+    	resourcePage.openLinkInNewTab(linktext);
+        resourcePage.switchToOpenedWindow();
+        resourcePage.waitForPageToLoadAndJQueryProcessing();
+    }
+    
+    @Then("^user verifies if page is scrolled to drafting notes with title \"(.*)\"$")
+    public void pageScrolledToDN(String text) throws Throwable {
+    	assertTrue("The drafting note is not opened", resourcePage.isElementDisplayed(resourcePage.expandedDraftingNoteTitle(text)));
+    	assertTrue("Page is not scrolled to target drafting note", resourcePage.isViewScrolledToElement(resourcePage.expandedDraftingNoteTitle(text)));
+    }
+
+    
+    @Then("^user closes opened window$")
+    public void userClosesOpenedWindow() throws Throwable {
+    	resourcePage.close();
+    	resourcePage.switchToMainWindow();
+    }
+    
+    @Then("^user scrolls and clicks on link \"(.*)\"$")
+    public void scrollAndClick(String link) throws Throwable {
+    	resourcePage.scrollIntoViewAndClick(resourcePage.embeddedResourceLink(link));
+    	resourcePage.waitForPageToLoad();
+    }
+    
+    @When("^the user clicks Back button in browser$")
+    public void goBackAndWaitForPageToLoad() {
+    	AbstractPage.getDriver.navigate().back();
+    	resourcePage.waitForPageToLoad();
+    }
+    
+    @Then("^user verifies if page is scrolled to link \"(.*)\"$")
+    public void pageScrolledToText(String link) throws Throwable {
+    	assertTrue("Page is not scrolled to target text", resourcePage.isViewScrolledToElement(resourcePage.embeddedResourceLink(link)));
+    }
+    
 
 }

@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber-htmlreport/KhpaddKnowHowDocumentsReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunKhpaddKnowHowDocumentsTest.json"},
         features = "src/test/resources/com/thomsonreuters/khpadd/features/knowHowDocuments",
-        tags = {"~@wip", "~@manual"},
+        tags = {"~@wip", "~@manual", "~@should"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
 public class RunKhpaddKnowHowDocumentsTest {

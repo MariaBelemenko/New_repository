@@ -71,5 +71,12 @@ public class StickyBarTest extends BaseStepDef {
     public void clicsOnLink(String link) {
     	caseDocumentPage.menuItem(link).click();
     }
+    
+    
+    @Then("^user verifies if sticky bar doesn't hide the target link \"(.*)\"$")
+    public void relatedContentBarDoesNotHideLink(String anchor) throws Throwable {
+    	assertTrue("Sticky bar hides the target link", 
+    			resourcePage.compareElementsLocationByHeight(resourcePage.jumplink(anchor),resourcePage.stickyBar())==-1);
+    }
 
 }
