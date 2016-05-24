@@ -1,5 +1,6 @@
 @wip
 Feature: Verify the Browse to Standard Doc and Clause
+  #this test has been transferred from the research browse project
   Verify the Browse to Practice Notes
 
   # Test takes too much time (~2h) because of huge link count

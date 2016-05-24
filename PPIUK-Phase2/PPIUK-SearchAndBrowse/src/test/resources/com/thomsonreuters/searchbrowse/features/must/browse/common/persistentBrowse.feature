@@ -1,6 +1,6 @@
 @e2e @prod @wip
 Feature: Persistent Browse
-
+#this test has been transferred from the research browse project
   Background:
     Given PL+ user is logged in
 
