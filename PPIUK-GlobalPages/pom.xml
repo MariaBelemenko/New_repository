@@ -11,7 +11,7 @@
     <description>PPI UK - Global Pages Project</description>
 
     <properties>
-        <surefire.fork.count>4</surefire.fork.count>
+        <surefire.fork.count>2</surefire.fork.count>
         <driverType>firefox</driverType>
         <chromeDriverPath>${basedir}\src\main\resources\drivers\chromedriver.exe</chromeDriverPath>
         <ieDriverPath>${basedir}\src\main\resources\drivers\IEDriverServer.exe</ieDriverPath>
