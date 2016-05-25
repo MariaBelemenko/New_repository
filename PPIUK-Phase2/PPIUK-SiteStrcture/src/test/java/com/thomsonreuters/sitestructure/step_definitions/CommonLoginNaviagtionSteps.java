@@ -616,6 +616,17 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
                     routingPage.showFeatureSelectionsLink().click();
                     routingPage.selectDropDownByVisibleText(routingPage.whatsMarketSearchResultsDropdown(), "Deny");
                     break;
+                case SITE_STRUCTURE:
+                    navigateToRoutingPage(user.getProduct());
+                    routingPage.infrastructureAccessControls().sendKeys("IAC-UK-COMPARTMENTS");
+                    break;
+                case SITE_STRUCTURE_OW:
+                    navigateToRoutingPage(user.getProduct());
+                    routingPage.infrastructureAccessControls().sendKeys("IAC-UK-COMPARTMENTS");
+                    routingPage.selectDropDownByVisibleText(routingPage.skipAnonymousAuthenticationDropdown(), "False");
+                    routingPage.anonymousRegistrationKeyTextBox().sendKeys("1890639-SKKON3");
+                    break;
+
             }
             routingPage.saveChangesAndSignOnButton().click();
         } else if (user.getProduct().equals(Product.WLN)) {

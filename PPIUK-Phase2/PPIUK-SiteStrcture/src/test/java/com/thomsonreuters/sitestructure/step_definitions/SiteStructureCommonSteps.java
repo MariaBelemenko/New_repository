@@ -2,6 +2,7 @@ package com.thomsonreuters.sitestructure.step_definitions;
 
 import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.PageActions;
+import com.thomsonreuters.pageobjects.otherPages.NavigationCobalt;
 import com.thomsonreuters.pageobjects.pages.ask.AskResourcePage;
 import com.thomsonreuters.pageobjects.pages.folders.CreateGroupPopup;
 import com.thomsonreuters.pageobjects.pages.folders.FavouritesPage;
@@ -43,39 +44,19 @@ public class SiteStructureCommonSteps extends BaseStepDef {
     private CommonResourcePage commonResourcePage = new CommonResourcePage();
     private LegalUpdatesResultsPage legalUpdatesResultsPage = new LegalUpdatesResultsPage();
     private CategoryPage categoryPage = new CategoryPage();
-    private KHResourcePage resourcePage = new KHResourcePage();
     private FavouritesPage favouritesPage = new FavouritesPage();
-    private CreateGroupPopup createGroupPopup = new CreateGroupPopup();
     private TopicPage topicPage = new TopicPage();
-    private WhatsMarketSearchResultsPage whatsMarketSearchResultsPage = new WhatsMarketSearchResultsPage();
     private PageActions pageActions = new PageActions();
     private OnePassLogoutPage onePassLogoutPage = new OnePassLogoutPage();
     private AskResourcePage askResourcePage = new AskResourcePage();
     private PracticalLawUKCategoryPage practicalLawUKCategoryPage = new PracticalLawUKCategoryPage();
-    private FolderBaseUtils folderBaseUtils = new FolderBaseUtils();
-
-    private String favGroupName = null;
+    private NavigationCobalt navigationCobalt= new NavigationCobalt();
+    private WLNHeader wlnHeader= new WLNHeader();
+    private CommonMethods comMethods= new CommonMethods();
 
     @When("^the user clicks on \"(.*?)\" link$")
     public void theUserClicksOnLink(String linkText) {
         commonMethods.clickLink(linkText);
-    }
-
-    @Then("^the user is able to see the search results with following features according to the design document$")
-    public void theUserIsAbleToSeeTheSearchResultsWithFollowingFeaturesAccordingToTheDesignDocument(List<String> searchStructList) throws Throwable {
-        String feature = null;
-        for (int count = 0; count < searchStructList.size(); count++) {
-            feature = searchStructList.get(count);
-            if (feature.equalsIgnoreCase("summary")) {
-                searchResultsPage.moreOrLessDetailAnchor().click();
-                searchResultsPage.moreDetailOption().click();
-                assertTrue("Summary not displayed..!", knowHowSearchResultsPage.searchFirstResultElementsSummary().getAttribute("class").contains(feature));
-            } else if (feature.equalsIgnoreCase("Status") || feature.equalsIgnoreCase("Document Type") || feature.equalsIgnoreCase("Jurisdiction")) {
-                assertTrue(feature + " Type not displayed..!", knowHowSearchResultsPage.searchFirstResultElementsList().get(count).getText().contains(feature));
-            } else {
-                assertTrue("Value doesn't exist....!", false);
-            }
-        }
     }
 
     @Then("^user sign out$")
@@ -99,14 +80,7 @@ public class SiteStructureCommonSteps extends BaseStepDef {
         header.waitForPageToLoad();
     }
 
-    @Then("^user clicks the Twitter link$")
-    public void userclickstheTwitterLink() throws Throwable {
-        commonMethods.scrollUpOrDown(1550);
-        WebElement element = footer.twitterArrowLink();
-        commonMethods.clickElementUsingJS(element);
-    }
-
-    @Then("^the user selects the \"(.*?)\" from per page dropdown$")
+   @Then("^the user selects the \"(.*?)\" from per page dropdown$")
     public void theUserSelectsThePerPagefromPerPageDropdown(String perPageNo) throws Throwable {
         if (!legalUpdatesResultsPage.resultsPerPageLink().getText().contains(perPageNo)) {
             knowHowSearchResultsPage.searchPerPageDrodownLink().click();
@@ -118,18 +92,6 @@ public class SiteStructureCommonSteps extends BaseStepDef {
             }
             assertTrue("Count is not right..!", commonMethods.isTextPresent(knowHowSearchResultsPage.searchResultByCountLabel(), perPageNo));
         }
-    }
-
-    @Then("^user verifies the navigation to \"(.*?)\" not present$")
-    public void userVerifiesTheNotPresent(String linkText) throws Throwable {
-        boolean notPresent = true;
-        for (WebElement link : knowHowSearchResultsPage.searchPaginationItemLinks()) {
-            if (link.getText().trim().equalsIgnoreCase(linkText)) {
-                notPresent = false;
-                break;
-            }
-        }
-        assertTrue(linkText + " not present..!", notPresent);
     }
 
     @Then("^user verifies the \"(.*?)\" present$")
@@ -173,7 +135,8 @@ public class SiteStructureCommonSteps extends BaseStepDef {
 
     @Then("^user should see the \"(.*?)\" page$")
     public void userShouldseethePage(String pageDesc) throws Throwable {
-        assertTrue("No Of Results Not matching..!", standardDocumentPage.documentTitle().getText().trim().contains(pageDesc));
+        String pageTitle =standardDocumentPage.documentTitle().getText().trim();
+        assertTrue(pageTitle + " Not matching..!", pageTitle.contains(pageDesc));
     }
 
     @Then("^user should have suggestion i.e. \"(.*?)\"$")
@@ -235,52 +198,9 @@ public class SiteStructureCommonSteps extends BaseStepDef {
 
     @When("^user clicks on \"(.*?)\" button$")
     public void userClicksOnButton(String buttonText) throws Throwable {
-        if (buttonText.equalsIgnoreCase("organize")) {
+        if (buttonText.equalsIgnoreCase("ButtonTextToAdd")) {
             favouritesPage.organize().click();
-        } else if (buttonText.equalsIgnoreCase("done")) {
-            favouritesPage.doneOrganizing().click();
-        } else if (buttonText.equalsIgnoreCase("Cancel")) {
-            favouritesPage.favGroupCancelButton(favGroupName).click();
         }
-    }
-
-    @Then("^user should see \"Done\" button$")
-    public void userShouldSeeButton() throws Throwable {
-        assertTrue("Done Button not displayed..!", commonMethods.isElementDisplayed(favouritesPage.doneOrganizing()));
-    }
-
-    @When("^user creates new favourites group '(.+)'$")
-    public void UsercreateNewFavoriteGroup(String groupName) throws Throwable {
-        favouritesPage.waitForPageToLoadAndJQueryProcessing();
-        if (favouritesPage.checkFavouriteGroupIsPresent(groupName)) {
-            favouritesPage.organize().click();
-            commonMethods.mouseOver(favouritesPage.favouriteGroup(groupName));
-            favouritesPage.deleteFavouriteGroupButton(groupName).click();
-            favouritesPage.doneOrganizing().click();
-        }
-        favouritesPage.addGroupLink().click();
-        createGroupPopup.groupName().sendKeys(groupName);
-        createGroupPopup.save().click();
-        createGroupPopup.waitForPageToLoad();
-        favGroupName = groupName;
-        commonMethods.waitForElementToBeVisible(favouritesPage.favouriteByGroup(groupName), 3000);
-    }
-
-    @When("^user hovers over the group '(.+)'$")
-    public void UsercHoversOveTheGroup(String groupName) throws Throwable {
-        commonMethods.mouseOver(favouritesPage.favouriteGroup(groupName));
-    }
-
-    @When("^user should see the aligned \"Save\" and \"Cancel\" button for group \'(.*)\'$")
-    public void UsercShouldSeeTheSavveAndCancelButtons(String groupName) throws Throwable {
-        assertTrue("Save Button not displayed..!", commonMethods.isElementDisplayed(favouritesPage.renameFavouriteOKGroupButton(groupName)));
-        assertTrue("Cancel Button not displayed..!", commonMethods.isElementDisplayed(favouritesPage.renameGroupCancelButton(groupName)));
-    }
-
-    @When("^user should see the group '(.+)'$")
-    public void UserShouldSeeTheGroup(String groupName) throws Throwable {
-        commonMethods.waitForElement(favouritesPage.favouriteByGroup(groupName), 3000);
-        assertTrue(groupName + " not displayed..!", favouritesPage.checkFavouriteGroupIsPresent(groupName));
     }
 
     @When("^the user navigates to \"(.*)\" resource Page$")
@@ -326,43 +246,6 @@ public class SiteStructureCommonSteps extends BaseStepDef {
         }
     }
 
-    @Then("^user should see the following metadata in the deal \"(.*?)\"$")
-    public void userShouldsethePageNo(String dealTitle, DataTable dataTable) throws Throwable {
-        Map<String, String> table = dataTable.asMap(String.class, String.class);
-        int record=0,count = 0;
-        boolean flag = false;
-        searchResultsPage.moreOrLessDetailAnchor().click();
-        searchResultsPage.mostDetailOption().click();
-        commonMethods.waitForExpectedElement(whatsMarketSearchResultsPage.searchResultsByTitleLink(1));
-        while (!flag) {
-            for (WebElement actualDealTitleLink : whatsMarketSearchResultsPage.searchResultsTitleLinks()) {
-                if (actualDealTitleLink.getText().contains(dealTitle)) {
-                    flag = true;
-                    break;
-                }
-                record++;
-            }++record;
-            count++;
-            if (!flag) {
-                commonMethods.waitForExpectedElement(searchResultsPage.selectNextPageByLink()).click();
-            }
-            if(count>=10){
-                break;
-            }
-        }
-
-        for (Map.Entry<String, String> rowEntry : table.entrySet()) {
-            if (rowEntry.getKey().equalsIgnoreCase("Announcement Date")) {
-                assertTrue(rowEntry.getValue() + " not displayed..!", whatsMarketSearchResultsPage.resultDate(String.valueOf(record)).getText().contains(rowEntry.getValue()));
-            } else if (rowEntry.getKey().equalsIgnoreCase("Deal Type")) {
-                assertTrue(rowEntry.getValue() + " not displayed..!", whatsMarketSearchResultsPage.resultDealType(String.valueOf(record), rowEntry.getValue()).getText().contains(rowEntry.getValue()));
-            } else if (rowEntry.getKey().equalsIgnoreCase("Deal Value")) {
-                assertTrue(rowEntry.getValue() + " not displayed..!", whatsMarketSearchResultsPage.resultValue(String.valueOf(record)).getText().contains(rowEntry.getValue()));
-            } else if (rowEntry.getKey().equalsIgnoreCase("Deal Summary")) {
-                assertTrue(rowEntry.getValue() + " not displayed..!", whatsMarketSearchResultsPage.resultSummary(String.valueOf(record)).getText().contains(rowEntry.getValue()));
-            }
-        }
-    }
 
     @Then("^the user should see the \"Add reply\" link next to question$")
     public void theUserShouldSeeTheAddReplyLinkNextToQuestion() throws Throwable {
@@ -396,32 +279,6 @@ public class SiteStructureCommonSteps extends BaseStepDef {
         categoryPage.addToFavourites(groupName);
     }
 
-    @When("^user drags page '(.*)' down to page '(.*)'$")
-    public void UserDragsPage01DownToPage02(String firstPage, String secondPage) throws Throwable {
-        pageActions.dragAndDrop(favouritesPage.pageInFavourite(firstPage), favouritesPage.pageInFavourite(secondPage));
-    }
-
-    @When("^user drags group '(.*)' down to group '(.*)'$")
-    public void UserDragsGroup01DownToGroup02(String firstGroup, String secondGroup) throws Throwable {
-        pageActions.dragAndDrop(favouritesPage.favouriteGroup(firstGroup), favouritesPage.favouriteGroup(secondGroup));
-    }
-
-
-    @When("^the user should see the group '(.*)' comes first than group '(.*)'$")
-    public void UserShouldSeeTheGroup01ComesFirstThanGroup02(String firstGroup, String secondGroup) throws Throwable {
-        commonMethods.waitForElementToBeVisible(favouritesPage.favouriteByGroup(firstGroup), 3000);
-        assertTrue(firstGroup + " not visible as a first group..!",
-                favouritesPage.favouriteGroupNames().get(0).getText().trim().contains(firstGroup));
-        assertTrue(secondGroup + " not visible as a first group..!",
-                favouritesPage.favouriteGroupNames().get(1).getText().trim().contains(secondGroup));
-    }
-
-    @Then("^the footer is displayed below the end of the document$")
-    public void theFooterIsDisplayedBelowTheEndOfTheDocument() {
-        boolean footerBelowDoc = resourcePage.compareElementsLocationByHeight(standardDocumentPage.endOfDocument(), footer.footerWidget()) < 0;
-        assertTrue("Footer is overlapping the document body", footerBelowDoc);
-    }
-
     @When("^the user searches for term \"(.*)\"$")
     public void theUserRunsAFreeTextSearchForTheQuery(String query) throws Throwable {
         practicalLawUKCategoryPage.searchButton().isDisplayed();
@@ -437,6 +294,51 @@ public class SiteStructureCommonSteps extends BaseStepDef {
     @When("^the user deletes the start page$")
     public void deleteStartPage() {
    //     folderBaseUtils.deleteStartPage();
+    }
+
+    @When("^the user opens \"(.+)\" url on plcuk website$")
+    public void theUserOpensUrlOnPLCUKSite(String url) throws Throwable {
+        navigationCobalt.navigateToPLCUKPlusSpecificURL(url);
+        navigationCobalt.waitForPageToLoadAndJQueryProcessingWithCustomTimeOut(90);
+
+    }
+
+    @When("^user should see the page with heading \"(.*)\"$")
+    public void userShouldSeeThePageWithHeading(String pageDesc) throws Throwable {
+        String pageTitle =wlnHeader.pageHeaderLabel().getText().trim();
+        assertTrue(pageTitle + " Not matching..!", pageTitle.contains(pageDesc));
+
+
+    }
+    @Then("^user should see the error page$")
+    public void userShouldSeeTheErrorPage() throws Throwable {
+
+    }
+
+    @When("^the user is viewing \"(.*)\" homepage$")
+    public void theUserIsViewingHomePage(String prodName) throws Throwable {
+        comMethods.mouseOver(wlnHeader.compartmentToggleDropDown());
+
+        if(prodName.equalsIgnoreCase("PL")){
+            wlnHeader.compartmentToggleDropDownLink("pluk").click();
+        }else if(prodName.equalsIgnoreCase("WLUK")){
+            wlnHeader.compartmentToggleDropDownLink("wluk").click();
+        }else if(prodName.equalsIgnoreCase("Commentary")){
+            wlnHeader.compartmentToggleDropDownLink("library").click();
+        }
+
+        navigationCobalt.waitForPageToLoadAndJQueryProcessingWithCustomTimeOut(90);
+
+    }
+    @Then("^user should see the \"([^\"]*)\" home page$")
+    public void userShouldSeeTheHomePage(String prodName) throws Throwable {
+        if(prodName.equalsIgnoreCase("Practical Law")){
+           assertTrue("Practical Law log is not displayed..!", wlnHeader.practicalLawLogo().isDisplayed());
+        }else if(prodName.equalsIgnoreCase("Westlaw")){
+           assertTrue("West Law UK header is not displayed..!",wlnHeader.westLawLogo().isDisplayed());
+        }else if(prodName.equalsIgnoreCase("Commentary")){
+           assertTrue("Commentary header is not displayed..!",wlnHeader.commentaryLogo().isDisplayed());
+        }
     }
 
 }
