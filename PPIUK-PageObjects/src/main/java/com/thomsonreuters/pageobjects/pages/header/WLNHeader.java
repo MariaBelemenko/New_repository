@@ -482,4 +482,16 @@ public class WLNHeader extends AbstractPage {
     public WebElement practicalLawLogo() {
         return waitForExpectedElement(By.xpath("//a[@id='logo']//img[@alt='Practical Law']"));
     }
+
+    public By compartmentToggleDropDownByLink(String prod) {
+        return By.xpath("//div[@id='navigation_left']//a[contains(@href,'" + prod + "')]");
+    }
+
+    public WebElement westLawLogo() {
+        return waitForExpectedElement(By.xpath("//a[@id='logo']//img[@alt='Westlaw']"));
+    }
+
+    public WebElement commentaryLogo() {
+        return waitForExpectedElement(By.xpath("//a[@id='logo']//img[@alt='Library']"));
+    }
 }

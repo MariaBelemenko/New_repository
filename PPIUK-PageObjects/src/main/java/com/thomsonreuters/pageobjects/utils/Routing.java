@@ -41,7 +41,8 @@ public enum Routing {
     FOLDERS,
     ANZ_IAC,
     GLOBAL_PAGE,
-    SITE_STRUCTURE;
+    SITE_STRUCTURE,
+    SITE_STRUCTURE_OW;
 
 
 }
