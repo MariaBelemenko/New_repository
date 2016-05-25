@@ -58,8 +58,7 @@ Feature: [706631][702181][702209][702202][713886][702199] ukKnowHowSearchRelated
   Examples:
     | query    | rank | highlightedTerm |
     | contract | 1    | contract        |
-#@wip need be removed after release (9 may)
-@wip
+
   Scenario Outline:[800157] As a PL+ user, I will able to deselect highlighting of a search term on the document page.
     When the user runs a free text search for the query "<query>"
   	When the user clicks on "<query>" link

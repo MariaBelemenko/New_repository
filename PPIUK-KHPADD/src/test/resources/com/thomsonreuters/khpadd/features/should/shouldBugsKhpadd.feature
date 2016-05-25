@@ -6,8 +6,6 @@ Feature: Verify Should bugs for KHPADD (Bug# 786498) - Foldering icon not gettin
   Background:
     Given PL+ user is logged in
     
-#@wip need be removed after release (9 may)    
-@wip
   Scenario Outline: (BUG# 861858)Verify  the related content in pop-up window that appears for Glossary term
     And user navigates directly to document with guid "<doc>"
     And clicks on document link "<link>"

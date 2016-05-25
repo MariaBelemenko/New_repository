@@ -1,7 +1,5 @@
-@wip
 Feature: [834827] As a PPI User I want to be able to remove a page from Favourites 
 
-#@wip need be removed after release (9 may)
 Scenario: 
 	Given PL+ user is logged in 
 	When API cleans all folders and history and user relogs in 
