@@ -1,9 +1,10 @@
+@vasiliuk
 Feature: [838717][839947] As a PL+ User, I want to download the document from global search result page
   Delivery of global search results in list and full text format via print, save and email
 
   Background:
     Given PL+ user is logged in with following details
-      | userName | GlPage_UKUS1 |
+      | userName | GlPage_UKUS2 |
     And the user navigates to the main PLCUK page
 
   Scenario Outline: [838717] [839947] Basic search result download delivery pop up - layout
