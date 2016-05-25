@@ -16,7 +16,7 @@ Feature: Product View Awareness functionality, PL+ annotations should be not acc
       | mandatoryRouting | YES             |
       | newSession       | TRUE            |
     And user navigates directly to WLN document with guid "I33f12c20e8cd11e398db8b09b4f043e0"
-    Then user should not be able to see the annotations created in PLC site
+    Then user should not be able to see the annotations created in WLN site
 
   Scenario: Create Annotations on WLN document
     Given WLN user is logged in with following details
@@ -73,7 +73,7 @@ Feature: Product View Awareness functionality, PL+ annotations should be not acc
       | mandatoryRouting | YES             |
       | newSession       | TRUE            |
     And user navigates directly to WLN document with guid "I63cd7ba5e68b11e398db8b09b4f043e0"
-    Then user should not be able to see the annotations created in PLC site
+    Then user should not be able to see the annotations created in WLN site
 
   Scenario: User shared annotation in WLN group to verify that shared annotations are visible in PL+ by login as a user from group
     Given WLN user is logged in with following details
