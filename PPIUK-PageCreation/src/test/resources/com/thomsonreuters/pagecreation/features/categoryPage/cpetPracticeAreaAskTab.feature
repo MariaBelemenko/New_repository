@@ -11,7 +11,7 @@ Feature: Check that the Ask Tab on each Practice Area page that has one (not all
   Background:
     Given PL+ user is logged in
 
-    Scenario Outline: Verify the Ask Tab functionality for each relevant Practice Area page
+  Scenario Outline: Verify the Ask Tab functionality for each relevant Practice Area page
     Given  the user clicks button 'Browse Menu' on the Home Page
     And the user accesses each Practice Area via Browse Menu > "<practiceArea>"
     When navigates to the Ask Tab
@@ -29,23 +29,23 @@ Feature: Check that the Ask Tab on each Practice Area page that has one (not all
     And the user clicks on the browser back button
 
     Examples:
-      |practiceArea|
-      |Agriculture & Rural Land|
-      |Commercial|
-      |Construction|
-      |Corporate|
-      |Data Protection|
-      |Dispute Resolution|
-      |Employment|
-      |Finance|
-      |IP & IT|
-      |Local Government|
-      |Media & Telecoms|
-      |Planning|
-      |Private Client|
-      |Property|
-      |Property Litigation|
-      |Public Law|
-      |Restructuring & Insolvency|
-      |Share Schemes & Incentives|
-      |Tax|
+      | practiceArea               |
+      | Agriculture & Rural Land   |
+      | Commercial                 |
+      | Construction               |
+      | Corporate                  |
+      | Data Protection            |
+      | Dispute Resolution         |
+      | Employment                 |
+      | Finance                    |
+      | IP & IT                    |
+      | Local Government           |
+      | Media & Telecoms           |
+      | Planning                   |
+      | Private Client             |
+      | Property                   |
+      | Property Litigation        |
+      | Public Law                 |
+      | Restructuring & Insolvency |
+      | Share Schemes & Incentives |
+      | Tax                        |
