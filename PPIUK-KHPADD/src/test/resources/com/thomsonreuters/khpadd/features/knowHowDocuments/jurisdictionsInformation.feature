@@ -39,6 +39,7 @@ Feature: [730581, 738469, 738519, 767108] Verify Jurisdictions functionality
       | Brazil               |
       | Canada               |
       | Cayman Islands       |
+      | China                |
       | Egypt                |
       | England              |
       | Germany              |
