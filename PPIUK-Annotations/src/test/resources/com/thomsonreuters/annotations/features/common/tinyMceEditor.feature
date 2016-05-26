@@ -177,7 +177,7 @@ Feature: Integration of TinyMce Editor
     Then url string "http://google.co.uk" become as hyperlinked text
     When click on that link text "http://google.co.uk"
     Then hyperlinked url will be opened in new tab with title "Google"
-
+  @wip
   Scenario Outline: Sharing annotations to reviewer with rich format text
     Given PL+ user is logged in with following details
       | userName   | librarian1 |
