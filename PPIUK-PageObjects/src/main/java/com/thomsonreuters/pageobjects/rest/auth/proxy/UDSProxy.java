@@ -54,13 +54,17 @@ public class UDSProxy {
     public String[] getAllActiveCoSessionTokens(String userGuid, String statusSession, String productView, String site) {
         HttpHeaders httpHeaders = configureHeaders();
         HttpEntity<String> requestEntity = new HttpEntity<>(httpHeaders);
-        String requestTo = udsHost + "/UDS/v8/authsession/query?" + "userId=" + userGuid + "&status=" + statusSession + "&site=" + site.toUpperCase();
+        String requestTo = udsHost + "/UDS/v8/authsession/query?" + "userId=" + userGuid + "&status=" + statusSession;
         if (productView != null) {
             requestTo += "&productView=" + productView;
         }
+        if (site != null) {
+        	requestTo += "&site=" + site.toUpperCase();
+        }        
         HttpEntity<String[]> response = restTemplate.exchange(requestTo, HttpMethod.GET, requestEntity, String[].class);
         return response.getBody();
     }
+    
 
     /**
      * GET request to UDS module with endpoint '/UDS/v8/authsession/{encodedLongToken}'

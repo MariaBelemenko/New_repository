@@ -6,6 +6,8 @@ import com.thomsonreuters.pageobjects.rest.auth.model.PostForRegKeysResponse;
 import com.thomsonreuters.pageobjects.rest.auth.model.PostForUserGuidResponse;
 import com.thomsonreuters.pageobjects.rest.auth.proxy.OnePassProxy;
 import com.thomsonreuters.pageobjects.rest.auth.proxy.UDSProxy;
+
+import org.apache.commons.lang.ArrayUtils;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
@@ -72,6 +74,22 @@ public class UDSService {
         String coSessionToken = getCoSessionToken(userGuid, productView, site);
         GetForSessionInfoResponse getForSessionInfoResponse = udsProxy.getForSessionInfo(coSessionToken, siteCookie);
         return getForSessionInfoResponse.getSessionId();
+    }
+    
+    
+    public boolean isUserHasOnlineCoSessions(String userName, String userPassword) {
+        String userGuid = getUserGuid(userName, userPassword);
+        //return sessions for all sites and products
+        String[] sessions  = udsProxy.getAllActiveCoSessionTokens(userGuid, "online", null, null);
+        return !ArrayUtils.isEmpty(sessions);
+    }
+    
+    private String getUserGuid(String userName, String userPassword){
+    	PostForRegKeysResponse postForRegKeysResponse = onePassProxy.postForRegKeys(userName, userPassword, PRODUCT);
+        String userId = postForRegKeysResponse.getProfile().getRegistrationKeys().get(0).getUserId();
+        String pass = postForRegKeysResponse.getProfile().getRegistrationKeys().get(0).getPassword();
+        PostForUserGuidResponse postForUserGuidResponse = udsProxy.postForUserGuid(userId, pass);
+        return postForUserGuidResponse.getPrismGuid();
     }
 
     private String getCoSessionToken(String userGuid, String productView, String site) {
