@@ -324,6 +324,32 @@ public class HomePageSteps extends BaseStepDef{
         }
     }
 
+    //Phil Harper CPET Resources Tab testing. The String is split using the ~ symbol to denote the Heading and Link.
+    @Then("^the user verifies the \"(.*?)\" links are displayed$")
+    public void theUserVerifiesTheLinksAreDisplayed(String subMenuLink, List<String> links) throws Throwable {
+        String linkToClick = "";
+        String headerToFind = "";
+        String stringToSplit[] ;
+
+        homePage.homepageTabHeadingLink(subMenuLink).click();
+
+        List<String> linksRetrieved = homePage.getLinksInHomepageMainMenu();
+        //System.out.println("...Found " + Integer.toString(homePage.getLinksInHomepageMainMenu().size()) + " links");
+        for (String link : links) {
+            //System.out.println("The current link being checked is: " + link);
+
+            if (!link.contains(" ~ ")) {
+                homePage.homepageTabLink(link).isDisplayed();
+            } else {
+                stringToSplit=link.split(" ~ ");
+                headerToFind=stringToSplit[0];
+                linkToClick=stringToSplit[1] ;
+                link=linkToClick;
+                homePage.tabLinkAfterHeader(headerToFind,linkToClick).isDisplayed();
+            }
+        }
+    }
+
     //Steps added by Ian and Sandy
     @Then("^The user clicks the Home page tab link \"(.*?)\"$")
     public void theUserClicksTheHomePageTabLink (String tabLink) throws Throwable {
