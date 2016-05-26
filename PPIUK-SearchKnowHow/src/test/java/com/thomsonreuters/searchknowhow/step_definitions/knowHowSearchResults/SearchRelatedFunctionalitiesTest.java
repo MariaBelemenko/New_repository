@@ -10,10 +10,11 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
-
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+
 
 import static org.junit.Assert.assertTrue;
 
@@ -23,15 +24,38 @@ public class SearchRelatedFunctionalitiesTest extends BaseStepDef {
     private SearchResultsPage searchResultsPage = new SearchResultsPage();
     private KnowHowDocumentPage knowHowDocumentPage = new KnowHowDocumentPage();
     private CommonMethods commonMethods = new CommonMethods();
+    private final String PUBLISHED_ON = "Published on ";
+    private final String LAW_STATED = "Law stated as at ";
 
     @When("^the user is able to verify that sample results contain a date in the \"([^\"]*)\" format$")
     public void theUserIsAbleToVerifyThatSampleResultsContainADateInTheDDMMMYYYYFormat(String dateformat) throws Throwable {
-        String dateString[] = knowHowSearchResultsPage.date().getText().split("Published on ");
-        String dateToValidate = dateString[1];
-        SimpleDateFormat sdf = new SimpleDateFormat(dateformat);
-        sdf.setLenient(false);
-        /** If not valid, it will throw ParseException */
-        Date date = sdf.parse(dateToValidate);
+        List<WebElement> queriesList = knowHowSearchResultsPage.listOfDate();
+        List<String> postedDatesList = new ArrayList<String>();
+        for (WebElement webElement : queriesList) {
+            postedDatesList.add(webElement.getText());
+        }
+        Assert.assertTrue("Results contain the dates in not corresponding format " + dateformat, getDatesAfterRemovingText(postedDatesList, dateformat));
+    }
+
+    public boolean getDatesAfterRemovingText(List<String> postedDatesList, String dateFormat) {
+        List<Date> dateList = new ArrayList<Date>();
+        Boolean result = true;
+        DateFormat formatter = new SimpleDateFormat(dateFormat);
+        for (String date : postedDatesList) {
+            if (date.contains(PUBLISHED_ON)) {
+                date = date.replaceAll(PUBLISHED_ON, "");
+            } else if (date.contains(LAW_STATED)) {
+                date = date.replaceAll(LAW_STATED, "");
+            }
+            try {
+                dateList.add(formatter.parse(date));
+            } catch (ParseException e) {
+                result = false;
+                LOG.info("Date in incorrect format.", e);
+                break;
+            }
+        }
+        return result;
     }
 
     @When("^the user can select the option to show more detail$")
@@ -74,16 +98,16 @@ public class SearchRelatedFunctionalitiesTest extends BaseStepDef {
 
     @Then("^the user is able to verify that the search term \"([^\"]*)\" is highlighted in opened document$")
     public void theUserIsAbleToVerifyThatTheSearchTermIsHighlighted(String highlightedTerm) throws Throwable {
-    	knowHowDocumentPage.waitForPageToLoadAndJQueryProcessing();
-    	assertTrue("There are no highliighted search terms in document",knowHowDocumentPage.isSearchTermHighlighted(highlightedTerm));
+        knowHowDocumentPage.waitForPageToLoadAndJQueryProcessing();
+        assertTrue("There are no highliighted search terms in document", knowHowDocumentPage.isSearchTermHighlighted(highlightedTerm));
     }
-    
+
     @Then("^the user is able to verify that the search term \"([^\"]*)\" is not highlighted in opened document$")
     public void theUserIsAbleToVerifyThatTheSearchTermIsNotHighlightedInOpenedDocument(String highlightedTerm) throws Throwable {
-    	knowHowDocumentPage.waitForPageToLoadAndJQueryProcessing();
-    	Assert.assertFalse("Search terms are highlighted in document",knowHowDocumentPage.isSearchTermHighlighted(highlightedTerm));
+        knowHowDocumentPage.waitForPageToLoadAndJQueryProcessing();
+        Assert.assertFalse("Search terms are highlighted in document", knowHowDocumentPage.isSearchTermHighlighted(highlightedTerm));
     }
-    
+
     @When("^the user can verify the presence of the text No Documents Found$")
     public void theUserCanVerifyThePresenceOfTheTextNoDocumentsFound() throws Throwable {
         searchResultsPage.noDocumentsFoundText().isDisplayed();
@@ -110,7 +134,7 @@ public class SearchRelatedFunctionalitiesTest extends BaseStepDef {
     public void theUserIsAbleToVerifyThatTheFreeTextFieldNowContainsTheTerm(String arg1) throws Throwable {
         assertTrue(searchResultsPage.freeTextSearchField().getAttribute("value").equals(arg1));
     }
-    
+
     @When("^the user clicks on \"(.*?)\" link$")
     public void theUserClicksOnLink(String linkText) {
         commonMethods.clickLink(linkText);
@@ -119,24 +143,23 @@ public class SearchRelatedFunctionalitiesTest extends BaseStepDef {
 
     @Then("^the highlight checkbox is selected$")
     public void highlightCheckboxIsSelected() throws Throwable {
-        assertTrue("Highlight checkbox is not selected",knowHowDocumentPage.isHighlightedOptionCheckboxSelected());
+        assertTrue("Highlight checkbox is not selected", knowHowDocumentPage.isHighlightedOptionCheckboxSelected());
     }
-    
+
     @Then("^the highlight checkbox is deselected$")
     public void highlightCheckboxIsDeselected() throws Throwable {
-    	Assert.assertFalse("Highlight checkbox is selected",knowHowDocumentPage.isHighlightedOptionCheckboxSelected());
+        Assert.assertFalse("Highlight checkbox is selected", knowHowDocumentPage.isHighlightedOptionCheckboxSelected());
     }
 
     @When("^the user deselect highlight checkbox$")
     public void userSelectHighlightCheckbox() throws Throwable {
-    	knowHowDocumentPage.highlightedOptionCheckbox().click();
+        knowHowDocumentPage.highlightedOptionCheckbox().click();
     }
-
 
 
     @When("^the user navigates back$")
     public void theUserNavigatesBack() throws Throwable {
-    	searchResultsPage.browserGoBack();
+        searchResultsPage.browserGoBack();
     }
 
 

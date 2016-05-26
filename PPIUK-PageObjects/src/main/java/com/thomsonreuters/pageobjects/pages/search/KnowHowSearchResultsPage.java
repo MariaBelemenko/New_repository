@@ -549,7 +549,9 @@ public class KnowHowSearchResultsPage extends AbstractPage {
             return waitForExpectedElement(By.xpath("//div[@id='co_searchResults_citation_1']//div/strong/span"));
         }
 
-
+    public List<WebElement> listOfDate() {
+        return waitForExpectedElements(By.xpath("//div[@id='co_searchResults_citation_1']//div/strong/span"));
+    }
 
     public boolean isFacetCountPresent(String count) {
         try{
@@ -559,7 +561,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
                 }
             }
         }catch(Exception e){
-            
+            LOG.info("context", e);
         }
         return false;
     }
