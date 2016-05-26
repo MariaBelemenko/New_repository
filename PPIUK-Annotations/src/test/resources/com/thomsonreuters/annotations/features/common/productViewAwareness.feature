@@ -1,4 +1,3 @@
-@egor
 Feature: Product View Awareness functionality, PL+ annotations should be not accessible to WLN for the documents and its vice versa.
 
   Scenario: Create Annotations on PL+ document
