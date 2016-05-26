@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        plugin = {"pretty", "html:target/cucumber-htmlreport/ResearchBrowseLinkReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunFirmStyleLinkTest.json"},
+        plugin = {"pretty", "html:target/cucumber-htmlreport/FirmStyleLinkReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunFirmStyleLinkTest.json"},
         features = "src/test/resources/com/thomsonreuters/firmstyle/features/link",
         tags = {"~@wip", "~@manual", "~@robot", "~@should"},
         monochrome = true,
