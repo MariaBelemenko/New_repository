@@ -151,7 +151,8 @@ public class AssetDocumentPage extends DocumentDisplayAbstractPage {
 	}
 
 	public WebElement contentToAppendTab(String contentToAppendText) {
-		return waitForElementToBeClickable(waitForExpectedElement(By.linkText(contentToAppendText)));
+		return waitForExpectedElement(
+				By.xpath("//li[not(contains(@class, 'Inactive')) and contains(@id, 'deliveryOptions')]//a[contains(., '" + contentToAppendText +"')]"));
 	}
 
 	public WebElement relatedAssetPageCheckBox(String relatedAssetPageText) {
