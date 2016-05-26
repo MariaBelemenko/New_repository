@@ -2,9 +2,9 @@ Feature: [838717][839947] Not logged in user cannot use delivery options in Chin
 
   Background:
     Given PL+ user is not logged in
+    When the user navigates to the main PLCUK page
 
   Scenario Outline: As a Not logged in user I want to not be able to to use delivery options on document page
-    When the user navigates to the main PLCUK page
     When the user selects "International" tab and clicks on "<link>" link in "International subscriptions" section
     Then the Category Page opens correctly
     When the user runs a free text search for the query "tax"
@@ -16,7 +16,6 @@ Feature: [838717][839947] Not logged in user cannot use delivery options in Chin
     | China  |
 
   Scenario Outline: As a Not logged in user I want to not be able to to use delivery options on China and Global legal updates results page
-    When the user navigates to the main PLCUK page
     When the user selects "International" tab and clicks on "<link>" link in "International subscriptions" section
     Then the Category Page opens correctly
     When the user clicks on the 'View all' link of the "Legal updates" widget

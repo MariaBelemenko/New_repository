@@ -19,8 +19,6 @@ public class ChinaPageScopedSearchDropdownTest extends BaseStepDef {
     @Then("^the scoped search drop down contains the practice areas as below$")
     public void theScopedSearchDropDownContainsThePracticeAreasAsBelow(List<String> items) throws Throwable {
         chinaCategoryPage.waitForPageToLoad();
-        List<String> initialListOfPracticeAreas = new ArrayList<String>();
-        initialListOfPracticeAreas.addAll(items);
         theUserCanDisplayTheScopedSearchDropdownMenuOptions("display");
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(searchScopeControl.scopedSearchDropdownOptionsList().size() == items.size())
