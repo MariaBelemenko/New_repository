@@ -341,4 +341,11 @@ public class SiteStructureCommonSteps extends BaseStepDef {
         }
     }
 
-}
+    @When("^the user opens url \"(.*)\" in the browser$")
+    public void theUserOpensUrlInTheBrowser(String url) throws Throwable {
+        navigationCobalt.navigateToPLUKPlus(url);
+        navigationCobalt.waitForPageToLoadAndJQueryProcessingWithCustomTimeOut(90);
+
+    }
+
+ }

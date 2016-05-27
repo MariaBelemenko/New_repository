@@ -55,5 +55,6 @@ public class CompartmentSwitchingTest extends BaseStepDef {
             assertTrue(prodName +" still visible as a link..!",comMethods.waitForElementToBeVisible(wlnHeader.compartmentToggleDropDownByLink("library"),100)==null);
         }
     }
+
 }
 
