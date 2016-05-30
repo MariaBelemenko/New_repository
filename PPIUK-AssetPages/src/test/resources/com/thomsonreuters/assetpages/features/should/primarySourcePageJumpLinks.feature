@@ -13,4 +13,6 @@ Feature: [790161] As a PL+ User I want to select a menu item and jump to that pa
     Then the user is taken to selected part of the document
   Examples:
     | GUID                              |
-    | I6905aad063a911e598dc8b09b4f043e0 |
+    | I67915bc263a911e598dc8b09b4f043e0 |
+    | I6905aae363a911e598dc8b09b4f043e0 |
+    | I8127783d52a011e598dc8b09b4f043e0 |
