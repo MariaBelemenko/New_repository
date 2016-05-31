@@ -478,4 +478,14 @@ public class WhatsMarketComparisonToolTest extends BaseStepDef {
         researchOrganizerPage.waitForPageToLoad();
     }
 
+    @Then("^the user deletes the report profile \"([^\"]*)\" from dropdown if it exists$")
+    public void userDeleteReportProfileIfExists(String arg1) throws Throwable {
+        if (whatsMarketComparisonReportPage.isReportProfileDropdownOptionDisplayed(arg1)) {
+            whatsMarketComparisonReportPage.deleteReportProfile().click();
+            whatsMarketComparisonReportPage.reportProfileOnDeleteProfilePopup(arg1).click();
+            whatsMarketComparisonReportPage.deleteButtonOnDeleteProfilePopup().click();
+            whatsMarketComparisonReportPage.waitForPageToLoadAndJQueryProcessing();
+        }
+        assertFalse("The report profile " + arg1 + " still exist", whatsMarketComparisonReportPage.isReportProfileDropdownOptionDisplayed(arg1));
+    }
 }

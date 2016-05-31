@@ -61,7 +61,8 @@ Feature: ukWhatsMarketComparisonTool.feature
     And the user selects the compare button
     And the user verifies the presence of the heading Deal Comparison Report
     And the user ensures that the left hand column select is displayed
-    And the user selects the option to Select All
+    Then the user deletes the report profile "test" from dropdown if it exists
+    When the user selects the option to Select All
     And the user selects the save option
     # Bug 850563 can prevent the title showing.
     And the user verifies the presence of a pop up entitled 'Save Report Profile'
@@ -465,7 +466,8 @@ Feature: ukWhatsMarketComparisonTool.feature
     And the user verifies the presence of a column entitled "Nature of bidder"
     And the user verifies the presence of a column entitled "Target"
     And the user verifies the presence of a column entitled "Industry sector"
-    And the user selects the save option
+    Then the user deletes the report profile "test" from dropdown if it exists
+    When the user selects the save option
     And the user verifies the presence of a pop up entitled 'Save Report Profile'
     And the user enters text into the profile name field "test"
     And the user selects the save option on the pop up
