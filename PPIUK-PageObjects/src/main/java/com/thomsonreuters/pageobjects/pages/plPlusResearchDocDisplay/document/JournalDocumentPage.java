@@ -48,12 +48,12 @@ public class JournalDocumentPage extends DocumentDisplayAbstractPage {
 	}
 
 	public WebElement documentSubsection(String subsection) {
-		return retryingFindElement(By.xpath(".//*[@id='co_docContentBody']//*[contains(text(), '" + subsection + "')]"));
+		return retryingFindElement(By.xpath(".//*[@id='co_docContentBody']//*[contains(text(), \"" + subsection + "\")]"));
 	}
 
 	public WebElement valueOfSubsection(String subsection) {
-		return retryingFindElement(By.xpath(".//*[@id='co_docContentBody']//*[contains(text(), '" + subsection
-				+ "')]/.."));
+		return retryingFindElement(By.xpath(".//*[@id='co_docContentBody']//*[contains(text(), \"" + subsection
+				+ "\")]/.."));
 	}
 
 	public WebElement providedByWlukIcon() {
