@@ -10,6 +10,7 @@ import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.DocumentDeliv
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.StandardDocumentPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import cucumber.api.java.en.Then;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -55,7 +56,12 @@ public class GlobalPagesOpenWebTest extends BaseStepDef {
 
     @Then("^he does not see on a legal updates results page any link related to delivery options \\(email, download, print\\)$")
     public void heDoesNotSeeOnALegalUpdatesResultsPageAnyLinkRelatedToDeliveryOptionsEmailDownloadPrint() throws Throwable {
-        assertFalse("Delivery options are visible for user", legalUpdatesResultsPage.isDeliveryMethodLinkPresent() & searchResultsPage.isDownloadDeliveryOptionPresent() & searchResultsPage.isPrintDeliveryOptionPresent() & searchResultsPage.isEmailDeliveryOptionPresent());
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(legalUpdatesResultsPage.isDeliveryMethodLinkPresent()).withFailMessage("Delivery link are visible for user").isFalse();
+        softly.assertThat(searchResultsPage.isDownloadDeliveryOptionPresent()).withFailMessage("Download delivery option are visible for user").isFalse();
+        softly.assertThat(searchResultsPage.isPrintDeliveryOptionPresent()).withFailMessage("Print delivery option are visible for user").isFalse();
+        softly.assertThat(searchResultsPage.isEmailDeliveryOptionPresent()).withFailMessage("Email delivery option are visible for user").isFalse();
+        softly.assertAll();
     }
 
     @Then("^he is not able to use these features on legal updates results page$")
