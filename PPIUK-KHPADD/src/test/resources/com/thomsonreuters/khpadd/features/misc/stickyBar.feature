@@ -45,3 +45,22 @@ Feature: [730588, 730584] Verify Title and Related Content on the sticky bar
    Examples:
     | guid                              |heading             					|
     | I2a05f3d71cb811e38578f7ccc38dcbee	|When do you need a written contract?	|
+    
+    Scenario Outline: (bug#863526)Doc display - title of sections not displaying when clicking on links in Speedread(for doc with TOC)
+    Given PL+ user is logged in
+    When user navigates directly to document with guid "<guid>"
+    And the user opens '<heading>' link
+    Then user verifies if page is scrolled to heading "<heading>"
+    And  scrolled heading "<heading>" is displayed on the sticky bar
+   Examples:
+    | guid                              |heading             					|
+    | I362b3d5112cc11e698dc8b09b4f043e0	|Consultation on improving charities reporting and accounting framework	|
+    
+   Scenario Outline: (bug#863526)Doc display - title of sections not displaying when clicking on links in Speedread(for doc without TOC)
+    Given PL+ user is logged in
+    When user navigates directly to document with guid "<guid>"
+    And the user opens '<heading>' link
+    Then user verifies if page is scrolled to heading "<heading>"
+    Examples:
+    | guid                              |heading             					|
+    | I6460dd8bd66811e598dc8b09b4f043e0 |Plymouth Brethren charity meeting public benefit requirements|
