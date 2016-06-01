@@ -34,27 +34,36 @@ public class GlobalPagesLessMoreMostTest extends BaseStepDef {
     @When("^the user should verify the presence of following search structure for \"(.*)\" option$")
     public void theUserObtainsTheTitleOfTheFirstResultAndStoresIt(String option, List<String> searchStructure) throws Throwable {
         for (String structure : searchStructure) {
-            if (structure.equalsIgnoreCase("Title")) {
-                assertTrue(structure + " is not displayed..!", searchResultsPage.firstResultTitle().isDisplayed());
-            } else if (structure.equalsIgnoreCase("Resource Type")) {
-                assertTrue(structure + " is not displayed..!", searchResultsPage.resourceTypeDescription().isDisplayed());
-            } else if (structure.equalsIgnoreCase("Jurisdiction ")) {
-                assertTrue(structure + " is not displayed..!", searchResultsPage.jurisdictionsForFirstResult().isDisplayed());
-            } else if (structure.equalsIgnoreCase("Status")) {
-                String statusText = searchResultsPage.statusForFirstResult().getText();
-                assertTrue(structure + " is not displayed..!", statusText.contains("Maintained") || statusText.contains("Published") || statusText.contains("Law stated as at"));
+            switch (structure.toLowerCase()) {
+                case "title":
+                    assertTrue(structure + " is not displayed..!", searchResultsPage.firstResultTitle().isDisplayed());
+                    break;
+                case "resource type":
+                    assertTrue(structure + " is not displayed..!", searchResultsPage.resourceTypeDescription().isDisplayed());
+                    break;
+                case "jurisdiction":
+                    assertTrue(structure + " is not displayed..!", searchResultsPage.jurisdictionsForFirstResult().isDisplayed());
+                    break;
+                case "status":
+                    String statusText = searchResultsPage.statusForFirstResult().getText();
+                    assertTrue(structure + " is not displayed..!", statusText.contains("Maintained") || statusText.contains("Published") || statusText.contains("Law stated as at"));
+                    break;
             }
-            if (option.equalsIgnoreCase("less")) {
-                assertFalse("In " + option + " abstact is displayed..!", searchResultsPage.firstResultAbstractText().isDisplayed());
-                assertFalse("In " + option + " first snippet is displayed..!", searchResultsPage.firstSnippetPara().isDisplayed());
-            } else if (option.equalsIgnoreCase("more")) {
-                assertTrue("In " + option + " abstact is not displayed..!", searchResultsPage.firstResultAbstractText().isDisplayed());
-                assertTrue("In " + option + " first snippet not displayed..!", searchResultsPage.firstSnippetPara().isDisplayed());
-                assertFalse("In " + option + " second snippet is displayed..!", searchResultsPage.secondSnippetPara().isDisplayed());
-            } else if (option.equalsIgnoreCase("most")) {
-                assertTrue("In " + option + " abstact is not displayed..!", searchResultsPage.firstResultAbstractText().isDisplayed());
-                assertTrue("In " + option + " first snippet is not displayed..!", searchResultsPage.firstSnippetPara().isDisplayed());
-                assertTrue("In " + option + " second snippet is not displayed..!", searchResultsPage.secondSnippetPara().isDisplayed());
+            switch (option.toLowerCase()){
+                case "less":
+                    assertFalse("In " + option + " abstact is displayed..!", searchResultsPage.firstResultAbstractText().isDisplayed());
+                    assertFalse("In " + option + " first snippet is displayed..!", searchResultsPage.firstSnippetPara().isDisplayed());
+                    break;
+                case "more":
+                    assertTrue("In " + option + " abstact is not displayed..!", searchResultsPage.firstResultAbstractText().isDisplayed());
+                    assertTrue("In " + option + " first snippet not displayed..!", searchResultsPage.firstSnippetPara().isDisplayed());
+                    assertFalse("In " + option + " second snippet is displayed..!", searchResultsPage.secondSnippetPara().isDisplayed());
+                    break;
+                case "most":
+                    assertTrue("In " + option + " abstact is not displayed..!", searchResultsPage.firstResultAbstractText().isDisplayed());
+                    assertTrue("In " + option + " first snippet is not displayed..!", searchResultsPage.firstSnippetPara().isDisplayed());
+                    assertTrue("In " + option + " second snippet is not displayed..!", searchResultsPage.secondSnippetPara().isDisplayed());
+                    break;
             }
         }
     }
