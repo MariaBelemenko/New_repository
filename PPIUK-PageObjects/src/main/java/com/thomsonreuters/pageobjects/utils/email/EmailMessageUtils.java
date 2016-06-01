@@ -1,18 +1,17 @@
 package com.thomsonreuters.pageobjects.utils.email;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-
-import javax.mail.BodyPart;
-import javax.mail.Message;
-import javax.mail.Multipart;
-import javax.mail.Part;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.regex.Pattern;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.Multipart;
+import javax.mail.Part;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class EmailMessageUtils {
@@ -23,6 +22,11 @@ public class EmailMessageUtils {
 
 	public boolean isEmailContainsText(Message message, String text) throws Exception {
 		return getMessageBody(message).toLowerCase().contains(text.toLowerCase());
+	}
+
+	public boolean isEmailContainsRegex(Message message, String regex) throws Exception {
+		Pattern p = Pattern.compile(regex);
+		return p.matcher(getMessageBody(message)).find();
 	}
 
 	public String getMessageBody(Message message) throws Exception {

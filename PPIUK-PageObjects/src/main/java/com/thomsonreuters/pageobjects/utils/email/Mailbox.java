@@ -105,6 +105,33 @@ public class Mailbox {
 		return result;
 	}
 
+	public Message waitForMessageWithTitleAndSender(String title, String sender, int timeoutSeconds, int intervalSeconds) throws Throwable {
+
+		Message result = null;
+		long stopTime = System.currentTimeMillis() + timeoutSeconds * 1000;
+		while (stopTime > System.currentTimeMillis() && result == null) {
+			try {
+				loadNewMessages();
+
+				for (Message m : messages) {
+					if (!m.getSubject().contains(title) || !m.getFrom()[0].toString().equals(sender)) {
+						continue;
+					}
+					result = m;
+				}
+			} catch (MessagingException e) {
+				LOG.info("Could not load messages");
+			}
+			if (result == null) {
+				Thread.sleep(intervalSeconds * 1000);
+			}
+		}
+		if (result == null) {
+			throw new Exception("Could not get message with title '" + title + "' and sender '" + sender + "'");
+		}
+		return result;
+	}
+
 	public List<Message> getMessages() {
 		return messages;
 	}

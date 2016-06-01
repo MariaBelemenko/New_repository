@@ -3,7 +3,11 @@ package com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document;
 import com.thomsonreuters.driver.exception.PageOperationException;
 import com.thomsonreuters.driver.framework.AbstractPage;
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.enums.DocumentSecondaryLink;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
@@ -297,4 +301,12 @@ public abstract class DocumentDisplayAbstractPage extends AbstractPage {
     public boolean isRelatedContentHeadingDisplayed() {
         return waitForViewScrollingToElement(By.xpath("//div[@id='co_relatedContent']//h2[text()='Related Content']"));
     }
+
+	public WebElement buttonInDocumentWithValue(String value) {
+		return findChildElement(contentBody(), By.xpath("./input[contains(@value,'" + value + "')]"));
+	}
+
+	public WebElement buttonWithText(String text) {
+		return retryingFindElement(By.xpath(".//a[contains(text(),'" + text + "')]"));
+	}
 }
