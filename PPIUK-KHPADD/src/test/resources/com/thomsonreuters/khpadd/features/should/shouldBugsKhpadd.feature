@@ -2,6 +2,7 @@
 Feature: Verify Should bugs for KHPADD (Bug# 786498) - Foldering icon not getting enabled when a resource at the bottom of the list is being selected on Topic page
   (Bug# 833268 - Regression - Subject field in Email dialog box is missing the text "Practical Law")
   (Bug# 861858 - Glossary: Related content is incorrectly appearing)
+  (Bug# 800580 - 'Return to list' takes user to bottom of page)
 
   Background:
     Given PL+ user is logged in
@@ -61,4 +62,17 @@ Feature: Verify Should bugs for KHPADD (Bug# 786498) - Foldering icon not gettin
   Examples:
     | guid                              | title                                                                         | author                                   | resource status          | jurisdictions    | resource history | related content | documentType | plc ref    |
     | I3351aa2ee8da11e398db8b09b4f043e0 | Case study: Andrew Garard - Making the move from in-house to private practice | Author: William Long, PLC Law Department | Published on 24-Jul-2007 | No jurisdictions | Not displayed    | displayed       | Articles   | 0-373-7988 |
+
+
+  @bug 
+  Scenario Outline:
+  [bug#800580]'Return to list' takes user to the previous  page view. 
+	When the user navigates to practice area "Arbitration" filtered by "Interim measures" topic page 
+	And the user scrolls to the "<link>" link and saves its location 
+	And the user clicks on "<link>" link 
+	And the user clicks on "Return to list" link 
+	Then the user verifies if location of "<link>" link is not changed 
+	Examples: 
+		| link													|
+		| Arbitration and the recast of the Brussels Regulation |
 

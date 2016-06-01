@@ -12,6 +12,9 @@ import com.thomsonreuters.pageobjects.pages.widgets.CategoryPage;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.hamcrest.core.Is;
+import org.junit.Assert;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.internal.Locatable;
 
 import java.util.List;
 
@@ -30,6 +33,10 @@ public class TopicPageResourceListingTest extends BaseStepDef {
     private WLNHeader header = new WLNHeader();
     private FavouritesPage favouritesPage = new FavouritesPage();
     private PageActions pageActions = new PageActions();
+
+    private final static int SCROLL_DOWN = 5; //Scroll the document by 5*250 px vertically
+    private int expectedPoint, actualPoint;
+    
 
     @Then("^the user is presented with a topic page with title \"(.*?)\"$")
     public void theUserIsPresentedWithATopicPageWithTitle(String titleName) throws Throwable {
@@ -151,5 +158,24 @@ public class TopicPageResourceListingTest extends BaseStepDef {
         }
         assertTrue(expectedResources.equals(topicPage.getResourcesList(resourceType)));
     }
+    
+    @When("^the user scrolls to the \"(.*?)\" link and saves its location$")
+    public void theUserSavesLocationOfLink(String linkText) throws Throwable {
+    	//it waits while a list of documents is loading
+    	commonMethods.waitElementByLinkText(linkText);
+    	resourcePage.scrollDown(SCROLL_DOWN); 
+    	Locatable elementLocation = (Locatable) commonMethods.waitElementByLinkText(linkText);
+    	expectedPoint = elementLocation.getCoordinates().inViewPort().getY();
+
+    	
+    }
+    
+    @Then("^the user verifies if location of \"(.*?)\" link is not changed$")
+    public void takenToPreviousView(String linkText) throws Throwable {
+    	Locatable elementLocation = (Locatable) commonMethods.waitElementByLinkText(linkText);
+    	actualPoint = elementLocation.getCoordinates().inViewPort().getY();
+        Assert.assertEquals("user is not taken to the previous  page view.", expectedPoint, actualPoint);
+    }
+
 
 }
