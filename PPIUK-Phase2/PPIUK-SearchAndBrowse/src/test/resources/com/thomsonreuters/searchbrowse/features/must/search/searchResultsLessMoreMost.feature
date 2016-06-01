@@ -9,6 +9,7 @@ Background: Log on
           And has selected the Cases content type facet
           Then the user can verify the presence of a case name for result "1"
           And the user can verify the presence of the court details for result "1"
+          And the user can verify the presence of a lead citation for result "1"
           And the user can verify the presence of the judgment date for result "1"
           And the user can verify the presence of a where reported section for result "1"
           And the user can verify the presence of document links for result "1"
@@ -20,10 +21,11 @@ Background: Log on
           And has selected the option to show "More" detail
           Then the user can verify that the "More" detail option is selected
           Then the user can verify the presence of a case name for result "1"
+          And the user can verify the presence of the court details for result "1"
+          And the user can verify the presence of a lead citation for result "1"
+          And the user can verify the presence of the judgment date for result "1"
           And the user can verify the presence of subject data for result "1"
           And the user can verify the presence of keyword data for result "1"
-          And the user can verify the presence of the court details for result "1"
-          And the user can verify the presence of the judgment date for result "1"
           And the user can verify the presence of a where reported section for result "1"
           And the user can verify the presence of document links for result "1"
           And the user can verify the presence of a status icon for result "1"
@@ -32,52 +34,81 @@ Background: Log on
       Scenario: Verify setting for most detail - Cases
             Given a logged in user has run a search within the WLUK compartment
             And has selected the Cases content type facet
-            And has selected the option to show "Most" detail
-            Then the user can verify that the "Most" detail option is selected
+            And has selected the option to show "More" detail
+            Then the user can verify that the "More" detail option is selected
             Then the user can verify the presence of a case name for result "1"
+            And the user can verify the presence of the court details for result "1"
+            And the user can verify the presence of a lead citation for result "1"
+            And the user can verify the presence of the judgment date for result "1"
             And the user can verify the presence of subject data for result "1"
             And the user can verify the presence of keyword data for result "1"
-            And the user can verify the presence of the court details for result "1"
-            And the user can verify the presence of the judgment date for result "1"
             And the user can verify the presence of a where reported section for result "1"
             And the user can verify the presence of document links for result "1"
             And the user can verify the presence of a status icon for result "1"
             And the user can verify the presence of summary information for result "1"
-            And the user can verify the presence of terms in context data for result "1"
+            And the user can verify the presence of cases terms in context data for result "1"
 
-      Scenario: Verify setting for less detail - Legislation
+
+        Scenario: Verify setting for less detail - Legislation AOP
+          Given a logged in user has run a search within the WLUK compartment
+          And has selected the Legislation content type facet
+          And has selected the option to show "Less" detail
+          Then the user can verify that the "Less" detail option is selected
+          And the user can verify the presence of the Act/SI title for result "1"
+
+        Scenario: Verify setting for more detail - Legislation AOP
+          Given a logged in user has run a search within the WLUK compartment
+          And has selected the Legislation content type facet
+          And has selected the option to show "Less" detail
+          Then the user can verify that the "Less" detail option is selected
+          And the user can verify the presence of the Act/SI title for result "1"
+
+        Scenario: Verify setting for most detail - Legislation AOP
+          Given a logged in user has run a search within the WLUK compartment
+          And has selected the Legislation content type facet
+          And has selected the option to show "Less" detail
+          Then the user can verify that the "Less" detail option is selected
+          And the user can verify the presence of the Act/SI title for result "1"
+          And the user can verify the presence of legislation terms in context data for result "1"
+
+
+
+        Scenario: Verify setting for less detail - Legislation provision
           Given a logged in user has run a search within the WLUK compartment
           And has selected the Legislation content type facet
           And has selected the option to show "Less" detail
           Then the user can verify that the "Less" detail option is selected
           And the user can verify the presence of the Act/SI title for result "1"
           And the user can verify the presence of the provision detail for result "1"
-          And the user can verify the presence of document links and list for result "1"
+          And the user can verify the presence of a document link for result "1"
           And the user can verify the presence of a status icon for result "1"
 
 
-      Scenario: Verify setting for more detail - Legislation
+        Scenario: Verify setting for more detail - Legislation provision
           Given a logged in user has run a search within the WLUK compartment
           And has selected the Legislation content type facet
           And has selected the option to show "More" detail
           Then the user can verify that the "More" detail option is selected
           And the user can verify the presence of the Act/SI title for result "1"
           And the user can verify the presence of the provision detail for result "1"
-          And the user can verify the presence of document links and list for result "1"
+          And the user can verify the presence of a document link for result "1"
           And the user can verify the presence of a status icon for result "1"
           And the user can verify the presence of the version and date for result "1"
 
-      Scenario: Verify setting for most detail - Legislation
+
+        Scenario: Verify setting for most detail - Legislation
           Given a logged in user has run a search within the WLUK compartment
           And has selected the Legislation content type facet
           And has selected the option to show "Most" detail
           Then the user can verify that the "Most" detail option is selected
           And the user can verify the presence of the Act/SI title for result "1"
           And the user can verify the presence of the provision detail for result "1"
-          And the user can verify the presence of document links and list for result "1"
+          And the user can verify the presence of a document link for result "1"
           And the user can verify the presence of a status icon for result "1"
           And the user can verify the presence of the version and date for result "1"
           And the user can verify the presence of terms in context for result "1"
+
+
 
     Scenario: Verify setting for less detail - Journals
           Given a logged in user has run a search within the WLUK compartment
@@ -85,28 +116,36 @@ Background: Log on
           And has selected the option to show "Less" detail
           Then the user can verify that the "Less" detail option is selected
           Then the user can verify for result "1" the presence of the journal abstract title
-          And the user can verify the presence of TBC
+          And the user can verify the presence of the journal citation
+          And the user can verify the presence of the journal title
+          And the user can verify the presence of journal article details with links
 
       Scenario: Verify setting for more detail - Journals
-          Given a logged in user has run a search within the WLUK compartment
-          And has selected the Journals content type facet
-          And has selected the option to show "More" detail
-          Then the user can verify that the "More" detail option is selected
-          Then the user can verify the presence of the journal title for result "1"
-          And the user can verify the presence of the journal citation for result "1"
-          And the user can verify the presence of a document link list for result "1"
-          And the user can verify the presenc of the article abstract for result "1" [?]
+        Given a logged in user has run a search within the WLUK compartment
+        And has selected the Journals content type facet
+        And has selected the option to show "Less" detail
+        Then the user can verify that the "Less" detail option is selected
+        Then the user can verify for result "1" the presence of the journal abstract title
+        And the user can verify the presence of the journal citation
+        And the user can verify the presence of the journal title
+        And the user can verify the presence of journal subject data
+        And the user can verify the presence of journal keyword data
+        And the user can verify the presence of journal article details with links
+        And the user can verify the presence of journal abstract data
 
       Scenario: Verify setting for most detail - Journals
-          Given a logged in user has run a search within the WLUK compartment
-          And has selected the Journals content type facet
-          And has selected the option to show "Most" detail
-          Then the user can verify that the "Most" detail option is selected
-          Then the user can verify the presence of the journal title for result "1"
-          And the user can verify the presence of the journal citation for result "1"
-          And the user can verify the presence of a document link list for result "1"
-          And the user can verify the presence of the article abstract for result "1" [?]
-          And the user can verify the presence of terms in context for result "1"
+        Given a logged in user has run a search within the WLUK compartment
+        And has selected the Journals content type facet
+        And has selected the option to show "Less" detail
+        Then the user can verify that the "Less" detail option is selected
+        Then the user can verify for result "1" the presence of the journal abstract title
+        And the user can verify the presence of the journal citation
+        And the user can verify the presence of the journal title
+        And the user can verify the presence of journal subject data
+        And the user can verify the presence of journal keyword data
+        And the user can verify the presence of journal article details with links
+        And the user can verify the presence of journal abstract data
+        And the user can verify the presence of journal terms in context data
 
 
       Scenario: Verify default setting reflects previous user session setting (is this correct ?)
