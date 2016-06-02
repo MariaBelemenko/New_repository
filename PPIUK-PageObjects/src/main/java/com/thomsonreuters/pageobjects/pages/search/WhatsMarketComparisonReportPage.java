@@ -260,7 +260,7 @@ public class WhatsMarketComparisonReportPage extends DocumentDisplayAbstractPage
         List<String> list = new ArrayList<String>();
         try {
             for (WebElement facet : retryingFindElements(By.xpath("//div[@id='reportBodyContainer']//tbody/tr/td[2]/a"))) {
-                list.add(facet.getText());
+                list.add(facet.getText().toLowerCase());
             }
         } catch (TimeoutException te) {
             LOG.info("context", te);
