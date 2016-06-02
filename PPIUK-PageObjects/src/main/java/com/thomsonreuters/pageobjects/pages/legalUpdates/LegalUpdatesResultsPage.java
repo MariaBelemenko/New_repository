@@ -45,7 +45,7 @@ public class LegalUpdatesResultsPage extends LegalUpdatesBasePage {
     }
 
     public WebElement emailIcon() {
-        return retryingFindElement(By.id("deliveryLinkRow1Email"));
+        return waitForExpectedElement(By.id("deliveryLinkRow1Email"));
     }
 
     public WebElement printIcon() {
@@ -57,19 +57,19 @@ public class LegalUpdatesResultsPage extends LegalUpdatesBasePage {
     }
 
     public WebElement resultsPageHeader() {
-        return retryingFindElement(By.xpath(resultsHeaderLocator));
+        return waitForExpectedElement(By.xpath(resultsHeaderLocator));
     }
 
     public WebElement findElementOnResultsPageHeader(String elementXpath) {
-        return retryingFindElement(By.xpath(resultsHeaderLocator + elementXpath));
+        return waitForExpectedElement(By.xpath(resultsHeaderLocator + elementXpath));
     }
 
     public WebElement resultsPageFooter() {
-        return retryingFindElement(By.xpath(resultsFooterLocator));
+        return waitForExpectedElement(By.xpath(resultsFooterLocator));
     }
 
     public WebElement findElementOnResultsPageFooter(String elementXpath) {
-        return retryingFindElement(By.xpath(resultsFooterLocator + elementXpath));
+        return waitForExpectedElement(By.xpath(resultsFooterLocator + elementXpath));
     }
 
     public WebElement subscribeLink() {
@@ -77,7 +77,7 @@ public class LegalUpdatesResultsPage extends LegalUpdatesBasePage {
     }
 
     public WebElement rssLink() {
-        return retryingFindElement(By.linkText("RSS"));
+        return waitForExpectedElement(By.linkText("RSS"));
     }
 
     public WebElement saveForLaterLink() {
@@ -85,7 +85,7 @@ public class LegalUpdatesResultsPage extends LegalUpdatesBasePage {
     }
 
     public WebElement deliveryMethodLink() {
-        return retryingFindElement(By.xpath("//a[text()='Deliver']"));
+        return waitForExpectedElement(By.xpath("//a[text()='Deliver']"));
     }
 
     public boolean isDeliveryMethodLinkPresent() {
@@ -106,7 +106,7 @@ public class LegalUpdatesResultsPage extends LegalUpdatesBasePage {
     }
 
     public int getUpdatesResultCount() {
-        return retryingFindElements(By.xpath("//span[@class='co_searchCount']")).size();
+        return waitForExpectedElements(By.xpath("//span[@class='co_searchCount']")).size();
     }
 
     public WebElement legalUpdatesResultsContentList() {
@@ -114,7 +114,7 @@ public class LegalUpdatesResultsPage extends LegalUpdatesBasePage {
     }
 
     public WebElement specificLegalUpdateCheckBox(int legalUpdateNumber) {
-        return retryingFindElement(By.xpath("//input[@id='cobalt_search_knowhow_checkbox_" + legalUpdateNumber + "'" + " and @type='checkbox']"));
+        return waitForExpectedElement(By.xpath("//input[@id='cobalt_search_knowhow_checkbox_" + legalUpdateNumber + "'" + " and @type='checkbox']"));
     }
 
     public WebElement specificLegalUpdateTitle(int legalUpdateNumber) {
@@ -130,15 +130,15 @@ public class LegalUpdatesResultsPage extends LegalUpdatesBasePage {
     }
 
     public WebElement currentPageNumberLabel() {
-        return retryingFindElement(By.id("co_search_footer_pagination_current"));
+        return waitForExpectedElement(By.id("co_search_footer_pagination_current"));
     }
 
     public WebElement specifiedPageNumberLink(String pageNumber) {
-        return retryingFindElement(By.id("co_search_footer_pagination_page" + pageNumber));
+        return waitForExpectedElement(By.id("co_search_footer_pagination_page" + pageNumber));
     }
 
     public WebElement pageNumberLinksContainer() {
-        return retryingFindElement(By.id("co_navigationFooter"));
+        return waitForExpectedElement(By.id("co_navigationFooter"));
     }
 
     public WebElement nextPageButton() {
@@ -210,7 +210,7 @@ public class LegalUpdatesResultsPage extends LegalUpdatesBasePage {
     }
 
     public WebElement resourceTypeFilter() {
-        return retryingFindElement(By.xpath("//div[@id='facet_div_documentType']//h4[@id='co_facetHeaderdocumentType']"));
+        return waitForExpectedElement(By.xpath("//div[@id='facet_div_documentType']//h4[@id='co_facetHeaderdocumentType']"));
     }
     
     public WebElement unitedKingdomLegalUpdatesBreadCrumbLink() {
@@ -218,31 +218,31 @@ public class LegalUpdatesResultsPage extends LegalUpdatesBasePage {
     }
 
     public WebElement moreDetailBox() {
-        return retryingFindElement(By.xpath("//div[@class='co_searchResults_summary co_search_detailLevel_2']"));
+        return waitForExpectedElement(By.xpath("//div[@class='co_searchResults_summary co_search_detailLevel_2']"),10);
     }
 
     public WebElement resultsList() {
-        return retryingFindElement(By.id("cobalt_search_knowHowPlc_results"));
+        return waitForExpectedElement(By.id("cobalt_search_knowHowPlc_results"),10);
     }
 
     public String getfacetSubTitleText() {
-        return retryingFindElement(By.xpath("//span[@class='co_facet_subtitle']")).getText();
+        return waitForExpectedElement(By.xpath("//span[@class='co_facet_subtitle']")).getText();
     }
 
     public WebElement childTopicsFacets() {
-        return retryingFindElement(By.id("facet_div_knowHowPracticeAreaSummary"));
+        return waitForExpectedElement(By.id("facet_div_knowHowPracticeAreaSummary"));
     }
 
     public List<WebElement> allPAFacetsChildCheckBoxes() {
-        return retryingFindElements(By.xpath("//div[@id='facet_div_knowHowPracticeAreaSummary']//input[@type='checkbox']"));
+        return waitForExpectedElements(By.xpath("//div[@id='facet_div_knowHowPracticeAreaSummary']//input[@type='checkbox']"));
     }
 
     public List<WebElement> getAllUpdatesTitles() {
-        return retryingFindElements(By.xpath("//a[contains(@id,'cobalt_result_knowhow_title')]"));
+        return waitForExpectedElements(By.xpath("//a[contains(@id,'cobalt_result_knowhow_title')]"));
     }
     
     public WebElement sortDropDown() {
-    	return retryingFindElement(By.id("co_search_sortOptions"));
+    	return waitForExpectedElement(By.id("co_search_sortOptions"));
     }
 
     public List<String> getFirstLU5Titles() {
@@ -284,7 +284,7 @@ public class LegalUpdatesResultsPage extends LegalUpdatesBasePage {
 
     public List<String> legalUpdatesStatuses() {
         legalUpdatesStatuses = new ArrayList<String>();
-        for (WebElement el : retryingFindElements(By.xpath("//span[@class='co_greenStatus']"))) {
+        for (WebElement el : waitForExpectedElements(By.xpath("//span[@class='co_greenStatus']"))) {
             legalUpdatesStatuses.add(el.getText());
         }
         return legalUpdatesStatuses;
@@ -326,7 +326,7 @@ public class LegalUpdatesResultsPage extends LegalUpdatesBasePage {
 
     public boolean isPaginationArrowDisplayed(String paginationArrow) {
         try {
-            return retryingFindElement(paginationArrowMap.get(paginationArrow)).isDisplayed();
+            return waitForExpectedElement(paginationArrowMap.get(paginationArrow)).isDisplayed();
         } catch (PageOperationException e) {
             LOG.info("context", e);
             return false;

@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import static junit.framework.Assert.assertTrue;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Ian Hudson uc087619 on 16/03/2016.
@@ -79,5 +80,10 @@ public class MailinatorMethods extends AbstractPage {
         // Switch back to the full web page
         commonMailinatorPage.switchToMainWindow();
         }
+
+    public String generatesUniqueEmailAddress() throws Throwable {
+        String uuid = UUID.randomUUID().toString().replaceAll("[^A-Za-z0-9]", "");
+        return uuid.substring(0, Math.min(uuid.length(), 25));
+    }
 
 }
