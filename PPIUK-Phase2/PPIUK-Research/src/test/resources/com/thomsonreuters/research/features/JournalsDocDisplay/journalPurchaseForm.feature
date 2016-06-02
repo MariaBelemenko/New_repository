@@ -6,7 +6,7 @@ Feature: [888466] As a user I want to see purchase form for a full text article 
 
 Background: 
 	Given PL+ user is logged in with following details 
-		| userName	| mtaranchuk_rsr	| 
+		| userName	| PLResearchUser5	| 
 		#ATTENTION: values below depend on user selection 	
 
 Scenario Outline: [888466] Purchase form - email delivery - checking default values 
@@ -51,7 +51,7 @@ Scenario Outline: [888466] Purchase form - email delivery - checking default val
 	And the admins receive an email at "tr-journals-purchase-form@yandex.com" from "<email>" with subject "A new request for Article <title>" with all the proper information 
 	Examples: 
 		|guid	|title|	citation 	| name	|	organisation	|email	|
-		|I4BCDFB300B1411E5A0D59089CFDFCEB1|Swedish IT.|  Tax. 2015, 175(4503), 22 |Mtaranchuk Research | EPAM |mtaranchuk.rsr@yandex.com|
+		|I4BCDFB300B1411E5A0D59089CFDFCEB1|Swedish IT.|  Tax. 2015, 175(4503), 22 |PLResearchUser5 TestUser5 | EPAM |PLResearchUser5@mailinator.com|
 		
 
 Scenario Outline: [888466] Fax delivery - change values
@@ -91,7 +91,7 @@ Scenario Outline: [888466] DX delivery
 	And the admins receive an email at "tr-journals-purchase-form@yandex.com" from "<email>" with subject "A new request for Article <title>" with all the proper information 
 	Examples: 
 		|guid								|title |	organisation	| dx |email|
-		|I1BFB0960A4EF11DF8258C23352F0181D| Bad reception. | Some Organisation | Some DX number |mtaranchuk.rsr@yandex.com|
+		|I1BFB0960A4EF11DF8258C23352F0181D| Bad reception. | Some Organisation | Some DX number |PLResearchUser5@mailinator.com|
 
 	
 Scenario Outline: [888466] Post delivery
@@ -114,7 +114,7 @@ Scenario Outline: [888466] Post delivery
 	And the admins receive an email at "tr-journals-purchase-form@yandex.com" from "<email>" with subject "A new request for Article <title>" with all the proper information 
 	Examples: 
 		|guid							|	title |	organisation	| a1 |a2 | town | state |country | postcode |email|
-		|I1BFB0960A4EF11DF8258C23352F0181D| Bad reception. |  Some Organisation | Some Addr1 |Some Addr2| Some Town |Some State |Some Country |Some Postcode| mtaranchuk.rsr@yandex.com|
+		|I1BFB0960A4EF11DF8258C23352F0181D| Bad reception. |  Some Organisation | Some Addr1 |Some Addr2| Some Town |Some State |Some Country |Some Postcode| PLResearchUser5@mailinator.com|
 
 
 Scenario Outline: [888466] Negative: some mandatory field is empty
@@ -160,7 +160,8 @@ Scenario Outline: [888466] Close button - no
 
 Scenario Outline: [888466] Documents without purchase form
 	When the user opens document with guid "<guid>" 
-	Then the user should not see button with text "Request a copy of the Full Text" within the document
+	Then the document block is displayed
+	And the user should not see button with text "Request a copy of the Full Text" within the document
 	Examples: 
 		|guid							|
 		|IAED4F9A0924511E59E5ED34C382BD9CE|
