@@ -1,38 +1,45 @@
 Feature: caseAnalysisDocDisplay.feature
-  As a user I want to see Case analysis content within Case document so that I can read and understand the case.
 
-  Scenario: [885375] Verify case name
-    Given the user is viewing the Case Analysis tab of a Case document
-    Then the user can verify the presence of the case name
-    And the user can verify the presence of any alias by which the case is also known
+  Background: Log in
+  Given PL+ user is logged in
 
+   Scenario Outline: [896749] Verify display for case digest
+     When the user opens document with guid "<guid>"
+     Then the user can verify the presence of the heading "Case Digest"
+     And the user can verify the presence of the heading "Summary"
+     And the user can verify the presence of the heading "Abstract"
 
-  Scenario: [885375] Verify case digest
-    Given the user is viewing the Case Analysis tab of a Case document
-    Then the user is able to verify the presence of a Summary and Abstract within the Case digest section
+     Examples:
+       | guid                              |
+       | I3312F630DF9511E58963C36B2D2F088E |
 
+  Scenario Outline: Verify links within case digest to cases function correctly
+    When the user opens document with guid "<guid>"
+    And the user can verify the presence of the heading "Case Digest"
+    And the user verifies the presence of a link to case "X"
+    And the user selects the link
+    And the user verifies that the case analysis for the corresponding case is displayed to the user
 
-  Scenario: [885375] Verify Appellate History Section
-    Given the user is viewing the Case Analysis tab of a Case document
-    Then the user can verify the presence of an Appellate history section
-    And the user is able to verify that within appellate history cases are sorted by relevance by default
-    And the user is able to verify that within appellate history the user is able to sort by TBD
-    And the user is able to verify that each appellate history case contains the judgment date
-    And the user is able to verify that each appellate history case contains the Party Names
-    And the user is able to verify that each appellate history case contains the Status icon
-    And the user is able to verify that each appellate history case contains the court
-    And the user is able to verify that each appellate history case contains citation information
-    And the user is able to verify that each appellate history case contains subject data
-    And the user is able to verify that each appellate history case contains a link from the party names to the corresponding case
-    And the user is able to verify the presence of an option to View Graphical History within the appellate history section
+    Examples:
+      | guid                              |
+      | I3312F630DF9511E58963C36B2D2F088E |
 
-    #query - what about validating sorting order within appellate history
+  Scenario Outline: Verify links within case digest to legislation function correctly
+    When the user opens document with guid "<guid>"
+    And the user can verify the presence of the heading "Case Digest"
+    And the user verifies the presence of a link to legislation provision "X"
+    And the user selects the link
+    And the user verifies that the corresponding provision for the legislative link is displayed to the user
 
-  Scenario: [885375] Verify related cases
-    Given the user is viewing the Case Analysis tab of a Case document
-    Then the user is able to verify the presence of a Related Cases section
-    And the user is able to verify that cases within the related cases section are linked from the case name to the corresponding case record
-    And the user is able to verify that cases within the related cases section include a status icon
-    And the user is able to verify that cases within the related cases section include court information
-    And the user is able to verify that cases within the related cases section include subject data
-    And the user is able to verify that cases within the related cases section include one citation per reference
+    Examples:
+      | guid                              |
+      | I3312F630DF9511E58963C36B2D2F088E |
+
+  Scenario Outline: Verify display where no case digest present
+    When the user opens document with guid "<guid>"
+    Then the user can verify the presence of the message "message text"
+    And the user can verify that the heading "Case Digest" is not present
+
+    Examples:
+      | guid                              |
+      | ICB10E92018F911DEB8F793CF9A69A7D8 |
