@@ -26,6 +26,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
+import org.junit.Assert;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -165,6 +166,7 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         }
         plUserIsLoggedInWithFollowingDetails(Collections.singletonList(plPlusUser));
         LOG.info("The PL+ user is logged in");
+        Assert.assertTrue(wlnHeader.isHistoryLinkPresent());
     }
 
     @Given("^PL\\+ user is logged in with following details after IP login$")
