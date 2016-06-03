@@ -1,16 +1,15 @@
 @wip
 Feature: Verify the Browse to Standard Doc and Clause
-  #this test has been transferred from the research browse project
+  this test has been transferred from the research browse project
   Verify the Browse to Practice Notes
 
   # Test takes too much time (~2h) because of huge link count
-
   # NOTICE: The count of links suggested by Sam Newman:
   # "Are you verifying that the links are the correct links? Or simply that they are present?
   # If the latter is the case, we could change the test to just check for the presence of one or more links.
   # If we did have to test the links themselves, I would suggest testing a minimum of 25 links per resource type."
-
   # Waiting answer for Sam Newman about back browser action. Last step fail now because active tab is 'Practice area' after return
+
   Scenario Outline: Verify the Browse to Standard Doc and Clause
     Given PL+ user is logged in
     When the user opens 'Resources' link

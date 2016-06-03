@@ -1,7 +1,6 @@
 Feature: Check the list of Topic links on the Content Type Practice Area Pages.
-  #this test has been transferred from the research browse project
-
-  As a PL+ user who is also subscribed to WestLaw UK Research Content
+  this test has been transferred from the research browse project
+  As a PL user who is also subscribed to WestLaw UK Research Content
   I want to see the list of relevant topics displayed on the Research Content Practice Area Page
 
   Scenario Outline: List of topics links in Cases Practice Area Page

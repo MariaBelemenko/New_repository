@@ -3,15 +3,22 @@ package com.thomsonreuters.searchbrowse.step_definitions.search;
 import com.thomsonreuters.pageobjects.common.PageActions;
 import com.thomsonreuters.pageobjects.pages.folders.HistoryTabs;
 import com.thomsonreuters.pageobjects.pages.folders.ResearchOrganizerPage;
+import com.thomsonreuters.pageobjects.pages.generic.PPIGenericDocDisplay;
 import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawUKCategoryPage;
 import com.thomsonreuters.pageobjects.pages.landingPage.SearchScopeControl;
+import com.thomsonreuters.pageobjects.pages.landingPage.WhatsMarketHomePage;
+import com.thomsonreuters.pageobjects.pages.pageCreation.HomePage;
+import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.KHResourcePage;
+import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.TopicPage;
+import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.searchbrowse.step_definitions.BaseStepDef;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -30,6 +37,15 @@ String s;
     private SearchResultsPage searchResultsPage;
     private WLNHeader wlnHeader;
     private ResearchOrganizerPage researchOrganizerPage;
+    private HomePage homePage;
+    private TopicPage topicPage;
+    private KHResourcePage khResourcePage;
+    private SoftAssertions softAssertions;
+    private PPIGenericDocDisplay ppiGenericDocDisplay;
+    private WhatsMarketHomePage whatsMarketHomePage;
+    private KnowHowSearchResultsPage knowHowSearchResultsPage;
+
+    static int actualResultsCount;
 
     public ScopeSearchStepDef() {
         practicalLawUKCategoryPage = new PracticalLawUKCategoryPage();
@@ -38,6 +54,12 @@ String s;
         searchResultsPage = new SearchResultsPage();
         wlnHeader = new WLNHeader();
         researchOrganizerPage = new ResearchOrganizerPage();
+        homePage = new HomePage();
+        topicPage = new TopicPage();
+        khResourcePage = new KHResourcePage();
+        ppiGenericDocDisplay = new PPIGenericDocDisplay();
+        whatsMarketHomePage = new WhatsMarketHomePage();
+        knowHowSearchResultsPage = new KnowHowSearchResultsPage();
     }
 
     @Given("^user navigated to WestLaw UK  home page through compartment$")
@@ -45,11 +67,11 @@ String s;
         //TODO need to add the code to move to wluk compartment page
     }
 
-    @When("^the user navigates to WLUK practice area \"([^\"]*)\"$")
-    public void theUserNavigatesToPracticeAreaFilteredByTopicPage(String arg1, String arg2) throws Throwable {
-        userNavigatedToWestLawUKHomePageThroughCompartment();
-        practicalLawUKCategoryPage.practiceAreaLink(arg1).click();
-    }
+//    @When("^the user navigates to WLUK practice area \"([^\"]*)\"$")
+//    public void theUserNavigatesToPracticeAreaFilteredByTopicPage(String arg1, String arg2) throws Throwable {
+//        userNavigatedToWestLawUKHomePageThroughCompartment();
+//        practicalLawUKCategoryPage.practiceAreaLink(arg1).click();
+//    }
 
     @Then("^the user can verify that the scoped search dropdown states \"([^\"]*)\"$")
     public void theUserCanVerifyThatTheScopedSearchDropdownStates(String expectedText) throws Throwable {
@@ -58,7 +80,7 @@ String s;
         /** Strip spaces from the string */
         String returnedText = searchScopeControl.scopedSearchDropdownTitle().getText().replaceAll("\\s+", "");
         assertTrue("The selected practice area name and scope search dropdown populated value is not matching."
-                , expectedText.equals(expectedText));
+                , expectedText.equals(returnedText));
     }
 
     @When("^the user runs a free text search for the query \"([^\"]*)\"$")
@@ -82,6 +104,9 @@ String s;
 
         /** Wait for the results list to display */
         theUserVerifiesThatTheResultsListPageIsDisplayed();
+
+        //Storing the results count value in local variable for future varification.
+        actualResultsCount = knowHowSearchResultsPage.getSearchResultsCount();
     }
 
     @When("^the user verifies that the results list page is displayed$")
@@ -106,11 +131,11 @@ String s;
         wlnHeader.historyLink().click();
     }
 
-    @When("^the user selects the link to re-run the scoped search$")
-    public void theUserSelectsTheLinkToReRunTheScopedSearch() throws Throwable {
-        HistoryTabs tab = HistoryTabs.valueOf("Search");
+    @When("^the user selects the link \"([^\"]*)\" to re-run the scoped search$")
+    public void theUserSelectsTheLinkToReRunTheScopedSearch(String searchLinkName) throws Throwable {
+        HistoryTabs tab = HistoryTabs.valueOf("Searches");
         researchOrganizerPage.findElement(tab.getId());
-        // ToDO: Need to add the step to select the search term from history results
+        researchOrganizerPage.clickOnSearchTermInHistory(searchLinkName);
     }
 
     @Then("^the user is able to confirm that the scoped search dropdown is set to the scoped value \"([^\"]*)\"$")
@@ -118,26 +143,51 @@ String s;
         theUserCanVerifyThatTheScopedSearchDropdownStates(expectedText);
     }
 
-    @Then("^the user is able to verify that the pre-scoped search value is correctly highlighted as a facet$")
-    public void theUserIsAbleToVerifyThatThePreScopedSearchValueIsCorrectlyHighlightedAsAFacet() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    @Then("^the user is able to verify that the pre-scoped \"([^\"]*)\" value is correctly highlighted as a facet$")
+    public void theUserIsAbleToVerifyThatThePreScopedSearchValueIsCorrectlyHighlightedAsAFacet(String facetName) throws Throwable {
+        facetName = "\"" + facetName + "\"";
+        assertTrue(searchResultsPage.resultPageTitle(facetName).isDisplayed());
     }
 
     @Then("^the user is able to verify that the number of search results matches with previous results$")
     public void theUserIsAbleToVerifyThatTheNumberOfSearchResultsMatchesWithPreviousResults() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        assertTrue(actualResultsCount == knowHowSearchResultsPage.getSearchResultsCount());
     }
 
-    @Then("^the user is able to verify that the facet count for practice area with previous results facet count$")
+    @Then("^the user is able to verify that the facet count for (practice area|deal type) with previous results facet count$")
     public void theUserIsAbleToVerifyThatTheFacetCountForPracticeAreaWithPreviousResultsFacetCount() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
 
+    @When("^the user navigates to practice area \"(.*?)\"$")
+    public void theUserNavigatesToPracticeAreaFilteredByTopicPage(String practiceArea) throws Throwable {
+        homePage.selectLinkPresentOnTab(practiceArea);
+    }
+
     @Then("^user logs out$")
     public void userLogsOut() throws Throwable {
         wlnHeader.signOff();
+    }
+
+    @Given("^has selected the link to the What's Market homepage$")
+    public void hasSelectedTheLinkToTheWhatSMarketHomepage() throws Throwable {
+        softAssertions= new SoftAssertions();
+
+        homePage.selectResourceTab();
+        /** Ensure the page components have rendered */
+        softAssertions.assertThat(ppiGenericDocDisplay.categoryTab().isDisplayed());
+        softAssertions.assertThat(ppiGenericDocDisplay.rightColumn().isDisplayed());
+        homePage.selectLinkPresentOnTab("What's Market");
+        softAssertions.assertThat(ppiGenericDocDisplay.searchPageLabel().getText().equals("What's Market"));
+        /** Ensure the page components have rendered */
+        softAssertions.assertThat(ppiGenericDocDisplay.categoryTab().isDisplayed());
+        softAssertions.assertThat(ppiGenericDocDisplay.rightColumn().isDisplayed());
+        softAssertions.assertAll();
+    }
+
+    @When("^the user selects the deal type \"([^\"]*)\"$")
+    public void hasSelectedTheLinkToTheDealType(String linkText) throws Throwable {
+        whatsMarketHomePage.dealTypeLink(linkText).click();
     }
 }

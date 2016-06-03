@@ -1,7 +1,7 @@
 Feature: Browse to Cases, Legislation & Journals Topic Pages.
-  #this test has been transferred from the research browse project
-  As a PL+ user who is also subscribed to WestLaw UK Research Content
-  I want to browse to Cases, Legislation & Journals Topic Pages from PLC Home Page.
+  this test has been transferred from the research browse project
+  As a PL user who is also subscribed to WestLaw UK Research Content
+  I want to browse to Cases, Legislation & Journals Topic Pages from PLC Home Page
 
   Background:
     Given PL+ user is logged in

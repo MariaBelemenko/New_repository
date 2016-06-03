@@ -107,6 +107,16 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
         resetCurrentUser();
     }
 
+    @When("^PL\\+ user is logged in with details by selecting signin button$")
+    public void plUserIsLoggedInWithDetailsBySelectingSignInButton(@Transpose List<CobaltUser> plPlusUserList) throws Throwable {
+        CobaltUser plPlusUser = CobaltUser.updateMissingFields(plPlusUserList.get(0));
+        if (StringUtils.isEmpty(plPlusUser.getUserName())) {
+            plPlusUser.setUserName(!"None".equalsIgnoreCase(System.getProperty("username")) ? System.getProperty("username") : ExcelFileReader.getDefaultUser());
+        }
+        theUserClicksOnSignOnLinkOnTheHeader();
+        login(plPlusUser);
+    }
+
     public void theUserClicksOnSignOnLinkOnTheHeader() throws Throwable {
         wlnHeader.signInLink().click();
         onepassLogin.waitForPageToLoad();
@@ -280,7 +290,7 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
             }
         }
         currentUser = plPlusUser;
-        setAnnotationUsers();
+
     }
 
     private void loginLegacySite(CobaltUser plPlusUser) {
