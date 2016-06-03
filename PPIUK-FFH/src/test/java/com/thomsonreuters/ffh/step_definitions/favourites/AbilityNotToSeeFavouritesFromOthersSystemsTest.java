@@ -2,6 +2,7 @@ package com.thomsonreuters.ffh.step_definitions.favourites;
 
 import static org.junit.Assert.*;
 
+import com.thomsonreuters.pageobjects.pages.plPlusKnowHowResources.CommonResourcePage;
 import org.junit.Assert;
 
 import com.thomsonreuters.ffh.step_definitions.BaseStepDef;
@@ -23,6 +24,7 @@ public class AbilityNotToSeeFavouritesFromOthersSystemsTest extends BaseStepDef 
     private FavouritesPage favouritesPage = new FavouritesPage();
     private CreateGroupPopup createGroupPopup = new CreateGroupPopup();
     private PageActions pageActions = new PageActions();
+    private CommonResourcePage commonResourcePage = new CommonResourcePage();
 
     @When("^the user come back on to WLN Home page$")
     public void userComeBackOnToWLNHomePage() throws Throwable {
@@ -164,11 +166,16 @@ public class AbilityNotToSeeFavouritesFromOthersSystemsTest extends BaseStepDef 
         categoryPage.openPageByText(linkName);
     }
 
+    @Then("^the user verifies the opened document with the title '(.+)' is correct$")
+    public void isOpenedDocumentCorrect(String documentName) {
+        Assert.assertEquals("The opened document doesn't contain title " + documentName, documentName, commonResourcePage.title().getText());
+    }
+
     @When("^the user opens '(.+)' Tab$")
     public void openTab(String linkName) throws Throwable {
         categoryPage.openTab(linkName);
     }
-    
+
     @Then("^the star icon is filled$")
     public void theStarIconIsFilled() throws Throwable {
         Assert.assertTrue("The favoutites icon is hollow", categoryPage.checkPageIsInFavourites());

@@ -32,7 +32,9 @@ Feature: [735042] FFH029 As a PPI User I want to see a  Title, Content, Date/Tim
     Then the '2' link contains text "<query>" and url '/Search/Results.html?query=School'
     Then the '2' link contains event type 'Search'
     Then the '2' link contains ClientId and date
-  Examples:
+    When the user opens the '1' link
+    Then the user verifies the opened document with the title 'School employees: discipline, dismissals and claims' is correct
+ Examples:
     | query  |
     | School |
 
@@ -86,7 +88,7 @@ Feature: [735042] FFH029 As a PPI User I want to see a  Title, Content, Date/Tim
     | query |
     | Data  |
 
-  Scenario Outline: Whats Market
+ Scenario Outline: Whats Market
     Given PL+ user is logged in
     When the user opens 'Resources' link
     And the user opens 'What's Market' link
@@ -135,3 +137,7 @@ Feature: [735042] FFH029 As a PPI User I want to see a  Title, Content, Date/Tim
   Examples:
     | GUID                              | link                 |
     | I984ef7626cf011e498db8b09b4f043e0 | Duty to give reasons |
+
+
+
+

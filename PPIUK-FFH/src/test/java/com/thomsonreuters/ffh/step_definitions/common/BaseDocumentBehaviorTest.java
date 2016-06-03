@@ -114,6 +114,17 @@ public class BaseDocumentBehaviorTest extends BaseStepDef {
         assertEquals("Event Type is incorrect", eventType, actualEventType);
     }
 
+    @When("^the user opens the '(.+)' link$")
+    public void openTheLastSearch(String number) {
+        researchOrganizerPage.getLinkToDocumentAtRowPosition(number).click();
+        researchOrganizerPage.waitForPageToLoad();
+    }
+
+    @Then("^the user verifies search results$")
+    public void isSearchResultDisplayed() {
+        assertFalse("The page does not contain search results", searchResultsPage.getAllSearchTitleLinks().isEmpty());
+    }
+
     @Then("^the '(.+)' link contains the document Content Type$")
     public void linkContainsDocumentContentType(String position) throws Throwable {
         researchOrganizerPage.waitForPageToLoad();

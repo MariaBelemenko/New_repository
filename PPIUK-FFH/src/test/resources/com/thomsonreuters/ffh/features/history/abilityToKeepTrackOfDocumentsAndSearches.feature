@@ -1,5 +1,6 @@
 Feature: As a PPI User I want to keep track of the documents and searches that I visited so I can go back to a previous search or document.
 
+  @e2e
   Scenario Outline: Track of documents and searches that I visited
     Given PL+ user is logged in
     When API cleans all folders and history and user relogs in
@@ -16,6 +17,8 @@ Feature: As a PPI User I want to keep track of the documents and searches that I
     Then the '2' link contains text "<query>" and url '/Search/Results.html?query=Tax'
     Then the '1' link contains event type 'Document View'
     Then the '2' link contains event type 'Search'
+    When the user opens the '2' link
+    Then the user verifies search results
   Examples:
     | query |
     | Tax   |
