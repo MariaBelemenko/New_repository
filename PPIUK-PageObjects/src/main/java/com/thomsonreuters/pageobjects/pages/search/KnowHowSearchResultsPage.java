@@ -733,4 +733,13 @@ public class KnowHowSearchResultsPage extends AbstractPage {
         return waitForElementsVisible(By.xpath("//a[@id='cobalt_result_knowhow_snippet_"+snippetRowNumber+"_1']//span[@class='co_searchTerm']"));
     }
 
+    /**
+     * This method returns the parsed int value as result of search results count.
+     *
+     * @return int
+     */
+    public int getSearchResultsCount(){
+        String totalSearchCount = knowHowSearchResultCount().getText().replaceAll("[^0-9]", "");
+        return Integer.parseInt(totalSearchCount);
+    }
 }

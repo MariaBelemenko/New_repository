@@ -549,4 +549,16 @@ public class ResearchOrganizerPage extends AbstractPage {
         return waitForExpectedElement(By.xpath("//input[@id='cobalt_foldering_ro_select_checkbox_" + numberOfDocument + "']"));
     }
 
+    /**
+     * This method clicks on given search string history.
+     *
+     * @param searchTerm
+     */
+    public void clickOnSearchTermInHistory(String searchTerm){
+        try{
+            waitForExpectedElement(By.xpath(String.format("//a[contains(@id,'cobalt_foldering_ro_item_name')][contains(text(),'%s')]",searchTerm))).click();
+        }catch(TimeoutException te){
+            throw new PageOperationException("Exceeded time to find the search Term "+searchTerm+" in History. "+ te.getMessage());
+        }
+    }
 }
