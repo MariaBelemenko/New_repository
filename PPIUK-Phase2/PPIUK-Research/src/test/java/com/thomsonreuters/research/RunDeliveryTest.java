@@ -16,6 +16,7 @@ public class RunDeliveryTest {
 		if (System.getProperty("username").equals("None")) {
 			System.setProperty("username", "PLResearchUser3");
 			System.setProperty("password", "Password1");
+			System.out.println("Username is now set as: " + System.getProperty("username"));
 		} else {
 			System.out.println("Username is pre-defined in the Run Command as: " + System.getProperty("username"));
 		}

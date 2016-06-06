@@ -1,3 +1,4 @@
+@wip
 Feature: practicalLawPlusResearchPlusAddOns.feature
 
   Scenario: Verify that PL + Research + Annotations user is able to access annotations content

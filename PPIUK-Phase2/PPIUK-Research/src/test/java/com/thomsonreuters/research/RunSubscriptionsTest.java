@@ -14,7 +14,7 @@ public class RunSubscriptionsTest {
 	@BeforeClass
 	public static void reporting() {
 		if (System.getProperty("username").equals("None")) {
-			System.out.println("Username should be set up in the feature file!");
+			System.out.println("Username should be set up in the feature file! Now it is: " + System.getProperty("username"));
 		} else {
 			System.out.println("Username is pre-defined in the Run Command as: " + System.getProperty("username"));
 		}

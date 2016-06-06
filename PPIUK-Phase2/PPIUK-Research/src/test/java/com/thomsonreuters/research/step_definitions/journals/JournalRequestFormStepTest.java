@@ -1,4 +1,4 @@
-package com.thomsonreuters.research.step_definitions.journal;
+package com.thomsonreuters.research.step_definitions.journals;
 
 
 import static org.junit.Assert.assertEquals;
