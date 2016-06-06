@@ -494,4 +494,8 @@ public class WLNHeader extends AbstractPage {
     public WebElement commentaryLogo() {
         return waitForExpectedElement(By.xpath("//a[@id='logo']//img[@alt='Library']"));
     }
+
+    public WebElement compartmentDropDownDisplayName() {
+        return waitForExpectedElement(By.xpath("//a[@class='co_dropDownAnchor' and @title='Open compartments']"));
+    }
 }
