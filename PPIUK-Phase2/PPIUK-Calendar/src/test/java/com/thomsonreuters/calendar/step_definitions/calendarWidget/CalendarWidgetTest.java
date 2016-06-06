@@ -58,6 +58,7 @@ public class CalendarWidgetTest extends BaseStepDef {
        if(month.equalsIgnoreCase("Current")){
            theCurrentMonthShouldBeSelectedByDefault();
        }else{
+           Thread.sleep(2000);
            String selectedValue=listFunctions.getSelectedValueList(calendarWidgetPage.calendarWidgetMonthDropDown()).trim();
            String selectedValueArr[]=selectedValue.split(" ");
            Assert.assertTrue(month+ " is not selected..!", selectedValueArr[0].equalsIgnoreCase(month));

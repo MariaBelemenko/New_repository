@@ -56,22 +56,6 @@ public class CalendarCommonSteps extends BaseStepDef {
         commonMethods.clickLink(linkText);
     }
 
-    @Then("^the user is able to see the search results with following features according to the design document$")
-    public void theUserIsAbleToSeeTheSearchResultsWithFollowingFeaturesAccordingToTheDesignDocument(List<String> searchStructList) throws Throwable {
-        String feature = null;
-        for (int count = 0; count < searchStructList.size(); count++) {
-            feature = searchStructList.get(count);
-            if (feature.equalsIgnoreCase("summary")) {
-                searchResultsPage.moreOrLessDetailAnchor().click();
-                searchResultsPage.moreDetailOption().click();
-                assertTrue("Summary not displayed..!", knowHowSearchResultsPage.searchFirstResultElementsSummary().getAttribute("class").contains(feature));
-            } else if (feature.equalsIgnoreCase("Status") || feature.equalsIgnoreCase("Document Type") || feature.equalsIgnoreCase("Jurisdiction")) {
-                assertTrue(feature + " Type not displayed..!", knowHowSearchResultsPage.searchFirstResultElementsList().get(count).getText().contains(feature));
-            } else {
-                assertTrue("Value doesn't exist....!", false);
-            }
-        }
-    }
 
     @Then("^user sign out$")
     public void userSignOut() throws Throwable {
@@ -146,13 +130,6 @@ public class CalendarCommonSteps extends BaseStepDef {
         assertTrue("No Of Results Not matching..!", standardDocumentPage.documentTitle().getText().trim().contains(pageDesc));
     }
 
-    @Then("^user should have suggestion i.e. \"(.*?)\"$")
-    public void userShouldHaveSuggestion(String pageDesc) throws Throwable {
-        String didYouMeanText = knowHowSearchResultsPage.searchNoResultParagraph().getText();
-        didYouMeanText = didYouMeanText.replaceAll("\\r\\n|\\r|\\n", " ");
-        assertTrue("Did you mean Not Matching..!", didYouMeanText.contains(pageDesc));
-    }
-
     @Then("^user should not see any filters on the left hand side$")
     public void userShouldNotSeeAnyFiltersOnLeft() throws Throwable {
         try {
@@ -164,28 +141,6 @@ public class CalendarCommonSteps extends BaseStepDef {
         }
     }
 
-    @Then("^the user clicks on search result \"(.*)\" title link$")
-    public void theUserClicksOnSearchResultTitleLink(String titleLinkText) throws Throwable {
-        for (WebElement titleLink : searchResultsPage.getAllSearchTitleLinks()) {
-            if (titleLink.getText().trim().equalsIgnoreCase(titleLinkText)) {
-                titleLink.click();
-                break;
-            }
-        }
-        assertTrue(titleLinkText + " not found..!", commonResourcePage.title().getText().trim().contains(titleLinkText));
-    }
-
-    @Then("^user clicks the Home Icon to make it as Start Page$")
-    public void userClicksTheHomeIcon() throws Throwable {
-        categoryPage.makeThisMyStartPage();
-        categoryPage.waitForPageToLoadAndJQueryProcessing();
-    }
-
-    @Then("^user clicks the Home Icon to remove it as Start Page$")
-    public void userClicksTheHomeIcontoRemoveItasStartPage() throws Throwable {
-        categoryPage.removeThisAsMyStartPage();
-        categoryPage.waitForPageToLoadAndJQueryProcessing();
-    }
 
     @Then("^user should not see any \"(.*)\" link$")
     public void userShouldNotSeeAnyLink(String linkText) throws Throwable {
@@ -272,9 +227,9 @@ public class CalendarCommonSteps extends BaseStepDef {
         assertTrue(PAName + " not displayed..!", header.pageHeaderLabel().getText().contains(PAName));
      }
 
-    @When("^the user opens \"(.+)\" url on plcuk website$")
+    @When("^the user navigates to \"(.+)\" url$")
     public void theUserOpensUrlOnPLCUKSite(String url) throws Throwable {
-        navigationCobalt.navigateToPLCUKPlusSpecificURL(url);
+        navigationCobalt.navigateToPLUKPlus(url);
         navigationCobalt.waitForPageToLoadAndJQueryProcessingWithCustomTimeOut(90);
 
     }

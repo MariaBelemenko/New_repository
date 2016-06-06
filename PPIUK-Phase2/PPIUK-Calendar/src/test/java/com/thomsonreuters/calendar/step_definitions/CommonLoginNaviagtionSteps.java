@@ -616,6 +616,14 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
                     routingPage.showFeatureSelectionsLink().click();
                     routingPage.selectDropDownByVisibleText(routingPage.whatsMarketSearchResultsDropdown(), "Deny");
                     break;
+                case CALENDAR_KEY_DATE_DOC:
+                    navigateToRoutingPage(user.getProduct());
+                    comMethods.waitForElementToBeVisible(By.id("CategoryPageCollectionSet"), 1000).sendKeys("w_plplus_catpagestst_cs");
+                    routingPage.showFeatureSelectionsLink().click();
+                    routingPage.selectDropDownByVisibleText(routingPage.ignoreAuthorizationBlocksDropdown(), "Grant");
+                    routingPage.selectDropDownByVisibleText(routingPage.preReleaseContentDropdown(), "Grant");
+                    break;
+
             }
             routingPage.saveChangesAndSignOnButton().click();
         } else if (user.getProduct().equals(Product.WLN)) {
