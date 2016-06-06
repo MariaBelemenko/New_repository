@@ -29,6 +29,7 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -317,27 +318,27 @@ public class SiteStructureCommonSteps extends BaseStepDef {
 
     @When("^the user is viewing \"(.*)\" homepage$")
     public void theUserIsViewingHomePage(String prodName) throws Throwable {
-        comMethods.mouseOver(wlnHeader.compartmentToggleDropDown());
 
-        if(prodName.equalsIgnoreCase("PL")){
-            wlnHeader.compartmentToggleDropDownLink("pluk").click();
-        }else if(prodName.equalsIgnoreCase("WLUK")){
-            wlnHeader.compartmentToggleDropDownLink("wluk").click();
-        }else if(prodName.equalsIgnoreCase("Commentary")){
-            wlnHeader.compartmentToggleDropDownLink("library").click();
+        if(!wlnHeader.compartmentDropDownDisplayName().getText().trim().equalsIgnoreCase(prodName)) {
+            comMethods.mouseOver(wlnHeader.compartmentToggleDropDown());
+            if (prodName.equalsIgnoreCase("Practical Law")) {
+                wlnHeader.compartmentToggleDropDownLink("pluk").click();
+            } else if (prodName.equalsIgnoreCase("Westlaw UK")) {
+                wlnHeader.compartmentToggleDropDownLink("wluk").click();
+            } else if (prodName.equalsIgnoreCase("Library")) {
+                wlnHeader.compartmentToggleDropDownLink("library").click();
+            }
+            navigationCobalt.waitForPageToLoadAndJQueryProcessingWithCustomTimeOut(90);
         }
-
-        navigationCobalt.waitForPageToLoadAndJQueryProcessingWithCustomTimeOut(90);
-
     }
     @Then("^user should see the \"([^\"]*)\" home page$")
     public void userShouldSeeTheHomePage(String prodName) throws Throwable {
         if(prodName.equalsIgnoreCase("Practical Law")){
            assertTrue("Practical Law log is not displayed..!", wlnHeader.practicalLawLogo().isDisplayed());
-        }else if(prodName.equalsIgnoreCase("Westlaw")){
+        }else if(prodName.equalsIgnoreCase("Westlaw UK")){
            assertTrue("West Law UK header is not displayed..!",wlnHeader.westLawLogo().isDisplayed());
-        }else if(prodName.equalsIgnoreCase("Commentary")){
-           assertTrue("Commentary header is not displayed..!",wlnHeader.commentaryLogo().isDisplayed());
+        }else if(prodName.equalsIgnoreCase("Library")){
+           assertTrue("Library header is not displayed..!",wlnHeader.commentaryLogo().isDisplayed());
         }
     }
 

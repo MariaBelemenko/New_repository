@@ -5,12 +5,20 @@ Feature: [890535]As a PL+ user,I want to toggle between Westlaw UK, Practical La
             | routing          | SITE_STRUCTURE_OW  |
             | mandatoryRouting | YES                |
 
-    Scenario: User verifies WestLaw while viewing PL Homepage
-        When the user is viewing "PL" homepage
-        And the user expands the prodcut drop-down
-        And the user selects "Westlaw UK" product
-        Then user should see the "Westlaw" home page
+    Scenario: User verifies "Practical Law" gets maintained between OW and login state while viewing initially PL Homepage
+        When the user is viewing "Practical Law" homepage
         And user clicks the "Sign in" link
         And user logs in
-        Then user should see the "Westlaw" home page
+        Then user should see the "Practical Law" home page
 
+    Scenario: User verifies "West Law" gets maintained between OW and login state while viewing initially WestLaw Homepage
+        When the user is viewing "Westlaw UK" homepage
+        And user clicks the "Sign in" link
+        And user logs in
+        Then user should see the "Westlaw UK" home page
+
+    Scenario: User verifies "Library" gets maintained between OW and login state while viewing initially Library Homepage
+        When the user is viewing "Library" homepage
+        And user clicks the "Sign in" link
+        And user logs in
+        Then user should see the "Library" home page

@@ -35,7 +35,7 @@ public class CompartmentSwitchingTest extends BaseStepDef {
             wlnHeader.compartmentToggleDropDownLink("pluk").click();
         }else if(prodName.equalsIgnoreCase("Westlaw UK")){
             wlnHeader.compartmentToggleDropDownLink("wluk").click();
-        }else if(prodName.equalsIgnoreCase("Commentary")){
+        }else if(prodName.equalsIgnoreCase("Library")){
             wlnHeader.compartmentToggleDropDownLink("library").click();
         }
     }

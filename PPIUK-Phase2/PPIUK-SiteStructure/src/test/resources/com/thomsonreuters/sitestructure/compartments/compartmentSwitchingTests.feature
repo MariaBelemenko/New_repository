@@ -7,38 +7,38 @@ Feature: [890065]As a PL+ user,I want to toggle between Westlaw UK, Practical La
             | mandatoryRouting | YES             |
 
     Scenario: User verifies WestLaw while viewing PL Homepage
-        When the user is viewing "PL" homepage
+        When the user is viewing "Practical Law" homepage
         And the user expands the prodcut drop-down
         And the user selects "Westlaw UK" product
-        Then user should see the "Westlaw" home page
+        Then user should see the "Westlaw UK" home page
         And user should see "Westlaw UK " as a text rather than a link in product drop-down
 
     Scenario: User verifies Commentary while viewing PL Homepage
-        When the user is viewing "PL" homepage
+        When the user is viewing "Practical Law" homepage
         And the user expands the prodcut drop-down
-        And the user selects "Commentary" product
-        Then user should see the "Commentary" home page
+        And the user selects "Library" product
+        Then user should see the "Library" home page
 
     Scenario: User verifies PL while viewing WestLaw Homepage
-        When the user is viewing "WLUK" homepage
+        When the user is viewing "Westlaw UK" homepage
         And the user expands the prodcut drop-down
         And the user selects "Practical Law" product
         Then user should see the "Practical Law" home page
 
     Scenario: User verifies Commentary while viewing WestLaw Homepage
-        When the user is viewing "WLUK" homepage
+        When the user is viewing "Westlaw UK" homepage
         And the user expands the prodcut drop-down
-        And the user selects "Commentary" product
-        Then user should see the "Commentary" home page
+        And the user selects "Library" product
+        Then user should see the "Library" home page
 
     Scenario: User verifies PL while viewing Commentary Homepage
-        When the user is viewing "Commentary" homepage
+        When the user is viewing "Library" homepage
         And the user expands the prodcut drop-down
         And the user selects "Practical Law" product
         Then user should see the "Practical Law" home page
 
     Scenario: User verifies WestLaw while viewing Commentary Homepage
-        When the user is viewing "Commentary" homepage
+        When the user is viewing "Library" homepage
         And the user expands the prodcut drop-down
         And the user selects "Westlaw UK" product
-        Then user should see the "Westlaw" home page
+        Then user should see the "Westlaw UK" home page
