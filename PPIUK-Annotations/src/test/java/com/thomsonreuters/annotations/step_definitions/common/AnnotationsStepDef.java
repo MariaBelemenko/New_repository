@@ -30,6 +30,7 @@ import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
+import org.testng.Assert;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -897,6 +898,9 @@ public class AnnotationsStepDef extends BaseStepDef {
             navigationCobalt.navigateToWLNSpecificResourcePage("/Document/" + guid + "/View/FullText.html");
             //navigationCobalt.waitForPageToLoad();
             sharedAnnotationsPage.deleteAllAnnotations(getUserFullName(currentUser.getUserName()));
+            LOG.info("The user navigates to the document " + guid);
+            String userName = null;
+            Assert.assertFalse(userName.equals(currentUser.getUserName()), "The user was logged out");
         }
         LOG.info("The user navigates directly to the document with the guid and removes annotations from it");
     }
@@ -1101,6 +1105,7 @@ public class AnnotationsStepDef extends BaseStepDef {
 
     @Then("^user logs out$")
     public void userLogsOut() throws Throwable {
+        Assert.assertFalse(wlnHeader.isSignInLinkPresent());
         wlnHeader.signOff();
         LOG.info("The user has logged out");
         //onePassLogin.waitForPageToLoad();
