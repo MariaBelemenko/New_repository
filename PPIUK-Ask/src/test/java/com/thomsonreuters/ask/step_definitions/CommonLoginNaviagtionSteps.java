@@ -17,6 +17,7 @@ import com.thomsonreuters.pageobjects.pages.plcLegacy.PLCLegacyLoginScreen;
 import com.thomsonreuters.pageobjects.pages.search.SearchHomePage;
 import com.thomsonreuters.pageobjects.utils.*;
 import com.thomsonreuters.pageobjects.utils.folders.FoldersUtils;
+import com.thomsonreuters.pageobjects.utils.screen_shot_hook.BaseStepDef;
 import cucumber.api.Transpose;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
