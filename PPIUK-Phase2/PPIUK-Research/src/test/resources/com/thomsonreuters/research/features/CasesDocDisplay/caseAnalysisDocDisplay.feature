@@ -1,4 +1,6 @@
 Feature: caseAnalysisDocDisplay.feature
+  [896749] Case digest
+  [893361] Appellate history
 
   Background: Log in
   Given PL+ user is logged in
@@ -44,7 +46,7 @@ Feature: caseAnalysisDocDisplay.feature
       | guid                              |
       | ICB10E92018F911DEB8F793CF9A69A7D8 |
 
-  Scenario Outline: Verify appellate history
+  Scenario Outline: [893361] Verify appellate history
     When the user opens document with guid "<guid>"
     Then the user can verify that the case analysis document is displayed to the user
     And the user can verify the presence of the heading "Appellate History"
@@ -75,7 +77,7 @@ Feature: caseAnalysisDocDisplay.feature
       | guid                              |
       | ICB10E92018F911DEB8F793CF9A69A7D8 |
 
-  Scenario Outline: Verify links within appellate history resolve to appropriate destination
+  Scenario Outline: [893361] Verify links within appellate history resolve to appropriate destination
     When the user opens document with guid "<guid>"
     Then the user can verify that the case analysis document is displayed to the user
     And the user can select the party name link within the appellate history section
@@ -86,7 +88,7 @@ Feature: caseAnalysisDocDisplay.feature
       | ICB10E92018F911DEB8F793CF9A69A7D8 |
 
   @manual
-  Scenario: Verify visual representation of appellate history timeline
+  Scenario: [893361] Verify visual representation of appellate history timeline
     And the user runs a free text search for "X"
     When the user opens the case analysis document for result "1"
     Then the user can verify that the case analysis document is displayed to the user
