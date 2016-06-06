@@ -37,6 +37,22 @@ public class FolderOptionsPage extends AbstractPage {
     public WebElement folderDocumentLink(String documentLinkText) {
         return waitForExpectedElement(By.linkText(documentLinkText),10);
     }
+    
+    /**
+     * This is a drag drop box. It can appear if user would try to drag and drop any document to folder.
+     */
+    
+    public By dragDropBoxElementLocator() {
+        return By.id("co_dragDropBox_countText");
+    }
+    
+    /**
+     * This is a box with Recent Folders. It can appear if user would try to drag and drop any document to folder.
+     */
+    public WebElement dropdownBoxRecentFoldersElement() {
+        return findElement(By.id("co_recentItems"));
+    }
+   
 
 
 }
