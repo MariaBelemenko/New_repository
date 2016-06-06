@@ -6,7 +6,12 @@ import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Then;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+
+import org.openqa.selenium.WebElement;
 
 import static org.junit.Assert.assertTrue;
 
@@ -47,5 +52,14 @@ public class CountryToggleDropdownTest extends BaseStepDef {
             }
         }
     }
-
+    
+    @Then("^the order in the drop down should be:$")
+    public void theOrderInDropDown(List<String> expectedCountries) throws Throwable {
+    	List<WebElement> actualCountiesElements= header.countryDropdownMenuLinks();
+    	List<String> actualCounties = new ArrayList<String>();
+    	for (WebElement county:actualCountiesElements) {
+    		actualCounties.add(county.getText());
+		}
+    	assertTrue("The order is not valid", expectedCountries.equals(actualCounties));
+    }
 }
