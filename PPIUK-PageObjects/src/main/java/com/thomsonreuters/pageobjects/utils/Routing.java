@@ -42,7 +42,8 @@ public enum Routing {
     ANZ_IAC,
     GLOBAL_PAGE,
     SITE_STRUCTURE,
-    SITE_STRUCTURE_OW;
+    SITE_STRUCTURE_OW,
+    CALENDAR_KEY_DATE_DOC;
 
 
 }

@@ -488,7 +488,7 @@ public class WLNHeader extends AbstractPage {
     }
 
     public WebElement westLawLogo() {
-        return waitForExpectedElement(By.xpath("//a[@id='logo']//img[@alt='Westlaw']"));
+        return waitForExpectedElement(By.xpath("//a[@id='logo']//img[@alt='Westlaw UK']"));
     }
 
     public WebElement commentaryLogo() {
