@@ -9,7 +9,7 @@ public class TimeoutUtils {
 	protected static final Logger LOG = LoggerFactory.getLogger(TimeoutUtils.class);
 
 	public static void sleepInSeconds(int timeoutInSeconds) {
-		LOG.info(String.format("Sleeping %s seconds..."), timeoutInSeconds);
+		LOG.info(String.format("Sleeping %s seconds...", timeoutInSeconds));
 		Sleeper.sleepTightInSeconds(timeoutInSeconds);
 	}
 
