@@ -899,8 +899,7 @@ public class AnnotationsStepDef extends BaseStepDef {
             //navigationCobalt.waitForPageToLoad();
             sharedAnnotationsPage.deleteAllAnnotations(getUserFullName(currentUser.getUserName()));
             LOG.info("The user navigates to the document " + guid);
-            String userName = null;
-            Assert.assertFalse(userName.equals(currentUser.getUserName()), "The user was logged out");
+            Assert.assertFalse(currentUser.getUserName().equals(null), "The user was logged out");
         }
         LOG.info("The user navigates directly to the document with the guid and removes annotations from it");
     }
