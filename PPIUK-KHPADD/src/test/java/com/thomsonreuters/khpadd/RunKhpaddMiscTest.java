@@ -5,6 +5,8 @@ import cucumber.api.SnippetType;
 import cucumber.api.junit.Cucumber;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
@@ -15,6 +17,7 @@ import org.junit.runner.RunWith;
         snippets = SnippetType.CAMELCASE)
 public class RunKhpaddMiscTest {
 
+    private static final Logger LOG = LoggerFactory.getLogger(RunKhpaddMiscTest.class);
     @BeforeClass
     public static void reporting() {
         if (System.getProperty("username").equals("None")) {

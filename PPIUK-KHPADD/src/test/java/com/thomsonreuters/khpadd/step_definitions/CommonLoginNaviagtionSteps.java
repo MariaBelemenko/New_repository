@@ -151,6 +151,7 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
                 wlnHeader.userAvatarIcon().isDisplayed();
                 alreadyLoggedIn = true;
             } catch (Exception e) {
+                LOG.info(e.getMessage());
             }
             if (alreadyLoggedIn) {
                 newSession(currentUser);
@@ -823,6 +824,7 @@ public class CommonLoginNaviagtionSteps extends BaseStepDef {
             wlnHeader.userAvatarIcon().isDisplayed();
             alreadyLoggedIn = true;
         } catch (Exception e) {
+            LOG.info(e.getMessage());
         }
         if (alreadyLoggedIn) {
             signOff(user);

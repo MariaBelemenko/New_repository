@@ -1,4 +1,3 @@
-@vasiliuk
 Feature: [838717][839947] As a PL+ User, I want to download the document from global search result page
   Delivery of global search results in list and full text format via print, save and email
 

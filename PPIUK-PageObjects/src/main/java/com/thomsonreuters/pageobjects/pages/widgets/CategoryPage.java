@@ -199,7 +199,7 @@ public class CategoryPage extends AbstractPage {
 			pageName = "\"" + pageName + "\"";
 			text = pageName;
 		}
-		retryingFindElement(By.xpath("//*[@id='co_body']//a[text()=" + text + "]")).click();
+		retryingFindElement(By.xpath(".//*[@id='kh_tocContainer']//a[text()=" + text + "]")).click();
 		waitForPageToLoad();
 		// Thread sleep is used because the page loads too slowly sometimes
 		try {
