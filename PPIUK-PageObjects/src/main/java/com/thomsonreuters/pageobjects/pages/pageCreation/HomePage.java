@@ -328,8 +328,16 @@ public class HomePage extends AbstractPage {
 
     // created by Phil Harper
     public WebElement PracticeAreaViaBrowse (String PracticeArea){
-        return waitForExpectedElement(By.xpath("//a[@class='menu-item-link'][contains(.,'" + PracticeArea + "')]"));
+        return waitForExpectedElement(browseMenuItem(PracticeArea));
 
+    }
+    
+    public By browseMenuItem (String link){
+        return By.xpath("//a[@class='menu-item-link'][contains(.,\"" + link + "\")]");
+    }
+    
+    public By menuBarSectionDisplayName(String name){
+    	return By.xpath("//div[@class='menuBarSectionDisplayName'][contains(.,'" + name + "')]");
     }
 
 

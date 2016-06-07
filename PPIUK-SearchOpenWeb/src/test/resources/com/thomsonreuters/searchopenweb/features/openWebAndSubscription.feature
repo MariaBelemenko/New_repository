@@ -8,6 +8,23 @@ Feature: Testing Open Web And Subscriptions
     When the user selects the link to the Resource tab
     Then the user can verify that no link entitled "What's Market" is present
 
+#Bug 902097:What's Market link is visible for Open Web user in Featured section 
+@bug @wip
+  Scenario: [891777]  Verify open web user has no access to whats market content in Featured section 
+    Given PL+ user is not logged in
+    When PL+ user navigates to home page
+    Then the user does not see any link related to "What's Market" in featured section
+ #remove after QED deploy 15 June
+ @wip
+  Scenario: [891777] As a not logged in user I do not want to see any related links to What's Market so I do not get confused when I am not able to use them.
+    Given PL+ user is not logged in
+    When PL+ user navigates to home page
+    And the user clicks button 'Browse Menu' on the Home Page
+    And the user selects Resource tab
+    Then the user does not see any link related to "What's Market" in Browse Menu
+    And the user does not see any section with title "Market analysis" in Browse Menu
+    
+
   Scenario: Verify logged in standard user does have access to what's market
     Given PL+ user is logged in with following details
      | routing          | BETA |

@@ -1,7 +1,9 @@
 package com.thomsonreuters.searchopenweb.step_defintion;
 
+import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.common.PageActions;
 import com.thomsonreuters.pageobjects.pages.generic.PPIGenericDocDisplay;
+import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawUKCategoryPage;
 import com.thomsonreuters.pageobjects.pages.landingPage.ResourcesPage;
 import com.thomsonreuters.pageobjects.pages.pageCreation.HomePage;
@@ -37,6 +39,8 @@ public class OpenWebAndSubscriptionTest extends BaseStepDef {
     private KnowHowDocumentPage knowHowDocumentPage;
     private PPIGenericDocDisplay ppiGenericDocDisplay;
     private WhatsMarketSearchResultsPage whatsMarketSearchResultsPage;
+    private WLNHeader wlnHeader;
+    private CommonMethods commMethods;
 
     public OpenWebAndSubscriptionTest() {
         homePage = new HomePage();
@@ -48,6 +52,8 @@ public class OpenWebAndSubscriptionTest extends BaseStepDef {
         knowHowDocumentPage = new KnowHowDocumentPage();
         ppiGenericDocDisplay = new PPIGenericDocDisplay();
         whatsMarketSearchResultsPage = new WhatsMarketSearchResultsPage();
+        wlnHeader = new WLNHeader();
+        commMethods = new CommonMethods();
     }
 
     @Given("^the user selects the link to the Resource tab$")
@@ -151,4 +157,31 @@ public class OpenWebAndSubscriptionTest extends BaseStepDef {
         assertTrue("Topics section is absent in related content", knowHowDocumentPage.getRelatedContentTopicsHeader().isDisplayed());
     }
 
+    
+    @Then("^the user does not see any link related to \"(.*?)\" in featured section$")
+    public void heDoesNotSeeAnyLinkRelatedToWhatsMarket(String link) throws Throwable {
+    	//it is waits when links in featured section will become visible
+    	homePage.getSelectedSectionLinks();    	
+    	assertTrue("What's Market link is visible for user", commMethods.getElementByLinkText(link)==null);
+    }
+    
+    @Then("^the user does not see any link related to \"(.*?)\" in Browse Menu$")
+    public void heDoesNotSeeAnyLinkRelatedToWhatsMarketInBrowseMenu(String link) throws Throwable {
+    	assertFalse("What's Market link is visible for user", homePage.isElementPresent(homePage.browseMenuItem(link)));
+    }
+    
+    @Then("^the user does not see any section with title \"(.*?)\" in Browse Menu$")
+    public void heDoesNotSeeAnySectionInBrowseMenu(String title) throws Throwable {
+    	assertFalse("Market analysis section is visible for user", homePage.isElementPresent(homePage.menuBarSectionDisplayName(title)));
+    }
+    
+    @When("^the user clicks button 'Browse Menu' on the Home Page$")
+    public void theUserClicksButtonBrowseMenuOnTheHomePage() throws Throwable {
+        wlnHeader.browseMenuButton().click();
+    }
+    
+    @When("^the user selects Resource tab")
+    public void userSelectsResourceTab() throws Throwable {
+        homePage.selectResourceTab();
+    }
 }
