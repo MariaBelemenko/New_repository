@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"pretty", "html:target/cucumber-htmlreport/GlobalPagesTopicPageReport", "junit:target/junit_cucumber.xml", "json:target/json-files/RunGlobalPagesTopicPageTest.json"},
         features = "src/test/resources/com/thomsonreuters/globalpages/features/topicPage",
-        tags = {"~@wip", "~@manual"},
+        tags = {"~@wip", "~@manual", "~@should"},
         monochrome = true,
         snippets = SnippetType.CAMELCASE)
 public class RunGlobalPagesTopicPageTest {

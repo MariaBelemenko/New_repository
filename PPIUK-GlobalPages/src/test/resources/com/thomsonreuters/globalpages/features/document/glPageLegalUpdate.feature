@@ -6,6 +6,7 @@ Feature: [840384] As a PL+ User, when I am on the global page I want to be able 
     When the user selects "International" tab and clicks on "Global" link in "International subscriptions" section
     Then the Category Page opens correctly
 
+  @should
   Scenario: verify the legal update widget
     Then the user should see 5 updates on a "Legal updates" widget
     And "Legal updates" widget should display publication dates of documents
