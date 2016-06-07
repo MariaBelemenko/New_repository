@@ -48,7 +48,8 @@ public class JournalDocumentPage extends DocumentDisplayAbstractPage {
 	}
 
 	public WebElement documentSubsection(String subsection) {
-		return retryingFindElement(By.xpath(".//*[@id='co_docContentBody']//*[contains(text(), \"" + subsection + "\")]"));
+		return retryingFindElement(By.xpath(".//*[@id='co_docContentBody']//*[contains(text(), \"" + subsection
+				+ "\")]"));
 	}
 
 	public WebElement valueOfSubsection(String subsection) {
@@ -65,4 +66,28 @@ public class JournalDocumentPage extends DocumentDisplayAbstractPage {
 				+ "')]/following-sibling::*//a[contains(text(), '" + linkText + "')]"));
 	}
 
+	public WebElement journalDocumentType() {
+		return findChildElement(metaContent(), By.xpath(".//*[@class='co_docContentMetaInfoArticleType']/span"));
+	}
+
+	public WebElement fieldInMetadata(String field) {
+		return findChildElement(metaContent(), By.xpath("//*[contains(text(), '" + field + "')]"));
+	}
+
+	public WebElement valueOfFieldInMetadata(String field) {
+		return findChildElement(metaContent(),
+				By.xpath("//*[contains(text(), '" + field + "')]/following-sibling::span"));
+	}
+
+	public WebElement publicationLinkInMetadata() {
+		return findChildElement(metaContent(), By.xpath("//*[@class='co_docContentMetaInfoJournalIndexed']//a"));
+	}
+
+	public WebElement citationLinkInMetadata() {
+		return findChildElement(metaContent(), By.xpath("//*[@class='co_docContentMetaInfoJournalArticle']//a"));
+	}
+
+	public WebElement citationTextInMetadata() {
+		return findChildElement(metaContent(), By.xpath("//*[@class='co_docContentMetaInfoCitation']/span"));
+	}
 }

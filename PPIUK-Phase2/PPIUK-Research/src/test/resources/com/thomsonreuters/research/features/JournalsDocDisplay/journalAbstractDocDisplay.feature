@@ -5,7 +5,6 @@ Feature: [888967] As a PL+ user I want to see Journal doc Abstract so that I can
 
   Scenario Outline: [888967] user is able to see journal abstract publication review document
     When the user opens document with guid "<guid>"
-    And the user clicks on link "View Document"
     Then the document block is displayed
     And the title is displayed in the document
     And the autor is displayed in the document
@@ -25,7 +24,6 @@ Feature: [888967] As a PL+ user I want to see Journal doc Abstract so that I can
 
   Scenario Outline: [895133] user is able to see fields in journal abstract document body
     When the user opens document with guid "<guid>"
-    And the user clicks on link "View Document"
     Then the document block is displayed
     And the title is displayed in the document
     And the "<subsection>" subsection is displayed with value
@@ -38,7 +36,6 @@ Feature: [888967] As a PL+ user I want to see Journal doc Abstract so that I can
 
   Scenario Outline: [888967] user is able to see journal article abstract document
     When the user opens document with guid "<guid>"
-    And the user clicks on link "View Document"
     Then the document block is displayed
     And the title is displayed in the document
     And the autor is displayed in the document
@@ -57,7 +54,6 @@ Feature: [888967] As a PL+ user I want to see Journal doc Abstract so that I can
 
   Scenario Outline: [888967] user is able to see links in subsections in journal article abstract page
     When the user opens document with guid "<guid>"
-    And the user clicks on link "View Document"
     Then the document block is displayed
     When the user clicks on link "<linkText>" in subsection "<subsection>"
     And the user clicks on link "View Document"

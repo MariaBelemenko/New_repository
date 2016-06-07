@@ -8,7 +8,6 @@ Feature: [895133] As a PL+ user I want to see Journal publication index document
 
   Scenario Outline: [895133] user is able to see journal publication index document
     When the user opens document with guid "<guid>"
-    And the user clicks on link "View Document"
     Then the document block is displayed
     And the title is displayed in the document
     And the "Reference" subsection is displayed with value

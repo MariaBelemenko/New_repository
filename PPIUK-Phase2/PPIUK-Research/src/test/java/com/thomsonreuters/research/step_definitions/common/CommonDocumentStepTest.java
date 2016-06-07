@@ -61,8 +61,4 @@ public class CommonDocumentStepTest {
 	public void theTitleIsDisplayedInTheDocument() throws Throwable {
 		assertTrue("The title is not displayed", assetDocumentPage.documentTitle().isDisplayed());
 	}
-
-
-
-
 }

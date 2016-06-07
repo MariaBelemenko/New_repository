@@ -31,6 +31,9 @@ public abstract class DocumentDisplayAbstractPage extends AbstractPage {
     private static final By END_OF_DOCUMENT = By.id("co_endOfDocument");
     private static final By CONTENT_BODY = By.id("co_docContentBody");
     private static final By DELIVERY_OPTIONS = By.id("co_docToolbarVerticalMenuRight");
+    private static final By META_CONTENT = By.id("co_docContentMetaInfo");
+    
+    
 
     /**
      * This boolean method verifies the document header with the given name is present or not.
@@ -309,4 +312,8 @@ public abstract class DocumentDisplayAbstractPage extends AbstractPage {
 	public WebElement buttonWithText(String text) {
 		return retryingFindElement(By.xpath(".//a[contains(text(),'" + text + "')]"));
 	}
+	
+	public WebElement metaContent() {
+        return retryingFindElement(META_CONTENT);
+    }
 }

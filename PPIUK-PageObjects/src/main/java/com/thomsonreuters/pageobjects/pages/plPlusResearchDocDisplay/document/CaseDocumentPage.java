@@ -18,7 +18,6 @@ public class CaseDocumentPage extends DocumentDisplayAbstractPage {
 
     private static final By PDF_IMAGE = By.className("co_pdfIcon");
     private static final By LEFT_NAVIGATION_COLUMN = By.className("kh_toc-content");
-    private static final By META_CONTENT = By.id("co_docContentMetaInfo");
     private static final By DOCUMENT_IN_PDF = By.xpath(".//div[@id='co_docContentBody']//a[@type = 'application/pdf']");
     private static final By SHOW_AND_HIDE_LINK = By.id("co_ExpandCollapseLegislationAnnotationSection");
     private static final By ANNOTATIONS_SECTION = By.id("co_AnnotationDocumentSource");
@@ -39,10 +38,6 @@ public class CaseDocumentPage extends DocumentDisplayAbstractPage {
 
     public WebElement columnForTheLeftHandNavigation() {
         return retryingFindElement(LEFT_NAVIGATION_COLUMN);
-    }
-
-    public WebElement metaContent() {
-        return retryingFindElement(META_CONTENT);
     }
 
     public WebElement documentInPdf() {
