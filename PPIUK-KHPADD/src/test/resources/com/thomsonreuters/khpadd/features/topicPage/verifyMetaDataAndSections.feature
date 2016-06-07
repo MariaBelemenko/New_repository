@@ -1,6 +1,9 @@
 @e2e
 Feature: Verify Meta Data and Sections of PA documents
 
+  # Test will be passed ONLY if user have Pre-Release content option.
+  # In other cases test will fail due to "Products" section on meta-data block not available for user without PreReleaseContent FAC.
+  # PreReleaseContent FAC was set to user "PLUKTestUser1" permanently.
   Scenario Outline: Verify practice areas documents metadata and sections of Practice Notes, Standard Docs, Standard Clauses, Checklists
     Given PL+ user is logged in with following details
       | userName | PLUKTestUser1 |
