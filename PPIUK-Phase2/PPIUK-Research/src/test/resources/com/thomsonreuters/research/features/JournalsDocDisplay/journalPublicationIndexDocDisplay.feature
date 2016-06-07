@@ -16,7 +16,7 @@ Feature: [895133] As a PL+ user I want to see Journal publication index document
     And the "ISBN/ISSN" subsection is displayed with value
     And the "Database indexed in" subsection is displayed with value
     And the "Publisher" subsection is displayed with value
-    And the "Publishers' house" subsection is displayed with value
+    And the "Publishers' House" subsection is displayed with value
     And the "Publishers' telephone no" subsection is displayed with value
     And the "Frequency" subsection is displayed with value
     And the "Subscription cost:" subsection is displayed with value
