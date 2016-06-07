@@ -3,6 +3,7 @@ package com.thomsonreuters.adestra.step_definitions;
 import com.thomsonreuters.pageobjects.pages.adestra.SubscriptionPreferencePage;
 import com.thomsonreuters.pageobjects.pages.header.WLNHeader;
 import com.thomsonreuters.pageobjects.utils.adestra.AdestraUtils;
+import com.thomsonreuters.pageobjects.utils.screen_shot_hook.BaseStepDef;
 
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
@@ -37,7 +38,7 @@ public class AdestraCommonSteps extends BaseStepDef {
     @After(order = 100000, value = "@UsubscribeUserFromAllSubscriptionsAndRemoveUnsubscribeOption")
     public void unsubscribeUserFromAllSubscriptionsAndRemoveUnsubscribeOption() throws Exception {
     	adestraUtils.removeSubscriptionViaAPI(currentUser.getEmail());
-    	 subscriptionPreferencePage.removeUnsubscribeAllOption();
+        subscriptionPreferencePage.removeUnsubscribeAllOption();
     }
 
 }
