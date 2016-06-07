@@ -12,10 +12,10 @@ Feature: [851088] As a not logged user
     When the user selects "Topics" tab and clicks on "<link>" link in "Featured" section
     Then the document opens correctly
   Examples:
-    | link                 |
-    | China legislation    |
-    | GC Agenda China      |
-    | Working bilingually? |
+    | link                            |
+    | China legislation               |
+    | GC Agenda China                 |
+    | Understanding China legislation |
 
   Scenario Outline: verify Compare the law across countries link
     When the user selects "International" tab and clicks on "China" link in "International subscriptions" section
