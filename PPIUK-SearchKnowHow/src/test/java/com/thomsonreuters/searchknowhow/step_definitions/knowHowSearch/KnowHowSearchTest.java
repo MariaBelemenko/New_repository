@@ -4,18 +4,21 @@ import com.thomsonreuters.pageobjects.pages.landingPage.DemoUnitedKingdomLanding
 import com.thomsonreuters.pageobjects.pages.pageCreation.HomePage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
+import com.thomsonreuters.pageobjects.pages.widgets.CategoryPage;
 import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 
 import static org.junit.Assert.assertTrue;
-
+import static org.junit.Assert.assertFalse;
 public class KnowHowSearchTest extends BaseStepDef {
 
     private HomePage homePage = new HomePage();
     private DemoUnitedKingdomLandingPage demoUnitedKingdomLandingPage = new DemoUnitedKingdomLandingPage();
     private KnowHowSearchResultsPage knowHowSearchResultsPage = new KnowHowSearchResultsPage();
     private SearchResultsPage searchResultsPage = new SearchResultsPage();
+    private CategoryPage categoryPage = new CategoryPage();
 
     @Given("^has selected the Know How - (.*) link$")
     public void hasSelectedTheLinkToKnowHowUsUkGlobal(String region) throws Throwable {
@@ -59,9 +62,14 @@ public class KnowHowSearchTest extends BaseStepDef {
         assertTrue(searchResultsPage.firstResultAbstractText().isDisplayed());
     }
 
-    @Then("^the user is able to verify that jurisdiction information is displayed$")
-    public void theUserIsAbleToVerifyThatJurisdictionInformationIsDisplayed() throws Throwable {
-        assertTrue(searchResultsPage.jurisdictionsForFirstResult().isDisplayed());
+    @Then("^the user is able to verify that jurisdiction information (is|is not) displayed$")
+    public void theUserIsAbleToVerifyThatJurisdictionInformationIsDisplayed(String option) throws Throwable {
+    	if(option.equals("is not")){
+    		assertFalse(searchResultsPage.jurisdictionsForFirstResult().getText().equals("Jurisdiction"));
+    	} else if(option.equals("is")) {
+    		assertTrue(searchResultsPage.jurisdictionsForFirstResult().isDisplayed());
+    	}
+        
     }
 
     @Then("^the user is able to verify that the content is either maintained or non maintained$")
@@ -73,6 +81,11 @@ public class KnowHowSearchTest extends BaseStepDef {
     @Then("^the user is notified that the search does not match any of the know how resources$")
     public void theUserIsNotifiedThatTheSearchDoesNotMatchAnyOfTheKnowHowResources() throws Throwable {
         assertTrue(searchResultsPage.sorryNoResultsMessage().isDisplayed());
+    }
+    
+    @When("^the user opens '(.+)' link$")
+    public void openLink(String linkName) throws Throwable {
+        categoryPage.openPageByText(linkName);
     }
 
 }
