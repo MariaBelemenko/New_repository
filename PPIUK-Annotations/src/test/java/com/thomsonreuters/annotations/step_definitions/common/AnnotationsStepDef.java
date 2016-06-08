@@ -17,6 +17,7 @@ import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.document.St
 import com.thomsonreuters.pageobjects.pages.plPlusResearchDocDisplay.documentNavigation.DocumentDeliveryPage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
+import com.thomsonreuters.pageobjects.rest.service.impl.RestServiceFFHImpl;
 import com.thomsonreuters.pageobjects.utils.RoutingPage;
 import com.thomsonreuters.pageobjects.utils.User;
 import cucumber.api.PendingException;
@@ -64,6 +65,7 @@ public class AnnotationsStepDef extends BaseStepDef {
     private OnepassLogin onePassLogin;
     private WLNHeader wlnHeader;
     private StandardDocumentPage standardDocumentPage;
+    private RestServiceFFHImpl restServiceFFHImpl;
 
     public static String input;
     public static String modifiedInput;
@@ -94,6 +96,7 @@ public class AnnotationsStepDef extends BaseStepDef {
         practicalLawUKCategoryPage = new PracticalLawUKCategoryPage();
         searchResultsPage = new SearchResultsPage();
         standardDocumentPage = new StandardDocumentPage();
+        restServiceFFHImpl = new RestServiceFFHImpl();
     }
 
     @When("^the user has accessed annotations text box$")
@@ -894,6 +897,8 @@ public class AnnotationsStepDef extends BaseStepDef {
 
     @When("^user navigates directly to document with guid and removes annotations on it$")
     public void userNavigatesDirectlyToDocumentWithGuid(List<String> guids) throws Throwable {
+        String logText = "\n<br><b>Session ID:</b> " + restServiceFFHImpl.getCurrentSession() + "\n";
+        LOG.info(logText);
         for (String guid : guids) {
             navigationCobalt.navigateToWLNSpecificResourcePage("/Document/" + guid + "/View/FullText.html");
             //navigationCobalt.waitForPageToLoad();

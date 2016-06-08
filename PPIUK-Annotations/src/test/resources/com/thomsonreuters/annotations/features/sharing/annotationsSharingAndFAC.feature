@@ -117,6 +117,7 @@ Feature: Annotations FAC
       | Grant   |
       | Deny    |
 
+  @testAnnotationsScenario
   Scenario: Delete All Annotations Present on Document
     When PL+ user is logged in
     Then user navigates directly to document with guid and removes annotations on it
