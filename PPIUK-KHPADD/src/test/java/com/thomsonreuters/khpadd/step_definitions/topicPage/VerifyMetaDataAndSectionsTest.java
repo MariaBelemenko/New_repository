@@ -29,7 +29,14 @@ public class VerifyMetaDataAndSectionsTest extends BaseStepDef {
 
     @When("^the user opens '(.+)' link$")
     public void openLink(String linkName) throws Throwable {
+        categoryPage.waitForPageToLoad();
         categoryPage.openPageByText(linkName);
+    }
+
+    @When("^the user clicks on the '(.+)' link$")
+    public void clickDocumentLink(String linkName) throws Throwable {
+        categoryPage.waitForPageToLoad();
+        categoryPage.clickOnLinkInText(linkName);
     }
 
     @Then("^the user verifies MetaData and Sections$")

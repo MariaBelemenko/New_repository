@@ -272,4 +272,9 @@ public class CategoryPage extends AbstractPage {
 		waitForExpectedElement(By.xpath(MAKE_THIS_MY_START_PAGE));
 	}
 
+	public void clickOnLinkInText(String linkName) {
+		LOG.info("Click on the link '" + linkName + "'");
+        waitForExpectedElement(By.xpath("//*[@id='co_docContentBody']//a[text()='" + linkName + "']")).click();
+	}
+
 }
