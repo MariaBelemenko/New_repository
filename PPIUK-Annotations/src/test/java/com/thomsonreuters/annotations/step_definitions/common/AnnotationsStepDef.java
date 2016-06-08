@@ -907,6 +907,7 @@ public class AnnotationsStepDef extends BaseStepDef {
             Assert.assertFalse(currentUser.getUserName().equals(null), "The user was logged out");
         }
         LOG.info("The user navigates directly to the document with the guid and removes annotations from it");
+        Assert.assertFalse(wlnHeader.isSignInLinkPresent(), "The user is logged in after all annotations were deleted");
     }
 
     @When("^user selects the text \"(.*?)\"$")
@@ -1109,7 +1110,7 @@ public class AnnotationsStepDef extends BaseStepDef {
 
     @Then("^user logs out$")
     public void userLogsOut() throws Throwable {
-        Assert.assertFalse(wlnHeader.isSignInLinkPresent());
+        Assert.assertFalse(wlnHeader.isSignInLinkPresent(), "The user is logged in before click on sign out link");
         wlnHeader.signOff();
         LOG.info("The user has logged out");
         //onePassLogin.waitForPageToLoad();
