@@ -15,6 +15,7 @@ import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.TimeoutException;
+import org.testng.asserts.SoftAssert;
 
 public class HideDeliveryOptionForOpenWebUserTest extends BaseStepDef {
 
@@ -84,7 +85,12 @@ public class HideDeliveryOptionForOpenWebUserTest extends BaseStepDef {
 
     @Then("^he does not see on a legal updates results page any link related to delivery options \\(email, download, print\\)$")
     public void heDoesNotSeeOnALegalUpdatesResultsPageAnyLinkRelatedToDeliveryOptionsEmailDownloadPrint() throws Throwable {
-        assertFalse("Delivery options are visible for user", legalUpdatesResultsPage.isDeliveryMethodLinkPresent() & searchResultsPage.isDownloadDeliveryOptionPresent() & searchResultsPage.isPrintDeliveryOptionPresent() & searchResultsPage.isEmailDeliveryOptionPresent());
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertFalse(legalUpdatesResultsPage.isDeliveryMethodLinkPresent(), "Delivery link are visible for user");
+        softAssert.assertFalse(searchResultsPage.isDownloadDeliveryOptionPresent() , "Download delivery options are visible for user");
+        softAssert.assertFalse(searchResultsPage.isPrintDeliveryOptionPresent() , "Print delivery options are visible for user");
+        softAssert.assertFalse(searchResultsPage.isEmailDeliveryOptionPresent() , "Email delivery options are visible for user");
+        softAssert.assertAll();
     }
 
     @Then("^he is not able to use these features on legal updates results page$")
@@ -92,7 +98,7 @@ public class HideDeliveryOptionForOpenWebUserTest extends BaseStepDef {
         boolean isUserAbleToUseDeliveryOptions = true;
         try {
             legalUpdatesResultsPage.deliveryMethodLink().click();
-        } catch (PageOperationException poe) {
+        } catch (PageOperationException | TimeoutException | NoSuchElementException poe) {
             isUserAbleToUseDeliveryOptions = false;
         }
         assertFalse("User is not able to use delivery options", isUserAbleToUseDeliveryOptions);

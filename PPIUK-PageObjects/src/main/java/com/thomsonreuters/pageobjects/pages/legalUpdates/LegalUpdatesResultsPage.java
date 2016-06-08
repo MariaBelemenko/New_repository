@@ -6,7 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 
-import javax.annotation.PostConstruct;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -91,7 +92,7 @@ public class LegalUpdatesResultsPage extends LegalUpdatesBasePage {
     public boolean isDeliveryMethodLinkPresent() {
         try {
             return deliveryMethodLink().isDisplayed();
-        } catch (PageOperationException poe) {
+        } catch (PageOperationException | TimeoutException | NoSuchElementException poe) {
             LOG.info("context", poe);
             return false;
         }
