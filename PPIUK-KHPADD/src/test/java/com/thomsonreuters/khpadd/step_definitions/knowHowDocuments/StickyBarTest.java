@@ -67,7 +67,7 @@ public class StickyBarTest extends BaseStepDef {
     	assertTrue("Page is not scrolled to target text", standartDocumentPage.isDocumentSectionDisplayed(heading));
     }
     
-    @When("^user clics on link \"(.*)\" in ToC$")
+    @When("^user clicks on link \"(.*)\" in ToC$")
     public void clicsOnLink(String link) {
     	caseDocumentPage.menuItem(link).click();
     }
