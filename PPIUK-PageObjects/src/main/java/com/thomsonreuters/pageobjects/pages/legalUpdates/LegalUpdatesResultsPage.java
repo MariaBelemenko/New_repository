@@ -259,7 +259,7 @@ public class LegalUpdatesResultsPage extends LegalUpdatesBasePage {
     public boolean isSortDropDownDisplayed() {
         try {
             return sortDropDown().isDisplayed();
-        } catch (PageOperationException e) {
+        } catch (PageOperationException | TimeoutException | NoSuchElementException e) {
             LOG.info("context", e);
             return false;
         }
@@ -310,7 +310,7 @@ public class LegalUpdatesResultsPage extends LegalUpdatesBasePage {
     public boolean isResourceTypeFilterDisplayed() {
         try {
             return resourceTypeFilter().isDisplayed();
-        } catch (PageOperationException e) {
+        } catch (PageOperationException | TimeoutException | NoSuchElementException e) {
             LOG.info("context", e);
             return false;
         }
