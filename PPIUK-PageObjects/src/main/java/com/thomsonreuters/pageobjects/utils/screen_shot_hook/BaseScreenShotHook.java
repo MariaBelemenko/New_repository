@@ -72,7 +72,6 @@ public class BaseScreenShotHook extends BaseStepDef {
 					byte[] screenShot = ((TakesScreenshot) navigationCobalt.getDriver)
 							.getScreenshotAs(OutputType.BYTES);
 					scenario.embed(screenShot, "image/png");
-					LOG.info(navigationCobalt.getPageSource());
 					logCurrentSessionId(scenario);
 					signOffCobalt();
 					resetCurrentUser();
