@@ -14,6 +14,7 @@ import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.TimeoutException;
 
 import java.util.NoSuchElementException;
 
@@ -69,7 +70,7 @@ public class GlobalPagesOpenWebTest extends BaseStepDef {
         boolean isUserAbleToUseDeliveryOptions = true;
         try {
             legalUpdatesResultsPage.deliveryMethodLink().click();
-        } catch (PageOperationException poe) {
+        } catch (PageOperationException | NoSuchElementException | TimeoutException poe) {
             isUserAbleToUseDeliveryOptions = false;
         }
         assertFalse("User is not able to use delivery options", isUserAbleToUseDeliveryOptions);
