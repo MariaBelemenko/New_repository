@@ -1,10 +1,8 @@
 Feature: Testing Open Web And Subscriptions
 
-  Scenario: Verify open web user has no access to whats market content
-    Given PL+ user is logged in with following details
-      | routing       | OPEN_WEB_SEARCH |
-      | loginRequired | NO              |
-      | newSession    | TRUE            |
+   Scenario: Verify open web user has no access to whats market content
+    Given PL+ user is not logged in
+    When PL+ user navigates to home page
     When the user selects the link to the Resource tab
     Then the user can verify that no link entitled "What's Market" is present
 
@@ -33,9 +31,8 @@ Feature: Testing Open Web And Subscriptions
     Then the user can verify that a link entitled "What's Market" is present
 
   Scenario: Verify open web user is able to search know how
-    Given PL+ user is logged in with following details
-      | routing       | OPEN_WEB_SEARCH |
-      | loginRequired | NO              |
+    Given PL+ user is not logged in
+    When PL+ user navigates to home page
     And the user runs a free text search for the query "contract"
     And the user pauses for "3" seconds
     Then the user is able to verify that a page of search results is displayed
@@ -53,9 +50,8 @@ Feature: Testing Open Web And Subscriptions
 
   Scenario: Verify Also Found in section available to open web users
     #860453 - topic information missing from know how resources
-    Given PL+ user is logged in with following details
-      | routing       | OPEN_WEB_SEARCH |
-      | loginRequired | NO              |
+    Given PL+ user is not logged in
+    When PL+ user navigates to home page
     And the user runs a free text search for the query "asset purchase"
     And the user pauses for "3" seconds
     Then the user is able to verify that a page of search results is displayed
