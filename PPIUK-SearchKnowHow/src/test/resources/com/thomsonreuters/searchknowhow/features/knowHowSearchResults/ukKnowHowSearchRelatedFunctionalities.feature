@@ -61,10 +61,10 @@ Feature: [706631][702181][702209][702202][713886][702199] ukKnowHowSearchRelated
 
   Scenario Outline:[800157] As a PL+ user, I will able to deselect highlighting of a search term on the document page.
     When the user runs a free text search for the query "<query>"
-  	When the user clicks on "<query>" link
+  	And the user clicks on "<query>" link
     Then the user is able to verify that the search term "<highlightedTerm>" is highlighted in opened document
-    And the highlight checkbox is selected
-    When the user deselect highlight checkbox
+    When the highlight checkbox is selected
+    And the user deselect highlight checkbox
     Then the user is able to verify that the search term "<highlightedTerm>" is not highlighted in opened document
     When the user clicks on "<link>" link
     And the user navigates back

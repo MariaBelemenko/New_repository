@@ -561,7 +561,7 @@ public class KnowHowSearchResultsPage extends AbstractPage {
                 }
             }
         }catch(Exception e){
-            LOG.info("context", e);
+            LOG.info("Facet count is not present", e);
         }
         return false;
     }

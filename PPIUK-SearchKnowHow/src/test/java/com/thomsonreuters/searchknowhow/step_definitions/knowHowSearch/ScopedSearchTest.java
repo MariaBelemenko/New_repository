@@ -6,6 +6,7 @@ import com.thomsonreuters.pageobjects.pages.pageCreation.HomePage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowDocumentPage;
 import com.thomsonreuters.pageobjects.pages.search.WhatsMarketSearchResultsPage;
 import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -20,22 +21,22 @@ public class ScopedSearchTest extends BaseStepDef {
     private PPIGenericDocDisplay ppiGenericDocDisplay = new PPIGenericDocDisplay();
     private WhatsMarketSearchResultsPage whatsMarketSearchResultsPage = new WhatsMarketSearchResultsPage();
 
-    @Then("^the user selects the link to Media and Telecoms$")
+    @And("^the user selects the link to Media and Telecoms$")
     public void theUserSelectsTheLinkToMediaAndTelecoms() throws Throwable {
         practiceAreaLandingPage.mediaAndTelecomsLink().click();
     }
 
-    @Then("^the user selects the link to Social Media$")
+    @And("^the user selects the link to Social Media$")
     public void theUserSelectsTheLinkToSocialMedia() throws Throwable {
         practiceAreaLandingPage.socialMediaLink().click();
     }
 
-    @When("^the user verifies that the product detail contains the topic area \"([^\"]*)\"$")
+    @Then("^the user verifies that the product detail contains the topic area \"([^\"]*)\"$")
     public void theUserVerifiesThatTheProductDetailContainsTheTopicArea(String arg1) throws Throwable {
         assertTrue(knowHowDocumentPage.topicPageLink(arg1).isDisplayed());
     }
 
-    @Given("^has selected the link to the What's Market homepage$")
+    @And("^has selected the link to the What's Market homepage$")
     public void hasSelectedTheLinkToTheWhatSMarketHomepage() throws Throwable {
         homePage.selectResourceTab();
         /** Ensure the page components have rendered */

@@ -12,10 +12,10 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryManual.feature
     And the user selects the print delivery option
     And the user pauses for "3" seconds
     And the user selects the print option
-    And the user verifies the presence of a pop up entitled Print Documents
-    And the user selects the list of items option
+    Then the user verifies the presence of a pop up entitled Print Documents
+    When the user selects the list of items option
     And the user selects the print option
-    And the user verifies that the request is processed and the document printed
+    Then the user verifies that the request is processed and the document printed
     And the user verifies the format of the printed list
 
   Scenario: [702205] print list of know how search results from basic tab in document format
@@ -25,10 +25,10 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryManual.feature
     And the user selects the print delivery option
     And the user pauses for "3" seconds
     And the user selects the print option
-    And the user verifies the presence of a pop up entitled Print Documents
-    And the user selects the option entitled documents
+    Then the user verifies the presence of a pop up entitled Print Documents
+    When the user selects the option entitled documents
     And the user selects the print option
-    And the user verifies that the request is processed and the document printed
+    Then the user verifies that the request is processed and the document printed
     And the user verifies the format of the printed document
 
   Scenario: [no story] download delivery with and without table of contents
@@ -41,13 +41,13 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryManual.feature
     And the user selects the option to include a table of contents
     And the user selects the list of items format option "PDF"
     And the user selects the Download option
-    And the user verifies that the delivered version contains the table of contents
-    And the user selects the download delivery option
+    Then the user verifies that the delivered version contains the table of contents
+    When the user selects the download delivery option
     And the user selects the documents option
     And the user deselects the option to include a table of contents
     And the user selects the list of items format option "PDF"
     And the user selects the Download option
-    And the user verifies that the delivered version does not contain a table of contents
+    Then the user verifies that the delivered version does not contain a table of contents
 
   Scenario: [no story] download delivery (single result only) with and without annotations
     When the user runs a free text search for the query "contract"
@@ -62,13 +62,13 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryManual.feature
     And the user selects the documents format option "Microsoft Word"
     And the user selects the option to include annotations
     And the user selects the Download option
-    And the user verifies that the document is downloaded
+    Then the user verifies that the document is downloaded
     And the user verifies that the downloaded document includes the highlighting
     And the user verifies that the downloaded document includes the note
-    And the user selects the download delivery option
+    When the user selects the download delivery option
     And the user ensures that the option to include annotations is not selected
     And the user selects the Download option
-    And the user verifies that the document is downloaded
+    Then the user verifies that the document is downloaded
     And the user verifies that the downloaded document does not include the highlighting
     And the user verifies that the downloaded document does not include the note
 
@@ -87,13 +87,13 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryManual.feature
     And the user selects the documents format option "Microsoft Word"
     And the user selects the option to include annotations
     And the user selects the Download option
-    And the user verifies that the document is downloaded
+    Then the user verifies that the document is downloaded
     And the user verifies that the downloaded document includes the highlighting
     And the user verifies that the downloaded document includes the note
-    And the user selects the download delivery option
-    And the user ensures that the option to include annotations is not selected
-    And the user selects the Download option
-    And the user verifies that the document is downloaded
+    When the user selects the download delivery option
+    Then the user ensures that the option to include annotations is not selected
+    When the user selects the Download option
+    Then the user verifies that the document is downloaded
     And the user verifies that the downloaded document does not include the highlighting
     And the user verifies that the downloaded document does not include the note
 
@@ -108,7 +108,7 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryManual.feature
     And the user selects the cover page option
     And the user enters the text "test" into the accompanying field
     And the user selects the download option
-    And the user verifies that the downloaded version includes a cover sheet containing the specified text
+    Then the user verifies that the downloaded version includes a cover sheet containing the specified text
 
   @bug
   Scenario: [no specific story] Verify links within delivered document resolve to correct destination
@@ -120,4 +120,4 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryManual.feature
     And the user pauses for "3" seconds
     And the user selects List of Items
     And the user selects the download option
-    And the user verifies that the links within the delivered document resolve to the correct destination
+    Then the user verifies that the links within the delivered document resolve to the correct destination

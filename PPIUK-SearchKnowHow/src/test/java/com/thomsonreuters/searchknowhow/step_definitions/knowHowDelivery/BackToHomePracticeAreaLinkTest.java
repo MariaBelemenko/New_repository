@@ -19,7 +19,7 @@ public class BackToHomePracticeAreaLinkTest extends BaseStepDef {
     private SearchResultsPage searchResultsPage = new SearchResultsPage();
     private PracticalLawHomepage practicalLawHomepage = new PracticalLawHomepage();
 
-    @Given("^the user is on the home page$")
+    @When("^the user is on the home page$")
     public void aUserIsOnTheHomePage() throws Throwable {
         navigationCobalt.navigateToHomePage();
     }

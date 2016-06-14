@@ -13,9 +13,9 @@ Feature: ukKnowHowSearchResultsSorting.feature - [702175] [706257][702174][70217
   Scenario: [702175]  verify that know how results are sorted by relevancy by default. Verify that a new search following the first search produces results sorted by relevancy by default
     When the user runs a free text search for the query "contract"
     Then the user verifies that the option for sorting by relevance is displayed by default
-    And the user clears all text from the search field
+    When the user clears all text from the search field
     And the user runs a free text search for the query "taxation"
-    And the user verifies that the option for sorting by relevance is displayed by default
+    Then the user verifies that the option for sorting by relevance is displayed by default
 
   @e2e @prod
   Scenario: [706257] Sort by date logic uk know how
@@ -34,15 +34,15 @@ Feature: ukKnowHowSearchResultsSorting.feature - [702175] [706257][702174][70217
   Scenario: [702176] [702174] Verify sort results by date. Verify that the user is able to sort search results by relevancy
    #862981 - sorting by relevancy after sorting by date is no longer functioning
     When the user runs a free text search for the query "contract"
-    And the user verifies that the option for sorting by relevance is displayed by default
-    And the user obtains the title of the first result and stores it
+    Then the user verifies that the option for sorting by relevance is displayed by default
+    When the user obtains the title of the first result and stores it
     And the user obtains the title of the second result and stores it
     And the user obtains the title of the third result and stores it
     And the user can select the option to sort by "Date"
-    And the user can verify that the title of the first result is not the same as the stored value
+    Then the user can verify that the title of the first result is not the same as the stored value
     And the user can verify that the title of the second result is not the same as the stored value
     And the user can verify that the title of the third result is not the same as the stored value
-    And the user can select the option to sort by "Relevance"
+    When the user can select the option to sort by "Relevance"
     Then the user is able to verify that the title of the first result is the same as the stored value
     And the user is able to verify that the title of the second result is the same as the stored value
     And the user is able to verify that the title of the third result is the same as the stored value

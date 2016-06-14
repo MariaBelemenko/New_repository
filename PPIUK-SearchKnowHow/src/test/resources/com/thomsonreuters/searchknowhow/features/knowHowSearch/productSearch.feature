@@ -9,7 +9,7 @@ Feature: [637926][638469][638471] productSearch.feature
     And has selected the Know How - <region> link
     And the user runs a free text search for the query "<query>"
     And the user can open the first know how search result "1"
-    And the user verifies that the product detail contains the practice area "<productArea>"
+    Then the user verifies that the product detail contains the practice area "<productArea>"
   Examples:
     | region | query                                        | productArea                               |
     | UK     | appeal(md.plc.reference(1-103-1613))         | PLC Magazine (UK)                         |

@@ -1,7 +1,10 @@
 Feature: Verify KnowHow delivery functionality for Standard documents with drafting notes
 
   Scenario: Verify and Edit Email Delivery Options and send email for Standard documents with drafting notes having Annotations and Table of Contents
-    Given PL+ user is logged in
+    # to uncomment and remove next step, when KHPaddUser1 is fixed
+    #Given PL+ user is logged in
+    Given PL+ user is logged in with following details
+      | userName         | KHPaddUser2 |
     When user navigates directly to document with guid "Ifc80a710e02811e398db8b09b4f043e0"
     And user added new annotation
     And clicks on email delivery option for the document
@@ -22,7 +25,7 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
     And the user clicks on Email advanced tab
     Then the user should be able to see Email advanced tab options as follows
       | Expanded Margin for Notes | Not Selected |
-      | Cover Page                | Not Selected |
+      | Cover Page                | Selected |
       | Links                     | Blue         |
       | Font Size                 | Normal       |
     When the user edits the advanced email options as follows
@@ -51,7 +54,10 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
       | Annotations |
 
   Scenario: Verify Print Form fields and default values for Standard documents with drafting notes having Annotations and Table of Contents
-    Given PL+ user is logged in
+    # to uncomment and remove next step, when KHPaddUser1 is fixed
+    #Given PL+ user is logged in
+    Given PL+ user is logged in with following details
+      | userName         | KHPaddUser4 |
     When user navigates directly to document with guid "Ifc80a710e02811e398db8b09b4f043e0"
     And user added new annotation
     And clicks on Print delivery option for the document
@@ -59,7 +65,7 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
       | Document                    | Selected     |
       | Only Drafting Notes         | Not Selected |
       | Document and Drafting Notes | Not Selected |
-      | Table of Contents           | Selected     |
+      | Table of Contents           | Not Selected     |
     When the user clicks on Print advanced tab
     Then the user should be able to see Print advanced tab options as follows
       | Expanded Margin for Notes | Not Selected |
@@ -88,7 +94,10 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
       | Annotations |
 
   Scenario: Verify Download Form fields and default values for Standard documents with drafting notes having Annotations and Table of Contents
-    Given PL+ user is logged in
+    # to uncomment and remove next step, when KHPaddUser1 is fixed
+    #Given PL+ user is logged in
+    Given PL+ user is logged in with following details
+      | userName         | KHPaddUser2 |
     When user navigates directly to document with guid "Ifc80a710e02811e398db8b09b4f043e0"
     And user added new annotation
     And clicks on Download delivery option for the document
@@ -101,7 +110,7 @@ Feature: Verify KnowHow delivery functionality for Standard documents with draft
     When the user clicks on Download advanced tab
     Then the user should be able to see Download advanced tab options as follows
       | Expanded Margin for Notes | Not Selected |
-      | Cover Page                | Not Selected |
+      | Cover Page                | Selected |
       | Links                     | Blue         |
       | Font Size                 | Normal       |
 

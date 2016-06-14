@@ -4,6 +4,7 @@ import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawUKCategoryPa
 import com.thomsonreuters.pageobjects.pages.legalUpdates.LegalUpdatesWidget;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -121,12 +122,12 @@ public class SearchResultChangeDetailLevelTest extends BaseStepDef {
         assertFalse(searchResultsPage.firstSnippetPara().isDisplayed());
     }
 
-    @When("^has selected the link to View All on the Legal Updates Widget$")
+    @And("^has selected the link to View All on the Legal Updates Widget$")
     public void hasSelectedTheLinkToViewAllOnTheLegalUpdatesWidget() throws Throwable {
         legalUpdatesWidget.veiwAllUpdatesLink().click();
     }
 
-    @When("^has selected the topic link to \"([^\"]*)\"")
+    @And("^has selected the topic link to \"([^\"]*)\"")
     public void hasSelectedTheTopicLinkTo(String arg1) throws Throwable {
         practicalLawUKCategoryPage.topicAreaLink(arg1).click();
     }

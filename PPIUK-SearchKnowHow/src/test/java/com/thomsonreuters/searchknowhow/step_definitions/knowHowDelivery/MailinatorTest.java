@@ -2,7 +2,9 @@ package com.thomsonreuters.searchknowhow.step_definitions.knowHowDelivery;
 
 import com.thomsonreuters.pageobjects.pages.common.CommonMailinatorPage;
 import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -19,7 +21,7 @@ public class MailinatorTest extends BaseStepDef {
 
     List<WebElement> emailList;
 
-    @Then("^the user sets up a Mailinator e-mail with the name \"([^\"]*)\"$")
+    @And("^the user sets up a Mailinator e-mail with the name \"([^\"]*)\"$")
     public void theUserSetsUpAMailinatorEmailWithTheName(String emailAccount) throws Throwable {
         emailAccountSetup = emailAccount;
     }
@@ -29,7 +31,7 @@ public class MailinatorTest extends BaseStepDef {
         mailinatorpage.navigate(mailinatorURL + "/inbox2.jsp?public_to=" + emailURL);
     }
 
-    @Then("^the user refreshes the Mailinator e-mail page$")
+    @And("^the user refreshes the Mailinator e-mail page$")
     public void theUserRefreshesTheMailinatorEmailPage() throws Throwable {
         mailinatorpage.navigate(mailinatorURL + "/inbox2.jsp?public_to=" + emailAccountSetup);
     }
@@ -48,13 +50,13 @@ public class MailinatorTest extends BaseStepDef {
         assertTrue( mailinatorpage.displayedEmailCount().intValue() >= Integer.parseInt(emailResultsExpected));
     }
 
-    @Then("^the user validates that the most recent Mailinator e-mail contains the subject \"([^\"]*)\"$")
+    @And("^the user validates that the most recent Mailinator e-mail contains the subject \"([^\"]*)\"$")
     public void theUserValidatesThatTheMostRecentMailinatorEmailHasTheSubject(String emailSubject) throws Throwable {
         //String onclickId = mailinatorpage.firstEmailOnclickId();
         assertTrue(((WebElement)(mailinatorpage.displayedEmailList().get(0))).getText().contains(emailSubject));
     }
 
-    @Then("^the user clicks the most recent e-mail on Mailinator$")
+    @When("^the user clicks the most recent e-mail on Mailinator$")
     public void theUserClicksTheMostRecentEmailOnMailinator() throws Throwable {
        mailinatorpage.selectFirstEmail();
     }
@@ -71,12 +73,12 @@ public class MailinatorTest extends BaseStepDef {
         assertTrue(fromEmailDisplayed.equals(fromEmail));
     }
 
-    @Then("^the user validates that the Mailinator e-mail is displayed with a subject of \"([^\"]*)\"$")
+    @And("^the user validates that the Mailinator e-mail is displayed with a subject of \"([^\"]*)\"$")
     public void theUserValidatesThatTheMailinatorEmailIsDisplayedWithASubjectOf(String subject) throws Throwable {
         assertTrue(mailinatorpage.emailDisplaySubject().getText().contains(subject));
     }
 
-    @Then("^the user validates that the Mailinator e-mail contains the text \"([^\"]*)\"$")
+    @And("^the user validates that the Mailinator e-mail contains the text \"([^\"]*)\"$")
     public void theUserValidatesThatTheMailinatorEmailContainsTheText(String emailText) throws Throwable {
         assertTrue(mailinatorpage.getEmailText().contains(emailText));
     }

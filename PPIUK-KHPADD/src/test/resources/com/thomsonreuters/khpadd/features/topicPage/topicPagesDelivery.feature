@@ -1,5 +1,4 @@
 Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of Items (Topic Page)
-
   Scenario: Verify the delivery icons functionality on the topic page based on editor's pick selection
     Given PL+ user is logged in
     When the user navigates to practice area "Employment" filtered by "Contracts of employment" topic page
@@ -39,7 +38,10 @@ Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of
       | Download |
 
   Scenario: Verify Email functionality for List of Items delivery on topic Page using the List of items option
-    Given PL+ user is logged in
+    # to uncomment and remove next step, when KHPaddUser1 is fixed
+    #Given PL+ user is logged in
+    Given PL+ user is logged in with following details
+      | userName         | KHPaddUser2 |
     When the user navigates to practice area "Property" filtered by "Development" topic page
     Then the user is presented with a topic page with title "Development"
     When the user selects the following Editor's Picks resources
@@ -65,7 +67,7 @@ Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of
     And the user clicks on Email advanced tab
     Then the 'Expanded Margin for Notes' is not displayed on the advanced tab
     And the user should be able to see Email advanced tab options as follows
-      | Cover Page | Not Selected |
+      | Cover Page | Selected |
       | Links      | Blue         |
       | Font Size  | Normal       |
     When the user edits the advanced email options as follows
@@ -92,7 +94,10 @@ Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of
 
   @bug
   Scenario: (bug 854990)[781128] Verify delivery of single or 2 standard documents from the Topic Page (bug 833268)
-    Given PL+ user is logged in
+    # to uncomment and remove next step, when KHPaddUser1 is fixed
+    #Given PL+ user is logged in
+    Given PL+ user is logged in with following details
+      | userName         | KHPaddUser2 |
     When the user navigates to practice area "Corporate" filtered by "Asset acquisitions" topic page
     And clicks on the facet group "Standard Documents and Clauses"
     #adding the precondition for annotations checkbox visibility
@@ -126,8 +131,11 @@ Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of
       | Annotations       | Selected                           |
     And an email with the list of resources is sent successfully by clicking on the Email button
 
-  Scenario:(bug 833268) Verify Email functionality for List of Items delivery on topic Page using the Documents option(zipped format)
-    Given PL+ user is logged in
+  Scenario: (bug 833268) Verify Email functionality for List of Items delivery on topic Page using the Documents option(zipped format)
+    # to uncomment and remove next step, when KHPaddUser1 is fixed
+    #Given PL+ user is logged in
+    Given PL+ user is logged in with following details
+      | userName         | KHPaddUser2 |
     When the user navigates to practice area "Property" filtered by "Development" topic page
     Then the user is presented with a topic page with title "Development"
     When the user selects the following Editor's Picks resources
@@ -159,7 +167,7 @@ Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of
       | Underline | Selected |
       | Font Size | Large    |
     And the user should be able to see Email advanced tab options as follows
-      | Cover Page                | Not Selected |
+      | Cover Page                | Selected     |
       | Links                     | Black        |
       | Expanded Margin for Notes | Not Selected |
       | Font Size                 | Large        |
@@ -188,3 +196,31 @@ Feature: Verify KnowHow delivery(Email/Print/Download) functionality for list of
       | Format    | PDF                  |
       | As        | A Single Merged File |
     And an email with the list of resources is sent successfully by clicking on the Email button
+#remove after QED deploy 15 June
+@wip
+  Scenario: [783996]Verify selecting resources on topic page from different pages
+    Given PL+ user is logged in
+    When the user navigates to practice area "Finance" filtered by "Security and quasi security" topic page
+    And the user selects the following Editor's Picks resources
+      | Taking security |
+    And user clicks on Page "2" of the Topic page results list
+    Then the following icons are enabled
+      | Email          |
+      | Print          |
+      | Download       |
+      | Save to Folder |
+   And the user selects the following Topic page resources
+      | What is a debenture? |  
+   When the user selects "Email" delivery option on Topics Page
+   And the user edits the basic email options as follows
+      | List of Items | Selected |
+   Then the user should be able to see Email basic tab options as follows
+      | Subject       | Practical Law - List of 2 results for Security and Quasi Security 	|
+      | Email Note    | optional notes                                    					|
+      | List of Items | Selected                                          					|
+      | Documents     | Not Selected                                      					|  
+    And an email with the list of resources is sent successfully by clicking on the Email button   
+
+      
+      
+      

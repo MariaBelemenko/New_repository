@@ -5,6 +5,7 @@ import com.thomsonreuters.pageobjects.pages.landingPage.GlobalGuidesLandingPage;
 import com.thomsonreuters.pageobjects.pages.landingPage.InternationalLandingPage;
 import com.thomsonreuters.pageobjects.pages.landingPage.PracticalLawHomepage;
 import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -29,7 +30,7 @@ public class CountryQAToolTest extends BaseStepDef {
         countryQAToolPage.compareButton().click();
     }
 
-    @Then("^the author name is displayed as a link$")
+    @And("^the author name is displayed as a link$")
     public void theAuthorNameIsDisplayedAsAlink() throws Throwable {
         countryQAToolPage.authorNameLink().isDisplayed();
     }
@@ -45,7 +46,7 @@ public class CountryQAToolTest extends BaseStepDef {
         countryQAToolPage.authorBio().isDisplayed();
     }
 
-    @When("^the user clicks link for \"(.*?)\"$")
+    @Then("^the user clicks link for \"(.*?)\" and verifies that it was selected$")
     public void theUserClicksLinkForCountry(String country) throws Throwable {
         countryQAToolPage.countryNameLink(country).click();
         assertTrue("Element is not selected",countryQAToolPage.countryNameLink(country).getAttribute("class").equals("selectedButton"));

@@ -56,6 +56,8 @@ Feature: [730588, 730584] Verify Title and Related Content on the sticky bar
     | guid                              |heading             					|
     | I362b3d5112cc11e698dc8b09b4f043e0	|Consultation on improving charities reporting and accounting framework	|
 
+   @wip
+   #to remove the tag above, when appropriate valid document without ToC would be found
    Scenario Outline: (bug#863526)Doc display - title of sections not displaying when clicking on links in Speedread(for doc without TOC)
     Given PL+ user is logged in
     When user navigates directly to document with guid "<guid>"

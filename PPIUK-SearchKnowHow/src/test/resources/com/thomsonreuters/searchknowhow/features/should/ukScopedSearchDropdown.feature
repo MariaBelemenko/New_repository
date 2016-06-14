@@ -11,7 +11,7 @@ Feature: [792545][792551][792565][792547][702177][792476][792527][792536] uk Sco
   Scenario: [792536] - Scoped search on Topic Page
     When the user navigates to practice area "Employment" filtered by "Contracts of employment" topic page
     Then the user can verify that the scoped search dropdown states "Contracts of Employment"
-    Then the user can display the scoped search dropdown menu options
+    And the user can display the scoped search dropdown menu options
     Then the search drop down options provided on "Topic Page" are as below
       | Contracts of Employment         |
       | All Content                     |
@@ -45,15 +45,15 @@ Feature: [792545][792551][792565][792547][702177][792476][792527][792536] uk Sco
       | Restructuring & Insolvency      |
       | Share Schemes & Incentives      |
       | Tax                             |
-    And the user runs a free text search for the query "employee benefits"
+    When the user runs a free text search for the query "employee benefits"
     Then the user can verify that the scoped search dropdown states "Contracts of Employment"
     And the user can verify that the title listed above the search results is "Contracts of Employment"
-    And the user can open the first know how search result "3"
-    And the user verifies that the product detail contains the topic area "Contracts of Employment"
+    When the user can open the first know how search result "3"
+    Then the user verifies that the product detail contains the topic area "Contracts of Employment"
     When the user can display the scoped search dropdown menu options
     And user selects the dropdown option "Commercial"
     And the user runs a free text search for the query "tax"
     Then the user can verify that the scoped search dropdown states "Commercial"
     And the user can verify that the title listed above the search results is "Commercial"
-    And the user can open the first know how search result "1"
-    And the user verifies that the product detail contains the practice area "Commercial"
+    When the user can open the first know how search result "1"
+    Then the user verifies that the product detail contains the practice area "Commercial"

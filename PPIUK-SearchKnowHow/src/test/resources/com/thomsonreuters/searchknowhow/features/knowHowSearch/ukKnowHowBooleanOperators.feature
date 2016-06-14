@@ -6,10 +6,10 @@ Ability to use operators when searching on PL+ (know how)
 
   Scenario: verify that the number of results for an "and" search is lower than the number of  results for an "or" search
     When the user runs a free text search for the query "contract and acceptance"
-    Then the user gets the know how search result count and stores it as count "1"
-    When the user runs a free text search for the query "contract or acceptance"
-    Then the user gets the know how search result count and stores it as count "2"
-    And the user verifies that the know how search result count "1" is less than "2"
+    And the user gets the know how search result count and stores it as count "1"
+    And the user runs a free text search for the query "contract or acceptance"
+    And the user gets the know how search result count and stores it as count "2"
+    Then the user verifies that the know how search result count "1" is less than "2"
 
   Scenario Outline: verify that results for an "and" search comprise all search terms
     When the user runs a free text search for the query "<query>"
@@ -138,7 +138,7 @@ Ability to use operators when searching on PL+ (know how)
   Scenario Outline: Validate that use of the universal character retrieves terms which are an appropriate match
     When the user runs a free text search for the query "g**se"
     And the user opens the result in position "<result>"
-    And the displayed document will have the terms "g**se" marked up as hits
+    Then the displayed document will have the terms "g**se" marked up as hits
   Examples:
     | result |
     | 2      |
@@ -147,7 +147,7 @@ Ability to use operators when searching on PL+ (know how)
   Scenario Outline: Validate that use of the universal character * at the end of a term dictates the maximum length of that term
     When the user runs a free text search for the query "object***"
     And the user opens the result in position "<result>"
-    And the displayed document will have the terms "object***" marked up as hits
+    Then the displayed document will have the terms "object***" marked up as hits
   Examples:
     | result |
     | 2      |

@@ -11,12 +11,12 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryEmail.feature
     And the user selects the email delivery option
     #SHOULD bug 850563
     #And the user verifies the presence of a pop up entitled Email Documents
-    And the user verifies the presence of a basic tab
+    Then the user verifies the presence of a basic tab
     And the user verifies that the basic option is selected by default
     And the user verifies the presence of an option entitled List of Items
     And the user verifies the presence of an option on the pop up entitled Documents
-    And the user selects the list of items option
-    And the user verifies the presence of a field entitled To
+    When the user selects the list of items option
+    Then the user verifies the presence of a field entitled To
     And the user verifies the presence of a field entitled Subject
     And the user verifies the presence of a field entitled Email Note
     And the user verifies the presence of a list of items dropdown option entitled Format
@@ -28,8 +28,8 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryEmail.feature
       | Microsoft Excel |
     And the user verifies the presence of an Email option
     And the user verifies the presence of a Cancel option
-    And the user selects the Documents option
-    And the user verifies the presence of a checkbox for inclusion of table of contents
+    When the user selects the Documents option
+    Then the user verifies the presence of a checkbox for inclusion of table of contents
     And the user verifies the presence of a dropdown option entitled As
     And the user verifies the presence of an As option entitled "A Single Merged File"
     And the user verifies the presence of an As option entitled "Multiple Files"
@@ -43,12 +43,12 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryEmail.feature
     #And the user verifies the presence of a pop up entitled Email Documents
     And the user selects the option entitled documents
     And the user selects the link to the advanced tab
-    And the user verifies the presence of an option entitled Term Highlighting
+    Then the user verifies the presence of an option entitled Term Highlighting
     And the user verifies that the option entitled Term Highlighting is selected by default
     And the user verifies the presence of an option entitled Expanded Margin for Notes
     And the user verifies the presence of an option entitled Cover Page
-    And the user selects the option entitled Cover Page
-    And the user verifies the presence of a field entitled Cover Page Note
+    When the user selects the option entitled Cover Page
+    Then the user verifies the presence of a field entitled Cover Page Note
     And the user verifies the presence of a dropdown entitled Font Size
     And the user verifies the presence of a font sub option "Large"
     And the user verifies the presence of a font sub option "Normal"
@@ -58,10 +58,10 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryEmail.feature
     And the user verifies the presence of a checkbox entitled Underline
     And the user verifies the presence of an Email option
     And the user verifies the presence of a Cancel option
-    And the user selects the Basic tab
+    When the user selects the Basic tab
     And the user selects the list of items option
     And the user selects the advanced tab
-    And the user verifies that the option entitled Expanded Margin for Notes is no longer present
+    Then the user verifies that the option entitled Expanded Margin for Notes is no longer present
 
   Scenario Outline: [747921] email list of know how search results from basic tab in list format (various document formats)
     When the user searches for "contract"
@@ -78,10 +78,10 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryEmail.feature
     And the user enters "This is a test" into the email note field
     And the user selects the Email option
     And the user refreshes the Mailinator e-mail page
-    And the user validates that there's at least "1" e-mail on Mailinator
+    Then the user validates that there's at least "1" e-mail on Mailinator
     And the user validates that the most recent Mailinator e-mail contains the subject "delivery test"
-    And the user clicks the most recent e-mail on Mailinator
-    And the user validates that the Mailinator e-mail is displayed as being to "stephtestemail"
+    When the user clicks the most recent e-mail on Mailinator
+    Then the user validates that the Mailinator e-mail is displayed as being to "stephtestemail"
     And the user validates that the Mailinator e-mail is displayed with a subject of "delivery test"
     And the user validates that the Mailinator e-mail contains the text "This is a test"
   Examples:
@@ -106,10 +106,10 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryEmail.feature
     And the user enters "This is a test" into the email note field
     And the user selects the Email option
     And the user refreshes the Mailinator e-mail page
-    And the user validates that there's at least "1" e-mail on Mailinator
+    Then the user validates that there's at least "1" e-mail on Mailinator
     And the user validates that the most recent Mailinator e-mail contains the subject "delivery test"
-    And the user clicks the most recent e-mail on Mailinator
-    And the user validates that the Mailinator e-mail is displayed as being to "stephtestemail"
+    When the user clicks the most recent e-mail on Mailinator
+    Then the user validates that the Mailinator e-mail is displayed as being to "stephtestemail"
     And the user validates that the Mailinator e-mail is displayed with a subject of "delivery test"
     And the user validates that the Mailinator e-mail contains the text "This is a test"
   Examples:

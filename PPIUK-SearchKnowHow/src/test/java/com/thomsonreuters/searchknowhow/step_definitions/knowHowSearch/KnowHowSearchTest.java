@@ -6,6 +6,7 @@ import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.widgets.CategoryPage;
 import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -20,7 +21,7 @@ public class KnowHowSearchTest extends BaseStepDef {
     private SearchResultsPage searchResultsPage = new SearchResultsPage();
     private CategoryPage categoryPage = new CategoryPage();
 
-    @Given("^has selected the Know How - (.*) link$")
+    @When("^has selected the Know How - (.*) link$")
     public void hasSelectedTheLinkToKnowHowUsUkGlobal(String region) throws Throwable {
         switch (region) {
             case "US":
@@ -41,7 +42,7 @@ public class KnowHowSearchTest extends BaseStepDef {
         knowHowSearchResultsPage.knowHowSearchResultTitle("1").isDisplayed();
     }
 
-    @Then("^the user can select the option to show most detail$")
+    @And("^the user can select the option to show most detail$")
     public void theUserCanSelectTheOptionToShowMostDetail() throws Throwable {
         searchResultsPage.moreOrLessDetailAnchor().click();
         searchResultsPage.mostDetailOption().click();
@@ -52,17 +53,17 @@ public class KnowHowSearchTest extends BaseStepDef {
         searchResultsPage.firstResultTitle().isDisplayed();
     }
 
-    @Then("^the user is able to verify the presence of a resource type description$")
+    @And("^the user is able to verify the presence of a resource type description$")
     public void theUserIsAbleToVerifyThePresenceOfAResourceTypeDescription() throws Throwable {
         searchResultsPage.resourceTypeDescription().isDisplayed();
     }
 
-    @Then("^the user is able to verify a brief description of the content$")
+    @And("^the user is able to verify a brief description of the content$")
     public void theUserIsAbleToVerifyABriefDescriptionOfTheContent() throws Throwable {
         assertTrue(searchResultsPage.firstResultAbstractText().isDisplayed());
     }
 
-    @Then("^the user is able to verify that jurisdiction information (is|is not) displayed$")
+    @And("^the user is able to verify that jurisdiction information (is|is not) displayed$")
     public void theUserIsAbleToVerifyThatJurisdictionInformationIsDisplayed(String option) throws Throwable {
     	if(option.equals("is not")){
     		assertFalse(searchResultsPage.jurisdictionsForFirstResult().getText().equals("Jurisdiction"));
@@ -72,7 +73,7 @@ public class KnowHowSearchTest extends BaseStepDef {
         
     }
 
-    @Then("^the user is able to verify that the content is either maintained or non maintained$")
+    @And("^the user is able to verify that the content is either maintained or non maintained$")
     public void theUserIsAbleToVerifyThatTheContentIsEitherMaintainedOrNonMaintained() throws Throwable {
         String statusText = searchResultsPage.statusForFirstResult().getText();
         assertTrue(statusText.contains("Maintained") || statusText.contains("Published") || statusText.contains("Law"));
@@ -83,7 +84,7 @@ public class KnowHowSearchTest extends BaseStepDef {
         assertTrue(searchResultsPage.sorryNoResultsMessage().isDisplayed());
     }
     
-    @When("^the user opens '(.+)' link$")
+    @And("^the user opens '(.+)' link$")
     public void openLink(String linkName) throws Throwable {
         categoryPage.openPageByText(linkName);
     }

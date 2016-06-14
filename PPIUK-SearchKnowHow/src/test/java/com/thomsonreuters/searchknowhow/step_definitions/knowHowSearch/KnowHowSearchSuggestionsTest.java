@@ -11,6 +11,7 @@ import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.pageobjects.utils.search.SearchUtils;
 import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
 import com.thoughtworks.selenium.SeleneseTestBase;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -47,7 +48,7 @@ public class KnowHowSearchSuggestionsTest extends BaseStepDef {
         }
     }
 
-    @Then("^the suggested search terms are displayed in alphabetical order$")
+    @And("^the suggested search terms are displayed in alphabetical order$")
     public void theUserShouldBePresentedWithTheSearchSuggestionsInAlphabeticalOrder() throws Throwable {
         assertTrue(commonMethods.isSorted(actualSuggestions, SortOptions.ASC));
     }
@@ -59,17 +60,17 @@ public class KnowHowSearchSuggestionsTest extends BaseStepDef {
         searchTerm = arg1;
     }
 
-    @When("^the user verifies that the term \"(.*?)\" appears in the search box$")
+    @Then("^the user verifies that the term \"(.*?)\" appears in the search box$")
     public void theUserVerifiesThatTheTermAppearsInTheSearchBox(String arg1) throws Throwable {
         assertTrue(practicalLawUKCategoryPage.freeTextField().getAttribute("value").equals(arg1));
     }
 
-    @Then("^the user edits the text of the suggested search term and add additional text \"(.*?)\"$")
+    @When("^the user edits the text of the suggested search term and add additional text \"(.*?)\"$")
     public void theUserEditsTheTextOfTheSuggestedSearchTermAndAddAdditionalText(String arg1) throws Throwable {
         practicalLawUKCategoryPage.freeTextField().sendKeys(" " + arg1);
     }
 
-    @Then("^the user can submit the search request$")
+    @And("^the user can submit the search request$")
     public void theUserCanSubmitTheSearchRequest() throws Throwable {
         practicalLawUKCategoryPage.searchButton().click();
         knowHowSearchResultsPage.waitForSearchResults();

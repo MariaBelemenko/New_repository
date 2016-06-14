@@ -21,7 +21,7 @@ Feature: [702211][779805] ukKnowHowSearchResultChangeDetailLevelS2-90.feature
 
   Scenario:[780171] Verify setting for more/most/less details, setting for topic level area legal updates
     Given PL+ user is logged in
-    And has selected the homepage practice area link to "Corporate"
+    When has selected the homepage practice area link to "Corporate"
     And has selected the topic link to "Directors"
     And has selected the link to View All on the Legal Updates Widget
     Then the user can verify that topic search results are displayed according to detail selection
@@ -33,4 +33,4 @@ Feature: [702211][779805] ukKnowHowSearchResultChangeDetailLevelS2-90.feature
     Given PL+ user is logged in with following details
     |newSession|true|
     When the user runs a free text search for the query "Corporate"
-    And the user can verify that the less detail icon is displayed
+    Then the user can verify that the less detail icon is displayed

@@ -5,6 +5,7 @@ import com.thomsonreuters.pageobjects.pages.landingPage.UKPLCSitePage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowDocumentPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -22,12 +23,12 @@ public class SearchFromGlobalSiteTest extends BaseStepDef {
     private String westlawNextWindow;
     private String plcLegacyWindow = null;
 
-    @Given("^has selected the link to United Kingdom$")
+    @And("^has selected the link to United Kingdom$")
     public void hasSelectedTheLinkToUnitedKingdom() throws Throwable {
         practicalLawHomepage.unitedKingdomContentLink().click();
     }
 
-    @When("^the user opens the link associated with the result \"([^\"]*)\" which opens via the PLC UK site$")
+    @And("^the user opens the link associated with the result \"([^\"]*)\" which opens via the PLC UK site$")
     public void userOpensAssociatedPLCLink(String result) throws Throwable {
         westlawNextWindow = searchResultsPage.getWindowHandle();
         plcLegacyWindow = null;
@@ -38,7 +39,7 @@ public class SearchFromGlobalSiteTest extends BaseStepDef {
         }
     }
 
-    @When("^opens the link entitled Resource details$")
+    @And("^opens the link entitled Resource details$")
     public void opensTheLinkEntitledResourceDetails() throws Throwable {
         ukplcSitePage.showResourceDetailsLink().click();
     }

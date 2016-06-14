@@ -10,8 +10,8 @@ Feature: KnowHowGlobalSearch.feature - [702180] [750884][702204][729245][702178]
 
   Scenario Outline: Verify search from Global site retrieves Global resources
     Given PL+ user is logged in
-    And has selected the Know How - Global link
-    When the user runs a free text search for the query "<query>"
+    When has selected the Know How - Global link
+    And the user runs a free text search for the query "<query>"
     And opens the link associated with the first result
     Then it is clear to the user that results are restricted to Global content because the product details contain at least one of the following categories
   Examples:
@@ -24,7 +24,7 @@ Feature: KnowHowGlobalSearch.feature - [702180] [750884][702204][729245][702178]
     And the user pauses for "3" seconds
     And the user can open the first know how search result "1"
     And the user pauses for "3" seconds
-    And the user verifies that the product detail contains the practice area "<productArea>"
+    Then the user verifies that the product detail contains the practice area "<productArea>"
   Examples:
     | searchTerm                        | productArea       |
     | adv: "Timeline of the Chapter 11" | PLC US Bankruptcy |
@@ -50,7 +50,7 @@ Feature: KnowHowGlobalSearch.feature - [702180] [750884][702204][729245][702178]
     And the user pauses for "3" seconds
     And the user can open the first know how search result "1"
     And the user pauses for "3" seconds
-    And the user verifies that the product detail contains the practice area "<productArea>"
+    Then the user verifies that the product detail contains the practice area "<productArea>"
   Examples:
     | query             | productArea       |
     | treaty            | PLC Magazine (UK) |

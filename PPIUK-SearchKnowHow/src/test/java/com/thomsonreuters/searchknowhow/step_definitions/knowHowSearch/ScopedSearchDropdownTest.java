@@ -41,17 +41,17 @@ public class ScopedSearchDropdownTest extends BaseStepDef {
 
     private int CUSTOM_DRIVER_WAIT_TIME = 120;
 
-    @When("^has selected the link entitled International$")
+    @And("^has selected the link entitled International$")
     public void hasSelectedTheLinkEntitled() throws Throwable {
         practicalLawHomepage.internationalLink().click();
     }
 
-    @When("^has selected the link to the country page \"([^\"]*)\"$")
+    @And("^has selected the link to the country page \"([^\"]*)\"$")
     public void hasSelectedTheLinkToTheCountryPage(String arg1) throws Throwable {
         internationalLandingPage.countryNameLink(arg1).click();
     }
 
-    @When("^the user can verify that the scoped search dropdown states \"([^\"]*)\"$")
+    @Then("^the user can verify that the scoped search dropdown states \"([^\"]*)\"$")
     public void theUserCanVerifyThatTheScopedSearchDropdownStates(String expectedText) throws Throwable {
         String returnedText;
         /** Strip spaces from the string */
@@ -66,38 +66,38 @@ public class ScopedSearchDropdownTest extends BaseStepDef {
         searchScopeControl.scopedSearchDropdownMenuButton().click();
     }
 
-    @When("^the user can verify that the dropdown options include \"([^\"]*)\"$")
+    @Then("^the user can verify that the dropdown options include \"([^\"]*)\"$")
     public void theUserCanVerifyThatTheDropdownOptionsInclude(String arg1) throws Throwable {
         searchScopeControl.scopedSearchDropdownOptions(arg1).isDisplayed();
     }
 
-    @When("^the user can verify that the title listed above the search results is the country name \"([^\"]*)\"$")
+    @And("^the user can verify that the title listed above the search results is the country name \"([^\"]*)\"$")
     public void theUserCanVerifyThatTheTitleListedAboveTheSearchResultsIsTheCountryName(String arg1) throws Throwable {
         searchResultsPage.resultPageTitle(arg1).isDisplayed();
     }
 
-    @When("^the user can verify that the search result in position \"([^\"]*)\" contains the jurisdiction \"([^\"]*)\"$")
+    @And("^the user can verify that the search result in position \"([^\"]*)\" contains the jurisdiction \"([^\"]*)\"$")
     public void theUserCanVerifyThatTheSearchResultInPositionContainsTheJurisdiction(String arg1, String arg2) throws Throwable {
         searchResultsPage.jurisdiction(arg1, arg2).isDisplayed();
     }
 
-    @Given("^has selected the link to Resources$")
+    @And("^has selected the link to Resources$")
     public void hasSelectedTheLinkToResources() throws Throwable {
         practicalLawHomepage.resourcesLink().click();
     }
 
-    @When("^has selected the link to PLC Magazine$")
+    @And("^has selected the link to PLC Magazine$")
     public void hasSelectedTheLinkToPLCMagazine() throws Throwable {
         resourcesPage.plcMagazineLink().click();
     }
 
-    @When("^the user can verify that the title listed above the search results is \"([^\"]*)\"$")
+    @And("^the user can verify that the title listed above the search results is \"([^\"]*)\"$")
     public void theUserCanVerifyThatTheTitleListedAboveTheSearchResultsIs(String arg1) throws Throwable {
         arg1="\"" + arg1 +"\"";
         searchResultsPage.resultPageTitle(arg1).isDisplayed();
     }
 
-    @When("^the user verifies that the product detail contains PLC Magazine \"([^\"]*)\"$")
+    @Then("^the user verifies that the product detail contains PLC Magazine \"([^\"]*)\"$")
     public void theUserVerifiesThatTheProductDetailContainsPLCMagazine(String arg1) throws Throwable {
         assertTrue(knowHowDocumentPage.knowHowProductCodes(arg1).isDisplayed());
     }
@@ -116,17 +116,17 @@ public class ScopedSearchDropdownTest extends BaseStepDef {
         }
     }
 
-    @When("^user selects the dropdown option \"(.*?)\"$")
+    @And("^user selects the dropdown option \"(.*?)\"$")
     public void userSelectsTheDropdownOption(String option) throws Throwable {
         searchScopeControl.scopedSearchDropdownOptions(option).click();
     }
 
-    @When("^has selected the homepage practice area link to \"(.*?)\"$")
+    @And("^has selected the homepage practice area link to \"(.*?)\"$")
     public void hasSelectedTheHomepagePracticeAreaLinkTo(String arg1) throws Throwable {
         practicalLawUKCategoryPage.practiceAreaLink(arg1).click();
     }
 
-    @When("^the user navigates to practice area \"(.*?)\" filtered by \"(.*?)\" topic page$")
+    @And("^the user navigates to practice area \"(.*?)\" filtered by \"(.*?)\" topic page$")
     public void theUserNavigatesToPracticeAreaFilteredByTopicPage(String practiceArea, String topicName) throws Throwable {
         homePage.selectLinkPresentOnTab(practiceArea);
         topicPage.clickTopicLinkOnPAPage(topicName).click();
@@ -134,7 +134,7 @@ public class ScopedSearchDropdownTest extends BaseStepDef {
         khResourcePage.waitForPageToLoad();
     }
 
-    @And("^the user is in page '(.*)' with page Title '(.*)'$")
+    @When("^the user is in page '(.*)' with page Title '(.*)'$")
     public void theUserIsInPageResourcecsBooksOnlineWithPageTitle(String pages, String expectedTitle) throws Throwable {
         List<String> links = Arrays.asList(pages.split(">"));
         for (String link : links) {
@@ -152,7 +152,7 @@ public class ScopedSearchDropdownTest extends BaseStepDef {
         assertTrue(wlnHeader.pageHeaderLabel().getText().equals(expectedTitle));
     }
 
-    @When("^the user clicks link '(.*)' on '(.*)' page$")
+    @And("^the user clicks link '(.*)' on '(.*)' page$")
     public void theUserClicksLinkOnPage(String link, String page) throws Throwable {
         if (!link.equals("")) {
             if (page.contains("Browse")) {
@@ -174,14 +174,14 @@ public class ScopedSearchDropdownTest extends BaseStepDef {
         assertTrue("The Expected Page Title " + pageTitle + " is  NOT displayed", wlnHeader.pageHeaderLabel().getText().contains(pageTitle));
     }
 
-    @When("^user navigates to a glossary page$")
+    @Then("^user navigates to a glossary page and checks it$")
     public void userNavigatesToAGlossaryPage() throws Throwable {
         homePage.selectResourceTab();
         homePage.selectLinkPresentOnTab("Glossary");
         assertThat("Glossary heading is not displayed", glossaryPage.glossaryHeading().isDisplayed(), Is.is(true));
     }
 
-    @Given("^user navigates directly to document with guid \"(.*?)\"$")
+    @And("^user navigates directly to document with guid \"(.*?)\"$")
     public void userNavigatesDirectlyToDocumentWithGuid(String guid) throws Throwable {
         navigationCobalt.navigateToWLNSpecificResourcePage("/Document/" + guid + "/View/FullText.html");
         khResourcePage.waitForPageToLoadAndJQueryProcessingWithCustomTimeOut(CUSTOM_DRIVER_WAIT_TIME);

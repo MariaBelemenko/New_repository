@@ -17,11 +17,11 @@ Feature: [763726][764077][768208][763786] As a PL+ user when I begin to type a s
     #818346 - suggestions not being generated with three characters
     When the user enters 3 characters into the search box "pro"
     And the user selects the suggested term "PRO BONO ADVICE"
-    And the user verifies that the term "PRO BONO ADVICE" appears in the search box
-    Then the user edits the text of the suggested search term and add additional text "group"
+    Then the user verifies that the term "PRO BONO ADVICE" appears in the search box
+    When the user edits the text of the suggested search term and add additional text "group"
     And the user can submit the search request
     And the user can open the first know how search result "1"
-    And the user can verify that the full text of the know how document contains the search terms "proceedings" and "group"
+    Then the user can verify that the full text of the know how document contains the search terms "proceedings" and "group"
 
   Scenario: [768208] WM suggestions do not appear on KH pages
     When the user enters 5 characters into the search box "merck"

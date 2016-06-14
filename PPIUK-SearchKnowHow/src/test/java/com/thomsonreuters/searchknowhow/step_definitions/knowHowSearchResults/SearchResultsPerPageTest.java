@@ -20,7 +20,7 @@ public class SearchResultsPerPageTest extends BaseStepDef {
     private KnowHowSearchResultsPage knowHowSearchResultsPage = new KnowHowSearchResultsPage();
     private SearchResultsPage searchResultsPage = new SearchResultsPage();
 
-    @When("^the user selects the option to display \"([^\"]*)\" of results per page$")
+    @And("^the user selects the option to display \"([^\"]*)\" of results per page$")
     public void theUserSelectsTheOptionToDisplayOfResultsPerPage(String number) throws Throwable {
         practicalLawUKCategoryPage.resultsPerPageDropdown(number);
         knowHowSearchResultsPage.waitForSearchResults();
@@ -32,7 +32,7 @@ public class SearchResultsPerPageTest extends BaseStepDef {
         assertTrue(heading.getText().contains(results));
     }
 
-    @Then("^the user is able to verify the presence of know how search result \"(.*?)\"$")
+    @And("^the user is able to verify the presence of know how search result \"(.*?)\"$")
     public void theUserIsAbleToVerifyThePresenceOfKnowHowSearchResult(String rank) throws Throwable {
         searchResultsPage.resultNumberKH(rank).isDisplayed();
     }
@@ -43,12 +43,12 @@ public class SearchResultsPerPageTest extends BaseStepDef {
         assertTrue(text.getText().contains(number));
     }
 
-    @And("^the user verifies the presence of page number \"(.*?)\"$")
+    @Then("^the user verifies the presence of page number \"(.*?)\"$")
     public void theUserVerifiesThePresenceOfPageNumber(String arg1) {
         searchResultsPage.currentSelectedPage(arg1).isDisplayed();
     }
 
-    @And("^the user verifies that page \"(.*?)\" is selected$")
+    @Then("^the user verifies that page \"(.*?)\" is selected$")
     public void theUserVerifiesThatPageIsSelected(String arg1) {
         searchResultsPage.currentSelectedPage(arg1).isDisplayed();
     }
@@ -63,7 +63,7 @@ public class SearchResultsPerPageTest extends BaseStepDef {
         searchResultsPage.lastPageNavigationArrow().isDisplayed();
     }
 
-    @And("^the user selects page number \"(.*?)\"$")
+    @When("^the user selects page number \"(.*?)\"$")
     public void theUserSelectsPageNumber(String pageToClick) throws Throwable {
         String resultCheck = "";
         Integer timeout = 0;
@@ -128,7 +128,7 @@ public class SearchResultsPerPageTest extends BaseStepDef {
         }
     }
 
-    @And("^the user selects the first page navigation arrow$")
+    @When("^the user selects the first page navigation arrow$")
     public void theUserSelectsTheFirstPageNavigationArrow() throws Throwable {
         String numberOfFirstResult = "";
         String resultCheck = "";
@@ -188,7 +188,7 @@ public class SearchResultsPerPageTest extends BaseStepDef {
         }
     }
 
-    @And("^the user selects the previous page navigation arrow$")
+    @When("^the user selects the previous page navigation arrow$")
     public void theUserSelectsThePreviousPageNavigationArrow() throws Throwable {
         Integer timeout = 0;
         Boolean waitForNewPage = true;
@@ -213,7 +213,7 @@ public class SearchResultsPerPageTest extends BaseStepDef {
         }
     }
 
-    @And("^the user verifies that the next page navigation arrow is no longer displayed$")
+    @Then("^the user verifies that the next page navigation arrow is no longer displayed$")
     public void theUserVerifiesThatTheNextPageNavigationArrowIsNoLongerDisplayed() throws Throwable {
         Boolean isPresent = false;
         try {
@@ -225,7 +225,7 @@ public class SearchResultsPerPageTest extends BaseStepDef {
         assertFalse(isPresent);
     }
 
-    @And("^the user verifies that the previous page navigation arrow is no longer displayed$")
+    @Then("^the user verifies that the previous page navigation arrow is no longer displayed$")
     public void theUserVerifiesThatThePreviousPageNavigationArrowIsNoLongerDisplayed() throws Throwable {
         Boolean isPresent = false;
         try {

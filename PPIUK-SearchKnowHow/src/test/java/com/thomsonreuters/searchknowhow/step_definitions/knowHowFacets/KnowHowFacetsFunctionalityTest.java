@@ -16,6 +16,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import junit.framework.Assert;
+import org.assertj.core.api.SoftAssertions;
 import org.openqa.selenium.Keys;
 
 import java.util.Arrays;
@@ -41,11 +42,15 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
 
     @Then("^the user is able to check whether the option to apply filters is displayed and  if not to ensure that it is$")
     public void theUserIsAbleToCheckWhetherTheOptionToApplyFiltersIsDisplayedAndIfNotToEnsureThatItIs() {
+        boolean isVisible;
         try {
             if (knowHowSearchResultsPage.selectMultipleFiltersButton().isDisplayed()) {
+                isVisible = true;
+                assertTrue("The option to apply filters is not present", isVisible);
                 knowHowSearchResultsPage.clickOnSelectMultipleFilters();
             }
         } catch (Exception e) {
+            LOG.info("The option to apply filters is not displayed or it is absent", e);
         }
     }
 
@@ -54,19 +59,19 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         knowHowSearchResultsPage.knowHowFacetCheckbox(arg1).click();
     }
 
-    @When("^the user verifies that the know how facet is selected \"(.*?)\"$")
+    @Then("^the user verifies that the know how facet is selected \"(.*?)\"$")
     public void theUserVerifiesThatTheKnowHowFacetIsSelected(String arg1) throws Throwable {
         assertTrue(knowHowSearchResultsPage.knowHowFacetCheckbox(arg1).isSelected());
     }
 
-    @When("^the user selects the know how option to apply filters$")
+    @And("^the user selects the know how option to apply filters$")
     public void theUserSelectsTheKnowHowOptionToApplyFilters() throws Throwable {
        // ((JavascriptExecutor) knowHowSearchResultsPage).executeScript("scroll(250,0);");
         knowHowSearchResultsPage.applyFiltersButton().click();
         knowHowSearchResultsPage.waitForSearchResults();
     }
 
-    @When("^the user gets the know how facet \"(.*?)\" count and stores it as count \"(.*?)\"$")
+    @And("^the user gets the know how facet \"(.*?)\" count and stores it as count \"(.*?)\"$")
     public void theUserGetsTheKnowHowFacetCountAndStoresItAsCount(String arg1, Integer count) throws Throwable {
         /** Captures the page object text value and stores it in the "numberReturnedFromWebsite" string */
         String numberReturnedFromWebsite = knowHowSearchResultsPage.facetCount(arg1).getText();
@@ -74,13 +79,12 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         numberReturnedFromWebsite = numberReturnedFromWebsite.replaceAll("[^0-9]", "");
         /** Stores the value from "numberReturnedFromWebsite" in the resultArray whilst at the same time converting it to a number */
         resultArray[count] = Integer.parseInt(numberReturnedFromWebsite);
-        assertTrue(resultArray[count] != null);
     }
 
-    @When("^the user verifies that the know how search result count \"(.*?)\" equals facet count \"(.*?)\"$")
+    @Then("^the user verifies that the know how search result count \"(.*?)\" equals facet count \"(.*?)\"$")
     public void theUserVerifiesThatTheKnowHowSearchResultCountEqualsFacetCount(Integer count1, Integer count2) throws Throwable {
-        System.out.println(Integer.toString(resultArray[count1]) + " **********");
-        System.out.println(Integer.toString(resultArray[count2]) + " **********");
+        LOG.info(Integer.toString(resultArray[count1]));
+        LOG.info(Integer.toString(resultArray[count2]));
         assertTrue(resultArray[count1] == resultArray[count2]);
     }
 
@@ -89,16 +93,18 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         knowHowSearchResultsPage.facetName(arg1).click();
     }
 
-    @When("^the user verifies that the know how parent facet \"(.*?)\" is not selected$")
+    @Then("^the user verifies that the know how parent facet \"(.*?)\" is not selected$")
     public void theUserVerifiesThatTheKnowHowParentFacetIsNotSelected(String arg1) throws Throwable {
         assertFalse(knowHowSearchResultsPage.knowHowFacetCheckbox(arg1).isSelected());
     }
 
     @When("^the user verifies the presence of the know how facet groups$")
     public void theUserVerifiesThePresenceOfTheKnowHowFacetGroups() throws Throwable {
-        Assert.assertTrue(knowHowSearchResultsPage.facetGroupHeaderResourceType().isDisplayed());
-        Assert.assertTrue(knowHowSearchResultsPage.facetGroupHeaderPracticeArea().isDisplayed());
-        Assert.assertTrue(knowHowSearchResultsPage.facetGroupHeaderJurisdiction().isDisplayed());
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(knowHowSearchResultsPage.facetGroupHeaderResourceType().isDisplayed()).withFailMessage("The facet group header resource type is not present");
+        softly.assertThat(knowHowSearchResultsPage.facetGroupHeaderPracticeArea().isDisplayed()).withFailMessage("The facet group header practice area is not present");
+        softly.assertThat(knowHowSearchResultsPage.facetGroupHeaderJurisdiction().isDisplayed()).withFailMessage("The facet group header jurisdiction is not present");
+        softly.assertAll();
     }
 
     @And("^the user runs a search with below queries and verify that discards all selected facets$")
@@ -121,13 +127,13 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         assertFalse(knowHowSearchResultsPage.isFacetSelected(facetType, facet.split("_")));
     }
 
-    @When("^the user selects the know how \"(.*?)\" facet \"(.*?)\"$")
+    @And("^the user selects the know how \"(.*?)\" facet \"(.*?)\"$")
     public void theUserSelectsTheFacet(String facetType, String facet) throws Throwable {
         knowHowSearchResultsPage.selectFacetCheckBox(facetType, facet.split("_"));
     }
 
 
-    @Then("^the user verifies that know how \"(.*?)\" facet \"(.*?)\" is selected$")
+    @And("^the user verifies that know how \"(.*?)\" facet \"(.*?)\" is selected$")
     public void isFacetSelected(String facetType, String facet) throws Throwable {
         if(facetsInputMap == null){
             facetsInputMap = new HashMap<String, String>();
@@ -136,7 +142,7 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         assertTrue(knowHowSearchResultsPage.isFacetSelected(facetType, facet.split("_")));
     }
 
-    @Then("^the user can select the filter mode cancel option$")
+    @And("^the user can select the filter mode cancel option$")
     public void theUserCanSelectTheFilterModeCancelOption() throws Throwable {
         searchResultsPage.cancelFilters().click();
     }
@@ -146,12 +152,12 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         searchResultsPage.selectMultipleFilters().isDisplayed();
     }
 
-    @When("^the user verifies that the facet count for all the individual facets is not \"(.*?)\"$")
+    @And("^the user verifies that the facet count for all the individual facets is not \"(.*?)\"$")
     public void theUserVerifiesThatTheFacetCountForAllTheIndividualFacetsIsNot(String arg1) throws Throwable {
         assertFalse(knowHowSearchResultsPage.isFacetCountPresent(arg1));
     }
 
-    @When("^the user verifies that the facet count for all the individual facets does not contain \"(.*?)\"$")
+    @And("^the user verifies that the facet count for all the individual facets does not contain \"(.*?)\"$")
     public void theUserVerifiesThatTheFacetCountForAllTheIndividualFacetsDoesNotContains(String arg1) throws Throwable {
         assertFalse(knowHowSearchResultsPage.isFacetCountPresent(arg1));
     }
@@ -163,7 +169,7 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         }
     }
 
-    @Given("^the user verifies \"(.*?)\" facets appear in alphabetical order$")
+    @And("^the user verifies \"(.*?)\" facets appear in alphabetical order$")
     public void theUserVerifiesKnowHowPracticeAreaFacetsAppearInAlphabeticalOrder(String arg1) throws Throwable {
         Boolean isAlphabeticalOrder = true;
         List<String> actualPracticeArea = knowHowSearchResultsPage.getMainPracticeAreaFacets(arg1);
@@ -179,12 +185,12 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         knowHowSearchResultsPage.expandFacet(arg1).click();
     }
 
-    @Then("^the user is able to verify the presence of the know how facet \"(.*?)\"$")
+    @And("^the user is able to verify the presence of the know how facet \"(.*?)\"$")
     public void theUserIsAbleToVerifyThePresenceOfTheKnowHowFacet(String arg1) throws Throwable {
         knowHowSearchResultsPage.facetName(arg1).isDisplayed();
     }
 
-    @Given("^the user verifies know how child Practice Area \"(.*?)\" facets appear in alphabetical order$")
+    @And("^the user verifies know how child Practice Area \"(.*?)\" facets appear in alphabetical order$")
     public void theUserVerifiesKnowHowChildPracticeAreaFacetsAppearInAlphabeticalOrder(String arg1) throws Throwable {
         Boolean isAlphabeticalOrder = true;
         List<String> actualPracticeArea = knowHowSearchResultsPage.getChildPracticeAreaFacets(arg1);
@@ -197,7 +203,7 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         assertTrue(isAlphabeticalOrder);
     }
 
-    @Given("^the user verifies know how grandchild Practice Area \"(.*?)\" facets appear in alphabetical order$")
+    @And("^the user verifies know how grandchild Practice Area \"(.*?)\" facets appear in alphabetical order$")
     public void theUserVerifiesKnowHowGrandchildPracticeAreaFacetsAppearInAlphabeticalOrder(String arg1) throws Throwable {
         Boolean isAlphabeticalOrder = true;
         List<String> actualPracticeArea = knowHowSearchResultsPage.getGrandchildPracticeAreaFacets(arg1);
@@ -211,7 +217,7 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         assertTrue(isAlphabeticalOrder);
     }
 
-    @And("^the user can verify the presence of a child topic entitled \"(.*?)\"$")
+    @Then("^the user can verify the presence of a child topic entitled \"(.*?)\"$")
     public void theUserCanVerifyThePresenceOfAChildTopicEntitled(String arg1) throws Throwable {
         knowHowSearchResultsPage.facetName(arg1).isDisplayed();
     }
@@ -221,27 +227,28 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         knowHowSearchResultsPage.collapseFacet(arg1).click();
     }
 
-    @And("^the user can verify that the topic is no longer displayed \"(.*?)\"$")
+    @Then("^the user can verify that the topic is no longer displayed \"(.*?)\"$")
     public void theUserCanVerifyThatTheTopicIsNoLongerDisplayed(String arg1) throws Throwable {
         boolean isVisible = false;
         try {
             isVisible = knowHowSearchResultsPage.facetName(arg1).isDisplayed();
         } catch (Exception e) {
+            LOG.info("The user can't verify the topic is no longer present", e);
         }
         assertFalse(isVisible);
     }
 
-    @When("^the user verifies the presence of the know how facet \"(.*?)\"$")
+    @And("^the user verifies the presence of the know how facet \"(.*?)\"$")
     public void theUserVerifiesThePresenceOfTheKnowHowFacet(String arg1) throws Throwable {
         knowHowSearchResultsPage.facetName(arg1).isDisplayed();
     }
 
-    @When("^the user verifies the presence of the know how child facet \"(.*?)\"$")
+    @Then("^the user verifies the presence of the know how child facet \"(.*?)\"$")
     public void theUserVerifiesThePresenceOfTheKnowHowChildFacet(String arg1) throws Throwable {
         knowHowSearchResultsPage.facetName(arg1).isDisplayed();
     }
 
-    @When("^the user verifies that the know how child facet \"(.*?)\" is not displayed$")
+    @And("^the user verifies that the know how child facet \"(.*?)\" is not displayed$")
     public void theUserVerifiesThatTheKnowHowChildFacetIsNotDisplayed(String arg1) throws Throwable {
         //     assertFalse(knowHowSearchResultsPage.isFacetNameDisplayed(arg1));
     }
@@ -251,31 +258,31 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         Arrays.fill(resultArray, null);
     }
 
-    @When("^the user verifies that the know how facet count \"(.*?)\" is less than \"(.*?)\"$")
+    @And("^the user verifies that the know how facet count \"(.*?)\" is less than \"(.*?)\"$")
     public void theUserVerifiesThatTheKnowHowFacetCountIsLessThan(Integer count1, Integer count2) throws Throwable {
         System.out.println(Integer.toString(resultArray[count2]) + " **********");
         assertTrue(resultArray[count1] < resultArray[count2]);
     }
 
-    @When("^the user gets the know how search result count and stores it as count \"(.*?)\"$")
+    @And("^the user gets the know how search result count and stores it as count \"(.*?)\"$")
     public void theUserGetsTheKnowHowSearchResultCountAndStoresItAsCount(Integer count) throws Throwable {
         String numberReturnedFromWebsite = knowHowSearchResultsPage.knowHowSearchResultCount().getText();
         numberReturnedFromWebsite = numberReturnedFromWebsite.replaceAll("[^0-9]", "");
         resultArray[count] = Integer.parseInt(numberReturnedFromWebsite);
-        System.out.println("Storing count " + Integer.toString(resultArray[count]) + " in result " + Integer.toString(count) + " **********");
+        LOG.info("Storing count " + Integer.toString(resultArray[count]) + " in result " + Integer.toString(count) + " **********");
     }
 
-    @When("^the user verifies the presence of an associated know how facet \"(.*?)\" count$")
+    @And("^the user verifies the presence of an associated know how facet \"(.*?)\" count$")
     public void theUserVerifiesThePresenceOfAnAssociatedKnowHowFacetCount(String arg1) throws Throwable {
         knowHowSearchResultsPage.facetCount(arg1).isDisplayed();
     }
 
-    @When("^the user verifies that the know how search result count \"(.*?)\" exceeds facet count \"(.*?)\"$")
+    @And("^the user verifies that the know how search result count \"(.*?)\" exceeds facet count \"(.*?)\"$")
     public void theUserVerifiesThatTheKnowHowSearchResultCountExceedsFacetCount(Integer count1, Integer count2) throws Throwable {
         assertTrue(resultArray[count1] > resultArray[count2]);
     }
 
-    @When("^the user verifies that the know how facet count \"(.*?)\" equals count \"(.*?)\"$")
+    @And("^the user verifies that the know how facet count \"(.*?)\" equals count \"(.*?)\"$")
     public void theUserVerifiesThatTheKnowHowFacetCountEqualsCount(Integer count1, Integer count2) throws Throwable {
         assertTrue(resultArray[count1] == resultArray[count2]);
     }
@@ -322,9 +329,9 @@ public class KnowHowFacetsFunctionalityTest extends BaseStepDef {
         resultArray[count] = Integer.parseInt(numberReturnedFromWebsite);
     }
 
-    @When("^the user verifies that the know how search result count \"(.*?)\" is less than \"(.*?)\"$")
+    @Then("^the user verifies that the know how search result count \"(.*?)\" is less than \"(.*?)\"$")
     public void theUserVerifiesThatTheKnowHowSearchResultCountIsLessThan(Integer count1, Integer count2) throws Throwable {
-        assertTrue(resultArray[count1] < resultArray[count2]);
+        assertTrue(resultArray[count1] <= resultArray[count2]);
     }
 
 }

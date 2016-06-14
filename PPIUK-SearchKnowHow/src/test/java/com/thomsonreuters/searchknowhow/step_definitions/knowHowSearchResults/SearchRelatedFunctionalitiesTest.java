@@ -5,11 +5,15 @@ import com.thomsonreuters.pageobjects.pages.search.KnowHowDocumentPage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.searchknowhow.step_definitions.BaseStepDef;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
+import org.testng.asserts.SoftAssert;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -81,9 +85,11 @@ public class SearchRelatedFunctionalitiesTest extends BaseStepDef {
 
     @Then("^the user is able to verify the presence of below page numbers$")
     public void theUserIsAbleToVerifyThePresenceOfPageNumbers(List<String> numbers) throws Throwable {
+        SoftAssertions softly = new SoftAssertions();
         for (String number : numbers) {
-            searchResultsPage.pagination(number).isDisplayed();
+            softly.assertThat(searchResultsPage.pagination(number).isDisplayed()).withFailMessage("The below page numbers are not present");
         }
+        softly.assertAll();
     }
 
     @Given("^the user is able to select the link to page \"(.*?)\"$")
@@ -93,7 +99,8 @@ public class SearchRelatedFunctionalitiesTest extends BaseStepDef {
 
     @Then("^the user is able to verify that for result \"([^\"]*)\" the search term \"([^\"]*)\" is highlighted within the snippet text$")
     public void theUserIsAbleToVerifyThatForResultTheSearchContractIsHighlightedWithinTheSnippetText(String rank, String highlightedTerm) throws Throwable {
-        searchResultsPage.highlightedSearchTerm(rank, highlightedTerm).isDisplayed();
+        Assert.assertTrue("for result " + rank + " the search term " + highlightedTerm + " is highlighted within the snippet text",
+                searchResultsPage.highlightedSearchTerm(rank, highlightedTerm).isDisplayed());
     }
 
     @Then("^the user is able to verify that the search term \"([^\"]*)\" is highlighted in opened document$")
@@ -102,15 +109,16 @@ public class SearchRelatedFunctionalitiesTest extends BaseStepDef {
         assertTrue("There are no highliighted search terms in document", knowHowDocumentPage.isSearchTermHighlighted(highlightedTerm));
     }
 
-    @Then("^the user is able to verify that the search term \"([^\"]*)\" is not highlighted in opened document$")
+    @And("^the user is able to verify that the search term \"([^\"]*)\" is not highlighted in opened document$")
     public void theUserIsAbleToVerifyThatTheSearchTermIsNotHighlightedInOpenedDocument(String highlightedTerm) throws Throwable {
         knowHowDocumentPage.waitForPageToLoadAndJQueryProcessing();
         Assert.assertFalse("Search terms are highlighted in document", knowHowDocumentPage.isSearchTermHighlighted(highlightedTerm));
     }
 
-    @When("^the user can verify the presence of the text No Documents Found$")
+    @Then("^the user can verify the presence of the text No Documents Found$")
     public void theUserCanVerifyThePresenceOfTheTextNoDocumentsFound() throws Throwable {
-        searchResultsPage.noDocumentsFoundText().isDisplayed();
+        assertTrue("The user can't verify the presence of the text No Documents Found",
+                searchResultsPage.noDocumentsFoundText().isDisplayed());
     }
 
     @Then("^the user is able to verify the display of the text Did You Mean$")
@@ -118,19 +126,21 @@ public class SearchRelatedFunctionalitiesTest extends BaseStepDef {
         assertTrue(searchResultsPage.isDidYouMeanTextDisplayed());
     }
 
-    @Then("^the user is able to verify the display of the corrected query \"(.*?)\"$")
+    @And("^the user is able to verify the display of the corrected query \"(.*?)\"$")
     public void theUserIsAbleToVerifyTheDisplayOfTheCorrectedQuery(String arg1) throws Throwable {
         WebElement result = searchResultsPage.correctedResultsLink();
-        assertTrue(result.isDisplayed());
-        assertTrue(result.getText().contains(arg1));
+        SoftAssert softly = new SoftAssert();
+        softly.assertTrue(result.isDisplayed(), "The corrected results link is not present");
+        softly.assertTrue(result.getText().contains(arg1), "Link '" + result.getText() + "' does not contain text '" + arg1 + "'");
+        softly.assertAll();
     }
 
-    @Then("^the user is able to select the link to the corrected search results$")
+    @And("^the user is able to select the link to the corrected search results$")
     public void theUserIsAbleToSelectTheLinkToTheCorrectedSearchResults() throws Throwable {
         searchResultsPage.correctedResultsLink().click();
     }
 
-    @Then("^the user is able to verify that the free text field now contains the term \"(.*?)\"$")
+    @And("^the user is able to verify that the free text field now contains the term \"(.*?)\"$")
     public void theUserIsAbleToVerifyThatTheFreeTextFieldNowContainsTheTerm(String arg1) throws Throwable {
         assertTrue(searchResultsPage.freeTextSearchField().getAttribute("value").equals(arg1));
     }
@@ -141,7 +151,7 @@ public class SearchRelatedFunctionalitiesTest extends BaseStepDef {
         commonMethods.waitForPageToLoadAndJQueryProcessing();
     }
 
-    @Then("^the highlight checkbox is selected$")
+    @When("^the highlight checkbox is selected$")
     public void highlightCheckboxIsSelected() throws Throwable {
         assertTrue("Highlight checkbox is not selected", knowHowDocumentPage.isHighlightedOptionCheckboxSelected());
     }
@@ -151,13 +161,13 @@ public class SearchRelatedFunctionalitiesTest extends BaseStepDef {
         Assert.assertFalse("Highlight checkbox is selected", knowHowDocumentPage.isHighlightedOptionCheckboxSelected());
     }
 
-    @When("^the user deselect highlight checkbox$")
+    @And("^the user deselect highlight checkbox$")
     public void userSelectHighlightCheckbox() throws Throwable {
         knowHowDocumentPage.highlightedOptionCheckbox().click();
     }
 
 
-    @When("^the user navigates back$")
+    @And("^the user navigates back$")
     public void theUserNavigatesBack() throws Throwable {
         searchResultsPage.browserGoBack();
     }

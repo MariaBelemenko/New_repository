@@ -3,7 +3,7 @@ Feature: [702171][702170] - ukScopedSearch.feature
   Background: Log on to test site with user having routing set to view the product details
     Given PL+ user is logged in with following details
       | userName | SearchKnowHowUser6 |
-    And the user is on the home page 
+    When the user is on the home page
 
   @e2e @prod @e2eprod
   Scenario Outline: [702171] As a PL+ user conducting a search from a subject area (topic) page (and therefore the search is already scoped), I will only see results coded to that subject area and its parent practice area.
@@ -13,7 +13,7 @@ Feature: [702171][702170] - ukScopedSearch.feature
     And the user pauses for "3" seconds
     Then the user opens the result in position "<position>"
     And the user pauses for "3" seconds
-    And the user verifies that the product detail contains the practice area "<practicearea>"
+    Then the user verifies that the product detail contains the practice area "<practicearea>"
 
   Examples:
     | query   | position | practicearea    |
@@ -25,7 +25,7 @@ Feature: [702171][702170] - ukScopedSearch.feature
     And the user pauses for "3" seconds
     And the user can open the first know how search result "1"
     And the user pauses for "3" seconds
-    And the user verifies that the product detail contains the practice area "<productArea>"
+    Then the user verifies that the product detail contains the practice area "<productArea>"
   Examples:
     | query       | productArea      |
     | competition | Media & Telecoms |
@@ -33,7 +33,7 @@ Feature: [702171][702170] - ukScopedSearch.feature
     | mergers     | Media & Telecoms |
 
   Scenario Outline: verify search results prefiltered for what's market
-    When has selected the link to the What's Market homepage
+    And has selected the link to the What's Market homepage
     And the user runs a free text search for the query "<query2>"
     And the user pauses for "3" seconds
     And the user can select the option to show most detail

@@ -8,8 +8,8 @@ Feature: [638468] knowHowSearch.feature
     When has selected the Know How - <region> link
     And the user runs a free text search for the query "<query>"
     Then the user is able to verify that a page of search results is displayed
-    And the user can select the option to show most detail
-    And the user is able to verify the presence of the title of the first result
+    When the user can select the option to show most detail
+    Then the user is able to verify the presence of the title of the first result
     And the user is able to verify the presence of a resource type description
     And the user is able to verify a brief description of the content
     And the user is able to verify that jurisdiction information is displayed

@@ -10,14 +10,14 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryPrint.feature
     And the user selects the checkbox associated with result "2"
     And the user selects the print delivery option
     And the user pauses for "3" seconds
-    And the user verifies the presence of a pop up entitled Print Documents
+    Then the user verifies the presence of a pop up entitled Print Documents
     And the user verifies the presence of a basic tab
     And the user verifies that the basic option is selected by default
     And the user verifies the presence of an option entitled List of Items
     And the user verifies the presence of an option on the pop up entitled Documents
     And the user verifies the presence of an option entitled List of Items
-    And the user selects the list of items option
-    And the user verifies the presence of a Print option
+    When the user selects the list of items option
+    Then the user verifies the presence of a Print option
     And the user verifies the presence of a Cancel option
 
   Scenario: [702205] Advanced search result print delivery pop up - layout
@@ -26,15 +26,15 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryPrint.feature
     And the user selects the checkbox associated with result "2"
     And the user selects the print delivery option
     And the user pauses for "3" seconds
-    And the user verifies the presence of a pop up entitled Print Documents
-    And the user selects the option entitled documents
+    Then the user verifies the presence of a pop up entitled Print Documents
+    When the user selects the option entitled documents
     And the user selects the link to the advanced tab
-    And the user verifies the presence of an option entitled Term Highlighting
+    Then the user verifies the presence of an option entitled Term Highlighting
     And the user verifies that the option entitled Term Highlighting is selected by default
     And the user verifies the presence of an option entitled Expanded Margin for Notes
     And the user verifies the presence of an option entitled Cover Page
-    And the user selects the option entitled Cover Page
-    And the user verifies the presence of a field entitled Cover Page Note
+    When the user selects the option entitled Cover Page
+    Then the user verifies the presence of a field entitled Cover Page Note
     And the user verifies the presence of a dropdown entitled Font Size
     And the user verifies the presence of a font sub option "Large"
     And the user verifies the presence of a font sub option "Normal"
@@ -44,10 +44,10 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryPrint.feature
     And the user verifies the presence of a checkbox entitled Underline
     And the user verifies the presence of a Print option
     And the user verifies the presence of a Cancel option
-    And the user selects the Basic tab
+    When the user selects the Basic tab
     And the user selects the list of items option
     And the user selects the advanced tab
-    And the user verifies that the option entitled Expanded Margin for Notes is no longer present
+    Then the user verifies that the option entitled Expanded Margin for Notes is no longer present
 
   @wip
   Scenario: [702205] validate print dialog for search results
@@ -57,12 +57,12 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryPrint.feature
     And the user selects the checkbox associated with result "2"
     And the user selects the print delivery option
     And the user pauses for "3" seconds
-    And the user verifies the presence of a pop up entitled Print Documents
+    Then the user verifies the presence of a pop up entitled Print Documents
     And the user verifies the presence of an option entitled List of Items
     And the user verifies the presence of an option on the pop up entitled Documents
     And the user verifies the presence of the Print delivery request button
-    And the user checks the attribute for the print dialog
-    And the user selects the print cancel option
+    When the user checks the attribute for the print dialog
+    Then the user selects the print cancel option
 
   @bug
   Scenario Outline: [no story] download delivery where only 1 checkbox selected - to deliver in document format only
@@ -72,10 +72,10 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryPrint.feature
     And the user selects the checkbox associated with result "1"
     And the user selects the download delivery option
     And the user pauses for "3" seconds
-    And the user verifies that a pop up entitled Download This Document is displayed to the user
-    And the user selects the documents format option "<format>"
+    Then the user verifies that a pop up entitled Download This Document is displayed to the user
+    When the user selects the documents format option "<format>"
     And the user selects the Download option
-    And the user verifies that the single request is processed and a message displayed that the items are ready to download
+    Then the user verifies that the single request is processed and a message displayed that the items are ready to download
   Examples:
     | format               |
     | Microsoft Word       |

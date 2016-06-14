@@ -9,13 +9,13 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryDownload.feature
     And the user selects the checkbox associated with result "1"
     And the user selects the checkbox associated with result "2"
     And the user selects the download delivery option
-    And the user verifies the presence of a pop up entitled Download Documents
+    Then the user verifies the presence of a pop up entitled Download Documents
     And the user verifies the presence of a basic tab
     And the user verifies that the basic option is selected by default
     And the user verifies the presence of an option entitled List of Items
     And the user verifies the presence of an option on the pop up entitled Documents
-    And the user selects the list of items option
-    And the user verifies the presence of a list of items dropdown option entitled Format
+    When the user selects the list of items option
+    Then the user verifies the presence of a list of items dropdown option entitled Format
     And the user verifies the presence of a list of items format option entitled
       | formatOption    |
       | Microsoft Word  |
@@ -24,8 +24,8 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryDownload.feature
       | Microsoft Excel |
     And the user verifies the presence of a Download option
     And the user verifies the presence of a Cancel option
-    And the user selects the Documents option
-    And the user verifies the presence of a checkbox for inclusion of table of contents
+    When the user selects the Documents option
+    Then the user verifies the presence of a checkbox for inclusion of table of contents
     And the user verifies the presence of a dropdown option entitled As
     And the user verifies the presence of an option entitled "A Single Merged File"
     And the user verifies the presence of an option entitled "Multiple Files"
@@ -36,15 +36,15 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryDownload.feature
     And the user selects the checkbox associated with result "2"
     And the user selects the download delivery option
     And the user pauses for "3" seconds
-    And the user verifies the presence of a pop up entitled Download Documents
-    And the user selects the option entitled documents
+    Then the user verifies the presence of a pop up entitled Download Documents
+    When the user selects the option entitled documents
     And the user selects the link to the advanced tab
-    And the user verifies the presence of an option entitled Term Highlighting
-    And the user verifies that the option entitled Term Highlighting is selected by default
-    And the user verifies the presence of an option entitled Expanded Margin for Notes
+    Then the user verifies the presence of an option entitled Term Highlighting
+    When the user verifies that the option entitled Term Highlighting is selected by default
+    Then the user verifies the presence of an option entitled Expanded Margin for Notes
     And the user verifies the presence of an option entitled Cover Page
-    And the user selects the option entitled Cover Page
-    And the user verifies the presence of a field entitled Cover Page Note
+    When the user selects the option entitled Cover Page
+    Then the user verifies the presence of a field entitled Cover Page Note
     And the user verifies the presence of a dropdown entitled Font Size
     And the user verifies the presence of a font sub option "Large"
     And the user verifies the presence of a font sub option "Normal"
@@ -54,16 +54,16 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryDownload.feature
     And the user verifies the presence of a checkbox entitled Underline
     And the user verifies the presence of a Download option
     And the user verifies the presence of a Cancel option
-    And the user selects the Basic tab
+    When the user selects the Basic tab
     And the user selects the list of items option
     And the user selects the advanced tab
-    And the user verifies that the option entitled Expanded Margin for Notes is no longer present
+    Then the user verifies that the option entitled Expanded Margin for Notes is no longer present
 
   Scenario: [747922] download list of know how search results from basic tab in list format (various document formats)
     When the user searches for "contract for sale"
     And the user selects the checkbox associated with result "1"
     And the user selects the checkbox associated with result "2"
-    And the user downloads as list_of_items and verifies the processed message for successful downloads
+    Then the user downloads as list_of_items and verifies the processed message for successful downloads
     | Microsoft Word        |
     | Word Processor (RTF)  |
     | PDF                   |
@@ -73,7 +73,7 @@ Feature: [747922][747921][702205] ukKnowHowDeliveryDownload.feature
     When the user runs a free text search for the query "contract"
     And the user selects the checkbox associated with result "1"
     And the user selects the checkbox associated with result "2"
-    And the user downloads as Documents and verifies the processed message for successful downloads
+    Then the user downloads as Documents and verifies the processed message for successful downloads
     | Microsoft Word       |
     | Word Processor (RTF) |
     | PDF                  |
