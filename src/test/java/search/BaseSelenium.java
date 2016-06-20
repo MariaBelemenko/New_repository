@@ -15,8 +15,8 @@ public class BaseSelenium {
     public static void startBrowser() {
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
         driver.get(BASE_URL);
+        driver.manage().window().maximize();
     }
 
     public static void stopBrowser() {
