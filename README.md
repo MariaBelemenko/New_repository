@@ -1,2 +1,2 @@
-Maven task.
+TestNG task.
 
