@@ -1,5 +1,1 @@
-search\BaseSelenium.class
-search\RunAcceptanceTest.class
-search\WorkWithTheCart.class
-search\BaseStepDef.class
-search\LoginPage.class
+com\epam\Task1\tests\TestClass.class
