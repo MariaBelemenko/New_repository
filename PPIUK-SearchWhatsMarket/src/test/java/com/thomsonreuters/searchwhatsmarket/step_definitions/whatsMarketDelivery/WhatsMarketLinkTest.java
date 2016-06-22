@@ -30,7 +30,7 @@ public class WhatsMarketLinkTest extends BaseStepDef {
         navigationCobalt.navigateToHomePage();
     }
 
-    @Given("^has selected the link to the What's Market homepage$")
+    @When("^has selected the link to the What's Market homepage$")
     public void hasSelectedTheLinkToTheWhatSMarketHomepage() throws Throwable {
         softAssertions= new SoftAssertions();
 
@@ -46,7 +46,7 @@ public class WhatsMarketLinkTest extends BaseStepDef {
         softAssertions.assertAll();
     }
 
-    @And("^has selected the link to the What's Market homepage by selecting Practice Area page$")
+    @When("^has selected the link to the What's Market homepage by selecting Practice Area page$")
     public void hasSelectedTheLinkToTheWhatSMarketHomepageBySelectingPracticeAreaPage() throws Throwable {
         softAssertions= new SoftAssertions();
 
@@ -75,7 +75,7 @@ public class WhatsMarketLinkTest extends BaseStepDef {
         searchResultsPage.backToLink(arg1).isDisplayed();
     }
 
-    @When("^has selected the link to \"(.*?)\"$")
+    @And("^has selected the link to \"(.*?)\"$")
     public void hasSelectedTheLinkToWMDealTypeTest(String linkName) throws Throwable {
         whatsMarketHomePage.selectLinkOnWhatsMarketHome(linkName);
         knowHowSearchResultsPage.waitForSearchResults();

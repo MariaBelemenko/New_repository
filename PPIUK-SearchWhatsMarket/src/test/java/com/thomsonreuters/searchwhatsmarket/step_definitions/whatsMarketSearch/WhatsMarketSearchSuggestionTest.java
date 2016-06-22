@@ -7,6 +7,7 @@ import com.thomsonreuters.pageobjects.pages.search.KnowHowDocumentPage;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.WhatsMarketSearchResultsPage;
 import com.thomsonreuters.searchwhatsmarket.step_definitions.BaseStepDef;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -66,7 +67,7 @@ public class WhatsMarketSearchSuggestionTest extends BaseStepDef {
         knowHowSearchResultsPage.waitForSearchResults();
     }
 
-    @Then("^the user can open the first whats market search result \"(.*?)\"$")
+    @And("^the user can open the first whats market search result \"(.*?)\"$")
     public void theUserCanOpenTheFirstWhatsMarketSearchResult(String arg1) throws Throwable {
         whatsMarketSearchResultsPage.whatsMarketSearchResultTitle(arg1).click();
     }

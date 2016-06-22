@@ -8,6 +8,7 @@ import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.pageobjects.utils.homepage.HomePageUtils;
 import com.thomsonreuters.searchwhatsmarket.step_definitions.BaseStepDef;
 import cucumber.api.DataTable;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -341,7 +342,7 @@ public class WhatsMarketDeliveryTest extends BaseStepDef {
         searchResultsPage.emailButton().click();
     }
 
-    @Then("^the user pauses for \"(.*?)\" seconds$")
+    @And("^the user pauses for \"(.*?)\" seconds$")
     public void theUserPausesForSeconds(Integer timeToWait) throws Throwable {
         Robot robot = new Robot();
         timeToWait = timeToWait * 1000;

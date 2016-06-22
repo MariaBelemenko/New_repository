@@ -108,12 +108,12 @@ public class WhatsMarketFacetTest extends BaseStepDef {
         resultArray[count] = Integer.parseInt(numberReturnedFromWebsite);
     }
 
-    @When("^the user selects the whats market facet \"(.*?)\"$")
+    @And("^the user selects the whats market facet \"(.*?)\"$")
     public void theUserSelectsTheWhatsMarketFacet(String arg1) throws Throwable {
         whatsMarketSearchResultsPage.whatsMarketFacetCheckbox(arg1).click();
     }
 
-    @When("^the user selects the option to apply filters$")
+    @And("^the user selects the option to apply filters$")
     public void theUserSelectsTheOptionToApplyFilters() throws Throwable {
         casesSearchResultsPage.applyFiltersButton().click();
         knowHowSearchResultsPage.waitForSearchResults();

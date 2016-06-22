@@ -4,6 +4,7 @@ import com.thomsonreuters.pageobjects.common.CommonMethods;
 import com.thomsonreuters.pageobjects.pages.search.KnowHowSearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.WhatsMarketSearchResultsPage;
 import com.thomsonreuters.searchwhatsmarket.step_definitions.BaseStepDef;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import java.util.List;
@@ -32,7 +33,7 @@ public class WhatsMarketSearchTest extends BaseStepDef {
                 || (item.contains("AGMs: AIM: 2010")) || (item.contains("AIM Rules: Reverse takeovers")) || (item.contains("Demergers")));
     }
 
-    @Then("the user is able to verify that the facets by default 5 facets are displayed/expanded per facet type with an option to see more")
+    @And("the user is able to verify that the facets by default 5 facets are displayed/expanded per facet type with an option to see more")
     public void verifyTheFacetsLimit() throws Throwable {
         for (String facetGroupName : whatsMarketSearchResultsPage.getFacetGroupNames()) {
             int childFacets = whatsMarketSearchResultsPage.getChildFacetsSize(facetGroupName);
@@ -48,7 +49,7 @@ public class WhatsMarketSearchTest extends BaseStepDef {
         }
     }
 
-    @When("^the user verifies that the whats market facet \"(.*?)\" is selected$")
+    @And("^the user verifies that the whats market facet \"(.*?)\" is selected$")
     public void theUserVerifiesThatTheWhatsMarketFacetIsSelected(String arg1) throws Throwable {
         assertTrue(whatsMarketSearchResultsPage.whatsMarketFacetCheckbox(arg1).isSelected());
     }
@@ -58,7 +59,7 @@ public class WhatsMarketSearchTest extends BaseStepDef {
         commonMethods.moveToElementUsingJSThenClick(knowHowSearchResultsPage.clearAllLink());
     }
 
-    @When("^the user verifies that the whats market facet \"(.*?)\" is not selected$")
+    @And("^the user verifies that the whats market facet \"(.*?)\" is not selected$")
     public void theUserVerifiesThatWhatsMarketFacetIsNotSelected(String arg1) throws Throwable {
         assertFalse(whatsMarketSearchResultsPage.whatsMarketFacetCheckbox(arg1).isSelected());
     }
@@ -85,7 +86,7 @@ public class WhatsMarketSearchTest extends BaseStepDef {
                 || (item.contains("Listed company restructurings")) || (item.contains("AIM Rules: Reverse takeovers"))));
     }
 
-    @When("^the user verifies that the result at position in the result list has the deal type$")
+    @Then("^the user verifies that the result at position in the result list has the deal type$")
     public void theUserVerifiesThatTheResultAtPositionInTheResultListHasTheDealType(Map<String, String> map) throws Throwable {
         for (String position : map.keySet()) {
             assertTrue(whatsMarketSearchResultsPage.isWhatsMarketResultTextPresent(position, map.get(position)));

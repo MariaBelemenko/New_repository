@@ -6,6 +6,7 @@ import com.thomsonreuters.pageobjects.pages.search.SearchResultsPage;
 import com.thomsonreuters.pageobjects.pages.search.WhatsMarketComparisonReportPage;
 import com.thomsonreuters.pageobjects.pages.search.WhatsMarketSearchResultsPage;
 import com.thomsonreuters.searchwhatsmarket.step_definitions.BaseStepDef;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -43,7 +44,7 @@ public class WhatsMarketScopedSearchDropdownTest extends BaseStepDef {
         searchResultsPage.resultPageTitle(arg1).isDisplayed();
     }
 
-    @Then("^the user can select the option to show most detail$")
+    @And("^the user can select the option to show most detail$")
     public void theUserCanSelectTheOptionToShowMostDetail() throws Throwable {
         searchResultsPage.moreOrLessDetailAnchor().click();
         searchResultsPage.mostDetailOption().click();
