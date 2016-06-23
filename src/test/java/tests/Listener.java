@@ -1,10 +1,10 @@
 package tests;
 
+import com.epam.TestNG.singltone.FirefoxDriverSingltone;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -16,8 +16,8 @@ import java.io.IOException;
  * Created by Mariya_Belemenko on 6/21/2016.
  */
 public class Listener implements ITestListener {
-    protected WebDriver driver = new FirefoxDriver();
 
+    protected WebDriver driver = FirefoxDriverSingltone.getWebDriver();
     public void onTestStart(ITestResult result) {
         System.out.println("On test start");
     }

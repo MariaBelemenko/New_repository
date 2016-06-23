@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="TmpSuite">
+    <listeners>
+        <listener class-name="tests.Listener" />
+    </listeners>
+    <parameter name="url" value="http://tut.by"></parameter>
+    <parameter name="driver" value="FirefoxDriver"></parameter>
+    <test name="MyNumberTest">
+        <parameter name="value1" value="11" />
+        <parameter name="value2" value="22" />
+        <parameter name="result" value="33" />
+        <classes>
+            <class name="tests.Tests"/>
+        </classes>
+    </test>
+</suite>

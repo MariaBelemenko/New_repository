@@ -1,2 +1,1 @@
-TestNG task.
-
+Page factory, factory, singleton, custom runner and annotation.
