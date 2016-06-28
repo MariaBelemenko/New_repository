@@ -1,1 +1,1 @@
-All tasks except proxy integration.
+Proxy integration.
