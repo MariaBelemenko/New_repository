@@ -2,6 +2,8 @@ package tests;
 
 import com.epam.TestNG.singltone.FirefoxDriverSingltone;
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -18,37 +20,39 @@ import java.io.IOException;
 public class Listener implements ITestListener {
 
     protected WebDriver driver = FirefoxDriverSingltone.getWebDriver();
+    private static final Logger LOG = LogManager.getLogger(Listener.class.getName());
+
     public void onTestStart(ITestResult result) {
-        System.out.println("On test start");
+        LOG.info("On test start");
     }
 
     public void onTestSuccess(ITestResult result) {
-        System.out.println("On test success");
+        LOG.info("On test success");
     }
 
     public void onTestFailure(ITestResult result) {
-        System.out.println("After each test method");
+        LOG.info("After each test method");
         try {
             File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(scrFile, new File("\\target\\testScreenShot.jpg"));
         } catch (IOException e) {
-            System.out.println("IOException occured");
+            LOG.info("IOException occured");
         }
     }
 
     public void onTestSkipped(ITestResult result) {
-        System.out.println("On test skipped");
+        LOG.info("On test skipped");
     }
 
     public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-        System.out.println("On test failed but within success percentage");
+        LOG.info("On test failed but within success percentage");
     }
 
     public void onStart(ITestContext context) {
-        System.out.println("On start");
+        LOG.info("On start");
     }
 
     public void onFinish(ITestContext context) {
-        System.out.println("On finish");
+        LOG.info("On finish");
     }
 }

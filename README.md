@@ -1,1 +1,1 @@
-Page factory, factory, singleton, custom runner and annotation.
+All tasks except proxy integration.

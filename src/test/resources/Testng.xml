@@ -3,6 +3,8 @@
 <suite name="TmpSuite">
     <listeners>
         <listener class-name="tests.Listener" />
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
     </listeners>
     <parameter name="url" value="http://tut.by"></parameter>
     <parameter name="driver" value="FirefoxDriver"></parameter>
